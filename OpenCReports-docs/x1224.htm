@@ -1,0 +1,582 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Low level C API</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="OpenCReports Manual"
+HREF="book1.htm"><LINK
+REL="UP"
+TITLE="C language API reference"
+HREF="c1183.htm"><LINK
+REL="PREVIOUS"
+TITLE="High level C API"
+HREF="x1189.htm"><LINK
+REL="NEXT"
+TITLE="Data source related functions"
+HREF="x1316.htm"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>OpenCReports Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x1189.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 6. C language API reference</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x1316.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="lowlevelapi"
+>Low level C API</A
+></H1
+><P
+>&#13;			The <A
+HREF="x1189.htm"
+>High level C API</A
+> is also part of the
+			low level API. The functions described below allow
+			creating a report using program code, or simply
+			fine tuning the report behavior by mostly using the
+			<A
+HREF="x1189.htm"
+>High level C API</A
+>.
+		</P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="numerictuning"
+>Numeric behavior related functions</A
+></H2
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1231"
+><TT
+CLASS="literal"
+>Set numeric precision</TT
+></A
+></H3
+><P
+>&#13;					The default is 256 bits of floating point precision.
+					<PRE
+CLASS="programlisting"
+>&#13;void ocrpt_set_numeric_precision_bits(opencreport *o,
+                                      mpfr_prec_t prec);
+					</PRE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1236"
+>Set rounding mode</A
+></H3
+><P
+>&#13;					OpenCReports uses GNU MPFR under the hood and does't
+					hide this fact. The MPFR rounding mode constants are
+					used as is to set the rounding behaviour.
+					The default is <TT
+CLASS="literal"
+>MPFR_RNDN</TT
+>, round
+					to nearest.
+					<PRE
+CLASS="programlisting"
+>&#13;void ocrpt_set_rounding_mode(opencreport *o,
+                             mpfr_rnd_t rndmode);
+					</PRE
+>
+				</P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1241"
+>Locale related functions</A
+></H2
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1243"
+>Set report locale</A
+></H3
+><P
+>&#13;					Setting the locale for the report does not affect
+					the main program or other threads. Locale setting
+					includes the language, the country. The UTF-8 suffix
+					is necessary. E.g.: <TT
+CLASS="literal"
+>en_GB.UTF-8</TT
+> or
+					<TT
+CLASS="literal"
+>de_DE.UTF-8</TT
+>
+					<PRE
+CLASS="programlisting"
+>&#13;void ocrpt_set_locale(opencreport *o,
+                      const char *locale);
+					</PRE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1249"
+>Print monetary data in the report locale</A
+></H3
+><P
+>&#13;					A customized monetary printing function was implemented
+					for the purposes of the report which MPFR doesn't
+					provide. It is used in OpenCReports both internally
+					and by unit tests.
+					<PRE
+CLASS="programlisting"
+>&#13;ssize_t ocrpt_mpfr_strfmon(opencreport *o,
+                           char *s, size_t maxsize,
+                           const char *format, ...);
+					</PRE
+>
+				</P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="exprfunc"
+>Expression related functions</A
+></H2
+><P
+>&#13;				Expressions in OpenCReports is explained in the
+				<A
+HREF="c491.htm"
+>Expressions</A
+> chapter.
+			</P
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1257"
+>Parse an expression string</A
+></H3
+><P
+>&#13;					This function parses an expression string and
+					creates an expression tree. It returns a pointer
+					to the <TT
+CLASS="literal"
+>ocrpt_expr</TT
+> structure.
+				</P
+><P
+>&#13;					If an error occurs, it returns NULL and optionally
+					returns the error message in <TT
+CLASS="literal"
+>err</TT
+>
+					pointer if it's not <TT
+CLASS="literal"
+>NULL</TT
+>.
+				</P
+><P
+>&#13;					The <TT
+CLASS="literal"
+>ocrpt_report</TT
+> pointer may be
+					valid or NULL. If valid, the expression is bound
+					to this <TT
+CLASS="literal"
+>ocrpt_report</TT
+>.
+					<PRE
+CLASS="programlisting"
+>&#13;ocrpt_expr *ocrpt_expr_parse(opencreport *o,
+                             ocrpt_report *r,
+                             const char *str,
+                             char **err);
+					</PRE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1268"
+>Free an expression parse tree</A
+></H3
+><P
+>&#13;					Free an expression parse tree. If it was bound
+					to the passed-in <TT
+CLASS="literal"
+>ocrpt_report</TT
+>,
+					this association is also deleted.
+					<PRE
+CLASS="programlisting"
+>&#13;void ocrpt_expr_free(opencreport *o,
+                     ocrpt_report *r,
+                     ocrpt_expr *e);
+					</PRE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1273"
+>Resolve expression references</A
+></H3
+><P
+>&#13;					This function resolves variable (identifier)
+					references in the expression. This is needed
+					to bind query columns to expressions that
+					use them.
+					<PRE
+CLASS="programlisting"
+>&#13;void ocrpt_expr_resolve(opencreport *o,
+                        ocrpt_report *r,
+                        ocrpt_expr *e);
+					</PRE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1277"
+>Optimize an expression</A
+></H3
+><P
+>&#13;					This function optimizes an expression so
+					it may needs fewer computation steps during
+					report execution.
+					<PRE
+CLASS="programlisting"
+>&#13;void ocrpt_expr_optimize(opencreport *o,
+                         ocrpt_report *r,
+                         ocrpt_expr *e);
+					</PRE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1281"
+>Evaluate an expression</A
+></H3
+><P
+>&#13;					This function evaluates the expression.
+					It returns the expression's
+					<TT
+CLASS="literal"
+>ocrpt_result</TT
+> result structure.
+					The result must not be freed with
+					<TT
+CLASS="literal"
+>ocrpt_result_free()</TT
+>.
+					It will be done by <TT
+CLASS="literal"
+>ocrpt_expr_free()</TT
+>
+				</P
+><P
+>&#13;					For expressions with query column references,
+					this function must be called after
+					<TT
+CLASS="literal"
+>ocrpt_query_navigate_next</TT
+>
+					otherwise the result is not valid.
+					<PRE
+CLASS="programlisting"
+>&#13;ocrpt_result *ocrpt_expr_eval(opencreport *o,
+                              ocrpt_report *r,
+                              ocrpt_expr *e);
+					</PRE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1290"
+>Get expression result without evaluation</A
+></H3
+><P
+>&#13;					This function returns the expression result
+					if it was already evaluated.
+					The result must not be freed with
+					<TT
+CLASS="literal"
+>ocrpt_result_free()</TT
+>.
+					It will be done by <TT
+CLASS="literal"
+>ocrpt_expr_free()</TT
+>.
+					Used by unit tests.
+					<PRE
+CLASS="programlisting"
+>&#13;ocrpt_result *ocrpt_expr_get_result(opencreport *o,
+                                    ocrpt_expr *e);
+					</PRE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1296"
+>Print an expression tree</A
+></H3
+><P
+>&#13;					Print an expression tree in its processed form on the
+					standard output. Used by unit tests.
+					<PRE
+CLASS="programlisting"
+>&#13;void ocrpt_expr_print(opencreport *o,
+                      ocrpt_expr *e);
+					</PRE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1300"
+>Print an expression tree with subexpressions and their results</A
+></H3
+><P
+>&#13;					Print an expression tree with subexpressions
+					and their results in its processed form on the
+					standard output. Used by unit tests.
+					<PRE
+CLASS="programlisting"
+>&#13;void ocrpt_expr_result_deep_print(opencreport *o,
+                                  ocrpt_expr *e);
+					</PRE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1304"
+>Count the number of expression nodes</A
+></H3
+><P
+>&#13;					This function returns the number of expression nodes.
+					Used by unit tests to validate optimizazion.
+					<PRE
+CLASS="programlisting"
+>&#13;int32_t ocrpt_expr_nodes(ocrpt_expr *e);
+					</PRE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1308"
+>Initialize expression result type</A
+></H3
+><P
+>&#13;					OpenCReports keeps track of the last three query
+					rows and computes three result values for expressions
+					for internal reasons. These functions initialize
+					the type for either the current result or all results
+					of the expression.
+					<PRE
+CLASS="programlisting"
+>&#13;enum ocrpt_result_type {
+    OCRPT_RESULT_ERROR,
+    OCRPT_RESULT_STRING,
+    OCRPT_RESULT_NUMBER,
+    OCRPT_RESULT_DATETIME
+};
+
+bool ocrpt_expr_init_result(opencreport *o,
+                            ocrpt_expr *e,
+                            enum ocrpt_result_type type);
+
+void ocrpt_expr_init_results(opencreport *o,
+                             ocrpt_expr *e,
+                             enum ocrpt_result_type type);
+					</PRE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1312"
+>Set an error string as expression result</A
+></H3
+><P
+>&#13;					<PRE
+CLASS="programlisting"
+>&#13;ocrpt_result *
+ocrpt_expr_make_error_result(opencreport *o,
+                             ocrpt_expr *e,
+                             const char *format, ...);
+					</PRE
+>
+				</P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x1189.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x1316.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>High level C API</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c1183.htm"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Data source related functions</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

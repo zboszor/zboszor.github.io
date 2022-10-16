@@ -1,0 +1,1006 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Text element</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="OpenCReports 0.4.3 Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Report XML description"
+HREF="c141.html"><LINK
+REL="PREVIOUS"
+TITLE="Line"
+HREF="x1282.html"><LINK
+REL="NEXT"
+TITLE="HorizontalLine"
+HREF="x1516.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>OpenCReports 0.4.3 Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x1282.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Report XML description</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x1516.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="textelemnode"
+>Text element</A
+></H1
+><P
+>&#13;			Two variants are accepted.
+			<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Line&#62;
+    &#60;field value="expression..." ... /&#62;
+&#60;/Line&#62;</PRE
+></TD
+></TR
+></TABLE
+> and
+			<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Line&#62;
+    &#60;literal ... &#62;Literal text&#60;/literal&#62;
+&#60;/Line&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+		</P
+><P
+>&#13;			Neither <TT
+CLASS="literal"
+>field</TT
+> nor
+			<TT
+CLASS="literal"
+>literal</TT
+> have child nodes,
+			only attributes or XML values.
+		</P
+><P
+>&#13;			The two variants are interchangeable, see
+			<A
+HREF="x1351.html#elemvalueattr"
+>Text element value</A
+> below.
+		</P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1361"
+>Text element attributes</A
+></H2
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="elemvalueattr"
+>Value</A
+></H3
+><P
+>&#13;					The value of the text element. It's accepted in two
+					ways: in the <TT
+CLASS="literal"
+>value</TT
+> attribute or as
+					the XML value for the <TT
+CLASS="literal"
+>field</TT
+> and
+					<TT
+CLASS="literal"
+>literal</TT
+> nodes.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Line&#62;
+    &#60;field value="'This text'" /&#62;
+    &#60;field&#62;This text&#60;/field&#62;
+    &#60;literal value="'This text'" /&#62;
+    &#60;literal&#62;This text&#60;/literal&#62;
+&#60;/Line&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					The value is parsed as an expression
+					from the <TT
+CLASS="literal"
+>value</TT
+> attribute.
+					See <A
+HREF="c1639.html"
+>Expressions</A
+>.
+				</P
+><P
+>&#13;					On the other hand, the value is taken as a literal
+					string from the XML value in the second and fourth
+					examples above.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1374"
+>Delayed (precalculated) value</A
+></H3
+><P
+>&#13;					This setting indicates whether the value is
+					"precalculated", i.e. the value for the last
+					row in the data set is used, or it would be
+					the actual value for the current row in the
+					data set.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;field delayed="yes" /&#62;
+&#60;field precalculate="yes" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is <TT
+CLASS="literal"
+>false</TT
+>.
+				</P
+><P
+>&#13;					This setting is only applicable for
+					line elements in the
+					<A
+HREF="x1243.html"
+>Output node</A
+> node in
+					<TT
+CLASS="literal"
+>&#60;ReportHeader&#62;</TT
+>,
+					<TT
+CLASS="literal"
+>&#60;ReportFooter&#62;</TT
+>,
+					<TT
+CLASS="literal"
+>&#60;Fieldheaders&#62;</TT
+>
+					<TT
+CLASS="literal"
+>&#60;FieldDetails&#62;</TT
+>,
+					since they are the ones under the
+					<TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+> scope
+					with a query.
+				</P
+><P
+>&#13;					Note that in <TT
+CLASS="literal"
+>OpenCReports</TT
+>,
+					an expression may mix references to precalculated
+					variables with non-precalculated variables and
+					query field references. The result will use the
+					precalculated value only for the precalculated
+					variables. Other references will use values derived
+					from the current row in the data set.
+					This is an extension over RLIB.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="formatattr"
+>Format string</A
+></H3
+><P
+>&#13;					The format string is used to format the
+					<TT
+CLASS="literal"
+>value</TT
+> to be displayed
+					in the generated output. For example, to
+					print a number with two decimal places:
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;field value="3" format="'%.2d'" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					The format string is expected to be a string
+					so quoting around it is needed.
+				</P
+><P
+>&#13;					See <A
+HREF="c2514.html"
+>Formatting data</A
+> for details.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="textelemwidth"
+>Width</A
+></H3
+><P
+>&#13;					The field width.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;field value="3" format="'%.2d'" width="6" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is unset, i.e. the field width
+					is implicitly set to the rendered width (in points)
+					of the field's formatted value as text, using the
+					font name and font size of the field.
+				</P
+><P
+>&#13;					If set, the width's unit depends on the
+					<A
+HREF="x192.html#sizeunit"
+>Size unit attribute</A
+>.
+				</P
+><P
+>&#13;					When the <A
+HREF="x192.html#sizeunit"
+>Size unit attribute</A
+> is set to
+					<TT
+CLASS="literal"
+>rlib</TT
+>, the field width is measured
+					in number of characters.
+				</P
+><P
+>&#13;					The character width is queried from the font set by
+					<A
+HREF="x1282.html#linefontname"
+>Line font name</A
+> and
+					<A
+HREF="x1282.html#linefontsize"
+>Line font size</A
+>,
+					<A
+HREF="x755.html#reportfontname"
+>Report font name</A
+> and
+					<A
+HREF="x755.html#reportfontsize"
+>Report font size</A
+>, or
+					<A
+HREF="x488.html#partfontname"
+>Part font name</A
+> and
+					<A
+HREF="x488.html#partfontsize"
+>Part font size</A
+>
+					in decreasing order of precedence.
+				</P
+><P
+>&#13;					<A
+HREF="x1351.html#textelemfontname"
+>Text element font name</A
+> and
+					<A
+HREF="x1351.html#textelemfontsize"
+>Text element font size</A
+> DO NOT influence
+					the font width used to determine the field width.
+				</P
+><P
+>&#13;					This allows using uniquely set font name and size for
+					individual text elements, including proportional
+					fonts.
+				</P
+><P
+>&#13;					When using different font names or font sizes for
+					different text elements in the same
+					<TT
+CLASS="literal"
+>&#60;Line&#62;</TT
+>, the text elements
+					are aligned vertically so all text elements are
+					rendered on the same typographic baseline.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="textelemalign"
+>Alignment</A
+></H3
+><P
+>&#13;					It specifies the alignment for the text element.
+					It works in accordance with the
+					<A
+HREF="x1351.html#textelemwidth"
+>Text element width</A
+>, i.e. the field's
+					formatted value (as text) is aligned inside the
+					specified field width.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;field value="3" format="'%.2d'"
+      width="6" align="'center' /"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					The alignment values may be
+					<TT
+CLASS="literal"
+>left</TT
+>,
+					<TT
+CLASS="literal"
+>right</TT
+>,
+					<TT
+CLASS="literal"
+>center</TT
+> or
+					<TT
+CLASS="literal"
+>justified</TT
+>.
+				</P
+><P
+>&#13;					Justified alignment is like left alignment,
+					but for a multi-line field all lines but the
+					last are justified. This is best used With
+					the default word wrapping. In this case,
+					the spacing between words is enlarged.
+					<TT
+CLASS="literal"
+>justified</TT
+> and
+					<TT
+CLASS="literal"
+>left</TT
+> behave the same
+					for regular single-line fields.
+				</P
+><P
+>&#13;					Default is <TT
+CLASS="literal"
+>left</TT
+>.
+				</P
+><P
+>&#13;					<TT
+CLASS="literal"
+>OpenCReports</TT
+> decoupled
+					the data from displaying it. For example,
+					with the PDF output, the text element is not
+					truncated to the element width. Instead,
+					pixel perfect alignment is used together
+					with masking the parts of the value with
+					a bounding box. This is a deviation from
+					RLIB where data was approximately truncated,
+					because it was designed with monospace fonts
+					in mind, and widths were specified in number
+					of characters.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1437"
+>Text color</A
+></H3
+><P
+>&#13;					This color is used to render text. It's accepted
+					with both American and  British spelling.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Line color="'blue'"&#62;
+&#60;Line colour="'blue'"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is what's set for <A
+HREF="x1282.html"
+>Line node</A
+>,
+					otherwise <TT
+CLASS="literal"
+>black</TT
+>.
+					See <A
+HREF="x1626.html"
+>Color specification</A
+>.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1445"
+>Background color</A
+></H3
+><P
+>&#13;					This color is used to render the background
+					rectangle under the text. It's accepted
+					with both American and  British spelling.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Line bgcolor="'blue'"&#62;
+&#60;Line bgcolour="'blue'"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is <TT
+CLASS="literal"
+>white</TT
+>.
+					See <A
+HREF="x1626.html"
+>Color specification</A
+>.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="textelemfontname"
+>Font name</A
+></H3
+><P
+>&#13;					The font name attribute specifies the font
+					for the text element's scope.
+					It may be specified in two forms, the first one
+					is the preferred name, the second is for RLIB
+					compatibility:
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Part font_name="Arial"&#62;
+&#60;Part fontName="Arial"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					If both forms are specified, <TT
+CLASS="literal"
+>font_name</TT
+>
+					is used.
+				</P
+><P
+>&#13;					Default font name is <TT
+CLASS="literal"
+>Courier</TT
+>.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="textelemfontsize"
+>Font size</A
+></H3
+><P
+>&#13;					The font size attribute specifies the font size
+					for the text element's scope.
+					It may be specified in two forms, the first one
+					is the preferred name, the second is for RLIB
+					compatibility:
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Part font_size="10"&#62;
+&#60;Part fontSize="10"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					If both forms are specified, <TT
+CLASS="literal"
+>font_size</TT
+>
+					is used.
+				</P
+><P
+>&#13;					Default font size is 12.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1467"
+>Bold font</A
+></H3
+><P
+>&#13;					Whether the text element uses bold font.
+					It overrides the <A
+HREF="x1282.html#lineboldattr"
+>Line bold attribute</A
+>
+					for this text element.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;field bold="yes" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is what's set for
+					<A
+HREF="x1282.html#lineboldattr"
+>Line bold attribute</A
+>.
+					<TT
+CLASS="literal"
+>false</TT
+> if both are unset.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1475"
+>Italic font</A
+></H3
+><P
+>&#13;					Whether the text element uses italic font.
+					It overrides the <A
+HREF="x1282.html#lineitalicattr"
+>Line italic attribute</A
+>
+					for this text element.
+					It is accepted in two forms:
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;field italic="yes" /&#62;
+&#60;field italics="yes" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is what's set for
+					<A
+HREF="x1282.html#lineitalicattr"
+>Line italic attribute</A
+>.
+					<TT
+CLASS="literal"
+>false</TT
+> if both are unset.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1483"
+>Web link</A
+></H3
+><P
+>&#13;					This attribute adds a weblink to the text element.
+					E.g. clicking on this text element in the generated
+					PDF will open a browser with the website.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;field value="'This is my website'"
+       link="'https://github.com/zboszor/OpenCReports'" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is no weblink.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1488"
+>Multi-line (memo) field</A
+></H3
+><P
+>&#13;					This attribute allows breaking long text fields
+					to multiple lines according to the 
+					<A
+HREF="x1351.html#textelemwidth"
+>Text element width</A
+>.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;field value="'This is a long text...'"
+       width="12" memo="yes" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is <TT
+CLASS="literal"
+>false</TT
+>, i.e. the field
+					is rendered on a single line.
+				</P
+><P
+>&#13;					Every line of the text element (regardless if it's a memo
+					field or not) is aligned according to
+					<A
+HREF="x1351.html#textelemalign"
+>Text element alignment</A
+>.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1497"
+>Multi-line field wrapping</A
+></H3
+><P
+>&#13;					This attribute allows wrapping multi-line
+					text at characters as opposed to words.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;field value="'This is a long text...'"
+       width="12" memo="yes" memo_wrap_chars="yes" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is <TT
+CLASS="literal"
+>false</TT
+>, i.e. the field
+					is wrapped at word boundaries.
+				</P
+><P
+>&#13;					In <TT
+CLASS="literal"
+>OpenCReports</TT
+>, character
+					wrapping adds hyphenation, thanks to Pango rendering.
+					This is a deviation from RLIB.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1505"
+>Multi-line field row limit</A
+></H3
+><P
+>&#13;					This attribute allows limiting multi-line
+					text with a maximum row number.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;field value="'This is a long text...'"
+       width="12" memo="yes" memo_max_lines="20" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is no limit.
+				</P
+><P
+>&#13;					In <TT
+CLASS="literal"
+>OpenCReports</TT
+>, character
+					wrapping adds hyphenation, thanks to Pango rendering.
+					This is a deviation from RLIB.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1512"
+>Column number</A
+></H3
+><P
+>&#13;					This attribute is accepted for RLIB compatibility,
+					but it's unused.
+					text with a maximum row number.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;field value="'This is a long text...'"
+       col="3" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x1282.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x1516.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Line</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c141.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>HorizontalLine</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

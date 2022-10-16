@@ -1,0 +1,952 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Datasources</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="OpenCReports 0.4.3 Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Report XML description"
+HREF="c190.html"><LINK
+REL="PREVIOUS"
+TITLE="OpenCReport element"
+HREF="x241.html"><LINK
+REL="NEXT"
+TITLE="Queries"
+HREF="x435.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>OpenCReports 0.4.3 Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x241.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Report XML description</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x435.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="datasources"
+>Datasources</A
+></H1
+><P
+>&#13;			Datasources in OpenCReports are either database
+			connections, or accessors (mini-drivers) for data
+			files in certain formats.
+		</P
+><P
+>&#13;			Datasource descriptions are in the following format:
+			<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Datasources&#62;
+    &#60;Datasource name="mysource" type="..." ... /&#62;
+&#60;/Datasources&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+		</P
+><P
+>&#13;			A report may have multiple datasources, i.e.
+			the description may list multiple
+			<TT
+CLASS="literal"
+>&#60;Datasource&#62;</TT
+> lines.
+		</P
+><P
+>&#13;			Datasources must have unique names in a report and
+			their type may be:
+			<TT
+CLASS="literal"
+>mariadb</TT
+> (or <TT
+CLASS="literal"
+>mysql</TT
+>),
+			<TT
+CLASS="literal"
+>postgresql</TT
+>, <TT
+CLASS="literal"
+>odbc</TT
+>,
+			<TT
+CLASS="literal"
+>csv</TT
+>, <TT
+CLASS="literal"
+>json</TT
+>,
+			<TT
+CLASS="literal"
+>xml</TT
+> or <TT
+CLASS="literal"
+>array</TT
+>.
+		</P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN318"
+>MariaDB (MySQL) database connection</A
+></H2
+><P
+>&#13;				A MariaDB database connection may be declared in three
+				ways. Either by using the database host and port,
+				the database name, user name and password directly:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Datasource
+    name="mysource" type="mariadb"
+    host="..." port="..."
+    dbname="..." user="..." password="..." /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				or alternatively, instead of the host and port,
+				specifying the UNIX Domain Socket file for
+				a local connection if it's not in the standard
+				location:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Datasource
+    name="mysource" type="mariadb"
+    unix_socket="..."
+    dbname="..." user="..." password="..." /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				or moving these details out to an external
+				configuration file in an INI file format:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Datasource
+    name="mysource" type="mariadb"
+    optionfile="myconn.cnf" group="myconn" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+><P
+>&#13;				In the second case, the configuration file <TT
+CLASS="literal"
+>myconn.cnf</TT
+>
+				would contain something like this:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>[myconn]
+!include /etc/my.cnf
+database=mydb
+user=myuser
+#password=
+#host=
+#port=
+#unix_socket=</PRE
+></TD
+></TR
+></TABLE
+>
+				Please note that the INI group name <TT
+CLASS="literal"
+>[myconn]</TT
+>
+				matches <TT
+CLASS="literal"
+>group="myconn"</TT
+> in the above
+				datasource declaration.
+			</P
+><P
+>&#13;				The database name and user name are mandatory. The
+				user password is optional, depending on the database
+				security authentication setup.
+			</P
+><P
+>&#13;				The database host and port, or the socket file location
+				are all optional. Without these, a local connection is
+				attempted using the default settings. If the host name
+				is specified but the port isn't, the remote host is
+				used on the default port (as known by the local MariaDB
+				database client library).
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN331"
+>PostgreSQL database connection</A
+></H2
+><P
+>&#13;				A PostgreSQL database connection may be declared in three
+				ways. Either by using the database host and port,
+				the database name, user name and password directly:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Datasource
+    name="mysource" type="postgresql"
+    host="..." port="..."
+    dbname="..." user="..." password="..." /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				or alternatively, instead of the host and port,
+				specifying the UNIX Domain Socket file for
+				a local connection if it's not in the standard
+				location:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Datasource
+    name="mysource" type="postgresql"
+    unix_socket="..."
+    dbname="..." user="..." password="..." /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				or using a so called connection string:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Datasource
+    name="mysource" type="postgresql"
+    connstr="..." /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+><P
+>&#13;				For the connection string format, see the
+				<A
+HREF="https://www.postgresql.org/docs"
+TARGET="_top"
+><I
+CLASS="citetitle"
+>PostgreSQL documentation</I
+></A
+>.
+			</P
+><P
+>&#13;				The database name and user name are mandatory. The
+				user password is optional, depending on the database
+				security authentication setup.
+			</P
+><P
+>&#13;				The database host and port, or the socket file location
+				are all optional. Without these, a local connection is
+				attempted using the default settings. If the host name
+				is specified but the port isn't, the remote host is
+				used on the default port (as known by the local PostgreSQL
+				database client library).
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN342"
+>ODBC database connection</A
+></H2
+><P
+>&#13;				The above described MariaDB and PostgreSQL database
+				connection types are using their respective client
+				libraries. There is a more generic way, i.e. ODBC.
+				ODBC was invented by Microsoft in the 1990s for Windows.
+				See
+				<A
+HREF="https://docs.microsoft.com/en-us/sql/odbc/microsoft-open-database-connectivity-odbc"
+TARGET="_top"
+><I
+CLASS="citetitle"
+>Microsoft Open Database Connectivity (ODBC)</I
+></A
+>
+				In their solution, there's an abstract client library
+				and individual database drivers adhere to the APIs
+				offered by ODBC toplevel library. Since then, UNIX and
+				UNIX-like systems also gained their ODBC client libraries
+				in two different implementations, both of which are
+				supported by OpenCReports:
+				<A
+HREF="https://www.unixodbc.org"
+TARGET="_top"
+><I
+CLASS="citetitle"
+>unixODBC</I
+></A
+>
+				and
+				<A
+HREF="https://www.iodbc.org"
+TARGET="_top"
+><I
+CLASS="citetitle"
+>iODBC</I
+></A
+>.
+			</P
+><P
+>&#13;				An ODBC database setup is done a differently. There are
+				two system-wide configuration files. The first one is
+				<TT
+CLASS="literal"
+>odbcinst.ini</TT
+> that lists the database
+				drivers installed into the system. The second one is
+				<TT
+CLASS="literal"
+>odbc.ini</TT
+> which references the first
+				one and lists pre-defined database connections. These
+				database connections are named. In ODBC speak, these
+				are called Data Source Names or DSNs. The DSNs specify
+				the low level connection parameters, like the database
+				host and port, and optionally the user name and
+				password, too.
+			</P
+><P
+>&#13;				Thus, an ODBC database connection may be declared in two
+				ways. The first way is by using the DSN name, and
+				optionally the user name and password:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Datasource
+    name="mysource" type="odbc"
+    dbname="..." user="..." password="..." /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				In this case, the <TT
+CLASS="literal"
+>dbname</TT
+> attribute
+				is not the low level database name, but the ODBC
+				abstract DSN name.
+			</P
+><P
+>&#13;				There's also a way to use the so called connection string
+				which contain the same connection information:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Datasource
+    name="mysource" type="odbc"
+    connstr="..." /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+><P
+>&#13;				For the connection string format, see the
+				<A
+HREF="https://www.connectionstrings.com/"
+TARGET="_top"
+><I
+CLASS="citetitle"
+>public examples</I
+></A
+>.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN362"
+>CSV file datasource</A
+></H2
+><P
+>&#13;				CSV ("Comma Separated Values") is a simple tabulated
+				file format. Every line must have the same number of
+				columns, for which the values are separated by commas.
+				The first line in the file contains the column names.
+			</P
+><P
+>&#13;				A CSV file datasource is declared very simply:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Datasource name="mysource" type="'csv'" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				In this case, the actual CSV file is not declared,
+				only that a "query" using a CSV file will be listed
+				later under <TT
+CLASS="literal"
+>&#60;Queries&#62;</TT
+>.
+			</P
+><P
+>&#13;				This datasource is less smart than others, in that
+				is cannot specify data type for columns. Every column
+				is assumed to be a string, regardless if the values
+				themselves are quoted or not in the file. Data
+				conversion functions must be used, like
+				<TT
+CLASS="literal"
+>val()</TT
+>, <TT
+CLASS="literal"
+>stodt()</TT
+>
+				or <TT
+CLASS="literal"
+>interval()</TT
+>.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN372"
+>JSON file datasource</A
+></H2
+><P
+>&#13;				Similarly to CSV, the JSON file datasource is also declared
+				very simply:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Datasource name="mysource" type="'json'" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				In this case, the actual JSON file is not declared,
+				only that a "query" using a JSON file will be listed
+				later under <TT
+CLASS="literal"
+>&#60;Queries&#62;</TT
+>.
+			</P
+><P
+>&#13;				A JSON file datasource is expected in this format:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>{
+    "columns": ["colname1", ... ],
+    "coltypes": ["type", ... ],
+    "rows": [
+	    { "colname1": value1, ...  },
+        ...
+    ]
+}</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+><P
+>&#13;				The JSON file is expected to list the column
+				names in a string array called <TT
+CLASS="literal"
+>columns</TT
+>.
+			</P
+><P
+>&#13;				The column types are optionally listed in the string
+				array called <TT
+CLASS="literal"
+>coltypes</TT
+>. If they are
+				listed, the <TT
+CLASS="literal"
+>coltypes</TT
+> array must have
+				the same number of strings as the <TT
+CLASS="literal"
+>columns</TT
+>
+				array. The types may be <TT
+CLASS="literal"
+>string</TT
+>,
+				<TT
+CLASS="literal"
+>number</TT
+> or <TT
+CLASS="literal"
+>datatime</TT
+>.
+				If the column type array is missing, then all data
+				values are assumed to be strings and data conversion
+				functions must be used, like <TT
+CLASS="literal"
+>val()</TT
+>,
+				<TT
+CLASS="literal"
+>stodt()</TT
+> or <TT
+CLASS="literal"
+>interval()</TT
+>.
+			</P
+><P
+>&#13;				The rows are listed in an array called <TT
+CLASS="literal"
+>rows</TT
+>
+				and column data values for each row are in a collection
+				with data names from the <TT
+CLASS="literal"
+>columns</TT
+> and
+				data types from the <TT
+CLASS="literal"
+>coltypes</TT
+> arrays.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN395"
+>XML file datasource</A
+></H2
+><P
+>&#13;				Similarly to CSV and JSON, the XML file datasource is also declared
+				very simply:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Datasource name="mysource" type="'xml'" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				In this case, the actual XML file is not declared,
+				only that a "query" using an XML file will be listed
+				later under <TT
+CLASS="literal"
+>&#60;Queries&#62;</TT
+>.
+			</P
+><P
+>&#13;				An XML file datasource is expected in this format:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;?xml version="1.0"?&#62;
+&#60;data&#62;
+    &#60;rows&#62;
+        &#60;row&#62;
+            &#60;col&#62;value&#60;/col&#62;
+            ...
+        &#60;/row&#62;
+        ...
+    &#60;/rows&#62;
+    &#60;fields&#62;
+        &#60;field&#62;column1&#60;/field&#62;
+        ...
+    &#60;/fields&#62;
+    &#60;coltypes&#62;
+        &#60;col&#62;type1&#60;/col&#62;
+        ...
+    &#60;/coltypes&#62;
+&#60;/data&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				The XML section names <TT
+CLASS="literal"
+>&#60;data&#62;</TT
+>,
+				<TT
+CLASS="literal"
+>&#60;rows&#62;</TT
+> and
+				<TT
+CLASS="literal"
+>&#60;fields&#62;</TT
+>
+				are the same as they were in RLIB for its XML data
+				source. The order of <TT
+CLASS="literal"
+>&#60;rows&#62;</TT
+>
+				and <TT
+CLASS="literal"
+>&#60;fields&#62;</TT
+> is not important.
+				But the order of field names in <TT
+CLASS="literal"
+>&#60;fields&#62;</TT
+>
+				must match the column value order in each
+				<TT
+CLASS="literal"
+>&#60;row&#62;</TT
+>.
+			</P
+><P
+>&#13;				The section &#60;coltypes&#62; is new in OpenCReports and
+				is optional. If it's present, then it must list
+				the data types in the same order as the section
+				<TT
+CLASS="literal"
+>&#60;fields&#62;</TT
+>.
+				The types may be <TT
+CLASS="literal"
+>string</TT
+>,
+				<TT
+CLASS="literal"
+>number</TT
+> or <TT
+CLASS="literal"
+>datatime</TT
+>.
+				If this section is not present, all values are assumed
+				to be strings and data conversion functions must be
+				used, like <TT
+CLASS="literal"
+>val()</TT
+>, <TT
+CLASS="literal"
+>stodt()</TT
+>
+				or <TT
+CLASS="literal"
+>interval()</TT
+>.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN417"
+>Array datasource</A
+></H2
+><P
+>&#13;				Arrays are global in-memory structures in the
+				application that should be accessible to the
+				OpenCReports library. For example, when using
+				the C programming language, global non-static
+				symbols are visible to libraries if the application
+				is compiled with <TT
+CLASS="literal"
+>-rdynamic</TT
+>.
+			</P
+><P
+>&#13;				Similarly to file based datasources, the array
+				datasource is declared very simply:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Datasource name="mysource" type="'array'" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				In this case, the actual array is not declared,
+				only that a "query" using an array will be listed
+				later under <TT
+CLASS="literal"
+>&#60;Queries&#62;</TT
+>.
+			</P
+><P
+>&#13;				A C array is declared in this format:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>const char *array[ROWS + 1][COLUMNS] = {
+    { "column1", ... },
+    { "value1",  ... },
+    ...
+};</PRE
+></TD
+></TR
+></TABLE
+>
+				The array is declared as a two-dimensional array of
+				C strings. The first row of the array is the column
+				names, <TT
+CLASS="literal"
+>[ROWS + 1]</TT
+> in the array
+				declaration accounts for the title row.
+			</P
+><P
+>&#13;				All rows have the same number of columns. Column values
+				may be NULL, in which case they will be treated the same
+				as SQL NULLs in SQL query results.
+			</P
+><P
+>&#13;				Optionally, a column types array is declared
+				separately:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>#include &#60;opencreport.h&#62;
+
+const enum ocrpt_result_type coltypes[COLUMNS] = {
+    ...
+};</PRE
+></TD
+></TR
+></TABLE
+>
+				If this array is present, it must have the same number
+				of <TT
+CLASS="literal"
+>COLUMNS</TT
+> as the matching data
+				array. The <TT
+CLASS="literal"
+>enum ocrpt_result_type</TT
+>
+				usable in data array type declaration are
+				<TT
+CLASS="literal"
+>OCRPT_RESULT_STRING</TT
+>,
+				<TT
+CLASS="literal"
+>OCRPT_RESULT_NUMBER</TT
+> and
+				<TT
+CLASS="literal"
+>OCRPT_RESULT_DATETIME</TT
+>. 
+			</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x241.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x435.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>OpenCReport element</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c190.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Queries</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

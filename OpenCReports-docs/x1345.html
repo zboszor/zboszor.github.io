@@ -1,0 +1,370 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Text element</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="OpenCReports Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Report XML description"
+HREF="c141.html"><LINK
+REL="PREVIOUS"
+TITLE="Line"
+HREF="x1276.html"><LINK
+REL="NEXT"
+TITLE="HorizontalLine"
+HREF="x1387.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>OpenCReports Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x1276.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Report XML description</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x1387.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="textelemnode"
+>Text element</A
+></H1
+><P
+>&#13;			Two variants are accepted.
+			<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Line&#62;
+    &#60;field value="expression..." ... /&#62;
+&#60;/Line&#62;</PRE
+></TD
+></TR
+></TABLE
+> and
+			<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Line&#62;
+    &#60;literal ... &#62;Literal text&#60;/literal&#62;
+&#60;/Line&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+		</P
+><P
+>&#13;			Neither <TT
+CLASS="literal"
+>field</TT
+> nor
+			<TT
+CLASS="literal"
+>literal</TT
+> have child nodes,
+			only attributes or XML values.
+		</P
+><P
+>&#13;			The two variants are interchangeable, see
+			<A
+HREF="x1345.html#elemvalueattr"
+>Text element value</A
+> below.
+		</P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1355"
+>Text element attributes</A
+></H2
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="elemvalueattr"
+>Value</A
+></H3
+><P
+>&#13;					The value of the text element.
+					It's accepted in two ways: in the
+					<TT
+CLASS="literal"
+>value</TT
+> attribute
+					or as the XML value for the
+					<TT
+CLASS="literal"
+>field</TT
+> or
+					<TT
+CLASS="literal"
+>literal</TT
+> nodes.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Line&#62;
+    &#60;field value="'This text'" /&#62;
+    &#60;field&#62;This text&#60;/field&#62;
+    &#60;literal value="'This text'" /&#62;
+    &#60;literal&#62;This text&#60;/literal&#62;
+&#60;/Line</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					The value is parsed as an expression
+					in all cases.
+					See <A
+HREF="c1403.html"
+>Expressions</A
+>.
+				</P
+><P
+>&#13;					All four examples are equivalent except
+					in one detail: for <TT
+CLASS="literal"
+>field</TT
+>,
+					the preferred value is from the
+					<TT
+CLASS="literal"
+>value</TT
+> attribute.
+				</P
+><P
+>&#13;					For <TT
+CLASS="literal"
+>literal</TT
+>, the preferred
+					value is from the XML value, even if it's an empty
+					string like this:
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Line&#62;
+    &#60;literal value="'unused text'" &#62;&#60;/literal&#62;
+&#60;/Line</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1372"
+>Text color</A
+></H3
+><P
+>&#13;					This color is used to render text. It's accepted
+					with both American and  British spelling.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Line color="'blue'"&#62;
+&#60;Line colour="'blue'"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is what's set for <A
+HREF="x1276.html"
+>Line node</A
+>,
+					otherwise <TT
+CLASS="literal"
+>black</TT
+>.
+					See <A
+HREF="x1400.html"
+>Color specification</A
+>.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1380"
+>Background color</A
+></H3
+><P
+>&#13;					This color is used to render the background
+					rectangle under the text. It's accepted
+					with both American and  British spelling.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Line bgcolor="'blue'"&#62;
+&#60;Line bgcolour="'blue'"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is <TT
+CLASS="literal"
+>white</TT
+>.
+					See <A
+HREF="x1400.html"
+>Color specification</A
+>
+				</P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x1276.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x1387.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Line</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c141.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>HorizontalLine</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

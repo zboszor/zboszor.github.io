@@ -1,0 +1,887 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Identifiers</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="OpenCReports Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Expressions in OpenCReports"
+HREF="c691.html"><LINK
+REL="PREVIOUS"
+TITLE="Constants"
+HREF="x712.html"><LINK
+REL="NEXT"
+TITLE="Operators and functions"
+HREF="x868.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>OpenCReports Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x712.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Expressions in OpenCReports</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x868.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="identifiers"
+>Identifiers</A
+></H1
+><P
+>&#13;			Expressions may reference query column names, environment
+			variables, internal variables and user defined variables.
+			These references are called <TT
+CLASS="literal"
+>identifiers</TT
+>.
+			Their values are evaluated during the report execution.
+		</P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN750"
+>Valid identifier names</A
+></H2
+><P
+>&#13;				Identifiers are in the format <TT
+CLASS="literal"
+>[[domain].]identifier</TT
+>
+				where the domain name or the dot are optional.
+			</P
+><P
+>&#13;				OpenCReports is using UTF-8 encoding even in identifier
+				names. Accented characters are accepted as identifiers.
+			</P
+><P
+>&#13;				Valid names for <TT
+CLASS="literal"
+>domain</TT
+> and
+				<TT
+CLASS="literal"
+>identifier</TT
+> may start with an underscore
+				or UTF-8 letters and may contain underscore, UTF-8 letters
+				and numbers in subsequent characters.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN758"
+>Query field identifiers</A
+></H2
+><P
+>&#13;				Any valid identifier is by default a query column
+				reference, with or without the domain name. Examples:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;field_name
+field_name5
+myquery1.field_name
+mező_név
+lekérdezés.mező_név
+				</PRE
+></TD
+></TR
+></TABLE
+>
+				By the way, in the above example,
+				<TT
+CLASS="literal"
+>mező_név</TT
+> means
+				<TT
+CLASS="literal"
+>field_name</TT
+>, and
+				<TT
+CLASS="literal"
+>lekérdezés.mező_név</TT
+> means
+				<TT
+CLASS="literal"
+>query.field_name</TT
+> in Hungarian.
+				The accented characters are a courtesy of UTF-8.
+			</P
+><P
+>&#13;				Query field identifiers in expressions are matched
+				during expression resolution. If the domain name
+				is specified, a query with that name must be present
+				in the report, either as the main query or as a
+				follower query. If the domain name is not specified,
+				the field names of the main query and all the follower
+				queries are matched with the expression.
+			</P
+><P
+>&#13;				For exceptions and exceptions from under the exceptions,
+				see below.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="speciddomains"
+>Special purpose identifier domains</A
+></H2
+><P
+>&#13;				Some identifier domain names carry special meaning for the report.
+			</P
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN771"
+>Environment variables</A
+></H3
+><P
+>&#13;					Domain <TT
+CLASS="literal"
+>m</TT
+> indicates the domain
+					of environment variables. The list of environment variables
+					depend on the languange binding. In C, it's the variables
+					in the operating environment. In PHP, they are simply global
+					PHP variables. Example:
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;m.current_date
+					</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Since such a setting is controlled outside the report,
+					and for the duration of running the report, its value
+					cannot change, environment variable references are treated
+					as constants and are resolved into constant values
+					for the expression result evaluation.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN777"
+>Internal report variables</A
+></H3
+><P
+>&#13;					Domain <TT
+CLASS="literal"
+>r</TT
+> indicates the domain
+					of internal report variables.
+				</P
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN781"
+>Current page number</A
+></H4
+><P
+>&#13;						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;r.pageno
+						</PRE
+></TD
+></TR
+></TABLE
+>
+						The current page of the report is maintained by
+						the report layout and is intertwined with running
+						a report. For example, if an expression is evaluated
+						on page 4 of the report, and happens to reference
+						the current page number variable, then this variable
+						will have the value 4 in the result.
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN785"
+>Total number of pages</A
+></H4
+><P
+>&#13;						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;r.totpages
+						</PRE
+></TD
+></TR
+></TABLE
+>
+						This variable carries the total number of pages
+						in the report. Its value is maintained by the
+						report layout and it interwined with running a report.
+						This variable is inherently precalculated.
+						This means that the report is actually run twice.
+						The first run computes the final values for
+						<TT
+CLASS="literal"
+>precalculated</TT
+> variables and
+						<TT
+CLASS="literal"
+>delayed</TT
+> expressions. The actual
+						report output in the second run will use the
+						pre-computed values.
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN791"
+>Line number</A
+></H4
+><P
+>&#13;						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;r.lineno
+						</PRE
+></TD
+></TR
+></TABLE
+>
+						This variable is an alias to the
+						<TT
+CLASS="literal"
+>rownum()</TT
+> function, i.e.
+						it is the current row (line) number in the data set.
+					</P
+><P
+>&#13;						Being an alias means that the variable is replaced by
+						the <TT
+CLASS="literal"
+>rownum()</TT
+> function call in the
+						grammar. Please, be aware, that functions may be
+						overridden by user defined functions. If
+						<TT
+CLASS="literal"
+>rownum()</TT
+> is overridden, then it will
+						be called with zero arguments by the grammar transformation,
+						which may or may not work for the user defined function
+						and the variable will not work as intended.
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN799"
+>Detail count</A
+></H4
+><P
+>&#13;						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;r.detailcnt
+						</PRE
+></TD
+></TR
+></TABLE
+>
+						This variable works similarly to the row number
+						counter, e.g. <TT
+CLASS="literal"
+>rownum()</TT
+> or
+						<TT
+CLASS="literal"
+>r.lineno</TT
+>, except it restarts
+						from 1 at every <TT
+CLASS="literal"
+>&#60;FieldHeaders&#62;</TT
+>.
+					</P
+><P
+>&#13;						With the default behaviour of
+						<TT
+CLASS="literal"
+>&#60;Breaks&#62;</TT
+> vs
+						<TT
+CLASS="literal"
+>&#60;FieldHeaders&#62;</TT
+>,
+						i.e. when <TT
+CLASS="literal"
+>&#60;FieldHeaders&#62;</TT
+>
+						is printed on the top of every page,
+						<TT
+CLASS="literal"
+>r.detailcnt</TT
+> works as a per page
+						line count value.
+					</P
+><P
+>&#13;						When <TT
+CLASS="literal"
+>&#60;Report field_header_priority="low"&#62;</TT
+>
+						is used, the effect may be more emphasized because
+						the value of this variable is reset more often.
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN813"
+>Field value</A
+></H4
+><P
+>&#13;						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;r.value
+						</PRE
+></TD
+></TR
+></TABLE
+>
+						The report field description has an expression for its
+						value in the  form of
+						<TT
+CLASS="literal"
+>&#60;field value="..."&#62;</TT
+>.
+						It also has supplementary expressions, like the
+						foreground and background colors, the format string,
+						and others.
+					</P
+><P
+>&#13;						The supplementary expressions may reference the field
+						value to make their own result
+						depend on its result, without having to
+						type out the field expression multiple times.
+					</P
+><P
+>&#13;						Using <TT
+CLASS="literal"
+>r.value</TT
+> also helps reducing
+						the report runtime because the value expression
+						is not computed multiple times.
+					</P
+><P
+>&#13;						Referencing <TT
+CLASS="literal"
+>r.value</TT
+> is only valid
+						for supplementary expressions for the same field
+						description, i.e. other XML attributes for a
+						<TT
+CLASS="literal"
+>&#60;field value="..." .../&#62;</TT
+>
+						line. This variable cannot cross-reference other
+						field descriptions, or anything not in the same scope.
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN824"
+>Format string value</A
+></H4
+><P
+>&#13;						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;r.format
+						</PRE
+></TD
+></TR
+></TABLE
+>
+						Similarly to the field value a.k.a.<TT
+CLASS="literal"
+>r.value</TT
+>,
+						the field description has an an optional expression
+						for its formatting. This expession may be used by
+						other expressions in the form of
+						<TT
+CLASS="literal"
+>&#60;field format="..."&#62;</TT
+>,
+						possible to format their values. It has very few
+						use cases, if any. It only exists for compatibility
+						with RLIB that has this internal variable.
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN830"
+>Expression self reference</A
+></H4
+><P
+>&#13;						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;r.self
+						</PRE
+></TD
+></TR
+></TABLE
+>
+						This variable references the previous result of
+						the expression. It is used in iterative expressions,
+						like in internal representations of user-defined
+						variables.
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN834"
+>Subexpressions of user-defined variables</A
+></H4
+><P
+>&#13;						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;r.baseexpr
+r.intermedexpr
+r.intermed2expr
+						</PRE
+></TD
+></TR
+></TABLE
+>
+						These variables are references for the three
+						subexpressions that potentially make up a user
+						defined variable. The expressions in order are:
+						base expression, intermediary expressions one and
+						two.
+					</P
+><P
+>&#13;						Actually, there's a fourth subexpression that exists
+						in every user defined variable, namely the result
+						expression. It's reference is simply the user variable
+						reference, see <A
+HREF="x746.html#uservariables"
+>User defined variables</A
+>.
+					</P
+><P
+>&#13;						For example, a running average over a data series
+						needs two intermediary expressions: one for
+						the sum of the values, the other for the number
+						of values in the series. The result is the
+						sum of values divided by the number of values.
+					</P
+><P
+>&#13;						Their usage is only valid when declaring a custom
+						user defined variable.
+					</P
+></DIV
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="uservariables"
+>User defined variables</A
+></H3
+><P
+>&#13;					Domain <TT
+CLASS="literal"
+>v</TT
+> signifies user defined
+					report variables, which can be used in breaks or
+					to shortcut expressions. Example:
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;v.my_variable
+					</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN847"
+>Quoted and dot-prefixed identifiers</A
+></H3
+><P
+>&#13;					Both <TT
+CLASS="literal"
+>domain</TT
+> and <TT
+CLASS="literal"
+>identifier</TT
+>
+					names may be quoted or unquoted. Quoting names allow using
+					semi-reserved and reserved words as identifers and also
+					allow special characters in identifier names. Examples:
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;query.field_name1
+query."field_name2"
+query."field with space in the name"
+"query2".field_name3
+"query2"."and"
+					</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN853"
+>Dot-prefixed identifiers</A
+></H3
+><P
+>&#13;					A dot-prefixed identifier is one where the domain name
+					is not specified, but the identifier name is prefixed
+					with a dot. Examples:
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;.field_name
+."field_name"
+					</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Semi-reserved words are the boolean constants. They can be used
+					as identifiers with dot-prefixed identifier names without
+					a domain name and without quoting:
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;.yes
+.no
+.true
+.false
+yes.no
+					</PRE
+></TD
+></TR
+></TABLE
+>
+					The above unquoted identifiers are equivalent with
+					these quoted ones below:
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;."yes"
+."no"
+."true"
+."false"
+"yes"."no"
+					</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Operator names are reserved words, e.g. <TT
+CLASS="literal"
+>and</TT
+>
+					and <TT
+CLASS="literal"
+>or</TT
+>. They cannot be used with dot-prefixed
+					operator names without quoting, as it would cause an
+					expression syntax error. But they can be used as quoted
+					identifiers, in case you would want to use such a query name
+					and column name:
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;."and"
+."or"
+"and"."or"
+					</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN864"
+>Quoted special purpose identifier domains</A
+></H3
+><P
+>&#13;					When identifier domains are quoted, they lose their special
+					meaning and the identifiers become query field identifiers.
+					Of course, in this case, such a query name must exist and
+					the query must have a field name specified in the identifier.
+					Examples:
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;"m".current_date
+"r".totpages
+"v".my_variable
+					</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x712.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x868.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Constants</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c691.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Operators and functions</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

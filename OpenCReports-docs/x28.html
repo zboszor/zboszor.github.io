@@ -1,0 +1,773 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Concepts</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="OpenCReports 0.5 Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Introduction and concepts"
+HREF="c16.html"><LINK
+REL="PREVIOUS"
+TITLE="Introduction and concepts"
+HREF="c16.html"><LINK
+REL="NEXT"
+TITLE="OpenCReports planned features"
+HREF="x158.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>OpenCReports 0.5 Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c16.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Introduction and concepts</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x158.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="AEN28"
+>Concepts</A
+></H1
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN30"
+>What is a report generator?</A
+></H2
+><P
+>&#13;				A report generator uses a tabular data source (for example an
+				array of data with labels for the column names, or an SQL query)
+				and a description file that specifies how to display the data.
+				The input data is transformed into various output formats,
+				some for human viewing, some for further machine processing.
+				Such output formats may be PDF, HTML, XML, plain text or CSV.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN33"
+>XML based report description</A
+></H2
+><P
+>&#13;				The XML file format is widely used. It can describe
+				structured data in a hierarchy with names for its
+				sections or "nodes".
+			</P
+><P
+>&#13;				OpenCReports uses an RLIB-compatible report description
+				with extensions. See <A
+HREF="c169.html"
+>XML description</A
+> and the
+				<A
+HREF="https://web.archive.org/web/20131116192438/http://newrlib.sicom.com/~rlib/index.php/Main_Page"
+TARGET="_top"
+>RLIB documentation</A
+>
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN39"
+>Comprehensive API for report creation</A
+></H2
+><P
+>&#13;				The <A
+HREF="x2697.html"
+>Low level C API</A
+> allows creating a report purely
+				via program code. The <A
+HREF="x2662.html"
+>High level C API</A
+> allows loading
+				an XML report description that contains all details
+				about the report including database access. Mixing
+				the high and low level APIs allows a balance anywhere
+				between the two extremes, e.g. loading the report
+				description but passing database access details via
+				program code. RLIB's API and report description allowed
+				neither extremes, it relied on the report description
+				to provide the layout look, with the data access added
+				from programming code.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN44"
+>Strict expression parser</A
+></H2
+><P
+>&#13;				OpenCReports uses a Flex/Bison based expression parser.
+				The expression grammar doesn't allow buggy expressions.
+				See the <A
+HREF="c1658.html"
+>Expressions</A
+> chapter.
+			</P
+><P
+>&#13;				RLIB's expression parser was a custom implementation
+				which was slightly fragile and forgiving. For example,
+				it allowed unclosed parentheses at the end of an
+				expression.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN49"
+>Expression optimization</A
+></H2
+><P
+>&#13;				OpenCReports does some expression optimization
+				to reduce runtime cost of computing expression
+				values. For example, in <TT
+CLASS="literal"
+>a * 2/3</TT
+>
+				the part <TT
+CLASS="literal"
+>2/3</TT
+> is two constants
+				in a division. This is precomputed into a single
+				constant as an optimization.
+			</P
+><P
+>&#13;				RLIB didn't contain automatic optimizations.
+				It relied on manual optimizations, like using
+				<A
+HREF="c2407.html"
+>Report variables</A
+>.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN56"
+>Report variables</A
+></H2
+><P
+>&#13;				OpenCReports supports using standard report variables
+				for calculating sums, minimum, maximum and average values
+				or custom defined ones. See <A
+HREF="c2407.html"
+>Report variables</A
+>
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN60"
+>Extensive and extensible set of functions</A
+></H2
+><P
+>&#13;				OpenCReports has many operators and functions to
+				be used in expressions. See <A
+HREF="x1849.html"
+>Operators and functions</A
+>
+				in the <A
+HREF="c1658.html"
+>Expressions</A
+> chapter.
+			</P
+><P
+>&#13;				In fact, OpenCReports has all the operators and
+				functions that RLIB also had, with many additions.
+			</P
+><P
+>&#13;				Custom functions can also be added to a report by
+				programming. Custom functions may override stock
+				functions.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN67"
+>UTF-8 string handling</A
+></H2
+><P
+>&#13;				OpenCReports exclusively uses UTF-8 for strings.
+				Input data must be in UTF-8 and output formats
+				also use UTF-8.
+			</P
+><P
+>&#13;				RLIB could have been built with or without UTF-8 suppport.
+				The build that disabled UTF-8 support relied on
+				single byte character set encodings and conversion
+				between them. That wasn't always reliable. Since that
+				time, multibyte character encodings have won.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN71"
+>High precision numeric data type</A
+></H2
+><P
+>&#13;				For historic record, RLIB was designed for the US
+				and slower machines. It used a fixed point numeric
+				representation. For the US, with its strong currency
+				and prices expressed in low numbers, this was an
+				acceptable design decision. But for countries, whose
+				currencies are a few orders of magnitude weaker and
+				conversely, the prices are similarly higher, the fixed
+				point numeric value range was easily overflown, leading
+				to wrong data in the report output.
+			</P
+><P
+>&#13;				Another potential problem with the fixed point numeric
+				representation was that converting numbers from the
+				input data to this internal representation always and
+				unconditionally rounded down. This can be demonstrated
+				with a carefully constructed (small) data set that would
+				add up exactly to 100% both on paper and with using the
+				IEEE-754 <TT
+CLASS="literal"
+>double</TT
+> data type, it would
+				only add up to 99.99% with RLIB's internal numeric
+				representation.
+			</P
+><P
+>&#13;				To avoid these kind of problems, OpenCReports uses
+				GNU MPFR floating point values with 256-bit precision
+				by default. This allows storing very large and very small
+				numbers. E.g. this allows computations even with late
+				stage
+				<A
+HREF="https://en.wikipedia.org/wiki/Hyperinflation"
+TARGET="_top"
+>hyperinflation</A
+>
+				prices.
+				See <A
+HREF="x1677.html#numericconstants"
+>Numeric constants</A
+> in
+				the <A
+HREF="c1658.html"
+>Expressions</A
+> chapter and the
+				<A
+HREF="x2697.html#numerictuning"
+>Numeric behavior related functions</A
+> part in the
+				<A
+HREF="x2697.html"
+>Low level C API</A
+> chapter.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN82"
+>Datetime and interval data types</A
+></H2
+><P
+>&#13;				OpenCReports differentiates between timestamp and
+				time interval data types, with the latter allowing
+				adding or subtracting a custom time period to and from
+				timestamp data. See <A
+HREF="x1677.html#datetimeconstants"
+>Datetime constants</A
+>
+				in the <A
+HREF="c1658.html"
+>Expressions</A
+> chapter.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN87"
+>Automatic input data conversion</A
+></H2
+><P
+>&#13;				For maximum portability, databases provide their
+				data in strings. They also provide metadata that
+				describes the data type of every column in the
+				data record.
+			</P
+><P
+>&#13;				RLIB relied on explicit data conversion functions,
+				like <TT
+CLASS="literal"
+>val()</TT
+> and
+				<TT
+CLASS="literal"
+>stodt()</TT
+>.
+			</P
+><P
+>&#13;				OpenCReports discovers the columns' data type
+				and applies the conversion automatically. For
+				RLIB compatibility, the conversion functions
+				pass through values as is if they are already
+				converted. For example, the <TT
+CLASS="literal"
+>val()</TT
+>
+				function accepts an operand with both string and
+				numeric data types. In the former case the conversion
+				to numeric is performed, but if the operand is
+				already numeric, no further conversion takes place.
+				This is user friendly in two aspects: the conversion
+				function is not necessary when implementing a new
+				report, and an already existing RLIB report (that
+				contains such conversion functions for the input data)
+				may be used as is.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN95"
+>Versatile field alignment and multi-row fields</A
+></H2
+><P
+>&#13;				In the report output, fields may have a fixed width in
+				which they are displayed. Some field values are longer
+				that the field width. When displaying them in a single
+				row, fields may be left-, right- or center-aligned.
+				With the PDF output, this means pixel-perfect alignment
+				with the parts of the field value that don't fit masked
+				off visually. RLIB aligned the data actually truncated
+				to fit into the field width.
+			</P
+><P
+>&#13;				Fields longer than the designated width may be wrapped
+				either at word or character boundaries. This way, they
+				become multi-row fields. RLIB called them "memo" fields
+				and the XML report description in OpenCReports also
+				uses the same naming for the flags dealing with this
+				detail. Multi-row fields are configurable regading word
+				or character wrapping, or they may be limited to print
+				only a certain amount of lines. Memo fields can break
+				over column or page boundaries.
+			</P
+><P
+>&#13;				OpenCReports have some differences from RLIB regards to
+				memo fields.
+			</P
+><P
+>&#13;				Thanks to Pango rendering, when using character wrapping,
+				hyphenation is done.
+			</P
+><P
+>&#13;				The second extension over RLIB is that
+				<TT
+CLASS="literal"
+>justified</TT
+> alignment can also be
+				used for multi-line fields. This is also thanks to
+				Pango. When <TT
+CLASS="literal"
+>justified</TT
+> alignment is
+				used, all lines but the last are justified. Therefore,
+				<TT
+CLASS="literal"
+>justified</TT
+> alignment equivalent to
+				<TT
+CLASS="literal"
+>left</TT
+> alignment for single line fields.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN106"
+>Report breaks</A
+></H2
+><P
+>&#13;				OpenCReports supports report breaks defined on arbitrary
+				expressions. Breaks occur when the expression value
+				changes, when stepping from one data set row to the next.
+				See <A
+HREF="c2352.html"
+>Report breaks</A
+> and <A
+HREF="x1200.html"
+>Breaks</A
+>
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN111"
+>Multi-column reports</A
+></H2
+><P
+>&#13;				OpenCReports, just like RLIB, supports both single-column
+				and multi-column report layout.
+			</P
+><P
+>&#13;				If a report is "narrow", so more columns would fit on
+				the same page, the report may be set to use multiple
+				columns on the same page.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN115"
+>PDF output format, fonts, layout details</A
+></H2
+><P
+>&#13;				By using the excellent drawing possibilities of
+				Cairo or later, OpenCReports supports generating
+				the report in PDF format. RLIB relied on an
+				internal PDF generator in earlier versions called
+				RPDF, and used libHaru in later versions.
+			</P
+><P
+>&#13;				In RLIB, sizing of other details are a mix of units,
+				making it harder to design the report layout:
+				<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>&#13;							field widths and report heights are in
+							number of characters
+						</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>&#13;							width of lines are in points (1/72th inch)
+						</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>&#13;							width of gaps between columns of a
+							multi-column report is in inches
+						</P
+></LI
+></UL
+>
+			</P
+><P
+>&#13;				OpenCReports faithfully reimplements these
+				for compatibility.
+			</P
+><P
+>&#13;				However, there are problems with field widths
+				calculated in number of characters. Widths using
+				a 12 point font is not the same as widths using
+				a 20 point font. Also, font width and height are
+				usually not identical. Some fonts are lean, with
+				their width smaller than their height. RLIB expected
+				that fonts are using the same character width and
+				height. For this reason, RLIB only supported a small
+				variety of monospace fonts.
+			</P
+><P
+>&#13;				Also, character widths for proportional fonts differ.
+				Field width expressed in number of characters cannot
+				be exact when using  proportional fonts. For this reason,
+				RLIB didn't support proportional fonts at all.
+			</P
+><P
+>&#13;				OpenCReports extended upon these ideas, so individual
+				fields in a text line may use custom font settings
+				while keeping the field width calculation identical
+				to RLIB, which ends with the font parameters set for
+				the text line. In OpenCReports, The custom field font
+				settings (font name and size) don't influence the field
+				width. Using this method, OpenCReports may use proportional
+				fonts even with using the RLIB compatible size settings.
+			</P
+><P
+>&#13;				On top of that, OpenCReports also has a new, consistent
+				size calculation method where everything is measured in
+				points.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN131"
+>Extensive set of unit tests</A
+></H2
+><P
+>&#13;				The unit tests ensure that OpenCReports' features keep
+				working when adding new features or fixes. Units tests
+				exercise many aspects of the high and low level API,
+				report description handling, runtime behavior and output
+				generation.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN134"
+>Standard Linux dependencies</A
+></H2
+><P
+>&#13;				OpenCReports uses
+				<A
+HREF="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home"
+TARGET="_top"
+>LibXML2</A
+>,
+				<A
+HREF="https://juliastrings.github.io/utf8proc/"
+TARGET="_top"
+>utf8proc</A
+>,
+				<A
+HREF="https://www.mpfr.org"
+TARGET="_top"
+>MPFR</A
+>,
+				<A
+HREF="http://packages.qa.debian.org/libp/libpaper.html"
+TARGET="_top"
+>libpaper</A
+>,
+				<A
+HREF="https://github.com/rgamble/libcsv"
+TARGET="_top"
+>libcsv</A
+>,
+				<A
+HREF="http://lloyd.github.com/yajl/"
+TARGET="_top"
+>yajl</A
+>,
+				<A
+HREF="https://www.cairographics.org"
+TARGET="_top"
+>Cairo</A
+>,
+				<A
+HREF="https://pango.gnome.org"
+TARGET="_top"
+>Pango</A
+>,
+				<A
+HREF="https://wiki.gnome.org/Projects/LibRsvg"
+TARGET="_top"
+>librsvg2</A
+>,
+				<A
+HREF="https://gitlab.gnome.org/GNOME/gdk-pixbuf"
+TARGET="_top"
+>gdk-pixbuf2</A
+>,
+				<A
+HREF="https://www.postgresql.org"
+TARGET="_top"
+>PostgreSQL</A
+>,
+				<A
+HREF="https://mariadb.com"
+TARGET="_top"
+>MariaDB</A
+>
+				and
+				<A
+HREF="http://www.unixodbc.org"
+TARGET="_top"
+>unixODBC</A
+>.
+			</P
+><P
+>&#13;				For running the unit tests,
+				<A
+HREF="https://www.ghostscript.com"
+TARGET="_top"
+>Ghostscript</A
+>
+				and <TT
+CLASS="literal"
+>compare</TT
+> from
+				<A
+HREF="https://imagemagick.org"
+TARGET="_top"
+>Imagemagick</A
+>
+				are also needed.
+			</P
+><P
+>&#13;				<TT
+CLASS="literal"
+>docbook2pdf</TT
+> and
+				<TT
+CLASS="literal"
+>docbook2html</TT
+> from
+				<A
+HREF="http://sources.redhat.com/docbook-tools/"
+TARGET="_top"
+>Docbook</A
+>
+				is used to generate the documentation.
+			</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c16.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x158.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Introduction and concepts</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c16.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>OpenCReports planned features</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

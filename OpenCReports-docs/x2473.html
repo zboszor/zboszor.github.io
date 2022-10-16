@@ -1,0 +1,474 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Query related functions</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="OpenCReports 0.4.3 Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="C language API reference"
+HREF="c2309.html"><LINK
+REL="PREVIOUS"
+TITLE="Data source related functions"
+HREF="x2442.html"><LINK
+REL="NEXT"
+TITLE="Paper size related functions"
+HREF="x2535.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>OpenCReports 0.4.3 Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x2442.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>C language API reference</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x2535.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="AEN2473"
+>Query related functions</A
+></H1
+><P
+>&#13;			Queries are super-entities over data sources. They are
+			the actual sources of data using a specific data source.
+			Multiple queries may use the same data source.
+		</P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN2476"
+><TT
+CLASS="literal"
+>ocrpt_add_array_query</TT
+></A
+></H2
+><P
+>&#13;				Add a named query of the array type. The provided
+				<TT
+CLASS="literal"
+>array</TT
+> array contains
+				<TT
+CLASS="literal"
+>(rows + 1) * cols</TT
+> number of
+				<TT
+CLASS="literal"
+>char *</TT
+> pointers, with the first row
+				being the column (or field) names. The <TT
+CLASS="literal"
+>types</TT
+>
+				array contains <TT
+CLASS="literal"
+>cols</TT
+> number of
+				<TT
+CLASS="literal"
+>enum ocrpt_result_type</TT
+> elements to
+				indicate the column data type.
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_query *ocrpt_add_array_query(opencreport *o, ocrpt_datasource *source,
+                                    const char *name, void *array,
+                                    int32_t rows, int32_t cols,
+                                    const enum ocrpt_result_type *types);</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN2487"
+><TT
+CLASS="literal"
+>ocrpt_add_array_query_as</TT
+></A
+></H2
+><P
+>&#13;				Add a named query of the array type using the data source name.
+				For the other parameters, see the previous function.
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_query *ocrpt_add_array_query_as(opencreport *o, const char *source_name,
+                                    const char *name, void *array,
+                                    int32_t rows, int32_t cols,
+                                    const enum ocrpt_result_type *types);</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN2492"
+><TT
+CLASS="literal"
+>ocrpt_query_get_result</TT
+></A
+></H2
+><P
+>&#13;				Create and get the <TT
+CLASS="literal"
+>ocrpt_query_result</TT
+>
+				array from a query. Output parameter <TT
+CLASS="literal"
+>cols</TT
+>
+				returns the number of columns in the result array. It must
+                be (re-)run after ocrpt_navigate_next() since the previously
+                returned pointer becomes invalid.
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_query_result *ocrpt_query_get_result(ocrpt_query *q, int32_t *cols);</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN2499"
+><TT
+CLASS="literal"
+>ocrpt_add_query_follower</TT
+></A
+></H2
+><P
+>&#13;				Add a <TT
+CLASS="literal"
+>follower</TT
+> query to the
+				<TT
+CLASS="literal"
+>leader</TT
+> query. The leader is the primary
+				query and the follower will run in parallel with it until
+				the leader runs out of rows. In case the leader has more
+				rows than the follower, then for rows in the leader where
+				there are no follower rows, the follower fields are set to NULL.
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>bool ocrpt_add_query_follower(opencreport *o,
+                              ocrpt_query *leader,
+                              ocrpt_query *follower);</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN2506"
+><TT
+CLASS="literal"
+>ocrpt_add_query_follower_n_to_1</TT
+></A
+></H2
+><P
+>&#13;				Add an N:1 <TT
+CLASS="literal"
+>follower</TT
+> query to the
+				<TT
+CLASS="literal"
+>leader</TT
+> query. The leader is the primary
+				query and rows from the follower will be matched using the
+				<TT
+CLASS="literal"
+>match</TT
+> expression. If there are multiple
+				rows in the follower matching the leader row, then the leader
+				row will be listed that many times. For rows in the leader
+				where there are no matching rows in the follower, the follower
+				fields are set to NULL. It is similar to <TT
+CLASS="literal"
+>LEFT OUTER
+				JOIN</TT
+> in SQL databases. For creating an
+				<TT
+CLASS="literal"
+>ocrpt_expr</TT
+> expression pointer, see the
+				next section.
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>bool ocrpt_add_query_follower_n_to_1(opencreport *o,
+                                     ocrpt_query *leader,
+                                     ocrpt_query *follower,
+                                     ocrpt_expr *match);</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN2516"
+><TT
+CLASS="literal"
+>ocrpt_free_query</TT
+></A
+></H2
+><P
+>&#13;				Free a query and remove it from the report handler.
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void ocrpt_free_query(opencreport *o, ocrpt_query *q);</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN2521"
+><TT
+CLASS="literal"
+>ocrpt_navigate_start</TT
+></A
+></H2
+><P
+>&#13;				Start query or query set navigation. <TT
+CLASS="literal"
+>q</TT
+>
+				should be the primary query of the report.
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void ocrpt_navigate_start(opencreport *o, ocrpt_query *q);</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN2527"
+><TT
+CLASS="literal"
+>ocrpt_navigate_next</TT
+></A
+></H2
+><P
+>&#13;				Navigate the query set to the next row. Returns
+				<TT
+CLASS="literal"
+>false</TT
+> if there was no more rows.
+				in which case the <TT
+CLASS="literal"
+>ocrpt_query_result</TT
+>
+				arrays for all queries in the query set (returned by
+				previous <TT
+CLASS="literal"
+>ocrpt_query_get_result()</TT
+>
+				calls contain invalid data.
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>bool ocrpt_navigate_next(opencreport *o, ocrpt_query *q);</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x2442.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x2535.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Data source related functions</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c2309.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Paper size related functions</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

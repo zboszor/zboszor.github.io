@@ -1,0 +1,414 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>OpenCReport element</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="OpenCReports 0.4.3 Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Report XML description"
+HREF="c190.html"><LINK
+REL="PREVIOUS"
+TITLE="Report XML description"
+HREF="c190.html"><LINK
+REL="NEXT"
+TITLE="Datasources"
+HREF="x302.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>OpenCReports 0.4.3 Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c190.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Report XML description</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x302.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="ocrpttopxml"
+>OpenCReport element</A
+></H1
+><P
+>&#13;			The toplevel <TT
+CLASS="literal"
+>&#60;OpenCReport&#62;</TT
+>
+			element controls some global settings and serves
+			as the topmost XML element for child elements.
+		</P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="sizeunit"
+>Size unit attribute</A
+></H2
+><P
+>&#13;				The <TT
+CLASS="literal"
+>size_unit</TT
+> attribute
+				specifies report behaviour for size related
+				settings:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;OpenCReport size_unit="rlib"&#62;
+&#60;OpenCReport size_unit="points"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+><P
+>&#13;				Default is <TT
+CLASS="literal"
+>rlib</TT
+>
+				which is the legacy RLIB behavior, with the
+				known inconsistency in size related settings:
+				<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>&#13;							width for <TT
+CLASS="literal"
+>field</TT
+> and
+							<TT
+CLASS="literal"
+>literal</TT
+> (see
+							<A
+HREF="x1292.html"
+>Output node</A
+>) are in
+							number of characters. This is influenced
+							by the font size set in either
+							<A
+HREF="x537.html#partfontsize"
+>Part font size</A
+>,
+							<A
+HREF="x804.html#reportfontsize"
+>Report font size</A
+> or
+							<A
+HREF="x1331.html#linefontsize"
+>Line font size</A
+>.
+						</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>&#13;							height for <A
+HREF="x720.html"
+>Part column</A
+>
+							is measured in number of characters
+							influenced by <A
+HREF="x537.html#partfontsize"
+>Part font size</A
+>
+						</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>&#13;							height for <A
+HREF="x804.html"
+>Report</A
+>
+							is measured in number of characters
+							influenced by <A
+HREF="x537.html#partfontsize"
+>Part font size</A
+>
+							and <A
+HREF="x804.html#reportfontsize"
+>Report font size</A
+>
+						</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>&#13;							width of horizontal lines and the
+							optional border width around reports
+							are specified in points
+						</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>&#13;							gaps between columns of multi-column
+							reports is measured in inches
+						</P
+></LI
+></UL
+>
+			</P
+><P
+>&#13;				Note that the default setting (as in RLIB)
+				only ever expected monospace fonts that have the
+				same width for every character. It also expected that
+				the character height is identical to the character
+				width. The latter detail is false for many monospace
+				fonts, i.e. their height is usually greater than
+				their width.
+			</P
+><P
+>&#13;				With proportional fonts (where the width of
+				characters depend on their image, i.e. an "i" is
+				thinner than an "m") width of text fields cannot
+				reliably be set in "number of characters" because
+				it's not an exact value. There is a workaround for
+				this in <TT
+CLASS="literal"
+>OpenCReports</TT
+> but it's
+				an over-engineered solution and isn't available
+				in RLIB so it's not backward compatible either.
+				But it's there if someone wants to port reports
+				from RLIB and only make superficial changes.
+				See <A
+HREF="x1400.html#textelemwidth"
+>Text element width</A
+>.
+			</P
+><P
+>&#13;				When <TT
+CLASS="literal"
+>size_unit</TT
+> is set to
+				<TT
+CLASS="literal"
+>points</TT
+>, all size related
+				settings in the report are in points,
+				a.k.a. 1/72th inch. Straightforward and consistent.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="noqueryshownodata"
+>No query show NoData</A
+></H2
+><P
+>&#13;				This controls whether <A
+HREF="x804.html#nodatanode"
+>NoData node</A
+>
+				is shown when the report's <A
+HREF="x1104.html#queryattr"
+>Query attribute</A
+>
+				is set to a non-existing query name.
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;OpenCReport noquery_show_nodata="yes"&#62;
+&#60;OpenCReport noquery_show_nodata="no"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+><P
+>&#13;				Default is <TT
+CLASS="literal"
+>true</TT
+> when
+				<TT
+CLASS="literal"
+>OpenCReport</TT
+> is the toplevel node,
+				<TT
+CLASS="literal"
+>false</TT
+> when either
+				<TT
+CLASS="literal"
+>&#60;Part&#62;</TT
+> or <TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+>
+				is the toplevel node for RLIB compatibility.
+				See <A
+HREF="x804.html#nodatanode"
+>NoData node</A
+>.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="reportheightafterlast"
+>Report height after last</A
+></H2
+><P
+>&#13;				It controls whether report height is applied
+				after the last <TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+>
+				in the <TT
+CLASS="literal"
+>&#60;pd&#62;</TT
+> node.
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;OpenCReport report_height_after_last="yes"&#62;
+&#60;OpenCReport report_height_after_last="no"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+><P
+>&#13;				Default is <TT
+CLASS="literal"
+>false</TT
+>.
+			</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c190.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x302.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Report XML description</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c190.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Datasources</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

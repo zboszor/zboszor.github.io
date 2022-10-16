@@ -1,0 +1,690 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Operators and functions</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="OpenCReports Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Expressions in OpenCReports"
+HREF="c835.html"><LINK
+REL="PREVIOUS"
+TITLE="Identifiers"
+HREF="x890.html"><LINK
+REL="NEXT"
+TITLE="Alphabetical list of functions"
+HREF="x1138.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>OpenCReports Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x890.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Expressions in OpenCReports</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x1138.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="opsandfunc"
+>Operators and functions</A
+></H1
+><P
+>&#13;			OpenCReports expressions can use several operators and functions.
+			The operator precedence is mostly as expected from the C
+			programming language. One notable exception is implicit
+			multiplication. The precedence classes are as below,
+			in increasing order of precedence.
+		</P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1015"
+>Ternary operator</A
+></H2
+><P
+>&#13;				The ternary operator is as in the C language:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;expression1 ? expression2 : expression3
+				</PRE
+></TD
+></TR
+></TABLE
+>
+				It's evaluated as follows: if the value of numeric
+				<TT
+CLASS="literal"
+>expression1</TT
+> is <TT
+CLASS="literal"
+>true</TT
+>
+				(i.e. non-zero), then the result is the <TT
+CLASS="literal"
+>expression2</TT
+>,
+				otherwise it's <TT
+CLASS="literal"
+>expression3</TT
+>.
+				Type of <TT
+CLASS="literal"
+>expression2</TT
+> and
+				<TT
+CLASS="literal"
+>expression3</TT
+> may differ, i.e. the
+				result type will be the type of the underlying expression
+				but it can result in runtime errors.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1025"
+>Logical operators with two operands</A
+></H2
+><P
+>&#13;				Logical OR can be written as <TT
+CLASS="literal"
+>||</TT
+> or
+				<TT
+CLASS="literal"
+>or</TT
+>. Example: <TT
+CLASS="literal"
+>a || b</TT
+>
+			</P
+><P
+>&#13;				Logical AND can be written as <TT
+CLASS="literal"
+>&#38;&#38;</TT
+> or
+				<TT
+CLASS="literal"
+>and</TT
+>. Logical AND has precedence over OR.
+				Example: <TT
+CLASS="literal"
+>a &#38;&#38; b</TT
+>
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1035"
+>Bitwise operators with two operands</A
+></H2
+><P
+>&#13;			The bitwise operators in this precedence class and in their
+			increasing order of precedence are:
+			bitwise OR (<TT
+CLASS="literal"
+>|</TT
+>) and
+            bitwise AND (<TT
+CLASS="literal"
+>&#38;</TT
+>).
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1040"
+>Equality and inequality comparison operators</A
+></H2
+><P
+>&#13;				The equality comparison operator can be written as
+				<TT
+CLASS="literal"
+>=</TT
+> or <TT
+CLASS="literal"
+>==</TT
+>.
+			</P
+><P
+>&#13;				The inequality comparison operator can be written as
+				<TT
+CLASS="literal"
+>&#60;&#62;</TT
+> or <TT
+CLASS="literal"
+>!=</TT
+>.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1048"
+>Other comparison operators</A
+></H2
+><P
+>&#13;				Less-than (<TT
+CLASS="literal"
+>&#60;</TT
+>),
+				less-or-equal (<TT
+CLASS="literal"
+>&#60;=</TT
+>),
+				greater-than (<TT
+CLASS="literal"
+>&#62;</TT
+>) and
+				greater-or-equal (<TT
+CLASS="literal"
+>&#62;=</TT
+>).
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1055"
+>Bitwise shifts</A
+></H2
+><P
+>&#13;				Bitwise shift left (<TT
+CLASS="literal"
+>a &#62;&#62; b</TT
+>) and
+				bitwise shift right (<TT
+CLASS="literal"
+>a &#60;&#60; b</TT
+>).
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1060"
+>Addition and subtraction</A
+></H2
+><P
+>&#13;				<TT
+CLASS="literal"
+>a + b</TT
+> and <TT
+CLASS="literal"
+>a - b</TT
+>.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1065"
+>Multiplication, division and modulo (remainder)</A
+></H2
+><P
+>&#13;				<TT
+CLASS="literal"
+>a * b</TT
+>, <TT
+CLASS="literal"
+>a / b</TT
+> and
+				<TT
+CLASS="literal"
+>a % b</TT
+>.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1071"
+>Power-of operator</A
+></H2
+><P
+>&#13;				<TT
+CLASS="literal"
+>a ^ b</TT
+> works as a-to-the-power-of-b.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1075"
+>Factorial operator</A
+></H2
+><P
+>&#13;				<TT
+CLASS="literal"
+>a!</TT
+>, the '!' sign used as postfix operator.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1079"
+>Unary plus and minus, logical and bitwise NOT, prefix increment and decrement</A
+></H2
+><P
+>&#13;				Unary plus (<TT
+CLASS="literal"
+>+a</TT
+>), unary minus (<TT
+CLASS="literal"
+>-a</TT
+>),
+				logical NOT (<TT
+CLASS="literal"
+>!a</TT
+>, '!' used as prefix operator),
+				bitwise NOT (<TT
+CLASS="literal"
+>~a</TT
+>), prefix increment (<TT
+CLASS="literal"
+>++a</TT
+>)
+				and prefix decrement (<TT
+CLASS="literal"
+>--a</TT
+>).
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1088"
+>Postfix increment and decrement</A
+></H2
+><P
+>&#13;				Postfix increment (<TT
+CLASS="literal"
+>a++</TT
+>) and decrement
+				(<TT
+CLASS="literal"
+>a--</TT
+>).
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1093"
+>Function calls and implicit multiplication</A
+></H2
+><P
+>&#13;				Function calls execute a function on operands:
+				<TT
+CLASS="literal"
+>function(operand[, ...])</TT
+>. A function name
+				is a single word known by OpenCReports at the time of parsing,
+				either as a built-in function, or a user-supplied one.
+				The function name cannot have a leading dot or be a
+				domain-qualified identifier.
+			</P
+><P
+>&#13;				Implicit multiplication is when two distinct operands are in
+				juxtaposition, in other words they are written side by side
+				without any whitespace. In this case, there is an implied
+				multiplication between them that acts with higher precedence
+				than regular multiplication or division. Implicit multiplication
+				is applicable in these situations:
+				<P
+></P
+><UL
+><LI
+><P
+>&#13;							A numeric constant juxtaposed with an identifier,
+							the numeric constant is the on the left side.
+						</P
+></LI
+><LI
+><P
+>&#13;							A numeric constant juxtaposed with an expression inside
+							parentheses. The constant can be on either side of the
+							expression.
+						</P
+></LI
+><LI
+><P
+>&#13;							An identifier juxtaposed with an expression inside
+							parentheses, the identifier is on the left side of the
+							expression. This is only treated as implicit
+							multiplication if the identifier name is not known as
+							a function name at the time of parsing and there is
+							a single expression inside the parentheses.
+							No expressions, a single expression with a known function
+							name as the identifier, or a series of comma delimited
+							series of expressions are treated as a function call and
+							the function call validity is checked against the number
+							of operands, with a potential parser error. If there's
+							an ambiguity between function names and identifiers
+							provided by data sources, it can be avoided by using
+							dot-prefixed or dot-prefixed and quoted identifiers,
+							or fully qualified identifiers in the form of
+							<TT
+CLASS="literal"
+>query.identifier</TT
+>.
+						</P
+></LI
+><LI
+><P
+>&#13;							An expression inside parentheses juxtaposed with an identifier
+							on the right side.
+						</P
+></LI
+><LI
+><P
+>&#13;							Two expressions inside parentheses juxtaposed with each other.
+						</P
+></LI
+></UL
+>
+			</P
+><P
+>&#13;				Implicit multiplication is NOT applicable in these situations,
+				besides the exceptions already explained above:
+				<P
+></P
+><UL
+><LI
+><P
+>&#13;							An identifier juxtaposed with a numeric constant,
+							the numeric constant is the on the right side.
+							Since an identifier name can include digits as the
+							second and subsequent characters, the numeric
+							constant, or at least its integer part is simply
+							recognized as part of the identifier name itself
+							according to the token matching. This can also result
+							in syntax errors when not handled with care.
+						</P
+></LI
+><LI
+><P
+>&#13;							An identifier juxtaposed with another identifier.
+							The reason is the same as in the preceding case:
+							there is only a single identifier according to
+							token matching.
+						</P
+></LI
+></UL
+>
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1116"
+>Parentheses</A
+></H2
+><P
+>&#13;				Parenthesized expressions are always computed first.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1119"
+>Token matching, precendence and syntax errors</A
+></H2
+><P
+>&#13;				Expression parsing works on two levels: token matching (the
+				job of Flex) and applying grammar (the job of Bison).
+				Token matching breaks up the expression string into tokens
+				in a greedy way: without whitepace delimiters, the longest
+				possible token is chosen.
+			</P
+><P
+>&#13;				This may lead to slight confusion when coupled with
+				implicit multiplication. For example, the expression
+				<TT
+CLASS="literal"
+>2e-1e</TT
+> is broken up into two tokens:
+				<TT
+CLASS="literal"
+>2e-1</TT
+> juxtaposed with
+				<TT
+CLASS="literal"
+>e</TT
+>. The first token is interpreted as
+				a numeric constant using <I
+CLASS="emphasis"
+>e-notation</I
+>
+				(so that it will mean <TT
+CLASS="literal"
+>2 * 10^(-1)</TT
+>) and
+				the second is the identifier <TT
+CLASS="literal"
+>e</TT
+>, leading
+				to the meaning <TT
+CLASS="literal"
+>0.2 * e</TT
+>. This is
+				unambiguous for the computer, but can be somewhat confusing
+				to the the user reading or writing expressions. To avoid
+				any confusion, don't use implicit multiplication and use
+				whitespace and parentheses gratituously.
+			</P
+><P
+>&#13;				Expression parsing handles precedence and whitespaces.
+				For example, these below do not mean the same thing:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;a++ + ++b
+a+++++b
+				</PRE
+></TD
+></TR
+></TABLE
+>
+				The former is obvious, but the latter may be a little
+				surprising: <TT
+CLASS="literal"
+>(a++)++ + b</TT
+>, but not when
+				considering precedence and the Flex lexer behaviour to
+				match the the longest known token first. In this case,
+				to make the expression unambiguous, whitespace or parenthesis
+				should be used. Another ambiguous example:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#13;a++b
+				</PRE
+></TD
+></TR
+></TABLE
+>
+				The above may be interpreted as <TT
+CLASS="literal"
+>a + +b</TT
+>
+				but since no whitespace is used, Flex is free to interpret
+				it as <TT
+CLASS="literal"
+>a++ b</TT
+>, because <TT
+CLASS="literal"
+>++</TT
+>
+				is longer than <TT
+CLASS="literal"
+>+</TT
+>, so the former is matched
+				first as an operator token. This is a syntax error and
+				expression parsing throws an error for it.
+			</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x890.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x1138.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Identifiers</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c835.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Alphabetical list of functions</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

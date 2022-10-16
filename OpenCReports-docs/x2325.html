@@ -1,0 +1,380 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Report breaks in OpenCReports</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="OpenCReports 0.4.3 Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Report breaks"
+HREF="c2308.html"><LINK
+REL="PREVIOUS"
+TITLE="Report breaks"
+HREF="c2308.html"><LINK
+REL="NEXT"
+TITLE="Report variables"
+HREF="c2361.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>OpenCReports 0.4.3 Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c2308.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Report breaks</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c2361.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="AEN2325"
+>Report breaks in OpenCReports</A
+></H1
+><P
+>&#13;			<A
+HREF="c1627.html"
+>Expressions</A
+> can reference data via the
+			column names of a row. Arbitrary expressions may be used
+			to watch for changes in the value of the expression data
+			breaks. Breaks occurs on the boundary of changes in the
+			expression value.
+		</P
+><P
+>&#13;			Prioritization (nesting) of breaks is done according their order
+			of declaration. See 
+		</P
+><P
+>&#13;			Visual separation is optionally helped with break headers
+			and footers. See <A
+HREF="x1185.html#breakheadernode"
+>BreakHeader</A
+> and
+			<A
+HREF="x1185.html#breakfooternode"
+>BreakFooter</A
+>.
+		</P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN2333"
+>Example</A
+></H2
+><P
+>&#13;				This XML part below shows a complete example of
+				nested breaks based on the above mentioned real life
+				example.
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report&#62;
+
+    &#60;Breaks&#62;
+
+        &#60;Break&#62;
+
+            &#60;BreakHeader&#62;
+                &#60;Output&#62;
+                    &#60;Line&#62;
+                        &#60;field value="query1.department" /&#62;
+                    &#60;/Line&#62;
+                &#60;/Output&#62;
+            &#60;/BreakHeader&#62;
+
+            &#60;BreakFooter&#62;
+                &#60;Output&#62;
+                    &#60;Line&#62;
+                        &#60;literal&#62;End of &#60;/literal&#62;
+                        &#60;field value="query1.department" /&#62;
+                    &#60;/Line&#62;
+                &#60;/Output&#62;
+            &#60;/BreakFooter&#62;
+
+            &#60;BreakFields&#62;
+                &#60;BreakField value="query1.department" /&#62;
+            &#60;/BreakFields&#62;
+
+        &#60;/Break&#62;
+
+        &#60;Break&#62;
+
+            &#60;BreakHeader&#62;
+                &#60;Output&#62;
+                    &#60;Line&#62;
+                        &#60;literal width="30" /&#62;
+                        &#60;field value="query1.paygrade&#62;
+                    &#60;/Line&#62;
+                &#60;/Output&#62;
+            &#60;/BreakHeader&#62;
+
+            &#60;BreakFooter&#62;
+                &#60;Output&#62;
+                    &#60;Line&#62;
+                        &#60;literal width="30" /&#62;
+                        &#60;literal&#62;End of &#60;/literal&#62;
+                        &#60;field value="query1.paygrade&#62;
+                    &#60;/Line&#62;
+                &#60;/Output&#62;
+            &#60;/BreakFooter&#62;
+
+            &#60;BreakFields&#62;
+                &#60;BreakField value="query1.paygrade" /&#62;
+            &#60;/BreakFields&#62;
+
+        &#60;/Break&#62;
+
+    &#60;/Breaks&#62;
+
+    &#60;Detail&#62;
+
+        &#60;FieldHeaders&#62;
+            &#60;Output&#62;
+                &#60;Line&#62;
+                    &#60;literal width="60" /&#62;
+                    &#60;literal&#62;Employee name&#60;/literal&#62;
+                &#60;/Line&#62;
+            &#60;/Output&#62;
+        &#60;/FieldHeaders&#62;
+
+        &#60;FieldDetails&#62;
+            &#60;Output&#62;
+                &#60;Line&#62;
+                    &#60;literal width="60" /&#62;
+                    &#60;field value="query1.employee&#62;
+                &#60;/Line&#62;
+            &#60;/Output&#62;
+        &#60;/FieldDetails&#62;
+
+    &#60;Detail&#62;
+
+&#60;/Report&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+><P
+>&#13;				Assuming that <A
+HREF="x192.html#sizeunit"
+>Size unit attribute</A
+> is set to
+				<TT
+CLASS="literal"
+>points</TT
+>, the indentation would be
+				30 and 60 points for certain elements (see the empty
+				<TT
+CLASS="literal"
+>&#60;literal&#62;</TT
+>s) and the result
+				would look like this:
+				<P
+></P
+><OL
+TYPE="1"
+><LI
+><P
+>&#13;							Before the first row on every page, the contents
+							of <TT
+CLASS="literal"
+>&#60;FieldHeaders&#62;</TT
+> is
+							printed.
+						</P
+></LI
+><LI
+><P
+>&#13;							Before the first row, the contents of
+							<TT
+CLASS="literal"
+>&#60;BreakHeader&#62;</TT
+>
+							is printed for every break declared in
+							the <TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+> in
+							the order of their declaration.
+						</P
+></LI
+><LI
+><P
+>&#13;							The contents of
+							<TT
+CLASS="literal"
+>&#60;FieldDetails&#62;</TT
+>
+							is printed for the current row. Repeat until
+							a value change is observed between
+                            adjacent rows for a break's expression.
+							In this case, the employees are printed
+							in one block that are in the current paygrade
+							category and working at the current department.
+						</P
+></LI
+><LI
+><P
+>&#13;							When a value change happened between
+							adjacent rows for a break's expression,
+							then this break and every break declared after
+							it triggers. For every triggering breaks,
+							their <TT
+CLASS="literal"
+>&#60;BreakFooter&#62;</TT
+>
+							is printed in the reverse order of their
+							declaration. This is done using the
+							<I
+CLASS="emphasis"
+>previous row</I
+>, so if any data
+							used from the row or derived from it (e.g. a
+							variable) and is to be displayed in the footer,
+							it will be valid for the break period that just
+							ended.
+						</P
+></LI
+><LI
+><P
+>&#13;							Before the new row, the contents of
+							<TT
+CLASS="literal"
+>&#60;BreakHeader&#62;</TT
+>
+							is printed for every break that just triggered.
+							For example, the department's name is not
+							printed if only the paygrade category changed
+							in the same department from the one row to
+							the next.
+						</P
+></LI
+><LI
+><P
+>&#13;							Repeat from step 3 until there are no more
+							data rows.
+						</P
+></LI
+></OL
+>
+			</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c2308.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c2361.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Report breaks</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c2308.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Report variables</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

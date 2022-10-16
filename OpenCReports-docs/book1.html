@@ -1,0 +1,1580 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>OpenCReports 0.5 Manual</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="NEXT"
+TITLE="Introduction and concepts"
+HREF="c16.html"></HEAD
+><BODY
+CLASS="book"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="BOOK"
+><A
+NAME="AEN1"
+></A
+><DIV
+CLASS="TITLEPAGE"
+><H1
+CLASS="title"
+><A
+NAME="AEN2"
+>OpenCReports 0.5 Manual</A
+></H1
+><H3
+CLASS="author"
+><A
+NAME="AEN4"
+></A
+>Zoltán Böszörményi</H3
+><P
+CLASS="copyright"
+><A
+HREF="ln13.html"
+>Copyright</A
+> &copy; 2019-2022 Zoltán Böszörményi</P
+><HR></DIV
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="c16.html"
+>Introduction and concepts</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c16.html#AEN18"
+>The predecessor: RLIB</A
+></DT
+><DT
+><A
+HREF="x28.html"
+>Concepts</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x28.html#AEN30"
+>What is a report generator?</A
+></DT
+><DT
+><A
+HREF="x28.html#AEN33"
+>XML based report description</A
+></DT
+><DT
+><A
+HREF="x28.html#AEN39"
+>Comprehensive API for report creation</A
+></DT
+><DT
+><A
+HREF="x28.html#AEN44"
+>Strict expression parser</A
+></DT
+><DT
+><A
+HREF="x28.html#AEN49"
+>Expression optimization</A
+></DT
+><DT
+><A
+HREF="x28.html#AEN56"
+>Report variables</A
+></DT
+><DT
+><A
+HREF="x28.html#AEN60"
+>Extensive and extensible set of functions</A
+></DT
+><DT
+><A
+HREF="x28.html#AEN67"
+>UTF-8 string handling</A
+></DT
+><DT
+><A
+HREF="x28.html#AEN71"
+>High precision numeric data type</A
+></DT
+><DT
+><A
+HREF="x28.html#AEN82"
+>Datetime and interval data types</A
+></DT
+><DT
+><A
+HREF="x28.html#AEN87"
+>Automatic input data conversion</A
+></DT
+><DT
+><A
+HREF="x28.html#AEN95"
+>Versatile field alignment and multi-row fields</A
+></DT
+><DT
+><A
+HREF="x28.html#AEN106"
+>Report breaks</A
+></DT
+><DT
+><A
+HREF="x28.html#AEN111"
+>Multi-column reports</A
+></DT
+><DT
+><A
+HREF="x28.html#AEN115"
+>PDF output format, fonts, layout details</A
+></DT
+><DT
+><A
+HREF="x28.html#AEN131"
+>Extensive set of unit tests</A
+></DT
+><DT
+><A
+HREF="x28.html#AEN134"
+>Standard Linux dependencies</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x158.html"
+>OpenCReports planned features</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x158.html#AEN160"
+>More output formats</A
+></DT
+><DT
+><A
+HREF="x158.html#AEN163"
+>Graph and chart support in HTML and PDF output</A
+></DT
+><DT
+><A
+HREF="x158.html#AEN166"
+>Visual editor for report XML descriptions</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+><A
+HREF="c169.html"
+>Report XML description</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c169.html#AEN171"
+>XML description structure</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c169.html#AEN199"
+>Notes about XML syntax and attributes</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x216.html"
+>OpenCReport element</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x216.html#sizeunit"
+>Size unit attribute</A
+></DT
+><DT
+><A
+HREF="x216.html#noqueryshownodata"
+>No query show NoData</A
+></DT
+><DT
+><A
+HREF="x216.html#reportheightafterlast"
+>Report height after last</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x277.html"
+>Datasources</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x277.html#mariadbds"
+>MariaDB (MySQL) database connection</A
+></DT
+><DT
+><A
+HREF="x277.html#postgresqlds"
+>PostgreSQL database connection</A
+></DT
+><DT
+><A
+HREF="x277.html#odbcds"
+>ODBC database connection</A
+></DT
+><DT
+><A
+HREF="x277.html#AEN332"
+>CSV file datasource</A
+></DT
+><DT
+><A
+HREF="x277.html#jsonds"
+>JSON file datasource</A
+></DT
+><DT
+><A
+HREF="x277.html#xmlds"
+>XML file datasource</A
+></DT
+><DT
+><A
+HREF="x277.html#AEN387"
+>Array datasource</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x405.html"
+>Queries</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x405.html#AEN409"
+>SQL queries for SQL datasources</A
+></DT
+><DT
+><A
+HREF="x405.html#AEN430"
+>Queries for file based datasources</A
+></DT
+><DT
+><A
+HREF="x405.html#arrayqueries"
+>Queries for array based datasources</A
+></DT
+><DT
+><A
+HREF="x405.html#followerqueries"
+>Follower queries</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x507.html"
+>Report parts</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x507.html#partattribs"
+>Part attributes</A
+></DT
+><DT
+><A
+HREF="x507.html#AEN629"
+>Part subsections</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x659.html"
+>Part row</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x659.html#AEN665"
+>Part row attributes</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x690.html"
+>Part column</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x690.html#AEN701"
+>Part column attributes</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x774.html"
+>Report</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x774.html#reportattribs"
+>Report attributes</A
+></DT
+><DT
+><A
+HREF="x774.html#AEN999"
+>Report subsections</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x1074.html"
+>Loaded report</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x1074.html#AEN1078"
+>Loaded Report attributes</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x1101.html"
+>Variables</A
+></DT
+><DT
+><A
+HREF="x1106.html"
+>Variable</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x1106.html#AEN1111"
+>Variable attributes</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x1200.html"
+>Breaks</A
+></DT
+><DT
+><A
+HREF="x1206.html"
+>Break</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x1206.html#AEN1211"
+>Break attributes</A
+></DT
+><DT
+><A
+HREF="x1206.html#AEN1230"
+>Break subsections</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x1262.html"
+>Output</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x1262.html#AEN1266"
+>Output attributes</A
+></DT
+><DT
+><A
+HREF="x1262.html#AEN1279"
+>Output subsections</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x1301.html"
+>Line</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x1301.html#AEN1305"
+>Line attributes</A
+></DT
+><DT
+><A
+HREF="x1301.html#AEN1361"
+>Line subsections</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x1370.html"
+>Text element</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x1370.html#AEN1380"
+>Text element attributes</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x1535.html"
+>HorizontalLine</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x1535.html#AEN1539"
+>HorizontalLine attributes</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x1596.html"
+>Image</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x1596.html#AEN1606"
+>Image attributes</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x1640.html"
+>Image end</A
+></DT
+><DT
+><A
+HREF="x1645.html"
+>Color specification</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="c1658.html"
+>Expressions in OpenCReports</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c1658.html#AEN1660"
+>Introduction</A
+></DT
+><DT
+><A
+HREF="x1677.html"
+>Constants</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x1677.html#stringliterals"
+>String literals</A
+></DT
+><DT
+><A
+HREF="x1677.html#numericconstants"
+>Numeric constants</A
+></DT
+><DT
+><A
+HREF="x1677.html#boolconstants"
+>Boolean constants</A
+></DT
+><DT
+><A
+HREF="x1677.html#datetimeconstants"
+>Datetime constants</A
+></DT
+><DT
+><A
+HREF="x1677.html#constexpr"
+>Constant expressions</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x1714.html"
+>Precalculated expressions</A
+></DT
+><DT
+><A
+HREF="x1720.html"
+>Identifiers</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x1720.html#AEN1725"
+>Identifier names</A
+></DT
+><DT
+><A
+HREF="x1720.html#AEN1733"
+>Query field identifiers</A
+></DT
+><DT
+><A
+HREF="x1720.html#speciddomains"
+>Special purpose identifier domains</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x1849.html"
+>Operators and functions</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x1849.html#AEN1852"
+>Ternary operator</A
+></DT
+><DT
+><A
+HREF="x1849.html#AEN1862"
+>Logical operators with two operands</A
+></DT
+><DT
+><A
+HREF="x1849.html#AEN1872"
+>Bitwise operators with two operands</A
+></DT
+><DT
+><A
+HREF="x1849.html#AEN1877"
+>Equality and inequality comparison operators</A
+></DT
+><DT
+><A
+HREF="x1849.html#AEN1885"
+>Other comparison operators</A
+></DT
+><DT
+><A
+HREF="x1849.html#AEN1892"
+>Bitwise shifts</A
+></DT
+><DT
+><A
+HREF="x1849.html#AEN1897"
+>Addition and subtraction</A
+></DT
+><DT
+><A
+HREF="x1849.html#AEN1902"
+>Multiplication, division and modulo (remainder)</A
+></DT
+><DT
+><A
+HREF="x1849.html#AEN1908"
+>Power-of operator</A
+></DT
+><DT
+><A
+HREF="x1849.html#AEN1912"
+>Factorial operator</A
+></DT
+><DT
+><A
+HREF="x1849.html#AEN1916"
+>Unary plus and minus, logical and bitwise NOT, prefix increment and decrement</A
+></DT
+><DT
+><A
+HREF="x1849.html#AEN1925"
+>Postfix increment and decrement</A
+></DT
+><DT
+><A
+HREF="x1849.html#AEN1930"
+>Function calls and implicit multiplication</A
+></DT
+><DT
+><A
+HREF="x1849.html#AEN1963"
+>Parentheses</A
+></DT
+><DT
+><A
+HREF="x1849.html#AEN1966"
+>Token matching, precendence and syntax errors</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x1985.html"
+>Alphabetical list of functions</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x1985.html#AEN2001"
+>abs()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2005"
+>acos()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2008"
+>add()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2013"
+>and()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2017"
+>asin()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2020"
+>atan()</A
+></DT
+><DT
+><A
+HREF="x1985.html#brrownumfunc"
+>brrownum()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2026"
+>ceil()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2029"
+>chgdateof()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2032"
+>chgtimeof()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2035"
+>concat()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2038"
+>cos()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2041"
+>cot()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2044"
+>csc()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2047"
+>date()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2050"
+>dateof()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2053"
+>day()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2056"
+>dec()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2060"
+>dim()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2063"
+>div()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2067"
+>dtos()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2070"
+>dtosf()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2075"
+>eq()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2080"
+>error()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2084"
+>exp()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2087"
+>exp10()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2090"
+>exp2()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2093"
+>factorial()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2097"
+>floor()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2100"
+>fmod()</A
+></DT
+><DT
+><A
+HREF="x1985.html#formatfunc"
+>format()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2117"
+>fxpval()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2121"
+>ge()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2125"
+>gettimeinsecs()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2128"
+>gt()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2132"
+>iif()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2136"
+>inc()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2140"
+>interval()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2145"
+>isnull()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2148"
+>land()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2152"
+>le()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2156"
+>left()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2159"
+>ln()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2163"
+>lnot()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2167"
+>log()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2170"
+>log10()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2173"
+>log2()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2176"
+>lor()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2180"
+>lower()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2183"
+>lt()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2187"
+>mid()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2192"
+>mod()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2196"
+>month()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2199"
+>mul()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2203"
+>ne()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2208"
+>not()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2212"
+>now()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2215"
+>null()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2218"
+>nulldt()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2221"
+>nulln()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2224"
+>nulls()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2227"
+>or()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2231"
+>pow()</A
+></DT
+><DT
+><A
+HREF="x1985.html#printffunc"
+>printf()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2238"
+>proper()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2241"
+>random()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2244"
+>remainder()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2255"
+>right()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2258"
+>rint()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2262"
+>round()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2265"
+>rownum()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2268"
+>sec()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2271"
+>settimeinsecs()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2276"
+>shl()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2280"
+>shr()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2284"
+>sin()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2287"
+>sqr()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2290"
+>sqrt()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2293"
+>stdwiy()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2296"
+>stod()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2300"
+>stodt()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2303"
+>stodtsql()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2307"
+>str()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2310"
+>sub()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2314"
+>tan()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2317"
+>timeof()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2320"
+>trunc()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2323"
+>tstod()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2327"
+>uminus()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2331"
+>upper()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2334"
+>val()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2337"
+>wiy()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2340"
+>wiy1()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2343"
+>wiyo()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2346"
+>xor()</A
+></DT
+><DT
+><A
+HREF="x1985.html#AEN2349"
+>year()</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+><A
+HREF="c2352.html"
+>Report breaks</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c2352.html#AEN2354"
+>Grouping data</A
+></DT
+><DT
+><A
+HREF="x2369.html"
+>Report breaks in OpenCReports</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x2369.html#AEN2379"
+>Example</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+><A
+HREF="c2407.html"
+>Report variables</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c2407.html#AEN2409"
+>Introduction to report variables</A
+></DT
+><DT
+><A
+HREF="x2425.html"
+>Expression variables</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x2425.html#AEN2433"
+>Variables with iterative expressions</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x2448.html"
+>Variable types for simple statistics</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x2448.html#AEN2451"
+>Summing a data series</A
+></DT
+><DT
+><A
+HREF="x2448.html#AEN2457"
+>Counting data in a series</A
+></DT
+><DT
+><A
+HREF="x2448.html#AEN2468"
+>Averaging data in a series</A
+></DT
+><DT
+><A
+HREF="x2448.html#AEN2478"
+>Highest and lowest values of a series</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x2485.html"
+>Custom variables</A
+></DT
+><DT
+><A
+HREF="x2510.html"
+>Precalculated variables</A
+></DT
+><DT
+><A
+HREF="x2524.html"
+>Resetting a variable on break boundaries</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="c2533.html"
+>Formatting</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c2533.html#AEN2535"
+>Formatting functions</A
+></DT
+><DT
+><A
+HREF="x2541.html"
+>Format strings</A
+></DT
+><DT
+><A
+HREF="x2552.html"
+>Legacy format strings</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x2552.html#AEN2555"
+>Format string for strings</A
+></DT
+><DT
+><A
+HREF="x2552.html#AEN2569"
+>Format string for numeric values</A
+></DT
+><DT
+><A
+HREF="x2552.html#AEN2582"
+>Format string for datetime values</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x2590.html"
+>New style format strings</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x2590.html#AEN2596"
+>New style format string for strings</A
+></DT
+><DT
+><A
+HREF="x2590.html#AEN2601"
+>New style format string for numeric data</A
+></DT
+><DT
+><A
+HREF="x2590.html#AEN2606"
+>New style format string for monetary data</A
+></DT
+><DT
+><A
+HREF="x2590.html#AEN2615"
+>New style format string for datetime values</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x2621.html"
+>Second generation new style format strings</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x2621.html#AEN2624"
+>2nd gen new style format string for strings</A
+></DT
+><DT
+><A
+HREF="x2621.html#AEN2629"
+>2nd gen new style format string for numeric data</A
+></DT
+><DT
+><A
+HREF="x2621.html#AEN2634"
+>2nd gen new style format string for monetary data</A
+></DT
+><DT
+><A
+HREF="x2621.html#AEN2643"
+>2nd gen new style format string for datetime values</A
+></DT
+><DT
+><A
+HREF="x2621.html#AEN2649"
+>The swiss army knife of formatting</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+><A
+HREF="c2656.html"
+>C language API reference</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c2656.html#AEN2658"
+>Header file</A
+></DT
+><DT
+><A
+HREF="x2662.html"
+>High level C API</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x2662.html#AEN2669"
+>Report handler initialization</A
+></DT
+><DT
+><A
+HREF="x2662.html#AEN2673"
+>Load a report XML description</A
+></DT
+><DT
+><A
+HREF="x2662.html#AEN2679"
+>Set report output format</A
+></DT
+><DT
+><A
+HREF="x2662.html#AEN2683"
+>Run the report</A
+></DT
+><DT
+><A
+HREF="x2662.html#AEN2689"
+>Dump report result</A
+></DT
+><DT
+><A
+HREF="x2662.html#AEN2693"
+>Report handler destruction</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="x2697.html"
+>Low level C API</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x2697.html#numerictuning"
+>Numeric behavior related functions</A
+></DT
+><DT
+><A
+HREF="x2697.html#AEN2714"
+>Locale related functions</A
+></DT
+><DT
+><A
+HREF="x2697.html#AEN2726"
+>Data source and query related functions</A
+></DT
+><DT
+><A
+HREF="x2697.html#exprfunc"
+>Expression related functions</A
+></DT
+><DT
+><A
+HREF="x2697.html#AEN3005"
+>Column data or expression result related functions</A
+></DT
+><DT
+><A
+HREF="x2697.html#AEN3096"
+>Variable related functions</A
+></DT
+><DT
+><A
+HREF="x2697.html#AEN3125"
+>Break related functions</A
+></DT
+><DT
+><A
+HREF="x2697.html#AEN3164"
+>Function related functions</A
+></DT
+><DT
+><A
+HREF="x2697.html#AEN3190"
+>Report part and report related functions</A
+></DT
+><DT
+><A
+HREF="x2697.html#AEN3244"
+>Callback related functions</A
+></DT
+><DT
+><A
+HREF="x2697.html#AEN3290"
+>Environment related functions</A
+></DT
+><DT
+><A
+HREF="x2697.html#AEN3304"
+>File handling related functions</A
+></DT
+><DT
+><A
+HREF="x2697.html#AEN3318"
+>Color related functions</A
+></DT
+><DT
+><A
+HREF="x2697.html#AEN3332"
+>Paper size related functions</A
+></DT
+><DT
+><A
+HREF="x2697.html#AEN3364"
+>Memory handling related functions</A
+></DT
+><DT
+><A
+HREF="x2697.html#AEN3404"
+>List related functions</A
+></DT
+><DT
+><A
+HREF="x2697.html#AEN3458"
+>String related functions</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+><A
+HREF="c3506.html"
+>GNU Free Documentation License</A
+></DT
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c16.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Introduction and concepts</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

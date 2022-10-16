@@ -1,0 +1,451 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>HorizontalLine</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="OpenCReports 0.5 Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Report XML description"
+HREF="c169.html"><LINK
+REL="PREVIOUS"
+TITLE="Text element"
+HREF="x1370.html"><LINK
+REL="NEXT"
+TITLE="Image"
+HREF="x1596.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>OpenCReports 0.5 Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x1370.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Report XML description</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x1596.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="hlinenode"
+>HorizontalLine</A
+></H1
+><P
+>&#13;			A horizontally drawn line.
+			<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Output&#62;
+    &#60;HorizontalLine ... /&#62;
+&#60;/Output</PRE
+></TD
+></TR
+></TABLE
+>
+		</P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1539"
+>HorizontalLine attributes</A
+></H2
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1541"
+>Line width</A
+></H3
+><P
+>&#13;					The line width is measured in points,
+					regardless of the <A
+HREF="x216.html#sizeunit"
+>Size unit attribute</A
+>.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;HorizontalLine size="3" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is <TT
+CLASS="literal"
+>1.0</TT
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1548"
+>Indentation</A
+></H3
+><P
+>&#13;					Extra indentation for the line.
+					It is measured in points,
+					regardless of the <A
+HREF="x216.html#sizeunit"
+>Size unit attribute</A
+>.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;HorizontalLine indent="15" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is <TT
+CLASS="literal"
+>0.0</TT
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="hlinelength"
+>Length</A
+></H3
+><P
+>&#13;					The line length.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;HorizontalLine length="150" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					The line length unit depends on the
+					<A
+HREF="x216.html#sizeunit"
+>Size unit attribute</A
+>.
+					When set to <TT
+CLASS="literal"
+>rlib</TT
+>,
+					it is measured in number of characters.
+					The is influenced by <A
+HREF="x1535.html#hlinefontsize"
+>HorizontalLine font size</A
+>,
+					<A
+HREF="x774.html#reportfontsize"
+>Report font size</A
+> and
+					<A
+HREF="x507.html#partfontsize"
+>Part font size</A
+> in decreasing order,
+					which in turn is influenced by
+					<A
+HREF="x774.html#reportfontname"
+>Report font name</A
+> and
+					<A
+HREF="x507.html#partfontname"
+>Part font name</A
+> in decreasing order.
+				</P
+><P
+>&#13;					When <A
+HREF="x216.html#sizeunit"
+>Size unit attribute</A
+> is set to
+					<TT
+CLASS="literal"
+>points</TT
+>, the line length
+					is measured in points.
+				</P
+><P
+>&#13;					Default is unset, i.e. the line is drawn across
+					the page width.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="hlinefontsize"
+>Font size</A
+></H3
+><P
+>&#13;					An extra knob to influence line length computation.
+					See <A
+HREF="x1535.html#hlinelength"
+>HorizontalLine length</A
+>.
+					It is accepted in two forms, <TT
+CLASS="literal"
+>font_size</TT
+>
+					is the preferred one, the other is accepted for
+					RLIB compatibility:
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;HorizontalLine font_size="14" /&#62;
+&#60;HorizontalLine fontSize="14" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is unset, i.e. only
+					<A
+HREF="x774.html#reportfontsize"
+>Report font size</A
+> and
+                    <A
+HREF="x507.html#partfontsize"
+>Part font size</A
+> would contribute
+					to the horizontal line width computation.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1580"
+>Suppress</A
+></H3
+><P
+>&#13;					Horizontal lines may be suppressed. If the parent
+					<TT
+CLASS="literal"
+>&#60;Output&#62;</TT
+> node is in
+					<TT
+CLASS="literal"
+>&#60;FieldDetails&#62;</TT
+>, the
+					expression may be derived from a query field.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;HorizontalLine suppress="yes /"&#62;
+&#60;HorizontalLine suppress="val(m.suppress_hline)" /&#62;
+&#60;HorizontalLine suppress="query1.suppress_hline" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default value is <TT
+CLASS="literal"
+>false</TT
+>,
+					i.e. no suppression.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1588"
+>Line color</A
+></H3
+><P
+>&#13;					This color is used to render text. It's accepted
+					with both American and  British spelling.
+					For RLIB compatibility, it is also accepted
+					as <TT
+CLASS="literal"
+>bgcolor</TT
+>, with both
+					American and  British spelling.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;HorizontalLine color="'blue'" /&#62;
+&#60;HorizontalLine colour="'blue'" /&#62;
+&#60;HorizontalLine bgcolor="'blue'" /&#62;
+&#60;HorizontalLine bgcolour="'blue'" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is <TT
+CLASS="literal"
+>black</TT
+>.
+					See <A
+HREF="x1645.html"
+>Color specification</A
+>.
+				</P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x1370.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x1596.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Text element</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c169.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Image</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

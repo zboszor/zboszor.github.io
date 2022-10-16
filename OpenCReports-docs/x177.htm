@@ -1,0 +1,228 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>OpenCReport element</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="OpenCReports Manual"
+HREF="book1.htm"><LINK
+REL="UP"
+TITLE="Report XML description"
+HREF="c140.htm"><LINK
+REL="PREVIOUS"
+TITLE="XML description structure"
+HREF="x142.htm"><LINK
+REL="NEXT"
+TITLE="Datasources"
+HREF="x198.htm"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>OpenCReports Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x142.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 2. Report XML description</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x198.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="ocrpttopxml"
+>OpenCReport element</A
+></H1
+><P
+>&#13;			The toplevel <TT
+CLASS="literal"
+>&#60;OpenCReport&#62;</TT
+>
+			element controls some global settings and serves
+			as the topmost XML element for child elements.
+		</P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="sizeunit"
+>Size unit attribute</A
+></H2
+><P
+>&#13;				<PRE
+CLASS="programlisting"
+>&#13;size_unit="default"
+size_unit="rlib"
+size_unit="points"
+				</PRE
+>
+				The <TT
+CLASS="literal"
+>size_unit</TT
+> attribute
+				specifies whether all size related settings
+				in the report are in points, a.k.a. 1/72th inch.
+			</P
+><P
+>&#13;				The <TT
+CLASS="literal"
+>default</TT
+> is <TT
+CLASS="literal"
+>rlib</TT
+>
+				which is the legacy RLIB behavior, leading
+				to some inconsistency in size related settings.
+				For example, width for <TT
+CLASS="literal"
+>field</TT
+>
+				and <TT
+CLASS="literal"
+>literal</TT
+> (see later in the
+				Output section) are in number of characters.
+				This is influenced by the font size set for these
+				text fields. On the other hand, width of horizontal
+				lines and border width around some reports are
+				specified in points.
+			</P
+><P
+>&#13;			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="rlibcompat"
+>RLIB compatibility attribute</A
+></H2
+><P
+>&#13;				<PRE
+CLASS="programlisting"
+>&#13;rlib_compat="yes"
+				</PRE
+>
+				The <TT
+CLASS="literal"
+>rlib_compat</TT
+> attribute
+				specifies whether RLIB compatibility is switched on.
+			</P
+><P
+>&#13;				It controls two subtle behavioural details
+				in tabular report rendering with PDF output.
+				See TODO.
+			</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x142.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x198.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>XML description structure</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c140.htm"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Datasources</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,393 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Report parts</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="OpenCReports Manual"
+HREF="book1.htm"><LINK
+REL="UP"
+TITLE="Report XML description"
+HREF="c140.htm"><LINK
+REL="PREVIOUS"
+TITLE="Queries"
+HREF="x332.htm"><LINK
+REL="NEXT"
+TITLE="Expressions in OpenCReports"
+HREF="c491.htm"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>OpenCReports Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x332.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 2. Report XML description</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c491.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="parts"
+>Report parts</A
+></H1
+><P
+>&#13;			A report XML may contain multiple report parts.
+			Such a <TT
+CLASS="literal"
+>&#60;Part&#62;</TT
+> may be
+			under the toplevel <TT
+CLASS="literal"
+>&#60;OpenCReport&#62;</TT
+>
+			node, in which case multiple report parts may exist
+			in the same XML, or it may be the toplevel node of
+			the XML. In the latter case, only a single
+			<TT
+CLASS="literal"
+>&#60;Part&#62;</TT
+>	may exist in the XML.
+			<PRE
+CLASS="programlisting"
+>&#13;&#60;Part&#62;
+    &#60;pr&#62;
+        &#60;pd&#62;
+            &#60;Report&#62;
+                ...
+            &#60;/Report&#62;
+            ...
+        &#60;/pd&#62;
+        ...
+    &#60;/pr&#62;
+    ...
+&#60;/Part&#62;
+			</PRE
+>
+		</P
+><P
+>&#13;			A report <TT
+CLASS="literal"
+>&#60;Part&#62;</TT
+> may consist
+			multiple reports, arranged in
+			<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>&#13;						rows (<TT
+CLASS="literal"
+>&#60;pr&#62;</TT
+>),
+					</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>&#13;						columns in rows (<TT
+CLASS="literal"
+>&#60;pd&#62;</TT
+>), and
+					</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>&#13;						reports (<TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+>) arranged
+						vertically in a column.
+					</P
+></LI
+></UL
+>
+		</P
+><P
+>&#13;			This allows very complex report layouts.
+			One possible application of such a complex layout is forms.
+		</P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="partattribs"
+>Part attributes</A
+></H2
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN454"
+>Layout</A
+></H3
+><P
+>&#13;					The <TT
+CLASS="literal"
+>layout</TT
+> attribute exists mainly
+					for RLIB compatibility, it's currently ignored.
+					It accepts two values: <TT
+CLASS="literal"
+>flow</TT
+> and
+					<TT
+CLASS="literal"
+>fixed</TT
+>.
+			<PRE
+CLASS="programlisting"
+>&#13;&#60;Part layout="flow"&#62;
+&#60;Part layout="fixed"&#62;
+			</PRE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN461"
+>Font name</A
+></H3
+><P
+>&#13;					The font name attribute specifies the font
+					for the report part's global scope. It can be
+					overridden by child nodes for their scope.
+					It may be specified in two forms, the first one
+					is the preferred name, the second is for RLIB
+					compatibility:
+			<PRE
+CLASS="programlisting"
+>&#13;&#60;Part font_name="Arial"&#62;
+&#60;Part fontName="Arial"&#62;
+			</PRE
+>
+				</P
+><P
+>&#13;					If both forms are specified, <TT
+CLASS="literal"
+>font_name</TT
+>
+					is used.
+				</P
+><P
+>&#13;					Default font name is <TT
+CLASS="literal"
+>Courier</TT
+>.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN469"
+>Font size</A
+></H3
+><P
+>&#13;					The font size attribute specifies the font size
+					for the report part's global scope. It can be
+					overridden by child nodes for their scope.
+					It may be specified in two forms, the first one
+					is the preferred name, the second is for RLIB
+					compatibility:
+			<PRE
+CLASS="programlisting"
+>&#13;&#60;Part font_size="10"&#62;
+&#60;Part fontSize="10"&#62;
+			</PRE
+>
+				</P
+><P
+>&#13;					If both forms are specified, <TT
+CLASS="literal"
+>font_size</TT
+>
+					is used.
+				</P
+><P
+>&#13;					Default font size is 12.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN476"
+>Size unit</A
+></H3
+><P
+>&#13;					Shortcut for the <A
+HREF="x177.htm#sizeunit"
+>Size unit attribute</A
+> in
+					<TT
+CLASS="literal"
+>&#60;OpenCReport&#62;</TT
+> when
+					<TT
+CLASS="literal"
+>&#60;Part&#62;</TT
+> is the toplevel node.
+			<PRE
+CLASS="programlisting"
+>&#13;&#60;Part size_unit="default"&#62;
+&#60;Part size_unit="rlib"&#62;
+&#60;Part size_unit="points"&#62;
+			</PRE
+>
+				</P
+><P
+>&#13;					When <TT
+CLASS="literal"
+>&#60;OpenCReport&#62;</TT
+> is the
+					toplevel node in the XML, this attribute for
+					<TT
+CLASS="literal"
+>&#60;Part&#62;</TT
+> is ignored.
+				</P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="partrow"
+>Part row</A
+></H2
+><P
+>&#13;				A part row (<TT
+CLASS="literal"
+>&#60;pr&#62;</TT
+>) may
+				consist of one or more column (<TT
+CLASS="literal"
+>&#60;pd&#62;</TT
+>)
+				The longest running column will control the height
+				of the row. The next row will be continuous from
+				that point.
+			</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x332.htm"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.htm"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c491.htm"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Queries</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c140.htm"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Expressions in OpenCReports</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
