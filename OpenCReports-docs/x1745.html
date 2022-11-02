@@ -2,22 +2,22 @@
 <HTML
 ><HEAD
 ><TITLE
->Expression variables</TITLE
+>Precalculated expressions</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
-TITLE="OpenCReports Manual"
+TITLE="OpenCReports 0.5 Manual"
 HREF="book1.html"><LINK
 REL="UP"
-TITLE="Report variables"
-HREF="c1740.html"><LINK
+TITLE="Expressions in OpenCReports"
+HREF="c1689.html"><LINK
 REL="PREVIOUS"
-TITLE="Report variables"
-HREF="c1740.html"><LINK
+TITLE="Constants"
+HREF="x1708.html"><LINK
 REL="NEXT"
-TITLE="C language API reference"
-HREF="c1752.html"></HEAD
+TITLE="Identifiers"
+HREF="x1751.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -37,7 +37,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->OpenCReports Manual</TH
+>OpenCReports 0.5 Manual</TH
 ></TR
 ><TR
 ><TD
@@ -45,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="c1740.html"
+HREF="x1708.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -53,13 +53,13 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Report variables</TD
+>Expressions in OpenCReports</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="c1752.html"
+HREF="x1751.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -73,37 +73,27 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="exprvar"
->Expression variables</A
+NAME="precalcexpr"
+>Precalculated expressions</A
 ></H1
 ><P
->&#13;			For basic expressions, the value of a variable is
-			calculated from the aliased expression using the current
-			row of data from the data source. This can be thought of
-			as a kind of shortcut. A variable calculates the
-			value of a long or often used expression, and the variable
-			result may in turn be used in other expressions.
-			This can save both typing (in the report XML) and runtime
-			cost during the report generation.
+>&#13;			Due to the possibility of precalculated variables
+			expressions, reports are actually run (and layed out)
+			twice. The second run uses the precalculated values
+			from the first run. Because of this,
+			<TT
+CLASS="literal"
+>OpenCReports</TT
+> allows mixing precalculated
+			<A
+HREF="c2438.html"
+>Report variables</A
+> and non-precalculated
+			variables and subexpressions in the same expression.
+			The result is intuitively expected.
 		</P
 ><P
->&#13;			Iterative variables use both the values of the current row
-			of data and the value of the variable calculated for the
-			previous row. Such use case are counting values (with either
-			accounting or ignoring NULL values), summing or averaging
-			values, or calculating the highest or lowest value of the
-			dataset.
-		</P
-><P
->&#13;			Variables may be reset at break boundaries.
-			See <A
-HREF="c1729.html"
->Report breaks</A
->.
-		</P
-><P
->&#13;			Custom variables may be defined that use any supported
-			data type and custom accumulator functions.
+>&#13;			The actual report output is generated in the second run.
 		</P
 ></DIV
 ><DIV
@@ -122,7 +112,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="c1740.html"
+HREF="x1708.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -140,7 +130,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="c1752.html"
+HREF="x1751.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -150,13 +140,13 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Report variables</TD
+>Constants</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="c1740.html"
+HREF="c1689.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -164,7 +154,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->C language API reference</TD
+>Identifiers</TD
 ></TR
 ></TABLE
 ></DIV

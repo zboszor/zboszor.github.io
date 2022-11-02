@@ -2,22 +2,22 @@
 <HTML
 ><HEAD
 ><TITLE
->Data source related functions</TITLE
+>Precalculated expressions</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
-TITLE="OpenCReports Manual"
+TITLE="OpenCReports 0.6 Manual"
 HREF="book1.html"><LINK
 REL="UP"
-TITLE="C language API reference"
-HREF="c1613.html"><LINK
+TITLE="Expressions in OpenCReports"
+HREF="c1690.html"><LINK
 REL="PREVIOUS"
-TITLE="Low level C API"
-HREF="x1654.html"><LINK
+TITLE="Constants"
+HREF="x1709.html"><LINK
 REL="NEXT"
-TITLE="Query related functions"
-HREF="x1777.html"></HEAD
+TITLE="Identifiers"
+HREF="x1752.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -37,7 +37,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->OpenCReports Manual</TH
+>OpenCReports 0.6 Manual</TH
 ></TR
 ><TR
 ><TD
@@ -45,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="x1654.html"
+HREF="x1709.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -53,13 +53,13 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->C language API reference</TD
+>Expressions in OpenCReports</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x1777.html"
+HREF="x1752.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -73,214 +73,28 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="AEN1746"
->Data source related functions</A
+NAME="precalcexpr"
+>Precalculated expressions</A
 ></H1
 ><P
->&#13;			The following <TT
+>&#13;			Due to the possibility of precalculated variables
+			expressions, reports are actually run (and layed out)
+			twice. The second run uses the precalculated values
+			from the first run. Because of this,
+			<TT
 CLASS="literal"
->enum</TT
-> and <TT
-CLASS="literal"
->struct</TT
->
-			types are used by OpenCReports.
-			<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;enum ocrpt_result_type {
-    OCRPT_RESULT_ERROR,
-    OCRPT_RESULT_STRING,
-    OCRPT_RESULT_NUMBER,
-    OCRPT_RESULT_DATETIME
-};
-
-struct ocrpt_string {
-    char *str;
-    size_t allocated_len;
-    size_t len;
-};
-typedef struct ocrpt_string ocrpt_string;
-
-struct ocrpt_result {
-    enum ocrpt_result_type type;
-    ocrpt_string *string;
-    mpfr_t number;
-    bool number_initialized;
-    bool string_owned;
-    bool isnull;
-    struct tm datetime;
-};
-typedef struct ocrpt_result ocrpt_result;
-
-struct ocrpt_query_result {
-    const char *name;
-    bool name_allocated;
-    ocrpt_result result;
-};
-typedef struct ocrpt_query_result ocrpt_query_result;
-
-struct ocrpt_input {
-    void (*describe)(ocrpt_query *, ocrpt_query_result **, int32_t *);
-    void (*rewind)(ocrpt_query *);
-    bool (*next)(ocrpt_query *);
-    bool (*populate_result)(ocrpt_query *);
-    bool (*isdone)(ocrpt_query *);
-    void (*free)(ocrpt_query *);
-};
-typedef struct ocrpt_input ocrpt_input;
-			</PRE
-></TD
-></TR
-></TABLE
->
+>OpenCReports</TT
+> allows mixing precalculated
+			<A
+HREF="c2439.html"
+>Report variables</A
+> and non-precalculated
+			variables and subexpressions in the same expression.
+			The result is intuitively expected.
 		</P
 ><P
->&#13;			Data source handling is implemented via <TT
-CLASS="literal"
->ocrpt_input</TT
->
-			functions.
+>&#13;			The actual report output is generated in the second run.
 		</P
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="AEN1754"
-><TT
-CLASS="literal"
->ocrpt_add_datasource</TT
-></A
-></H2
-><P
->&#13;				Add a (custom) data source to the report handler.
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;ocrpt_datasource *ocrpt_add_datasource(opencreport *o,
-                                       const char *source_name,
-                                       const ocrpt_input *input);
-				</PRE
-></TD
-></TR
-></TABLE
->
-			</P
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="AEN1759"
-><TT
-CLASS="literal"
->ocrpt_datasource_get</TT
-></A
-></H2
-><P
->&#13;				Find the data source using its name. It returns NULL
-				if the named data source is not found.
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;ocrpt_datasource *ocrpt_datasource_get(opencreport *o,
-                                        const char *source_name);
-				</PRE
-></TD
-></TR
-></TABLE
->
-			</P
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="AEN1764"
-><TT
-CLASS="literal"
->ocrpt_validate_datasource</TT
-></A
-></H2
-><P
->&#13;				Check that the provided <TT
-CLASS="literal"
->source</TT
-> pointer
-				is valid for the <TT
-CLASS="literal"
->o</TT
-> report handler.
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;ocrpt_datasource *ocrpt_validate_datasource(opencreport *o,
-                                            ocrpt_datasource *source);
-				</PRE
-></TD
-></TR
-></TABLE
->
-			</P
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="AEN1771"
-><TT
-CLASS="literal"
->ocrpt_add_array_datasource</TT
-></A
-></H2
-><P
->&#13;				Add a named array data source. It is optional, as a array
-				data source called <TT
-CLASS="literal"
->array</TT
-> is added to the
-				report handler implicitly.
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;ocrpt_datasource *ocrpt_add_array_datasource(opencreport *o,
-                                             const char *source_name);
-				</PRE
-></TD
-></TR
-></TABLE
->
-			</P
-></DIV
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -298,7 +112,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="x1654.html"
+HREF="x1709.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -316,7 +130,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x1777.html"
+HREF="x1752.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -326,13 +140,13 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Low level C API</TD
+>Constants</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="c1613.html"
+HREF="c1690.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -340,7 +154,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Query related functions</TD
+>Identifiers</TD
 ></TR
 ></TABLE
 ></DIV

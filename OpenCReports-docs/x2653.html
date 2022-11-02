@@ -2,22 +2,22 @@
 <HTML
 ><HEAD
 ><TITLE
->Low level C API</TITLE
+>Second generation new style format strings</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
-TITLE="OpenCReports 0.4.3 Manual"
+TITLE="OpenCReports 0.6 Manual"
 HREF="book1.html"><LINK
 REL="UP"
-TITLE="C language API reference"
-HREF="c2612.html"><LINK
+TITLE="Formatting"
+HREF="c2565.html"><LINK
 REL="PREVIOUS"
-TITLE="High level C API"
-HREF="x2618.html"><LINK
+TITLE="New style format strings"
+HREF="x2622.html"><LINK
 REL="NEXT"
-TITLE="Data source related functions"
-HREF="x2745.html"></HEAD
+TITLE="C language API reference"
+HREF="c2688.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -37,7 +37,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->OpenCReports 0.4.3 Manual</TH
+>OpenCReports 0.6 Manual</TH
 ></TR
 ><TR
 ><TD
@@ -45,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="x2618.html"
+HREF="x2622.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -53,13 +53,13 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->C language API reference</TD
+>Formatting</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x2745.html"
+HREF="c2688.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -73,221 +73,134 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="lowlevelapi"
->Low level C API</A
+NAME="AEN2653"
+>Second generation new style format strings</A
 ></H1
 ><P
->&#13;			The <A
-HREF="x2618.html"
->High level C API</A
-> is also part of the
-			low level API. The functions described below allow
-			creating a report using program code, or simply
-			fine tuning the report behavior by mostly using the
-			<A
-HREF="x2618.html"
->High level C API</A
->.
+>&#13;			This format string style builds upon the original
+			new style format strings, with the addition of brackets
+			that embed the underlying format strings.
 		</P
 ><DIV
 CLASS="sect2"
 ><H2
 CLASS="sect2"
 ><A
-NAME="numerictuning"
->Numeric behavior related functions</A
-></H2
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2660"
-><TT
-CLASS="literal"
->Set numeric precision</TT
-></A
-></H3
-><P
->&#13;					The default is 256 bits of floating point precision.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->void ocrpt_set_numeric_precision_bits(opencreport *o,
-                                      mpfr_prec_t prec);</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2665"
->Set rounding mode</A
-></H3
-><P
->&#13;					OpenCReports uses GNU MPFR under the hood and does't
-					hide this fact. The MPFR rounding mode constants are
-					used as is to set the rounding behaviour.
-					The default is <TT
-CLASS="literal"
->MPFR_RNDN</TT
->, round
-					to nearest.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->void ocrpt_set_rounding_mode(opencreport *o,
-                             mpfr_rnd_t rndmode);</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="AEN2670"
->Locale related functions</A
-></H2
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2672"
->Set report locale</A
-></H3
-><P
->&#13;					Setting the locale for the report does not affect
-					the main program or other threads. Locale setting
-					includes the language, the country. The UTF-8 suffix
-					is necessary. E.g.: <TT
-CLASS="literal"
->en_GB.UTF-8</TT
-> or
-					<TT
-CLASS="literal"
->de_DE.UTF-8</TT
->
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->void ocrpt_set_locale(opencreport *o,
-                      const char *locale);</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2678"
->Print monetary data in the report locale</A
-></H3
-><P
->&#13;					A customized monetary printing function was implemented
-					for the purposes of the report which MPFR doesn't
-					provide. It is used in OpenCReports both internally
-					and by unit tests.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->ssize_t ocrpt_mpfr_strfmon(opencreport *o,
-                           char *s, size_t maxsize,
-                           const char *format, ...);</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="exprfunc"
->Expression related functions</A
+NAME="AEN2656"
+>2nd gen new style format string for strings</A
 ></H2
 ><P
->&#13;				Expressions in OpenCReports is explained in the
-				<A
-HREF="c1688.html"
->Expressions</A
-> chapter.
+>&#13;				The format string format is <TT
+CLASS="literal"
+>!&#38;{...}</TT
+>
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;field ... format="'!&#38;{%s}'" ... /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
 			</P
+></DIV
 ><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
+CLASS="sect2"
+><H2
+CLASS="sect2"
 ><A
-NAME="AEN2686"
->Parse an expression string</A
-></H3
+NAME="AEN2661"
+>2nd gen new style format string for numeric data</A
+></H2
 ><P
->&#13;					This function parses an expression string and
-					creates an expression tree. It returns a pointer
-					to the <TT
+>&#13;				The format string format is <TT
 CLASS="literal"
->ocrpt_expr</TT
-> structure.
-				</P
-><P
->&#13;					If an error occurs, it returns NULL and optionally
-					returns the error message in <TT
-CLASS="literal"
->err</TT
+>!#{...}</TT
 >
-					pointer if it's not <TT
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;field ... format="'!#{%5.3d}'" ... /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN2666"
+>2nd gen new style format string for monetary data</A
+></H2
+><P
+>&#13;				The format string format is <TT
 CLASS="literal"
->NULL</TT
+>!${...}</TT
+>
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;field ... format="'!${%=*#150n}'" ... /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+><P
+>&#13;				Formatting monetary values uses <TT
+CLASS="literal"
+>strfmon()</TT
 >.
-				</P
+				See
+				<A
+HREF="https://man7.org/linux/man-pages/man3/strfmon.3.html"
+TARGET="_top"
+>strfmon(3)</A
+>
+			</P
 ><P
->&#13;					The <TT
+>&#13;				To print the correct currency name, the locale must be
+				set for the report. Only one locale can be set, so
+				a single currency name will be used for every value
+				using monetary formatting.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN2675"
+>2nd gen new style format string for datetime values</A
+></H2
+><P
+>&#13;				The format string format is <TT
 CLASS="literal"
->ocrpt_report</TT
-> pointer may be
-					valid or NULL. If valid, the expression is bound
-					to this <TT
+>!@{...}</TT
+>
+				Formatting a datetime value uses <TT
 CLASS="literal"
->ocrpt_report</TT
+>strftime()</TT
 >.
-					<TABLE
+				<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
@@ -295,327 +208,38 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="programlisting"
->ocrpt_expr *ocrpt_expr_parse(opencreport *o,
-                             ocrpt_report *r,
-                             const char *str,
-                             char **err);</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2697"
->Free an expression parse tree</A
-></H3
-><P
->&#13;					Free an expression parse tree. If it was bound
-					to the passed-in <TT
-CLASS="literal"
->ocrpt_report</TT
->,
-					this association is also deleted.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->void ocrpt_expr_free(opencreport *o,
-                     ocrpt_report *r,
-                     ocrpt_expr *e);</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2702"
->Resolve expression references</A
-></H3
-><P
->&#13;					This function resolves variable (identifier)
-					references in the expression. This is needed
-					to bind query columns to expressions that
-					use them.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->void ocrpt_expr_resolve(opencreport *o,
-                        ocrpt_report *r,
-                        ocrpt_expr *e);</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2706"
->Optimize an expression</A
-></H3
-><P
->&#13;					This function optimizes an expression so
-					it may needs fewer computation steps during
-					report execution.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->void ocrpt_expr_optimize(opencreport *o,
-                         ocrpt_report *r,
-                         ocrpt_expr *e);</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2710"
->Evaluate an expression</A
-></H3
-><P
->&#13;					This function evaluates the expression.
-					It returns the expression's
-					<TT
-CLASS="literal"
->ocrpt_result</TT
-> result structure.
-					The result must not be freed with
-					<TT
-CLASS="literal"
->ocrpt_result_free()</TT
->.
-					It will be done by <TT
-CLASS="literal"
->ocrpt_expr_free()</TT
->
-				</P
-><P
->&#13;					For expressions with query column references,
-					this function must be called after
-					<TT
-CLASS="literal"
->ocrpt_query_navigate_next</TT
->
-					otherwise the result is not valid.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->ocrpt_result *ocrpt_expr_eval(opencreport *o,
-                              ocrpt_report *r,
-                              ocrpt_expr *e);</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2719"
->Get expression result without evaluation</A
-></H3
-><P
->&#13;					This function returns the expression result
-					if it was already evaluated.
-					The result must not be freed with
-					<TT
-CLASS="literal"
->ocrpt_result_free()</TT
->.
-					It will be done by <TT
-CLASS="literal"
->ocrpt_expr_free()</TT
->.
-					Used by unit tests.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->ocrpt_result *ocrpt_expr_get_result(opencreport *o,
-                                    ocrpt_expr *e);</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2725"
->Print an expression tree</A
-></H3
-><P
->&#13;					Print an expression tree in its processed form on the
-					standard output. Used by unit tests.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->void ocrpt_expr_print(opencreport *o,
-                      ocrpt_expr *e);</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2729"
->Print an expression tree with subexpressions and their results</A
-></H3
-><P
->&#13;					Print an expression tree with subexpressions
-					and their results in its processed form on the
-					standard output. Used by unit tests.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->void ocrpt_expr_result_deep_print(opencreport *o,
-                                  ocrpt_expr *e);</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2733"
->Count the number of expression nodes</A
-></H3
-><P
->&#13;					This function returns the number of expression nodes.
-					Used by unit tests to validate optimizazion.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->int32_t ocrpt_expr_nodes(ocrpt_expr *e);</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2737"
->Initialize expression result type</A
-></H3
-><P
->&#13;					OpenCReports keeps track of the last three query
-					rows and computes three result values for expressions
-					for internal reasons. These functions initialize
-					the type for either the current result or all results
-					of the expression.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->enum ocrpt_result_type {
-    OCRPT_RESULT_ERROR,
-    OCRPT_RESULT_STRING,
-    OCRPT_RESULT_NUMBER,
-    OCRPT_RESULT_DATETIME
-};
+>&#60;field ... format="'!@{%c}'" ... /&#62;
 
-bool ocrpt_expr_init_result(opencreport *o,
-                            ocrpt_expr *e,
-                            enum ocrpt_result_type type);
-
-void ocrpt_expr_init_results(opencreport *o,
-                             ocrpt_expr *e,
-                             enum ocrpt_result_type type);</PRE
+&#60;field ... format="'!@{%Y-%m-%d}'" ... /&#62;</PRE
 ></TD
 ></TR
 ></TABLE
 >
-				</P
+			</P
 ></DIV
 ><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
+CLASS="sect2"
+><H2
+CLASS="sect2"
 ><A
-NAME="AEN2741"
->Set an error string as expression result</A
-></H3
+NAME="AEN2681"
+>The swiss army knife of formatting</A
+></H2
 ><P
->&#13;					<TABLE
+>&#13;				The <A
+HREF="x2017.html#printffunc"
+>printf function</A
+> is the most versatile
+				formatting function in OpenCReports. It does not exist
+				in RLIB. Using the second generation format strings
+				which makes them completely disambiguous, the
+				<TT
+CLASS="literal"
+>printf()</TT
+> function in OpenCReports
+				allows formatting every data type into a common result
+				string. Example:
+				<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
@@ -623,16 +247,30 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="programlisting"
->ocrpt_result *
-ocrpt_expr_make_error_result(opencreport *o,
-                             ocrpt_expr *e,
-                             const char *format, ...);</PRE
+>printf('You had %d %s on !@{%Y-%m-%d} '
+      'and %d %s on !@{%Y-%m-%d} in your pocket.',
+      6, 'apples', stodt('2022-05-01'),
+      2, 'oranges', stodt('2022-05-02'))</PRE
 ></TD
 ></TR
 ></TABLE
 >
-				</P
-></DIV
+				The result is:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>You had 6 apples on 2022-05-01 and 2 oranges on 2022-05-02 in
+your pocket.</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
 ></DIV
 ></DIV
 ><DIV
@@ -651,7 +289,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="x2618.html"
+HREF="x2622.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -669,7 +307,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x2745.html"
+HREF="c2688.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -679,13 +317,13 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->High level C API</TD
+>New style format strings</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="c2612.html"
+HREF="c2565.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -693,7 +331,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Data source related functions</TD
+>C language API reference</TD
 ></TR
 ></TABLE
 ></DIV

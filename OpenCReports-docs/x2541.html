@@ -2,7 +2,7 @@
 <HTML
 ><HEAD
 ><TITLE
->Format strings</TITLE
+>Precalculated variables</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
@@ -10,14 +10,14 @@ REL="HOME"
 TITLE="OpenCReports 0.5 Manual"
 HREF="book1.html"><LINK
 REL="UP"
-TITLE="Formatting"
-HREF="c2533.html"><LINK
+TITLE="Report variables"
+HREF="c2438.html"><LINK
 REL="PREVIOUS"
-TITLE="Formatting"
-HREF="c2533.html"><LINK
+TITLE="Custom variables"
+HREF="x2516.html"><LINK
 REL="NEXT"
-TITLE="Legacy format strings"
-HREF="x2552.html"></HEAD
+TITLE="Resetting a variable on break boundaries"
+HREF="x2555.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -45,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="c2533.html"
+HREF="x2516.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -53,13 +53,13 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Formatting</TD
+>Report variables</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x2552.html"
+HREF="x2555.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -73,44 +73,82 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="AEN2541"
->Format strings</A
+NAME="precalcvar"
+>Precalculated variables</A
 ></H1
 ><P
->&#13;			OpenCReports supports the same set of
-			format strings as RLIB, with extensions.
-			RLIB and OpenCReports support:
-			<P
-></P
-><UL
-><LI
-STYLE="list-style-type: disc"
+>&#13;			By default, variables produce results that are
+			valid for the data rows they are derived from.
+			Iterative variables variable produce results
+			that are valid for the current row and preceding
+			rows.
+		</P
 ><P
->&#13;						legacy format strings for strings,
-						numbers and datetime values
-					</P
-></LI
-><LI
-STYLE="list-style-type: disc"
+>&#13;			But usually, we are not interested in the
+			<I
+CLASS="emphasis"
+>running average</I
+>, only
+			in the average of the whole data series.
+		</P
 ><P
->&#13;						"new style" format strings with <TT
-CLASS="literal"
->!</TT
+>&#13;			This is where the <I
+CLASS="emphasis"
+>precalculated</I
 >
-						prefix
-					</P
-></LI
-></UL
+			variables come in.
+		</P
+><P
+>&#13;			Setting a variable to be precalculated is done
+			by the <TT
+CLASS="literal"
+>precalculate="yes"</TT
+>
+			attribute. <TT
+CLASS="literal"
+>delayed="yes"</TT
+> is also
+			accepted as an alias. Such a variable (or, actually,
+			its value) can be displayed in e.g.
+			<TT
+CLASS="literal"
+>&#60;ReportHeader&#62;</TT
+>
+			which is shown upfront before any report details to
+			inform the reader without looking at the last page.
+			<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report&#62;
+    &#60;Variables&#62;
+        &#60;Variable
+            name="var1"
+            value="query1.field1"
+            type="average"
+            precalculate="yes" /&#62;
+    &#60;/Variables&#62;
+
+    &#60;ReportHeader&#62;
+        &#60;Output&#62;
+            &#60;field value="v.var1"&#62;
+        &#60;/Output&#62;
+    &#60;/ReportHeader&#62;
+&#60;/Report&#62;</PRE
+></TD
+></TR
+></TABLE
 >
 		</P
 ><P
->&#13;			OpenCReports also supports a 2nd generation
-			new style format strings with a prefix and a
-			pair of brackets (<TT
-CLASS="literal"
->{}</TT
->) that
-			embed the format strings.
+>&#13;			See also <A
+HREF="x1106.html#precalcvarattr"
+>Precalculate attribute</A
+>.
 		</P
 ></DIV
 ><DIV
@@ -129,7 +167,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="c2533.html"
+HREF="x2516.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -147,7 +185,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x2552.html"
+HREF="x2555.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -157,13 +195,13 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Formatting</TD
+>Custom variables</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="c2533.html"
+HREF="c2438.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -171,7 +209,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Legacy format strings</TD
+>Resetting a variable on break boundaries</TD
 ></TR
 ></TABLE
 ></DIV

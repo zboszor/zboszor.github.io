@@ -2,22 +2,22 @@
 <HTML
 ><HEAD
 ><TITLE
->Constants</TITLE
+>Color specification</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
-TITLE="OpenCReports 0.5 Manual"
+TITLE="OpenCReports 0.6 Manual"
 HREF="book1.html"><LINK
 REL="UP"
-TITLE="Expressions in OpenCReports"
-HREF="c1658.html"><LINK
+TITLE="Report XML description"
+HREF="c169.html"><LINK
 REL="PREVIOUS"
-TITLE="Expressions in OpenCReports"
-HREF="c1658.html"><LINK
+TITLE="Image end"
+HREF="x1672.html"><LINK
 REL="NEXT"
-TITLE="Precalculated expressions"
-HREF="x1714.html"></HEAD
+TITLE="Expressions in OpenCReports"
+HREF="c1690.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -37,7 +37,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->OpenCReports 0.5 Manual</TH
+>OpenCReports 0.6 Manual</TH
 ></TR
 ><TR
 ><TD
@@ -45,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="c1658.html"
+HREF="x1672.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -53,13 +53,13 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Expressions in OpenCReports</TD
+>Report XML description</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x1714.html"
+HREF="c1690.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -73,160 +73,19 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="constants"
->Constants</A
+NAME="colorspec"
+>Color specification</A
 ></H1
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="stringliterals"
->String literals</A
-></H2
 ><P
->&#13;				String literals in OpenCReports can be either single or double quoted.
-				Some examples:
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->"apple"
-’apple’
-"I’ve eaten an apple"
-’This an "apple".’</PRE
-></TD
-></TR
-></TABLE
->
-				The values of these strings are:
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->apple
-apple
-I’ve eaten an apple
-This an "apple".</PRE
-></TD
-></TR
-></TABLE
->
-				We can see how the other quoting character can be used as part
-				of the string value.
-			</P
-><P
->&#13;				String literals can also use BASIC language style double quoting
-				to embed a single quoting character used for quoting the string
-				itself:
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->’apple’’’
-’apple’’pear’
-’apple’’’’pear’
-"apple"""
-"apple""pear"
-"apple""""pear"</PRE
-></TD
-></TR
-></TABLE
->			
-				The values of these strings are:
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->apple’
-apple’pear
-apple’’pear
-apple"
-apple"pear
-apple""pear</PRE
-></TD
-></TR
-></TABLE
->
-			</P
-><P
->&#13;				String literals can also use C language string continuation if
-				there's at least one whitespace character (space, TAB or new line)
-				between doubled quoting characters. String continuation can also
-				switch quoting characters without whitespace between quoting.
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->"apple" "pear"
-"apple" ’pear’
-"apple"’pear’</PRE
-></TD
-></TR
-></TABLE
->
-				The value of all these strings is:
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->applepear</PRE
-></TD
-></TR
-></TABLE
->
-			</P
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="numericconstants"
->Numeric constants</A
-></H2
-><P
->&#13;				Numeric values in OpenCReports are handled with GNU MPFR with
-				arbitrary precision, by default 256 bits. This allows for
-				very high precision, i.e. very long numbers. This is good
-				for directly using e.g. arbitrary precision
-				<TT
+>&#13;			Colors may be specified by HTML notation.
+			This contains six hexadecimal digits, representing
+			RGB (red, green, blue) values between 0 and 255
+			for each color component, prefixed by the
+			<TT
 CLASS="literal"
->numeric</TT
-> type columns from PostgreSQL.
-			</P
-><P
->&#13;				Numeric constants can be integer or fractional numbers with or
-				without the so called <I
-CLASS="emphasis"
->e-notation</I
-> or
-				scientific notation. Some examples:
-				<TABLE
+>#</TT
+> character.
+			<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
@@ -234,75 +93,23 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="programlisting"
->1
-1.234
-1e4
-1e-4
-1.234e-5</PRE
+>&#60;Line bgcolor="'#ffff00'" ... &#62;
+&#60;HorizontalLine color="'#ff00ff'" ... &#62;</PRE
 ></TD
 ></TR
 ></TABLE
 >
-				E-notation means that that number preceding the letter "e" or
-				"E" is multiplied by ten to the power of the number after the
-				letter "e" or "E", the latter being an integer value. The
-				values of the above examples are:
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->1
-1.234
-10000
-0.0001
-0.00001234</PRE
-></TD
-></TR
-></TABLE
->
-			</P
+		</P
 ><P
->&#13;				Numbers greater than 0 and less than 1 can be written with
-				or without the leading zero.
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->0.123
-.123</PRE
-></TD
-></TR
-></TABLE
->
-			</P
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="boolconstants"
->Boolean constants</A
-></H2
-><P
->&#13;				Boolean constants evalutate to numeric constans
-				<TT
+>&#13;			Colors may also be specified by hexadecimal notation.
+			This contains six hexadecimal digits, representing
+			RGB (red, green, blue) values between 0 and 255
+			for each color component, prefixed by
+			<TT
 CLASS="literal"
->1</TT
-> and <TT
-CLASS="literal"
->0</TT
+>0x</TT
 >.
-				The boolean constants are:
-				<TABLE
+			<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
@@ -310,52 +117,26 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="programlisting"
->yes
-no
-true
-false</PRE
+>&#60;Line bgcolor="'0xffff00'" ... &#62;
+&#60;HorizontalLine color="'0xff00ff'" ... &#62;</PRE
 ></TD
 ></TR
 ></TABLE
 >
-			</P
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="datetimeconstants"
->Datetime constants</A
-></H2
+		</P
 ><P
->&#13;				There are no datetime constants per se, although expressions
-				like <TT
-CLASS="literal"
->stodt('1980-06-30 16:00:00')</TT
-> (i.e.
-				function calls with constant arguments that result in a
-				<TT
-CLASS="literal"
->datetime</TT
-> value) implicitly turn into
-				constants through expression optimization.
-			</P
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="constexpr"
->Constant expressions</A
-></H2
+>&#13;			Color names may also be specified by name.
+			The following color names are supported for RLIB compatibility.
+			Color names are matched in a case-insensitive way.
+		</P
 ><P
->&#13;				Constant expressions are ones that contain
-				constant values (of any type) and operators
-				or functions.
-			</P
-></DIV
+>&#13;			<SPAN
+CLASS="inlinemediaobject"
+><IMG
+SRC="images/namedcolors.png"
+ALIGN="center"></SPAN
+>
+		</P
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -373,7 +154,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="c1658.html"
+HREF="x1672.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -391,7 +172,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x1714.html"
+HREF="c1690.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -401,13 +182,13 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Expressions in OpenCReports</TD
+>Image end</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="c1658.html"
+HREF="c169.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -415,7 +196,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Precalculated expressions</TD
+>Expressions in OpenCReports</TD
 ></TR
 ></TABLE
 ></DIV

@@ -2,22 +2,22 @@
 <HTML
 ><HEAD
 ><TITLE
->Low level C API</TITLE
+>Operators and functions</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
-TITLE="OpenCReports Manual"
+TITLE="OpenCReports 0.6 Manual"
 HREF="book1.html"><LINK
 REL="UP"
-TITLE="C language API reference"
-HREF="c1840.html"><LINK
+TITLE="Expressions in OpenCReports"
+HREF="c1690.html"><LINK
 REL="PREVIOUS"
-TITLE="High level C API"
-HREF="x1846.html"><LINK
+TITLE="Identifiers"
+HREF="x1752.html"><LINK
 REL="NEXT"
-TITLE="Data source related functions"
-HREF="x1973.html"></HEAD
+TITLE="Alphabetical list of functions"
+HREF="x2017.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -37,7 +37,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->OpenCReports Manual</TH
+>OpenCReports 0.6 Manual</TH
 ></TR
 ><TR
 ><TD
@@ -45,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="x1846.html"
+HREF="x1752.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -53,13 +53,13 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->C language API reference</TD
+>Expressions in OpenCReports</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x1973.html"
+HREF="x2017.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -73,225 +73,27 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="lowlevelapi"
->Low level C API</A
+NAME="opsandfunc"
+>Operators and functions</A
 ></H1
 ><P
->&#13;			The <A
-HREF="x1846.html"
->High level C API</A
-> is also part of the
-			low level API. The functions described below allow
-			creating a report using program code, or simply
-			fine tuning the report behavior by mostly using the
-			<A
-HREF="x1846.html"
->High level C API</A
->.
+>&#13;			OpenCReports expressions can use several operators and functions.
+			The operator precedence is mostly as expected from the C
+			programming language. One notable exception is implicit
+			multiplication. The precedence classes are as below,
+			in increasing order of precedence.
 		</P
 ><DIV
 CLASS="sect2"
 ><H2
 CLASS="sect2"
 ><A
-NAME="numerictuning"
->Numeric behavior related functions</A
-></H2
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN1888"
-><TT
-CLASS="literal"
->Set numeric precision</TT
-></A
-></H3
-><P
->&#13;					The default is 256 bits of floating point precision.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;void ocrpt_set_numeric_precision_bits(opencreport *o,
-                                      mpfr_prec_t prec);
-					</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN1893"
->Set rounding mode</A
-></H3
-><P
->&#13;					OpenCReports uses GNU MPFR under the hood and does't
-					hide this fact. The MPFR rounding mode constants are
-					used as is to set the rounding behaviour.
-					The default is <TT
-CLASS="literal"
->MPFR_RNDN</TT
->, round
-					to nearest.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;void ocrpt_set_rounding_mode(opencreport *o,
-                             mpfr_rnd_t rndmode);
-					</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="AEN1898"
->Locale related functions</A
-></H2
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN1900"
->Set report locale</A
-></H3
-><P
->&#13;					Setting the locale for the report does not affect
-					the main program or other threads. Locale setting
-					includes the language, the country. The UTF-8 suffix
-					is necessary. E.g.: <TT
-CLASS="literal"
->en_GB.UTF-8</TT
-> or
-					<TT
-CLASS="literal"
->de_DE.UTF-8</TT
->
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;void ocrpt_set_locale(opencreport *o,
-                      const char *locale);
-					</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN1906"
->Print monetary data in the report locale</A
-></H3
-><P
->&#13;					A customized monetary printing function was implemented
-					for the purposes of the report which MPFR doesn't
-					provide. It is used in OpenCReports both internally
-					and by unit tests.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;ssize_t ocrpt_mpfr_strfmon(opencreport *o,
-                           char *s, size_t maxsize,
-                           const char *format, ...);
-					</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="exprfunc"
->Expression related functions</A
+NAME="AEN1884"
+>Ternary operator</A
 ></H2
 ><P
->&#13;				Expressions in OpenCReports is explained in the
-				<A
-HREF="c1148.html"
->Expressions</A
-> chapter.
-			</P
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN1914"
->Parse an expression string</A
-></H3
-><P
->&#13;					This function parses an expression string and
-					creates an expression tree. It returns a pointer
-					to the <TT
-CLASS="literal"
->ocrpt_expr</TT
-> structure.
-				</P
-><P
->&#13;					If an error occurs, it returns NULL and optionally
-					returns the error message in <TT
-CLASS="literal"
->err</TT
->
-					pointer if it's not <TT
-CLASS="literal"
->NULL</TT
->.
-				</P
-><P
->&#13;					The <TT
-CLASS="literal"
->ocrpt_report</TT
-> pointer may be
-					valid or NULL. If valid, the expression is bound
-					to this <TT
-CLASS="literal"
->ocrpt_report</TT
->.
-					<TABLE
+>&#13;				The ternary operator is as in the C language:
+				<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
@@ -299,269 +101,328 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="programlisting"
->&#13;ocrpt_expr *ocrpt_expr_parse(opencreport *o,
-                             ocrpt_report *r,
-                             const char *str,
-                             char **err);
-					</PRE
+>expression1 ? expression2 : expression3
+				</PRE
 ></TD
 ></TR
 ></TABLE
 >
-				</P
-></DIV
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN1925"
->Free an expression parse tree</A
-></H3
-><P
->&#13;					Free an expression parse tree. If it was bound
-					to the passed-in <TT
+				It's evaluated as follows: if the value of numeric
+				<TT
 CLASS="literal"
->ocrpt_report</TT
+>expression1</TT
+> is <TT
+CLASS="literal"
+>true</TT
+>
+				(i.e. non-zero), then the result is the <TT
+CLASS="literal"
+>expression2</TT
 >,
-					this association is also deleted.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;void ocrpt_expr_free(opencreport *o,
-                     ocrpt_report *r,
-                     ocrpt_expr *e);
-					</PRE
-></TD
-></TR
-></TABLE
->
-				</P
+				otherwise it's <TT
+CLASS="literal"
+>expression3</TT
+>.
+				Type of <TT
+CLASS="literal"
+>expression2</TT
+> and
+				<TT
+CLASS="literal"
+>expression3</TT
+> may differ, i.e. the
+				result type will be the type of the underlying expression
+				but it can result in runtime errors.
+			</P
 ></DIV
 ><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
+CLASS="sect2"
+><H2
+CLASS="sect2"
 ><A
-NAME="AEN1930"
->Resolve expression references</A
-></H3
+NAME="AEN1894"
+>Logical operators with two operands</A
+></H2
 ><P
->&#13;					This function resolves variable (identifier)
-					references in the expression. This is needed
-					to bind query columns to expressions that
-					use them.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;void ocrpt_expr_resolve(opencreport *o,
-                        ocrpt_report *r,
-                        ocrpt_expr *e);
-					</PRE
-></TD
-></TR
-></TABLE
+>&#13;				Logical OR can be written as <TT
+CLASS="literal"
+>||</TT
+> or
+				<TT
+CLASS="literal"
+>or</TT
+>. Example: <TT
+CLASS="literal"
+>a || b</TT
 >
-				</P
+			</P
+><P
+>&#13;				Logical AND can be written as <TT
+CLASS="literal"
+>&#38;&#38;</TT
+> or
+				<TT
+CLASS="literal"
+>and</TT
+>. Logical AND has precedence over OR.
+				Example: <TT
+CLASS="literal"
+>a &#38;&#38; b</TT
+>
+			</P
 ></DIV
 ><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1904"
+>Bitwise operators with two operands</A
+></H2
+><P
+>&#13;			The bitwise operators in this precedence class and in their
+			increasing order of precedence are:
+			bitwise OR (<TT
+CLASS="literal"
+>|</TT
+>) and
+            bitwise AND (<TT
+CLASS="literal"
+>&#38;</TT
+>).
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1909"
+>Equality and inequality comparison operators</A
+></H2
+><P
+>&#13;				The equality comparison operator can be written as
+				<TT
+CLASS="literal"
+>=</TT
+> or <TT
+CLASS="literal"
+>==</TT
+>.
+			</P
+><P
+>&#13;				The inequality comparison operator can be written as
+				<TT
+CLASS="literal"
+>&#60;&#62;</TT
+> or <TT
+CLASS="literal"
+>!=</TT
+>.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1917"
+>Other comparison operators</A
+></H2
+><P
+>&#13;				Less-than (<TT
+CLASS="literal"
+>&#60;</TT
+>),
+				less-or-equal (<TT
+CLASS="literal"
+>&#60;=</TT
+>),
+				greater-than (<TT
+CLASS="literal"
+>&#62;</TT
+>) and
+				greater-or-equal (<TT
+CLASS="literal"
+>&#62;=</TT
+>).
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1924"
+>Bitwise shifts</A
+></H2
+><P
+>&#13;				Bitwise shift left (<TT
+CLASS="literal"
+>a &#62;&#62; b</TT
+>) and
+				bitwise shift right (<TT
+CLASS="literal"
+>a &#60;&#60; b</TT
+>).
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1929"
+>Addition and subtraction</A
+></H2
+><P
+>&#13;				<TT
+CLASS="literal"
+>a + b</TT
+> and <TT
+CLASS="literal"
+>a - b</TT
+>.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
 ><A
 NAME="AEN1934"
->Optimize an expression</A
-></H3
+>Multiplication, division and modulo (remainder)</A
+></H2
 ><P
->&#13;					This function optimizes an expression so
-					it may needs fewer computation steps during
-					report execution.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;void ocrpt_expr_optimize(opencreport *o,
-                         ocrpt_report *r,
-                         ocrpt_expr *e);
-					</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN1938"
->Evaluate an expression</A
-></H3
-><P
->&#13;					This function evaluates the expression.
-					It returns the expression's
-					<TT
+>&#13;				<TT
 CLASS="literal"
->ocrpt_result</TT
-> result structure.
-					The result must not be freed with
-					<TT
+>a * b</TT
+>, <TT
 CLASS="literal"
->ocrpt_result_free()</TT
+>a / b</TT
+> and
+				<TT
+CLASS="literal"
+>a % b</TT
 >.
-					It will be done by <TT
-CLASS="literal"
->ocrpt_expr_free()</TT
->
-				</P
-><P
->&#13;					For expressions with query column references,
-					this function must be called after
-					<TT
-CLASS="literal"
->ocrpt_query_navigate_next</TT
->
-					otherwise the result is not valid.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;ocrpt_result *ocrpt_expr_eval(opencreport *o,
-                              ocrpt_report *r,
-                              ocrpt_expr *e);
-					</PRE
-></TD
-></TR
-></TABLE
->
-				</P
+			</P
 ></DIV
 ><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
+CLASS="sect2"
+><H2
+CLASS="sect2"
 ><A
-NAME="AEN1947"
->Get expression result without evaluation</A
-></H3
+NAME="AEN1940"
+>Power-of operator</A
+></H2
 ><P
->&#13;					This function returns the expression result
-					if it was already evaluated.
-					The result must not be freed with
-					<TT
+>&#13;				<TT
 CLASS="literal"
->ocrpt_result_free()</TT
->.
-					It will be done by <TT
-CLASS="literal"
->ocrpt_expr_free()</TT
->.
-					Used by unit tests.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;ocrpt_result *ocrpt_expr_get_result(opencreport *o,
-                                    ocrpt_expr *e);
-					</PRE
-></TD
-></TR
-></TABLE
->
-				</P
+>a ^ b</TT
+> works as a-to-the-power-of-b.
+			</P
 ></DIV
 ><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
+CLASS="sect2"
+><H2
+CLASS="sect2"
 ><A
-NAME="AEN1953"
->Print an expression tree</A
-></H3
+NAME="AEN1944"
+>Factorial operator</A
+></H2
 ><P
->&#13;					Print an expression tree in its processed form on the
-					standard output. Used by unit tests.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;void ocrpt_expr_print(opencreport *o,
-                      ocrpt_expr *e);
-					</PRE
-></TD
-></TR
-></TABLE
->
-				</P
+>&#13;				<TT
+CLASS="literal"
+>a!</TT
+>, the '!' sign used as postfix operator.
+			</P
 ></DIV
 ><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1948"
+>Unary plus and minus, logical and bitwise NOT, prefix increment and decrement</A
+></H2
+><P
+>&#13;				Unary plus (<TT
+CLASS="literal"
+>+a</TT
+>), unary minus (<TT
+CLASS="literal"
+>-a</TT
+>),
+				logical NOT (<TT
+CLASS="literal"
+>!a</TT
+>, '!' used as prefix operator),
+				bitwise NOT (<TT
+CLASS="literal"
+>~a</TT
+>), prefix increment (<TT
+CLASS="literal"
+>++a</TT
+>)
+				and prefix decrement (<TT
+CLASS="literal"
+>--a</TT
+>).
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
 ><A
 NAME="AEN1957"
->Print an expression tree with subexpressions and their results</A
-></H3
+>Postfix increment and decrement</A
+></H2
 ><P
->&#13;					Print an expression tree with subexpressions
-					and their results in its processed form on the
-					standard output. Used by unit tests.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;void ocrpt_expr_result_deep_print(opencreport *o,
-                                  ocrpt_expr *e);
-					</PRE
-></TD
-></TR
-></TABLE
->
-				</P
+>&#13;				Postfix increment (<TT
+CLASS="literal"
+>a++</TT
+>) and decrement
+				(<TT
+CLASS="literal"
+>a--</TT
+>).
+			</P
 ></DIV
 ><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
+CLASS="sect2"
+><H2
+CLASS="sect2"
 ><A
-NAME="AEN1961"
->Count the number of expression nodes</A
-></H3
+NAME="AEN1962"
+>Function calls and implicit multiplication</A
+></H2
 ><P
->&#13;					This function returns the number of expression nodes.
-					Used by unit tests to validate optimizazion.
-					<TABLE
+>&#13;				Function calls execute a function on operands:
+				<TT
+CLASS="literal"
+>function(operand[, ...])</TT
+>. A function name
+				is a single word known by OpenCReports at the time of parsing,
+				either as a built-in function, or a user-supplied one.
+				The function name cannot have a leading dot or be a
+				domain-qualified identifier.
+			</P
+><P
+>&#13;				Implicit multiplication is when two distinct operands are in
+				juxtaposition, in other words they are written side by side
+				without any whitespace. In this case, there is an implied
+				multiplication between them that acts with higher precedence
+				than regular multiplication or division. Implicit multiplication
+				is applicable in these situations:
+				<P
+></P
+><UL
+><LI
+><P
+>&#13;							A numeric constant juxtaposed with an identifier,
+							the numeric constant is the on the left side.
+							<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
@@ -569,67 +430,240 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="programlisting"
->&#13;int32_t ocrpt_expr_nodes(ocrpt_expr *e);
-					</PRE
+>2x</PRE
 ></TD
 ></TR
 ></TABLE
 >
-				</P
+						</P
+></LI
+><LI
+><P
+>&#13;							A numeric constant juxtaposed with an expression inside
+							parentheses. The constant can be on either side of the
+							expression.
+							<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>2(a+b)
+(a+b)2</PRE
+></TD
+></TR
+></TABLE
+>
+						</P
+></LI
+><LI
+><P
+>&#13;							An identifier juxtaposed with an expression inside
+							parentheses, the identifier is on the left side of the
+							expression.
+							<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>x(a+b)</PRE
+></TD
+></TR
+></TABLE
+>
+						</P
+><P
+>&#13;							This is only treated as implicit
+							multiplication if the identifier name is not known as
+							a function name at the time of parsing and there is
+							a single expression inside the parentheses.
+							No expressions, a single expression with a known function
+							name as the identifier, or a series of comma delimited
+							series of expressions are treated as a function call and
+							the function call validity is checked against the number
+							of operands, with a potential parser error. If there's
+							an ambiguity between function names and identifiers
+							provided by data sources, it can be avoided by using
+							dot-prefixed or dot-prefixed and quoted identifiers,
+							or fully qualified identifiers in the form of
+							<TT
+CLASS="literal"
+>query.identifier</TT
+>.
+						</P
+></LI
+><LI
+><P
+>&#13;							An expression inside parentheses juxtaposed with an identifier
+							on the right side.
+							<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>(a+b)a</PRE
+></TD
+></TR
+></TABLE
+>
+						</P
+></LI
+><LI
+><P
+>&#13;							Two expressions inside parentheses juxtaposed with each other.
+							<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>(a+b)(c+d)</PRE
+></TD
+></TR
+></TABLE
+>
+						</P
+></LI
+></UL
+>
+			</P
+><P
+>&#13;				Implicit multiplication is NOT applicable in these situations,
+				besides the exceptions already explained above:
+				<P
+></P
+><UL
+><LI
+><P
+>&#13;							An identifier juxtaposed with a numeric constant,
+							the numeric constant is the on the right side.
+							<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>x2</PRE
+></TD
+></TR
+></TABLE
+>
+						</P
+><P
+>&#13;							Since an identifier name may include digits as the
+							second and subsequent characters, the numeric
+							constant, or at least its integer part is simply
+							recognized as part of the identifier name itself
+							according to the token matching. This can also result
+							in syntax errors when not handled with care.
+						</P
+></LI
+><LI
+><P
+>&#13;							An identifier juxtaposed with another identifier.
+							<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ab</PRE
+></TD
+></TR
+></TABLE
+>
+						</P
+><P
+>&#13;							The reason is the same as in the preceding case:
+							there is only a single identifier according to
+							token matching.
+						</P
+></LI
+></UL
+>
+			</P
 ></DIV
 ><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
+CLASS="sect2"
+><H2
+CLASS="sect2"
 ><A
-NAME="AEN1965"
->Initialize expression result type</A
-></H3
+NAME="AEN1995"
+>Parentheses</A
+></H2
 ><P
->&#13;					OpenCReports keeps track of the last three query
-					rows and computes three result values for expressions
-					for internal reasons. These functions initialize
-					the type for either the current result or all results
-					of the expression.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;enum ocrpt_result_type {
-    OCRPT_RESULT_ERROR,
-    OCRPT_RESULT_STRING,
-    OCRPT_RESULT_NUMBER,
-    OCRPT_RESULT_DATETIME
-};
-
-bool ocrpt_expr_init_result(opencreport *o,
-                            ocrpt_expr *e,
-                            enum ocrpt_result_type type);
-
-void ocrpt_expr_init_results(opencreport *o,
-                             ocrpt_expr *e,
-                             enum ocrpt_result_type type);
-					</PRE
-></TD
-></TR
-></TABLE
->
-				</P
+>&#13;				Parenthesized expressions are always computed first.
+			</P
 ></DIV
 ><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
+CLASS="sect2"
+><H2
+CLASS="sect2"
 ><A
-NAME="AEN1969"
->Set an error string as expression result</A
-></H3
+NAME="AEN1998"
+>Token matching, precendence and syntax errors</A
+></H2
 ><P
->&#13;					<TABLE
+>&#13;				Expression parsing works on two levels: token matching (the
+				job of Flex) and applying grammar (the job of Bison).
+				Token matching breaks up the expression string into tokens
+				in a greedy way: without whitepace delimiters, the longest
+				possible token is chosen.
+			</P
+><P
+>&#13;				This may lead to slight confusion when coupled with
+				implicit multiplication. For example, the expression
+				<TT
+CLASS="literal"
+>2e-1e</TT
+> is broken up into two tokens:
+				<TT
+CLASS="literal"
+>2e-1</TT
+> juxtaposed with
+				<TT
+CLASS="literal"
+>e</TT
+>. The first token is interpreted as
+				a numeric constant using <I
+CLASS="emphasis"
+>e-notation</I
+>
+				(so that it will mean <TT
+CLASS="literal"
+>2 * 10^(-1)</TT
+>) and
+				the second is the identifier <TT
+CLASS="literal"
+>e</TT
+>, leading
+				to the meaning <TT
+CLASS="literal"
+>0.2 * e</TT
+>. This is
+				unambiguous for the computer, but can be somewhat confusing
+				to the the user reading or writing expressions. To avoid
+				any confusion, don't use implicit multiplication and use
+				whitespace and parentheses gratituously.
+			</P
+><P
+>&#13;				Expression parsing handles precedence and whitespaces.
+				For example, these below do not mean the same thing:
+				<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
@@ -637,17 +671,55 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="programlisting"
->&#13;ocrpt_result *
-ocrpt_expr_make_error_result(opencreport *o,
-                             ocrpt_expr *e,
-                             const char *format, ...);
-					</PRE
+>a++ + ++b
+a+++++b
+				</PRE
 ></TD
 ></TR
 ></TABLE
 >
-				</P
-></DIV
+				The former is obvious, but the latter may be a little
+				surprising: <TT
+CLASS="literal"
+>(a++)++ + b</TT
+>, but not when
+				considering precedence and the Flex lexer behaviour to
+				match the the longest known token first. In this case,
+				to make the expression unambiguous, whitespace or parenthesis
+				should be used. Another ambiguous example:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>a++b
+				</PRE
+></TD
+></TR
+></TABLE
+>
+				The above may be interpreted as <TT
+CLASS="literal"
+>a + +b</TT
+>
+				but since no whitespace is used, Flex is free to interpret
+				it as <TT
+CLASS="literal"
+>a++ b</TT
+>, because <TT
+CLASS="literal"
+>++</TT
+>
+				is longer than <TT
+CLASS="literal"
+>+</TT
+>, so the former is matched
+				first as an operator token. This is a syntax error and
+				expression parsing throws an error for it.
+			</P
 ></DIV
 ></DIV
 ><DIV
@@ -666,7 +738,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="x1846.html"
+HREF="x1752.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -684,7 +756,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x1973.html"
+HREF="x2017.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -694,13 +766,13 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->High level C API</TD
+>Identifiers</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="c1840.html"
+HREF="c1690.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -708,7 +780,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Data source related functions</TD
+>Alphabetical list of functions</TD
 ></TR
 ></TABLE
 ></DIV

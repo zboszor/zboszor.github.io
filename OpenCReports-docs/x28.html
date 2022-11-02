@@ -7,7 +7,7 @@
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
-TITLE="OpenCReports 0.5 Manual"
+TITLE="OpenCReports 0.6 Manual"
 HREF="book1.html"><LINK
 REL="UP"
 TITLE="Introduction and concepts"
@@ -37,7 +37,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->OpenCReports 0.5 Manual</TH
+>OpenCReports 0.6 Manual</TH
 ></TR
 ><TR
 ><TD
@@ -85,12 +85,14 @@ NAME="AEN30"
 >What is a report generator?</A
 ></H2
 ><P
->&#13;				A report generator uses a tabular data source (for example an
-				array of data with labels for the column names, or an SQL query)
-				and a description file that specifies how to display the data.
-				The input data is transformed into various output formats,
-				some for human viewing, some for further machine processing.
-				Such output formats may be PDF, HTML, XML, plain text or CSV.
+>&#13;				A report generator uses a tabular data source, which contains
+				rows and columns of data. The columns have labels or names.
+				(An SQL database query is such a tabular data source.)
+				It also uses some kind of description that specifies how
+				to display the data. The input data is transformed into
+				various output formats, some for human viewing, some for
+				further machine processing. Such output formats may be PDF,
+				HTML, XML, plain text or CSV.
 			</P
 ></DIV
 ><DIV
@@ -129,22 +131,22 @@ NAME="AEN39"
 ></H2
 ><P
 >&#13;				The <A
-HREF="x2697.html"
+HREF="x2729.html"
 >Low level C API</A
 > allows creating a report purely
 				via program code. The <A
-HREF="x2662.html"
+HREF="x2694.html"
 >High level C API</A
 > allows loading
 				an XML report description that contains all details
-				about the report including database access. Mixing
+				about the report, including database access. Mixing
 				the high and low level APIs allows a balance anywhere
-				between the two extremes, e.g. loading the report
-				description but passing database access details via
-				program code. RLIB's API and report description allowed
-				neither extremes, it relied on the report description
-				to provide the layout look, with the data access added
-				from programming code.
+				between the two extremes. For example, load the report
+				description, which contains the complete layout, and pass
+				database access details via program code. RLIB's API and
+				report description allowed neither extremes, it relied on
+				the report description to provide the layout, with the
+				data access added from programming code.
 			</P
 ></DIV
 ><DIV
@@ -159,7 +161,7 @@ NAME="AEN44"
 >&#13;				OpenCReports uses a Flex/Bison based expression parser.
 				The expression grammar doesn't allow buggy expressions.
 				See the <A
-HREF="c1658.html"
+HREF="c1690.html"
 >Expressions</A
 > chapter.
 			</P
@@ -183,7 +185,7 @@ NAME="AEN49"
 				to reduce runtime cost of computing expression
 				values. For example, in <TT
 CLASS="literal"
->a * 2/3</TT
+>a*2/3</TT
 >
 				the part <TT
 CLASS="literal"
@@ -196,7 +198,7 @@ CLASS="literal"
 >&#13;				RLIB didn't contain automatic optimizations.
 				It relied on manual optimizations, like using
 				<A
-HREF="c2407.html"
+HREF="c2439.html"
 >Report variables</A
 >.
 			</P
@@ -210,10 +212,10 @@ NAME="AEN56"
 >Report variables</A
 ></H2
 ><P
->&#13;				OpenCReports supports using standard report variables
+>&#13;				OpenCReports supports standard report variables
 				for calculating sums, minimum, maximum and average values
 				or custom defined ones. See <A
-HREF="c2407.html"
+HREF="c2439.html"
 >Report variables</A
 >
 			</P
@@ -229,11 +231,11 @@ NAME="AEN60"
 ><P
 >&#13;				OpenCReports has many operators and functions to
 				be used in expressions. See <A
-HREF="x1849.html"
+HREF="x1881.html"
 >Operators and functions</A
 >
 				in the <A
-HREF="c1658.html"
+HREF="c1690.html"
 >Expressions</A
 > chapter.
 			</P
@@ -243,7 +245,7 @@ HREF="c1658.html"
 			</P
 ><P
 >&#13;				Custom functions can also be added to a report by
-				programming. Custom functions may override stock
+				programming code. Custom functions may override stock
 				functions.
 			</P
 ></DIV
@@ -261,7 +263,7 @@ NAME="AEN67"
 				also use UTF-8.
 			</P
 ><P
->&#13;				RLIB could have been built with or without UTF-8 suppport.
+>&#13;				RLIB could have been built with or without UTF-8 support.
 				The build that disabled UTF-8 support relied on
 				single byte character set encodings and conversion
 				between them. That wasn't always reliable. Since that
@@ -314,19 +316,19 @@ TARGET="_top"
 >
 				prices.
 				See <A
-HREF="x1677.html#numericconstants"
+HREF="x1709.html#numericconstants"
 >Numeric constants</A
 > in
 				the <A
-HREF="c1658.html"
+HREF="c1690.html"
 >Expressions</A
 > chapter and the
 				<A
-HREF="x2697.html#numerictuning"
+HREF="x2729.html#numerictuning"
 >Numeric behavior related functions</A
 > part in the
 				<A
-HREF="x2697.html"
+HREF="x2729.html"
 >Low level C API</A
 > chapter.
 			</P
@@ -344,11 +346,11 @@ NAME="AEN82"
 				time interval data types, with the latter allowing
 				adding or subtracting a custom time period to and from
 				timestamp data. See <A
-HREF="x1677.html#datetimeconstants"
+HREF="x1709.html#datetimeconstants"
 >Datetime constants</A
 >
 				in the <A
-HREF="c1658.html"
+HREF="c1690.html"
 >Expressions</A
 > chapter.
 			</P
@@ -450,7 +452,7 @@ CLASS="literal"
 				<TT
 CLASS="literal"
 >justified</TT
-> alignment equivalent to
+> alignment is equivalent to
 				<TT
 CLASS="literal"
 >left</TT
@@ -470,7 +472,7 @@ NAME="AEN106"
 				expressions. Breaks occur when the expression value
 				changes, when stepping from one data set row to the next.
 				See <A
-HREF="c2352.html"
+HREF="c2384.html"
 >Report breaks</A
 > and <A
 HREF="x1200.html"
@@ -506,7 +508,7 @@ NAME="AEN115"
 ></H2
 ><P
 >&#13;				By using the excellent drawing possibilities of
-				Cairo or later, OpenCReports supports generating
+				Cairo, OpenCReports supports generating
 				the report in PDF format. RLIB relied on an
 				internal PDF generator in earlier versions called
 				RPDF, and used libHaru in later versions.

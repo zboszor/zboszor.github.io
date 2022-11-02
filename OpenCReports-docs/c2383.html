@@ -2,19 +2,19 @@
 <HTML
 ><HEAD
 ><TITLE
->Report variables</TITLE
+>Report breaks</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
-TITLE="OpenCReports 0.4.3 Manual"
+TITLE="OpenCReports 0.5 Manual"
 HREF="book1.html"><LINK
 REL="PREVIOUS"
-TITLE="Report breaks in OpenCReports"
-HREF="x2345.html"><LINK
+TITLE="Alphabetical list of functions"
+HREF="x2016.html"><LINK
 REL="NEXT"
-TITLE="Expression variables"
-HREF="x2390.html"></HEAD
+TITLE="Report breaks in OpenCReports"
+HREF="x2400.html"></HEAD
 ><BODY
 CLASS="chapter"
 BGCOLOR="#FFFFFF"
@@ -34,7 +34,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->OpenCReports 0.4.3 Manual</TH
+>OpenCReports 0.5 Manual</TH
 ></TR
 ><TR
 ><TD
@@ -42,7 +42,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="x2345.html"
+HREF="x2016.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -56,7 +56,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x2390.html"
+HREF="x2400.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -69,28 +69,78 @@ WIDTH="100%"></DIV
 CLASS="chapter"
 ><H1
 ><A
-NAME="variables"
+NAME="breaks"
 ></A
->Report variables</H1
+>Report breaks</H1
 ><DIV
 CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
 NAME="AEN2385"
->Introduction to report variables</A
+>Grouping data</A
 ></H1
 ><P
->&#13;			Variables are named aliases for basic and iterative
-			<A
-HREF="c1635.html"
->Expressions</A
->. Iterative expressions
-			are ones that reference the previous value of
-			themselves. (See <A
-HREF="x1697.html#exprself"
->Expression self reference</A
->.)
+>&#13;			<TT
+CLASS="literal"
+>OpenCReports</TT
+>, being a report generator,
+			works on tabular data: the data consists of ordered (named)
+			columns and ordered or unordered rows.
+		</P
+><P
+>&#13;			It is often necessary to group data by certain properties.
+			Imagine a list of employees of a company, grouped by their
+			departments, pay grade, or location of employment. A report
+			may show the list of the employees with visual separation
+			according to any of these properties.
+		</P
+><P
+>&#13;			Multiple groupings may be prioritized (nested):
+			<P
+></P
+><OL
+TYPE="1"
+><LI
+><P
+>&#13;						by department
+					</P
+></LI
+><LI
+><P
+>&#13;						by pay grade
+					</P
+></LI
+></OL
+>
+			With the above, in each department, subgrouping would separate
+			employees according to the pay grade in that department.
+		</P
+><P
+>&#13;			For this to work, the rows of data must be fed to
+			the report generator in a certain order. For example,
+			in SQL the ordering can be done by:
+			<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>SELECT ...
+ORDER BY department,paygrade,employee;</PRE
+></TD
+></TR
+></TABLE
+>
+		</P
+><P
+>&#13;			This grouping of data is called a <I
+CLASS="emphasis"
+>break</I
+>
+			in a report generator.
 		</P
 ></DIV
 ></DIV
@@ -110,7 +160,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="x2345.html"
+HREF="x2016.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -128,7 +178,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x2390.html"
+HREF="x2400.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -138,7 +188,7 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Report breaks in OpenCReports</TD
+>Alphabetical list of functions</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
@@ -148,7 +198,7 @@ VALIGN="top"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Expression variables</TD
+>Report breaks in OpenCReports</TD
 ></TR
 ></TABLE
 ></DIV

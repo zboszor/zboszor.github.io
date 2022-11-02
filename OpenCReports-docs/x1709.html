@@ -2,19 +2,22 @@
 <HTML
 ><HEAD
 ><TITLE
->Paper size related functions</TITLE
+>Constants</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
-TITLE="OpenCReports Manual"
+TITLE="OpenCReports 0.6 Manual"
 HREF="book1.html"><LINK
 REL="UP"
-TITLE="C language API reference"
-HREF="c1483.html"><LINK
+TITLE="Expressions in OpenCReports"
+HREF="c1690.html"><LINK
 REL="PREVIOUS"
-TITLE="Query related functions"
-HREF="x1647.html"></HEAD
+TITLE="Expressions in OpenCReports"
+HREF="c1690.html"><LINK
+REL="NEXT"
+TITLE="Precalculated expressions"
+HREF="x1746.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -34,7 +37,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->OpenCReports Manual</TH
+>OpenCReports 0.6 Manual</TH
 ></TR
 ><TR
 ><TD
@@ -42,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="x1647.html"
+HREF="c1690.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -50,12 +53,16 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->C language API reference</TD
+>Expressions in OpenCReports</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
->&nbsp;</TD
+><A
+HREF="x1746.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
 ></TR
 ></TABLE
 ><HR
@@ -66,56 +73,235 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="AEN1709"
->Paper size related functions</A
+NAME="constants"
+>Constants</A
 ></H1
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="stringliterals"
+>String literals</A
+></H2
 ><P
->&#13;			Paper size in OpenCReports is handled via
-			<A
-HREF="http://packages.qa.debian.org/libp/libpaper.html"
-TARGET="_top"
->libpaper</A
+>&#13;				String literals in OpenCReports can be either single or double quoted.
+				Some examples:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>"apple"
+’apple’
+"I’ve eaten an apple"
+’This an "apple".’</PRE
+></TD
+></TR
+></TABLE
+>
+				The values of these strings are:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>apple
+apple
+I’ve eaten an apple
+This an "apple".</PRE
+></TD
+></TR
+></TABLE
+>
+				We can see how the other quoting character can be used as part
+				of the string value.
+			</P
+><P
+>&#13;				String literals can also use BASIC language style double quoting
+				to embed a single quoting character used for quoting the string
+				itself:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>’apple’’’
+’apple’’pear’
+’apple’’’’pear’
+"apple"""
+"apple""pear"
+"apple""""pear"</PRE
+></TD
+></TR
+></TABLE
+>			
+				The values of these strings are:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>apple’
+apple’pear
+apple’’pear
+apple"
+apple"pear
+apple""pear</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+><P
+>&#13;				String literals can also use C language string continuation if
+				there's at least one whitespace character (space, TAB or new line)
+				between doubled quoting characters. String continuation can also
+				switch quoting characters without whitespace between quoting.
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>"apple" "pear"
+"apple" ’pear’
+"apple"’pear’</PRE
+></TD
+></TR
+></TABLE
+>
+				The value of all these strings is:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>applepear</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="numericconstants"
+>Numeric constants</A
+></H2
+><P
+>&#13;				Numeric values in OpenCReports are handled with GNU MPFR with
+				arbitrary precision, by default 256 bits. This allows for
+				very high precision, i.e. very long numbers. This is good
+				for directly using e.g. arbitrary precision
+				<TT
+CLASS="literal"
+>numeric</TT
+> type columns from PostgreSQL.
+			</P
+><P
+>&#13;				Numeric constants can be integer or fractional numbers with or
+				without the so called <I
+CLASS="emphasis"
+>e-notation</I
+> or
+				scientific notation. Some examples:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>1
+1.234
+1e4
+1e-4
+1.234e-5</PRE
+></TD
+></TR
+></TABLE
+>
+				E-notation means that that number preceding the letter "e" or
+				"E" is multiplied by ten to the power of the number after the
+				letter "e" or "E", the latter being an integer value. The
+				values of the above examples are:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>1
+1.234
+10000
+0.0001
+0.00001234</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+><P
+>&#13;				Numbers greater than 0 and less than 1 can be written with
+				or without the leading zero.
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>0.123
+.123</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="boolconstants"
+>Boolean constants</A
+></H2
+><P
+>&#13;				Boolean constants evalutate to numeric constans
+				<TT
+CLASS="literal"
+>1</TT
+> and <TT
+CLASS="literal"
+>0</TT
 >.
-		</P
-><P
->&#13;			This structure is used in OpenCReports to represent
-			paper name and size:
-			<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;struct ocrpt_paper {
-    const char *name;
-    double width;
-    double height;
-};
-typedef struct ocrpt_paper ocrpt_paper;
-			</PRE
-></TD
-></TR
-></TABLE
->
-		</P
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="AEN1715"
-><TT
-CLASS="literal"
->ocrpt_get_system_paper</TT
-></A
-></H2
-><P
->&#13;				Get the system default <TT
-CLASS="literal"
->ocrpt_paper</TT
->.
+				The boolean constants are:
 				<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
@@ -124,8 +310,10 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="programlisting"
->&#13;const ocrpt_paper *ocrpt_get_system_paper(void);
-				</PRE
+>yes
+no
+true
+false</PRE
 ></TD
 ></TR
 ></TABLE
@@ -137,28 +325,21 @@ CLASS="sect2"
 ><H2
 CLASS="sect2"
 ><A
-NAME="AEN1721"
-><TT
-CLASS="literal"
->ocrpt_get_paper_by_name</TT
-></A
+NAME="datetimeconstants"
+>Datetime constants</A
 ></H2
 ><P
->&#13;				Get paper size of the specified paper name.
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;const ocrpt_paper *ocrpt_get_paper_by_name(const char *paper);
-				</PRE
-></TD
-></TR
-></TABLE
->
+>&#13;				There are no datetime constants per se, although expressions
+				like <TT
+CLASS="literal"
+>stodt('1980-06-30 16:00:00')</TT
+> (i.e.
+				function calls with constant arguments that result in a
+				<TT
+CLASS="literal"
+>datetime</TT
+> value) implicitly turn into
+				constants through expression optimization.
 			</P
 ></DIV
 ><DIV
@@ -166,157 +347,13 @@ CLASS="sect2"
 ><H2
 CLASS="sect2"
 ><A
-NAME="AEN1726"
-><TT
-CLASS="literal"
->ocrpt_set_paper</TT
-></A
+NAME="constexpr"
+>Constant expressions</A
 ></H2
 ><P
->&#13;				Set paper for the report using an <TT
-CLASS="literal"
->ocrpt_paper</TT
-> structure.
-				The contents of the structure is copied.
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;void ocrpt_set_paper(opencreport *o, const ocrpt_paper *paper);
-				</PRE
-></TD
-></TR
-></TABLE
->
-			</P
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="AEN1732"
-><TT
-CLASS="literal"
->ocrpt_set_paper_by_name</TT
-></A
-></H2
-><P
->&#13;				Set paper for the report using a paper name.
-				If the paper name is unknown, the system default paper is set.
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;void ocrpt_set_paper_by_name(opencreport *o, const char *paper);
-				</PRE
-></TD
-></TR
-></TABLE
->
-			</P
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="AEN1737"
-><TT
-CLASS="literal"
->ocrpt_get_paper</TT
-></A
-></H2
-><P
->&#13;				Get the report's currently set paper.
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;const ocrpt_paper *ocrpt_get_paper(opencreport *o);
-				</PRE
-></TD
-></TR
-></TABLE
->
-			</P
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="AEN1742"
-><TT
-CLASS="literal"
->ocrpt_paper_first</TT
-></A
-></H2
-><P
->&#13;				Start an iterator for supported paper names and sizes.
-				The returned paper structures are library-global but
-				the iterator is per report handler. Only one iterator
-				per report handler can be run at a time.
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;const ocrpt_paper *ocrpt_paper_first(opencreport *o);
-				</PRE
-></TD
-></TR
-></TABLE
->
-			</P
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="AEN1747"
-><TT
-CLASS="literal"
->ocrpt_paper_next</TT
-></A
-></H2
-><P
->&#13;				Get the next <TT
-CLASS="literal"
->ocrpt_paper</TT
-> structure
-				in the iterator. It returns NULL when there is no more
-				paper known to the system.
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;const ocrpt_paper *ocrpt_paper_next(opencreport *o);
-				</PRE
-></TD
-></TR
-></TABLE
->
+>&#13;				Constant expressions are ones that contain
+				constant values (of any type) and operators
+				or functions.
 			</P
 ></DIV
 ></DIV
@@ -336,7 +373,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="x1647.html"
+HREF="c1690.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -353,20 +390,24 @@ ACCESSKEY="H"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->&nbsp;</TD
+><A
+HREF="x1746.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
 ></TR
 ><TR
 ><TD
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Query related functions</TD
+>Expressions in OpenCReports</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="c1483.html"
+HREF="c1690.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -374,7 +415,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->&nbsp;</TD
+>Precalculated expressions</TD
 ></TR
 ></TABLE
 ></DIV

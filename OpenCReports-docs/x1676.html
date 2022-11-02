@@ -2,22 +2,22 @@
 <HTML
 ><HEAD
 ><TITLE
->High level C API</TITLE
+>Color specification</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
-TITLE="OpenCReports Manual"
+TITLE="OpenCReports 0.5 Manual"
 HREF="book1.html"><LINK
 REL="UP"
-TITLE="C language API reference"
-HREF="c1670.html"><LINK
+TITLE="Report XML description"
+HREF="c169.html"><LINK
 REL="PREVIOUS"
-TITLE="C language API reference"
-HREF="c1670.html"><LINK
+TITLE="Image end"
+HREF="x1671.html"><LINK
 REL="NEXT"
-TITLE="Low level C API"
-HREF="x1711.html"></HEAD
+TITLE="Expressions in OpenCReports"
+HREF="c1689.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -37,7 +37,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->OpenCReports Manual</TH
+>OpenCReports 0.5 Manual</TH
 ></TR
 ><TR
 ><TD
@@ -45,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="c1670.html"
+HREF="x1671.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -53,13 +53,13 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->C language API reference</TD
+>Report XML description</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x1711.html"
+HREF="c1689.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -73,13 +73,18 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="highlevelapi"
->High level C API</A
+NAME="colorspec"
+>Color specification</A
 ></H1
 ><P
->&#13;			Example code using the high level C API where everything
-			concerning the report (including the data source)
-			is described in the report XML:
+>&#13;			Colors may be specified by HTML notation.
+			This contains six hexadecimal digits, representing
+			RGB (red, green, blue) values between 0 and 255
+			for each color component, prefixed by the
+			<TT
+CLASS="literal"
+>#</TT
+> character.
 			<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
@@ -88,50 +93,23 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="programlisting"
->&#13;#include &#60;opencreport.h&#62;
-
-int main(void) {
-    opencreport *o = ocrpt_init();
-
-    if (!ocrpt_parse_xml(o, "report.xml")) {
-        printf("XML parse error\n");
-        ocrpt_free(o);
-        return 1;
-    }
-
-    ocrpt_set_output_format(o, OCRPT_OUTPUT_PDF);
-    ocrpt_execute(o);
-    ocrpt_spool(o);
-    ocrpt_free(o);
-    return 0;
-}
-			</PRE
+>&#60;Line bgcolor="'#ffff00'" ... &#62;
+&#60;HorizontalLine color="'#ff00ff'" ... &#62;</PRE
 ></TD
 ></TR
 ></TABLE
 >
 		</P
 ><P
->&#13;			The above code will load <TT
+>&#13;			Colors may also be specified by hexadecimal notation.
+			This contains six hexadecimal digits, representing
+			RGB (red, green, blue) values between 0 and 255
+			for each color component, prefixed by
+			<TT
 CLASS="literal"
->report.xml</TT
->,
-			set the output format to PDF, runs the report and prints
-			it output on <TT
-CLASS="literal"
->stdout</TT
+>0x</TT
 >.
-		</P
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="AEN1683"
->Report handler initialization</A
-></H2
-><P
->&#13;			<TABLE
+			<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
@@ -139,175 +117,26 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="programlisting"
->&#13;opencreport *ocrpt_init(void);
-			</PRE
+>&#60;Line bgcolor="'0xffff00'" ... &#62;
+&#60;HorizontalLine color="'0xff00ff'" ... &#62;</PRE
 ></TD
 ></TR
 ></TABLE
 >
 		</P
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="AEN1687"
->Load a report XML description</A
-></H2
 ><P
->&#13;				This function loads the specified XML file
-				into the report handler. It returns
-				<TT
-CLASS="literal"
->true</TT
-> for success,
-				<TT
-CLASS="literal"
->false</TT
-> for failure.
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;bool ocrpt_parse_xml(opencreport *o, const char *filename);
-				</PRE
-></TD
-></TR
-></TABLE
->
-			</P
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="AEN1693"
->Set report output format</A
-></H2
+>&#13;			Color names may also be specified by name.
+			The following color names are supported for RLIB compatibility.
+			Color names are matched in a case-insensitive way.
+		</P
 ><P
->&#13;				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;enum ocrpt_format_type {
-    OCRPT_OUTPUT_UNSET,
-    OCRPT_OUTPUT_PDF,
-    OCRPT_OUTPUT_HTML,
-    OCRPT_OUTPUT_TXT,
-    OCRPT_OUTPUT_CSV,
-    OCRPT_OUTPUT_XML
-};
-typedef enum ocrpt_format_type ocrpt_format_type;
-
-void ocrpt_set_output_format(opencreport *o,
-                             ocrpt_format_type format);
-				</PRE
-></TD
-></TR
-></TABLE
+>&#13;			<SPAN
+CLASS="inlinemediaobject"
+><IMG
+SRC="images/namedcolors.png"
+ALIGN="center"></SPAN
 >
-			</P
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="AEN1697"
->Run the report</A
-></H2
-><P
->&#13;				This function executes the report, constructs
-				the result in memory. It returns <TT
-CLASS="literal"
->true</TT
->
-				for success, <TT
-CLASS="literal"
->false</TT
-> for failure.
-				It is a failure if the output format is unset.
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;bool ocrpt_execute(opencreport *o);
-				</PRE
-></TD
-></TR
-></TABLE
->
-			</P
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="AEN1703"
->Dump report result</A
-></H2
-><P
->&#13;				Dump the report output on the program's
-				standard output channel.
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;void ocrpt_spool(opencreport *o);
-				</PRE
-></TD
-></TR
-></TABLE
->
-			</P
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="AEN1707"
->Report handler destruction</A
-></H2
-><P
->&#13;				Calling this function frees up the report handler
-				structure and everything created for it, even
-				the details that were created by the low level API.
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#13;void ocrpt_free(opencreport *o);
-				</PRE
-></TD
-></TR
-></TABLE
->
-			</P
-></DIV
+		</P
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -325,7 +154,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="c1670.html"
+HREF="x1671.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -343,7 +172,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x1711.html"
+HREF="c1689.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -353,13 +182,13 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->C language API reference</TD
+>Image end</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="c1670.html"
+HREF="c169.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -367,7 +196,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Low level C API</TD
+>Expressions in OpenCReports</TD
 ></TR
 ></TABLE
 ></DIV

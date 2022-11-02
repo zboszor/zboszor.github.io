@@ -2,22 +2,22 @@
 <HTML
 ><HEAD
 ><TITLE
->Low level C API</TITLE
+>Expression variables</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
-TITLE="OpenCReports 0.4.3 Manual"
+TITLE="OpenCReports 0.5 Manual"
 HREF="book1.html"><LINK
 REL="UP"
-TITLE="C language API reference"
-HREF="c2415.html"><LINK
+TITLE="Report variables"
+HREF="c2438.html"><LINK
 REL="PREVIOUS"
-TITLE="High level C API"
-HREF="x2421.html"><LINK
+TITLE="Report variables"
+HREF="c2438.html"><LINK
 REL="NEXT"
-TITLE="Data source related functions"
-HREF="x2548.html"></HEAD
+TITLE="Variable types for simple statistics"
+HREF="x2479.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -37,7 +37,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->OpenCReports 0.4.3 Manual</TH
+>OpenCReports 0.5 Manual</TH
 ></TR
 ><TR
 ><TD
@@ -45,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="x2421.html"
+HREF="c2438.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -53,13 +53,13 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->C language API reference</TD
+>Report variables</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x2548.html"
+HREF="x2479.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -73,221 +73,87 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="lowlevelapi"
->Low level C API</A
+NAME="exprvar"
+>Expression variables</A
 ></H1
 ><P
->&#13;			The <A
-HREF="x2421.html"
->High level C API</A
-> is also part of the
-			low level API. The functions described below allow
-			creating a report using program code, or simply
-			fine tuning the report behavior by mostly using the
-			<A
-HREF="x2421.html"
->High level C API</A
->.
+>&#13;			For basic expressions, the value of a variable is
+			calculated from the aliased expression using the current
+			row of data from the data source. This can be thought of
+			as a kind of shortcut. A variable calculates the
+			value of a long or often used expression, and the variable
+			result may in turn be used in other expressions.
+			This can save both typing (in the report XML) and report
+			execution time during the report generation.
+		</P
+><P
+>&#13;			Here's a complete example of using a variable:
+			<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report&#62;
+    &#60;Variables&#62;
+        &#60;Variable
+            name="var1"
+            value="query1.field1 + query2.field2"
+            type="expression" /&#62;
+    &#60;/Variables&#62;
+
+    &#60;Detail&#62;
+        &#60;FieldHeaders&#62;
+            &#60;literal value="'My variable'" /&#62;
+        &#60;/FieldHeaders&#62;
+
+        &#60;FieldDetails&#62;
+            &#60;field value="v.var1" /&#62;
+        &#60;/FieldDetails&#62;
+    &#60;/Detail&#62;
+&#60;/Report&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+		</P
+><P
+>&#13;			Note, that in this simple example, there is
+			no difference if the variable is used in
+			the <TT
+CLASS="literal"
+>&#60;field&#62;</TT
+> or the
+			<TT
+CLASS="literal"
+>query1.field1 + query2.field2</TT
+>
+			expression. The efficiency of not computing
+			the variable again for the same data row can be
+			observed when the variable is used multiple times
+			and the report processes a huge data set.
 		</P
 ><DIV
 CLASS="sect2"
 ><H2
 CLASS="sect2"
 ><A
-NAME="numerictuning"
->Numeric behavior related functions</A
-></H2
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2463"
-><TT
-CLASS="literal"
->Set numeric precision</TT
-></A
-></H3
-><P
->&#13;					The default is 256 bits of floating point precision.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->void ocrpt_set_numeric_precision_bits(opencreport *o,
-                                      mpfr_prec_t prec);</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2468"
->Set rounding mode</A
-></H3
-><P
->&#13;					OpenCReports uses GNU MPFR under the hood and does't
-					hide this fact. The MPFR rounding mode constants are
-					used as is to set the rounding behaviour.
-					The default is <TT
-CLASS="literal"
->MPFR_RNDN</TT
->, round
-					to nearest.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->void ocrpt_set_rounding_mode(opencreport *o,
-                             mpfr_rnd_t rndmode);</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="AEN2473"
->Locale related functions</A
-></H2
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2475"
->Set report locale</A
-></H3
-><P
->&#13;					Setting the locale for the report does not affect
-					the main program or other threads. Locale setting
-					includes the language, the country. The UTF-8 suffix
-					is necessary. E.g.: <TT
-CLASS="literal"
->en_GB.UTF-8</TT
-> or
-					<TT
-CLASS="literal"
->de_DE.UTF-8</TT
->
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->void ocrpt_set_locale(opencreport *o,
-                      const char *locale);</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2481"
->Print monetary data in the report locale</A
-></H3
-><P
->&#13;					A customized monetary printing function was implemented
-					for the purposes of the report which MPFR doesn't
-					provide. It is used in OpenCReports both internally
-					and by unit tests.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->ssize_t ocrpt_mpfr_strfmon(opencreport *o,
-                           char *s, size_t maxsize,
-                           const char *format, ...);</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="exprfunc"
->Expression related functions</A
+NAME="AEN2464"
+>Variables with iterative expressions</A
 ></H2
 ><P
->&#13;				Expressions in OpenCReports is explained in the
-				<A
-HREF="c1637.html"
->Expressions</A
-> chapter.
+>&#13;				An expression may be iterative,  where the new value
+				is derived from the previous value of itself.
+				See <A
+HREF="x1751.html#exprself"
+>Expression self reference</A
+>.
 			</P
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2489"
->Parse an expression string</A
-></H3
 ><P
->&#13;					This function parses an expression string and
-					creates an expression tree. It returns a pointer
-					to the <TT
-CLASS="literal"
->ocrpt_expr</TT
-> structure.
-				</P
-><P
->&#13;					If an error occurs, it returns NULL and optionally
-					returns the error message in <TT
-CLASS="literal"
->err</TT
->
-					pointer if it's not <TT
-CLASS="literal"
->NULL</TT
->.
-				</P
-><P
->&#13;					The <TT
-CLASS="literal"
->ocrpt_report</TT
-> pointer may be
-					valid or NULL. If valid, the expression is bound
-					to this <TT
-CLASS="literal"
->ocrpt_report</TT
->.
-					<TABLE
+>&#13;				Here's a complete example of using a variable:
+				<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
@@ -295,327 +161,59 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="programlisting"
->ocrpt_expr *ocrpt_expr_parse(opencreport *o,
-                             ocrpt_report *r,
-                             const char *str,
-                             char **err);</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2500"
->Free an expression parse tree</A
-></H3
-><P
->&#13;					Free an expression parse tree. If it was bound
-					to the passed-in <TT
-CLASS="literal"
->ocrpt_report</TT
->,
-					this association is also deleted.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->void ocrpt_expr_free(opencreport *o,
-                     ocrpt_report *r,
-                     ocrpt_expr *e);</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2505"
->Resolve expression references</A
-></H3
-><P
->&#13;					This function resolves variable (identifier)
-					references in the expression. This is needed
-					to bind query columns to expressions that
-					use them.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->void ocrpt_expr_resolve(opencreport *o,
-                        ocrpt_report *r,
-                        ocrpt_expr *e);</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2509"
->Optimize an expression</A
-></H3
-><P
->&#13;					This function optimizes an expression so
-					it may needs fewer computation steps during
-					report execution.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->void ocrpt_expr_optimize(opencreport *o,
-                         ocrpt_report *r,
-                         ocrpt_expr *e);</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2513"
->Evaluate an expression</A
-></H3
-><P
->&#13;					This function evaluates the expression.
-					It returns the expression's
-					<TT
-CLASS="literal"
->ocrpt_result</TT
-> result structure.
-					The result must not be freed with
-					<TT
-CLASS="literal"
->ocrpt_result_free()</TT
->.
-					It will be done by <TT
-CLASS="literal"
->ocrpt_expr_free()</TT
->
-				</P
-><P
->&#13;					For expressions with query column references,
-					this function must be called after
-					<TT
-CLASS="literal"
->ocrpt_query_navigate_next</TT
->
-					otherwise the result is not valid.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->ocrpt_result *ocrpt_expr_eval(opencreport *o,
-                              ocrpt_report *r,
-                              ocrpt_expr *e);</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2522"
->Get expression result without evaluation</A
-></H3
-><P
->&#13;					This function returns the expression result
-					if it was already evaluated.
-					The result must not be freed with
-					<TT
-CLASS="literal"
->ocrpt_result_free()</TT
->.
-					It will be done by <TT
-CLASS="literal"
->ocrpt_expr_free()</TT
->.
-					Used by unit tests.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->ocrpt_result *ocrpt_expr_get_result(opencreport *o,
-                                    ocrpt_expr *e);</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2528"
->Print an expression tree</A
-></H3
-><P
->&#13;					Print an expression tree in its processed form on the
-					standard output. Used by unit tests.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->void ocrpt_expr_print(opencreport *o,
-                      ocrpt_expr *e);</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2532"
->Print an expression tree with subexpressions and their results</A
-></H3
-><P
->&#13;					Print an expression tree with subexpressions
-					and their results in its processed form on the
-					standard output. Used by unit tests.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->void ocrpt_expr_result_deep_print(opencreport *o,
-                                  ocrpt_expr *e);</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2536"
->Count the number of expression nodes</A
-></H3
-><P
->&#13;					This function returns the number of expression nodes.
-					Used by unit tests to validate optimizazion.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->int32_t ocrpt_expr_nodes(ocrpt_expr *e);</PRE
-></TD
-></TR
-></TABLE
->
-				</P
-></DIV
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2540"
->Initialize expression result type</A
-></H3
-><P
->&#13;					OpenCReports keeps track of the last three query
-					rows and computes three result values for expressions
-					for internal reasons. These functions initialize
-					the type for either the current result or all results
-					of the expression.
-					<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->enum ocrpt_result_type {
-    OCRPT_RESULT_ERROR,
-    OCRPT_RESULT_STRING,
-    OCRPT_RESULT_NUMBER,
-    OCRPT_RESULT_DATETIME
-};
+>&#60;Report&#62;
+    &#60;Variables&#62;
+        &#60;Variable
+            name="var1"
+            value="r.self + query1.field1 + query2.field2"
+            type="expression" /&#62;
+    &#60;/Variables&#62;
 
-bool ocrpt_expr_init_result(opencreport *o,
-                            ocrpt_expr *e,
-                            enum ocrpt_result_type type);
+    &#60;Detail&#62;
+        &#60;FieldHeaders&#62;
+            &#60;literal value="'My variable'" /&#62;
+        &#60;/FieldHeaders&#62;
 
-void ocrpt_expr_init_results(opencreport *o,
-                             ocrpt_expr *e,
-                             enum ocrpt_result_type type);</PRE
+        &#60;FieldDetails&#62;
+            &#60;field value="v.var1" /&#62;
+        &#60;/FieldDetails&#62;
+    &#60;/Detail&#62;
+&#60;/Report&#62;</PRE
 ></TD
 ></TR
 ></TABLE
 >
-				</P
-></DIV
-><DIV
-CLASS="sect3"
-><H3
-CLASS="sect3"
-><A
-NAME="AEN2544"
->Set an error string as expression result</A
-></H3
+			</P
 ><P
->&#13;					<TABLE
+>&#13;				The trick is to use the <TT
+CLASS="literal"
+>r.self</TT
+>
+				internal variable.
+			</P
+><P
+>&#13;				Please note, that the above example will likely
+				not work as is, because for the first row,
+				<I
+CLASS="emphasis"
+>there is no previous row</I
+>.
+				But there is a trick to avoid such problems,
+				namely using the trinary operator (or its equivalent,
+				the <TT
+CLASS="literal"
+>iif()</TT
+> function) and the
+				<TT
+CLASS="literal"
+>rownum()</TT
+> to perform only safe
+				computations. (Note that the <TT
+CLASS="literal"
+>value=...</TT
+>
+				part below is a single line.)
+				<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
@@ -623,16 +221,25 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="programlisting"
->ocrpt_result *
-ocrpt_expr_make_error_result(opencreport *o,
-                             ocrpt_expr *e,
-                             const char *format, ...);</PRE
+>&#60;Variable&#62;
+    ...
+    value="rownum() == 1 ?
+           query1.field1 + query2.field2 :
+           r.self + query1.field1 + query2.field2"
+    ...
+&#60;/Variable&#62;</PRE
 ></TD
 ></TR
 ></TABLE
 >
-				</P
-></DIV
+			</P
+><P
+>&#13;				This example shows the correct operation of
+				an iterative expression. For the first row,
+				set a known good value. For every subsequent rows,
+				the previous row value may be used for deriving
+				the new value from.
+			</P
 ></DIV
 ></DIV
 ><DIV
@@ -651,7 +258,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="x2421.html"
+HREF="c2438.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -669,7 +276,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x2548.html"
+HREF="x2479.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -679,13 +286,13 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->High level C API</TD
+>Report variables</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="c2415.html"
+HREF="c2438.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -693,7 +300,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Data source related functions</TD
+>Variable types for simple statistics</TD
 ></TR
 ></TABLE
 ></DIV

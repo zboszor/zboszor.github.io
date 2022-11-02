@@ -2,22 +2,22 @@
 <HTML
 ><HEAD
 ><TITLE
->Constants</TITLE
+>Image</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
-TITLE="OpenCReports Manual"
+TITLE="OpenCReports 0.6 Manual"
 HREF="book1.html"><LINK
 REL="UP"
-TITLE="Expressions in OpenCReports"
-HREF="c1582.html"><LINK
+TITLE="Report XML description"
+HREF="c169.html"><LINK
 REL="PREVIOUS"
-TITLE="Expressions in OpenCReports"
-HREF="c1582.html"><LINK
+TITLE="HorizontalLine"
+HREF="x1542.html"><LINK
 REL="NEXT"
-TITLE="Identifiers"
-HREF="x1637.html"></HEAD
+TITLE="Image end"
+HREF="x1672.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -37,7 +37,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->OpenCReports Manual</TH
+>OpenCReports 0.6 Manual</TH
 ></TR
 ><TR
 ><TD
@@ -45,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="c1582.html"
+HREF="x1542.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -53,13 +53,13 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Expressions in OpenCReports</TD
+>Report XML description</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x1637.html"
+HREF="x1672.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -73,21 +73,91 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="constants"
->Constants</A
+NAME="imagenode"
+>Image</A
 ></H1
+><P
+>&#13;			An image to draw on the page, either on its own
+			which controls indentation for subsequent elements:
+			<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Output&#62;
+    &#60;Image ... /&#62;
+&#60;/Output</PRE
+></TD
+></TR
+></TABLE
+>
+			or as a line element:
+			<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Output&#62;
+    &#60;Line ... &#62;
+        &#60;Image ... /&#62;
+    &#60;Line/&#62;
+&#60;/Output</PRE
+></TD
+></TR
+></TABLE
+>
+		</P
+><P
+>&#13;			After a valid (standalone) image specification,
+			subsequent <A
+HREF="x1301.html"
+>Line node</A
+>s and
+			<A
+HREF="x1542.html"
+>HorizontalLine node</A
+>s are indented
+			by the image width in the same
+			<TT
+CLASS="literal"
+>&#60;Output&#62;</TT
+> node,
+			or until an <TT
+CLASS="literal"
+>&#60;ImageEnd&#62;</TT
+>
+			node is encountered in that
+			<TT
+CLASS="literal"
+>&#60;Output&#62;</TT
+> node.
+		</P
 ><DIV
 CLASS="sect2"
 ><H2
 CLASS="sect2"
 ><A
-NAME="stringliterals"
->String literals</A
+NAME="AEN1614"
+>Image attributes</A
 ></H2
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1616"
+>File name</A
+></H3
 ><P
->&#13;				String literals in OpenCReports can be either single or double quoted.
-				Some examples:
-				<TABLE
+>&#13;					The file name of the image.
+
+					<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
@@ -95,214 +165,288 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="programlisting"
->"apple"
-’apple’
-"I’ve eaten an apple"
-’This an "apple".’</PRE
+>&#60;Image value="'filename.jpg'" /&#62;</PRE
 ></TD
 ></TR
 ></TABLE
 >
-				The values of these strings are:
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->apple
-apple
-I’ve eaten an apple
-This an "apple".</PRE
-></TD
-></TR
-></TABLE
->
-				We can see how the other quoting character can be used as part
-				of the string value.
-			</P
+				</P
 ><P
->&#13;				String literals can also use BASIC language style double quoting
-				to embed a single quoting character used for quoting the string
-				itself:
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->’apple’’’
-’apple’’pear’
-’apple’’’’pear’
-"apple"""
-"apple""pear"
-"apple""""pear"</PRE
-></TD
-></TR
-></TABLE
->			
-				The values of these strings are:
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->apple’
-apple’pear
-apple’’pear
-apple"
-apple"pear
-apple""pear</PRE
-></TD
-></TR
-></TABLE
->
-			</P
-><P
->&#13;				String literals can also use C language string continuation if
-				there's at least one whitespace character (space, TAB or new line)
-				between doubled quoting characters. String continuation can also
-				switch quoting characters without whitespace between quoting.
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->"apple" "pear"
-"apple" ’pear’
-"apple"’pear’</PRE
-></TD
-></TR
-></TABLE
->
-				The value of all these strings is:
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->applepear</PRE
-></TD
-></TR
-></TABLE
->
-			</P
+>&#13;					Default is unset. It makes the
+					<TT
+CLASS="literal"
+>Image</TT
+> not shown.
+				</P
 ></DIV
 ><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
+CLASS="sect3"
+><H3
+CLASS="sect3"
 ><A
-NAME="numericconstants"
->Numeric constants</A
-></H2
+NAME="AEN1622"
+>Suppress</A
+></H3
 ><P
->&#13;				Numeric values in OpenCReports are handled with GNU MPFR with
-				arbitrary precision, by default 256 bits. This allows for
-				very high precision, i.e. very long numbers. This is good
-				for directly using e.g. arbitrary precision
-				<TT
+>&#13;					The image may be suppressed.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Image value="'filename.jpg'"
+       suppress="yes" /&#62;
+&#60;Image value="'filename.jpg'"
+       suppress="m.suppress_image" /&#62;
+&#60;Image value="'filename.jpg'"
+       suppress="query1.suppress_image" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is <TT
 CLASS="literal"
->numeric</TT
-> type columns from PostgreSQL.
-			</P
-><P
->&#13;				Numeric constants can be integer or fractional numbers with or
-				without the so called <I
-CLASS="emphasis"
->e-notation</I
-> or
-				scientific notation. Some examples:
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->1
-1.234
-1e4
-1e-4
-1.234e-5</PRE
-></TD
-></TR
-></TABLE
->
-				E-notation means that that number preceding the letter "e" or
-				"E" is multiplied by ten to the power of the number after the
-				letter "e" or "E", the latter being an integer value. The
-				values of the above examples are:
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->1
-1.234
-10000
-0.0001
-0.00001234</PRE
-></TD
-></TR
-></TABLE
->
-			</P
-><P
->&#13;				Numbers greater than 0 and less than 1 can be written with
-				or without the leading zero.
-				<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->0.123
-.123</PRE
-></TD
-></TR
-></TABLE
->
-			</P
+>false</TT
+>,
+					i.e. no suppression.
+				</P
 ></DIV
 ><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
+CLASS="sect3"
+><H3
+CLASS="sect3"
 ><A
-NAME="boolconstants"
->Boolean constants</A
-></H2
+NAME="AEN1628"
+>Type</A
+></H3
 ><P
->&#13;				Boolean constants evalutate to numeric constans
-				<TT
+>&#13;					Accepted for RLIB compatibility.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Image value="'filename.jpg'"
+       type="'jpg'" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is unset, i.e. autodetect.
+				</P
+><P
+>&#13;					Various image formats are supported
+					with autodetection via <TT
 CLASS="literal"
->1</TT
+>gdk-pixbuf</TT
+>.
+					SVG (Scalable Vector Graphics) is supported
+					via <TT
+CLASS="literal"
+>librsvg</TT
+>.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1636"
+>Width</A
+></H3
+><P
+>&#13;					Image width, measured in points regardless of
+					the <A
+HREF="x216.html#sizeunit"
+>Size unit attribute</A
+>.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Image value="'filename.jpg'"
+       width="100" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is unset. The image would not be shown,
+					unless both width and height are set.
+				</P
+><P
+>&#13;					When the image is used as a line element,
+					this setting is ignored. Instead, the
+					image is automatically scaled according to
+					the line height.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1643"
+>Height</A
+></H3
+><P
+>&#13;					Image height, measured in points regardless of
+					the <A
+HREF="x216.html#sizeunit"
+>Size unit attribute</A
+>.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Image value="'filename.jpg'"
+       height="100" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is unset. The image would not be shown,
+					unless both width and height are set.
+				</P
+><P
+>&#13;					When the image is used as a line element,
+					this setting is ignored. Instead, the
+					image is automatically scaled according to
+					the line height.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1650"
+>Text width</A
+></H3
+><P
+>&#13;					When the image is used as a line element, this
+					is the width in which the image is shown.
+					Its unit subject to the <A
+HREF="x216.html#sizeunit"
+>Size unit attribute</A
+>,
+					by default it's measured in text character
+					width for the parent <TT
+CLASS="literal"
+>&#60;Line&#62;</TT
+>.
+					This setting is only used when the image is a
+					line element. Two variants are accepted:
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Image value="'filename.jpg'"
+       text_width="8" /&#62;
+
+&#60;Image value="'filename.jpg'"
+       textWidth="8" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is 0. As a result, the image would be
+					0 points wide, i.e. not shown.
+				</P
+><P
+>&#13;					This setting is ignored when the image is used
+					as an output subsection.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1658"
+>Background color</A
+></H3
+><P
+>&#13;					Image background color. When the image is a line
+					element, then the width in which it's shown may
+					be wider than the scaled image width. Or possibly,
+					the image is vector graphics (SVG) and there is no
+					background defined in the image file. Or the image
+					file contains transparency (i.e. PNG). The color
+					background will be shown around the image or where
+					there are transparent pixels.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Image value="'filename.jpg'"
+       bgcolor="'red'" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is unset, i.e. white.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1663"
+>Alignment</A
+></H3
+><P
+>&#13;					Image alignment. When the image is a line
+					element, then the width in which it's shown may
+					be wider than the scaled image width. The image
+					then may be aligned. <TT
+CLASS="literal"
+>left</TT
+>,
+					<TT
+CLASS="literal"
+>right</TT
 > and <TT
 CLASS="literal"
->0</TT
->.
-				The boolean constants are:
-				<TABLE
+>center</TT
+>
+					are accepted.
+					<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
@@ -310,37 +454,21 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="programlisting"
->yes
-no
-true
-false</PRE
+>&#60;Image value="'filename.jpg'"
+       align="'center'" /&#62;</PRE
 ></TD
 ></TR
 ></TABLE
 >
-			</P
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="datetimeconstants"
->Datetime constants</A
-></H2
+				</P
 ><P
->&#13;				There are no datetime constants per se, although expressions
-				like <TT
-CLASS="literal"
->stodt('1980-06-30 16:00:00')</TT
-> (i.e.
-				function calls with constant arguments that result in a
-				<TT
-CLASS="literal"
->datetime</TT
-> value) implicitly turn into
-				constants through expression optimization.
-			</P
+>&#13;					Default is left alignment.
+				</P
+><P
+>&#13;					This setting is ignored when the image is used
+					as an output subsection.
+				</P
+></DIV
 ></DIV
 ></DIV
 ><DIV
@@ -359,7 +487,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="c1582.html"
+HREF="x1542.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -377,7 +505,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x1637.html"
+HREF="x1672.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -387,13 +515,13 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Expressions in OpenCReports</TD
+>HorizontalLine</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="c1582.html"
+HREF="c169.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -401,7 +529,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Identifiers</TD
+>Image end</TD
 ></TR
 ></TABLE
 ></DIV
