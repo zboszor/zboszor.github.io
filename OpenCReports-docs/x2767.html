@@ -1,0 +1,7717 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Low level C API</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="OpenCReports 0.6.1 Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="C language API reference"
+HREF="c2722.html"><LINK
+REL="PREVIOUS"
+TITLE="High level C API"
+HREF="x2728.html"><LINK
+REL="NEXT"
+TITLE="GNU Free Documentation License"
+HREF="c3947.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>OpenCReports 0.6.1 Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x2728.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>C language API reference</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c3947.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="lowlevelapi"
+>Low level C API</A
+></H1
+><P
+>&#13;			The <A
+HREF="x2728.html"
+>High level C API</A
+> is also part of the
+			low level API. The functions described below allow
+			creating a report using program code, or simply
+			fine tuning the report behavior by mostly using the
+			<A
+HREF="x2728.html"
+>High level C API</A
+>.
+		</P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="numerictuning"
+>Numeric behavior related functions</A
+></H2
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2774"
+><TT
+CLASS="literal"
+>Set numeric precision</TT
+></A
+></H3
+><P
+>&#13;					The default is 256 bits of floating point precision.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_set_numeric_precision_bits(opencreport *o,
+                                 mpfr_prec_t prec);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2779"
+>Set rounding mode</A
+></H3
+><P
+>&#13;					OpenCReports uses GNU MPFR under the hood and does't
+					hide this fact. The MPFR rounding mode constants are
+					used as is to set the rounding behaviour.
+					The default is <TT
+CLASS="literal"
+>MPFR_RNDN</TT
+>, round
+					to nearest.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_set_rounding_mode(opencreport *o,
+                        mpfr_rnd_t rndmode);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN2784"
+>Locale related functions</A
+></H2
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2786"
+>Set report locale</A
+></H3
+><P
+>&#13;					Setting the locale for the report does not affect
+					the main program or other threads. Locale setting
+					includes the language, the country. The UTF-8 suffix
+					is necessary. E.g.: <TT
+CLASS="literal"
+>en_GB.UTF-8</TT
+> or
+					<TT
+CLASS="literal"
+>de_DE.UTF-8</TT
+>
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_set_locale(opencreport *o,
+                 const char *locale);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2792"
+>Print monetary data in the report locale</A
+></H3
+><P
+>&#13;					A customized monetary printing function was implemented
+					for the purposes of the report which MPFR doesn't
+					provide. It is used in OpenCReports both internally
+					and by unit tests.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ssize_t
+ocrpt_mpfr_strfmon(opencreport *o,
+                   char *s, size_t maxsize,
+                   const char *format, ...);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN2796"
+>Data source and query related functions</A
+></H2
+><P
+>&#13;				The following <TT
+CLASS="literal"
+>enum</TT
+> and
+				<TT
+CLASS="literal"
+>struct</TT
+> types are used by
+				OpenCReports for datasources and queries.
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>enum ocrpt_result_type {
+    OCRPT_RESULT_ERROR,
+    OCRPT_RESULT_STRING,
+    OCRPT_RESULT_NUMBER,
+    OCRPT_RESULT_DATETIME
+};
+
+struct ocrpt_datasource;
+typedef struct ocrpt_datasource ocrpt_datasource;
+
+struct ocrpt_query;
+typedef struct ocrpt_query ocrpt_query;
+
+struct ocrpt_query_result;
+typedef struct ocrpt_query_result ocrpt_query_result;
+
+struct ocrpt_input {
+    void (*describe)(ocrpt_query *,
+                     ocrpt_query_result **,
+                     int32_t *);
+    void (*rewind)(ocrpt_query *);
+    bool (*next)(ocrpt_query *);
+    bool (*populate_result)(ocrpt_query *);
+    bool (*isdone)(ocrpt_query *);
+    void (*free)(ocrpt_query *);
+    bool (*set_encoding)(ocrpt_datasource *,
+                         const char *);
+    void (*close)(const ocrpt_datasource *);
+};
+typedef struct ocrpt_input ocrpt_input;</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+><P
+>&#13;				Data sources in this context are "mini drivers".
+				Data source handling is implemented via
+				<TT
+CLASS="literal"
+>ocrpt_input</TT
+> functions.
+			</P
+><P
+>&#13;				Queries are data providers over data sources. They are
+				the actual sources of data using a specific data source.
+				Multiple queries may use the same data source.
+			</P
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2805"
+>Add an array datasource</A
+></H3
+><P
+>&#13;					Add an array datasource to the report handler.
+					It's optional, as an array datasource called
+					"array" is automatically added to an opencreport
+					structure.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_datasource *
+ocrpt_datasource_add_array(opencreport *o,
+                           const char *source_name);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2809"
+>Add an array query</A
+></H3
+><P
+>&#13;					Add an "array query" to the report handler.
+					This adds the array pointer and parameters, so
+					the array datasource input driver can use it.
+					The provided <TT
+CLASS="literal"
+>array</TT
+> array pointer
+					contains <TT
+CLASS="literal"
+>(rows + 1) * cols</TT
+> number of
+					<TT
+CLASS="literal"
+>char *</TT
+> pointers, with the first row
+					being the column (field) names. The
+					<TT
+CLASS="literal"
+>types</TT
+> array contains
+					<TT
+CLASS="literal"
+>cols</TT
+> number of
+					<TT
+CLASS="literal"
+>enum ocrpt_result_type</TT
+> elements to
+					indicate the column data type.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_query *
+ocrpt_query_add_array(ocrpt_datasource *source,
+                      const char *name,
+                      const char **array,
+                      int32_t rows, int32_t cols,
+                      const enum ocrpt_result_type *types);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					If the <TT
+CLASS="literal"
+>types</TT
+> pointer is
+					<TT
+CLASS="literal"
+>NULL</TT
+>, the column values are treated
+					as strings. This is how RLIB operated.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2822"
+>Add a CSV datasource</A
+></H3
+><P
+>&#13;					Add a CSV datasource to the report handler.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_datasource *
+ocrpt_datasource_add_csv(opencreport *o,
+                         const char *source_name);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2826"
+>Add a CSV query</A
+></H3
+><P
+>&#13;					Add a "CSV query" to the report handler.
+					This specifies the file name, so
+					the CSV datasource input driver can load it.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_query *
+ocrpt_query_add_csv(ocrpt_datasource *source,
+                    const char *name,
+                    const char *filename,
+                    const enum ocrpt_result_type *types);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					The <TT
+CLASS="literal"
+>types</TT
+> array pointer is optional.
+					If it is <TT
+CLASS="literal"
+>NULL</TT
+>, the column values are
+					treated as strings. This is how RLIB operated.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2833"
+>Add a JSON datasource</A
+></H3
+><P
+>&#13;					Add a JSON datasource to the report handler.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_datasource *
+ocrpt_datasource_add_json(opencreport *o,
+                          const char *source_name);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2837"
+>Add a JSON query</A
+></H3
+><P
+>&#13;					Add a "JSON query" to the report handler.
+					This specifies the file name, so
+					the JSON datasource input driver can load it.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_query *
+ocrpt_query_add_json(ocrpt_datasource *source,
+                     const char *name,
+                     const char *filename,
+                     const enum ocrpt_result_type *types);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					The JSON file format defined in <A
+HREF="x305.html#jsonds"
+>JSON file datasource</A
+>
+					contains the way to describe the column data types,
+					which is optional in a JSON file.
+					The <TT
+CLASS="literal"
+>types</TT
+> array pointer may
+					optionally supplement (or override) the column types.
+					It is only meaningful if the JSON file itself doesn't
+					contain the type description for the columns. If it is
+					<TT
+CLASS="literal"
+>NULL</TT
+> (and the JSON file doesn't
+					contain type specifiers), the column values are
+					treated as strings. RLIB didn't have JSON input.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2845"
+>Add an XML datasource</A
+></H3
+><P
+>&#13;					Add an XML datasource to the report handler.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_datasource *
+ocrpt_datasource_add_xml(opencreport *o,
+                         const char *source_name);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2849"
+>Add an XML query</A
+></H3
+><P
+>&#13;					Add an "XML query" to the report handler.
+					This specifies the file name, so
+					the XML datasource input driver can load it.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_query *
+ocrpt_query_add_xml(ocrpt_datasource *source,
+                    const char *name,
+                    const char *filename,
+                    const enum ocrpt_result_type *types);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					The XML file format defined in <A
+HREF="x305.html#xmlds"
+>XML file datasource</A
+>
+					contains the way to describe the column data types,
+					which is optional in an XML file.
+					The <TT
+CLASS="literal"
+>types</TT
+> array pointer may
+					optionally supplement (or override) the column types.
+					It is only meaningful if the XML file itself doesn't
+					contain the type description for the columns. If it is
+					<TT
+CLASS="literal"
+>NULL</TT
+> (and the XML file doesn't
+					contain type specifiers), the column values are
+					treated as strings. This is how RLIB operated.
+					The OpenCReports XML input file format is RLIB
+					compatible without the type specification part.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2857"
+>Add a PostgreSQL datasource</A
+></H3
+><P
+>&#13;					Add a PostgreSQL datasource to the report handler.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_datasource *
+ocrpt_datasource_add_postgresql(opencreport *o,
+                                const char *source_name,
+                                const char *host,
+                                const char *port,
+                                const char *dbname,
+                                const char *user,
+                                const char *password);
+
+ocrpt_datasource *
+ocrpt_datasource_add_postgresql2(opencreport *o,
+                                 const char *source_name,
+                                 const char *conninfo);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					For the parameters, see <A
+HREF="x305.html#postgresqlds"
+>PostgreSQL database connection</A
+>.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2863"
+>Add a PostgreSQL query</A
+></H3
+><P
+>&#13;					Add a SQL query using the PostgreSQL datasource
+					to the report handler.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_query *
+ocrpt_query_add_postgresql(ocrpt_datasource *source,
+                           const char *name,
+                           const char *querystr);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2867"
+>Add a MariaDB datasource</A
+></H3
+><P
+>&#13;					Add a MariaDB datasource to the report handler.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_datasource *
+ocrpt_datasource_add_mariadb(opencreport *o,
+                             const char *source_name,
+                             const char *host,
+                             const char *port,
+                             const char *dbname,
+                             const char *user,
+                             const char *password,
+                             const char *unix_socket);
+
+ocrpt_datasource *
+ocrpt_datasource_add_mariadb2(opencreport *o,
+                              const char *source_name,
+                              const char *optionfile,
+                              const char *group);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					For the parameters, see <A
+HREF="x305.html#mariadbds"
+>MariaDB database connection</A
+>.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2873"
+>Add a MariaDB query</A
+></H3
+><P
+>&#13;					Add an SQL query using the MariaDB datasource
+					to the report handler.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_query *
+ocrpt_query_add_mariadb(ocrpt_datasource *source,
+                        const char *name,
+                        const char *querystr);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2877"
+>Add an ODBC datasource</A
+></H3
+><P
+>&#13;					Add an ODBC datasource to the report handler.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_datasource *
+ocrpt_datasource_add_odbc(opencreport *o,
+                          const char *source_name,
+                          const char *dbname,
+                          const char *user,
+                          const char *password);
+
+ocrpt_datasource *
+ocrpt_datasource_add_odbc2(opencreport *o,
+                           const char *source_name,
+                           const char *conninfo);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					For the parameters, see <A
+HREF="x305.html#odbcds"
+>ODBC database connection</A
+>.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2883"
+>Add an ODBC query</A
+></H3
+><P
+>&#13;					Add an SQL query using the ODBC datasource
+					to the report handler.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_query *
+ocrpt_query_add_odbc(ocrpt_datasource *source,
+                     const char *name,
+                     const char *querystr);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2887"
+>Find a datasource</A
+></H3
+><P
+>&#13;					Find the data source using its name.
+					It returns NULL if the named data source
+					is not found.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_datasource *
+ocrpt_datasource_get(opencreport *o,
+                     const char *source_name);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2891"
+><TT
+CLASS="literal"
+>Add a custom datasource</TT
+></A
+></H3
+><P
+>&#13;					Add a custom data source to the report handler.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_datasource *
+ocrpt_add_datasource(opencreport *o,
+                     const char *source_name,
+                     const ocrpt_input *input);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2896"
+><TT
+CLASS="literal"
+>Set the encoding of a datasource</TT
+></A
+></H3
+><P
+>&#13;					Set the encoding of a datasource in case
+					if it's not already UTF-8, so data provided by
+					it is automatically converted.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_datasource_set_encoding(ocrpt_datasource *source,
+                              const char *encoding);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2901"
+><TT
+CLASS="literal"
+>Free a datasource</TT
+></A
+></H3
+><P
+>&#13;					Free a datasource from the opencreport structure
+					it was added to. It's not needed to be called,
+					all datasources are automatically free with
+					<TT
+CLASS="literal"
+>ocrpt_free()</TT
+>
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_datasource_free(ocrpt_datasource *source);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2907"
+><TT
+CLASS="literal"
+>Find a query</TT
+></A
+></H3
+><P
+>&#13;					Find a query using its name.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_query *
+ocrpt_query_get(opencreport *o,
+                const char *name);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2912"
+><TT
+CLASS="literal"
+>Get the current data row from a query</TT
+></A
+></H3
+><P
+>&#13;					Create (first call) or get the <TT
+CLASS="literal"
+>ocrpt_query_result</TT
+>
+					array from a query. Output parameter <TT
+CLASS="literal"
+>cols</TT
+>
+					returns the number of columns in the result array. It must
+					be re-run after ocrpt_navigate_next() since the previously
+					returned pointer becomes invalid.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_query_result *
+ocrpt_query_get_result(ocrpt_query *q,
+                       int32_t *cols);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2919"
+><TT
+CLASS="literal"
+>Get column name</TT
+></A
+></H3
+><P
+>&#13;					Using the <TT
+CLASS="literal"
+>ocrpt_query_result *</TT
+> result
+					from <TT
+CLASS="literal"
+>ocrpt_query_get_result()</TT
+>,
+					the column names can be discovered from a query.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>const char *
+ocrpt_query_result_column_name(ocrpt_query_result *qr,
+                               int32_t col);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2926"
+><TT
+CLASS="literal"
+>Get column data</TT
+></A
+></H3
+><P
+>&#13;					Using the <TT
+CLASS="literal"
+>ocrpt_query_result *</TT
+>
+					result from
+					<TT
+CLASS="literal"
+>ocrpt_query_get_result()</TT
+>, get a
+					pointer to the column data in its internal (hidden)
+					representation.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_result *
+ocrpt_query_result_column_result(ocrpt_query_result *qr,
+                                 int32_t col);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2933"
+><TT
+CLASS="literal"
+>Add a follower query</TT
+></A
+></H3
+><P
+>&#13;					Add a <TT
+CLASS="literal"
+>follower</TT
+> query to the
+					<TT
+CLASS="literal"
+>leader</TT
+> query. The leader is the primary
+					query and the follower will run in parallel with it until
+					the leader runs out of rows. In case the leader has more
+					rows than the follower, then for rows in the leader where
+					there are no follower rows, the follower fields are set to NULL.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>bool
+ocrpt_query_add_follower(ocrpt_query *leader,
+                         ocrpt_query *follower);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2940"
+><TT
+CLASS="literal"
+>Add an N:1 follower query</TT
+></A
+></H3
+><P
+>&#13;					Add an N:1 <TT
+CLASS="literal"
+>follower</TT
+> query to the
+					<TT
+CLASS="literal"
+>leader</TT
+> query. The leader is the primary
+					query and rows from the follower will be matched using the
+					<TT
+CLASS="literal"
+>match</TT
+> expression. If there are multiple
+					rows in the follower matching the leader row, then the leader
+					row will be listed that many times. For rows in the leader
+					where there are no matching rows in the follower, the follower
+					fields are set to NULL. It is similar to <TT
+CLASS="literal"
+>LEFT OUTER
+					JOIN</TT
+> in SQL databases. For creating an
+					<TT
+CLASS="literal"
+>ocrpt_expr</TT
+> expression pointer, see the
+					next section.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>bool
+ocrpt_query_add_follower_n_to_1(ocrpt_query *leader,
+                                ocrpt_query *follower,
+                                ocrpt_expr *match);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2950"
+><TT
+CLASS="literal"
+>Free a query</TT
+></A
+></H3
+><P
+>&#13;					Free a query and remove it from the report handler.
+					It's optional. <TT
+CLASS="literal"
+>ocrpt_free()</TT
+> frees
+					the queries added to the <TT
+CLASS="literal"
+>opencreport</TT
+>
+					structure.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_query_free(ocrpt_query *q);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2957"
+><TT
+CLASS="literal"
+>Start the main query</TT
+></A
+></H3
+><P
+>&#13;					Start query (or query set) navigation.
+					<TT
+CLASS="literal"
+>q</TT
+> should be the primary query
+					of the report.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_query_navigate_start(ocrpt_query *q);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2963"
+><TT
+CLASS="literal"
+>Navigate to the next query row</TT
+></A
+></H3
+><P
+>&#13;					Navigate the query (or query set) to the next row. Returns
+					<TT
+CLASS="literal"
+>false</TT
+> if there was no more rows.
+					in which case the <TT
+CLASS="literal"
+>ocrpt_query_result</TT
+>
+					arrays for all queries in the query set (returned by
+					previous <TT
+CLASS="literal"
+>ocrpt_query_get_result()</TT
+>
+					calls contain invalid data.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>bool
+ocrpt_query_navigate_next(ocrpt_query *q);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2971"
+><TT
+CLASS="literal"
+>API specific array discovery function</TT
+></A
+></H3
+><P
+>&#13;					For array data sources and queries, OpenCReports
+					needs a way to to find the data array and the
+					supplementary type identifier array.
+					These are language specific. The below ones
+					are the C specific ones. The override function
+					is also provided to set a new discovery function.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>typedef void
+(*ocrpt_query_discover_func)(const char *,
+                             void **,
+                             const char *,
+                             void **);
+
+void
+ocrpt_query_set_discover_func(ocrpt_query_discover_func func);
+
+extern ocrpt_query_discover_func ocrpt_query_discover_array;
+
+void
+ocrpt_query_discover_array_c(const char *arrayname,
+                             void **array,
+                             const char *typesname,
+                             void **types);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="exprfunc"
+>Expression related functions</A
+></H2
+><P
+>&#13;				Expressions in OpenCReports is explained in the
+				<A
+HREF="c1724.html"
+>Expressions</A
+> chapter.
+			</P
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2980"
+>Parse an expression string</A
+></H3
+><P
+>&#13;					This function parses an expression string and
+					creates an expression tree. It returns a pointer
+					to the <TT
+CLASS="literal"
+>ocrpt_expr</TT
+> structure.
+				</P
+><P
+>&#13;					If an error occurs, it returns NULL and optionally
+					returns the error message in <TT
+CLASS="literal"
+>err</TT
+>
+					pointer if it's not <TT
+CLASS="literal"
+>NULL</TT
+>.
+				</P
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_expr *
+ocrpt_expr_parse(opencreport *o,
+                 const char *expr_string,
+                 char **err);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					The returned pointer must be freed with
+					<TT
+CLASS="literal"
+>ocrpt_expr_free()</TT
+>.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN2991"
+>Parse an expression string and bind it to a report</A
+></H3
+><P
+>&#13;					This function parses an expression string,
+					creates an expression tree and binds it to
+					a report. It returns a pointer
+					to the <TT
+CLASS="literal"
+>ocrpt_expr</TT
+> structure.
+				</P
+><P
+>&#13;					If an error occurs, it returns NULL and optionally
+					returns the error message in <TT
+CLASS="literal"
+>err</TT
+>
+					pointer if it's not <TT
+CLASS="literal"
+>NULL</TT
+>.
+				</P
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_expr *
+ocrpt_report_expr_parse(ocrpt_report *r,
+                        const char *expr_string,
+                        char **err);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					The returned pointer is automatically freed by
+					<TT
+CLASS="literal"
+>ocrpt_free()</TT
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3002"
+>Free an expression parse tree</A
+></H3
+><P
+>&#13;					Free an expression parse tree. If it was bound
+					to the passed-in <TT
+CLASS="literal"
+>ocrpt_report</TT
+>,
+					this association is also deleted. Alternatively,
+					the expression doesn't need to be free if it was
+					bound to a report when it was parsed, as it will be
+					automatically freed when freeing either the report,
+					or the global <TT
+CLASS="literal"
+>opencreport</TT
+> structure.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_expr_free(ocrpt_expr *e);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3008"
+>Resolve expression references</A
+></H3
+><P
+>&#13;					This function resolves variable (identifier)
+					references in the expression. This is needed
+					to bind query columns to expressions that
+					use them.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_expr_resolve(ocrpt_expr *e);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3012"
+>Optimize an expression</A
+></H3
+><P
+>&#13;					This function optimizes an expression so
+					it may needs fewer computation steps during
+					report execution.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_expr_optimize(ocrpt_expr *e);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3016"
+>Evaluate an expression</A
+></H3
+><P
+>&#13;					This function evaluates the expression.
+					It returns the expression's
+					<TT
+CLASS="literal"
+>ocrpt_result</TT
+> result structure.
+					The result must not be freed with
+					<TT
+CLASS="literal"
+>ocrpt_result_free()</TT
+>.
+					It will be done by <TT
+CLASS="literal"
+>ocrpt_expr_free()</TT
+>
+				</P
+><P
+>&#13;					For expressions with query column references,
+					this function must be called after
+					<TT
+CLASS="literal"
+>ocrpt_query_navigate_next</TT
+>
+					otherwise the result is not valid.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_result *
+ocrpt_expr_eval(ocrpt_expr *e);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3025"
+>Get expression result without evaluation</A
+></H3
+><P
+>&#13;					This function returns the expression result
+					if it was already evaluated.
+					The result <I
+CLASS="emphasis"
+>must not</I
+> be freed with
+					<TT
+CLASS="literal"
+>ocrpt_result_free()</TT
+>.
+					It will be done by <TT
+CLASS="literal"
+>ocrpt_expr_free()</TT
+>.
+					Used by unit tests.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_result *
+ocrpt_expr_get_result(ocrpt_expr *e);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3032"
+>Print an expression tree</A
+></H3
+><P
+>&#13;					Print an expression tree in its processed form on the
+					standard output. Used by unit tests.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_expr_print(ocrpt_expr *e);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3036"
+>Print an expression tree with subexpressions and their results</A
+></H3
+><P
+>&#13;					Print an expression tree with subexpressions
+					and their results in its processed form on the
+					standard output. Used by unit tests.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_expr_result_deep_print(ocrpt_expr *e);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3040"
+>Count the number of expression nodes</A
+></H3
+><P
+>&#13;					This function returns the number of expression nodes.
+					Used by unit tests to validate optimizazion.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>int32_t
+ocrpt_expr_nodes(ocrpt_expr *e);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3044"
+>Initialize expression result type</A
+></H3
+><P
+>&#13;					OpenCReports keeps track of the last three query
+					rows and computes three result values for expressions
+					for internal reasons. These functions initialize
+					the type for either the current result or all results
+					of the expression.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>enum ocrpt_result_type {
+    OCRPT_RESULT_ERROR,
+    OCRPT_RESULT_STRING,
+    OCRPT_RESULT_NUMBER,
+    OCRPT_RESULT_DATETIME
+};
+
+bool ocrpt_expr_init_result(ocrpt_expr *e,
+                            enum ocrpt_result_type type);
+
+void ocrpt_expr_init_results(ocrpt_expr *e,
+                             enum ocrpt_result_type type);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3048"
+>Set an error string as expression result</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_result *
+ocrpt_expr_make_error_result(ocrpt_expr *e,
+                             const char *format, ...);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3052"
+>Set start value flag for an iterative expression</A
+></H3
+><P
+>&#13;					Set whether the iterative expression's first
+					value is computed from its base expression
+					or from its result expression.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_expr_set_iterative_start_value(ocrpt_expr *e,
+                                     bool start_with_init);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3056"
+>Get current value of an expression in base type</A
+></H3
+><P
+>&#13;					Get the current value of an expression in a C base
+					type. Used by parsing report description XML files
+					and unit tests.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>const char *
+ocrpt_expr_get_string_value(ocrpt_expr *e);
+
+long
+ocrpt_expr_get_long_value(ocrpt_expr *e);
+
+double
+ocrpt_expr_get_double_value(ocrpt_expr *e);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3060"
+>Set current value of an expression in a base type</A
+></H3
+><P
+>&#13;					Used by unit tests.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_expr_set_string_value(ocrpt_expr *e,
+                            const char *s);
+
+void
+ocrpt_expr_set_long_value(ocrpt_expr *e,
+                          long l);
+
+void
+ocrpt_expr_set_double_value(ocrpt_expr *e,
+                            double d);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3064"
+>Set nth value of an expression in a base type</A
+></H3
+><P
+>&#13;					Expressions use <TT
+CLASS="literal"
+>OCRPT_EXPR_RESULTS</TT
+>
+					number of values. With these functions, any of them
+					can be set. Used by unit tests.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_expr_set_nth_result_string_value(ocrpt_expr *e,
+                                       int which,
+                                       const char *s);
+
+void
+ocrpt_expr_set_nth_result_long_value(ocrpt_expr *e,
+                                     int which,
+                                     long l);
+
+void
+ocrpt_expr_set_nth_result_double_value(ocrpt_expr *e,
+                                       int which,
+                                       double d);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3069"
+>Compare current and previous values of and expression</A
+></H3
+><P
+>&#13;					Compare current and previous values of and expression
+					and return <TT
+CLASS="literal"
+>true</TT
+> if they are equal.
+					It's used to implement <A
+HREF="c2418.html"
+>Report breaks</A
+>.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>bool
+ocrpt_expr_cmp_results(ocrpt_expr *e);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3075"
+>Set delayed flag of an expression</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_expr_set_delayed(ocrpt_expr *e,
+                       bool delayed);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3079"
+>Set field expression reference for an expression</A
+></H3
+><P
+>&#13;					If <TT
+CLASS="literal"
+>e</TT
+> contains <TT
+CLASS="literal"
+>r.value</TT
+>,
+					the expression <TT
+CLASS="literal"
+>rvalue</TT
+> will be used to
+					resolve this reference.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_expr_set_field_expr(ocrpt_expr *e,
+                          ocrpt_expr *rvalue);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN3086"
+>Column data or expression result related functions</A
+></H2
+><P
+>&#13;				The internal type <TT
+CLASS="literal"
+>ocrpt_result</TT
+> holds
+				values either for query columns or expression results.
+			</P
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3090"
+>Create an expression result</A
+></H3
+><P
+>&#13;					The returned pointer must be freed with
+					<TT
+CLASS="literal"
+>ocrpt_result_free()</TT
+>.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_result *
+ocrpt_result_new(void);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3095"
+>Get expression result type</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>enum ocrpt_result_type
+ocrpt_result_get_type(ocrpt_result *result);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3099"
+>Copy an expression result</A
+></H3
+><P
+>&#13;					Some internal data is specific to the
+					<TT
+CLASS="literal"
+>opencreport</TT
+> structure.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_result_copy(opencreport *o,
+                  ocrpt_result *dst,
+                  ocrpt_result *src);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3104"
+>Print an expression result</A
+></H3
+><P
+>&#13;					Used by unit tests.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_result_print(ocrpt_result *r);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3108"
+>Free an expression result</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_result_free(ocrpt_result *r);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3112"
+>Detect whether a column result is NULL</A
+></H3
+><P
+>&#13;					Using the <TT
+CLASS="literal"
+>ocrpt_result *</TT
+>
+					result from a query column or an expression,
+					detect whether the column value is NULL.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>bool
+ocrpt_result_isnull(ocrpt_result *result);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3117"
+>Detect whether a column result is numeric</A
+></H3
+><P
+>&#13;					Using the <TT
+CLASS="literal"
+>ocrpt_result *</TT
+>
+					result from a query column or an expression,
+					detect whether the column value is numeric.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>bool
+ocrpt_result_isnumber(ocrpt_result *result);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3122"
+>Get the numeric value of a column result</A
+></H3
+><P
+>&#13;					Using the <TT
+CLASS="literal"
+>ocrpt_result *</TT
+>
+					result from a query column or an expression,
+					get the numeric column value. It returns  NULL
+					if the column is:
+					<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>&#13;								not a numeric result
+							</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>&#13;								NULL
+							</P
+></LI
+></UL
+>
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>mpfr_ptr
+ocrpt_result_get_number(ocrpt_result *result);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3132"
+>Detect whether a column result is string</A
+></H3
+><P
+>&#13;					Using the <TT
+CLASS="literal"
+>ocrpt_result *</TT
+>
+					result from a query column or an expression,
+					detect whether the column value is string.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>bool
+ocrpt_result_isstring(ocrpt_result *result);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3137"
+>Get the string value of a column result</A
+></H3
+><P
+>&#13;					Using the <TT
+CLASS="literal"
+>ocrpt_result *</TT
+>
+					result from a query column or an expression,
+					get the string column value. It returns  NULL
+					if the column is
+					<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>&#13;								not a string result
+							</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>&#13;								NULL
+							</P
+></LI
+></UL
+>
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_string *
+ocrpt_result_get_string(ocrpt_result *result);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3147"
+>Detect whether a column result is datetime</A
+></H3
+><P
+>&#13;					Using the <TT
+CLASS="literal"
+>ocrpt_result *</TT
+>
+					result from a query column or an expression,
+					detect whether the column value is datetime.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>bool
+ocrpt_result_isdatetime(ocrpt_result *result);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3152"
+>Get the datetime value of a column result</A
+></H3
+><P
+>&#13;					Using the <TT
+CLASS="literal"
+>ocrpt_result *</TT
+>
+					result from a query column or an expression,
+					get the datetime column value. It returns  NULL
+					if the column is
+					<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>&#13;								not a datetime result
+							</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>&#13;								NULL
+							</P
+></LI
+></UL
+>
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>const struct tm *
+ocrpt_result_get_datetime(ocrpt_result *result);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3162"
+>Detect whether a datetime column result is interval</A
+></H3
+><P
+>&#13;					Using the <TT
+CLASS="literal"
+>ocrpt_result *</TT
+>
+					result from a query column or an expression,
+					detect whether the datetime column value is interval.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>bool
+ocrpt_result_datetime_is_interval(ocrpt_result *result);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3167"
+>Detect whether a datetime column result has valid date</A
+></H3
+><P
+>&#13;					Using the <TT
+CLASS="literal"
+>ocrpt_result *</TT
+>
+					result from a query column or an expression,
+					detect whether the datetime column value has valid date.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>bool
+ocrpt_result_datetime_is_date_valid(ocrpt_result *result);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3172"
+>Detect whether a datetime column result has valid time</A
+></H3
+><P
+>&#13;					Using the <TT
+CLASS="literal"
+>ocrpt_result *</TT
+>
+					result from a query column or an expression,
+					detect whether the datetime column value has valid time.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>bool
+ocrpt_result_datetime_is_time_valid(ocrpt_result *result);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN3177"
+>Variable related functions</A
+></H2
+><P
+>&#13;				Variables can be created for a report using
+				the API.
+			</P
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3180"
+>Create a basic variable</A
+></H3
+><P
+>&#13;					Using this function, any variable type except
+					<TT
+CLASS="literal"
+>OCRPT_VARIABLE_CUSTOM</TT
+>
+					may be created. For a custom variable,
+					see the next function.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>enum ocrpt_var_type {
+    OCRPT_VARIABLE_EXPRESSION,
+    OCRPT_VARIABLE_COUNT,
+    OCRPT_VARIABLE_COUNTALL,
+    OCRPT_VARIABLE_SUM,
+    OCRPT_VARIABLE_AVERAGE,
+    OCRPT_VARIABLE_AVERAGEALL,
+    OCRPT_VARIABLE_LOWEST,
+    OCRPT_VARIABLE_HIGHEST,
+    OCRPT_VARIABLE_CUSTOM
+};
+typedef enum ocrpt_var_type ocrpt_var_type;
+
+ocrpt_var *
+ocrpt_variable_new(ocrpt_report *r,
+                   ocrpt_var_type type,
+                   const char *name,
+                   const char *expr,
+                   const char *reset_on_break_name);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3185"
+>Create a custom variable</A
+></H3
+><P
+>&#13;					Create a custom variable of the specified type
+					with the specified subexpressions.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_var *
+ocrpt_variable_new_full(ocrpt_report *r,
+                        enum ocrpt_result_type type,
+                        const char *name,
+                        const char *baseexpr,
+                        const char *intermedexpr,
+                        const char *intermed2expr,
+                        const char *resultexpr,
+                        const char *reset_on_break_name);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3189"
+>Get subexpressions of a variable</A
+></H3
+><P
+>&#13;					Get subexpressions of a previously created
+					basic or custom variable.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_expr *
+ocrpt_variable_baseexpr(ocrpt_var *v);
+
+ocrpt_expr *
+ocrpt_variable_intermedexpr(ocrpt_var *v);
+
+ocrpt_expr *
+ocrpt_variable_intermed2expr(ocrpt_var *v);
+
+ocrpt_expr *
+ocrpt_variable_resultexpr(ocrpt_var *v);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3193"
+>Set precalculate flag for a variable</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_variable_set_precalculate(ocrpt_var *var, 
+                                bool value);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3197"
+>Resolve a variable</A
+></H3
+><P
+>&#13;					Resolve subexpressions of a variable
+					so it can be evaluated correctly.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_variable_resolve(ocrpt_var *v);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3201"
+>Evaluate a variable</A
+></H3
+><P
+>&#13;					After evaluation, the result is in the
+					expression returned by
+					<TT
+CLASS="literal"
+>ocrpt_variable_resultexpr()</TT
+>.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_variable_evaluate(ocrpt_var *v);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN3206"
+>Break related functions</A
+></H2
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3208"
+>Create a break</A
+></H3
+><P
+>&#13;					Create a break. No need to free it,
+					<TT
+CLASS="literal"
+>ocrpt_free()</TT
+> does it.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_break *
+ocrpt_break_new(ocrpt_report *r,
+                const char *name);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3213"
+>Set attribute flags for a break</A
+></H3
+><P
+>&#13;					Set boolean attribute flags for a break,
+					either via explicit boolean value, or from
+					an expression. The flags are not actually used,
+					they are for RLIB compatibility.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>enum ocrpt_break_attr_type {
+    OCRPT_BREAK_ATTR_NEWPAGE,
+    OCRPT_BREAK_ATTR_HEADERNEWPAGE,
+    OCRPT_BREAK_ATTR_SUPPRESSBLANK,
+    OCRPT_BREAK_ATTRS_COUNT
+};
+typedef enum ocrpt_break_attr_type ocrpt_break_attr_type;
+
+bool
+ocrpt_break_set_attribute(ocrpt_break *br,
+                          const ocrpt_break_attr_type attr_type,
+                          bool value);
+
+bool
+ocrpt_break_set_attribute_from_expr(ocrpt_break *br,
+                                    const
+                                    ocrpt_break_attr_type
+                                    attr_type,
+                                    ocrpt_expr *expr);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3217"
+>Get break using its name</A
+></H3
+><P
+>&#13;					Get the pointer to the break using its name.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_break *
+ocrpt_break_get(ocrpt_report *r,
+                const char *name);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3221"
+>Get the name of a break</A
+></H3
+><P
+>&#13;					Get the name of the break using its structure
+					pointer.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>const char *
+ocrpt_break_get_name(ocrpt_break *br);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3225"
+>Add a watched expression to a break</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>bool
+ocrpt_break_add_breakfield(ocrpt_break *br,
+                           ocrpt_expr *bf);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3229"
+>Iterate over breaks of a report</A
+></H3
+><P
+>&#13;					Iterate over breaks of a report. The first call
+					needs the iterator list pointer to be set to NULL.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_break *
+ocrpt_break_get_next(ocrpt_report *r,
+                     ocrpt_list **list);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3233"
+>Resolve and optimize break fields</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_break_resolve_fields(ocrpt_break *br);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3237"
+>Check whether the break triggers</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>bool
+ocrpt_break_check_fields(ocrpt_break *br);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3241"
+>Reset variables for the break</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_break_reset_vars(ocrpt_break *br);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN3245"
+>Function related functions</A
+></H2
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3247"
+>Add a user defined function</A
+></H3
+><P
+>&#13;					Add a user defined function by specifying
+					the name, the function pointer that contains
+					the implementation, the number of operands
+					(0 or greater for fixed number or operands,
+					-1 is varying number of operands) and
+					the function mathematical properties
+					that help optimizing it.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>bool
+ocrpt_function_add(opencreport *o,
+                   const char *fname,
+                   ocrpt_function_call func,
+                   int32_t n_ops,
+                   bool commutative,
+                   bool associative,
+                   bool left_associative,
+                   bool dont_optimize);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Adding a user defined function with
+					a name of a pre-existing function will
+					override it.
+				</P
+><P
+>&#13;					OpenCReports functions are called with the
+					parameters as declared below.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>#define OCRPT_FUNCTION_PARAMS \
+    ocrpt_expr *e</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					OpenCReports functions may be declared
+					with these convenience symbols below.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>#define OCRPT_FUNCTION(name) \
+    void name(OCRPT_FUNCTION_PARAMS)
+
+#define OCRPT_STATIC_FUNCTION(name) \
+    static void name(OCRPT_FUNCTION_PARAMS)</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					The above function
+					(<TT
+CLASS="literal"
+>ocrpt_function_add()</TT
+>)
+					is called with a function pointer which has
+					this type:
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>typedef void
+(*ocrpt_function_call)(OCRPT_FUNCTION_PARAMS);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3259"
+>Find a named function</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>const ocrpt_function *
+ocrpt_function_get(opencreport *o,
+                   const char *fname);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3263"
+>Get number of operands for an expression (function)</A
+></H3
+><P
+>&#13;					In an expression tree, functions
+					are represented as subexpressions with
+					operands. This call may be used by OpenCReports
+					functions to inspect whether the number of
+					operands is in the expected range.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>int32_t
+ocrpt_expr_get_num_operands(ocrpt_expr *e);
+</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3267"
+>Get current value of a function operand</A
+></H3
+><P
+>&#13;					This function is used by OpenCReports functions
+					internally to compute the result from its
+					operands.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_result *
+ocrpt_expr_operand_get_result(ocrpt_expr *e,
+                              int32_t opnum);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN3271"
+>Report part and report related functions</A
+></H2
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3273"
+>Create a report part</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_part *
+ocrpt_part_new(opencreport *o);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3277"
+>Create a row in a report part</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_part_row *
+ocrpt_part_new_row(ocrpt_part *p);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3281"
+>Create a column in report part row</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_part_column *
+ocrpt_part_row_new_column(ocrpt_part_row *pr);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3285"
+>Create a new report in a part column</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_report *
+ocrpt_part_column_new_report(ocrpt_part_column *pd);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3289"
+>Report part related iterators</A
+></H3
+><P
+>&#13;					Iterators for getting report parts, part rows,
+					columns in rows and reports in columns.
+					Every iterator function must be called
+					the first time with the list pointer set to NULL.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_part *
+ocrpt_part_get_next(opencreport *o,
+                    ocrpt_list **list);
+
+ocrpt_part_row *
+ocrpt_part_row_get_next(ocrpt_part *p,
+                        ocrpt_list **list);
+
+ocrpt_part_column *
+ocrpt_part_column_get_next(ocrpt_part_row *pr,
+                           ocrpt_list **list);
+
+ocrpt_report *
+ocrpt_report_get_next(ocrpt_part_column *pd,
+                      ocrpt_list **list);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3293"
+>Set the main query for a report</A
+></H3
+><P
+>&#13;					Set the main query for a report either by
+					the query structure pointer, or by name.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_report_set_main_query(ocrpt_report *r,
+                            const ocrpt_query *query);
+
+void
+ocrpt_report_set_main_query_by_name(ocrpt_report *r,
+                                    const char *query);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					See <A
+HREF="x808.html#reportqueryname"
+>Report query name</A
+>.
+					Unlike with the XML description, where the first
+					globally declared query is used for the report
+					if its main query is not set, the default via
+					the low level API is unset.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3299"
+>Get the current row number of the main query</A
+></H3
+><P
+>&#13;					The row number starts from 1.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>long
+ocrpt_report_get_query_rownum(ocrpt_report *r);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3303"
+>Resolve all report variables</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_report_resolve_variables(ocrpt_report *r);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3307"
+>Evaluate all report variables</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_report_evaluate_variables(ocrpt_report *r);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3311"
+>Resolve all report breaks</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_report_resolve_breaks(ocrpt_report *r);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3315"
+>Resolve all report expressions</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_report_resolve_expressions(ocrpt_report *r);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3319"
+>Evaluate all report expressions</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_report_evaluate_expressions(ocrpt_report *r);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN3323"
+>Layout related functions</A
+></H2
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3325"
+>Global layout options</A
+></H3
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3327"
+>Set "size units in points" option</A
+></H4
+><P
+>&#13;						See <A
+HREF="x216.html#sizeunit"
+>Size unit attribute</A
+>.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_set_size_unit_points(opencreport *o,
+                           bool size_in_points);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3332"
+>Set "no query show NoData" option</A
+></H4
+><P
+>&#13;					See <A
+HREF="x216.html#noqueryshownodata"
+>No query show NoData attribute</A
+>.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_set_noquery_show_nodata(opencreport *o,
+                              bool noquery_show_nodata);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3337"
+>Set "report height after last" option</A
+></H4
+><P
+>&#13;						See <A
+HREF="x216.html#reportheightafterlast"
+>Report height after last attribute</A
+>.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_set_report_height_after_last(opencreport *o,
+                                   bool
+                                   report_height_after_last);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3342"
+>Report part options</A
+></H3
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3344"
+>Set part iterations</A
+></H4
+><P
+>&#13;						See <A
+HREF="x541.html#partiter"
+>Part iterations attribute</A
+>.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_part_set_iterations(ocrpt_part *p,
+                          int32_t iterations);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3349"
+>Set part font name</A
+></H4
+><P
+>&#13;						See <A
+HREF="x541.html#partfontname"
+>Part font name</A
+>.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_part_set_font_name(ocrpt_part *p,
+                         const char *font_name);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3354"
+>Set part font size</A
+></H4
+><P
+>&#13;						See <A
+HREF="x541.html#partfontsize"
+>Part font size</A
+>.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_part_set_font_size(ocrpt_part *p,
+                         double font_size);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3359"
+>Set part paper type</A
+></H4
+><P
+>&#13;						See <A
+HREF="x541.html#papertype"
+>Paper type</A
+>.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_part_set_paper_by_name(ocrpt_part *p,
+                             const char *paper_name);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3364"
+>Set part paper's landscape orientation</A
+></H4
+><P
+>&#13;						By default, the part uses portrait orientation.
+						See <A
+HREF="x541.html#partpageorientation"
+>Part page orientation</A
+>.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_part_set_landscape(ocrpt_part *p,
+                         bool landscape);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3369"
+>Set part margins</A
+></H4
+><P
+>&#13;						See <A
+HREF="x541.html#marginsettings"
+>Margin settings</A
+>.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_part_set_top_margin(ocrpt_part *p,
+                          double margin);
+
+void
+ocrpt_part_set_bottom_margin(ocrpt_part *p,
+                             double margin);
+
+void
+ocrpt_part_set_left_margin(ocrpt_part *p,
+                           double margin);
+
+void
+ocrpt_part_set_right_margin(ocrpt_part *p,
+                            double margin);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3374"
+>Set part suppression</A
+></H4
+><P
+>&#13;						See <A
+HREF="x541.html#partsuppress"
+>Part suppress attribute</A
+>.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_part_set_suppress(ocrpt_part *p,
+                        bool suppress);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3379"
+>Set part's page header suppressed on the first page</A
+></H4
+><P
+>&#13;						See <A
+HREF="x541.html#suppresspageheaderfirstpage"
+>Suppress page header on the first page</A
+>.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_part_set_suppress_pageheader_firstpage(ocrpt_part *p,
+                                             bool suppress);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3384"
+>Part row options</A
+></H3
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3386"
+>Set part row suppression</A
+></H4
+><P
+>&#13;						See <A
+HREF="x693.html#partrowsuppress"
+>Part row suppress attribute</A
+>.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_part_row_set_suppress(ocrpt_part_row *pr,
+                            bool suppress);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3391"
+>Set part row new page</A
+></H4
+><P
+>&#13;						See <A
+HREF="x693.html#partrownewpage"
+>Part row new page attribute</A
+>.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_part_row_set_newpage(ocrpt_part_row *pr,
+                           bool newpage);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3396"
+>Set part row layout fixed mode</A
+></H4
+><P
+>&#13;						Not implemented.
+						See <A
+HREF="x693.html#partrowlayout"
+>Part row layout attribute</A
+>.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_part_row_set_layout_fixed(ocrpt_part_row *pr,
+                                bool fixed);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3401"
+>Part column options</A
+></H3
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3403"
+>Set part column suppression</A
+></H4
+><P
+>&#13;						See <A
+HREF="x724.html#partcolsuppress"
+>Part column suppress attribute</A
+>.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_part_column_set_suppress(ocrpt_part_column *pd,
+                               bool suppress);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3408"
+>Set part column width</A
+></H4
+><P
+>&#13;						See <A
+HREF="x724.html#partcolwidth"
+>Part column width attribute</A
+>.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_part_column_set_width(ocrpt_part_column *pd,
+                            double width);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3413"
+>Set part column height</A
+></H4
+><P
+>&#13;						See <A
+HREF="x724.html#partcolheight"
+>Part column height attribute</A
+>.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_part_column_set_height(ocrpt_part_column *pd,
+                             double height);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3418"
+>Set part column border width</A
+></H4
+><P
+>&#13;						See <A
+HREF="x724.html#pdborderwidth"
+>Part column border width</A
+>.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_part_column_set_border_width(ocrpt_part_column *pd,
+                                   double border_width);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3423"
+>Set part column border color</A
+></H4
+><P
+>&#13;						See <A
+HREF="x724.html#pdbordercolor"
+>Part column border color</A
+>.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_part_column_set_border_color(ocrpt_part_column *pd,
+                                   const char *color);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3428"
+>Set part column's number of detail columns</A
+></H4
+><P
+>&#13;						See <A
+HREF="x724.html#detailcolumns"
+>Detail columns</A
+>.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_part_column_set_detail_columns(ocrpt_part_column *pd,
+                                     int32_t detail_columns);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3433"
+>Set part column's detail column padding</A
+></H4
+><P
+>&#13;						See <A
+HREF="x724.html#columnpadding"
+>Column padding</A
+>.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_part_column_set_column_padding(ocrpt_part_column *pd,
+                                     double padding);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3438"
+>Report options</A
+></H3
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3440"
+>Set report suppression</A
+></H4
+><P
+>&#13;						See <A
+HREF="x808.html#reportsuppress"
+>Report suppress attribute</A
+>.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_report_set_suppress(ocrpt_report *r,
+                          bool suppress);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3445"
+>Set report iterations</A
+></H4
+><P
+>&#13;						See <A
+HREF="x808.html#reportiter"
+>Report iterations attribute</A
+>.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_report_set_iterations(ocrpt_report *r,
+                            int32_t iterations);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3450"
+>Set report font name</A
+></H4
+><P
+>&#13;						See <A
+HREF="x808.html#reportfontname"
+>Report font name</A
+>.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_report_set_font_name(ocrpt_report *r,
+                           const char *font_name);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3455"
+>Set report font size</A
+></H4
+><P
+>&#13;						See <A
+HREF="x808.html#reportfontsize"
+>Report font size</A
+>.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_report_set_font_size(ocrpt_report *r,
+                           double font_size);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3460"
+>Set report height</A
+></H4
+><P
+>&#13;						See <A
+HREF="x808.html#reportheight"
+>Report height</A
+>.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_report_set_height(ocrpt_report *r,
+                        double height);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3465"
+>Set report's field header priority</A
+></H4
+><P
+>&#13;						See <A
+HREF="x808.html#reportfhpriority"
+>Report field header priority attribute</A
+>.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_report_set_fieldheader_high_priority(ocrpt_report *r,
+                                           bool high_priority);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3470"
+>Get part layout sections</A
+></H3
+><P
+>&#13;					Get the part's
+					<TT
+CLASS="literal"
+>&#60;Output&#62;</TT
+> sections for
+					<TT
+CLASS="literal"
+>&#60;PageHeader&#62;</TT
+>
+					or <TT
+CLASS="literal"
+>&#60;PageFooter&#62;</TT
+>.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_output *
+ocrpt_layout_part_page_header(ocrpt_part *p);
+
+ocrpt_output *
+ocrpt_layout_part_page_footer(ocrpt_part *p);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3477"
+>Get report layout sections</A
+></H3
+><P
+>&#13;					Get the report's
+					<TT
+CLASS="literal"
+>&#60;Output&#62;</TT
+> sections for
+					<TT
+CLASS="literal"
+>&#60;NoData&#62;</TT
+>,
+					<TT
+CLASS="literal"
+>&#60;ReportHeader&#62;</TT
+>,
+					<TT
+CLASS="literal"
+>&#60;ReportFooter&#62;</TT
+>,
+					<TT
+CLASS="literal"
+>&#60;FieldHeaders&#62;</TT
+> or
+					<TT
+CLASS="literal"
+>&#60;FieldDetails&#62;</TT
+>.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_output *
+ocrpt_layout_report_nodata(ocrpt_report *r);
+
+ocrpt_output *
+ocrpt_layout_report_header(ocrpt_report *r);
+
+ocrpt_output *
+ocrpt_layout_report_footer(ocrpt_report *r);
+
+ocrpt_output *
+ocrpt_layout_report_field_header(ocrpt_report *r);
+
+ocrpt_output *
+ocrpt_layout_report_field_details(ocrpt_report *r);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3487"
+>Get break layout sections</A
+></H3
+><P
+>&#13;					Get the break's
+					<TT
+CLASS="literal"
+>&#60;Output&#62;</TT
+> sections for
+					<TT
+CLASS="literal"
+>&#60;BreakHeader&#62;</TT
+> or
+					<TT
+CLASS="literal"
+>&#60;BreakFooter&#62;</TT
+>.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_output *
+ocrpt_break_get_header(ocrpt_break *br);
+
+ocrpt_output *
+ocrpt_break_get_footer(ocrpt_break *br);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3494"
+>Set output section global settings</A
+></H3
+><P
+>&#13;					Note that part (page) header and footer, and report
+					header and footer sections must be constant
+					expressions. Other sections may depend on data derived
+					from query columns.
+					See <A
+HREF="c1724.html"
+>Expressions</A
+>.
+				</P
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3498"
+>Set output section suppression</A
+></H4
+><P
+>&#13;						Set suppression from an expression string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_output_set_suppress(ocrpt_output *output,
+                          const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3502"
+>Add a text line to an output section</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_line *
+ocrpt_output_add_line(ocrpt_output *output);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3506"
+>Text line settings</A
+></H3
+><P
+>&#13;					Note that settings in the part (page) header and
+					footer sections must be constant expressions.
+					Settings in other sections may depend
+					on data derived from query columns.
+					See <A
+HREF="c1724.html"
+>Expressions</A
+>.
+				</P
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3510"
+>Set line font name</A
+></H4
+><P
+>&#13;						Set the text line's font name from
+						an expression string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_line_set_font_name(ocrpt_line *line,
+                         const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3514"
+>Set line font size</A
+></H4
+><P
+>&#13;						Set the text line's font size from
+						an expression string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_line_set_font_size(ocrpt_line *line,
+                         const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3518"
+>Set line bold value</A
+></H4
+><P
+>&#13;						Set the text line's bold value from
+						an expression string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_line_set_bold(ocrpt_line *line,
+                    const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3522"
+>Set line italic value</A
+></H4
+><P
+>&#13;						Set the text line's italic value from
+						an expression string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_line_set_italic(ocrpt_line *line,
+                      const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3526"
+>Set line suppression</A
+></H4
+><P
+>&#13;						Set the text line's suppression value from
+						an expression string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_line_set_suppress(ocrpt_line *line,
+                        const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3530"
+>Set line text color</A
+></H4
+><P
+>&#13;						Set the text line's text color from
+						an expression string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_line_set_color(ocrpt_line *line,
+                     const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3534"
+>Set line background color</A
+></H4
+><P
+>&#13;						Set the text line's background color from
+						an expression string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_line_set_bgcolor(ocrpt_line *line,
+                       const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3538"
+>Add a text element to a text line</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_text *
+ocrpt_line_add_text(ocrpt_line *line);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3542"
+>Text element settings</A
+></H3
+><P
+>&#13;					Note that settings in the part (page) header and
+					footer sections must be constant expressions.
+					Settings in other sections may depend
+					on data derived from query columns.
+					See <A
+HREF="c1724.html"
+>Expressions</A
+>.
+				</P
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3546"
+>Set text element literal value</A
+></H4
+><P
+>&#13;						Set the text element's literal value from
+						a string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_text_set_value_string(ocrpt_text *text,
+                            const char *string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3550"
+>Set text element value</A
+></H4
+><P
+>&#13;						Set the text element's value from
+						an expression string and whether the
+						expression is delayed.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_text_set_value_expr(ocrpt_text *text,
+                          const char *expr_string,
+                          bool delayed);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3554"
+>Set text element format string</A
+></H4
+><P
+>&#13;						Set the text element's format string from
+						an expression string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_text_set_format(ocrpt_text *text,
+                      const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3558"
+>Set text element field width</A
+></H4
+><P
+>&#13;						Set the text element's field width from
+						an expression string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_text_set_width(ocrpt_text *text,
+                     const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3562"
+>Set text element alignment</A
+></H4
+><P
+>&#13;						Set the text element's alignment from
+						a string or an expression string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_text_set_alignment(ocrpt_text *text,
+                         const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+><P
+>&#13;						String values <TT
+CLASS="literal"
+>left</TT
+>,
+						<TT
+CLASS="literal"
+>right</TT
+>,
+						<TT
+CLASS="literal"
+>center</TT
+> and
+						<TT
+CLASS="literal"
+>justified</TT
+> are
+						accepted either as is, or as an expression.
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3571"
+>Set text element text color</A
+></H4
+><P
+>&#13;						Set the text element's text color from
+						an expression string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_text_set_color(ocrpt_text *text,
+                     const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3575"
+>Set text element background color</A
+></H4
+><P
+>&#13;						Set the text element's background color from
+						an expression string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_text_set_bgcolor(ocrpt_text *text,
+                       const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3579"
+>Set text element font name</A
+></H4
+><P
+>&#13;						Set the text element's font name from
+						an expression string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_text_set_font_name(ocrpt_text *text,
+                         const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3583"
+>Set text element font size</A
+></H4
+><P
+>&#13;						Set the text element's font size from
+						an expression string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_text_set_font_size(ocrpt_text *text,
+                         const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3587"
+>Set text element bold value</A
+></H4
+><P
+>&#13;						Set the text element's bold value from
+						an expression string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_text_set_bold(ocrpt_text *text,
+                    const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3591"
+>Set text element italic value</A
+></H4
+><P
+>&#13;						Set the text element's italic value from
+						an expression string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_text_set_italic(ocrpt_text *text,
+                      const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3595"
+>Set text element link URL</A
+></H4
+><P
+>&#13;						Set the text element's link URL from
+						an expression string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_text_set_link(ocrpt_text *text,
+                    const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3599"
+>Set text element multiline parameters</A
+></H4
+><P
+>&#13;						Set the text element's multiline parameters.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_text_set_memo(ocrpt_text *text,
+                    bool memo,
+                    bool wrap_chars,
+                    int32_t max_lines);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3603"
+>Add a horizontal line to an output section</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_hline *
+ocrpt_output_add_hline(ocrpt_output *output);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3607"
+>Horizontal line settings</A
+></H3
+><P
+>&#13;					Note that settings in the part (page) header and
+					footer sections must be constant expressions.
+					Settings in other sections may depend
+					on data derived from query columns.
+					See <A
+HREF="c1724.html"
+>Expressions</A
+>.
+				</P
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3611"
+>Set horizontal line size (width)</A
+></H4
+><P
+>&#13;						Set the horizontal line's size (width) from
+						an expression string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_hline_set_size(ocrpt_hline *hline,
+                     const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3615"
+>Set horizontal line indentation</A
+></H4
+><P
+>&#13;						Set the horizontal line's indentation value from
+						an expression string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_hline_set_indent(ocrpt_hline *hline,
+                       const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3619"
+>Set horizontal line length</A
+></H4
+><P
+>&#13;						Set the horizontal line's length from
+						an expression string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_hline_set_length(ocrpt_hline *hline,
+                       const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3623"
+>Set horizontal line font size</A
+></H4
+><P
+>&#13;						Set the horizontal line's font size from
+						an expression string. It's used in indentation
+						and length calculations if <A
+HREF="x216.html#sizeunit"
+>Size unit attribute</A
+>
+						is set to <TT
+CLASS="literal"
+>rlib</TT
+>.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_hline_set_font_size(ocrpt_hline *hline,
+                          const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3629"
+>Set horizontal line suppression</A
+></H4
+><P
+>&#13;						Set the horizontal line's suppression from
+						an expression string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_hline_set_suppress(ocrpt_hline *hline,
+                         const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3633"
+>Set horizontal line color</A
+></H4
+><P
+>&#13;						Set the horizontal line's color from
+						an expression string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_hline_set_color(ocrpt_hline *hline,
+                      const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3637"
+>Add an image to an output section</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_image *
+ocrpt_output_add_image(ocrpt_output *output);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3641"
+>Add an image to a text line</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_image *
+ocrpt_line_add_image(ocrpt_line *line);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3645"
+>Image settings</A
+></H3
+><P
+>&#13;					Note that settings in the part (page) header and
+					footer sections must be constant expressions.
+					Settings in other sections may depend
+					on data derived from query columns.
+					See <A
+HREF="c1724.html"
+>Expressions</A
+>.
+				</P
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3649"
+>Set image value</A
+></H4
+><P
+>&#13;						Set the image's value (filename) from
+						an expression string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_image_set_value(ocrpt_image *image,
+                      const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3653"
+>Set image suppression</A
+></H4
+><P
+>&#13;						Set the image's suppression from
+						an expression string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_image_set_suppress(ocrpt_image *image,
+                         const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3657"
+>Set image type</A
+></H4
+><P
+>&#13;						Set the image's type from
+						an expression string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_image_set_type(ocrpt_image *image,
+                     const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3661"
+>Set image width</A
+></H4
+><P
+>&#13;						Set the image's width from
+						an expression string. Used when
+						the image is directly added to
+						an output section.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_image_set_width(ocrpt_image *image,
+                      const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3665"
+>Set image height</A
+></H4
+><P
+>&#13;						Set the image's width from
+						an expression string. Used when
+						the image is directly added to
+						an output section.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_image_set_height(ocrpt_image *image,
+                       const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3669"
+>Set image alignment</A
+></H4
+><P
+>&#13;						Set the image's alignment from
+						an expression string. Used when
+						the image is added to text line.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_image_set_align(ocrpt_image *image,
+                      const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3673"
+>Set image background color</A
+></H4
+><P
+>&#13;						Set the image's background color from
+						an expression string.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_image_set_bgcolor(ocrpt_image *image,
+                        const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+><DIV
+CLASS="sect4"
+><H4
+CLASS="sect4"
+><A
+NAME="AEN3677"
+>Set image field width</A
+></H4
+><P
+>&#13;						Set the image's field width from
+						an expression string. Used when
+						the image is added to text line.
+						<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_image_set_text_width(ocrpt_image *image,
+                           const char *expr_string);</PRE
+></TD
+></TR
+></TABLE
+>
+					</P
+></DIV
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3681"
+>Add an image end marker to an output section</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_output_add_image_end(ocrpt_output *output);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN3685"
+>Callback related functions</A
+></H2
+><P
+>&#13;				Certain stages of the report execution can
+				notify the application about the stage
+				being executed or finished.
+			</P
+><P
+>&#13;				Every "add a callback" function below return
+				<TT
+CLASS="literal"
+>true</TT
+> for success,
+				<TT
+CLASS="literal"
+>false</TT
+> for failure.
+			</P
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3691"
+>Add a "part added" callback</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>typedef void
+(*ocrpt_part_cb)(opencreport *,
+                 ocrpt_part *,
+                 void *data);
+
+bool
+ocrpt_add_part_added_cb(opencreport *o,
+                        ocrpt_part_cb func,
+                        void *data);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3695"
+>Add a "report added" callback</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>typedef void
+(*ocrpt_report_cb)(opencreport *,
+                   ocrpt_report *,
+                   void *data);
+
+bool
+ocrpt_add_report_added_cb(opencreport *o,
+                          ocrpt_report_cb func,
+                          void *data);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3699"
+>Add an "all precalculations done" callback</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>typedef void
+(*ocrpt_cb)(opencreport *,
+            void *data);
+
+bool
+ocrpt_add_precalculation_done_cb(opencreport *o,
+                                 ocrpt_cb func,
+                                 void *data);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3703"
+>Add a "part iteration" callback</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>bool
+ocrpt_part_add_iteration_cb(ocrpt_part *r,
+                            ocrpt_part_cb func,
+                            void *data);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3707"
+>Add a "report started" callback</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>bool
+ocrpt_report_add_start_cb(ocrpt_report *r,
+                          ocrpt_report_cb func,
+                          void *data);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3711"
+>Add a "report done" callback</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>bool
+ocrpt_report_add_done_cb(ocrpt_report *r,
+                         ocrpt_report_cb func,
+                         void *data);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3715"
+>Add a "new row" callback</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>bool
+ocrpt_report_add_new_row_cb(ocrpt_report *r,
+                            ocrpt_report_cb func,
+                            void *data);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3719"
+>Add a "report iteration done" callback</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>bool
+ocrpt_report_add_iteration_cb(ocrpt_report *r,
+                              ocrpt_report_cb func,
+                              void *data);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3723"
+>Add a "report precalculation done" callback</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>bool
+ocrpt_report_add_precalculation_done_cb(ocrpt_report *r,
+                                        ocrpt_report_cb func,
+                                        void *data);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3727"
+>Add a "break triggers" callback</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>typedef void
+(*ocrpt_break_trigger_cb)(opencreport *,
+                          ocrpt_report *,
+                          ocrpt_break *,
+                          void *);
+
+bool
+ocrpt_break_add_trigger_cb(ocrpt_break *br,
+                           ocrpt_break_trigger_cb func,
+                           void *data);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN3731"
+>Environment related functions</A
+></H2
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3733"
+>Indirect function to get an environment variable</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>typedef ocrpt_result *
+(*ocrpt_env_query_func)(const char *);
+
+extern ocrpt_env_query_func
+ocrpt_env_get;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3737"
+>Set the environment query function</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_env_set_query_func(ocrpt_env_query_func func);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3741"
+>C API environment query function</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_result *
+ocrpt_env_get_c(const char *env);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN3745"
+>File handling related functions</A
+></H2
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3747"
+>Return a canonical file path</A
+></H3
+><P
+>&#13;					The returned path contains only single
+					directory separators and doesn't contains
+					symlinks.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>char *
+ocrpt_canonicalize_path(const char *path);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3751"
+>Add search path</A
+></H3
+><P
+>&#13;					Add a new directory path to the list of
+					search paths. It's useful to find files
+					referenced with relative path.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_add_search_path(opencreport *o,
+                      const char *path);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3755"
+>Find a file</A
+></H3
+><P
+>&#13;					Find a file and return the canonicalized path to it.
+					This function takes the search paths into account.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>char *
+ocrpt_find_file(opencreport *o,
+                const char *filename);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN3759"
+>Color related functions</A
+></H2
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3761"
+>Find a color by its name</A
+></H3
+><P
+>&#13;					The function fills in the
+					<TT
+CLASS="literal"
+>ocrpt_color</TT
+> structure with
+					RGB values in Cairo values (0.0 ... 1.0).
+				</P
+><P
+>&#13;					If the color name starts with
+					<TT
+CLASS="literal"
+>#</TT
+> or <TT
+CLASS="literal"
+>0x</TT
+> or
+					<TT
+CLASS="literal"
+>0X</TT
+> then it must be in HTML
+					notation.
+				</P
+><P
+>&#13;					Otherwise, the color name is looked up in the
+					color name database in a case insensitive way.
+					If found, the passed-in ocrpt_color structure is
+					filled with the RGB color value of that name.
+				</P
+><P
+>&#13;					If not found or the passed-in color name is NULL,
+					depending on the the expected usage (foreground
+					or background color), the <TT
+CLASS="literal"
+>ocrpt_color</TT
+>
+					structure is filled with either white or black.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_get_color(opencreport *o,
+                const char *cname,
+                ocrpt_color *color,
+                bool bgcolor);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN3773"
+>Paper size related functions</A
+></H2
+><P
+>&#13;				Paper size in OpenCReports is handled via
+				<A
+HREF="http://packages.qa.debian.org/libp/libpaper.html"
+TARGET="_top"
+>libpaper</A
+>.
+			</P
+><P
+>&#13;				This structure is used in OpenCReports to represent
+				paper name and size:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>struct ocrpt_paper {
+    const char *name;
+    double width;
+    double height;
+};
+typedef struct ocrpt_paper ocrpt_paper;</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3779"
+>Get the system default paper</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>const ocrpt_paper *
+ocrpt_get_system_paper(void);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3783"
+>Get the paper specified by name</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>const ocrpt_paper *
+ocrpt_get_paper_by_name(const char *paper);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3787"
+>Set the global paper</A
+></H3
+><P
+>&#13;					Set global paper using an
+					<TT
+CLASS="literal"
+>ocrpt_paper</TT
+> structure.
+					The contents of the structure is copied.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_set_paper(opencreport *o,
+                const ocrpt_paper *paper);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3792"
+>Set global paper specified by name</A
+></H3
+><P
+>&#13;					Set paper for the report using a paper name.
+					If the paper name is unknown, the system default paper is set.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_set_paper_by_name(opencreport *o,
+                        const char *paper);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3796"
+>Get currently set global paper</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>const ocrpt_paper *
+ocrpt_get_paper(opencreport *o);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3800"
+>Iterate over paper sizes</A
+></H3
+><P
+>&#13;					Get the next <TT
+CLASS="literal"
+>ocrpt_paper</TT
+> structure
+					in the iterator. For the first call, the iterator
+					pointer must be NULL. It returns NULL when there are
+					no more papers known to the system.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>const ocrpt_paper *
+ocrpt_paper_next(opencreport *o,
+                 void **iter);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN3805"
+>Memory handling related functions</A
+></H2
+><P
+>&#13;				Memory handling is done through an indirection,
+				to help with bindings (that may do their own memory
+				handling) override the default.
+			</P
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3808"
+>Indirect function pointers</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>typedef void *
+(*ocrpt_mem_malloc_t)(size_t);
+
+typedef void *
+(*ocrpt_mem_realloc_t)(void *,
+                       size_t);
+
+typedef void *
+(*ocrpt_mem_reallocarray_t)(void *,
+                            size_t,
+                            size_t);
+
+typedef void
+(*ocrpt_mem_free_t)(const void *);
+
+typedef char *
+(*ocrpt_mem_strdup_t)(const char *);
+
+typedef char *
+(*ocrpt_mem_strndup_t)(const char *,
+                       size_t);
+
+typedef void
+(*ocrpt_mem_free_size_t)(void *,
+                         size_t);
+
+extern ocrpt_mem_malloc_t ocrpt_mem_malloc0;
+extern ocrpt_mem_realloc_t ocrpt_mem_realloc0;
+extern ocrpt_mem_reallocarray_t ocrpt_mem_reallocarray0;
+extern ocrpt_mem_free_t ocrpt_mem_free0;
+extern ocrpt_mem_strdup_t ocrpt_mem_strdup0;
+extern ocrpt_mem_strndup_t ocrpt_mem_strndup0;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3812"
+>Allocate memory</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void *
+ocrpt_mem_malloc(size_t sz);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3816"
+>Reallocate memory</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void *
+ocrpt_mem_realloc(void *ptr,
+                  size_t sz);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3820"
+>Reallocate array of memory</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void *
+ocrpt_mem_reallocarray(void *ptr,
+                       size_t nmemb,
+                       size_t sz);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3824"
+>Free memory</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_mem_free(const void *ptr);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3828"
+>Duplicate C string</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void *
+ocrpt_mem_strdup(const char *ptr);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3832"
+>Duplicate C string up to the specified length</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void *
+ocrpt_mem_strndup(const char *ptr,
+                  size_t sz);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3836"
+>Free a C string</A
+></H3
+><P
+>&#13;					It'a convenience alias for
+					<TT
+CLASS="literal"
+>ocrpt_mem_free()</TT
+>.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_strfree(const char *s);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3841"
+>Set indirect allocation functions</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_mem_set_alloc_funcs(ocrpt_mem_malloc_t rmalloc,
+                          ocrpt_mem_realloc_t rrealloc,
+                          ocrpt_mem_reallocarray_t rreallocarray,
+                          ocrpt_mem_free_t rfree,
+                          ocrpt_mem_strdup_t rstrdup,
+                          ocrpt_mem_strndup_t rstrndup);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN3845"
+>List related functions</A
+></H2
+><P
+>&#13;				These functions implement a single linked list.
+				The list element structure is hidden:
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>struct ocrpt_list;
+typedef struct ocrpt_list ocrpt_list;</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3849"
+>Get the list length</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>size_t
+ocrpt_list_length(ocrpt_list *l);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3853"
+>Make a list from one element</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_list *
+ocrpt_makelist1(const void *data);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3857"
+>Make a list from multiple elements</A
+></H3
+><P
+>&#13;					This function can be used with variable
+					number of arguments.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_list *
+ocrpt_makelist(const void *data1, ...);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3861"
+>Get the last element of a list</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_list *
+ocrpt_list_last(const ocrpt_list *l);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3865"
+>Get the nth element of a list</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_list *
+ocrpt_list_nth(const ocrpt_list *l, uint32_t n);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3869"
+>Append a new element to a list</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_list *
+ocrpt_list_append(ocrpt_list *l,
+                  const void *data);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3873"
+>Append to list using the last element</A
+></H3
+><P
+>&#13;					This function make appending to the list work
+					<I
+CLASS="emphasis"
+>O(1)</I
+> instead of
+					<I
+CLASS="emphasis"
+>O(n)</I
+>.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_list *
+ocrpt_list_end_append(ocrpt_list *l,
+                      ocrpt_list **e,
+                      const void *data);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3879"
+>Prepend a new element to a list</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_list *
+ocrpt_list_prepend(ocrpt_list *l,
+                   const void *data);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3883"
+>Remove a data element from a list</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_list *
+ocrpt_list_remove(ocrpt_list *l,
+                  const void *data);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3887"
+>Get the data element from a list</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void *
+ocrpt_list_get_data(ocrpt_list *l);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3891"
+>Free a list</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_list_free(ocrpt_list *l);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3895"
+>Free a list and its data elements</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_list_free_deep(ocrpt_list *l,
+                     ocrpt_mem_free_t freefunc);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN3899"
+>String related functions</A
+></H2
+><P
+>&#13;				For memory safety and higher performance, a wrapper
+				structure is used over C functions.
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>struct ocrpt_string {
+    char *str;
+    size_t allocated_len;
+    size_t len;
+};
+typedef struct ocrpt_string ocrpt_string;</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3903"
+>Create a new string</A
+></H3
+><P
+>&#13;					Create a new string from a C string.
+					The ownership of the input string may be
+					taken over, or the original string's contents
+					are copied.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_string *
+ocrpt_mem_string_new(const char *str,
+                     bool copy);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3907"
+>Create a new string with specified allocated length</A
+></H3
+><P
+>&#13;					Create a new string with specified allocated length
+					so future growth can be done without reallocation.
+					The input string is always copied.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_string *
+ocrpt_mem_string_new_with_len(const char *str,
+                              size_t len);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3911"
+>Create a string from a formatted string with maximum length</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_string *
+ocrpt_mem_string_new_vnprintf(size_t len,
+                              const char *format,
+                              va_list va);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3915"
+>Create a string from a formatted string</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_string *
+ocrpt_mem_string_new_printf(const char *format, ...);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3919"
+>Resize a string</A
+></H3
+><P
+>&#13;					Resize the string to the specified allocated
+					length.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>ocrpt_string *
+ocrpt_mem_string_resize(ocrpt_string *string,
+                        size_t len);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3923"
+>Free a string</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>char *
+ocrpt_mem_string_free(ocrpt_string *string,
+                      bool free_str);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3927"
+>Append a C string of the specified length to a string</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_mem_string_append_len(ocrpt_string *string,
+                            const char *str,
+                            const size_t len);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3931"
+>Append a binary string of the specified length to a string</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_mem_string_append_len_binary(ocrpt_string *string,
+                                   const char *str,
+                                   const size_t len);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3935"
+>Append a C string of unspecified length to a string</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_mem_string_append(ocrpt_string *string,
+                        const char *str);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3939"
+>Append a byte to a string</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_mem_string_append_c(ocrpt_string *string,
+                          const char c);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN3943"
+>Append a formatted string to a string</A
+></H3
+><P
+>&#13;					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>void
+ocrpt_mem_string_append_printf(ocrpt_string *string,
+                               const char *format, ...);</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x2728.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c3947.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>High level C API</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c2722.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>GNU Free Documentation License</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

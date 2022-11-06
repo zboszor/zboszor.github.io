@@ -2,21 +2,24 @@
 <HTML
 ><HEAD
 ><TITLE
->Introduction and concepts</TITLE
+>Format strings</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="OpenCReports 0.6.1 Manual"
 HREF="book1.html"><LINK
+REL="UP"
+TITLE="Formatting"
+HREF="c2599.html"><LINK
 REL="PREVIOUS"
-TITLE="OpenCReports 0.6.1 Manual"
-HREF="book1.html"><LINK
+TITLE="Formatting"
+HREF="c2599.html"><LINK
 REL="NEXT"
-TITLE="Concepts"
-HREF="x28.html"></HEAD
+TITLE="Legacy format strings"
+HREF="x2618.html"></HEAD
 ><BODY
-CLASS="chapter"
+CLASS="sect1"
 BGCOLOR="#FFFFFF"
 TEXT="#000000"
 LINK="#0000FF"
@@ -42,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="book1.html"
+HREF="c2599.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -50,13 +53,13 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
-></TD
+>Formatting</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x28.html"
+HREF="x2618.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -66,62 +69,49 @@ ACCESSKEY="N"
 ALIGN="LEFT"
 WIDTH="100%"></DIV
 ><DIV
-CLASS="chapter"
-><H1
-><A
-NAME="introduction"
-></A
->Introduction and concepts</H1
-><DIV
 CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="AEN18"
->The predecessor: RLIB</A
+NAME="AEN2607"
+>Format strings</A
 ></H1
 ><P
->&#13;			The idea to write <A
-HREF="https://github.com/zboszor/OpenCReports"
-TARGET="_top"
->OpenCReports</A
+>&#13;			OpenCReports supports the same set of
+			format strings as RLIB, with extensions.
+			RLIB and OpenCReports support:
+			<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>&#13;						legacy format strings for strings,
+						numbers and datetime values
+					</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>&#13;						"new style" format strings with <TT
+CLASS="literal"
+>!</TT
 >
-			started with my getting acqauinted with <A
-HREF="https://github.com/SICOM/rlib"
-TARGET="_top"
->RLIB</A
->
-			in 2005 and working with it (and on it) for a very long time,
-			with the original implementors finally losing interest in
-			developing RLIB further. This was around 2018. Even the
-			original documentation site for RLIB was retired. But
-			thanks to the Internet Archive,
-			<A
-HREF="https://web.archive.org/web/20131116192438/http://newrlib.sicom.com/~rlib/index.php/Main_Page"
-TARGET="_top"
->it may still be read</A
+						prefix
+					</P
+></LI
+></UL
 >
 		</P
 ><P
->&#13;			To overcome some of the shortcomings seen in RLIB,
-			its <I
-CLASS="emphasis"
->ideas</I
-> were used for a completely
-			new implementation with high level of compatibility
-			to the original.
+>&#13;			OpenCReports also supports a 2nd generation
+			new style format strings with a prefix and a
+			pair of brackets (<TT
+CLASS="literal"
+>{}</TT
+>) that
+			embed the format strings.
 		</P
-><P
->&#13;			RLIB is a report generator library, so is OpenCReports.
-			In this documentation, a lot of references contain
-			comparisons to RLIB.
-		</P
-><P
->&#13;			The name OpenCReports came from the fact that it's
-			implemented in the C programming language in an
-			open way, and using a free software license.
-		</P
-></DIV
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -139,7 +129,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="book1.html"
+HREF="c2599.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -157,7 +147,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x28.html"
+HREF="x2618.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -167,17 +157,21 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->OpenCReports 0.6.1 Manual</TD
+>Formatting</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
->&nbsp;</TD
+><A
+HREF="c2599.html"
+ACCESSKEY="U"
+>Up</A
+></TD
 ><TD
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Concepts</TD
+>Legacy format strings</TD
 ></TR
 ></TABLE
 ></DIV

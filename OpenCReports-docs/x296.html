@@ -2,21 +2,24 @@
 <HTML
 ><HEAD
 ><TITLE
->Introduction and concepts</TITLE
+>Paths</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="OpenCReports 0.6.1 Manual"
 HREF="book1.html"><LINK
+REL="UP"
+TITLE="Report XML description"
+HREF="c169.html"><LINK
 REL="PREVIOUS"
-TITLE="OpenCReports 0.6.1 Manual"
-HREF="book1.html"><LINK
+TITLE="OpenCReport element"
+HREF="x216.html"><LINK
 REL="NEXT"
-TITLE="Concepts"
-HREF="x28.html"></HEAD
+TITLE="Datasources"
+HREF="x305.html"></HEAD
 ><BODY
-CLASS="chapter"
+CLASS="sect1"
 BGCOLOR="#FFFFFF"
 TEXT="#000000"
 LINK="#0000FF"
@@ -42,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="book1.html"
+HREF="x216.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -50,13 +53,13 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
-></TD
+>Report XML description</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x28.html"
+HREF="x305.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -66,62 +69,64 @@ ACCESSKEY="N"
 ALIGN="LEFT"
 WIDTH="100%"></DIV
 ><DIV
-CLASS="chapter"
-><H1
-><A
-NAME="introduction"
-></A
->Introduction and concepts</H1
-><DIV
 CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="AEN18"
->The predecessor: RLIB</A
+NAME="searchpaths"
+>Paths</A
 ></H1
 ><P
->&#13;			The idea to write <A
-HREF="https://github.com/zboszor/OpenCReports"
-TARGET="_top"
->OpenCReports</A
->
-			started with my getting acqauinted with <A
-HREF="https://github.com/SICOM/rlib"
-TARGET="_top"
->RLIB</A
->
-			in 2005 and working with it (and on it) for a very long time,
-			with the original implementors finally losing interest in
-			developing RLIB further. This was around 2018. Even the
-			original documentation site for RLIB was retired. But
-			thanks to the Internet Archive,
+>&#13;			Some report descriptiom elements (like
+			<TT
+CLASS="literal"
+>&#60;load&#62;</TT
+> and
+			<TT
+CLASS="literal"
+>&#60;Image&#62;</TT
+>, see
 			<A
-HREF="https://web.archive.org/web/20131116192438/http://newrlib.sicom.com/~rlib/index.php/Main_Page"
-TARGET="_top"
->it may still be read</A
+HREF="x1108.html"
+>Loaded report</A
+> and <A
+HREF="x1637.html"
+>Image node</A
+>)
+			reference files. By default, these files must
+			be in the same directory as the report XML
+			description file, or in the current working
+			directory for the application using OpenCReports.
+			To lift this limitation, and allow organizing files
+			in a more logical manner, a search path or
+			multiple search paths may be added.
+			For files referenced with relative paths, the
+			search paths will be used in their order of
+			declaration. Search paths and the relative file
+			path are concatenated together to form an absolute
+			path. The first successful absolute file path
+			match will be used in the element referencing
+			the file.
+		</P
+><P
+>&#13;			Search paths are in the following format:
+			<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Paths&#62;
+    &#60;Path value="/absolute/path" /&#62;
+    ...
+&#60;/Paths&#62;</PRE
+></TD
+></TR
+></TABLE
 >
 		</P
-><P
->&#13;			To overcome some of the shortcomings seen in RLIB,
-			its <I
-CLASS="emphasis"
->ideas</I
-> were used for a completely
-			new implementation with high level of compatibility
-			to the original.
-		</P
-><P
->&#13;			RLIB is a report generator library, so is OpenCReports.
-			In this documentation, a lot of references contain
-			comparisons to RLIB.
-		</P
-><P
->&#13;			The name OpenCReports came from the fact that it's
-			implemented in the C programming language in an
-			open way, and using a free software license.
-		</P
-></DIV
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -139,7 +144,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="book1.html"
+HREF="x216.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -157,7 +162,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x28.html"
+HREF="x305.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -167,17 +172,21 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->OpenCReports 0.6.1 Manual</TD
+>OpenCReport element</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
->&nbsp;</TD
+><A
+HREF="c169.html"
+ACCESSKEY="U"
+>Up</A
+></TD
 ><TD
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Concepts</TD
+>Datasources</TD
 ></TR
 ></TABLE
 ></DIV

@@ -7,7 +7,7 @@
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
-TITLE="OpenCReports 0.6 Manual"
+TITLE="OpenCReports 0.6.1 Manual"
 HREF="book1.html"><LINK
 REL="UP"
 TITLE="Report XML description"
@@ -16,8 +16,8 @@ REL="PREVIOUS"
 TITLE="Report XML description"
 HREF="c169.html"><LINK
 REL="NEXT"
-TITLE="Datasources"
-HREF="x277.html"></HEAD
+TITLE="Paths"
+HREF="x296.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -37,7 +37,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->OpenCReports 0.6 Manual</TH
+>OpenCReports 0.6.1 Manual</TH
 ></TR
 ><TR
 ><TD
@@ -59,7 +59,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x277.html"
+HREF="x296.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -136,21 +136,21 @@ CLASS="literal"
 >literal</TT
 > (see
 							<A
-HREF="x1262.html"
+HREF="x1296.html"
 >Output node</A
 >) are in
 							number of characters. This is influenced
 							by the font size set in either
 							<A
-HREF="x507.html#partfontsize"
+HREF="x541.html#partfontsize"
 >Part font size</A
 >,
 							<A
-HREF="x774.html#reportfontsize"
+HREF="x808.html#reportfontsize"
 >Report font size</A
 > or
 							<A
-HREF="x1301.html#linefontsize"
+HREF="x1335.html#linefontsize"
 >Line font size</A
 >.
 						</P
@@ -159,12 +159,12 @@ HREF="x1301.html#linefontsize"
 STYLE="list-style-type: disc"
 ><P
 >&#13;							height for <A
-HREF="x690.html"
+HREF="x724.html"
 >Part column</A
 >
 							is measured in number of characters
 							influenced by <A
-HREF="x507.html#partfontsize"
+HREF="x541.html#partfontsize"
 >Part font size</A
 >
 						</P
@@ -173,16 +173,16 @@ HREF="x507.html#partfontsize"
 STYLE="list-style-type: disc"
 ><P
 >&#13;							height for <A
-HREF="x774.html"
+HREF="x808.html"
 >Report</A
 >
 							is measured in number of characters
 							influenced by <A
-HREF="x507.html#partfontsize"
+HREF="x541.html#partfontsize"
 >Part font size</A
 >
 							and <A
-HREF="x774.html#reportfontsize"
+HREF="x808.html#reportfontsize"
 >Report font size</A
 >
 						</P
@@ -229,7 +229,7 @@ CLASS="literal"
 				But it's there if someone wants to port reports
 				from RLIB and only make superficial changes.
 				See <A
-HREF="x1377.html#textelemwidth"
+HREF="x1411.html#textelemwidth"
 >Text element width</A
 >.
 			</P
@@ -256,11 +256,11 @@ NAME="noqueryshownodata"
 ></H2
 ><P
 >&#13;				This controls whether <A
-HREF="x774.html#nodatanode"
+HREF="x808.html#nodatanode"
 >NoData node</A
 >
 				is shown when the report's <A
-HREF="x1074.html#queryattr"
+HREF="x1108.html#queryattr"
 >Query attribute</A
 >
 				is set to a non-existing query name.
@@ -301,7 +301,7 @@ CLASS="literal"
 >
 				is the toplevel node for RLIB compatibility.
 				See <A
-HREF="x774.html#nodatanode"
+HREF="x808.html#nodatanode"
 >NoData node</A
 >.
 			</P
@@ -346,6 +346,103 @@ CLASS="literal"
 >.
 			</P
 ></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN277"
+>Precision bits</A
+></H2
+><P
+>&#13;				This controls the precision for numeric computations.
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;OpenCReport precision_bits="256"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+><P
+>&#13;				Default is <TT
+CLASS="literal"
+>256</TT
+>.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN283"
+>Rounding mode</A
+></H2
+><P
+>&#13;				This controls the rounding mode for numeric computations.
+				Possible values are:
+				<TT
+CLASS="literal"
+>nearest</TT
+>,
+				<TT
+CLASS="literal"
+>to_minus_inf</TT
+>,
+				<TT
+CLASS="literal"
+>to_inf</TT
+>,
+				<TT
+CLASS="literal"
+>to_zero</TT
+>,
+				<TT
+CLASS="literal"
+>away_from_zero</TT
+>, or
+				<TT
+CLASS="literal"
+>faithful</TT
+>.
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;OpenCReport rounding_mode="nearest"&#62;
+&#60;OpenCReport rounding_mode="to_minus_inf"&#62;
+&#60;OpenCReport rounding_mode="to_inf"&#62;
+&#60;OpenCReport rounding_mode="to_zero"&#62;
+&#60;OpenCReport rounding_mode="away_from_zero"&#62;
+&#60;OpenCReport rounding_mode="faithful"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+><P
+>&#13;				Default is <TT
+CLASS="literal"
+>nearest</TT
+>.
+				According to the MPFR documentation,
+				<TT
+CLASS="literal"
+>faithful</TT
+> is experimental.
+			</P
+></DIV
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -381,7 +478,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x277.html"
+HREF="x296.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -405,7 +502,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Datasources</TD
+>Paths</TD
 ></TR
 ></TABLE
 ></DIV

@@ -2,7 +2,7 @@
 <HTML
 ><HEAD
 ><TITLE
->Introduction and concepts</TITLE
+>C language API reference</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
@@ -10,11 +10,11 @@ REL="HOME"
 TITLE="OpenCReports 0.6.1 Manual"
 HREF="book1.html"><LINK
 REL="PREVIOUS"
-TITLE="OpenCReports 0.6.1 Manual"
-HREF="book1.html"><LINK
+TITLE="Second generation new style format strings"
+HREF="x2687.html"><LINK
 REL="NEXT"
-TITLE="Concepts"
-HREF="x28.html"></HEAD
+TITLE="High level C API"
+HREF="x2728.html"></HEAD
 ><BODY
 CLASS="chapter"
 BGCOLOR="#FFFFFF"
@@ -42,7 +42,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="book1.html"
+HREF="x2687.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -56,7 +56,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x28.html"
+HREF="x2728.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -69,57 +69,32 @@ WIDTH="100%"></DIV
 CLASS="chapter"
 ><H1
 ><A
-NAME="introduction"
+NAME="c-api-reference"
 ></A
->Introduction and concepts</H1
+>C language API reference</H1
 ><DIV
 CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="AEN18"
->The predecessor: RLIB</A
+NAME="AEN2724"
+>Header file</A
 ></H1
 ><P
->&#13;			The idea to write <A
-HREF="https://github.com/zboszor/OpenCReports"
-TARGET="_top"
->OpenCReports</A
+>&#13;			For using OpenCReports, this single header must be used:
+			<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>#include &#60;opencreport.h&#62;</PRE
+></TD
+></TR
+></TABLE
 >
-			started with my getting acqauinted with <A
-HREF="https://github.com/SICOM/rlib"
-TARGET="_top"
->RLIB</A
->
-			in 2005 and working with it (and on it) for a very long time,
-			with the original implementors finally losing interest in
-			developing RLIB further. This was around 2018. Even the
-			original documentation site for RLIB was retired. But
-			thanks to the Internet Archive,
-			<A
-HREF="https://web.archive.org/web/20131116192438/http://newrlib.sicom.com/~rlib/index.php/Main_Page"
-TARGET="_top"
->it may still be read</A
->
-		</P
-><P
->&#13;			To overcome some of the shortcomings seen in RLIB,
-			its <I
-CLASS="emphasis"
->ideas</I
-> were used for a completely
-			new implementation with high level of compatibility
-			to the original.
-		</P
-><P
->&#13;			RLIB is a report generator library, so is OpenCReports.
-			In this documentation, a lot of references contain
-			comparisons to RLIB.
-		</P
-><P
->&#13;			The name OpenCReports came from the fact that it's
-			implemented in the C programming language in an
-			open way, and using a free software license.
 		</P
 ></DIV
 ></DIV
@@ -139,7 +114,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="book1.html"
+HREF="x2687.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -157,7 +132,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x28.html"
+HREF="x2728.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -167,7 +142,7 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->OpenCReports 0.6.1 Manual</TD
+>Second generation new style format strings</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
@@ -177,7 +152,7 @@ VALIGN="top"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Concepts</TD
+>High level C API</TD
 ></TR
 ></TABLE
 ></DIV
