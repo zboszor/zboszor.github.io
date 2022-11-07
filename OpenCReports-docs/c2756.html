@@ -2,19 +2,19 @@
 <HTML
 ><HEAD
 ><TITLE
->Report variables</TITLE
+>C language API reference</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
-TITLE="OpenCReports 0.6.2 Manual"
+TITLE="OpenCReports 0.6.3 Manual"
 HREF="book1.html"><LINK
 REL="PREVIOUS"
-TITLE="Report breaks in OpenCReports"
-HREF="x2464.html"><LINK
+TITLE="Second generation new style format strings"
+HREF="x2721.html"><LINK
 REL="NEXT"
-TITLE="Expression variables"
-HREF="x2520.html"></HEAD
+TITLE="High level C API"
+HREF="x2762.html"></HEAD
 ><BODY
 CLASS="chapter"
 BGCOLOR="#FFFFFF"
@@ -34,7 +34,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->OpenCReports 0.6.2 Manual</TH
+>OpenCReports 0.6.3 Manual</TH
 ></TR
 ><TR
 ><TD
@@ -42,7 +42,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="x2464.html"
+HREF="x2721.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -56,7 +56,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x2520.html"
+HREF="x2762.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -69,68 +69,32 @@ WIDTH="100%"></DIV
 CLASS="chapter"
 ><H1
 ><A
-NAME="variables"
+NAME="c-api-reference"
 ></A
->Report variables</H1
+>C language API reference</H1
 ><DIV
 CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="AEN2504"
->Introduction to report variables</A
+NAME="AEN2758"
+>Header file</A
 ></H1
 ><P
->&#13;			Variables are named aliases for
-			<A
-HREF="c1750.html"
->Expressions</A
->.
-		</P
-><P
->&#13;			In <TT
-CLASS="literal"
->OpenCReports</TT
->, there are a few
-			variable types:
-			<P
-></P
-><UL
-><LI
-STYLE="list-style-type: disc"
-><P
->&#13;						freeform expression variables
-					</P
-></LI
-><LI
-STYLE="list-style-type: disc"
-><P
->&#13;						pre-defined numeric operations for
-						simple statistics, like summing, counting,
-						or averaging a data series, or finding the
-						highest or lowest values in a data series
-					</P
-></LI
-><LI
-STYLE="list-style-type: disc"
-><P
->&#13;						custom variables where the data type and
-						the operation on the data is completely
-						user-defined
-					</P
-></LI
-></UL
+>&#13;			For using OpenCReports, this single header must be used:
+			<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>#include &#60;opencreport.h&#62;</PRE
+></TD
+></TR
+></TABLE
 >
-		</P
-><P
->&#13;			Variables may be reset at break boundaries.
-			See <A
-HREF="c2447.html"
->Report breaks</A
-> and the <A
-HREF="x1155.html#resetonbreak"
->Reset on break attribute</A
->.
 		</P
 ></DIV
 ></DIV
@@ -150,7 +114,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="x2464.html"
+HREF="x2721.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -168,7 +132,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x2520.html"
+HREF="x2762.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -178,7 +142,7 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Report breaks in OpenCReports</TD
+>Second generation new style format strings</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
@@ -188,7 +152,7 @@ VALIGN="top"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Expression variables</TD
+>High level C API</TD
 ></TR
 ></TABLE
 ></DIV

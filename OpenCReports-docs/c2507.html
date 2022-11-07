@@ -2,19 +2,19 @@
 <HTML
 ><HEAD
 ><TITLE
->Formatting</TITLE
+>Report variables</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
-TITLE="OpenCReports 0.6.2 Manual"
+TITLE="OpenCReports 0.6.3 Manual"
 HREF="book1.html"><LINK
 REL="PREVIOUS"
-TITLE="Resetting a variable on break boundaries"
-HREF="x2619.html"><LINK
+TITLE="Report breaks in OpenCReports"
+HREF="x2469.html"><LINK
 REL="NEXT"
-TITLE="Format strings"
-HREF="x2636.html"></HEAD
+TITLE="Expression variables"
+HREF="x2525.html"></HEAD
 ><BODY
 CLASS="chapter"
 BGCOLOR="#FFFFFF"
@@ -34,7 +34,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->OpenCReports 0.6.2 Manual</TH
+>OpenCReports 0.6.3 Manual</TH
 ></TR
 ><TR
 ><TD
@@ -42,7 +42,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="x2619.html"
+HREF="x2469.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -56,7 +56,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x2636.html"
+HREF="x2525.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -69,35 +69,68 @@ WIDTH="100%"></DIV
 CLASS="chapter"
 ><H1
 ><A
-NAME="formatting"
+NAME="variables"
 ></A
->Formatting</H1
+>Report variables</H1
 ><DIV
 CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="AEN2630"
->Formatting functions</A
+NAME="AEN2509"
+>Introduction to report variables</A
 ></H1
 ><P
->&#13;			Formatting data can be done via the
+>&#13;			Variables are named aliases for
 			<A
-HREF="x2077.html#formatfunc"
->format function</A
->, the
-			<A
-HREF="x2077.html#printffunc"
->printf function</A
-> and the
-			<A
-HREF="x1426.html#formatattr"
->Text element format attribute</A
+HREF="c1750.html"
+>Expressions</A
 >.
-			After formatting, regardless of the data type
-			that was formatted, the type of the result value
-			is string. This string can be displayed in the
-			report output or processed further as needed.
+		</P
+><P
+>&#13;			In <TT
+CLASS="literal"
+>OpenCReports</TT
+>, there are a few
+			variable types:
+			<P
+></P
+><UL
+><LI
+STYLE="list-style-type: disc"
+><P
+>&#13;						freeform expression variables
+					</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>&#13;						pre-defined numeric operations for
+						simple statistics, like summing, counting,
+						or averaging a data series, or finding the
+						highest or lowest values in a data series
+					</P
+></LI
+><LI
+STYLE="list-style-type: disc"
+><P
+>&#13;						custom variables where the data type and
+						the operation on the data is completely
+						user-defined
+					</P
+></LI
+></UL
+>
+		</P
+><P
+>&#13;			Variables may be reset at break boundaries.
+			See <A
+HREF="c2452.html"
+>Report breaks</A
+> and the <A
+HREF="x1155.html#resetonbreak"
+>Reset on break attribute</A
+>.
 		</P
 ></DIV
 ></DIV
@@ -117,7 +150,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="x2619.html"
+HREF="x2469.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -135,7 +168,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x2636.html"
+HREF="x2525.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -145,7 +178,7 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Resetting a variable on break boundaries</TD
+>Report breaks in OpenCReports</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
@@ -155,7 +188,7 @@ VALIGN="top"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Format strings</TD
+>Expression variables</TD
 ></TR
 ></TABLE
 ></DIV
