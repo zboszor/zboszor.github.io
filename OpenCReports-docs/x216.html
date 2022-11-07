@@ -7,7 +7,7 @@
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
-TITLE="OpenCReports 0.6.1 Manual"
+TITLE="OpenCReports 0.6.2 Manual"
 HREF="book1.html"><LINK
 REL="UP"
 TITLE="Report XML description"
@@ -17,7 +17,7 @@ TITLE="Report XML description"
 HREF="c169.html"><LINK
 REL="NEXT"
 TITLE="Paths"
-HREF="x296.html"></HEAD
+HREF="x311.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -37,7 +37,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->OpenCReports 0.6.1 Manual</TH
+>OpenCReports 0.6.2 Manual</TH
 ></TR
 ><TR
 ><TD
@@ -59,7 +59,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x296.html"
+HREF="x311.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -136,21 +136,21 @@ CLASS="literal"
 >literal</TT
 > (see
 							<A
-HREF="x1296.html"
+HREF="x1311.html"
 >Output node</A
 >) are in
 							number of characters. This is influenced
 							by the font size set in either
 							<A
-HREF="x541.html#partfontsize"
+HREF="x556.html#partfontsize"
 >Part font size</A
 >,
 							<A
-HREF="x808.html#reportfontsize"
+HREF="x823.html#reportfontsize"
 >Report font size</A
 > or
 							<A
-HREF="x1335.html#linefontsize"
+HREF="x1350.html#linefontsize"
 >Line font size</A
 >.
 						</P
@@ -159,12 +159,12 @@ HREF="x1335.html#linefontsize"
 STYLE="list-style-type: disc"
 ><P
 >&#13;							height for <A
-HREF="x724.html"
+HREF="x739.html"
 >Part column</A
 >
 							is measured in number of characters
 							influenced by <A
-HREF="x541.html#partfontsize"
+HREF="x556.html#partfontsize"
 >Part font size</A
 >
 						</P
@@ -173,16 +173,16 @@ HREF="x541.html#partfontsize"
 STYLE="list-style-type: disc"
 ><P
 >&#13;							height for <A
-HREF="x808.html"
+HREF="x823.html"
 >Report</A
 >
 							is measured in number of characters
 							influenced by <A
-HREF="x541.html#partfontsize"
+HREF="x556.html#partfontsize"
 >Part font size</A
 >
 							and <A
-HREF="x808.html#reportfontsize"
+HREF="x823.html#reportfontsize"
 >Report font size</A
 >
 						</P
@@ -229,7 +229,7 @@ CLASS="literal"
 				But it's there if someone wants to port reports
 				from RLIB and only make superficial changes.
 				See <A
-HREF="x1411.html#textelemwidth"
+HREF="x1426.html#textelemwidth"
 >Text element width</A
 >.
 			</P
@@ -256,11 +256,11 @@ NAME="noqueryshownodata"
 ></H2
 ><P
 >&#13;				This controls whether <A
-HREF="x808.html#nodatanode"
+HREF="x823.html#nodatanode"
 >NoData node</A
 >
 				is shown when the report's <A
-HREF="x1108.html#queryattr"
+HREF="x1123.html#queryattr"
 >Query attribute</A
 >
 				is set to a non-existing query name.
@@ -301,7 +301,7 @@ CLASS="literal"
 >
 				is the toplevel node for RLIB compatibility.
 				See <A
-HREF="x808.html#nodatanode"
+HREF="x823.html#nodatanode"
 >NoData node</A
 >.
 			</P
@@ -443,6 +443,89 @@ CLASS="literal"
 > is experimental.
 			</P
 ></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN296"
+>Locale</A
+></H2
+><P
+>&#13;				This controls the language settings, like the decimal
+				separator, weekday names, month names and similar.
+				This setting is also used as the language of translation.
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;OpenCReport locale="de_DE"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+><P
+>&#13;				Default is <TT
+CLASS="literal"
+>C</TT
+> locale which
+				approximates US English.
+			</P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN302"
+>Translation settings</A
+></H2
+><P
+>&#13;				These two settings control the translation.
+				<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;OpenCReport
+    translation_domain="mydomain"
+    translation_directory="/path/to/translation/files"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+			</P
+><P
+>&#13;				Translation is based on GNU Gettext.
+				A subdirectory tree is expected under the specified
+				translation directory in the form of
+				<TT
+CLASS="literal"
+>locale/LC_MESSAGES</TT
+> (e.g.:
+				<TT
+CLASS="literal"
+>de_DE/LC_MESSAGES</TT
+>) with
+				<TT
+CLASS="literal"
+>mydomain.mo</TT
+> files in them.
+				These <TT
+CLASS="literal"
+>.mo</TT
+> files contain translated
+				messages for a given language.
+			</P
+></DIV
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -478,7 +561,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x296.html"
+HREF="x311.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD

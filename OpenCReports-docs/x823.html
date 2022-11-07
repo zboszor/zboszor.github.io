@@ -1,0 +1,1726 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Report</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="OpenCReports 0.6.2 Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Report XML description"
+HREF="c169.html"><LINK
+REL="PREVIOUS"
+TITLE="Part column"
+HREF="x739.html"><LINK
+REL="NEXT"
+TITLE="Loaded report"
+HREF="x1123.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>OpenCReports 0.6.2 Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x739.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Report XML description</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x1123.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="report"
+>Report</A
+></H1
+><P
+>&#13;			This section may occur in a wider context or
+			standalone in an XML description file.
+		</P
+><P
+>&#13;			Example XML skeleton structure with
+			<TT
+CLASS="literal"
+>&#60;OpenCReport&#62;</TT
+> as
+			the toplevel node:
+			<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;OpenCReport&#62;
+    &#60;Part&#62;
+        &#60;pr&#62;
+            &#60;pd&#62;
+                &#60;Report&#62;
+                    ...
+                &#60;/Report&#62;
+            &#60;/pd&#62;
+        &#60;/pr&#62;
+    &#60;/Part&#62;
+&#60;/OpenCReport&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+		</P
+><P
+>&#13;			Example XML skeleton structure with
+			<TT
+CLASS="literal"
+>&#60;Part&#62;</TT
+> as
+			the toplevel node:
+			<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Part&#62;
+    &#60;pr&#62;
+        &#60;pd&#62;
+            &#60;Report&#62;
+                ...
+            &#60;/Report&#62;
+        &#60;/pd&#62;
+    &#60;/pr&#62;
+&#60;/Part&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+		</P
+><P
+>&#13;			Example XML skeleton structure with
+			a standalone <TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+> node:
+			<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report&#62;
+    ...
+&#60;/Report&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+		</P
+><P
+>&#13;			When <TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+> is the
+			toplevel node, parent nodes for
+			<TT
+CLASS="literal"
+>&#60;Part&#62;</TT
+>, <TT
+CLASS="literal"
+>&#60;pr&#62;</TT
+>
+			and <TT
+CLASS="literal"
+>&#60;pd&#62;</TT
+> are implicitly
+			created. Subsections and many attributes specific to
+			these parent nodes can be used as shortcuts in the
+			<TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+> node.
+		</P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="reportattribs"
+>Report attributes</A
+></H2
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="reportfontname"
+>Font name</A
+></H3
+><P
+>&#13;					The font name attribute specifies the font
+					for the report's scope. It can be overridden by
+					child nodes for their scope.
+					It may be specified in two forms, the first one
+					is the preferred name, the second is for RLIB
+					compatibility:
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report font_name="Arial"&#62;
+&#60;Report fontName="Arial"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					If both forms are specified, <TT
+CLASS="literal"
+>font_name</TT
+>
+					is used.
+				</P
+><P
+>&#13;					Default font name is what's set for
+					<A
+HREF="x556.html#partfontname"
+>Part font name</A
+>, or
+					<TT
+CLASS="literal"
+>Courier</TT
+> if both are unset.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="reportfontsize"
+>Font size</A
+></H3
+><P
+>&#13;					The font size attribute specifies the font size
+					for the report's scope. It can be overridden by
+					child nodes for their scope.
+					It may be specified in two forms, the first one
+					is the preferred name, the second is for RLIB
+					compatibility:
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report font_size="10"&#62;
+&#60;Report fontSize="10"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					If both forms are specified, <TT
+CLASS="literal"
+>font_size</TT
+>
+					is used.
+				</P
+><P
+>&#13;					Default font name is what's set for
+					<A
+HREF="x556.html#partfontsize"
+>Part font size</A
+>, or
+					<TT
+CLASS="literal"
+>12</TT
+> if both are unset.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN861"
+>Size unit</A
+></H3
+><P
+>&#13;					Shortcut for the <A
+HREF="x216.html#sizeunit"
+>Size unit attribute</A
+> in
+					<TT
+CLASS="literal"
+>&#60;OpenCReport&#62;</TT
+> when
+					<TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+> is the toplevel node.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report size_unit="default"&#62;
+&#60;Report size_unit="rlib"&#62;
+&#60;Report size_unit="points"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					When <TT
+CLASS="literal"
+>&#60;OpenCReport&#62;</TT
+> or
+					<TT
+CLASS="literal"
+>&#60;Part&#62;</TT
+> is the toplevel
+					node in the report XML description, this attribute
+					for <TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+> is ignored.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN872"
+>No query show NoData attribute</A
+></H3
+><P
+>&#13;					Shortcut for <A
+HREF="x216.html#noqueryshownodata"
+>No query show NoData attribute</A
+> in
+					<TT
+CLASS="literal"
+>&#60;OpenCReport&#62;</TT
+> when
+                    <TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+> is the toplevel node.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report noquery_show_nodata="yes"&#62;
+&#60;Report noquery_show_nodata="no&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					See default in <A
+HREF="x216.html#noqueryshownodata"
+>No query show NoData attribute</A
+>
+					See also <A
+HREF="x823.html#nodatanode"
+>NoData node</A
+>.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN882"
+>Report height after last attribute</A
+></H3
+><P
+>&#13;					Shortcut for <A
+HREF="x216.html#reportheightafterlast"
+>Report height after last attribute</A
+> in
+					<TT
+CLASS="literal"
+>&#60;OpenCReport&#62;</TT
+> when
+					<TT
+CLASS="literal"
+>&#60;Part&#62;</TT
+> is the toplevel node.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report report_height_after_last="yes"&#62;
+&#60;Report report_height_after_last="no"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					See default in <A
+HREF="x216.html#reportheightafterlast"
+>Report height after last attribute</A
+>
+					See also <A
+HREF="x823.html#nodatanode"
+>NoData node</A
+>.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN892"
+>Orientation</A
+></H3
+><P
+>&#13;					Shortcut for <A
+HREF="x556.html#partpageorientation"
+>Part page orientation</A
+>
+					for the implicitly created parent
+					<TT
+CLASS="literal"
+>&#60;Part&#62;</TT
+> node when
+					<TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+> is standalone.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report orientation="portrait"&#62;
+&#60;Report orientation="landscape"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is portrait orientation.
+				</P
+><P
+>&#13;					This setting for <TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+>
+					is ignored when there is a parent
+					<TT
+CLASS="literal"
+>&#60;Part&#62;</TT
+> node
+					in the XML description.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN903"
+>Margin settings</A
+></H3
+><P
+>&#13;					Shortcuts for <A
+HREF="x556.html#marginsettings"
+>Margin settings</A
+>
+					for the implicitly created parent
+					<TT
+CLASS="literal"
+>&#60;Part&#62;</TT
+> node. Individual
+					settings exist for the top, bottom, left and
+					right margins of the page. Every setting
+					exist in two forms: the RLIB compatible
+					"lowerCamelCase" variant and the all lowercase
+					with underscore. The lowecase-with-underscore
+					variants are the preferred ones.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report top_margin="0.2"&#62;
+&#60;Report topMargin="0.2"&#62;
+&#60;Report bottom_margin="0.2"&#62;
+&#60;Report bottomMargin="0.2"&#62;
+&#60;Report left_margin="0.2"&#62;
+&#60;Report leftMargin="0.2"&#62;
+&#60;Report right_margin="0.2"&#62;
+&#60;Report rightMargin="0.2"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					When <TT
+CLASS="literal"
+>size_unit="rlib"</TT
+> is in effect
+					(the default case) the margin unit is inches.
+					The margin unit is points (1/72th inches) when
+					<TT
+CLASS="literal"
+>size_unit="points"</TT
+> is in effect.
+				</P
+><P
+>&#13;					Default values for the top, bottom, left and right
+					margins are all 0.2, regardless of the unit.
+				</P
+><P
+>&#13;					Note that <TT
+CLASS="literal"
+>rightMargin</TT
+> didn't exist
+					in RLIB.
+				</P
+><P
+>&#13;					These settings for <TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+>
+					are ignored when there is a parent
+					<TT
+CLASS="literal"
+>&#60;Part&#62;</TT
+> node
+					in the XML description.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN918"
+>Paper type</A
+></H3
+><P
+>&#13;					Shortcut for <A
+HREF="x556.html#papertype"
+>Paper type</A
+>
+					for the implicitly created parent
+					<TT
+CLASS="literal"
+>&#60;Part&#62;</TT
+> node. It exists in
+					two forms: the RLIB compatible "lowerCamelCase"
+					variant and the all lowercase with underscore.
+					The lowecase-with-underscore variant is preferred.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Part paper_type="A4"&#62;
+&#60;Part paperType="A4"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default value is the current system paper type
+					that <A
+HREF="http://packages.qa.debian.org/libp/libpaper.html"
+TARGET="_top"
+>libpaper</A
+>
+					uses. E.g. if the system is set to US English,
+					the default paper type is implicitly
+					<TT
+CLASS="literal"
+>letter</TT
+>. In most of Europe,
+					the default paper type is <TT
+CLASS="literal"
+>A4</TT
+>
+				</P
+><P
+>&#13;					The paper type can be specified in either lower case
+					or upper case, both are accepted.
+				</P
+><P
+>&#13;					This setting for <TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+>
+					is ignored when there is a parent
+					<TT
+CLASS="literal"
+>&#60;Part&#62;</TT
+> node
+					in the XML description.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="reportheight"
+>Height</A
+></H3
+><P
+>&#13;					Height of the report.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report height="120"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					When <A
+HREF="x216.html#sizeunit"
+>Size unit attribute</A
+> is set to
+					<TT
+CLASS="literal"
+>rlib</TT
+> (the default),
+					the report height is measured in characters,
+					which is controlled by <A
+HREF="x823.html#reportfontsize"
+>Report font size</A
+>.
+					Note, that the font width and height may differ,
+					depending on the font face controlled by
+					<A
+HREF="x823.html#reportfontname"
+>Report font name</A
+>. Report height is
+					computed from the font height.
+				</P
+><P
+>&#13;					When <A
+HREF="x216.html#sizeunit"
+>Size unit attribute</A
+> is set to
+					<TT
+CLASS="literal"
+>points</TT
+>, height is measured
+					in points.
+				</P
+><P
+>&#13;					Report details are layed out up to the
+					specified height. If the report would run longer
+					than the specified height, it gets truncated.
+					When the report fits in the specified height,
+					the next report's starts with the remaining height
+					added as padding before it.
+				</P
+><P
+>&#13;					If the <TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+> is the last
+					one in the <TT
+CLASS="literal"
+>&#60;pd&#62;</TT
+> node, then
+					the report may or may not be padded with the remaining
+					height, depending on the
+					<A
+HREF="x216.html#reportheightafterlast"
+>Report height after last attribute</A
+>.
+				</P
+><P
+>&#13;					If height is unset for the parent
+					<TT
+CLASS="literal"
+>&#60;pd&#62;</TT
+> node, it is expanded
+					with this vertical padding.
+				</P
+><P
+>&#13;					In case height is set for both the parent
+					<TT
+CLASS="literal"
+>&#60;pd&#62;</TT
+> node and the
+					<TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+> nodes in it,
+					the height value for <TT
+CLASS="literal"
+>&#60;pd&#62;</TT
+>
+					is applied first. It would limit the displayed
+					rows in whichever <TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+> node
+					is terminated by it. Subsequent
+					<TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+> nodes would
+					no be displayed in that <TT
+CLASS="literal"
+>&#60;pd&#62;</TT
+>
+					node.
+				</P
+><P
+>&#13;					Note, that OpenCReports allows fixed-height
+					reports to break over page boundaries.
+					This is a deviation from RLIB.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="reportiter"
+>Iterations</A
+></H3
+><P
+>&#13;					The same <TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+> may be
+					executed multiple times.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report iterations="3"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default value is 1.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="reportsuppress"
+>Suppress</A
+></H3
+><P
+>&#13;					Reports may be suppressed.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report suppress="yes"&#62;
+&#60;Report suppress="val(m.suppress_report)"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default value is <TT
+CLASS="literal"
+>false</TT
+>,
+					i.e. no suppression.
+				</P
+><P
+>&#13;					The expression for <TT
+CLASS="literal"
+>suppress</TT
+>
+					must be a constant expression. An environment
+					variable (since it can't - or shouldn't - change
+					during the report execution) is considered
+					constant. See <A
+HREF="c1750.html"
+>Expressions</A
+>.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN974"
+>Suppress page header on the first page</A
+></H3
+><P
+>&#13;					Shortcut for <A
+HREF="x556.html#suppresspageheaderfirstpage"
+>Suppress page header on the first page</A
+>
+					in the implicitly created parent
+					<TT
+CLASS="literal"
+>&#60;Part&#62;</TT
+> node when
+					<TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+> is the
+					toplevel node.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report suppressPageHeaderFirstPage="yes"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default value is <TT
+CLASS="literal"
+>no</TT
+>.
+				</P
+><P
+>&#13;					This setting for <TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+>
+					is ignored when there is a parent
+					<TT
+CLASS="literal"
+>&#60;Part&#62;</TT
+> node
+					in the XML description.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="reportqueryname"
+>Query</A
+></H3
+><P
+>&#13;					Set the primary query name for <TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+>
+					from the list of <A
+HREF="x454.html"
+>Queries</A
+>.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report query="query1"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default value is unset, i.e. use the first
+					query from the list of <A
+HREF="x454.html"
+>Queries</A
+>.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="reportfhpriority"
+>Field header priority</A
+></H3
+><P
+>&#13;					Set the field header priority for the report versus
+					break (header and footer) priority. This setting
+					selects which report detail is encompassing the other.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report field_header_priority="low"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default value is <TT
+CLASS="literal"
+>high</TT
+>. In this
+					mode, the field header is printed on the top of every
+					page of the report and break headers and footers are
+					encompassed by it. The default is chosen for RLIB
+					compatibility.
+				</P
+><P
+>&#13;					When this setting is <TT
+CLASS="literal"
+>low</TT
+>,
+					field headers are handled with lower priority
+					compared to break headers and footers. In this
+					mode, a break header is followed by the field header,
+					then data rows (field details), followed by the break
+					footer. This brings the field header closer to the field
+					details.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1002"
+>Border width</A
+></H3
+><P
+>&#13;					This is a shortcut for <A
+HREF="x739.html#pdborderwidth"
+>Part column border width</A
+>
+					for the implicitly created <TT
+CLASS="literal"
+>&#60;pd&#62;</TT
+>
+					node when <TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+> is standalone.
+					It is measured in points.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report border_width="2"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					When set, a rectangle around the part column
+					(in this case, around the single report in the
+					part column) will be drawn. The width of outline
+					of the rectangle is measured in points.
+				</P
+><P
+>&#13;					This is a deviation from RLIB where the width
+					of the outline was a fixed 0.1 points and an
+					inner margin (all of top, bottom, left and right)
+					inside the column border was used. Also, this shortcut
+					didn't exist in RLIB, the <TT
+CLASS="literal"
+>&#60;pd&#62;</TT
+>
+					node had to be present.
+				</P
+><P
+>&#13;					If the report (column) breaks over a page boundary,
+					the border will be drawn the column parts
+					on every page. 
+				</P
+><P
+>&#13;					This setting for <TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+>
+					is ignored when there is a parent
+					<TT
+CLASS="literal"
+>&#60;pd&#62;</TT
+> node.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1016"
+>Border color</A
+></H3
+><P
+>&#13;					This is a shortcut for <A
+HREF="x739.html#pdbordercolor"
+>Part column border color</A
+>
+					for the implicitly created <TT
+CLASS="literal"
+>&#60;pd&#62;</TT
+>
+					node when <TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+> is standalone.
+					When <TT
+CLASS="literal"
+>border_width</TT
+> is set,
+					this color is used to draw the border rectangle.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report border_color="'blue'"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					See <A
+HREF="x1737.html"
+>Color specification</A
+>.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1026"
+>Detail columns</A
+></H3
+><P
+>&#13;					Shortcut for <A
+HREF="x739.html#detailcolumns"
+>Detail columns</A
+>
+					in the implicitly created parent
+					<TT
+CLASS="literal"
+>&#60;pd&#62;</TT
+> when
+					<TT
+CLASS="literal"
+>&#60;Parent&#62;</TT
+> is the
+					toplevel node.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report detail_columns="3"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default value is 1.
+				</P
+><P
+>&#13;					This setting for <TT
+CLASS="literal"
+>&#60;Parent&#62;</TT
+>
+					is ignored when there is a parent
+					<TT
+CLASS="literal"
+>&#60;pd&#62;</TT
+> node in the report
+					XML description.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1037"
+>Column padding</A
+></H3
+><P
+>&#13;					Shortcut for <A
+HREF="x739.html#columnpadding"
+>Column padding</A
+>
+					in the implicitly created parent
+					<TT
+CLASS="literal"
+>&#60;pd&#62;</TT
+> node when
+					<TT
+CLASS="literal"
+>&#60;Parent&#62;</TT
+> is the
+					toplevel node.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report column_pad="0.2"&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default value is 0, i.e. no padding.
+				</P
+><P
+>&#13;					The unit of padding is inches if
+					<A
+HREF="x216.html#sizeunit"
+>Size unit attribute</A
+> is set to
+					<TT
+CLASS="literal"
+>rlib</TT
+> (default), points
+					otherwise.
+				</P
+></DIV
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1048"
+>Report subsections</A
+></H2
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1050"
+>Page header</A
+></H3
+><P
+>&#13;					This is a shortcut for <A
+HREF="x556.html#pageheader"
+>Page header</A
+>
+					in the implicitly created <TT
+CLASS="literal"
+>&#60;Part&#62;</TT
+>
+					node when <TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+> is standalone.
+					It contains an <A
+HREF="x1311.html"
+>Output node</A
+>.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report&#62;
+    &#60;PageHeader&#62;
+        &#60;Output&#62;
+            ...
+        &#60;/Output&#62;
+    &#60;/PageHeader&#62;
+&#60;/Part&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					This subsection for <TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+>
+					is ignored when there is a page footer section
+					defined for the <TT
+CLASS="literal"
+>&#60;Part&#62;</TT
+> node,
+					either in the <TT
+CLASS="literal"
+>&#60;Part&#62;</TT
+> node
+					itself or in a previous child <TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+>
+					node for the same <TT
+CLASS="literal"
+>&#60;Part&#62;</TT
+>.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1064"
+>Page footer</A
+></H3
+><P
+>&#13;					This is a shortcut for <A
+HREF="x556.html#pagefooter"
+>Page footer</A
+>
+					in the implicitly created <TT
+CLASS="literal"
+>&#60;Part&#62;</TT
+>
+					node when <TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+> is standalone.
+					It contains an <A
+HREF="x1311.html"
+>Output node</A
+>.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report&#62;
+    &#60;PageFooter&#62;
+        &#60;Output&#62;
+            ...
+        &#60;/Output&#62;
+    &#60;/PageFooter&#62;
+&#60;/Part&#62;</PRE
+></TD
+></TR
+></TABLE
+>					
+				</P
+><P
+>&#13;					This subsection for <TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+>
+					is ignored when there is a page footer section
+					defined for the <TT
+CLASS="literal"
+>&#60;Part&#62;</TT
+> node,
+					either in the <TT
+CLASS="literal"
+>&#60;Part&#62;</TT
+> node
+					itself or in a previous child <TT
+CLASS="literal"
+>&#60;Report&#62;</TT
+>
+					node for the same <TT
+CLASS="literal"
+>&#60;Part&#62;</TT
+>.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1078"
+>Report header</A
+></H3
+><P
+>&#13;					This is the description of the report header that is
+					emitted at the start of the report.
+					It contains an <A
+HREF="x1311.html"
+>Output node</A
+>.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report&#62;
+    &#60;ReportHeader&#62;
+        &#60;Output&#62;
+            ...
+        &#60;/Output&#62;
+    &#60;/ReportHeader&#62;
+&#60;/Part&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1083"
+>Report footer</A
+></H3
+><P
+>&#13;					This is the description of the report footer that is
+					emitted at the end of the report.
+					It contains an <A
+HREF="x1311.html"
+>Output node</A
+>.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report&#62;
+    &#60;ReportFooter&#62;
+        &#60;Output&#62;
+            ...
+        &#60;/Output&#62;
+    &#60;/ReportFooter&#62;
+&#60;/Part&#62;</PRE
+></TD
+></TR
+></TABLE
+>					
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1088"
+>Variables</A
+></H3
+><P
+>&#13;					This section describes the
+					<A
+HREF="x1150.html"
+>Variables</A
+> in the report.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report&#62;
+    &#60;Variables&#62;
+        &#60;Variable ... /&#62;
+        ...
+    &#60;/Variables&#62;
+&#60;/Part&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1093"
+>Breaks</A
+></H3
+><P
+>&#13;					This section describes the
+					<A
+HREF="x1249.html"
+>Breaks</A
+> in the report.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report&#62;
+    &#60;Breaks&#62;
+        &#60;Break ... &#62;
+            ...
+        &#60;/Break&#62;
+        ...
+    &#60;/Breaks&#62;
+&#60;/Part&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="detailnode"
+>Detail</A
+></H3
+><P
+>&#13;					This section describes the tabular details of the report.
+					There are two subsections in this node, both contain
+					an <A
+HREF="x1311.html"
+>Output node</A
+>.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report&#62;
+    &#60;Detail&#62;
+        &#60;FieldHeaders&#62;
+            &#60;Output&#62;
+                ...
+            &#60;/Output&#62;
+        &#60;/FieldHeaders&#62;
+        &#60;FieldDetails&#62;
+            &#60;Output&#62;
+                ...
+            &#60;/Output&#62;
+        &#60;/FieldDetails&#62;
+    &#60;/Detail&#62;
+&#60;/Part&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					<TT
+CLASS="literal"
+>&#60;FieldHeaders&#62;</TT
+> is used
+					to describe the header for data rows.
+				</P
+><P
+>&#13;					<TT
+CLASS="literal"
+>&#60;FieldDetails&#62;</TT
+> is used
+					to show data that is derived from the current data row
+					produced by the report query.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="nodatanode"
+>Alternate output for no data</A
+></H3
+><P
+>&#13;					This section describes the alternate output of the report
+					when the query has no data rows, or there is no such
+					query name defined that's set in
+					<A
+HREF="x823.html#reportqueryname"
+>Report query name</A
+>.
+					It contains an <A
+HREF="x1311.html"
+>Output node</A
+>.
+				</P
+><P
+>&#13;					This section may be declared in two ways. One way is to
+					spell out the <TT
+CLASS="literal"
+>&#60;Alternate&#62;</TT
+> node:
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report&#62;
+    &#60;Alternate&#62;
+        &#60;NoData&#62;
+            &#60;Output&#62;
+                ...
+            &#60;/Output&#62;
+        &#60;/NoData&#62;
+    &#60;/Alternate&#62;
+&#60;/Part&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					The other way is without the
+					<TT
+CLASS="literal"
+>&#60;Alternate&#62;</TT
+> node:
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report&#62;
+    &#60;NoData&#62;
+        &#60;Output&#62;
+            ...
+        &#60;/Output&#62;
+    &#60;/NoData&#62;
+&#60;/Part&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					When the <A
+HREF="x823.html#reportqueryname"
+>Report query name</A
+>
+					does not exist in in the global list of
+					<A
+HREF="x454.html"
+>Queries</A
+> and the
+					<A
+HREF="x216.html#noqueryshownodata"
+>No query show NoData attribute</A
+> is set, then
+					the <TT
+CLASS="literal"
+>&#60;NoData&#62;</TT
+> section
+					is not displayed.
+				</P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x739.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x1123.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Part column</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c169.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Loaded report</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -2,7 +2,7 @@
 <HTML
 ><HEAD
 ><TITLE
->Introduction and concepts</TITLE
+>Report breaks</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
@@ -10,11 +10,11 @@ REL="HOME"
 TITLE="OpenCReports 0.6.2 Manual"
 HREF="book1.html"><LINK
 REL="PREVIOUS"
-TITLE="OpenCReports 0.6.2 Manual"
-HREF="book1.html"><LINK
+TITLE="Alphabetical list of functions"
+HREF="x2077.html"><LINK
 REL="NEXT"
-TITLE="Concepts"
-HREF="x28.html"></HEAD
+TITLE="Report breaks in OpenCReports"
+HREF="x2464.html"></HEAD
 ><BODY
 CLASS="chapter"
 BGCOLOR="#FFFFFF"
@@ -42,7 +42,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="book1.html"
+HREF="x2077.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -56,7 +56,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x28.html"
+HREF="x2464.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -69,57 +69,78 @@ WIDTH="100%"></DIV
 CLASS="chapter"
 ><H1
 ><A
-NAME="introduction"
+NAME="breaks"
 ></A
->Introduction and concepts</H1
+>Report breaks</H1
 ><DIV
 CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="AEN18"
->The predecessor: RLIB</A
+NAME="AEN2449"
+>Grouping data</A
 ></H1
 ><P
->&#13;			The idea to write <A
-HREF="https://github.com/zboszor/OpenCReports"
-TARGET="_top"
->OpenCReports</A
+>&#13;			<TT
+CLASS="literal"
+>OpenCReports</TT
+>, being a report generator,
+			works on tabular data: the data consists of ordered (named)
+			columns and ordered or unordered rows.
+		</P
+><P
+>&#13;			It is often necessary to group data by certain properties.
+			Imagine a list of employees of a company, grouped by their
+			departments, pay grade, or location of employment. A report
+			may show the list of the employees with visual separation
+			according to any of these properties.
+		</P
+><P
+>&#13;			Multiple groupings may be prioritized (nested):
+			<P
+></P
+><OL
+TYPE="1"
+><LI
+><P
+>&#13;						by department
+					</P
+></LI
+><LI
+><P
+>&#13;						by pay grade
+					</P
+></LI
+></OL
 >
-			started with my getting acqauinted with <A
-HREF="https://github.com/SICOM/rlib"
-TARGET="_top"
->RLIB</A
->
-			in 2005 and working with it (and on it) for a very long time,
-			with the original implementors finally losing interest in
-			developing RLIB further. This was around 2018. Even the
-			original documentation site for RLIB was retired. But
-			thanks to the Internet Archive,
-			<A
-HREF="https://web.archive.org/web/20131116192438/http://newrlib.sicom.com/~rlib/index.php/Main_Page"
-TARGET="_top"
->it may still be read</A
+			With the above, in each department, subgrouping would separate
+			employees according to the pay grade in that department.
+		</P
+><P
+>&#13;			For this to work, the rows of data must be fed to
+			the report generator in a certain order. For example,
+			in SQL the ordering can be done by:
+			<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>SELECT ...
+ORDER BY department,paygrade,employee;</PRE
+></TD
+></TR
+></TABLE
 >
 		</P
 ><P
->&#13;			To overcome some of the shortcomings seen in RLIB,
-			its <I
+>&#13;			This grouping of data is called a <I
 CLASS="emphasis"
->ideas</I
-> were used for a completely
-			new implementation with high level of compatibility
-			to the original.
-		</P
-><P
->&#13;			RLIB is a report generator library, so is OpenCReports.
-			In this documentation, a lot of references contain
-			comparisons to RLIB.
-		</P
-><P
->&#13;			The name OpenCReports came from the fact that it's
-			implemented in the C programming language in an
-			open way, and using a free software license.
+>break</I
+>
+			in a report generator.
 		</P
 ></DIV
 ></DIV
@@ -139,7 +160,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="book1.html"
+HREF="x2077.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -157,7 +178,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x28.html"
+HREF="x2464.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -167,7 +188,7 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->OpenCReports 0.6.2 Manual</TD
+>Alphabetical list of functions</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
@@ -177,7 +198,7 @@ VALIGN="top"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Concepts</TD
+>Report breaks in OpenCReports</TD
 ></TR
 ></TABLE
 ></DIV

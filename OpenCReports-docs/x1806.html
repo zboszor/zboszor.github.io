@@ -2,7 +2,7 @@
 <HTML
 ><HEAD
 ><TITLE
->OpenCReports planned features</TITLE
+>Precalculated expressions</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
@@ -10,14 +10,14 @@ REL="HOME"
 TITLE="OpenCReports 0.6.2 Manual"
 HREF="book1.html"><LINK
 REL="UP"
-TITLE="Introduction and concepts"
-HREF="c16.html"><LINK
+TITLE="Expressions in OpenCReports"
+HREF="c1750.html"><LINK
 REL="PREVIOUS"
-TITLE="Concepts"
-HREF="x28.html"><LINK
+TITLE="Constants"
+HREF="x1769.html"><LINK
 REL="NEXT"
-TITLE="Report XML description"
-HREF="c169.html"></HEAD
+TITLE="Identifiers"
+HREF="x1812.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -45,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="x28.html"
+HREF="x1769.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -53,13 +53,13 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Introduction and concepts</TD
+>Expressions in OpenCReports</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="c169.html"
+HREF="x1812.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -73,49 +73,28 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="AEN158"
->OpenCReports planned features</A
+NAME="precalcexpr"
+>Precalculated expressions</A
 ></H1
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="AEN160"
->More output formats</A
-></H2
 ><P
->&#13;				XML, CSV, plaintext and JSON are not currently supported as
-				output formats.
-			</P
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="AEN163"
->Graph and chart support in HTML and PDF output</A
-></H2
+>&#13;			Due to the possibility of precalculated variables
+			expressions, reports are actually run (and layed out)
+			twice. The second run uses the precalculated values
+			from the first run. Because of this,
+			<TT
+CLASS="literal"
+>OpenCReports</TT
+> allows mixing precalculated
+			<A
+HREF="c2502.html"
+>Report variables</A
+> and non-precalculated
+			variables and subexpressions in the same expression.
+			The result is intuitively expected.
+		</P
 ><P
->&#13;				Currently Gantt chart and various graph types (like
-				barchart, pie chart and their various subtypes) are
-				not supported.
-			</P
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="AEN166"
->Visual editor for report XML descriptions</A
-></H2
-><P
->&#13;				There are other report generators on the market with
-				nice GUIs to create the report visually.
-			</P
-></DIV
+>&#13;			The actual report output is generated in the second run.
+		</P
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -133,7 +112,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="x28.html"
+HREF="x1769.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -151,7 +130,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="c169.html"
+HREF="x1812.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -161,13 +140,13 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Concepts</TD
+>Constants</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="c16.html"
+HREF="c1750.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -175,7 +154,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Report XML description</TD
+>Identifiers</TD
 ></TR
 ></TABLE
 ></DIV

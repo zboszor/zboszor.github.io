@@ -1,0 +1,538 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Image</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="OpenCReports 0.6.2 Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Report XML description"
+HREF="c169.html"><LINK
+REL="PREVIOUS"
+TITLE="HorizontalLine"
+HREF="x1602.html"><LINK
+REL="NEXT"
+TITLE="Image end"
+HREF="x1732.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>OpenCReports 0.6.2 Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x1602.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Report XML description</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x1732.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="imagenode"
+>Image</A
+></H1
+><P
+>&#13;			An image to draw on the page, either on its own
+			which controls indentation for subsequent elements:
+			<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Output&#62;
+    &#60;Image ... /&#62;
+&#60;/Output</PRE
+></TD
+></TR
+></TABLE
+>
+			or as a line element:
+			<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Output&#62;
+    &#60;Line ... &#62;
+        &#60;Image ... /&#62;
+    &#60;Line/&#62;
+&#60;/Output</PRE
+></TD
+></TR
+></TABLE
+>
+		</P
+><P
+>&#13;			After a valid (standalone) image specification,
+			subsequent <A
+HREF="x1350.html"
+>Line node</A
+>s and
+			<A
+HREF="x1602.html"
+>HorizontalLine node</A
+>s are indented
+			by the image width in the same
+			<TT
+CLASS="literal"
+>&#60;Output&#62;</TT
+> node,
+			or until an <TT
+CLASS="literal"
+>&#60;ImageEnd&#62;</TT
+>
+			node is encountered in that
+			<TT
+CLASS="literal"
+>&#60;Output&#62;</TT
+> node.
+		</P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN1674"
+>Image attributes</A
+></H2
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1676"
+>File name</A
+></H3
+><P
+>&#13;					The file name of the image.
+
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Image value="'filename.jpg'" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is unset. It makes the
+					<TT
+CLASS="literal"
+>Image</TT
+> not shown.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1682"
+>Suppress</A
+></H3
+><P
+>&#13;					The image may be suppressed.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Image value="'filename.jpg'"
+       suppress="yes" /&#62;
+&#60;Image value="'filename.jpg'"
+       suppress="m.suppress_image" /&#62;
+&#60;Image value="'filename.jpg'"
+       suppress="query1.suppress_image" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is <TT
+CLASS="literal"
+>false</TT
+>,
+					i.e. no suppression.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1688"
+>Type</A
+></H3
+><P
+>&#13;					Accepted for RLIB compatibility.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Image value="'filename.jpg'"
+       type="'jpg'" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is unset, i.e. autodetect.
+				</P
+><P
+>&#13;					Various image formats are supported
+					with autodetection via <TT
+CLASS="literal"
+>gdk-pixbuf</TT
+>.
+					SVG (Scalable Vector Graphics) is supported
+					via <TT
+CLASS="literal"
+>librsvg</TT
+>.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1696"
+>Width</A
+></H3
+><P
+>&#13;					Image width, measured in points regardless of
+					the <A
+HREF="x216.html#sizeunit"
+>Size unit attribute</A
+>.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Image value="'filename.jpg'"
+       width="100" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is unset. The image would not be shown,
+					unless both width and height are set.
+				</P
+><P
+>&#13;					When the image is used as a line element,
+					this setting is ignored. Instead, the
+					image is automatically scaled according to
+					the line height.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1703"
+>Height</A
+></H3
+><P
+>&#13;					Image height, measured in points regardless of
+					the <A
+HREF="x216.html#sizeunit"
+>Size unit attribute</A
+>.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Image value="'filename.jpg'"
+       height="100" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is unset. The image would not be shown,
+					unless both width and height are set.
+				</P
+><P
+>&#13;					When the image is used as a line element,
+					this setting is ignored. Instead, the
+					image is automatically scaled according to
+					the line height.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1710"
+>Text width</A
+></H3
+><P
+>&#13;					When the image is used as a line element, this
+					is the width in which the image is shown.
+					Its unit subject to the <A
+HREF="x216.html#sizeunit"
+>Size unit attribute</A
+>,
+					by default it's measured in text character
+					width for the parent <TT
+CLASS="literal"
+>&#60;Line&#62;</TT
+>.
+					This setting is only used when the image is a
+					line element. Two variants are accepted:
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Image value="'filename.jpg'"
+       text_width="8" /&#62;
+
+&#60;Image value="'filename.jpg'"
+       textWidth="8" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is 0. As a result, the image would be
+					0 points wide, i.e. not shown.
+				</P
+><P
+>&#13;					This setting is ignored when the image is used
+					as an output subsection.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1718"
+>Background color</A
+></H3
+><P
+>&#13;					Image background color. When the image is a line
+					element, then the width in which it's shown may
+					be wider than the scaled image width. Or possibly,
+					the image is vector graphics (SVG) and there is no
+					background defined in the image file. Or the image
+					file contains transparency (i.e. PNG). The color
+					background will be shown around the image or where
+					there are transparent pixels.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Image value="'filename.jpg'"
+       bgcolor="'red'" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is unset, i.e. white.
+				</P
+></DIV
+><DIV
+CLASS="sect3"
+><H3
+CLASS="sect3"
+><A
+NAME="AEN1723"
+>Alignment</A
+></H3
+><P
+>&#13;					Image alignment. When the image is a line
+					element, then the width in which it's shown may
+					be wider than the scaled image width. The image
+					then may be aligned. <TT
+CLASS="literal"
+>left</TT
+>,
+					<TT
+CLASS="literal"
+>right</TT
+> and <TT
+CLASS="literal"
+>center</TT
+>
+					are accepted.
+					<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Image value="'filename.jpg'"
+       align="'center'" /&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+				</P
+><P
+>&#13;					Default is left alignment.
+				</P
+><P
+>&#13;					This setting is ignored when the image is used
+					as an output subsection.
+				</P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x1602.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x1732.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>HorizontalLine</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c169.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Image end</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

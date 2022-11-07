@@ -2,7 +2,7 @@
 <HTML
 ><HEAD
 ><TITLE
->OpenCReports planned features</TITLE
+>Paths</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
@@ -10,14 +10,14 @@ REL="HOME"
 TITLE="OpenCReports 0.6.2 Manual"
 HREF="book1.html"><LINK
 REL="UP"
-TITLE="Introduction and concepts"
-HREF="c16.html"><LINK
-REL="PREVIOUS"
-TITLE="Concepts"
-HREF="x28.html"><LINK
-REL="NEXT"
 TITLE="Report XML description"
-HREF="c169.html"></HEAD
+HREF="c169.html"><LINK
+REL="PREVIOUS"
+TITLE="OpenCReport element"
+HREF="x216.html"><LINK
+REL="NEXT"
+TITLE="Datasources"
+HREF="x320.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -45,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="x28.html"
+HREF="x216.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -53,13 +53,13 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Introduction and concepts</TD
+>Report XML description</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="c169.html"
+HREF="x320.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -73,49 +73,60 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="AEN158"
->OpenCReports planned features</A
+NAME="searchpaths"
+>Paths</A
 ></H1
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="AEN160"
->More output formats</A
-></H2
 ><P
->&#13;				XML, CSV, plaintext and JSON are not currently supported as
-				output formats.
-			</P
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="AEN163"
->Graph and chart support in HTML and PDF output</A
-></H2
+>&#13;			Some report descriptiom elements (like
+			<TT
+CLASS="literal"
+>&#60;load&#62;</TT
+> and
+			<TT
+CLASS="literal"
+>&#60;Image&#62;</TT
+>, see
+			<A
+HREF="x1123.html"
+>Loaded report</A
+> and <A
+HREF="x1663.html"
+>Image node</A
+>)
+			reference files. By default, these files must
+			be in the same directory as the report XML
+			description file, or in the current working
+			directory for the application using OpenCReports.
+			To lift this limitation, and allow organizing files
+			in a more logical manner, a search path or
+			multiple search paths may be added.
+			For files referenced with relative paths, the
+			search paths will be used in their order of
+			declaration. Search paths and the relative file
+			path are concatenated together to form an absolute
+			path. The first successful absolute file path
+			match will be used in the element referencing
+			the file.
+		</P
 ><P
->&#13;				Currently Gantt chart and various graph types (like
-				barchart, pie chart and their various subtypes) are
-				not supported.
-			</P
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="AEN166"
->Visual editor for report XML descriptions</A
-></H2
-><P
->&#13;				There are other report generators on the market with
-				nice GUIs to create the report visually.
-			</P
-></DIV
+>&#13;			Search paths are in the following format:
+			<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Paths&#62;
+    &#60;Path value="/absolute/path" /&#62;
+    ...
+&#60;/Paths&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+		</P
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -133,7 +144,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="x28.html"
+HREF="x216.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -151,7 +162,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="c169.html"
+HREF="x320.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -161,13 +172,13 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Concepts</TD
+>OpenCReport element</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="c16.html"
+HREF="c169.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -175,7 +186,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Report XML description</TD
+>Datasources</TD
 ></TR
 ></TABLE
 ></DIV

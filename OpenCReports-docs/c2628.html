@@ -2,24 +2,21 @@
 <HTML
 ><HEAD
 ><TITLE
->OpenCReports planned features</TITLE
+>Formatting</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="OpenCReports 0.6.2 Manual"
 HREF="book1.html"><LINK
-REL="UP"
-TITLE="Introduction and concepts"
-HREF="c16.html"><LINK
 REL="PREVIOUS"
-TITLE="Concepts"
-HREF="x28.html"><LINK
+TITLE="Resetting a variable on break boundaries"
+HREF="x2619.html"><LINK
 REL="NEXT"
-TITLE="Report XML description"
-HREF="c169.html"></HEAD
+TITLE="Format strings"
+HREF="x2636.html"></HEAD
 ><BODY
-CLASS="sect1"
+CLASS="chapter"
 BGCOLOR="#FFFFFF"
 TEXT="#000000"
 LINK="#0000FF"
@@ -45,7 +42,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="x28.html"
+HREF="x2619.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -53,13 +50,13 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Introduction and concepts</TD
+></TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="c169.html"
+HREF="x2636.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -69,52 +66,39 @@ ACCESSKEY="N"
 ALIGN="LEFT"
 WIDTH="100%"></DIV
 ><DIV
+CLASS="chapter"
+><H1
+><A
+NAME="formatting"
+></A
+>Formatting</H1
+><DIV
 CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="AEN158"
->OpenCReports planned features</A
+NAME="AEN2630"
+>Formatting functions</A
 ></H1
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="AEN160"
->More output formats</A
-></H2
 ><P
->&#13;				XML, CSV, plaintext and JSON are not currently supported as
-				output formats.
-			</P
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="AEN163"
->Graph and chart support in HTML and PDF output</A
-></H2
-><P
->&#13;				Currently Gantt chart and various graph types (like
-				barchart, pie chart and their various subtypes) are
-				not supported.
-			</P
-></DIV
-><DIV
-CLASS="sect2"
-><H2
-CLASS="sect2"
-><A
-NAME="AEN166"
->Visual editor for report XML descriptions</A
-></H2
-><P
->&#13;				There are other report generators on the market with
-				nice GUIs to create the report visually.
-			</P
+>&#13;			Formatting data can be done via the
+			<A
+HREF="x2077.html#formatfunc"
+>format function</A
+>, the
+			<A
+HREF="x2077.html#printffunc"
+>printf function</A
+> and the
+			<A
+HREF="x1426.html#formatattr"
+>Text element format attribute</A
+>.
+			After formatting, regardless of the data type
+			that was formatted, the type of the result value
+			is string. This string can be displayed in the
+			report output or processed further as needed.
+		</P
 ></DIV
 ></DIV
 ><DIV
@@ -133,7 +117,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="x28.html"
+HREF="x2619.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -151,7 +135,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="c169.html"
+HREF="x2636.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -161,21 +145,17 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Concepts</TD
+>Resetting a variable on break boundaries</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
-><A
-HREF="c16.html"
-ACCESSKEY="U"
->Up</A
-></TD
+>&nbsp;</TD
 ><TD
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Report XML description</TD
+>Format strings</TD
 ></TR
 ></TABLE
 ></DIV
