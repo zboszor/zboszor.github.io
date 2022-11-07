@@ -2,24 +2,21 @@
 <HTML
 ><HEAD
 ><TITLE
->Paths</TITLE
+>Report breaks</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="OpenCReports 0.6.3 Manual"
 HREF="book1.html"><LINK
-REL="UP"
-TITLE="Report XML description"
-HREF="c169.html"><LINK
 REL="PREVIOUS"
-TITLE="OpenCReport element"
-HREF="x216.html"><LINK
+TITLE="Alphabetical list of functions"
+HREF="x2081.html"><LINK
 REL="NEXT"
-TITLE="Datasources"
-HREF="x320.html"></HEAD
+TITLE="Report breaks in OpenCReports"
+HREF="x2473.html"></HEAD
 ><BODY
-CLASS="sect1"
+CLASS="chapter"
 BGCOLOR="#FFFFFF"
 TEXT="#000000"
 LINK="#0000FF"
@@ -45,7 +42,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="x216.html"
+HREF="x2081.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -53,13 +50,13 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Report XML description</TD
+></TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x320.html"
+HREF="x2473.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -69,47 +66,60 @@ ACCESSKEY="N"
 ALIGN="LEFT"
 WIDTH="100%"></DIV
 ><DIV
+CLASS="chapter"
+><H1
+><A
+NAME="breaks"
+></A
+>Report breaks</H1
+><DIV
 CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="searchpaths"
->Paths</A
+NAME="AEN2458"
+>Grouping data</A
 ></H1
 ><P
->&#13;			Some report descriptiom elements (like
-			<TT
+>&#13;			<TT
 CLASS="literal"
->&#60;load&#62;</TT
-> and
-			<TT
-CLASS="literal"
->&#60;Image&#62;</TT
->, see
-			<A
-HREF="x1123.html"
->Loaded report</A
-> and <A
-HREF="x1667.html"
->Image node</A
->)
-			reference files. By default, these files must
-			be in the same directory as the report XML
-			description file, or in the current working
-			directory for the application using OpenCReports.
-			To lift this limitation, and allow organizing files
-			in a more logical manner, a search path or
-			multiple search paths may be added.
-			For files referenced with relative paths, the
-			search paths will be used in their order of
-			declaration. Search paths and the relative file
-			path are concatenated together to form an absolute
-			path. The first successful absolute file path
-			match will be used in the element referencing
-			the file.
+>OpenCReports</TT
+>, being a report generator,
+			works on tabular data: the data consists of ordered (named)
+			columns and ordered or unordered rows.
 		</P
 ><P
->&#13;			Search paths are in the following format:
+>&#13;			It is often necessary to group data by certain properties.
+			Imagine a list of employees of a company, grouped by their
+			departments, pay grade, or location of employment. A report
+			may show the list of the employees with visual separation
+			according to any of these properties.
+		</P
+><P
+>&#13;			Multiple groupings may be prioritized (nested):
+			<P
+></P
+><OL
+TYPE="1"
+><LI
+><P
+>&#13;						by department
+					</P
+></LI
+><LI
+><P
+>&#13;						by pay grade
+					</P
+></LI
+></OL
+>
+			With the above, in each department, subgrouping would separate
+			employees according to the pay grade in that department.
+		</P
+><P
+>&#13;			For this to work, the rows of data must be fed to
+			the report generator in a certain order. For example,
+			in SQL the ordering can be done by:
 			<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
@@ -118,15 +128,21 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="programlisting"
->&#60;Paths&#62;
-    &#60;Path value="/absolute/path" /&#62;
-    ...
-&#60;/Paths&#62;</PRE
+>SELECT ...
+ORDER BY department,paygrade,employee;</PRE
 ></TD
 ></TR
 ></TABLE
 >
 		</P
+><P
+>&#13;			This grouping of data is called a <I
+CLASS="emphasis"
+>break</I
+>
+			in a report generator.
+		</P
+></DIV
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -144,7 +160,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="x216.html"
+HREF="x2081.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -162,7 +178,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x320.html"
+HREF="x2473.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -172,21 +188,17 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->OpenCReport element</TD
+>Alphabetical list of functions</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
-><A
-HREF="c169.html"
-ACCESSKEY="U"
->Up</A
-></TD
+>&nbsp;</TD
 ><TD
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Datasources</TD
+>Report breaks in OpenCReports</TD
 ></TR
 ></TABLE
 ></DIV

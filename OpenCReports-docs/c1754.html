@@ -2,24 +2,21 @@
 <HTML
 ><HEAD
 ><TITLE
->Paths</TITLE
+>Expressions in OpenCReports</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="OpenCReports 0.6.3 Manual"
 HREF="book1.html"><LINK
-REL="UP"
-TITLE="Report XML description"
-HREF="c169.html"><LINK
 REL="PREVIOUS"
-TITLE="OpenCReport element"
-HREF="x216.html"><LINK
+TITLE="Color specification"
+HREF="x1741.html"><LINK
 REL="NEXT"
-TITLE="Datasources"
-HREF="x320.html"></HEAD
+TITLE="Constants"
+HREF="x1773.html"></HEAD
 ><BODY
-CLASS="sect1"
+CLASS="chapter"
 BGCOLOR="#FFFFFF"
 TEXT="#000000"
 LINK="#0000FF"
@@ -45,7 +42,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="x216.html"
+HREF="x1741.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -53,13 +50,13 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Report XML description</TD
+></TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x320.html"
+HREF="x1773.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -69,64 +66,81 @@ ACCESSKEY="N"
 ALIGN="LEFT"
 WIDTH="100%"></DIV
 ><DIV
+CLASS="chapter"
+><H1
+><A
+NAME="expressions"
+></A
+>Expressions in OpenCReports</H1
+><DIV
 CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="searchpaths"
->Paths</A
+NAME="AEN1756"
+>Introduction</A
 ></H1
 ><P
->&#13;			Some report descriptiom elements (like
+>&#13;			There are four data types in OpenCReports:
 			<TT
 CLASS="literal"
->&#60;load&#62;</TT
-> and
+>numeric</TT
+>, <TT
+CLASS="literal"
+>string</TT
+>,
 			<TT
 CLASS="literal"
->&#60;Image&#62;</TT
->, see
-			<A
-HREF="x1123.html"
->Loaded report</A
-> and <A
-HREF="x1667.html"
->Image node</A
->)
-			reference files. By default, these files must
-			be in the same directory as the report XML
-			description file, or in the current working
-			directory for the application using OpenCReports.
-			To lift this limitation, and allow organizing files
-			in a more logical manner, a search path or
-			multiple search paths may be added.
-			For files referenced with relative paths, the
-			search paths will be used in their order of
-			declaration. Search paths and the relative file
-			path are concatenated together to form an absolute
-			path. The first successful absolute file path
-			match will be used in the element referencing
-			the file.
+>datetime</TT
+> and <TT
+CLASS="literal"
+>error</TT
+>.
+			Expressions can return any of these types.
 		</P
 ><P
->&#13;			Search paths are in the following format:
-			<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="programlisting"
->&#60;Paths&#62;
-    &#60;Path value="/absolute/path" /&#62;
-    ...
-&#60;/Paths&#62;</PRE
-></TD
-></TR
-></TABLE
->
+>&#13;			A <TT
+CLASS="literal"
+>numeric</TT
+> expression's result is
+			a number. It uses high numeric precision. Most functions
+			and operators deal with numbers.
 		</P
+><P
+>&#13;			A <TT
+CLASS="literal"
+>string</TT
+> expression's result is a
+			string. Strings can be concatenated or otherwise processed
+			by string functions.
+		</P
+><P
+>&#13;			A <TT
+CLASS="literal"
+>datetime</TT
+> expression may store a date,
+			a time (with or without timezone) or both. Also, it may store
+			a time interval, e.g. <TT
+CLASS="literal"
+>2 months</TT
+> that can be
+			added to or subtracted from another <TT
+CLASS="literal"
+>datetime</TT
+>
+			value.
+		</P
+><P
+>&#13;			An <TT
+CLASS="literal"
+>error</TT
+> expression is a special case of
+			strings: it stores a string literal (which is an error message)
+			but it cannot be further processed by functions or operators.
+			Instead, an error is propagated up from subexpressions to
+			the final result of the expression.
+		</P
+></DIV
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -144,7 +158,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="x216.html"
+HREF="x1741.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -162,7 +176,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x320.html"
+HREF="x1773.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -172,21 +186,17 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->OpenCReport element</TD
+>Color specification</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
-><A
-HREF="c169.html"
-ACCESSKEY="U"
->Up</A
-></TD
+>&nbsp;</TD
 ><TD
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Datasources</TD
+>Constants</TD
 ></TR
 ></TABLE
 ></DIV

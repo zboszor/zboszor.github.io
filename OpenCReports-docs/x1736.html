@@ -2,7 +2,7 @@
 <HTML
 ><HEAD
 ><TITLE
->Paths</TITLE
+>Image end</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
@@ -13,11 +13,11 @@ REL="UP"
 TITLE="Report XML description"
 HREF="c169.html"><LINK
 REL="PREVIOUS"
-TITLE="OpenCReport element"
-HREF="x216.html"><LINK
+TITLE="Image"
+HREF="x1667.html"><LINK
 REL="NEXT"
-TITLE="Datasources"
-HREF="x320.html"></HEAD
+TITLE="Color specification"
+HREF="x1741.html"></HEAD
 ><BODY
 CLASS="sect1"
 BGCOLOR="#FFFFFF"
@@ -45,7 +45,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="x216.html"
+HREF="x1667.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -59,7 +59,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="x320.html"
+HREF="x1741.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -73,43 +73,18 @@ CLASS="sect1"
 ><H1
 CLASS="sect1"
 ><A
-NAME="searchpaths"
->Paths</A
+NAME="imageendnode"
+>Image end</A
 ></H1
 ><P
->&#13;			Some report descriptiom elements (like
-			<TT
-CLASS="literal"
->&#60;load&#62;</TT
-> and
-			<TT
-CLASS="literal"
->&#60;Image&#62;</TT
->, see
+>&#13;			Terminator for a previous image.
+			This node doesn't have any attributes or
+			child nodes. Its purpose is to reset
+			indentation caused by a previous
 			<A
-HREF="x1123.html"
->Loaded report</A
-> and <A
 HREF="x1667.html"
 >Image node</A
->)
-			reference files. By default, these files must
-			be in the same directory as the report XML
-			description file, or in the current working
-			directory for the application using OpenCReports.
-			To lift this limitation, and allow organizing files
-			in a more logical manner, a search path or
-			multiple search paths may be added.
-			For files referenced with relative paths, the
-			search paths will be used in their order of
-			declaration. Search paths and the relative file
-			path are concatenated together to form an absolute
-			path. The first successful absolute file path
-			match will be used in the element referencing
-			the file.
-		</P
-><P
->&#13;			Search paths are in the following format:
+>.
 			<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
@@ -118,10 +93,9 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="programlisting"
->&#60;Paths&#62;
-    &#60;Path value="/absolute/path" /&#62;
-    ...
-&#60;/Paths&#62;</PRE
+>&#60;Output&#62;
+    &#60;ImageEnd/&#62;
+&#60;/Output</PRE
 ></TD
 ></TR
 ></TABLE
@@ -144,7 +118,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="x216.html"
+HREF="x1667.html"
 ACCESSKEY="P"
 >&#60;&#60;&#60; Previous</A
 ></TD
@@ -162,7 +136,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="x320.html"
+HREF="x1741.html"
 ACCESSKEY="N"
 >Next &#62;&#62;&#62;</A
 ></TD
@@ -172,7 +146,7 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->OpenCReport element</TD
+>Image</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
@@ -186,7 +160,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Datasources</TD
+>Color specification</TD
 ></TR
 ></TABLE
 ></DIV

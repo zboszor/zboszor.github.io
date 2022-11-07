@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Precalculated variables</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="OpenCReports 0.6.3 Manual"
+HREF="book1.html"><LINK
+REL="UP"
+TITLE="Report variables"
+HREF="c2511.html"><LINK
+REL="PREVIOUS"
+TITLE="Custom variables"
+HREF="x2589.html"><LINK
+REL="NEXT"
+TITLE="Resetting a variable on break boundaries"
+HREF="x2628.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>OpenCReports 0.6.3 Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x2589.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Report variables</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x2628.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="precalcvar"
+>Precalculated variables</A
+></H1
+><P
+>&#13;			By default, variables produce results that are
+			valid for the data rows they are derived from.
+			Iterative variables variable produce results
+			that are valid for the current row and preceding
+			rows.
+		</P
+><P
+>&#13;			But usually, we are not interested in the
+			<I
+CLASS="emphasis"
+>running average</I
+>, only
+			in the average of the whole data series.
+		</P
+><P
+>&#13;			This is where the <I
+CLASS="emphasis"
+>precalculated</I
+>
+			variables come in.
+		</P
+><P
+>&#13;			Setting a variable to be precalculated is done
+			by the <TT
+CLASS="literal"
+>precalculate="yes"</TT
+>
+			attribute. <TT
+CLASS="literal"
+>delayed="yes"</TT
+> is also
+			accepted as an alias. Such a variable (or, actually,
+			its value) can be displayed in e.g.
+			<TT
+CLASS="literal"
+>&#60;ReportHeader&#62;</TT
+>
+			which is shown upfront before any report details to
+			inform the reader without looking at the last page.
+			<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="programlisting"
+>&#60;Report&#62;
+    &#60;Variables&#62;
+        &#60;Variable
+            name="var1"
+            value="query1.field1"
+            type="average"
+            precalculate="yes" /&#62;
+    &#60;/Variables&#62;
+
+    &#60;ReportHeader&#62;
+        &#60;Output&#62;
+            &#60;field value="v.var1"&#62;
+        &#60;/Output&#62;
+    &#60;/ReportHeader&#62;
+&#60;/Report&#62;</PRE
+></TD
+></TR
+></TABLE
+>
+		</P
+><P
+>&#13;			See also <A
+HREF="x1155.html#precalcvarattr"
+>Precalculate attribute</A
+>.
+		</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x2589.html"
+ACCESSKEY="P"
+>&#60;&#60;&#60; Previous</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="book1.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x2628.html"
+ACCESSKEY="N"
+>Next &#62;&#62;&#62;</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Custom variables</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c2511.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Resetting a variable on break boundaries</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
