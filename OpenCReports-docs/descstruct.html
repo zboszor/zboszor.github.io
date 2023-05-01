@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.1. XML description structure</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="xmldescriptor.html" title="Chapter 2. Report XML description" /><link rel="next" href="ocrpttopxml.html" title="2.2. OpenCReport element" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">2.1. XML description structure</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="xmldescriptor.html" title="Chapter 2. Report XML description">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="xmldescriptor.html" title="Chapter 2. Report XML description">Up</a></td><th width="60%" align="center">Chapter 2. Report XML description</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="ocrpttopxml.html" title="2.2. OpenCReport element">Next</a></td></tr></table><hr /></div><div class="sect1" id="DESCSTRUCT"><div class="titlepage"><div><div><h2 class="title" style="clear: both">2.1. XML description structure <a href="#DESCSTRUCT" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="descstruct.html#XMLNOTES">2.1.1. Notes about XML syntax and attributes</a></span></dt></dl></div><p>
+			<a class="ulink" href="https://github.com/zboszor/OpenCReports" target="_top">OpenCReports</a>
+			uses an
+			<a class="ulink" href="https://github.com/SICOM/rlib" target="_top">RLIB</a>-compatible
+			report description with extensions.
+		</p><p>
+			The report XML description, like all XML files start with
+			declaring that it's an XML file and the optional declaration
+			of the Document Type Definition that the XML file can be
+			checked against. For an OpenCReports report description,
+			the first two lines are:
+			</p><pre class="programlisting">&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE OpenCReport SYSTEM "opencreport.dtd"&gt;</pre><p>
+			The DTD file <code class="literal">opencreport.dtd</code> can be
+			found in the sources of OpenCReports
+			<a class="ulink" href="https://github.com/zboszor/OpenCReports/blob/main/opencreport.dtd" target="_top">here</a>.
+		</p><p>
+			After the XML header lines, a fully specified report
+			description looks like this:
+			</p><pre class="programlisting">&lt;OpenCReport&gt;
+    &lt;Datasources&gt;
+        ...
+    &lt;/Datasources&gt;
+    &lt;Queries&gt;
+        ...
+    &lt;/Queries&gt;
+    &lt;Part&gt;
+        &lt;pr&gt;
+            &lt;pd&gt;
+                &lt;Report&gt;
+                    ...
+                &lt;/Report&gt;
+            &lt;/pd&gt;
+        &lt;/pr&gt;
+    &lt;/Part&gt;
+&lt;/OpenCReport&gt;</pre><p>
+			or like this:
+			</p><pre class="programlisting">&lt;OpenCReport&gt;
+    &lt;Datasources&gt;
+        ...
+    &lt;/Datasources&gt;
+    &lt;Queries&gt;
+        ...
+    &lt;/Queries&gt;
+    &lt;Report&gt;
+        ...
+    &lt;/Report&gt;
+&lt;/OpenCReport&gt;</pre><p>
+		</p><p>
+			The XML sections <a class="xref" href="datasources.html" title="2.4. Datasources">Datasources</a>
+			and <a class="xref" href="queries.html" title="2.5. Queries">Queries</a> are optional in the XML
+			description. They can be substituted by program code
+			using the datasource and query related calls in the
+			<a class="xref" href="lowlevelapi.html" title="7.3. Low level C API">Low level C API</a>, similarly to RLIB.
+		</p><p>
+			For RLIB compatibility, a report description may start
+			with either <code class="literal">&lt;Part&gt;</code> or
+			<code class="literal">&lt;Report&gt;</code> as the toplevel node.
+			In this case, there's no other way to add datasources
+			and queries, but through program code, like the
+			<a class="xref" href="lowlevelapi.html" title="7.3. Low level C API">Low level C API</a>.
+		</p><p>
+			Since XML files are hierarchical with a single toplevel
+			node with child nodes, multiple
+			<code class="literal">&lt;Report&gt;</code>s were only possible
+			if using <code class="literal">&lt;Part&gt;</code> as the
+			toplevel node with all the nodes having to be spelled
+			out between <code class="literal">&lt;Part&gt;</code> and
+			<code class="literal">&lt;Report&gt;</code>. With
+			<code class="literal">&lt;OpenCReport&gt;</code> being the
+			toplevel node, multiple <code class="literal">&lt;Report&gt;</code>
+			child nodes can be used without the parent
+			<code class="literal">&lt;Part&gt;</code> node.
+		</p><div class="sect2" id="XMLNOTES"><div class="titlepage"><div><div><h3 class="title">2.1.1. Notes about XML syntax and attributes <a href="#XMLNOTES" class="id_link">#</a></h3></div></div></div><p>
+				Most (if not all) XML attributes in the report
+				description file are handled with the expression
+				parser (see <a class="xref" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Expressions</a>), with fallback
+				to literal strings if the the location of expression
+				wouldn't allow identifier references at that location.
+			</p><p>
+				For example, the datasource name may be declared this way:
+				</p><pre class="programlisting">&lt;Datasource name="mysource" ... /&gt;</pre><p>
+				where the name is a literal string. Or this way:
+				</p><pre class="programlisting">&lt;Datasource name="'mysource'" ... /&gt;</pre><p>
+				where the name is a string expression. (Note the
+				extra quotes.) Or even this way:
+				</p><pre class="programlisting">&lt;Datasource name="&amp;quot;mysource&amp;quot;" ... /&gt;</pre><p>
+				where name is a string expression which uses the
+				<code class="literal">"</code> double quote character which
+				must be "escaped" according to XML rules. This last
+				variant is less readable than the first two.
+				Nevertheless, it is usable and it works, so machine
+				generated XML files may also be used.
+			</p><p>
+				The first form is a regular XML string value.
+				Since expression parsing would find that
+				<code class="literal">mysource</code> is an identifier
+				which may be a query column name and this is not
+				a valid place for a query reference, the non-parsed
+				string value is used.
+			</p><p>
+				The second form is a single quoted OpenCReports
+				string constant. The parsed string constant's
+				value is used.
+			</p><p>
+				The third form is a double quoted OpenCReports
+				string constant, but in XML the double quote
+				character must be substituted with
+				<code class="literal">&amp;quot;</code> because they are
+				reserved for quoting the attribute values.
+				The parsed string constant's value is used.
+				(This substitution is called "string escaping"
+				and various other formats require some kind of
+				substutition for reserved characters.)
+			</p><p>
+				To make the XML easier to read, the second form
+				is recommended because it still allows
+				embedding the single quote character inside
+				a string (see <a class="xref" href="xmldescriptor.html" title="Chapter 2. Report XML description">XML description</a>)
+				in case e.g. a strong password contains this.
+				For security-by-obscurity, the third form may
+				be used because it is harder to read. For all
+				special characters that should be escaped in
+				XML, see
+				<a class="ulink" href="https://stackoverflow.com/a/46637835/290085" target="_top">Simplified XML Escaping</a>.
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="xmldescriptor.html" title="Chapter 2. Report XML description">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="xmldescriptor.html" title="Chapter 2. Report XML description">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ocrpttopxml.html" title="2.2. OpenCReport element">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 2. Report XML description </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="40%" align="right" valign="top"> 2.2. OpenCReport element</td></tr></table></div></body></html>

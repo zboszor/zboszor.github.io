@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>8.2. The OpenCReport class</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phpmodule.html" title="8.1. The OpenCReports PHP module" /><link rel="next" href="phphighlevelapi.html" title="8.3. High level PHP API" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">8.2. The OpenCReport class</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phpmodule.html" title="8.1. The OpenCReports PHP module">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 8. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 8. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phphighlevelapi.html" title="8.3. High level PHP API">Next</a></td></tr></table><hr /></div><div class="sect1" id="MAINCLASS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.2. The OpenCReport class <a href="#MAINCLASS" class="id_link">#</a></h2></div></div></div><p>
+			The main class in OpenCReports is called
+			<code class="literal">OpenCReport</code>. (Note that the project
+			name is used as singular.)
+			</p><pre class="programlisting">class OpenCReport {
+    public const RESULT_ERROR;
+    public const RESULT_STRING;
+    public const RESULT_NUMBER;
+    public const RESULT_DATETIME;
+
+    public const VARIABLE_EXPRESSION;
+    public const VARIABLE_COUNT;
+    public const VARIABLE_COUNTALL;
+    public const VARIABLE_SUM;
+    public const VARIABLE_AVERAGE;
+    public const VARIABLE_AVERAGEALL;
+    public const VARIABLE_LOWEST;
+    public const VARIABLE_HIGHEST;
+
+    public final __construct();
+
+    public final parse_xml(string $filename): bool;
+    public final parse_xml_from_buffer(string $buffer): bool;
+
+    public const OUTPUT_UNSET;
+    public const OUTPUT_PDF;
+    public const OUTPUT_HTML;
+    public const OUTPUT_TXT;
+    public const OUTPUT_CSV;
+    public const OUTPUT_XML;
+    public final set_output_format(long $format): void;
+
+    public final execute(): bool;
+    public final spool(): void;
+    public final get_output(): string|false;
+    public final get_content_type(): array|false;
+
+    public static final version(): string;
+
+    public final set_numeric_precision_bits(
+                     string $expr_string): void;
+    public final set_rounding_mode(
+                     string $expr_string): void;
+
+    public final bindtextdomain(
+                     string $domainname,
+                     string $dirname): void;
+    public final set_locale(string $locale): void;
+
+    public final datasource_add_array(string $source_name):
+                     ?OpenCReport\Datasource;
+    public final datasource_add_csv(string $source_name):
+                     ?OpenCReport\Datasource;
+    public final datasource_add_json(string $source_name):
+                     ?OpenCReport\Datasource;
+    public final datasource_add_xml(string $source_name):
+                     ?OpenCReport\Datasource;
+    public final datasource_add_postgresql(
+                     string $source_name,
+                     string $host = null,
+                     string $port = null,
+                     string $dbname = null,
+                     string $user = null,
+                     string $password = null):
+                     ?OpenCReport\Datasource;
+    public final datasource_add_postgresql2(
+                     string $source_name,
+                     string $connection_info = null):
+                     ?OpenCReport\Datasource;
+    public final datasource_add_mariadb(
+                     string $source_name,
+                     string $host = null,
+                     string $port = null,
+                     string $dbname = null,
+                     string $user = null,
+                     string $password = null,
+                     string $unix_socket = null):
+                     ?OpenCReport\Datasource;
+    public final datasource_add_mariadb2(
+                     string $source_name,
+                     string $option_file = null,
+                     string $group = null):
+                     ?OpenCReport\Datasource;
+    public final datasource_add_odbc(
+                     string $source_name,
+                     string $dbname = null,
+                     ?string $user,
+                     ?string $password):
+                     ?OpenCReport\Datasource;
+    public final datasource_add_odbc2(
+                     string $source_name,
+                     string $connection_info = null):
+                     ?OpenCReport\Datasource;
+
+    public final datasource_get(string $source_name):
+                     ?OpenCReport\Datasource;
+    public final query_get(string $query_name):
+                     ?OpenCReport\Query;
+
+    public static final query_refresh(): void;
+
+    public final expr_parse(string $expr_string):
+                     ?OpenCReport\Expr;
+    public final expr_error(): ?string;
+
+    public final part_new(): OpenCReport\Part;
+    public final part_get_next(): OpenCReport\Part;
+
+    public final function_add(
+                     string $expr_func_name,
+                     string $zend_func_name,
+                     long $n_ops,
+                     bool $commutative,
+                     bool $associative,
+                     bool $left_associative,
+                     bool $dont_optimize): bool;
+
+    public final add_precalculation_done_cb(
+                     string $callback): void;
+    public final add_part_added_cb(
+                     string $callback): void;
+    public final add_report_added_cb(
+                     string $callback): void;
+
+    public final env_get(string $var_name):
+                     OpenCReport\Result;
+
+    public final result_new():
+                     OpenCReport\Result;
+
+    public final add_search_path(
+                     string $path): void;
+    public static final canonicalize_path(
+                     string $path): string;
+    public final find_file(string $path): $string;
+
+    public static final get_color(
+                     string $color_name,
+                     ?bool $bgcolor = false): array;
+
+    public final set_paper(string $paper): void;
+
+    public final set_size_unit(string $expr_string):
+                     void;
+    public final set_noquery_show_nodata(
+                     string $expr_string): void;
+    public final set_report_height_after_last(
+                     string $expr_string): void;
+}</pre><p>
+		</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phpmodule.html" title="8.1. The OpenCReports PHP module">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 8. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phphighlevelapi.html" title="8.3. High level PHP API">Next</a></td></tr><tr><td width="40%" align="left" valign="top">8.1. The OpenCReports PHP module </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="40%" align="right" valign="top"> 8.3. High level PHP API</td></tr></table></div></body></html>

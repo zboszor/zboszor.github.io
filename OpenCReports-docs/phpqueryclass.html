@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>8.6. The OpenCReport\Query class</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phpdsclass.html" title="8.5. The OpenCReport\Datasource class" /><link rel="next" href="phpqueryresultclass.html" title="8.7. The OpenCReport\QueryResult class" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">8.6. The OpenCReport\Query class</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phpdsclass.html" title="8.5. The OpenCReport\Datasource class">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 8. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 8. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phpqueryresultclass.html" title="8.7. The OpenCReport\QueryResult class">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPQUERYCLASS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.6. The OpenCReport\Query class <a href="#PHPQUERYCLASS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phpqueryclass.html#PHPQUERYGETRESULT">8.6.1. Get result for a query's current row</a></span></dt><dt><span class="sect2"><a href="phpqueryclass.html#PHPQUERYNAVSTART">8.6.2. Start navigation for a query</a></span></dt><dt><span class="sect2"><a href="phpqueryclass.html#PHPQUERYNAVNEXT">8.6.3. Navigate to the next row</a></span></dt><dt><span class="sect2"><a href="phpqueryclass.html#PHPQUERYADDFOLLOWER">8.6.4. Add a query follower</a></span></dt><dt><span class="sect2"><a href="phpqueryclass.html#PHPQUERYADDN1FOLLOWER">8.6.5. Add an N:1 query follower</a></span></dt><dt><span class="sect2"><a href="phpqueryclass.html#PHPQUERYFREE">8.6.6. Free a query</a></span></dt></dl></div><p>
+			</p><pre class="programlisting">class OpenCReport\Query {
+    public final get_result():
+                     OpenCReport\QueryResult;
+
+    public final navigate_start(): void;
+    public final navigate_next(): bool;
+
+    public final add_follower(
+                     OpenCReport\Query $follower):
+                     bool;
+    public final add_follower_n_to_1(
+                     OpenCReport\Query $follower,
+                     OpenCReport\Expr $match):
+                     bool;
+
+    public final free(): void;
+}</pre><p>
+		</p><div class="sect2" id="PHPQUERYGETRESULT"><div class="titlepage"><div><div><h3 class="title">8.6.1. Get result for a query's current row <a href="#PHPQUERYGETRESULT" class="id_link">#</a></h3></div></div></div><p>
+				The result is <code class="literal">OpenCReport\QueryResult</code>.
+				See <a class="xref" href="phpqueryresultclass.html" title="8.7. The OpenCReport\QueryResult class">Section 8.7</a>.
+				</p><pre class="programlisting">public final
+OpenCReport\Query::get_result():
+                     OpenCReport\QueryResult;</pre><p>
+			</p></div><div class="sect2" id="PHPQUERYNAVSTART"><div class="titlepage"><div><div><h3 class="title">8.6.2. Start navigation for a query <a href="#PHPQUERYNAVSTART" class="id_link">#</a></h3></div></div></div><p>
+				Reset query (and all its followers) to go
+				before the first row.
+				</p><pre class="programlisting">public final
+OpenCReport\Query::navigate_start(): void;</pre><p>
+			</p></div><div class="sect2" id="PHPQUERYNAVNEXT"><div class="titlepage"><div><div><h3 class="title">8.6.3. Navigate to the next row <a href="#PHPQUERYNAVNEXT" class="id_link">#</a></h3></div></div></div><p>
+				Navigate the query to the next row and return
+				if the new row is valid. The current row of
+				the query's follower queries are also moved
+				to the next valid row.
+				</p><pre class="programlisting">public final
+OpenCReport\Query::navigate_next(): bool;</pre><p>
+			</p><p>
+				Usually queries do not have a uniform
+				way to report the total number of rows,
+				although some datasource types may have
+				such a facility. Instead, they can report
+				that the dataset has ended.
+			</p></div><div class="sect2" id="PHPQUERYADDFOLLOWER"><div class="titlepage"><div><div><h3 class="title">8.6.4. Add a query follower <a href="#PHPQUERYADDFOLLOWER" class="id_link">#</a></h3></div></div></div><p>
+				Add a query as an 1:1 follower to the main
+				query object. The method returns whether
+				the call succeeded.
+				</p><pre class="programlisting">public final
+OpenCReport\Query::add_follower(
+                     OpenCReport\Query $follower):
+                     bool;</pre><p>
+			</p><p>
+				Adding a circular reference between queries
+				would fail.
+			</p></div><div class="sect2" id="PHPQUERYADDN1FOLLOWER"><div class="titlepage"><div><div><h3 class="title">8.6.5. Add an N:1 query follower <a href="#PHPQUERYADDN1FOLLOWER" class="id_link">#</a></h3></div></div></div><p>
+				Add a query and the matching expression
+				as a follower to the main query object.
+				The method returns whether the call
+				succeeded.
+				</p><pre class="programlisting">public final
+OpenCReport\Query::add_follower_n_to_1(
+                     OpenCReport\Query $follower,
+                     OpenCReport\Expr $match):
+                     bool;</pre><p>
+			</p><p>
+				Adding a circular reference between queries
+				would fail.
+			</p><p>
+				The call takes over ownership of the
+				match object and it must not be
+				explicitly freed.
+			</p></div><div class="sect2" id="PHPQUERYFREE"><div class="titlepage"><div><div><h3 class="title">8.6.6. Free a query <a href="#PHPQUERYFREE" class="id_link">#</a></h3></div></div></div><p>
+				</p><pre class="programlisting">public final
+OpenCReport\Query::free(): void;</pre><p>
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phpdsclass.html" title="8.5. The OpenCReport\Datasource class">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 8. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phpqueryresultclass.html" title="8.7. The OpenCReport\QueryResult class">Next</a></td></tr><tr><td width="40%" align="left" valign="top">8.5. The OpenCReport\Datasource class </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="40%" align="right" valign="top"> 8.7. The OpenCReport\QueryResult class</td></tr></table></div></body></html>

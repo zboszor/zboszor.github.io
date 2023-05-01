@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.8. Part column</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="partrow.html" title="2.7. Part row" /><link rel="next" href="report.html" title="2.9. Report" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">2.8. Part column</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="partrow.html" title="2.7. Part row">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="xmldescriptor.html" title="Chapter 2. Report XML description">Up</a></td><th width="60%" align="center">Chapter 2. Report XML description</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="report.html" title="2.9. Report">Next</a></td></tr></table><hr /></div><div class="sect1" id="PARTCOL"><div class="titlepage"><div><div><h2 class="title" style="clear: both">2.8. Part column <a href="#PARTCOL" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="partcol.html#PARTCOLATTS">2.8.1. Part column attributes</a></span></dt></dl></div><p>
+			A part column (<code class="literal">&lt;pd&gt;</code>) may
+			contain one or more <a class="xref" href="report.html" title="2.9. Report">Report</a>s
+			(<code class="literal">&lt;Report&gt;</code>) which are layed
+			out vertically in this column continuously.
+		</p><p>
+			Such a report may be inlined:
+			</p><pre class="programlisting">&lt;Part&gt;
+    &lt;pr&gt;
+        &lt;pd&gt;
+            &lt;Report&gt;
+                ...
+            &lt;/Report&gt;
+        &lt;/pd&gt;
+    &lt;/pr&gt;
+&lt;/Part&gt;</pre><p>
+		</p><p>
+			A report may also be loaded from a separate file.
+			For details, see <a class="xref" href="loadedreport.html" title="2.10. Loaded report">Loaded report</a>.
+			</p><pre class="programlisting">&lt;Part&gt;
+    &lt;pr&gt;
+        &lt;pd&gt;
+            &lt;load ... /&gt;
+        &lt;/pd&gt;
+    &lt;/pr&gt;
+&lt;/Part&gt;</pre><p>
+		</p><div class="sect2" id="PARTCOLATTS"><div class="titlepage"><div><div><h3 class="title">2.8.1. Part column attributes <a href="#PARTCOLATTS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="PARTCOLWIDTH"><div class="titlepage"><div><div><h4 class="title">2.8.1.1. Width <a href="#PARTCOLWIDTH" class="id_link">#</a></h4></div></div></div><p>
+					Width of the part column.
+					</p><pre class="programlisting">&lt;pd width="60"&gt;</pre><p>
+				</p><p>
+					When <a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="2.2.1. Size unit attribute">Size unit attribute</a> is set to
+					<code class="literal">rlib</code> (the default),
+					the column width is measured in characters,
+					which is controlled by <a class="xref" href="parts.html#PARTFONTSIZE" title="2.6.1.2. Font size">Part font size</a>.
+					Note, that the font width and height may differ,
+					depending on the font face controlled by
+					<a class="xref" href="parts.html#PARTFONTNAME" title="2.6.1.1. Font name">Part font name</a>. Width is computed
+					from the font width.
+				</p><p>
+					When <a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="2.2.1. Size unit attribute">Size unit attribute</a> is set to
+					<code class="literal">points</code>, width is measured
+					in points.
+				</p><p>
+					Columns without explicitly specified width are
+					dynamically sized according to
+					<a class="xref" href="parts.html#PAPERTYPE" title="2.6.1.8. Paper type">Paper type</a>,
+					<a class="xref" href="parts.html#MARGINSETTINGS" title="2.6.1.7. Margin settings">Margin settings</a>
+					and columns with explicitly specified width.
+				</p><p>
+					Columns that exceed the total page width
+					(according to <a class="xref" href="parts.html#PAPERTYPE" title="2.6.1.8. Paper type">Paper type</a> and
+					<a class="xref" href="parts.html#MARGINSETTINGS" title="2.6.1.7. Margin settings">Margin settings</a>) will be shown
+					partially, or won't be shown at all.
+				</p></div><div class="sect3" id="PARTCOLHEIGHT"><div class="titlepage"><div><div><h4 class="title">2.8.1.2. Height <a href="#PARTCOLHEIGHT" class="id_link">#</a></h4></div></div></div><p>
+					Height of the part column.
+					</p><pre class="programlisting">&lt;pd height="120"&gt;</pre><p>
+				</p><p>
+					When <a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="2.2.1. Size unit attribute">Size unit attribute</a> is set to
+					<code class="literal">rlib</code> (the default),
+					the column height is measured in characters,
+					which is controlled by <a class="xref" href="parts.html#PARTFONTSIZE" title="2.6.1.2. Font size">Part font size</a>.
+					Note, that the font width and height may differ,
+					depending on the font face controlled by
+					<a class="xref" href="parts.html#PARTFONTNAME" title="2.6.1.1. Font name">Part font name</a>. Column height is
+					computed from the font height.
+				</p><p>
+					When <a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="2.2.1. Size unit attribute">Size unit attribute</a> is set to
+					<code class="literal">points</code>, height is measured
+					in points.
+				</p><p>
+					Report details in this part column are layed out
+					up to the specified height. See
+					<a class="xref" href="report.html#REPORTHEIGHT" title="2.9.1.9. Height">Report height</a> for further explanation.
+				</p><p>
+					Note, that OpenCReports allows fixed height
+					columns to break over page boundaries. This is a
+					deviation from RLIB.
+				</p></div><div class="sect3" id="PDBORDERWIDTH"><div class="titlepage"><div><div><h4 class="title">2.8.1.3. Border width <a href="#PDBORDERWIDTH" class="id_link">#</a></h4></div></div></div><p>
+					Border width around the part column.
+					It is measured in points.
+					</p><pre class="programlisting">&lt;pd border_width="2"&gt;</pre><p>
+				</p><p>
+					When set, a rectangle around the part column
+					will be drawn. The width of outline of the
+					rectangle is measured in points.
+				</p><p>
+					This is a deviation from RLIB where the width
+					of the outline was a fixed 0.1 points and an
+					inner margin (all of top, bottom, left and right)
+					inside the column border was used.
+				</p><p>
+					If the column breaks over a page boundary,
+					the border will be drawn the column parts
+					on every page. 
+				</p></div><div class="sect3" id="PDBORDERCOLOR"><div class="titlepage"><div><div><h4 class="title">2.8.1.4. Border color <a href="#PDBORDERCOLOR" class="id_link">#</a></h4></div></div></div><p>
+					When <code class="literal">border_width</code> is set,
+					this color is used to draw the border rectangle.
+					</p><pre class="programlisting">&lt;pd border_color="'blue'"&gt;</pre><p>
+				</p><p>
+					See <a class="xref" href="colorspec.html" title="2.21. Color specification">Color specification</a>.
+				</p></div><div class="sect3" id="DETAILCOLUMNS"><div class="titlepage"><div><div><h4 class="title">2.8.1.5. Detail columns <a href="#DETAILCOLUMNS" class="id_link">#</a></h4></div></div></div><p>
+					Inner <code class="literal">&lt;Report&gt;</code>s
+					are layed out in one or more columns.
+					</p><pre class="programlisting">&lt;pd detail_columns="3"&gt;</pre><p>
+				</p><p>
+					Default value is 1.
+				</p></div><div class="sect3" id="COLUMNPADDING"><div class="titlepage"><div><div><h4 class="title">2.8.1.6. Column padding <a href="#COLUMNPADDING" class="id_link">#</a></h4></div></div></div><p>
+					When <code class="literal">detail_columns</code>
+					is set to higher than 1, inner padding
+					between the detail columns may be specified.
+					</p><pre class="programlisting">&lt;pd column_pad="0.2"&gt;</pre><p>
+				</p><p>
+					Default value is 0, i.e. no padding.
+				</p><p>
+					The unit of padding is inches if
+					<a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="2.2.1. Size unit attribute">Size unit attribute</a> is set to
+					<code class="literal">rlib</code> (default), points
+					otherwise.
+				</p></div><div class="sect3" id="PARTCOLSUPPRESS"><div class="titlepage"><div><div><h4 class="title">2.8.1.7. Suppress <a href="#PARTCOLSUPPRESS" class="id_link">#</a></h4></div></div></div><p>
+					Report columns may be suppressed.
+					</p><pre class="programlisting">&lt;pd suppress="yes"&gt;
+&lt;pd suppress="val(m.suppress_column)"&gt;</pre><p>
+				</p><p>
+					Default value is <code class="literal">false</code>,
+					i.e. no suppression.
+				</p><p>
+					The expression for <code class="literal">suppress</code>
+					must be a constant expression. An environment
+					variable (since it can't - or shouldn't - change
+					during the report execution) is considered
+					constant. See <a class="xref" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Expressions</a>.
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="partrow.html" title="2.7. Part row">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="xmldescriptor.html" title="Chapter 2. Report XML description">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="report.html" title="2.9. Report">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.7. Part row </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="40%" align="right" valign="top"> 2.9. Report</td></tr></table></div></body></html>

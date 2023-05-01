@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.6. Report parts</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="queries.html" title="2.5. Queries" /><link rel="next" href="partrow.html" title="2.7. Part row" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">2.6. Report parts</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="queries.html" title="2.5. Queries">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="xmldescriptor.html" title="Chapter 2. Report XML description">Up</a></td><th width="60%" align="center">Chapter 2. Report XML description</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="partrow.html" title="2.7. Part row">Next</a></td></tr></table><hr /></div><div class="sect1" id="PARTS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">2.6. Report parts <a href="#PARTS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="parts.html#PARTATTRIBS">2.6.1. Part attributes</a></span></dt><dt><span class="sect2"><a href="parts.html#PARTSUBSECS">2.6.2. Part subsections</a></span></dt></dl></div><p>
+			A report XML may contain multiple actual reports.
+			Such a <code class="literal">&lt;Part&gt;</code> may be
+			under the toplevel <code class="literal">&lt;OpenCReport&gt;</code>
+			node, in which case multiple report parts may exist
+			in the same XML, or it may be the toplevel node of
+			the XML. In the latter case, only a single
+			<code class="literal">&lt;Part&gt;</code>	may exist in the XML.
+			</p><pre class="programlisting">&lt;Part&gt;
+    &lt;pr&gt;
+        &lt;pd&gt;
+            &lt;Report&gt;
+                ...
+            &lt;/Report&gt;
+            ...
+        &lt;/pd&gt;
+        ...
+    &lt;/pr&gt;
+    ...
+&lt;/Part&gt;</pre><p>
+		</p><p>
+			A report <code class="literal">&lt;Part&gt;</code> may consist
+			multiple reports, arranged in
+			</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
+						rows (<code class="literal">&lt;pr&gt;</code>),
+					</p></li><li class="listitem" style="list-style-type: disc"><p>
+						columns in rows (<code class="literal">&lt;pd&gt;</code>), and
+					</p></li><li class="listitem" style="list-style-type: disc"><p>
+						reports (<code class="literal">&lt;Report&gt;</code>) arranged
+						vertically in a column.
+					</p></li></ul></div><p>
+		</p><p>
+			The rows and columns in rows do not form a grid as rows are
+			independent of each other. E.g. one row may contain two columns,
+			the next one may contain three, the next one may contain one.
+			It is completely freeform.
+		</p><p>
+			This allows very complex report layouts.
+			One possible application of such a complex layout is printed forms.
+		</p><div class="sect2" id="PARTATTRIBS"><div class="titlepage"><div><div><h3 class="title">2.6.1. Part attributes <a href="#PARTATTRIBS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="PARTFONTNAME"><div class="titlepage"><div><div><h4 class="title">2.6.1.1. Font name <a href="#PARTFONTNAME" class="id_link">#</a></h4></div></div></div><p>
+					The font name attribute specifies the font
+					for the report part's global scope. It can be
+					overridden by child nodes for their scope.
+					It may be specified in two forms, the first one
+					is the preferred name, the second is for RLIB
+					compatibility:
+					</p><pre class="programlisting">&lt;Part font_name="Arial"&gt;
+&lt;Part fontName="Arial"&gt;</pre><p>
+				</p><p>
+					If both forms are specified, <code class="literal">font_name</code>
+					is used.
+				</p><p>
+					Default font name is <code class="literal">Courier</code>.
+				</p></div><div class="sect3" id="PARTFONTSIZE"><div class="titlepage"><div><div><h4 class="title">2.6.1.2. Font size <a href="#PARTFONTSIZE" class="id_link">#</a></h4></div></div></div><p>
+					The font size attribute specifies the font size
+					for the report part's global scope. It can be
+					overridden by child nodes for their scope.
+					It may be specified in two forms, the first one
+					is the preferred name, the second is for RLIB
+					compatibility:
+					</p><pre class="programlisting">&lt;Part font_size="10"&gt;
+&lt;Part fontSize="10"&gt;</pre><p>
+				</p><p>
+					If both forms are specified, <code class="literal">font_size</code>
+					is used.
+				</p><p>
+					Default font size is 12.
+				</p></div><div class="sect3" id="PARTSIZEUNIT"><div class="titlepage"><div><div><h4 class="title">2.6.1.3. Size unit <a href="#PARTSIZEUNIT" class="id_link">#</a></h4></div></div></div><p>
+					Shortcut for the <a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="2.2.1. Size unit attribute">Size unit attribute</a> in
+					<code class="literal">&lt;OpenCReport&gt;</code> when
+					<code class="literal">&lt;Part&gt;</code> is the toplevel node.
+					</p><pre class="programlisting">&lt;Part size_unit="default"&gt;
+&lt;Part size_unit="rlib"&gt;
+&lt;Part size_unit="points"&gt;</pre><p>
+				</p><p>
+					When <code class="literal">&lt;OpenCReport&gt;</code> is the
+					toplevel node in the XML, this attribute for
+					<code class="literal">&lt;Part&gt;</code> is ignored.
+				</p></div><div class="sect3" id="NQSND"><div class="titlepage"><div><div><h4 class="title">2.6.1.4. No query show NoData attribute <a href="#NQSND" class="id_link">#</a></h4></div></div></div><p>
+					Shortcut for <a class="xref" href="ocrpttopxml.html#NOQUERYSHOWNODATA" title="2.2.2. No query show NoData">No query show NoData attribute</a> in
+					<code class="literal">&lt;OpenCReport&gt;</code> when
+                    <code class="literal">&lt;Part&gt;</code> is the toplevel node.
+					</p><pre class="programlisting">noquery_show_nodata="yes"
+noquery_show_nodata="no"</pre><p>
+				</p><p>
+					See default in <a class="xref" href="ocrpttopxml.html#NOQUERYSHOWNODATA" title="2.2.2. No query show NoData">No query show NoData attribute</a>
+					See also <a class="xref" href="report.html#NODATANODE" title="2.9.2.8. Alternate output for no data">NoData node</a>.
+				</p></div><div class="sect3" id="RHAL"><div class="titlepage"><div><div><h4 class="title">2.6.1.5. Report height after last attribute <a href="#RHAL" class="id_link">#</a></h4></div></div></div><p>
+					Shortcut for <a class="xref" href="ocrpttopxml.html#REPORTHEIGHTAFTERLAST" title="2.2.3. Report height after last">Report height after last attribute</a> in
+					<code class="literal">&lt;OpenCReport&gt;</code> when
+					<code class="literal">&lt;Part&gt;</code> is the toplevel node.
+					</p><pre class="programlisting">report_height_after_last="yes"
+report_height_after_last="no"</pre><p>
+				</p><p>
+					See default in <a class="xref" href="ocrpttopxml.html#REPORTHEIGHTAFTERLAST" title="2.2.3. Report height after last">Report height after last attribute</a>
+					See also <a class="xref" href="report.html#NODATANODE" title="2.9.2.8. Alternate output for no data">NoData node</a>.
+				</p></div><div class="sect3" id="PARTPAGEORIENTATION"><div class="titlepage"><div><div><h4 class="title">2.6.1.6. Orientation <a href="#PARTPAGEORIENTATION" class="id_link">#</a></h4></div></div></div><p>
+					Page orientation for the whole
+					<code class="literal">&lt;Part&gt;</code>.
+					</p><pre class="programlisting">&lt;Part orientation="portrait"&gt;
+&lt;Part orientation="landscape"&gt;</pre><p>
+				</p><p>
+					Default is portrait orientation.
+				</p></div><div class="sect3" id="MARGINSETTINGS"><div class="titlepage"><div><div><h4 class="title">2.6.1.7. Margin settings <a href="#MARGINSETTINGS" class="id_link">#</a></h4></div></div></div><p>
+					Margin settings for the page for the whole
+					<code class="literal">&lt;Part&gt;</code>. Individual
+					settings exist for the top, bottom, left and
+					right margins of the page. Every setting
+					exist in two forms: the RLIB compatible
+					"lowerCamelCase" variant and the all lowercase
+					with underscore. The lowecase-with-underscore
+					variants are the preferred ones.
+					</p><pre class="programlisting">&lt;Part top_margin="0.2"&gt;
+&lt;Part topMargin="0.2"&gt;
+&lt;Part bottom_margin="0.2"&gt;
+&lt;Part bottomMargin="0.2"&gt;
+&lt;Part left_margin="0.2"&gt;
+&lt;Part leftMargin="0.2"&gt;
+&lt;Part right_margin="0.2"&gt;
+&lt;Part rightMargin="0.2"&gt;</pre><p>
+				</p><p>
+					When <code class="literal">size_unit="rlib"</code> is in effect
+					(the default case) the margin unit is inches.
+					The margin unit is points (1/72th inches) when
+					<code class="literal">size_unit="points"</code> is in effect.
+				</p><p>
+					Default values for the top, bottom, left and right
+					margins are all 0.2, regardless of the unit.
+				</p><p>
+					Note that <code class="literal">rightMargin</code> didn't exist
+					in RLIB.
+				</p></div><div class="sect3" id="PAPERTYPE"><div class="titlepage"><div><div><h4 class="title">2.6.1.8. Paper type <a href="#PAPERTYPE" class="id_link">#</a></h4></div></div></div><p>
+					Paper type (implicitly: page size) for the whole
+					<code class="literal">&lt;Part&gt;</code>. It exists in
+					two forms: the RLIB compatible "lowerCamelCase"
+					variant and the all lowercase with underscore.
+					The lowecase-with-underscore variant is preferred.
+					</p><pre class="programlisting">&lt;Part paper_type="A4"&gt;
+&lt;Part paperType="A4"&gt;</pre><p>
+				</p><p>
+					Default value is the current system paper type
+					that <a class="ulink" href="http://packages.qa.debian.org/libp/libpaper.html" target="_top">libpaper</a>
+					uses. E.g. if the system is set to US English,
+					the default paper type is implicitly
+					<code class="literal">letter</code>. In most of Europe,
+					the default paper type is <code class="literal">A4</code>
+				</p><p>
+					The paper type can be specified in either lower case
+					or upper case, both are accepted.
+				</p></div><div class="sect3" id="PARTITER"><div class="titlepage"><div><div><h4 class="title">2.6.1.9. Iterations <a href="#PARTITER" class="id_link">#</a></h4></div></div></div><p>
+					The same <code class="literal">&lt;Part&gt;</code> may be
+					executed multiple times.
+					</p><pre class="programlisting">&lt;Part iterations="3"&gt;</pre><p>
+				</p><p>
+					Default value is 1.
+				</p><p>
+					Note that <code class="literal">&lt;Part&gt;</code>s and
+					every iteration of one starts on a new page.
+				</p></div><div class="sect3" id="PARTSUPPRESS"><div class="titlepage"><div><div><h4 class="title">2.6.1.10. Suppress <a href="#PARTSUPPRESS" class="id_link">#</a></h4></div></div></div><p>
+					Report parts may be suppressed.
+					</p><pre class="programlisting">&lt;Part suppress="yes"&gt;
+&lt;Part suppress="val(m.suppress_part)"&gt;</pre><p>
+				</p><p>
+					Default value is <code class="literal">false</code>,
+					i.e. no suppression.
+				</p><p>
+					The expression for <code class="literal">suppress</code>
+					must be a constant expression. An environment
+					variable (since it can't - or shouldn't - change
+					during the report execution) is considered
+					constant. See <a class="xref" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Expressions</a>.
+				</p></div><div class="sect3" id="SUPPRESSPAGEHEADERFIRSTPAGE"><div class="titlepage"><div><div><h4 class="title">2.6.1.11. Suppress page header on the first page <a href="#SUPPRESSPAGEHEADERFIRSTPAGE" class="id_link">#</a></h4></div></div></div><p>
+					The <code class="literal">&lt;PageHeader&gt;</code> section
+					(see <a class="xref" href="parts.html#PAGEHEADER" title="2.6.2.1. Page header">Page header</a> below)
+					for <code class="literal">&lt;Part&gt;</code> may be
+					suppressed on the first page.
+					</p><pre class="programlisting">&lt;Part suppressPageHeaderFirstPage="yes"&gt;</pre><p>
+				</p><p>
+					Default value is <code class="literal">no</code>.
+				</p><p>
+					Note that this suppression applies only to
+					the first page of the complete result (e.g. PDF)
+					and not to the first page of an iteration, which
+					may fall on a later page of the result.  
+				</p></div></div><div class="sect2" id="PARTSUBSECS"><div class="titlepage"><div><div><h3 class="title">2.6.2. Part subsections <a href="#PARTSUBSECS" class="id_link">#</a></h3></div></div></div><p>
+				As described in <a class="xref" href="parts.html" title="2.6. Report parts">Report parts</a>,
+				a <code class="literal">&lt;Part&gt;</code> may contain
+				one or more report rows (<code class="literal">&lt;pr&gt;</code>)
+				which in turn may contain one or more columns
+				(<code class="literal">&lt;pr&gt;</code>). See
+				<a class="xref" href="partrow.html" title="2.7. Part row">Part row</a> and <a class="xref" href="partcol.html" title="2.8. Part column">Part column</a>.
+			</p><div class="sect3" id="PAGEHEADER"><div class="titlepage"><div><div><h4 class="title">2.6.2.1. Page header <a href="#PAGEHEADER" class="id_link">#</a></h4></div></div></div><p>
+					This is the description of the page header.
+					It contains an <a class="xref" href="outputnode.html" title="2.15. Output">Output node</a>.
+					The same node can be used as a child of
+					<code class="literal">&lt;Report&gt;</code>, see
+					the difference in <a class="xref" href="report.html#REPORTPAGEHEADER" title="2.9.2.1. Page header">Report page header</a>
+					</p><pre class="programlisting">&lt;Part&gt;
+    &lt;PageHeader&gt;
+        &lt;Output&gt;
+            ...
+        &lt;/Output&gt;
+    &lt;/PageHeader&gt;
+&lt;/Part&gt;</pre><p>					
+				</p></div><div class="sect3" id="PAGEFOOTER"><div class="titlepage"><div><div><h4 class="title">2.6.2.2. Page footer <a href="#PAGEFOOTER" class="id_link">#</a></h4></div></div></div><p>
+					This is the description of the page footer.
+					It contains an <a class="xref" href="outputnode.html" title="2.15. Output">Output node</a>.
+					The same node can be used as a child of
+					<code class="literal">&lt;Report&gt;</code>, see
+					the difference in <a class="xref" href="report.html#REPORTPAGEFOOTER" title="2.9.2.2. Page footer">Report page footer</a>
+					</p><pre class="programlisting">&lt;Part&gt;
+    &lt;PageFooter&gt;
+        &lt;Output&gt;
+            ...
+        &lt;/Output&gt;
+    &lt;/PageFooter&gt;
+&lt;/Part&gt;</pre><p>					
+				</p></div><div class="sect3" id="PARTROW0"><div class="titlepage"><div><div><h4 class="title">2.6.2.3. Part row <a href="#PARTROW0" class="id_link">#</a></h4></div></div></div><p>
+					See <a class="xref" href="partrow.html" title="2.7. Part row">Part row</a>.
+					</p><pre class="programlisting">&lt;Part&gt;
+    &lt;pr&gt;
+        &lt;pd&gt;
+            ...
+        &lt;/pd&gt;
+    &lt;/pr&gt;
+&lt;/Part&gt;</pre><p>
+				</p><div class="sect4" id="PARTROWSUBSECS"><div class="titlepage"><div><div><h5 class="title">2.6.2.3.1. Part row subsections <a href="#PARTROWSUBSECS" class="id_link">#</a></h5></div></div></div><p>
+						There's only one node type which is a
+						subsection of <code class="literal">&lt;Part&gt;</code>.
+						See <a class="xref" href="partcol.html" title="2.8. Part column">Part column</a>.
+					</p></div></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="queries.html" title="2.5. Queries">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="xmldescriptor.html" title="Chapter 2. Report XML description">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="partrow.html" title="2.7. Part row">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.5. Queries </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="40%" align="right" valign="top"> 2.7. Part row</td></tr></table></div></body></html>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.16. Line</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="outputnode.html" title="2.15. Output" /><link rel="next" href="textelemnode.html" title="2.17. Text element" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">2.16. Line</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="outputnode.html" title="2.15. Output">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="xmldescriptor.html" title="Chapter 2. Report XML description">Up</a></td><th width="60%" align="center">Chapter 2. Report XML description</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="textelemnode.html" title="2.17. Text element">Next</a></td></tr></table><hr /></div><div class="sect1" id="LINENODE"><div class="titlepage"><div><div><h2 class="title" style="clear: both">2.16. Line <a href="#LINENODE" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="linenode.html#LINEATTS">2.16.1. Line attributes</a></span></dt><dt><span class="sect2"><a href="linenode.html#LINESUBSECS">2.16.2. Line subsections</a></span></dt></dl></div><p>
+			A line containing text elements of varying widths.
+			</p><pre class="programlisting">&lt;Output&gt;
+    &lt;Line&gt;
+        ...
+    &lt;/Line&gt;
+&lt;/Output</pre><p>
+		</p><div class="sect2" id="LINEATTS"><div class="titlepage"><div><div><h3 class="title">2.16.1. Line attributes <a href="#LINEATTS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="LINEFONTNAME"><div class="titlepage"><div><div><h4 class="title">2.16.1.1. Font name <a href="#LINEFONTNAME" class="id_link">#</a></h4></div></div></div><p>
+					The font name attribute specifies the font
+					for the line's scope. It can be overridden
+					by child nodes for their scope.
+					It may be specified in two forms, the first one
+					is the preferred name, the second is for RLIB
+					compatibility:
+					</p><pre class="programlisting">&lt;Line font_name="Arial"&gt;
+&lt;Line fontName="Arial"&gt;</pre><p>
+				</p><p>
+					If both forms are specified, <code class="literal">font_name</code>
+					is used.
+				</p><p>
+					Default font name is what's set (in decreasing priority)
+					in <a class="xref" href="report.html#REPORTFONTNAME" title="2.9.1.1. Font name">Report font name</a> or
+					<a class="xref" href="parts.html#PARTFONTNAME" title="2.6.1.1. Font name">Part font name</a>. If none of them is set,
+					it's <code class="literal">Courier</code>.
+				</p></div><div class="sect3" id="LINEFONTSIZE"><div class="titlepage"><div><div><h4 class="title">2.16.1.2. Font size <a href="#LINEFONTSIZE" class="id_link">#</a></h4></div></div></div><p>
+					The font size attribute specifies the font size
+					for the line's scope. It can be overridden by
+					child nodes for their scope. It may be specified
+					in two forms, the first one is the preferred name,
+					the second is for RLIB compatibility:
+					</p><pre class="programlisting">&lt;Line font_size="10"&gt;
+&lt;Line fontSize="10"&gt;</pre><p>
+				</p><p>
+					If both forms are specified, <code class="literal">font_size</code>
+					is used.
+				</p><p>
+					Default font name is what's set (in decreasing priority)
+					in <a class="xref" href="report.html#REPORTFONTSIZE" title="2.9.1.2. Font size">Report font size</a> or
+					<a class="xref" href="parts.html#PARTFONTSIZE" title="2.6.1.2. Font size">Part font size</a>. If none of them is set,
+					it's <code class="literal">12</code>.
+				</p></div><div class="sect3" id="LINEBOLDATTR"><div class="titlepage"><div><div><h4 class="title">2.16.1.3. Bold font <a href="#LINEBOLDATTR" class="id_link">#</a></h4></div></div></div><p>
+					Whether the line elements use bold font.
+					</p><pre class="programlisting">&lt;Line bold="yes"&gt;</pre><p>
+				</p><p>
+					Default is <code class="literal">false</code>.
+				</p></div><div class="sect3" id="LINEITALICATTR"><div class="titlepage"><div><div><h4 class="title">2.16.1.4. Italic font <a href="#LINEITALICATTR" class="id_link">#</a></h4></div></div></div><p>
+					Whether the line elements use italic font.
+					It is accepted in two forms:
+					</p><pre class="programlisting">&lt;Line italic="yes"&gt;
+&lt;Line italics="yes"&gt;</pre><p>
+				</p><p>
+					Default is <code class="literal">false</code>.
+				</p></div><div class="sect3" id="LINESUPPRESS"><div class="titlepage"><div><div><h4 class="title">2.16.1.5. Suppress <a href="#LINESUPPRESS" class="id_link">#</a></h4></div></div></div><p>
+					Text lines may be suppressed. If the parent
+					<code class="literal">&lt;Output&gt;</code> node is in
+					<code class="literal">&lt;FieldDetails&gt;</code>, the
+					expression may be derived from a query field.
+					</p><pre class="programlisting">&lt;Line suppress="yes"&gt;
+&lt;Line suppress="val(m.suppress_line)"&gt;
+&lt;Line suppress="query1.suppress_line"&gt;</pre><p>
+				</p><p>
+					Default value is <code class="literal">false</code>,
+					i.e. no suppression.
+				</p></div><div class="sect3" id="LINETEXTCOLOR"><div class="titlepage"><div><div><h4 class="title">2.16.1.6. Text color <a href="#LINETEXTCOLOR" class="id_link">#</a></h4></div></div></div><p>
+					This color is used to render text. It's accepted
+					with both American and  British spelling.
+					</p><pre class="programlisting">&lt;Line color="'blue'"&gt;
+&lt;Line colour="'blue'"&gt;</pre><p>
+				</p><p>
+					Default is <code class="literal">black</code>.
+					See <a class="xref" href="colorspec.html" title="2.21. Color specification">Color specification</a>.
+				</p></div><div class="sect3" id="LINEBGCOLOR"><div class="titlepage"><div><div><h4 class="title">2.16.1.7. Background color <a href="#LINEBGCOLOR" class="id_link">#</a></h4></div></div></div><p>
+					This color is used to render the background
+					rectangle under the text. It's accepted
+					with both American and  British spelling.
+					</p><pre class="programlisting">&lt;Line bgcolor="'blue'"&gt;
+&lt;Line bgcolour="'blue'"&gt;</pre><p>
+				</p><p>
+					Default is <code class="literal">white</code>.
+					See <a class="xref" href="colorspec.html" title="2.21. Color specification">Color specification</a>.
+				</p></div></div><div class="sect2" id="LINESUBSECS"><div class="titlepage"><div><div><h3 class="title">2.16.2. Line subsections <a href="#LINESUBSECS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="LINETXTELEM"><div class="titlepage"><div><div><h4 class="title">2.16.2.1. Text element <a href="#LINETXTELEM" class="id_link">#</a></h4></div></div></div><p>
+					Two variants are accepted.
+					</p><pre class="programlisting">&lt;Line&gt;
+    &lt;field value="expression..." ... /&gt;
+&lt;/Line&gt;</pre><p> and
+					</p><pre class="programlisting">&lt;Line&gt;
+    &lt;literal ... &gt;Literal text&lt;/literal&gt;
+&lt;/Line&gt;</pre><p>
+				</p><p>
+					See the <a class="xref" href="textelemnode.html" title="2.17. Text element">Text element node</a> below.
+				</p></div><div class="sect3" id="LINEIMG"><div class="titlepage"><div><div><h4 class="title">2.16.2.2. Image element <a href="#LINEIMG" class="id_link">#</a></h4></div></div></div><p>
+					An <code class="literal">&lt;Image&gt;</code> is accepted
+					as a line element.
+					</p><pre class="programlisting">&lt;Line&gt;
+    &lt;Image value="expression..." ... /&gt;
+&lt;/Line&gt;</pre><p>
+				</p><p>
+					See the <a class="xref" href="imagenode.html" title="2.19. Image">Image node</a> below.
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="outputnode.html" title="2.15. Output">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="xmldescriptor.html" title="Chapter 2. Report XML description">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="textelemnode.html" title="2.17. Text element">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.15. Output </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="40%" align="right" valign="top"> 2.17. Text element</td></tr></table></div></body></html>

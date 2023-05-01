@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>5.5. Precalculated variables</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="customvar.html" title="5.4. Custom variables" /><link rel="next" href="uservarreset.html" title="5.6. Resetting a variable on break boundaries" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">5.5. Precalculated variables</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="customvar.html" title="5.4. Custom variables">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="variables.html" title="Chapter 5. Report variables">Up</a></td><th width="60%" align="center">Chapter 5. Report variables</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="uservarreset.html" title="5.6. Resetting a variable on break boundaries">Next</a></td></tr></table><hr /></div><div class="sect1" id="PRECALCVAR"><div class="titlepage"><div><div><h2 class="title" style="clear: both">5.5. Precalculated variables <a href="#PRECALCVAR" class="id_link">#</a></h2></div></div></div><p>
+			By default, variables produce results that are
+			valid for the data rows they are derived from.
+			Iterative variables variable produce results
+			that are valid for the current row and preceding
+			rows.
+		</p><p>
+			But usually, we are not interested in the
+			<span class="emphasis"><em>running average</em></span>, only
+			in the average of the whole data series.
+		</p><p>
+			This is where the <span class="emphasis"><em>precalculated</em></span>
+			variables come in.
+		</p><p>
+			Setting a variable to be precalculated is done
+			by the <code class="literal">precalculate="yes"</code>
+			attribute. <code class="literal">delayed="yes"</code> is also
+			accepted as an alias. Such a variable (or, actually,
+			its value) can be displayed in e.g.
+			<code class="literal">&lt;ReportHeader&gt;</code>
+			which is shown upfront before any report details to
+			inform the reader without looking at the last page.
+			</p><pre class="programlisting">&lt;Report&gt;
+    &lt;Variables&gt;
+        &lt;Variable
+            name="var1"
+            value="query1.field1"
+            type="average"
+            precalculate="yes" /&gt;
+    &lt;/Variables&gt;
+
+    &lt;ReportHeader&gt;
+        &lt;Output&gt;
+            &lt;field value="v.var1"&gt;
+        &lt;/Output&gt;
+    &lt;/ReportHeader&gt;
+&lt;/Report&gt;</pre><p>
+		</p><p>
+			See also <a class="xref" href="variablenode.html#PRECALCVARATTR" title="2.12.1.6. Precalculate (delayed)">Precalculate attribute</a>.
+		</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="customvar.html" title="5.4. Custom variables">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="variables.html" title="Chapter 5. Report variables">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="uservarreset.html" title="5.6. Resetting a variable on break boundaries">Next</a></td></tr><tr><td width="40%" align="left" valign="top">5.4. Custom variables </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="40%" align="right" valign="top"> 5.6. Resetting a variable on break boundaries</td></tr></table></div></body></html>

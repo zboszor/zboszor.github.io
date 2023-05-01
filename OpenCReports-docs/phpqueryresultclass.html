@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>8.7. The OpenCReport\QueryResult class</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phpqueryclass.html" title="8.6. The OpenCReport\Query class" /><link rel="next" href="phpexprclass.html" title="8.8. The OpenCReport\Expr class" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">8.7. The OpenCReport\QueryResult class</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phpqueryclass.html" title="8.6. The OpenCReport\Query class">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 8. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 8. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phpexprclass.html" title="8.8. The OpenCReport\Expr class">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPQUERYRESULTCLASS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.7. The OpenCReport\QueryResult class <a href="#PHPQUERYRESULTCLASS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phpqueryresultclass.html#PHPQUERYRESULTCOLUMNS">8.7.1. Get number of columns for a query result</a></span></dt><dt><span class="sect2"><a href="phpqueryresultclass.html#PHPQUERYRESULTCOLNAME">8.7.2. Get the nth column name for a query result</a></span></dt><dt><span class="sect2"><a href="phpqueryresultclass.html#PHPQUERYRESULTCOLRESULT">8.7.3. Get the nth column result for a query result</a></span></dt></dl></div><p>
+			</p><pre class="programlisting">class OpenCReport\QueryResult {
+    public final columns(): long;
+
+    public final column_name(long $index): ?string;
+
+    public final column_result(long $index):
+                     ?OpenCReport\Result;
+}</pre><p>
+		</p><div class="sect2" id="PHPQUERYRESULTCOLUMNS"><div class="titlepage"><div><div><h3 class="title">8.7.1. Get number of columns for a query result <a href="#PHPQUERYRESULTCOLUMNS" class="id_link">#</a></h3></div></div></div><p>
+				This method returns the number of columns
+				for the query result.
+				</p><pre class="programlisting">public final
+OpenCReport\QueryResult::columns(): long;</pre><p>
+			</p></div><div class="sect2" id="PHPQUERYRESULTCOLNAME"><div class="titlepage"><div><div><h3 class="title">8.7.2. Get the nth column name for a query result <a href="#PHPQUERYRESULTCOLNAME" class="id_link">#</a></h3></div></div></div><p>
+				This method returns the column name
+				for the query result at <code class="literal">$index</code>.
+				It returns <code class="literal">NULL</code> for invalid indices.
+				</p><pre class="programlisting">public final
+OpenCReport\QueryResult::column_name(long $index):
+                     ?string;</pre><p>
+			</p></div><div class="sect2" id="PHPQUERYRESULTCOLRESULT"><div class="titlepage"><div><div><h3 class="title">8.7.3. Get the nth column result for a query result <a href="#PHPQUERYRESULTCOLRESULT" class="id_link">#</a></h3></div></div></div><p>
+				This method returns the column result
+				for the query result at <code class="literal">$index</code>.
+				It returns <code class="literal">NULL</code> for invalid indices.
+				</p><pre class="programlisting">public final
+OpenCReport\QueryResult::column_result(long $index):
+                     ?OpenCReport\Result;</pre><p>
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phpqueryclass.html" title="8.6. The OpenCReport\Query class">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 8. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phpexprclass.html" title="8.8. The OpenCReport\Expr class">Next</a></td></tr><tr><td width="40%" align="left" valign="top">8.6. The OpenCReport\Query class </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="40%" align="right" valign="top"> 8.8. The OpenCReport\Expr class</td></tr></table></div></body></html>

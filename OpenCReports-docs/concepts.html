@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>1.2. Concepts</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="rlib.html" title="1.1. The predecessor: RLIB" /><link rel="next" href="planned.html" title="1.3. OpenCReports planned features" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">1.2. Concepts</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="rlib.html" title="1.1. The predecessor: RLIB">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="introduction.html" title="Chapter 1. Introduction and concepts">Up</a></td><th width="60%" align="center">Chapter 1. Introduction and concepts</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="planned.html" title="1.3. OpenCReports planned features">Next</a></td></tr></table><hr /></div><div class="sect1" id="CONCEPTS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">1.2. Concepts <a href="#CONCEPTS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="concepts.html#WHATISAREPGEN">1.2.1. What is a report generator?</a></span></dt><dt><span class="sect2"><a href="concepts.html#XMLBASEDDESC">1.2.2. XML based report description</a></span></dt><dt><span class="sect2"><a href="concepts.html#COMPREHENSIVEAPI">1.2.3. Comprehensive API for report creation</a></span></dt><dt><span class="sect2"><a href="concepts.html#STRICTPARSER">1.2.4. Strict expression parser</a></span></dt><dt><span class="sect2"><a href="concepts.html#EXPROPT">1.2.5. Expression optimization</a></span></dt><dt><span class="sect2"><a href="concepts.html#REPVARS">1.2.6. Report variables</a></span></dt><dt><span class="sect2"><a href="concepts.html#SETOFFUNCS">1.2.7. Extensive and extensible set of functions</a></span></dt><dt><span class="sect2"><a href="concepts.html#UTF8STRINGS">1.2.8. UTF-8 string handling</a></span></dt><dt><span class="sect2"><a href="concepts.html#HIGHPRECNUMERICS">1.2.9. High precision numeric data type</a></span></dt><dt><span class="sect2"><a href="concepts.html#DATETIMETYPES">1.2.10. Datetime and interval data types</a></span></dt><dt><span class="sect2"><a href="concepts.html#AUTOCONV">1.2.11. Automatic input data conversion</a></span></dt><dt><span class="sect2"><a href="concepts.html#ALIGNMENTS">1.2.12. Versatile field alignment and multi-row fields</a></span></dt><dt><span class="sect2"><a href="concepts.html#REPBREAKS">1.2.13. Report breaks</a></span></dt><dt><span class="sect2"><a href="concepts.html#MULTICOLREP">1.2.14. Multi-column reports</a></span></dt><dt><span class="sect2"><a href="concepts.html#PDFDETAILS">1.2.15. PDF output format, fonts, layout details</a></span></dt><dt><span class="sect2"><a href="concepts.html#UNITTESTS">1.2.16. Extensive set of unit tests</a></span></dt><dt><span class="sect2"><a href="concepts.html#STDDEPS">1.2.17. Standard Linux dependencies</a></span></dt></dl></div><div class="sect2" id="WHATISAREPGEN"><div class="titlepage"><div><div><h3 class="title">1.2.1. What is a report generator? <a href="#WHATISAREPGEN" class="id_link">#</a></h3></div></div></div><p>
+				A report generator uses a tabular data source, which contains
+				rows and columns of data. The columns have labels or names.
+				(An SQL database query is such a tabular data source.)
+				It also uses some kind of description that specifies how
+				to display the data. The input data is transformed into
+				various output formats, some for human viewing, some for
+				further machine processing. Such output formats may be PDF,
+				HTML, XML, plain text or CSV.
+			</p></div><div class="sect2" id="XMLBASEDDESC"><div class="titlepage"><div><div><h3 class="title">1.2.2. XML based report description <a href="#XMLBASEDDESC" class="id_link">#</a></h3></div></div></div><p>
+				The XML file format is widely used. It can describe
+				structured data in a hierarchy with names for its
+				sections or "nodes".
+			</p><p>
+				OpenCReports uses an RLIB-compatible report description
+				with extensions. See <a class="xref" href="xmldescriptor.html" title="Chapter 2. Report XML description">XML description</a> and the
+				<a class="ulink" href="https://web.archive.org/web/20131116192438/http://newrlib.sicom.com/~rlib/index.php/Main_Page" target="_top">RLIB documentation</a>
+			</p></div><div class="sect2" id="COMPREHENSIVEAPI"><div class="titlepage"><div><div><h3 class="title">1.2.3. Comprehensive API for report creation <a href="#COMPREHENSIVEAPI" class="id_link">#</a></h3></div></div></div><p>
+				The <a class="xref" href="lowlevelapi.html" title="7.3. Low level C API">Low level C API</a> allows creating a report purely
+				via program code. The <a class="xref" href="highlevelapi.html" title="7.2. High level C API">High level C API</a> allows loading
+				an XML report description that contains all details
+				about the report, including database access. Mixing
+				the high and low level APIs allows a balance anywhere
+				between the two extremes. For example, load the report
+				description, which contains the complete layout, and pass
+				database access details via program code. RLIB's API and
+				report description allowed neither extremes, it relied on
+				the report description to provide the layout, with the
+				data access added from programming code.
+			</p></div><div class="sect2" id="STRICTPARSER"><div class="titlepage"><div><div><h3 class="title">1.2.4. Strict expression parser <a href="#STRICTPARSER" class="id_link">#</a></h3></div></div></div><p>
+				OpenCReports uses a Flex/Bison based expression parser.
+				The expression grammar doesn't allow buggy expressions.
+				See the <a class="xref" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Expressions</a> chapter.
+			</p><p>
+				RLIB's expression parser was a custom implementation
+				which was slightly fragile and forgiving. For example,
+				it allowed unclosed parentheses at the end of an
+				expression.
+			</p></div><div class="sect2" id="EXPROPT"><div class="titlepage"><div><div><h3 class="title">1.2.5. Expression optimization <a href="#EXPROPT" class="id_link">#</a></h3></div></div></div><p>
+				OpenCReports does some expression optimization
+				to reduce runtime cost of computing expression
+				values. For example, in <code class="literal">a*2/3</code>
+				the part <code class="literal">2/3</code> is two constants
+				in a division. This is precomputed into a single
+				constant as an optimization.
+			</p><p>
+				RLIB didn't contain automatic optimizations.
+				It relied on manual optimizations, like using
+				<a class="xref" href="variables.html" title="Chapter 5. Report variables">Report variables</a>.
+			</p></div><div class="sect2" id="REPVARS"><div class="titlepage"><div><div><h3 class="title">1.2.6. Report variables <a href="#REPVARS" class="id_link">#</a></h3></div></div></div><p>
+				OpenCReports supports standard report variables
+				for calculating sums, minimum, maximum and average values
+				or custom defined ones. See <a class="xref" href="variables.html" title="Chapter 5. Report variables">Report variables</a>
+			</p></div><div class="sect2" id="SETOFFUNCS"><div class="titlepage"><div><div><h3 class="title">1.2.7. Extensive and extensible set of functions <a href="#SETOFFUNCS" class="id_link">#</a></h3></div></div></div><p>
+				OpenCReports has many operators and functions to
+				be used in expressions. See <a class="xref" href="opsandfunc.html" title="3.5. Operators and functions">Operators and functions</a>
+				in the <a class="xref" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Expressions</a> chapter.
+			</p><p>
+				In fact, OpenCReports has all the operators and
+				functions that RLIB also had, with many additions.
+			</p><p>
+				Custom functions can also be added to a report by
+				programming code. Custom functions may override stock
+				functions.
+			</p></div><div class="sect2" id="UTF8STRINGS"><div class="titlepage"><div><div><h3 class="title">1.2.8. UTF-8 string handling <a href="#UTF8STRINGS" class="id_link">#</a></h3></div></div></div><p>
+				OpenCReports exclusively uses UTF-8 for strings.
+				Input data must be in UTF-8 and output formats
+				also use UTF-8.
+			</p><p>
+				RLIB could have been built with or without UTF-8 support.
+				The build that disabled UTF-8 support relied on
+				single byte character set encodings and conversion
+				between them. That wasn't always reliable. Since that
+				time, multibyte character encodings have won.
+			</p></div><div class="sect2" id="HIGHPRECNUMERICS"><div class="titlepage"><div><div><h3 class="title">1.2.9. High precision numeric data type <a href="#HIGHPRECNUMERICS" class="id_link">#</a></h3></div></div></div><p>
+				For historic record, RLIB was designed for the US
+				and slower machines. It used a fixed point numeric
+				representation. For the US, with its strong currency
+				and prices expressed in low numbers, this was an
+				acceptable design decision. But for countries, whose
+				currencies are a few orders of magnitude weaker and
+				conversely, the prices are similarly higher, the fixed
+				point numeric value range was easily overflown, leading
+				to wrong data in the report output.
+			</p><p>
+				Another potential problem with the fixed point numeric
+				representation was that converting numbers from the
+				input data to this internal representation always and
+				unconditionally rounded down. This can be demonstrated
+				with a carefully constructed (small) data set that would
+				add up exactly to 100% both on paper and with using the
+				IEEE-754 <code class="literal">double</code> data type, it would
+				only add up to 99.99% with RLIB's internal numeric
+				representation.
+			</p><p>
+				To avoid these kind of problems, OpenCReports uses
+				GNU MPFR floating point values with 256-bit precision
+				by default. This allows storing very large and very small
+				numbers. E.g. this allows computations even with late
+				stage
+				<a class="ulink" href="https://en.wikipedia.org/wiki/Hyperinflation" target="_top">hyperinflation</a>
+				prices.
+				See <a class="xref" href="constants.html#NUMERICCONSTANTS" title="3.2.2. Numeric constants">Numeric constants</a> in
+				the <a class="xref" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Expressions</a> chapter and the
+				<a class="xref" href="lowlevelapi.html#NUMERICTUNING" title="7.3.1. Numeric behavior related functions">Numeric behavior related functions</a> part in the
+				<a class="xref" href="lowlevelapi.html" title="7.3. Low level C API">Low level C API</a> chapter.
+			</p></div><div class="sect2" id="DATETIMETYPES"><div class="titlepage"><div><div><h3 class="title">1.2.10. Datetime and interval data types <a href="#DATETIMETYPES" class="id_link">#</a></h3></div></div></div><p>
+				OpenCReports differentiates between timestamp and
+				time interval data types, with the latter allowing
+				adding or subtracting a custom time period to and from
+				timestamp data. See <a class="xref" href="constants.html#DATETIMECONSTANTS" title="3.2.4. Datetime constants">Datetime constants</a>
+				in the <a class="xref" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Expressions</a> chapter.
+			</p></div><div class="sect2" id="AUTOCONV"><div class="titlepage"><div><div><h3 class="title">1.2.11. Automatic input data conversion <a href="#AUTOCONV" class="id_link">#</a></h3></div></div></div><p>
+				For maximum portability, databases provide their
+				data in strings. They also provide metadata that
+				describes the data type of every column in the
+				data record.
+			</p><p>
+				RLIB relied on explicit data conversion functions,
+				like <code class="literal">val()</code> and
+				<code class="literal">stodt()</code>.
+			</p><p>
+				OpenCReports discovers the columns' data type
+				and applies the conversion automatically. For
+				RLIB compatibility, the conversion functions
+				pass through values as is if they are already
+				converted. For example, the <code class="literal">val()</code>
+				function accepts an operand with both string and
+				numeric data types. In the former case the conversion
+				to numeric is performed, but if the operand is
+				already numeric, no further conversion takes place.
+				This is user friendly in two aspects: the conversion
+				function is not necessary when implementing a new
+				report, and an already existing RLIB report (that
+				contains such conversion functions for the input data)
+				may be used as is.
+			</p></div><div class="sect2" id="ALIGNMENTS"><div class="titlepage"><div><div><h3 class="title">1.2.12. Versatile field alignment and multi-row fields <a href="#ALIGNMENTS" class="id_link">#</a></h3></div></div></div><p>
+				In the report output, fields may have a fixed width in
+				which they are displayed. Some field values are longer
+				that the field width. When displaying them in a single
+				row, fields may be left-, right- or center-aligned.
+				With the PDF output, this means pixel-perfect alignment
+				with the parts of the field value that don't fit masked
+				off visually. RLIB aligned the data actually truncated
+				to fit into the field width.
+			</p><p>
+				Fields longer than the designated width may be wrapped
+				either at word or character boundaries. This way, they
+				become multi-row fields. RLIB called them "memo" fields
+				and the XML report description in OpenCReports also
+				uses the same naming for the flags dealing with this
+				detail. Multi-row fields are configurable regading word
+				or character wrapping, or they may be limited to print
+				only a certain amount of lines. Memo fields can break
+				over column or page boundaries.
+			</p><p>
+				OpenCReports have some differences from RLIB regards to
+				memo fields.
+			</p><p>
+				Thanks to Pango rendering, when using character wrapping,
+				hyphenation is done.
+			</p><p>
+				The second extension over RLIB is that
+				<code class="literal">justified</code> alignment can also be
+				used for multi-line fields. This is also thanks to
+				Pango. When <code class="literal">justified</code> alignment is
+				used, all lines but the last are justified. Therefore,
+				<code class="literal">justified</code> alignment is equivalent to
+				<code class="literal">left</code> alignment for single line fields.
+			</p></div><div class="sect2" id="REPBREAKS"><div class="titlepage"><div><div><h3 class="title">1.2.13. Report breaks <a href="#REPBREAKS" class="id_link">#</a></h3></div></div></div><p>
+				OpenCReports supports report breaks defined on arbitrary
+				expressions. Breaks occur when the expression value
+				changes, when stepping from one data set row to the next.
+				See <a class="xref" href="breaks.html" title="Chapter 4. Report breaks">Report breaks</a> and <a class="xref" href="breaksnode.html" title="2.13. Breaks">Breaks</a>
+			</p></div><div class="sect2" id="MULTICOLREP"><div class="titlepage"><div><div><h3 class="title">1.2.14. Multi-column reports <a href="#MULTICOLREP" class="id_link">#</a></h3></div></div></div><p>
+				OpenCReports, just like RLIB, supports both single-column
+				and multi-column report layout.
+			</p><p>
+				If a report is "narrow", so more columns would fit on
+				the same page, the report may be set to use multiple
+				columns on the same page.
+			</p></div><div class="sect2" id="PDFDETAILS"><div class="titlepage"><div><div><h3 class="title">1.2.15. PDF output format, fonts, layout details <a href="#PDFDETAILS" class="id_link">#</a></h3></div></div></div><p>
+				By using the excellent drawing possibilities of
+				Cairo, OpenCReports supports generating
+				the report in PDF format. RLIB relied on an
+				internal PDF generator in earlier versions called
+				RPDF, and used libHaru in later versions.
+			</p><p>
+				In RLIB, sizing of other details are a mix of units,
+				making it harder to design the report layout:
+				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
+							field widths and report heights are in
+							number of characters
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							width of lines are in points (1/72th inch)
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							width of gaps between columns of a
+							multi-column report is in inches
+						</p></li></ul></div><p>
+			</p><p>
+				OpenCReports faithfully reimplements these
+				for compatibility.
+			</p><p>
+				However, there are problems with field widths
+				calculated in number of characters. Widths using
+				a 12 point font is not the same as widths using
+				a 20 point font. Also, font width and height are
+				usually not identical. Some fonts are lean, with
+				their width smaller than their height. RLIB expected
+				that fonts are using the same character width and
+				height. For this reason, RLIB only supported a small
+				variety of monospace fonts.
+			</p><p>
+				Also, character widths for proportional fonts differ.
+				Field width expressed in number of characters cannot
+				be exact when using  proportional fonts. For this reason,
+				RLIB didn't support proportional fonts at all.
+			</p><p>
+				OpenCReports extended upon these ideas, so individual
+				fields in a text line may use custom font settings
+				while keeping the field width calculation identical
+				to RLIB, which ends with the font parameters set for
+				the text line. In OpenCReports, the fields' custom font
+				settings (font name and size) don't influence the field
+				width. Using this method, OpenCReports may use proportional
+				fonts even with using the RLIB compatible size settings.
+			</p><p>
+				On top of that, OpenCReports also has a new, consistent
+				size calculation method where everything is measured in
+				points.
+			</p></div><div class="sect2" id="UNITTESTS"><div class="titlepage"><div><div><h3 class="title">1.2.16. Extensive set of unit tests <a href="#UNITTESTS" class="id_link">#</a></h3></div></div></div><p>
+				The unit tests ensure that OpenCReports' features keep
+				working when adding new features or fixes. Units tests
+				exercise many aspects of the high and low level API,
+				report description handling, runtime behavior and output
+				generation.
+			</p></div><div class="sect2" id="STDDEPS"><div class="titlepage"><div><div><h3 class="title">1.2.17. Standard Linux dependencies <a href="#STDDEPS" class="id_link">#</a></h3></div></div></div><p>
+				OpenCReports uses
+				<a class="ulink" href="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home" target="_top">LibXML2</a>,
+				<a class="ulink" href="https://juliastrings.github.io/utf8proc/" target="_top">utf8proc</a>,
+				<a class="ulink" href="https://www.mpfr.org" target="_top">MPFR</a>,
+				<a class="ulink" href="http://packages.qa.debian.org/libp/libpaper.html" target="_top">libpaper</a>,
+				<a class="ulink" href="https://github.com/rgamble/libcsv" target="_top">libcsv</a>,
+				<a class="ulink" href="http://lloyd.github.com/yajl/" target="_top">yajl</a>,
+				<a class="ulink" href="https://www.cairographics.org" target="_top">Cairo</a>,
+				<a class="ulink" href="https://pango.gnome.org" target="_top">Pango</a>,
+				<a class="ulink" href="https://wiki.gnome.org/Projects/LibRsvg" target="_top">librsvg2</a>,
+				<a class="ulink" href="https://gitlab.gnome.org/GNOME/gdk-pixbuf" target="_top">gdk-pixbuf2</a>,
+				<a class="ulink" href="https://www.postgresql.org" target="_top">PostgreSQL</a>,
+				<a class="ulink" href="https://mariadb.com" target="_top">MariaDB</a>
+				and
+				<a class="ulink" href="http://www.unixodbc.org" target="_top">unixODBC</a>.
+			</p><p>
+				For running the unit tests,
+				<a class="ulink" href="https://www.ghostscript.com" target="_top">Ghostscript</a>
+				and <code class="literal">compare</code> from
+				<a class="ulink" href="https://imagemagick.org" target="_top">Imagemagick</a>
+				are also needed.
+			</p><p>
+				<code class="literal">docbook2pdf</code> and
+				<code class="literal">docbook2html</code> from
+				<a class="ulink" href="http://sources.redhat.com/docbook-tools/" target="_top">Docbook</a>
+				is used to generate the documentation.
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="rlib.html" title="1.1. The predecessor: RLIB">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="introduction.html" title="Chapter 1. Introduction and concepts">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="planned.html" title="1.3. OpenCReports planned features">Next</a></td></tr><tr><td width="40%" align="left" valign="top">1.1. The predecessor: RLIB </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="40%" align="right" valign="top"> 1.3. OpenCReports planned features</td></tr></table></div></body></html>

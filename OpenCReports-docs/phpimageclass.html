@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>8.19. The OpenCReport\Image class</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phphlineclass.html" title="8.18. The OpenCReport\HorizontalLine class" /><link rel="next" href="phptextclass.html" title="8.20. The OpenCReport\Text class" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">8.19. The OpenCReport\Image class</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phphlineclass.html" title="8.18. The OpenCReport\HorizontalLine class">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 8. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 8. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phptextclass.html" title="8.20. The OpenCReport\Text class">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPIMAGECLASS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.19. The OpenCReport\Image class <a href="#PHPIMAGECLASS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phpimageclass.html#PHPIMAGESETVALUE">8.19.1. Set the file name of the image</a></span></dt><dt><span class="sect2"><a href="phpimageclass.html#PHPIMAGESETSUPPRESS">8.19.2. Set the suppression flag for the image</a></span></dt><dt><span class="sect2"><a href="phpimageclass.html#PHPIMAGESETTYPE">8.19.3. Set the image type</a></span></dt><dt><span class="sect2"><a href="phpimageclass.html#PHPIMAGESETWIDTH">8.19.4. Set the image width</a></span></dt><dt><span class="sect2"><a href="phpimageclass.html#PHPIMAGESETHEIGHT">8.19.5. Set the image height</a></span></dt><dt><span class="sect2"><a href="phpimageclass.html#PHPIMAGESETALIGNMENT">8.19.6. Set the image alignment</a></span></dt><dt><span class="sect2"><a href="phpimageclass.html#PHPIMAGESETBGCOLOR">8.19.7. Set the image background color</a></span></dt><dt><span class="sect2"><a href="phpimageclass.html#PHPIMAGESETTEXTWIDTH">8.19.8. Set the image "text width"</a></span></dt></dl></div><p>
+			</p><pre class="programlisting">class OpenCReport\Image {
+    public final set_value(
+                     ?string $expr_string = null): void;
+
+    public final set_suppress(
+                     ?string $expr_string = null): void;
+
+    public final set_type(
+                     ?string $expr_string = null): void;
+
+    public final set_width(
+                     ?string $expr_string = null): void;
+
+    public final set_height(
+                     ?string $expr_string = null): void;
+
+    public final set_alignment(
+                     ?string $expr_string = null): void;
+
+    public final set_bgcolor(
+                     ?string $expr_string = null): void;
+
+    public final set_text_width(
+                     ?string $expr_string = null): void;
+}</pre><p>
+		</p><div class="sect2" id="PHPIMAGESETVALUE"><div class="titlepage"><div><div><h3 class="title">8.19.1. Set the file name of the image <a href="#PHPIMAGESETVALUE" class="id_link">#</a></h3></div></div></div><p>
+				Set the file name of the image.
+				The file name may be and absolute path,
+				relative to the work directory of the application,
+				or relative to any of the paths added with
+				<code class="literal">OpenCReport::add_search_path()</code>.
+				(See <a class="xref" href="phplowlevelapi.html#PHPADDSEARCHPATH" title="8.4.9.1. Add a search path">Section 8.4.9.1</a>.)
+				</p><pre class="programlisting">public final
+OpenCReport\Image::set_value(
+                     ?string $expr_string = null): void;</pre><p>
+			</p></div><div class="sect2" id="PHPIMAGESETSUPPRESS"><div class="titlepage"><div><div><h3 class="title">8.19.2. Set the suppression flag for the image <a href="#PHPIMAGESETSUPPRESS" class="id_link">#</a></h3></div></div></div><p>
+				Set the suppression flag for the image.
+				The expression must evaluate to a numeric
+				value that is treated as a boolean, i.e. 0 or non-0.
+				Default is <code class="literal">false</code>.
+				</p><pre class="programlisting">public final
+OpenCReport\Image::set_suppress(
+                     ?string $expr_string = null): void;</pre><p>
+			</p></div><div class="sect2" id="PHPIMAGESETTYPE"><div class="titlepage"><div><div><h3 class="title">8.19.3. Set the image type <a href="#PHPIMAGESETTYPE" class="id_link">#</a></h3></div></div></div><p>
+				Set the image file type.
+				Usually it's auto-detected and not needed.
+				</p><pre class="programlisting">public final
+OpenCReport\Image::set_type(
+                     ?string $expr_string = null): void;</pre><p>
+			</p></div><div class="sect2" id="PHPIMAGESETWIDTH"><div class="titlepage"><div><div><h3 class="title">8.19.4. Set the image width <a href="#PHPIMAGESETWIDTH" class="id_link">#</a></h3></div></div></div><p>
+				Set the image width. This setting
+				is used when the image element is
+				a direct child of an output section.
+				See <a class="xref" href="imagenode.html#IMAGEWIDTH" title="2.19.1.4. Width">Section 2.19.1.4</a>.
+				</p><pre class="programlisting">public final
+OpenCReport\Image::set_width(
+                     ?string $expr_string = null): void;</pre><p>
+			</p></div><div class="sect2" id="PHPIMAGESETHEIGHT"><div class="titlepage"><div><div><h3 class="title">8.19.5. Set the image height <a href="#PHPIMAGESETHEIGHT" class="id_link">#</a></h3></div></div></div><p>
+				Set the image height. This setting
+				is used when the image element is
+				a direct child of an output section.
+				See <a class="xref" href="imagenode.html#IMAGEWIDTH" title="2.19.1.4. Width">Section 2.19.1.4</a>.
+				</p><pre class="programlisting">public final
+OpenCReport\Image::set_height(
+                     ?string $expr_string = null): void;</pre><p>
+			</p></div><div class="sect2" id="PHPIMAGESETALIGNMENT"><div class="titlepage"><div><div><h3 class="title">8.19.6. Set the image alignment <a href="#PHPIMAGESETALIGNMENT" class="id_link">#</a></h3></div></div></div><p>
+				Set the image alignment. This setting
+				is used when the image element is
+				a child of a text line.
+				See <a class="xref" href="imagenode.html#IMAGEALIGN" title="2.19.1.8. Alignment">Section 2.19.1.8</a>.
+				</p><pre class="programlisting">public final
+OpenCReport\Image::set_alignment(
+                     ?string $expr_string = null): void;</pre><p>
+			</p></div><div class="sect2" id="PHPIMAGESETBGCOLOR"><div class="titlepage"><div><div><h3 class="title">8.19.7. Set the image background color <a href="#PHPIMAGESETBGCOLOR" class="id_link">#</a></h3></div></div></div><p>
+				Set the image background color. This setting
+				is used when the image element is
+				a child of a text line.
+				See <a class="xref" href="imagenode.html#IMAGEBGCOLOR" title="2.19.1.7. Background color">Section 2.19.1.7</a>.
+				</p><pre class="programlisting">public final
+OpenCReport\Image::set_bgcolor(
+                     ?string $expr_string = null): void;</pre><p>
+			</p></div><div class="sect2" id="PHPIMAGESETTEXTWIDTH"><div class="titlepage"><div><div><h3 class="title">8.19.8. Set the image "text width" <a href="#PHPIMAGESETTEXTWIDTH" class="id_link">#</a></h3></div></div></div><p>
+				Set the image "text width". This setting
+				is used when the image element is
+				a child of a text line.
+				See <a class="xref" href="imagenode.html#IMAGETEXTWIDTH" title="2.19.1.6. Text width">Section 2.19.1.6</a>.
+				</p><pre class="programlisting">public final
+OpenCReport\Image::set_text_width(
+                     ?string $expr_string = null): void;</pre><p>
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phphlineclass.html" title="8.18. The OpenCReport\HorizontalLine class">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 8. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phptextclass.html" title="8.20. The OpenCReport\Text class">Next</a></td></tr><tr><td width="40%" align="left" valign="top">8.18. The OpenCReport\HorizontalLine class </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="40%" align="right" valign="top"> 8.20. The OpenCReport\Text class</td></tr></table></div></body></html>

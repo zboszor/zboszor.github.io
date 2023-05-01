@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>3.2. Constants</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="exprintro.html" title="3.1. Introduction" /><link rel="next" href="precalcexpr.html" title="3.3. Precalculated expressions" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">3.2. Constants</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="exprintro.html" title="3.1. Introduction">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Up</a></td><th width="60%" align="center">Chapter 3. Expressions in OpenCReports</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="precalcexpr.html" title="3.3. Precalculated expressions">Next</a></td></tr></table><hr /></div><div class="sect1" id="CONSTANTS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">3.2. Constants <a href="#CONSTANTS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="constants.html#STRINGLITERALS">3.2.1. String literals</a></span></dt><dt><span class="sect2"><a href="constants.html#NUMERICCONSTANTS">3.2.2. Numeric constants</a></span></dt><dt><span class="sect2"><a href="constants.html#BOOLCONSTANTS">3.2.3. Boolean constants</a></span></dt><dt><span class="sect2"><a href="constants.html#DATETIMECONSTANTS">3.2.4. Datetime constants</a></span></dt><dt><span class="sect2"><a href="constants.html#CONSTEXPR">3.2.5. Constant expressions</a></span></dt></dl></div><div class="sect2" id="STRINGLITERALS"><div class="titlepage"><div><div><h3 class="title">3.2.1. String literals <a href="#STRINGLITERALS" class="id_link">#</a></h3></div></div></div><p>
+				String literals in OpenCReports can be either single or double quoted.
+				Some examples:
+				</p><pre class="programlisting">"apple"
+’apple’
+"I’ve eaten an apple"
+’This an "apple".’</pre><p>
+				The values of these strings are:
+				</p><pre class="programlisting">apple
+apple
+I’ve eaten an apple
+This an "apple".</pre><p>
+				We can see how the other quoting character can be used as part
+				of the string value.
+			</p><p>
+				String literals can also use BASIC language style double quoting
+				to embed a single quoting character used for quoting the string
+				itself:
+				</p><pre class="programlisting">’apple’’’
+’apple’’pear’
+’apple’’’’pear’
+"apple"""
+"apple""pear"
+"apple""""pear"</pre><p>			
+				The values of these strings are:
+				</p><pre class="programlisting">apple’
+apple’pear
+apple’’pear
+apple"
+apple"pear
+apple""pear</pre><p>
+			</p><p>
+				String literals can also use C language string continuation if
+				there's at least one whitespace character (space, TAB or new line)
+				between doubled quoting characters. String continuation can also
+				switch quoting characters without whitespace between quoting.
+				</p><pre class="programlisting">"apple" "pear"
+"apple" ’pear’
+"apple"’pear’</pre><p>
+				The value of all these strings is:
+				</p><pre class="programlisting">applepear</pre><p>
+			</p></div><div class="sect2" id="NUMERICCONSTANTS"><div class="titlepage"><div><div><h3 class="title">3.2.2. Numeric constants <a href="#NUMERICCONSTANTS" class="id_link">#</a></h3></div></div></div><p>
+				Numeric values in OpenCReports are handled with GNU MPFR with
+				arbitrary precision, by default 256 bits. This allows for
+				very high precision, i.e. very long numbers. This is good
+				for directly using e.g. arbitrary precision
+				<code class="literal">numeric</code> type columns from PostgreSQL.
+			</p><p>
+				Numeric constants can be integer or fractional numbers with or
+				without the so called <span class="emphasis"><em>e-notation</em></span> or
+				scientific notation. Some examples:
+				</p><pre class="programlisting">1
+1.234
+1e4
+1e-4
+1.234e-5</pre><p>
+				E-notation means that that number preceding the letter "e" or
+				"E" is multiplied by ten to the power of the number after the
+				letter "e" or "E", the latter being an integer value. The
+				values of the above examples are:
+				</p><pre class="programlisting">1
+1.234
+10000
+0.0001
+0.00001234</pre><p>
+			</p><p>
+				Numbers greater than 0 and less than 1 can be written with
+				or without the leading zero.
+				</p><pre class="programlisting">0.123
+.123</pre><p>
+			</p></div><div class="sect2" id="BOOLCONSTANTS"><div class="titlepage"><div><div><h3 class="title">3.2.3. Boolean constants <a href="#BOOLCONSTANTS" class="id_link">#</a></h3></div></div></div><p>
+				Boolean constants evalutate to numeric constans
+				<code class="literal">1</code> and <code class="literal">0</code>.
+				The boolean constants are:
+				</p><pre class="programlisting">yes
+no
+true
+false</pre><p>
+			</p></div><div class="sect2" id="DATETIMECONSTANTS"><div class="titlepage"><div><div><h3 class="title">3.2.4. Datetime constants <a href="#DATETIMECONSTANTS" class="id_link">#</a></h3></div></div></div><p>
+				There are no datetime constants per se, although expressions
+				like <code class="literal">stodt('1980-06-30 16:00:00')</code> (i.e.
+				function calls with constant arguments that result in a
+				<code class="literal">datetime</code> value) implicitly turn into
+				constants through expression optimization.
+			</p></div><div class="sect2" id="CONSTEXPR"><div class="titlepage"><div><div><h3 class="title">3.2.5. Constant expressions <a href="#CONSTEXPR" class="id_link">#</a></h3></div></div></div><p>
+				Constant expressions are ones that contain
+				constant values (of any type) and operators
+				or functions.
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="exprintro.html" title="3.1. Introduction">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="precalcexpr.html" title="3.3. Precalculated expressions">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.1. Introduction </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="40%" align="right" valign="top"> 3.3. Precalculated expressions</td></tr></table></div></body></html>

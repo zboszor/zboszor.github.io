@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>3.4. Identifiers</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="precalcexpr.html" title="3.3. Precalculated expressions" /><link rel="next" href="opsandfunc.html" title="3.5. Operators and functions" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">3.4. Identifiers</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="precalcexpr.html" title="3.3. Precalculated expressions">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Up</a></td><th width="60%" align="center">Chapter 3. Expressions in OpenCReports</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="opsandfunc.html" title="3.5. Operators and functions">Next</a></td></tr></table><hr /></div><div class="sect1" id="IDENTIFIERS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">3.4. Identifiers <a href="#IDENTIFIERS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="identifiers.html#IDENTNAMES">3.4.1. Identifier names</a></span></dt><dt><span class="sect2"><a href="identifiers.html#QUERYIDENTS">3.4.2. Query field identifiers</a></span></dt><dt><span class="sect2"><a href="identifiers.html#SPECIDDOMAINS">3.4.3. Special purpose identifier domains</a></span></dt></dl></div><p>
+			Expressions may reference query column names, environment
+			variables, internal variables and user defined
+			<a class="xref" href="variables.html" title="Chapter 5. Report variables">Report variables</a>.
+			These references are called <span class="emphasis"><em>identifiers</em></span>.
+			Their values are evaluated during the report execution.
+		</p><div class="sect2" id="IDENTNAMES"><div class="titlepage"><div><div><h3 class="title">3.4.1. Identifier names <a href="#IDENTNAMES" class="id_link">#</a></h3></div></div></div><p>
+				Identifiers are in the format <code class="literal">domain.identifier</code>
+				where the domain name or the dot are optional.
+			</p><p>
+				OpenCReports is using UTF-8 encoding even in identifier
+				names. Accented characters are accepted as identifiers.
+			</p><p>
+				Valid names for <code class="literal">domain</code> and
+				<code class="literal">identifier</code> may start with an underscore
+				or UTF-8 letters and may contain underscore, UTF-8 letters
+				and numbers in subsequent characters.
+			</p></div><div class="sect2" id="QUERYIDENTS"><div class="titlepage"><div><div><h3 class="title">3.4.2. Query field identifiers <a href="#QUERYIDENTS" class="id_link">#</a></h3></div></div></div><p>
+				Any valid identifier is by default a query column
+				reference, with or without the domain name. Examples:
+				</p><pre class="programlisting">field_name
+field_name5
+myquery1.field_name
+oszlop_név
+lekérdezés.oszlop_név</pre><p>
+				By the way, in the above example,
+				<code class="literal">oszlop_név</code> means
+				<code class="literal">field_name</code>, and
+				<code class="literal">lekérdezés.oszlop_név</code> means
+				<code class="literal">query.field_name</code> in Hungarian.
+				The accented characters are a courtesy of UTF-8.
+			</p><p>
+				Query field identifiers in expressions are matched
+				during expression resolution. If the domain name
+				is specified, a query with that name must be present
+				in the report, either as the main query or as a
+				follower query. If the domain name is not specified,
+				the field names of the main query and all the follower
+				queries are matched with the expression.
+			</p><p>
+				For exceptions (and exceptions from under the exceptions!),
+				see below.
+			</p></div><div class="sect2" id="SPECIDDOMAINS"><div class="titlepage"><div><div><h3 class="title">3.4.3. Special purpose identifier domains <a href="#SPECIDDOMAINS" class="id_link">#</a></h3></div></div></div><p>
+				Some domain names carry special meaning for the report.
+			</p><div class="sect3" id="ENVIDENTS"><div class="titlepage"><div><div><h4 class="title">3.4.3.1. Environment variables <a href="#ENVIDENTS" class="id_link">#</a></h4></div></div></div><p>
+					Domain <code class="literal">m</code> indicates the domain
+					of environment variables. The nature of environment
+					variables depend on the languange binding. In C,
+					it's the variables in the operating environment.
+					In PHP, they are simply global PHP variables. Example:
+					</p><pre class="programlisting">m.current_date</pre><p>
+				</p><p>
+					Since such a setting is controlled outside the report,
+					and for the duration of running the report, its value
+					cannot (or <span class="emphasis"><em>shouldn't</em></span>) change,
+					environment variable references are treated as constants
+					and are optimized as constant at the start of the report
+					execution.
+				</p><p>
+					Environment variables can't change during report
+					execution in single threaded applications,
+					<span class="emphasis"><em>but they can in multi-threaded ones</em></span>.
+					By optimizing environment variables into constants
+					in expressions instead of querying the environment
+					every time the same expression is evaluated,
+					potential data races (that may result in inconsistent
+					results) are eliminated or reduced.
+				</p></div><div class="sect3" id="INTERNALVARIDENTS"><div class="titlepage"><div><div><h4 class="title">3.4.3.2. Internal report variables <a href="#INTERNALVARIDENTS" class="id_link">#</a></h4></div></div></div><p>
+					Domain <code class="literal">r</code> indicates the domain
+					of internal report variables.
+				</p><div class="sect4" id="CURRPAGE"><div class="titlepage"><div><div><h5 class="title">3.4.3.2.1. Current page number <a href="#CURRPAGE" class="id_link">#</a></h5></div></div></div><p>
+						</p><pre class="programlisting">r.pageno</pre><p>
+						The current page of the report is maintained by
+						the report layout and is intertwined with running
+						a report. For example, if an expression is evaluated
+						on page 4 of the report, and happens to reference
+						the current page number variable, then this variable
+						will have the value 4 in the result.
+					</p></div><div class="sect4" id="TOTPAGES"><div class="titlepage"><div><div><h5 class="title">3.4.3.2.2. Total number of pages <a href="#TOTPAGES" class="id_link">#</a></h5></div></div></div><p>
+						</p><pre class="programlisting">r.totpages</pre><p>
+						This variable carries the total number of pages
+						in the report. Its value is maintained by the
+						report. This variable is inherently
+						<a class="xref" href="precalcexpr.html" title="3.3. Precalculated expressions">precalculated</a>.
+					</p></div><div class="sect4" id="LINENO"><div class="titlepage"><div><div><h5 class="title">3.4.3.2.3. Line number <a href="#LINENO" class="id_link">#</a></h5></div></div></div><p>
+						</p><pre class="programlisting">r.lineno</pre><p>
+						This variable is an alias to the
+						<code class="literal">rownum()</code> function, i.e.
+						it is the current row (line) number in the data set.
+					</p><p>
+						Being an alias means that the variable is replaced by
+						the <code class="literal">rownum()</code> function call in the
+						grammar. Please, be aware, that functions may be
+						overridden by user defined functions. If
+						<code class="literal">rownum()</code> is overridden, then it will
+						be called with zero arguments by the grammar transformation,
+						which may or may not work for the user defined function
+						and the variable will not work as intended.
+					</p></div><div class="sect4" id="DETAILCOUNT"><div class="titlepage"><div><div><h5 class="title">3.4.3.2.4. Detail count <a href="#DETAILCOUNT" class="id_link">#</a></h5></div></div></div><p>
+						</p><pre class="programlisting">r.detailcnt</pre><p>
+						This variable works similarly to the row number
+						counter, e.g. <code class="literal">rownum()</code> or
+						<code class="literal">r.lineno</code>, except it restarts
+						from 1 at every <code class="literal">&lt;FieldHeaders&gt;</code>.
+					</p><p>
+						With the default behaviour of
+						<code class="literal">&lt;Breaks&gt;</code> vs
+						<code class="literal">&lt;FieldHeaders&gt;</code>,
+						i.e. when <code class="literal">&lt;FieldHeaders&gt;</code>
+						is printed on the top of every page,
+						<code class="literal">r.detailcnt</code> works as a per page
+						line count value.
+					</p><p>
+						When <code class="literal">&lt;Report field_header_priority="low"&gt;</code>
+						is used, the effect may be more emphasized because
+						the value of this variable is reset more often.
+					</p></div><div class="sect4" id="FIELDVAL"><div class="titlepage"><div><div><h5 class="title">3.4.3.2.5. Field value <a href="#FIELDVAL" class="id_link">#</a></h5></div></div></div><p>
+						</p><pre class="programlisting">r.value</pre><p>
+						The report field description has an expression for its
+						value in the  form of
+						<code class="literal">&lt;field value="..." /&gt;</code>.
+						It also has supplementary expressions, like the
+						foreground and background colors, the format string,
+						and others.
+					</p><p>
+						The supplementary expressions may reference the field
+						value, without having to type out the field expression
+						multiple times.
+					</p><p>
+						Using <code class="literal">r.value</code> also helps reducing
+						the report runtime because the value expression is not
+						computed multiple times. This is a manual
+						optimization.
+					</p><p>
+						Referencing <code class="literal">r.value</code> is only possible
+						for supplementary expressions for the same field
+						description, i.e. other XML attributes for a
+						<code class="literal">&lt;field value="..." .../&gt;</code>
+						line. This variable cannot cross-reference other
+						field descriptions, or anything not in the same scope.
+						For this purpose, there are user
+						<a class="xref" href="variables.html" title="Chapter 5. Report variables">Report variables</a>.
+					</p></div><div class="sect4" id="FIELDFORMAT"><div class="titlepage"><div><div><h5 class="title">3.4.3.2.6. Format string value <a href="#FIELDFORMAT" class="id_link">#</a></h5></div></div></div><p>
+						</p><pre class="programlisting">r.format</pre><p>
+						Similarly to the field value a.k.a.
+						<code class="literal">r.value</code>, the field description
+						has an an optional expression for its formatting
+						in the form of
+						<code class="literal">&lt;field format="..." /&gt;</code>.
+					</p><p>
+						This internal variable may be used by other
+						expressions. It has very few use cases, if any.
+						It only exists for compatibility with RLIB that
+						has this internal variable.
+					</p></div><div class="sect4" id="EXPRSELF"><div class="titlepage"><div><div><h5 class="title">3.4.3.2.7. Expression self reference <a href="#EXPRSELF" class="id_link">#</a></h5></div></div></div><p>
+						</p><pre class="programlisting">r.self</pre><p>
+						This variable references the previous result of
+						the expression. It is used in iterative expressions,
+						like in user-defined <a class="xref" href="variables.html" title="Chapter 5. Report variables">Report variables</a>.
+						It can be used in any user defined expression.
+					</p></div><div class="sect4" id="USERVARSUBEXPR"><div class="titlepage"><div><div><h5 class="title">3.4.3.2.8. Subexpressions of user-defined variables <a href="#USERVARSUBEXPR" class="id_link">#</a></h5></div></div></div><p>
+						</p><pre class="programlisting">r.baseexpr
+r.intermedexpr
+r.intermed2expr</pre><p>
+						These variables are references for the three
+						subexpressions that potentially make up a
+						user-defined custom variable. The expressions in
+						order are: base expression, intermediary expressions
+						one and two. Their evaluation order is the same
+						as in the order they are mentioned here.
+					</p><p>
+						Actually, there's a fourth subexpression that exists
+						in every user defined variable, namely the result
+						expression. It's reference is simply the user variable
+						reference, see <a class="xref" href="identifiers.html#USERVARIABLES" title="3.4.3.3. User defined variables">User defined variables</a>.
+						See also <a class="xref" href="variablenode.html#CUSTOMVARATTRS" title="2.12.1.4. Custom variable attributes">Custom variable attributes</a>.
+					</p><p>
+						For example, a running average over a data series
+						needs two intermediary expressions: one for
+						the sum of the values, the other for the number
+						of values in the series. The result is the
+						sum of values divided by the number of values.
+					</p><p>
+						Their usage is only valid when declaring a custom
+						user defined variable.
+					</p></div></div><div class="sect3" id="USERVARIABLES"><div class="titlepage"><div><div><h4 class="title">3.4.3.3. User defined variables <a href="#USERVARIABLES" class="id_link">#</a></h4></div></div></div><p>
+					Domain <code class="literal">v</code> signifies user defined
+					report variables, which can be used in breaks or
+					to shortcut expressions. Example:
+					</p><pre class="programlisting">v.my_variable
+					</pre><p>
+				</p></div><div class="sect3" id="QUOTEDIDENTS"><div class="titlepage"><div><div><h4 class="title">3.4.3.4. Quoted and dot-prefixed identifiers <a href="#QUOTEDIDENTS" class="id_link">#</a></h4></div></div></div><p>
+					Both <code class="literal">domain</code> and <code class="literal">identifier</code>
+					names may be quoted or unquoted. Quoting names allow using
+					semi-reserved and reserved words as identifiers and also
+					allow special characters in identifier names. Examples:
+					</p><pre class="programlisting">query.field_name1
+query."field_name2"
+query."field with space in the name"
+"query2".field_name3
+"query2"."and"
+					</pre><p>
+				</p></div><div class="sect3" id="DOTPREFIXEDIDENTS"><div class="titlepage"><div><div><h4 class="title">3.4.3.5. Dot-prefixed identifiers <a href="#DOTPREFIXEDIDENTS" class="id_link">#</a></h4></div></div></div><p>
+					A dot-prefixed identifier is one where the domain name
+					is not specified, but the identifier name is prefixed
+					with a dot. Examples:
+					</p><pre class="programlisting">.field_name
+."field_name"
+					</pre><p>
+				</p><p>
+					Semi-reserved words are the boolean constants. They can be used
+					as identifiers with dot-prefixed identifier names without
+					a domain name and without quoting:
+					</p><pre class="programlisting">.yes
+.no
+.true
+.false
+yes.no
+					</pre><p>
+					The above unquoted identifiers are equivalent with
+					these quoted ones below:
+					</p><pre class="programlisting">."yes"
+."no"
+."true"
+."false"
+"yes"."no"
+					</pre><p>
+				</p><p>
+					Operator names are reserved words, e.g. <code class="literal">and</code>
+					and <code class="literal">or</code>. They cannot be used with dot-prefixed
+					operator names without quoting, as it would cause an
+					expression syntax error. But they can be used as quoted
+					identifiers, in case you would want to use such a query name
+					and column name:
+					</p><pre class="programlisting">."and"
+."or"
+"and"."or"
+					</pre><p>
+				</p></div><div class="sect3" id="QUOTEDINTERNALDOMAINS"><div class="titlepage"><div><div><h4 class="title">3.4.3.6. Quoted special purpose identifier domains <a href="#QUOTEDINTERNALDOMAINS" class="id_link">#</a></h4></div></div></div><p>
+					When identifier domains are quoted, they lose their special
+					meaning and the identifiers become query field identifiers.
+					Of course, in this case, such a query name must exist and
+					the query must have a field name specified in the identifier.
+					Examples:
+					</p><pre class="programlisting">"m".current_date
+"r".totpages
+"v".my_variable
+					</pre><p>
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="precalcexpr.html" title="3.3. Precalculated expressions">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="opsandfunc.html" title="3.5. Operators and functions">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.3. Precalculated expressions </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="40%" align="right" valign="top"> 3.5. Operators and functions</td></tr></table></div></body></html>

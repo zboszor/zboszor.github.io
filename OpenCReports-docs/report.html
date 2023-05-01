@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.9. Report</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="partcol.html" title="2.8. Part column" /><link rel="next" href="loadedreport.html" title="2.10. Loaded report" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">2.9. Report</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="partcol.html" title="2.8. Part column">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="xmldescriptor.html" title="Chapter 2. Report XML description">Up</a></td><th width="60%" align="center">Chapter 2. Report XML description</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="loadedreport.html" title="2.10. Loaded report">Next</a></td></tr></table><hr /></div><div class="sect1" id="REPORT"><div class="titlepage"><div><div><h2 class="title" style="clear: both">2.9. Report <a href="#REPORT" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="report.html#REPORTATTRIBS">2.9.1. Report attributes</a></span></dt><dt><span class="sect2"><a href="report.html#REPSUBSECS">2.9.2. Report subsections</a></span></dt></dl></div><p>
+			This section may occur in a wider context or
+			standalone in an XML description file.
+		</p><p>
+			Example XML skeleton structure with
+			<code class="literal">&lt;OpenCReport&gt;</code> as
+			the toplevel node:
+			</p><pre class="programlisting">&lt;OpenCReport&gt;
+    &lt;Part&gt;
+        &lt;pr&gt;
+            &lt;pd&gt;
+                &lt;Report&gt;
+                    ...
+                &lt;/Report&gt;
+            &lt;/pd&gt;
+        &lt;/pr&gt;
+    &lt;/Part&gt;
+&lt;/OpenCReport&gt;</pre><p>
+		</p><p>
+			Example XML skeleton structure with
+			<code class="literal">&lt;Part&gt;</code> as
+			the toplevel node:
+			</p><pre class="programlisting">&lt;Part&gt;
+    &lt;pr&gt;
+        &lt;pd&gt;
+            &lt;Report&gt;
+                ...
+            &lt;/Report&gt;
+        &lt;/pd&gt;
+    &lt;/pr&gt;
+&lt;/Part&gt;</pre><p>
+		</p><p>
+			Example XML skeleton structure with
+			a standalone <code class="literal">&lt;Report&gt;</code> node:
+			</p><pre class="programlisting">&lt;Report&gt;
+    ...
+&lt;/Report&gt;</pre><p>
+		</p><p>
+			When <code class="literal">&lt;Report&gt;</code> is the
+			toplevel node, parent nodes for
+			<code class="literal">&lt;Part&gt;</code>, <code class="literal">&lt;pr&gt;</code>
+			and <code class="literal">&lt;pd&gt;</code> are implicitly
+			created. Subsections and many attributes specific to
+			these parent nodes can be used as shortcuts in the
+			<code class="literal">&lt;Report&gt;</code> node.
+		</p><div class="sect2" id="REPORTATTRIBS"><div class="titlepage"><div><div><h3 class="title">2.9.1. Report attributes <a href="#REPORTATTRIBS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="REPORTFONTNAME"><div class="titlepage"><div><div><h4 class="title">2.9.1.1. Font name <a href="#REPORTFONTNAME" class="id_link">#</a></h4></div></div></div><p>
+					The font name attribute specifies the font
+					for the report's scope. It can be overridden by
+					child nodes for their scope.
+					It may be specified in two forms, the first one
+					is the preferred name, the second is for RLIB
+					compatibility:
+					</p><pre class="programlisting">&lt;Report font_name="Arial"&gt;
+&lt;Report fontName="Arial"&gt;</pre><p>
+				</p><p>
+					If both forms are specified, <code class="literal">font_name</code>
+					is used.
+				</p><p>
+					Default font name is what's set for
+					<a class="xref" href="parts.html#PARTFONTNAME" title="2.6.1.1. Font name">Part font name</a>, or
+					<code class="literal">Courier</code> if both are unset.
+				</p></div><div class="sect3" id="REPORTFONTSIZE"><div class="titlepage"><div><div><h4 class="title">2.9.1.2. Font size <a href="#REPORTFONTSIZE" class="id_link">#</a></h4></div></div></div><p>
+					The font size attribute specifies the font size
+					for the report's scope. It can be overridden by
+					child nodes for their scope.
+					It may be specified in two forms, the first one
+					is the preferred name, the second is for RLIB
+					compatibility:
+					</p><pre class="programlisting">&lt;Report font_size="10"&gt;
+&lt;Report fontSize="10"&gt;</pre><p>
+				</p><p>
+					If both forms are specified, <code class="literal">font_size</code>
+					is used.
+				</p><p>
+					Default font name is what's set for
+					<a class="xref" href="parts.html#PARTFONTSIZE" title="2.6.1.2. Font size">Part font size</a>, or
+					<code class="literal">12</code> if both are unset.
+				</p></div><div class="sect3" id="REPSIZEUNIT"><div class="titlepage"><div><div><h4 class="title">2.9.1.3. Size unit <a href="#REPSIZEUNIT" class="id_link">#</a></h4></div></div></div><p>
+					Shortcut for the <a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="2.2.1. Size unit attribute">Size unit attribute</a> in
+					<code class="literal">&lt;OpenCReport&gt;</code> when
+					<code class="literal">&lt;Report&gt;</code> is the toplevel node.
+					</p><pre class="programlisting">&lt;Report size_unit="default"&gt;
+&lt;Report size_unit="rlib"&gt;
+&lt;Report size_unit="points"&gt;</pre><p>
+				</p><p>
+					When <code class="literal">&lt;OpenCReport&gt;</code> or
+					<code class="literal">&lt;Part&gt;</code> is the toplevel
+					node in the report XML description, this attribute
+					for <code class="literal">&lt;Report&gt;</code> is ignored.
+				</p></div><div class="sect3" id="NQSND1"><div class="titlepage"><div><div><h4 class="title">2.9.1.4. No query show NoData attribute <a href="#NQSND1" class="id_link">#</a></h4></div></div></div><p>
+					Shortcut for <a class="xref" href="ocrpttopxml.html#NOQUERYSHOWNODATA" title="2.2.2. No query show NoData">No query show NoData attribute</a> in
+					<code class="literal">&lt;OpenCReport&gt;</code> when
+                    <code class="literal">&lt;Report&gt;</code> is the toplevel node.
+					</p><pre class="programlisting">&lt;Report noquery_show_nodata="yes"&gt;
+&lt;Report noquery_show_nodata="no&gt;</pre><p>
+				</p><p>
+					See default in <a class="xref" href="ocrpttopxml.html#NOQUERYSHOWNODATA" title="2.2.2. No query show NoData">No query show NoData attribute</a>
+					See also <a class="xref" href="report.html#NODATANODE" title="2.9.2.8. Alternate output for no data">NoData node</a>.
+				</p></div><div class="sect3" id="RHAL1"><div class="titlepage"><div><div><h4 class="title">2.9.1.5. Report height after last attribute <a href="#RHAL1" class="id_link">#</a></h4></div></div></div><p>
+					Shortcut for <a class="xref" href="ocrpttopxml.html#REPORTHEIGHTAFTERLAST" title="2.2.3. Report height after last">Report height after last attribute</a> in
+					<code class="literal">&lt;OpenCReport&gt;</code> when
+					<code class="literal">&lt;Part&gt;</code> is the toplevel node.
+					</p><pre class="programlisting">&lt;Report report_height_after_last="yes"&gt;
+&lt;Report report_height_after_last="no"&gt;</pre><p>
+				</p><p>
+					See default in <a class="xref" href="ocrpttopxml.html#REPORTHEIGHTAFTERLAST" title="2.2.3. Report height after last">Report height after last attribute</a>
+					See also <a class="xref" href="report.html#NODATANODE" title="2.9.2.8. Alternate output for no data">NoData node</a>.
+				</p></div><div class="sect3" id="ORIENTATION"><div class="titlepage"><div><div><h4 class="title">2.9.1.6. Orientation <a href="#ORIENTATION" class="id_link">#</a></h4></div></div></div><p>
+					Shortcut for <a class="xref" href="parts.html#PARTPAGEORIENTATION" title="2.6.1.6. Orientation">Part page orientation</a>
+					for the implicitly created parent
+					<code class="literal">&lt;Part&gt;</code> node when
+					<code class="literal">&lt;Report&gt;</code> is standalone.
+					</p><pre class="programlisting">&lt;Report orientation="portrait"&gt;
+&lt;Report orientation="landscape"&gt;</pre><p>
+				</p><p>
+					Default is portrait orientation.
+				</p><p>
+					This setting for <code class="literal">&lt;Report&gt;</code>
+					is ignored when there is a parent
+					<code class="literal">&lt;Part&gt;</code> node
+					in the XML description.
+				</p></div><div class="sect3" id="MARGINSETTINGS1"><div class="titlepage"><div><div><h4 class="title">2.9.1.7. Margin settings <a href="#MARGINSETTINGS1" class="id_link">#</a></h4></div></div></div><p>
+					Shortcuts for <a class="xref" href="parts.html#MARGINSETTINGS" title="2.6.1.7. Margin settings">Margin settings</a>
+					for the implicitly created parent
+					<code class="literal">&lt;Part&gt;</code> node. Individual
+					settings exist for the top, bottom, left and
+					right margins of the page. Every setting
+					exist in two forms: the RLIB compatible
+					"lowerCamelCase" variant and the all lowercase
+					with underscore. The lowecase-with-underscore
+					variants are the preferred ones.
+					</p><pre class="programlisting">&lt;Report top_margin="0.2"&gt;
+&lt;Report topMargin="0.2"&gt;
+&lt;Report bottom_margin="0.2"&gt;
+&lt;Report bottomMargin="0.2"&gt;
+&lt;Report left_margin="0.2"&gt;
+&lt;Report leftMargin="0.2"&gt;
+&lt;Report right_margin="0.2"&gt;
+&lt;Report rightMargin="0.2"&gt;</pre><p>
+				</p><p>
+					When <code class="literal">size_unit="rlib"</code> is in effect
+					(the default case) the margin unit is inches.
+					The margin unit is points (1/72th inches) when
+					<code class="literal">size_unit="points"</code> is in effect.
+				</p><p>
+					Default values for the top, bottom, left and right
+					margins are all 0.2, regardless of the unit.
+				</p><p>
+					Note that <code class="literal">rightMargin</code> didn't exist
+					in RLIB.
+				</p><p>
+					These settings for <code class="literal">&lt;Report&gt;</code>
+					are ignored when there is a parent
+					<code class="literal">&lt;Part&gt;</code> node
+					in the XML description.
+				</p></div><div class="sect3" id="PAPERTYPE1"><div class="titlepage"><div><div><h4 class="title">2.9.1.8. Paper type <a href="#PAPERTYPE1" class="id_link">#</a></h4></div></div></div><p>
+					Shortcut for <a class="xref" href="parts.html#PAPERTYPE" title="2.6.1.8. Paper type">Paper type</a>
+					for the implicitly created parent
+					<code class="literal">&lt;Part&gt;</code> node. It exists in
+					two forms: the RLIB compatible "lowerCamelCase"
+					variant and the all lowercase with underscore.
+					The lowecase-with-underscore variant is preferred.
+					</p><pre class="programlisting">&lt;Part paper_type="A4"&gt;
+&lt;Part paperType="A4"&gt;</pre><p>
+				</p><p>
+					Default value is the current system paper type
+					that <a class="ulink" href="http://packages.qa.debian.org/libp/libpaper.html" target="_top">libpaper</a>
+					uses. E.g. if the system is set to US English,
+					the default paper type is implicitly
+					<code class="literal">letter</code>. In most of Europe,
+					the default paper type is <code class="literal">A4</code>
+				</p><p>
+					The paper type can be specified in either lower case
+					or upper case, both are accepted.
+				</p><p>
+					This setting for <code class="literal">&lt;Report&gt;</code>
+					is ignored when there is a parent
+					<code class="literal">&lt;Part&gt;</code> node
+					in the XML description.
+				</p></div><div class="sect3" id="REPORTHEIGHT"><div class="titlepage"><div><div><h4 class="title">2.9.1.9. Height <a href="#REPORTHEIGHT" class="id_link">#</a></h4></div></div></div><p>
+					Height of the report.
+					</p><pre class="programlisting">&lt;Report height="120"&gt;</pre><p>
+				</p><p>
+					When <a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="2.2.1. Size unit attribute">Size unit attribute</a> is set to
+					<code class="literal">rlib</code> (the default),
+					the report height is measured in characters,
+					which is controlled by <a class="xref" href="report.html#REPORTFONTSIZE" title="2.9.1.2. Font size">Report font size</a>.
+					Note, that the font width and height may differ,
+					depending on the font face controlled by
+					<a class="xref" href="report.html#REPORTFONTNAME" title="2.9.1.1. Font name">Report font name</a>. Report height is
+					computed from the font height.
+				</p><p>
+					When <a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="2.2.1. Size unit attribute">Size unit attribute</a> is set to
+					<code class="literal">points</code>, height is measured
+					in points.
+				</p><p>
+					Report details are layed out up to the
+					specified height. If the report would run longer
+					than the specified height, it gets truncated.
+					When the report fits in the specified height,
+					the next report's starts with the remaining height
+					added as padding before it.
+				</p><p>
+					If the <code class="literal">&lt;Report&gt;</code> is the last
+					one in the <code class="literal">&lt;pd&gt;</code> node, then
+					the report may or may not be padded with the remaining
+					height, depending on the
+					<a class="xref" href="ocrpttopxml.html#REPORTHEIGHTAFTERLAST" title="2.2.3. Report height after last">Report height after last attribute</a>.
+				</p><p>
+					If height is unset for the parent
+					<code class="literal">&lt;pd&gt;</code> node, it is expanded
+					with this vertical padding.
+				</p><p>
+					In case height is set for both the parent
+					<code class="literal">&lt;pd&gt;</code> node and the
+					<code class="literal">&lt;Report&gt;</code> nodes in it,
+					the height value for <code class="literal">&lt;pd&gt;</code>
+					is applied first. It would limit the displayed
+					rows in whichever <code class="literal">&lt;Report&gt;</code> node
+					is terminated by it. Subsequent
+					<code class="literal">&lt;Report&gt;</code> nodes would
+					no be displayed in that <code class="literal">&lt;pd&gt;</code>
+					node.
+				</p><p>
+					Note, that OpenCReports allows fixed-height
+					reports to break over page boundaries.
+					This is a deviation from RLIB.
+				</p></div><div class="sect3" id="REPORTITER"><div class="titlepage"><div><div><h4 class="title">2.9.1.10. Iterations <a href="#REPORTITER" class="id_link">#</a></h4></div></div></div><p>
+					The same <code class="literal">&lt;Report&gt;</code> may be
+					executed multiple times.
+					</p><pre class="programlisting">&lt;Report iterations="3"&gt;</pre><p>
+				</p><p>
+					Default value is 1.
+				</p></div><div class="sect3" id="REPORTSUPPRESS"><div class="titlepage"><div><div><h4 class="title">2.9.1.11. Suppress <a href="#REPORTSUPPRESS" class="id_link">#</a></h4></div></div></div><p>
+					Reports may be suppressed.
+					</p><pre class="programlisting">&lt;Report suppress="yes"&gt;
+&lt;Report suppress="val(m.suppress_report)"&gt;</pre><p>
+				</p><p>
+					Default value is <code class="literal">false</code>,
+					i.e. no suppression.
+				</p><p>
+					The expression for <code class="literal">suppress</code>
+					must be a constant expression. An environment
+					variable (since it can't - or shouldn't - change
+					during the report execution) is considered
+					constant. See <a class="xref" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Expressions</a>.
+				</p></div><div class="sect3" id="SPH"><div class="titlepage"><div><div><h4 class="title">2.9.1.12. Suppress page header on the first page <a href="#SPH" class="id_link">#</a></h4></div></div></div><p>
+					Shortcut for <a class="xref" href="parts.html#SUPPRESSPAGEHEADERFIRSTPAGE" title="2.6.1.11. Suppress page header on the first page">Suppress page header on the first page</a>
+					in the implicitly created parent
+					<code class="literal">&lt;Part&gt;</code> node when
+					<code class="literal">&lt;Report&gt;</code> is the
+					toplevel node.
+					</p><pre class="programlisting">&lt;Report suppressPageHeaderFirstPage="yes"&gt;</pre><p>
+				</p><p>
+					Default value is <code class="literal">no</code>.
+				</p><p>
+					This setting for <code class="literal">&lt;Report&gt;</code>
+					is ignored when there is a parent
+					<code class="literal">&lt;Part&gt;</code> node
+					in the XML description.
+				</p></div><div class="sect3" id="REPORTQUERYNAME"><div class="titlepage"><div><div><h4 class="title">2.9.1.13. Query <a href="#REPORTQUERYNAME" class="id_link">#</a></h4></div></div></div><p>
+					Set the primary query name for <code class="literal">&lt;Report&gt;</code>
+					from the list of <a class="xref" href="queries.html" title="2.5. Queries">Queries</a>.
+					</p><pre class="programlisting">&lt;Report query="query1"&gt;</pre><p>
+				</p><p>
+					Default value is unset, i.e. use the first
+					query from the list of <a class="xref" href="queries.html" title="2.5. Queries">Queries</a>.
+				</p></div><div class="sect3" id="REPORTFHPRIORITY"><div class="titlepage"><div><div><h4 class="title">2.9.1.14. Field header priority <a href="#REPORTFHPRIORITY" class="id_link">#</a></h4></div></div></div><p>
+					Set the field header priority for the report versus
+					break (header and footer) priority. This setting
+					selects which report detail is encompassing the other.
+					</p><pre class="programlisting">&lt;Report field_header_priority="low"&gt;</pre><p>
+				</p><p>
+					Default value is <code class="literal">high</code>. In this
+					mode, the field header is printed on the top of every
+					page of the report and break headers and footers are
+					encompassed by it. The default is chosen for RLIB
+					compatibility.
+				</p><p>
+					When this setting is <code class="literal">low</code>,
+					field headers are handled with lower priority
+					compared to break headers and footers. In this
+					mode, a break header is followed by the field header,
+					then data rows (field details), followed by the break
+					footer. This brings the field header closer to the field
+					details.
+				</p></div><div class="sect3" id="BW"><div class="titlepage"><div><div><h4 class="title">2.9.1.15. Border width <a href="#BW" class="id_link">#</a></h4></div></div></div><p>
+					This is a shortcut for <a class="xref" href="partcol.html#PDBORDERWIDTH" title="2.8.1.3. Border width">Part column border width</a>
+					for the implicitly created <code class="literal">&lt;pd&gt;</code>
+					node when <code class="literal">&lt;Report&gt;</code> is standalone.
+					It is measured in points.
+					</p><pre class="programlisting">&lt;Report border_width="2"&gt;</pre><p>
+				</p><p>
+					When set, a rectangle around the part column
+					(in this case, around the single report in the
+					part column) will be drawn. The width of outline
+					of the rectangle is measured in points.
+				</p><p>
+					This is a deviation from RLIB where the width
+					of the outline was a fixed 0.1 points and an
+					inner margin (all of top, bottom, left and right)
+					inside the column border was used. Also, this shortcut
+					didn't exist in RLIB, the <code class="literal">&lt;pd&gt;</code>
+					node had to be present.
+				</p><p>
+					If the report (column) breaks over a page boundary,
+					the border will be drawn the column parts
+					on every page. 
+				</p><p>
+					This setting for <code class="literal">&lt;Report&gt;</code>
+					is ignored when there is a parent
+					<code class="literal">&lt;pd&gt;</code> node.
+				</p></div><div class="sect3" id="BC"><div class="titlepage"><div><div><h4 class="title">2.9.1.16. Border color <a href="#BC" class="id_link">#</a></h4></div></div></div><p>
+					This is a shortcut for <a class="xref" href="partcol.html#PDBORDERCOLOR" title="2.8.1.4. Border color">Part column border color</a>
+					for the implicitly created <code class="literal">&lt;pd&gt;</code>
+					node when <code class="literal">&lt;Report&gt;</code> is standalone.
+					When <code class="literal">border_width</code> is set,
+					this color is used to draw the border rectangle.
+					</p><pre class="programlisting">&lt;Report border_color="'blue'"&gt;</pre><p>
+				</p><p>
+					See <a class="xref" href="colorspec.html" title="2.21. Color specification">Color specification</a>.
+				</p></div><div class="sect3" id="DCOLS"><div class="titlepage"><div><div><h4 class="title">2.9.1.17. Detail columns <a href="#DCOLS" class="id_link">#</a></h4></div></div></div><p>
+					Shortcut for <a class="xref" href="partcol.html#DETAILCOLUMNS" title="2.8.1.5. Detail columns">Detail columns</a>
+					in the implicitly created parent
+					<code class="literal">&lt;pd&gt;</code> when
+					<code class="literal">&lt;Parent&gt;</code> is the
+					toplevel node.
+					</p><pre class="programlisting">&lt;Report detail_columns="3"&gt;</pre><p>
+				</p><p>
+					Default value is 1.
+				</p><p>
+					This setting for <code class="literal">&lt;Parent&gt;</code>
+					is ignored when there is a parent
+					<code class="literal">&lt;pd&gt;</code> node in the report
+					XML description.
+				</p></div><div class="sect3" id="CPADDING"><div class="titlepage"><div><div><h4 class="title">2.9.1.18. Column padding <a href="#CPADDING" class="id_link">#</a></h4></div></div></div><p>
+					Shortcut for <a class="xref" href="partcol.html#COLUMNPADDING" title="2.8.1.6. Column padding">Column padding</a>
+					in the implicitly created parent
+					<code class="literal">&lt;pd&gt;</code> node when
+					<code class="literal">&lt;Parent&gt;</code> is the
+					toplevel node.
+					</p><pre class="programlisting">&lt;Report column_pad="0.2"&gt;</pre><p>
+				</p><p>
+					Default value is 0, i.e. no padding.
+				</p><p>
+					The unit of padding is inches if
+					<a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="2.2.1. Size unit attribute">Size unit attribute</a> is set to
+					<code class="literal">rlib</code> (default), points
+					otherwise.
+				</p></div></div><div class="sect2" id="REPSUBSECS"><div class="titlepage"><div><div><h3 class="title">2.9.2. Report subsections <a href="#REPSUBSECS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="REPORTPAGEHEADER"><div class="titlepage"><div><div><h4 class="title">2.9.2.1. Page header <a href="#REPORTPAGEHEADER" class="id_link">#</a></h4></div></div></div><p>
+					This may be seen as a shortcut for
+					<a class="xref" href="parts.html#PAGEHEADER" title="2.6.2.1. Page header">Page header</a> in the implicitly
+					created <code class="literal">&lt;Part&gt;</code>
+					node when <code class="literal">&lt;Report&gt;</code> is standalone.
+					Except that report expressions are allowed when
+					it's a child node of <code class="literal">&lt;Report&gt;</code>
+					instead of <code class="literal">&lt;Part&gt;</code>.
+					It contains an <a class="xref" href="outputnode.html" title="2.15. Output">Output node</a>.
+					</p><pre class="programlisting">&lt;Report&gt;
+    &lt;PageHeader&gt;
+        &lt;Output&gt;
+            ...
+        &lt;/Output&gt;
+    &lt;/PageHeader&gt;
+&lt;/Part&gt;</pre><p>
+				</p><p>
+					This subsection for <code class="literal">&lt;Report&gt;</code>
+					is ignored when there is a page header section
+					defined for the <code class="literal">&lt;Part&gt;</code> node,
+					either in the <code class="literal">&lt;Part&gt;</code> node
+					itself or in a previous child <code class="literal">&lt;Report&gt;</code>
+					node for the same <code class="literal">&lt;Part&gt;</code>.
+					A warning is issued in this case.
+				</p></div><div class="sect3" id="REPORTPAGEFOOTER"><div class="titlepage"><div><div><h4 class="title">2.9.2.2. Page footer <a href="#REPORTPAGEFOOTER" class="id_link">#</a></h4></div></div></div><p>
+					This may be seen as a shortcut for
+					<a class="xref" href="parts.html#PAGEFOOTER" title="2.6.2.2. Page footer">Page footer</a> in the implicitly
+					created <code class="literal">&lt;Part&gt;</code>
+					node when <code class="literal">&lt;Report&gt;</code> is standalone.
+					Except that report expressions are allowed when
+					it's a child node of <code class="literal">&lt;Report&gt;</code>
+					instead of <code class="literal">&lt;Part&gt;</code>.
+					It contains an <a class="xref" href="outputnode.html" title="2.15. Output">Output node</a>.
+					</p><pre class="programlisting">&lt;Report&gt;
+    &lt;PageFooter&gt;
+        &lt;Output&gt;
+            ...
+        &lt;/Output&gt;
+    &lt;/PageFooter&gt;
+&lt;/Part&gt;</pre><p>					
+				</p><p>
+					This subsection for <code class="literal">&lt;Report&gt;</code>
+					is ignored when there is a page footer section
+					defined for the <code class="literal">&lt;Part&gt;</code> node,
+					either in the <code class="literal">&lt;Part&gt;</code> node
+					itself or in a previous child <code class="literal">&lt;Report&gt;</code>
+					node for the same <code class="literal">&lt;Part&gt;</code>.
+					A warning is issued in this case.
+				</p></div><div class="sect3" id="REPHEADER"><div class="titlepage"><div><div><h4 class="title">2.9.2.3. Report header <a href="#REPHEADER" class="id_link">#</a></h4></div></div></div><p>
+					This is the description of the report header that is
+					emitted at the start of the report.
+					It contains an <a class="xref" href="outputnode.html" title="2.15. Output">Output node</a>.
+					</p><pre class="programlisting">&lt;Report&gt;
+    &lt;ReportHeader&gt;
+        &lt;Output&gt;
+            ...
+        &lt;/Output&gt;
+    &lt;/ReportHeader&gt;
+&lt;/Part&gt;</pre><p>
+				</p></div><div class="sect3" id="REPFOOTER"><div class="titlepage"><div><div><h4 class="title">2.9.2.4. Report footer <a href="#REPFOOTER" class="id_link">#</a></h4></div></div></div><p>
+					This is the description of the report footer that is
+					emitted at the end of the report.
+					It contains an <a class="xref" href="outputnode.html" title="2.15. Output">Output node</a>.
+					</p><pre class="programlisting">&lt;Report&gt;
+    &lt;ReportFooter&gt;
+        &lt;Output&gt;
+            ...
+        &lt;/Output&gt;
+    &lt;/ReportFooter&gt;
+&lt;/Part&gt;</pre><p>					
+				</p></div><div class="sect3" id="REPVARS1"><div class="titlepage"><div><div><h4 class="title">2.9.2.5. Variables <a href="#REPVARS1" class="id_link">#</a></h4></div></div></div><p>
+					This section describes the
+					<a class="xref" href="variablesnode.html" title="2.11. Variables">Variables</a> in the report.
+					</p><pre class="programlisting">&lt;Report&gt;
+    &lt;Variables&gt;
+        &lt;Variable ... /&gt;
+        ...
+    &lt;/Variables&gt;
+&lt;/Part&gt;</pre><p>
+				</p></div><div class="sect3" id="BREAKS1"><div class="titlepage"><div><div><h4 class="title">2.9.2.6. Breaks <a href="#BREAKS1" class="id_link">#</a></h4></div></div></div><p>
+					This section describes the
+					<a class="xref" href="breaksnode.html" title="2.13. Breaks">Breaks</a> in the report.
+					</p><pre class="programlisting">&lt;Report&gt;
+    &lt;Breaks&gt;
+        &lt;Break ... &gt;
+            ...
+        &lt;/Break&gt;
+        ...
+    &lt;/Breaks&gt;
+&lt;/Part&gt;</pre><p>
+				</p></div><div class="sect3" id="DETAILNODE"><div class="titlepage"><div><div><h4 class="title">2.9.2.7. Detail <a href="#DETAILNODE" class="id_link">#</a></h4></div></div></div><p>
+					This section describes the tabular details of the report.
+					There are two subsections in this node, both contain
+					an <a class="xref" href="outputnode.html" title="2.15. Output">Output node</a>.
+					</p><pre class="programlisting">&lt;Report&gt;
+    &lt;Detail&gt;
+        &lt;FieldHeaders&gt;
+            &lt;Output&gt;
+                ...
+            &lt;/Output&gt;
+        &lt;/FieldHeaders&gt;
+        &lt;FieldDetails&gt;
+            &lt;Output&gt;
+                ...
+            &lt;/Output&gt;
+        &lt;/FieldDetails&gt;
+    &lt;/Detail&gt;
+&lt;/Part&gt;</pre><p>
+				</p><p>
+					<code class="literal">&lt;FieldHeaders&gt;</code> is used
+					to describe the header for data rows.
+				</p><p>
+					<code class="literal">&lt;FieldDetails&gt;</code> is used
+					to show data that is derived from the current data row
+					produced by the report query.
+				</p></div><div class="sect3" id="NODATANODE"><div class="titlepage"><div><div><h4 class="title">2.9.2.8. Alternate output for no data <a href="#NODATANODE" class="id_link">#</a></h4></div></div></div><p>
+					This section describes the alternate output of the report
+					when the query has no data rows, or there is no such
+					query name defined that's set in
+					<a class="xref" href="report.html#REPORTQUERYNAME" title="2.9.1.13. Query">Report query name</a>.
+					It contains an <a class="xref" href="outputnode.html" title="2.15. Output">Output node</a>.
+				</p><p>
+					This section may be declared in two ways. One way is to
+					spell out the <code class="literal">&lt;Alternate&gt;</code> node:
+					</p><pre class="programlisting">&lt;Report&gt;
+    &lt;Alternate&gt;
+        &lt;NoData&gt;
+            &lt;Output&gt;
+                ...
+            &lt;/Output&gt;
+        &lt;/NoData&gt;
+    &lt;/Alternate&gt;
+&lt;/Part&gt;</pre><p>
+				</p><p>
+					The other way is without the
+					<code class="literal">&lt;Alternate&gt;</code> node:
+					</p><pre class="programlisting">&lt;Report&gt;
+    &lt;NoData&gt;
+        &lt;Output&gt;
+            ...
+        &lt;/Output&gt;
+    &lt;/NoData&gt;
+&lt;/Part&gt;</pre><p>
+				</p><p>
+					When the <a class="xref" href="report.html#REPORTQUERYNAME" title="2.9.1.13. Query">Report query name</a>
+					does not exist in in the global list of
+					<a class="xref" href="queries.html" title="2.5. Queries">Queries</a> and the
+					<a class="xref" href="ocrpttopxml.html#NOQUERYSHOWNODATA" title="2.2.2. No query show NoData">No query show NoData attribute</a> is set, then
+					the <code class="literal">&lt;NoData&gt;</code> section
+					is not displayed.
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="partcol.html" title="2.8. Part column">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="xmldescriptor.html" title="Chapter 2. Report XML description">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="loadedreport.html" title="2.10. Loaded report">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.8. Part column </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="40%" align="right" valign="top"> 2.10. Loaded report</td></tr></table></div></body></html>
