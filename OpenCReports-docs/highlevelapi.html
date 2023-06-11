@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>7.2. High level C API</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="c_header.html" title="7.1. Header file" /><link rel="next" href="lowlevelapi.html" title="7.3. Low level C API" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">7.2. High level C API</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="c_header.html" title="7.1. Header file">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="c-api-reference.html" title="Chapter 7. C language API reference">Up</a></td><th width="60%" align="center">Chapter 7. C language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="lowlevelapi.html" title="7.3. Low level C API">Next</a></td></tr></table><hr /></div><div class="sect1" id="HIGHLEVELAPI"><div class="titlepage"><div><div><h2 class="title" style="clear: both">7.2. High level C API <a href="#HIGHLEVELAPI" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="highlevelapi.html#REPHNDINIT">7.2.1. Report handler initialization</a></span></dt><dt><span class="sect2"><a href="highlevelapi.html#LOADREPXML">7.2.2. Load a report XML description</a></span></dt><dt><span class="sect2"><a href="highlevelapi.html#PARSEXMLFROMBUF">7.2.3. Parse report XML description from a buffer</a></span></dt><dt><span class="sect2"><a href="highlevelapi.html#SETOUTPFMT">7.2.4. Set report output format</a></span></dt><dt><span class="sect2"><a href="highlevelapi.html#RUNREPORT">7.2.5. Run the report</a></span></dt><dt><span class="sect2"><a href="highlevelapi.html#DUMPREPORT">7.2.6. Dump report result</a></span></dt><dt><span class="sect2"><a href="highlevelapi.html#GETRESULT">7.2.7. Get report result</a></span></dt><dt><span class="sect2"><a href="highlevelapi.html#GETCONTENTTYPE">7.2.8. Get report content type</a></span></dt><dt><span class="sect2"><a href="highlevelapi.html#REPHNDDESTROY">7.2.9. Report handler destruction</a></span></dt><dt><span class="sect2"><a href="highlevelapi.html#GETLIBVER">7.2.10. Get library version</a></span></dt></dl></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>7.2. High level C API</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="c_header.html" title="7.1. Header file" /><link rel="next" href="lowlevelapi.html" title="7.3. Low level C API" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">7.2. High level C API</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="c_header.html" title="7.1. Header file">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="c-api-reference.html" title="Chapter 7. C language API reference">Up</a></td><th width="60%" align="center">Chapter 7. C language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.0 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="lowlevelapi.html" title="7.3. Low level C API">Next</a></td></tr></table><hr /></div><div class="sect1" id="HIGHLEVELAPI"><div class="titlepage"><div><div><h2 class="title" style="clear: both">7.2. High level C API <a href="#HIGHLEVELAPI" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="highlevelapi.html#REPHNDINIT">7.2.1. Report handler initialization</a></span></dt><dt><span class="sect2"><a href="highlevelapi.html#LOADREPXML">7.2.2. Load a report XML description</a></span></dt><dt><span class="sect2"><a href="highlevelapi.html#PARSEXMLFROMBUF">7.2.3. Parse report XML description from a buffer</a></span></dt><dt><span class="sect2"><a href="highlevelapi.html#SETOUTPFMT">7.2.4. Set report output format</a></span></dt><dt><span class="sect2"><a href="highlevelapi.html#SETOUTPPARAM">7.2.5. Set report output parameter</a></span></dt><dt><span class="sect2"><a href="highlevelapi.html#RUNREPORT">7.2.6. Run the report</a></span></dt><dt><span class="sect2"><a href="highlevelapi.html#DUMPREPORT">7.2.7. Dump report result</a></span></dt><dt><span class="sect2"><a href="highlevelapi.html#GETRESULT">7.2.8. Get report result</a></span></dt><dt><span class="sect2"><a href="highlevelapi.html#GETCONTENTTYPE">7.2.9. Get report content type</a></span></dt><dt><span class="sect2"><a href="highlevelapi.html#REPHNDDESTROY">7.2.10. Report handler destruction</a></span></dt><dt><span class="sect2"><a href="highlevelapi.html#GETLIBVER">7.2.11. Get library version</a></span></dt></dl></div><p>
 			Example code using the high level C API where everything
 			concerning the report (including the data source)
 			is described in the report XML:
@@ -58,24 +58,129 @@ typedef enum ocrpt_format_type ocrpt_format_type;
 void
 ocrpt_set_output_format(opencreport *o,
                         ocrpt_format_type format);</pre><p>
-			</p></div><div class="sect2" id="RUNREPORT"><div class="titlepage"><div><div><h3 class="title">7.2.5. Run the report <a href="#RUNREPORT" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="SETOUTPPARAM"><div class="titlepage"><div><div><h3 class="title">7.2.5. Set report output parameter <a href="#SETOUTPPARAM" class="id_link">#</a></h3></div></div></div><p>
+				Set output parameters for the report.
+				</p><pre class="programlisting">void
+ocrpt_set_output_parameter(opencreport *o,
+                           const char *param,
+                           const char *value);</pre><p>
+			</p><p>
+				Possible parameters for the HTML output driver:
+				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">document_root</code> sets
+							the document root for trimming path prefix
+							from image paths.
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">meta</code> extends
+							the default
+							<code class="literal">&lt;meta charset="utf-8"&gt;</code>.
+                            <code class="literal">literal</code> (see
+							The passed-in string value may contain
+							the whole <code class="literal">&lt;meta ...&gt;</code>,
+							in which case the inner parameters are
+							used only. The <code class="literal">charset</code>
+							specification is ignored. Only the rest is used.
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">suppress_head</code> suppresses the default
+							<code class="literal">&lt;head&gt; ... &lt;/head&gt;</code> section.
+							Possible values to enable suppressing the
+							default <code class="literal">&lt;head&gt; ... &lt;/head&gt;</code>
+							are <code class="literal">yes</code>,
+							<code class="literal">true</code>,
+							<code class="literal">on</code> or any positive non-zero
+							number. Anything else disables it.
+							Be aware, that the default section contains
+							importand CSS stylesheet settings that are
+							needed for the correct layout.
+						</p></li></ul></div><p>
+			</p><p>
+				Possible parameters for the CSV output driver:
+				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">csv_filename</code> sets the file
+							name for <code class="literal">Content-Disposition</code>
+							in the HTTP metadata returned by
+							<code class="literal">ocrpt_get_content_type()</code>.
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">csv_as_text</code> sets the MIME type
+							for <code class="literal">Content-Type</code>
+							in the HTTP metadata returned by
+							<code class="literal">ocrpt_get_content_type()</code>
+							to <code class="literal">text/plain</code> when enabled.
+							By default it's <code class="literal">text/csv</code>.
+							Possible values to enable it are
+							<code class="literal">yes</code>,
+							<code class="literal">true</code>,
+							<code class="literal">on</code> or any positive non-zero
+							number. Anything else disables it.
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">csv_delimiter</code> (also aliased as
+							<code class="literal">csv_delimeter</code> according to
+							the historical typo in RLIB) sets the CSV field
+							delimiter to the first character of the string.
+							By default it's a comma.
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">no_quotes</code> will create a CSV
+							output with values unquoted.
+							Possible values to enable it are
+							<code class="literal">yes</code>,
+							<code class="literal">true</code>,
+							<code class="literal">on</code> or any positive non-zero
+							number. Anything else disables it.
+							It takes precedence over
+							<code class="literal">only_quote_strings</code>
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">only_quote_strings</code>
+							will create a CSV output with only string
+							values quoted.
+							Possible values to enable it are
+							<code class="literal">yes</code>,
+							<code class="literal">true</code>,
+							<code class="literal">on</code> or any positive non-zero
+							number. Anything else disables it.
+						</p></li></ul></div><p>
+			</p><p>
+				Note that some languages (e.g. German, Swedish
+				and Hungarian) use comma as the decimal separator
+				instead of decimal point. For these languages,
+				either set <code class="literal">csv_delimiter</code> or
+				set neither <code class="literal">no_quotes</code>, nor
+				<code class="literal">only_quote_strings</code>
+			</p><p>
+				Possible parameters for the XML output driver:
+				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">xml_rlib_compat</code> sets the
+							flag to create an RLIB compatible XML output.
+							Possible values to enable it are
+							<code class="literal">yes</code>,
+							<code class="literal">true</code>,
+							<code class="literal">on</code> or any positive non-zero
+							number. Anything else disables it.
+						</p><p>
+							When enabled, the toplevel element
+							will be <code class="literal">&lt;rlib&gt;</code>
+							and <code class="literal">&lt;Report&gt;</code>s
+							inside <code class="literal">&lt;pd&gt;</code>
+							won't be embedded in a
+							<code class="literal">report</code> element.
+						</p></li></ul></div><p>
+			</p></div><div class="sect2" id="RUNREPORT"><div class="titlepage"><div><div><h3 class="title">7.2.6. Run the report <a href="#RUNREPORT" class="id_link">#</a></h3></div></div></div><p>
 				This function executes the report, constructs
 				the result in memory. It returns <code class="literal">true</code>
 				for success, <code class="literal">false</code> for failure.
 				It is a failure if the output format is unset.
 				</p><pre class="programlisting">bool
 ocrpt_execute(opencreport *o);</pre><p>
-			</p></div><div class="sect2" id="DUMPREPORT"><div class="titlepage"><div><div><h3 class="title">7.2.6. Dump report result <a href="#DUMPREPORT" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="DUMPREPORT"><div class="titlepage"><div><div><h3 class="title">7.2.7. Dump report result <a href="#DUMPREPORT" class="id_link">#</a></h3></div></div></div><p>
 				Dump the report output on the program's
 				standard output channel.
 				</p><pre class="programlisting">void
 ocrpt_spool(opencreport *o);</pre><p>
-			</p></div><div class="sect2" id="GETRESULT"><div class="titlepage"><div><div><h3 class="title">7.2.7. Get report result <a href="#GETRESULT" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="GETRESULT"><div class="titlepage"><div><div><h3 class="title">7.2.8. Get report result <a href="#GETRESULT" class="id_link">#</a></h3></div></div></div><p>
 				Get the report output. The application
 				then can save it as a file.
 				</p><pre class="programlisting">const char *
 ocrpt_get_output(opencreport *o, size_t *length);</pre><p>
-			</p></div><div class="sect2" id="GETCONTENTTYPE"><div class="titlepage"><div><div><h3 class="title">7.2.8. Get report content type <a href="#GETCONTENTTYPE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="GETCONTENTTYPE"><div class="titlepage"><div><div><h3 class="title">7.2.9. Get report content type <a href="#GETCONTENTTYPE" class="id_link">#</a></h3></div></div></div><p>
 				Get the report content type for web publishing.
 				The content type depends on the output type
 				the report was executed with.
@@ -86,15 +191,15 @@ ocrpt_get_output(opencreport *o, size_t *length);</pre><p>
 				<code class="literal">NULL</code>.
 				</p><pre class="programlisting">const ocrpt_string **
 ocrpt_get_content_type(opencreport *o);</pre><p>
-			</p></div><div class="sect2" id="REPHNDDESTROY"><div class="titlepage"><div><div><h3 class="title">7.2.9. Report handler destruction <a href="#REPHNDDESTROY" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="REPHNDDESTROY"><div class="titlepage"><div><div><h3 class="title">7.2.10. Report handler destruction <a href="#REPHNDDESTROY" class="id_link">#</a></h3></div></div></div><p>
 				Calling this function frees up the report handler
 				structure and everything created for it, even
 				the details that were created by the low level API.
 				</p><pre class="programlisting">void
 ocrpt_free(opencreport *o);</pre><p>
-			</p></div><div class="sect2" id="GETLIBVER"><div class="titlepage"><div><div><h3 class="title">7.2.10. Get library version <a href="#GETLIBVER" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="GETLIBVER"><div class="titlepage"><div><div><h3 class="title">7.2.11. Get library version <a href="#GETLIBVER" class="id_link">#</a></h3></div></div></div><p>
 				This function reports the OpenCReports
 				library version.
 				</p><pre class="programlisting">const char *
 ocrpt_version(void);</pre><p>
-			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="c_header.html" title="7.1. Header file">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="c-api-reference.html" title="Chapter 7. C language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="lowlevelapi.html" title="7.3. Low level C API">Next</a></td></tr><tr><td width="40%" align="left" valign="top">7.1. Header file </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="40%" align="right" valign="top"> 7.3. Low level C API</td></tr></table></div></body></html>
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="c_header.html" title="7.1. Header file">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="c-api-reference.html" title="Chapter 7. C language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="lowlevelapi.html" title="7.3. Low level C API">Next</a></td></tr><tr><td width="40%" align="left" valign="top">7.1. Header file </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.0 Manual">Home</a></td><td width="40%" align="right" valign="top"> 7.3. Low level C API</td></tr></table></div></body></html>

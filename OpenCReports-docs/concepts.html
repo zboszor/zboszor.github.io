@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>1.2. Concepts</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="rlib.html" title="1.1. The predecessor: RLIB" /><link rel="next" href="planned.html" title="1.3. OpenCReports planned features" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">1.2. Concepts</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="rlib.html" title="1.1. The predecessor: RLIB">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="introduction.html" title="Chapter 1. Introduction and concepts">Up</a></td><th width="60%" align="center">Chapter 1. Introduction and concepts</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="planned.html" title="1.3. OpenCReports planned features">Next</a></td></tr></table><hr /></div><div class="sect1" id="CONCEPTS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">1.2. Concepts <a href="#CONCEPTS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="concepts.html#WHATISAREPGEN">1.2.1. What is a report generator?</a></span></dt><dt><span class="sect2"><a href="concepts.html#XMLBASEDDESC">1.2.2. XML based report description</a></span></dt><dt><span class="sect2"><a href="concepts.html#COMPREHENSIVEAPI">1.2.3. Comprehensive API for report creation</a></span></dt><dt><span class="sect2"><a href="concepts.html#STRICTPARSER">1.2.4. Strict expression parser</a></span></dt><dt><span class="sect2"><a href="concepts.html#EXPROPT">1.2.5. Expression optimization</a></span></dt><dt><span class="sect2"><a href="concepts.html#REPVARS">1.2.6. Report variables</a></span></dt><dt><span class="sect2"><a href="concepts.html#SETOFFUNCS">1.2.7. Extensive and extensible set of functions</a></span></dt><dt><span class="sect2"><a href="concepts.html#UTF8STRINGS">1.2.8. UTF-8 string handling</a></span></dt><dt><span class="sect2"><a href="concepts.html#HIGHPRECNUMERICS">1.2.9. High precision numeric data type</a></span></dt><dt><span class="sect2"><a href="concepts.html#DATETIMETYPES">1.2.10. Datetime and interval data types</a></span></dt><dt><span class="sect2"><a href="concepts.html#AUTOCONV">1.2.11. Automatic input data conversion</a></span></dt><dt><span class="sect2"><a href="concepts.html#ALIGNMENTS">1.2.12. Versatile field alignment and multi-row fields</a></span></dt><dt><span class="sect2"><a href="concepts.html#REPBREAKS">1.2.13. Report breaks</a></span></dt><dt><span class="sect2"><a href="concepts.html#MULTICOLREP">1.2.14. Multi-column reports</a></span></dt><dt><span class="sect2"><a href="concepts.html#PDFDETAILS">1.2.15. PDF output format, fonts, layout details</a></span></dt><dt><span class="sect2"><a href="concepts.html#UNITTESTS">1.2.16. Extensive set of unit tests</a></span></dt><dt><span class="sect2"><a href="concepts.html#STDDEPS">1.2.17. Standard Linux dependencies</a></span></dt></dl></div><div class="sect2" id="WHATISAREPGEN"><div class="titlepage"><div><div><h3 class="title">1.2.1. What is a report generator? <a href="#WHATISAREPGEN" class="id_link">#</a></h3></div></div></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>1.2. Concepts</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="rlib.html" title="1.1. The predecessor: RLIB" /><link rel="next" href="planned.html" title="1.3. OpenCReports planned features" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">1.2. Concepts</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="rlib.html" title="1.1. The predecessor: RLIB">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="introduction.html" title="Chapter 1. Introduction and concepts">Up</a></td><th width="60%" align="center">Chapter 1. Introduction and concepts</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.0 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="planned.html" title="1.3. OpenCReports planned features">Next</a></td></tr></table><hr /></div><div class="sect1" id="CONCEPTS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">1.2. Concepts <a href="#CONCEPTS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="concepts.html#WHATISAREPGEN">1.2.1. What is a report generator?</a></span></dt><dt><span class="sect2"><a href="concepts.html#XMLBASEDDESC">1.2.2. XML based report description</a></span></dt><dt><span class="sect2"><a href="concepts.html#COMPREHENSIVEAPI">1.2.3. Comprehensive API for report creation</a></span></dt><dt><span class="sect2"><a href="concepts.html#STRICTPARSER">1.2.4. Strict expression parser</a></span></dt><dt><span class="sect2"><a href="concepts.html#EXPROPT">1.2.5. Expression optimization</a></span></dt><dt><span class="sect2"><a href="concepts.html#REPVARS">1.2.6. Report variables</a></span></dt><dt><span class="sect2"><a href="concepts.html#SETOFFUNCS">1.2.7. Extensive and extensible set of functions</a></span></dt><dt><span class="sect2"><a href="concepts.html#UTF8STRINGS">1.2.8. UTF-8 string handling</a></span></dt><dt><span class="sect2"><a href="concepts.html#HIGHPRECNUMERICS">1.2.9. High precision numeric data type</a></span></dt><dt><span class="sect2"><a href="concepts.html#DATETIMETYPES">1.2.10. Datetime and interval data types</a></span></dt><dt><span class="sect2"><a href="concepts.html#AUTOCONV">1.2.11. Automatic input data conversion</a></span></dt><dt><span class="sect2"><a href="concepts.html#ALIGNMENTS">1.2.12. Versatile field alignment and multi-row fields</a></span></dt><dt><span class="sect2"><a href="concepts.html#REPBREAKS">1.2.13. Report breaks</a></span></dt><dt><span class="sect2"><a href="concepts.html#MULTICOLREP">1.2.14. Multi-column reports</a></span></dt><dt><span class="sect2"><a href="concepts.html#LAYOUTDETAILS">1.2.15. Layout details</a></span></dt><dt><span class="sect2"><a href="concepts.html#OUTPUTFORMATS">1.2.16. Multiple output formats</a></span></dt><dt><span class="sect2"><a href="concepts.html#UNITTESTS">1.2.17. Extensive set of unit tests</a></span></dt><dt><span class="sect2"><a href="concepts.html#STDDEPS">1.2.18. Standard Linux dependencies</a></span></dt></dl></div><div class="sect2" id="WHATISAREPGEN"><div class="titlepage"><div><div><h3 class="title">1.2.1. What is a report generator? <a href="#WHATISAREPGEN" class="id_link">#</a></h3></div></div></div><p>
 				A report generator uses a tabular data source, which contains
 				rows and columns of data. The columns have labels or names.
 				(An SQL database query is such a tabular data source.)
@@ -180,14 +180,8 @@
 				If a report is "narrow", so more columns would fit on
 				the same page, the report may be set to use multiple
 				columns on the same page.
-			</p></div><div class="sect2" id="PDFDETAILS"><div class="titlepage"><div><div><h3 class="title">1.2.15. PDF output format, fonts, layout details <a href="#PDFDETAILS" class="id_link">#</a></h3></div></div></div><p>
-				By using the excellent drawing possibilities of
-				Cairo, OpenCReports supports generating
-				the report in PDF format. RLIB relied on an
-				internal PDF generator in earlier versions called
-				RPDF, and used libHaru in later versions.
-			</p><p>
-				In RLIB, sizing of other details are a mix of units,
+			</p></div><div class="sect2" id="LAYOUTDETAILS"><div class="titlepage"><div><div><h3 class="title">1.2.15. Layout details <a href="#LAYOUTDETAILS" class="id_link">#</a></h3></div></div></div><p>
+				In RLIB, sizing of layout details are a mix of units,
 				making it harder to design the report layout:
 				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
 							field widths and report heights are in
@@ -229,13 +223,92 @@
 				On top of that, OpenCReports also has a new, consistent
 				size calculation method where everything is measured in
 				points.
-			</p></div><div class="sect2" id="UNITTESTS"><div class="titlepage"><div><div><h3 class="title">1.2.16. Extensive set of unit tests <a href="#UNITTESTS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="OUTPUTFORMATS"><div class="titlepage"><div><div><h3 class="title">1.2.16. Multiple output formats <a href="#OUTPUTFORMATS" class="id_link">#</a></h3></div></div></div><p>
+				OpenCReports supports several output formats:
+				PDF, HTML, CSV, TXT, XML and JSON.
+			</p><p>
+				By using the excellent drawing possibilities of
+				Cairo coupled with Pango for text rendering,
+				OpenCReports supports generating the report in
+				PDF format. PDF is the definitive output format
+				in OpenCReports, as in it supports every feature
+				described in <a class="xref" href="xmldescriptor.html" title="Chapter 2. Report XML description">XML description</a>, such as
+				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
+							page breaks (PDF is a multi-page format)
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							all four page margins: top, bottom, left, right
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							column breaks, multi-column reports
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							report column width and height
+						</p></li></ul></div><p>
+			</p><p>
+				When using the HTML output format, OpenCReports
+				attempts to imitate the PDF drawing capabilities
+				using CSS. However, there are inevitable differences.
+				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
+							The HTML output doesn't support page breaks.
+							HTML is rendered as a continuous flow of text
+							and other elements. As a consequence,
+							<code class="literal">r.pageno</code> and
+							<code class="literal">r.totpages</code> are both 1
+							for the whole output.
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							HTML output doesn't support column breaks.
+							As a consequence, a multi-column report layout
+							is rendered differently from PDF.
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							When a data row's column does not fit into the
+							width specified by the page margins or the
+							report column's width, it is rendered in the
+							remaining width differently from PDF. While PDF
+							uses the whole field width to render the data
+							field contents and uses bounding box to clip
+							the invisible part, CSS uses the remaining width
+							specified by either the margins or the report
+							column width to render the field. Left, right
+							and center alignment of the field is done
+							according to the remaining width for the field.
+						</p></li></ul></div><p>
+			</p><p>
+				When rendering field data wider than their
+				field widths, both the PDF and the HTML output drivers
+				use clipping (bounding box) to hide parts of the
+				field, fitting them into the designated area
+				<span class="emphasis"><em>visually</em></span>. Actual field data is
+				not truncated. In some viewer applications
+				(e.g. in Poppler based PDF viewers) a visibly
+				truncated field's whole text can be selected,
+				copied and pasted elsewhere to be viewed in its
+				entirety. Field data in HTML behave the same way
+				in browsers.
+			</p><p>
+				OpenCReports also supports CSV, XML and JSON as
+				output formats that don't truncate field data.
+				These are plaintext formats with their own internal
+				format. CSV is usually used for importing into office
+				applications or databases. In general, these formats
+				are used in applications where loss of data may
+				not be tolerated. These formats don't support page or
+				column breaks. CSV does not have a way to express
+				multiple inner reports in a table in the same report run.
+			</p><p>
+				OpenCReports also supports TXT (plaintext) as output
+				format, that approximates RLIB's TXT output.
+				This format may truncate field data because it expects
+				monospace font and character based field widths;
+				and fields in this format cannot be presented separately
+				like in other formats. The TXT format doesn't support
+				page or column breaks. Its rendering ignores font name
+				and font size settings and renders everything internally
+				using a monospace font at 12 point font size.
+			</p></div><div class="sect2" id="UNITTESTS"><div class="titlepage"><div><div><h3 class="title">1.2.17. Extensive set of unit tests <a href="#UNITTESTS" class="id_link">#</a></h3></div></div></div><p>
 				The unit tests ensure that OpenCReports' features keep
 				working when adding new features or fixes. Units tests
 				exercise many aspects of the high and low level API,
 				report description handling, runtime behavior and output
 				generation.
-			</p></div><div class="sect2" id="STDDEPS"><div class="titlepage"><div><div><h3 class="title">1.2.17. Standard Linux dependencies <a href="#STDDEPS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="STDDEPS"><div class="titlepage"><div><div><h3 class="title">1.2.18. Standard Linux dependencies <a href="#STDDEPS" class="id_link">#</a></h3></div></div></div><p>
 				OpenCReports uses
 				<a class="ulink" href="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home" target="_top">LibXML2</a>,
 				<a class="ulink" href="https://juliastrings.github.io/utf8proc/" target="_top">utf8proc</a>,
@@ -262,4 +335,4 @@
 				<code class="literal">docbook2html</code> from
 				<a class="ulink" href="http://sources.redhat.com/docbook-tools/" target="_top">Docbook</a>
 				is used to generate the documentation.
-			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="rlib.html" title="1.1. The predecessor: RLIB">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="introduction.html" title="Chapter 1. Introduction and concepts">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="planned.html" title="1.3. OpenCReports planned features">Next</a></td></tr><tr><td width="40%" align="left" valign="top">1.1. The predecessor: RLIB </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="40%" align="right" valign="top"> 1.3. OpenCReports planned features</td></tr></table></div></body></html>
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="rlib.html" title="1.1. The predecessor: RLIB">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="introduction.html" title="Chapter 1. Introduction and concepts">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="planned.html" title="1.3. OpenCReports planned features">Next</a></td></tr><tr><td width="40%" align="left" valign="top">1.1. The predecessor: RLIB </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.0 Manual">Home</a></td><td width="40%" align="right" valign="top"> 1.3. OpenCReports planned features</td></tr></table></div></body></html>

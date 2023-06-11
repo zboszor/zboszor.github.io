@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>8.4. Low level PHP API</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phphighlevelapi.html" title="8.3. High level PHP API" /><link rel="next" href="phpdsclass.html" title="8.5. The OpenCReport\Datasource class" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">8.4. Low level PHP API</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phphighlevelapi.html" title="8.3. High level PHP API">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 8. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 8. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phpdsclass.html" title="8.5. The OpenCReport\Datasource class">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPLOWLEVELAPI"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.4. Low level PHP API <a href="#PHPLOWLEVELAPI" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phplowlevelapi.html#PHPNUMERICTUNING">8.4.1. Numeric behavior related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPLOCALEMETHODS">8.4.2. Locale related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPDSMETHODS">8.4.3. Data source and query related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPEXPRFUNC">8.4.4. Expression related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPLAYOUTMETHODS">8.4.5. Layout part related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPCALLBACKMETHODS">8.4.6. Callback related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPENVMETHODS">8.4.7. Environment related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPRESULTMETHODS">8.4.8. Result related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPPATHMETHODS">8.4.9. Path related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPCOLORMETHODS">8.4.10. Color related methods</a></span></dt></dl></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>8.4. Low level PHP API</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phphighlevelapi.html" title="8.3. High level PHP API" /><link rel="next" href="phpdsclass.html" title="8.5. The OpenCReport\Datasource class" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">8.4. Low level PHP API</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phphighlevelapi.html" title="8.3. High level PHP API">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 8. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 8. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.0 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phpdsclass.html" title="8.5. The OpenCReport\Datasource class">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPLOWLEVELAPI"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.4. Low level PHP API <a href="#PHPLOWLEVELAPI" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phplowlevelapi.html#PHPNUMERICTUNING">8.4.1. Numeric behavior related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPLOCALEMETHODS">8.4.2. Locale related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPDSMETHODS">8.4.3. Data source and query related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPEXPRFUNC">8.4.4. Expression related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPLAYOUTMETHODS">8.4.5. Layout part related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPCALLBACKMETHODS">8.4.6. Callback related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPENVMETHODS">8.4.7. Environment related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPSETMVARMETHOD">8.4.8. Add "m" domain variable</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPRESULTMETHODS">8.4.9. Result related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPPATHMETHODS">8.4.10. Path related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPCOLORMETHODS">8.4.11. Color related methods</a></span></dt></dl></div><p>
 			The <a class="xref" href="phphighlevelapi.html" title="8.3. High level PHP API">High level PHP API</a> is also part of the
 			low level API. The class methods described below allow
 			creating a report using program code, or simply
@@ -328,17 +328,32 @@ my_callback(OpenCReport $o,
 				</p><pre class="programlisting">public final
 OpenCReport::env_get(string $var_name):
                      OpenCReport\Result;</pre><p>
-			</p></div><div class="sect2" id="PHPRESULTMETHODS"><div class="titlepage"><div><div><h3 class="title">8.4.8. Result related methods <a href="#PHPRESULTMETHODS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPSETMVARMETHOD"><div class="titlepage"><div><div><h3 class="title">8.4.8. Add "m" domain variable <a href="#PHPSETMVARMETHOD" class="id_link">#</a></h3></div></div></div><p>
+				Add an "m" domain variable.
+				If such a variable <code class="literal">name</code>
+				didn't exist yet, and <code class="literal">value</code>
+				is not <code class="literal">NULL</code>, then
+				the variable is set. If <code class="literal">value</code>
+				is <code class="literal">NULL</code> or omitted, the
+				variable is removed. Such an explicit variable
+				takes precedence over the PHP global variable
+				or the environment variable of the same name when
+				used in expressions.
+				</p><pre class="programlisting">public final
+OpenCReport::set_mvariable(
+                     string $name,
+                     string $value): void;</pre><p>
+			</p></div><div class="sect2" id="PHPRESULTMETHODS"><div class="titlepage"><div><div><h3 class="title">8.4.9. Result related methods <a href="#PHPRESULTMETHODS" class="id_link">#</a></h3></div></div></div><p>
 				This method creates an uninitialized
 				<code class="literal">OpenCReport\Result</code>
 				with no value. See <a class="xref" href="phpresultclass.html" title="8.9. The OpenCReport\Result class">The OpenCReport\Result class</a>
 				to set the value.
 				</p><pre class="programlisting">public final
 OpenCReport::result_new(): OpenCReport\Result;</pre><p>
-			</p></div><div class="sect2" id="PHPPATHMETHODS"><div class="titlepage"><div><div><h3 class="title">8.4.9. Path related methods <a href="#PHPPATHMETHODS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="PHPADDSEARCHPATH"><div class="titlepage"><div><div><h4 class="title">8.4.9.1. Add a search path <a href="#PHPADDSEARCHPATH" class="id_link">#</a></h4></div></div></div><p>
+			</p></div><div class="sect2" id="PHPPATHMETHODS"><div class="titlepage"><div><div><h3 class="title">8.4.10. Path related methods <a href="#PHPPATHMETHODS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="PHPADDSEARCHPATH"><div class="titlepage"><div><div><h4 class="title">8.4.10.1. Add a search path <a href="#PHPADDSEARCHPATH" class="id_link">#</a></h4></div></div></div><p>
 						</p><pre class="programlisting">public final
 OpenCReport::add_search_path(string $path): void;</pre><p>
-					</p></div><div class="sect3" id="PHPGETCANONFILE"><div class="titlepage"><div><div><h4 class="title">8.4.9.2. Canonicalize path <a href="#PHPGETCANONFILE" class="id_link">#</a></h4></div></div></div><p>
+					</p></div><div class="sect3" id="PHPGETCANONFILE"><div class="titlepage"><div><div><h4 class="title">8.4.10.2. Canonicalize path <a href="#PHPGETCANONFILE" class="id_link">#</a></h4></div></div></div><p>
 						This method returns (a possibly modified)
 						path that will create a canonical
 						absolute path that doesn't contain
@@ -347,13 +362,13 @@ OpenCReport::add_search_path(string $path): void;</pre><p>
 						the actual target directory, etc.
 						</p><pre class="programlisting">public static final
 OpenCReport::canonicalize_path(string $path): string;</pre><p>
-					</p></div><div class="sect3" id="PHPFINDFILE"><div class="titlepage"><div><div><h4 class="title">8.4.9.3. Find a file <a href="#PHPFINDFILE" class="id_link">#</a></h4></div></div></div><p>
+					</p></div><div class="sect3" id="PHPFINDFILE"><div class="titlepage"><div><div><h4 class="title">8.4.10.3. Find a file <a href="#PHPFINDFILE" class="id_link">#</a></h4></div></div></div><p>
 						Find a (possibly relative) file using
 						the search paths and return the canonical
 						absolute path if found.
 						</p><pre class="programlisting">public final
 OpenCReport::find_file(string $path): $string;</pre><p>
-					</p></div></div><div class="sect2" id="PHPCOLORMETHODS"><div class="titlepage"><div><div><h3 class="title">8.4.10. Color related methods <a href="#PHPCOLORMETHODS" class="id_link">#</a></h3></div></div></div><p>
+					</p></div></div><div class="sect2" id="PHPCOLORMETHODS"><div class="titlepage"><div><div><h3 class="title">8.4.11. Color related methods <a href="#PHPCOLORMETHODS" class="id_link">#</a></h3></div></div></div><p>
 				Get an array with <code class="literal">double</code>
 				components for the color name or color
 				specification.
@@ -361,4 +376,4 @@ OpenCReport::find_file(string $path): $string;</pre><p>
 OpenCReport::final get_color(
                      string $color_name,
                      ?bool $bgcolor = false): array;</pre><p>
-			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phphighlevelapi.html" title="8.3. High level PHP API">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 8. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phpdsclass.html" title="8.5. The OpenCReport\Datasource class">Next</a></td></tr><tr><td width="40%" align="left" valign="top">8.3. High level PHP API </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="40%" align="right" valign="top"> 8.5. The OpenCReport\Datasource class</td></tr></table></div></body></html>
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phphighlevelapi.html" title="8.3. High level PHP API">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 8. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phpdsclass.html" title="8.5. The OpenCReport\Datasource class">Next</a></td></tr><tr><td width="40%" align="left" valign="top">8.3. High level PHP API </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.0 Manual">Home</a></td><td width="40%" align="right" valign="top"> 8.5. The OpenCReport\Datasource class</td></tr></table></div></body></html>

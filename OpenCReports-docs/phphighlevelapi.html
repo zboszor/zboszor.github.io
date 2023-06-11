@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>8.3. High level PHP API</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="mainclass.html" title="8.2. The OpenCReport class" /><link rel="next" href="phplowlevelapi.html" title="8.4. Low level PHP API" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">8.3. High level PHP API</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="mainclass.html" title="8.2. The OpenCReport class">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 8. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 8. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phplowlevelapi.html" title="8.4. Low level PHP API">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPHIGHLEVELAPI"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.3. High level PHP API <a href="#PHPHIGHLEVELAPI" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phphighlevelapi.html#MAINCLASSCONSTR">8.3.1. Constructor</a></span></dt><dt><span class="sect2"><a href="phphighlevelapi.html#PHPLOADXML">8.3.2. Load a report XML description</a></span></dt><dt><span class="sect2"><a href="phphighlevelapi.html#PHPREPORTSETOUTPUTFORMAT">8.3.3. Set report output format</a></span></dt><dt><span class="sect2"><a href="phphighlevelapi.html#PHPRUNREPORT">8.3.4. Run the report</a></span></dt><dt><span class="sect2"><a href="phphighlevelapi.html#PHPDUMPREPORT">8.3.5. Dump report result</a></span></dt><dt><span class="sect2"><a href="phphighlevelapi.html#PHPREPORTGETRESULT">8.3.6. Get report result</a></span></dt><dt><span class="sect2"><a href="phphighlevelapi.html#PHPREPORTGETCONTENTTYPE">8.3.7. Get report content type</a></span></dt><dt><span class="sect2"><a href="phphighlevelapi.html#PHPGETLIBVER">8.3.8. Get library version</a></span></dt></dl></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>8.3. High level PHP API</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="mainclass.html" title="8.2. The OpenCReport class" /><link rel="next" href="phplowlevelapi.html" title="8.4. Low level PHP API" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">8.3. High level PHP API</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="mainclass.html" title="8.2. The OpenCReport class">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 8. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 8. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.0 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phplowlevelapi.html" title="8.4. Low level PHP API">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPHIGHLEVELAPI"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.3. High level PHP API <a href="#PHPHIGHLEVELAPI" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phphighlevelapi.html#MAINCLASSCONSTR">8.3.1. Constructor</a></span></dt><dt><span class="sect2"><a href="phphighlevelapi.html#PHPLOADXML">8.3.2. Load a report XML description</a></span></dt><dt><span class="sect2"><a href="phphighlevelapi.html#PHPREPORTSETOUTPUTFORMAT">8.3.3. Set report output format</a></span></dt><dt><span class="sect2"><a href="phphighlevelapi.html#PHPREPORTSETOUTPUTPARAM">8.3.4. Set report output parameter</a></span></dt><dt><span class="sect2"><a href="phphighlevelapi.html#PHPRUNREPORT">8.3.5. Run the report</a></span></dt><dt><span class="sect2"><a href="phphighlevelapi.html#PHPDUMPREPORT">8.3.6. Dump report result</a></span></dt><dt><span class="sect2"><a href="phphighlevelapi.html#PHPREPORTGETRESULT">8.3.7. Get report result</a></span></dt><dt><span class="sect2"><a href="phphighlevelapi.html#PHPREPORTGETCONTENTTYPE">8.3.8. Get report content type</a></span></dt><dt><span class="sect2"><a href="phphighlevelapi.html#PHPGETLIBVER">8.3.9. Get library version</a></span></dt></dl></div><p>
 			Here is an example code using the high level
 			PHP API where everything concerning the report
 			(including the data source) is described in
@@ -56,19 +56,116 @@ OpenCReport::set_output_format(int $format): void;</pre><p>
 				in subclasses. With PHP 8.1 and newer, the
 				<code class="literal">final</code> flag is added so overriding
 				these constants will throw an exception.
-			</p></div><div class="sect2" id="PHPRUNREPORT"><div class="titlepage"><div><div><h3 class="title">8.3.4. Run the report <a href="#PHPRUNREPORT" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPREPORTSETOUTPUTPARAM"><div class="titlepage"><div><div><h3 class="title">8.3.4. Set report output parameter <a href="#PHPREPORTSETOUTPUTPARAM" class="id_link">#</a></h3></div></div></div><p>
+				</p><pre class="programlisting">public final
+OpenCReport::set_output_parameter(
+                     string $param,
+                     string $value): void;</pre><p>
+			</p><p>
+				Possible parameters for the HTML output driver:
+				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">document_root</code> sets
+							the document root for trimming path prefix
+							from image paths.
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">meta</code> extends
+							the default
+							<code class="literal">&lt;meta charset="utf-8"&gt;</code>.
+                            <code class="literal">literal</code> (see
+							The passed-in string value may contain
+							the whole <code class="literal">&lt;meta ...&gt;</code>,
+							in which case the inner parameters are
+							used only. The <code class="literal">charset</code>
+							specification is ignored. Only the rest is used.
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">suppress_head</code> suppresses the default
+							<code class="literal">&lt;head&gt; ... &lt;/head&gt;</code> section.
+							Possible values to enable suppressing the
+							default <code class="literal">&lt;head&gt; ... &lt;/head&gt;</code>
+							are <code class="literal">yes</code>,
+							<code class="literal">true</code> and
+							<code class="literal">on</code>.
+							Anything else disables it.
+							Be aware, that the default section contains
+							importand CSS stylesheet settings that are
+							needed for the correct layout.
+						</p></li></ul></div><p>
+			</p><p>
+				Possible parameters for the CSV output driver:
+				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">csv_filename</code> sets the file
+							name for <code class="literal">Content-Disposition</code>
+							in the HTTP metadata returned by
+							<code class="literal">ocrpt_get_content_type()</code>.
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">csv_as_text</code> sets the MIME type
+							for <code class="literal">Content-Type</code>
+							in the HTTP metadata returned by
+							<code class="literal">ocrpt_get_content_type()</code>.
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">csv_delimiter</code> (also aliased as
+							<code class="literal">csv_delimeter</code> according to
+							the historical typo in RLIB) sets the CSV field
+							delimiter to the first character of the string.
+							By default it's a comma.
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">no_quotes</code> will create a CSV
+							output with values unquoted.
+							Possible values to enable it are
+							<code class="literal">yes</code>,
+							<code class="literal">true</code>,
+							<code class="literal">on</code> or any positive non-zero
+							number. Anything else disables it.
+							It takes precedence over
+							<code class="literal">only_quote_strings</code>
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">only_quote_strings</code>
+							will create a CSV output with only string
+							values quoted.
+							Possible values to enable it are
+							<code class="literal">yes</code>,
+							<code class="literal">true</code>,
+							<code class="literal">on</code> or any positive non-zero
+							number. Anything else disables it.
+						</p></li></ul></div><p>
+			</p><p>
+				Note that some languages (e.g German, Swedish
+				and Hungarian) use comma as the decimal separator
+				instead of decimal point. For these languages,
+				either set <code class="literal">csv_delimiter</code> or
+				set neither <code class="literal">no_quotes</code>, nor
+				<code class="literal">only_quote_strings</code>
+			</p><p>
+				Possible parameters for the XML output driver:
+				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">xml_rlib_compat</code> sets the
+							flag to create an RLIB compatible XML output.
+							Possible values to enable it are
+							<code class="literal">yes</code>,
+							<code class="literal">true</code>,
+							<code class="literal">on</code> or any positive non-zero
+							number. Anything else disables it.
+						</p><p>
+							When enabled, the toplevel element
+							will be <code class="literal">&lt;rlib&gt;</code>
+							and <code class="literal">&lt;Report&gt;</code>s
+							inside <code class="literal">&lt;pd&gt;</code>
+							won't be embedded in a
+							<code class="literal">report</code> element.
+						</p></li></ul></div><p>
+			</p></div><div class="sect2" id="PHPRUNREPORT"><div class="titlepage"><div><div><h3 class="title">8.3.5. Run the report <a href="#PHPRUNREPORT" class="id_link">#</a></h3></div></div></div><p>
 				This method executes the report, constructs
 				the result in memory. It returns <code class="literal">true</code>
 				for success, <code class="literal">false</code> for failure.
 				It is a failure if the output format is unset.
 				</p><pre class="programlisting">public final
 OpenCReport::execute(): bool;</pre><p>
-			</p></div><div class="sect2" id="PHPDUMPREPORT"><div class="titlepage"><div><div><h3 class="title">8.3.5. Dump report result <a href="#PHPDUMPREPORT" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPDUMPREPORT"><div class="titlepage"><div><div><h3 class="title">8.3.6. Dump report result <a href="#PHPDUMPREPORT" class="id_link">#</a></h3></div></div></div><p>
 				Dump the report output on the program's
 				standard output channel.
 				</p><pre class="programlisting">public final
 OpenCReport::spool(): void;</pre><p>
-			</p></div><div class="sect2" id="PHPREPORTGETRESULT"><div class="titlepage"><div><div><h3 class="title">8.3.6. Get report result <a href="#PHPREPORTGETRESULT" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPREPORTGETRESULT"><div class="titlepage"><div><div><h3 class="title">8.3.7. Get report result <a href="#PHPREPORTGETRESULT" class="id_link">#</a></h3></div></div></div><p>
 				Get the report output. The application
 				then can save it as a file.
 				This method returns the output in a
@@ -77,7 +174,7 @@ OpenCReport::spool(): void;</pre><p>
 				<code class="literal">false</code>.
 				</p><pre class="programlisting">public final
 OpenCReport::get_output(): string|false;</pre><p>
-			</p></div><div class="sect2" id="PHPREPORTGETCONTENTTYPE"><div class="titlepage"><div><div><h3 class="title">8.3.7. Get report content type <a href="#PHPREPORTGETCONTENTTYPE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPREPORTGETCONTENTTYPE"><div class="titlepage"><div><div><h3 class="title">8.3.8. Get report content type <a href="#PHPREPORTGETCONTENTTYPE" class="id_link">#</a></h3></div></div></div><p>
 				Get the report content type. The application
 				then can add it as HTTP header line(s)
 				to the request. This method returns an
@@ -88,9 +185,9 @@ OpenCReport::get_output(): string|false;</pre><p>
 				Otherwise it returns <code class="literal">false</code>.
 				</p><pre class="programlisting">public final
 OpenCReport::get_content_type(): array|false;</pre><p>
-			</p></div><div class="sect2" id="PHPGETLIBVER"><div class="titlepage"><div><div><h3 class="title">8.3.8. Get library version <a href="#PHPGETLIBVER" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPGETLIBVER"><div class="titlepage"><div><div><h3 class="title">8.3.9. Get library version <a href="#PHPGETLIBVER" class="id_link">#</a></h3></div></div></div><p>
 				This method reports the OpenCReports
 				library version.
 				</p><pre class="programlisting">public final static
 OpenCReport::version(): string;</pre><p>
-			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="mainclass.html" title="8.2. The OpenCReport class">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 8. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phplowlevelapi.html" title="8.4. Low level PHP API">Next</a></td></tr><tr><td width="40%" align="left" valign="top">8.2. The OpenCReport class </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.7.0 Manual">Home</a></td><td width="40%" align="right" valign="top"> 8.4. Low level PHP API</td></tr></table></div></body></html>
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="mainclass.html" title="8.2. The OpenCReport class">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 8. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phplowlevelapi.html" title="8.4. Low level PHP API">Next</a></td></tr><tr><td width="40%" align="left" valign="top">8.2. The OpenCReport class </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.0 Manual">Home</a></td><td width="40%" align="right" valign="top"> 8.4. Low level PHP API</td></tr></table></div></body></html>

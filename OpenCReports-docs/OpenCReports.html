@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>OpenCReports 0.7.0 Manual</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /></head><body id="docContent" class="container-fluid col-10"><div class="book" id="id-1"><div class="titlepage"><div><div><h1 class="title">OpenCReports 0.7.0 Manual</h1></div><div><div class="author"><h3 class="author"><span class="firstname">Zoltán</span> <span class="surname">Böszörményi</span></h3></div></div><div><p class="copyright">Copyright © 2019-2023 Zoltán Böszörményi</p></div><div><div class="legalnotice" id="id-1.1.5"><div class="blockquote"><blockquote class="blockquote"><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>OpenCReports 0.8.0 Manual</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /></head><body id="docContent" class="container-fluid col-10"><div class="book" id="id-1"><div class="titlepage"><div><div><h1 class="title">OpenCReports 0.8.0 Manual</h1></div><div><div class="author"><h3 class="author"><span class="firstname">Zoltán</span> <span class="surname">Böszörményi</span></h3></div></div><div><p class="copyright">Copyright © 2019-2023 Zoltán Böszörményi</p></div><div><div class="legalnotice" id="id-1.1.5"><div class="blockquote"><blockquote class="blockquote"><p>
 					Permission is granted to copy, distribute and/or modify this document
 					under the terms of the GNU Free Documentation License, Version 1.2
 					or any later version published by the Free Software Foundation;
 					with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
 					Texts.  A copy of the license is included in the section entitled "GNU
 					Free Documentation License".
-				</p></blockquote></div></div></div></div><hr /></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="chapter"><a href="#INTRODUCTION">1. Introduction and concepts</a></span></dt><dd><dl><dt><span class="sect1"><a href="#RLIB">1.1. The predecessor: RLIB</a></span></dt><dt><span class="sect1"><a href="#CONCEPTS">1.2. Concepts</a></span></dt><dt><span class="sect1"><a href="#PLANNED">1.3. OpenCReports planned features</a></span></dt></dl></dd><dt><span class="chapter"><a href="#XMLDESCRIPTOR">2. Report XML description</a></span></dt><dd><dl><dt><span class="sect1"><a href="#DESCSTRUCT">2.1. XML description structure</a></span></dt><dt><span class="sect1"><a href="#OCRPTTOPXML">2.2. OpenCReport element</a></span></dt><dt><span class="sect1"><a href="#SEARCHPATHS">2.3. Paths</a></span></dt><dt><span class="sect1"><a href="#DATASOURCES">2.4. Datasources</a></span></dt><dt><span class="sect1"><a href="#QUERIES">2.5. Queries</a></span></dt><dt><span class="sect1"><a href="#PARTS">2.6. Report parts</a></span></dt><dt><span class="sect1"><a href="#PARTROW">2.7. Part row</a></span></dt><dt><span class="sect1"><a href="#PARTCOL">2.8. Part column</a></span></dt><dt><span class="sect1"><a href="#REPORT">2.9. Report</a></span></dt><dt><span class="sect1"><a href="#LOADEDREPORT">2.10. Loaded report</a></span></dt><dt><span class="sect1"><a href="#VARIABLESNODE">2.11. Variables</a></span></dt><dt><span class="sect1"><a href="#VARIABLENODE">2.12. Variable</a></span></dt><dt><span class="sect1"><a href="#BREAKSNODE">2.13. Breaks</a></span></dt><dt><span class="sect1"><a href="#BREAKNODE">2.14. Break</a></span></dt><dt><span class="sect1"><a href="#OUTPUTNODE">2.15. Output</a></span></dt><dt><span class="sect1"><a href="#LINENODE">2.16. Line</a></span></dt><dt><span class="sect1"><a href="#TEXTELEMNODE">2.17. Text element</a></span></dt><dt><span class="sect1"><a href="#HLINENODE">2.18. HorizontalLine</a></span></dt><dt><span class="sect1"><a href="#IMAGENODE">2.19. Image</a></span></dt><dt><span class="sect1"><a href="#IMAGEENDNODE">2.20. Image end</a></span></dt><dt><span class="sect1"><a href="#COLORSPEC">2.21. Color specification</a></span></dt></dl></dd><dt><span class="chapter"><a href="#EXPRESSIONS">3. Expressions in OpenCReports</a></span></dt><dd><dl><dt><span class="sect1"><a href="#EXPRINTRO">3.1. Introduction</a></span></dt><dt><span class="sect1"><a href="#CONSTANTS">3.2. Constants</a></span></dt><dt><span class="sect1"><a href="#PRECALCEXPR">3.3. Precalculated expressions</a></span></dt><dt><span class="sect1"><a href="#IDENTIFIERS">3.4. Identifiers</a></span></dt><dt><span class="sect1"><a href="#OPSANDFUNC">3.5. Operators and functions</a></span></dt><dt><span class="sect1"><a href="#LISTOFFUNCS">3.6. Alphabetical list of functions</a></span></dt></dl></dd><dt><span class="chapter"><a href="#BREAKS">4. Report breaks</a></span></dt><dd><dl><dt><span class="sect1"><a href="#GROUPINGDATA">4.1. Grouping data</a></span></dt><dt><span class="sect1"><a href="#REPORTBREAKS">4.2. Report breaks in OpenCReports</a></span></dt></dl></dd><dt><span class="chapter"><a href="#VARIABLES">5. Report variables</a></span></dt><dd><dl><dt><span class="sect1"><a href="#USERVARINTRO">5.1. Introduction to report variables</a></span></dt><dt><span class="sect1"><a href="#EXPRVAR">5.2. Expression variables</a></span></dt><dt><span class="sect1"><a href="#USERVARSIMPLE">5.3. Variable types for simple statistics</a></span></dt><dt><span class="sect1"><a href="#CUSTOMVAR">5.4. Custom variables</a></span></dt><dt><span class="sect1"><a href="#PRECALCVAR">5.5. Precalculated variables</a></span></dt><dt><span class="sect1"><a href="#USERVARRESET">5.6. Resetting a variable on break boundaries</a></span></dt></dl></dd><dt><span class="chapter"><a href="#FORMATTING">6. Formatting</a></span></dt><dd><dl><dt><span class="sect1"><a href="#FORMATTINGFUNCS">6.1. Formatting functions</a></span></dt><dt><span class="sect1"><a href="#FORMATSTRINGS">6.2. Format strings</a></span></dt><dt><span class="sect1"><a href="#LEGACYFORMATSTRINGS">6.3. Legacy format strings</a></span></dt><dt><span class="sect1"><a href="#NEWFORMATSTRINGS">6.4. New style format strings</a></span></dt><dt><span class="sect1"><a href="#NEWFORMATSTRINGSGEN2">6.5. Second generation new style format strings</a></span></dt></dl></dd><dt><span class="chapter"><a href="#C-API-REFERENCE">7. C language API reference</a></span></dt><dd><dl><dt><span class="sect1"><a href="#C_HEADER">7.1. Header file</a></span></dt><dt><span class="sect1"><a href="#HIGHLEVELAPI">7.2. High level C API</a></span></dt><dt><span class="sect1"><a href="#LOWLEVELAPI">7.3. Low level C API</a></span></dt></dl></dd><dt><span class="chapter"><a href="#PHP-API-REFERENCE">8. PHP language API reference</a></span></dt><dd><dl><dt><span class="sect1"><a href="#PHPMODULE">8.1. The OpenCReports PHP module</a></span></dt><dt><span class="sect1"><a href="#MAINCLASS">8.2. The OpenCReport class</a></span></dt><dt><span class="sect1"><a href="#PHPHIGHLEVELAPI">8.3. High level PHP API</a></span></dt><dt><span class="sect1"><a href="#PHPLOWLEVELAPI">8.4. Low level PHP API</a></span></dt><dt><span class="sect1"><a href="#PHPDSCLASS">8.5. The OpenCReport\Datasource class</a></span></dt><dt><span class="sect1"><a href="#PHPQUERYCLASS">8.6. The OpenCReport\Query class</a></span></dt><dt><span class="sect1"><a href="#PHPQUERYRESULTCLASS">8.7. The OpenCReport\QueryResult class</a></span></dt><dt><span class="sect1"><a href="#PHPEXPRCLASS">8.8. The OpenCReport\Expr class</a></span></dt><dt><span class="sect1"><a href="#PHPRESULTCLASS">8.9. The OpenCReport\Result class</a></span></dt><dt><span class="sect1"><a href="#PHPPARTCLASS">8.10. The OpenCReport\Part class</a></span></dt><dt><span class="sect1"><a href="#PHPPARTROWCLASS">8.11. The OpenCReport\Row class</a></span></dt><dt><span class="sect1"><a href="#PHPPARTCOLCLASS">8.12. The OpenCReport\Column class</a></span></dt><dt><span class="sect1"><a href="#PHPREPORTCLASS">8.13. The OpenCReport\Report class</a></span></dt><dt><span class="sect1"><a href="#PHPVARIABLECLASS">8.14. The OpenCReport\Variable class</a></span></dt><dt><span class="sect1"><a href="#PHPBREAKCLASS">8.15. The OpenCReport\Break class</a></span></dt><dt><span class="sect1"><a href="#PHPOUTPUTCLASS">8.16. The OpenCReport\Output class</a></span></dt><dt><span class="sect1"><a href="#PHPLINECLASS">8.17. The OpenCReport\Line class</a></span></dt><dt><span class="sect1"><a href="#PHPHLINECLASS">8.18. The OpenCReport\HorizontalLine class</a></span></dt><dt><span class="sect1"><a href="#PHPIMAGECLASS">8.19. The OpenCReport\Image class</a></span></dt><dt><span class="sect1"><a href="#PHPTEXTCLASS">8.20. The OpenCReport\Text class</a></span></dt><dt><span class="sect1"><a href="#PHPRLIBCOMPAT">8.21. RLIB compatibility API</a></span></dt></dl></dd><dt><span class="chapter"><a href="#LICENSE">9. GNU Free Documentation License</a></span></dt></dl></div><div class="chapter" id="INTRODUCTION"><div class="titlepage"><div><div><h1 class="title">Chapter 1. Introduction and concepts</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#RLIB">1.1. The predecessor: RLIB</a></span></dt><dt><span class="sect1"><a href="#CONCEPTS">1.2. Concepts</a></span></dt><dd><dl><dt><span class="sect2"><a href="#WHATISAREPGEN">1.2.1. What is a report generator?</a></span></dt><dt><span class="sect2"><a href="#XMLBASEDDESC">1.2.2. XML based report description</a></span></dt><dt><span class="sect2"><a href="#COMPREHENSIVEAPI">1.2.3. Comprehensive API for report creation</a></span></dt><dt><span class="sect2"><a href="#STRICTPARSER">1.2.4. Strict expression parser</a></span></dt><dt><span class="sect2"><a href="#EXPROPT">1.2.5. Expression optimization</a></span></dt><dt><span class="sect2"><a href="#REPVARS">1.2.6. Report variables</a></span></dt><dt><span class="sect2"><a href="#SETOFFUNCS">1.2.7. Extensive and extensible set of functions</a></span></dt><dt><span class="sect2"><a href="#UTF8STRINGS">1.2.8. UTF-8 string handling</a></span></dt><dt><span class="sect2"><a href="#HIGHPRECNUMERICS">1.2.9. High precision numeric data type</a></span></dt><dt><span class="sect2"><a href="#DATETIMETYPES">1.2.10. Datetime and interval data types</a></span></dt><dt><span class="sect2"><a href="#AUTOCONV">1.2.11. Automatic input data conversion</a></span></dt><dt><span class="sect2"><a href="#ALIGNMENTS">1.2.12. Versatile field alignment and multi-row fields</a></span></dt><dt><span class="sect2"><a href="#REPBREAKS">1.2.13. Report breaks</a></span></dt><dt><span class="sect2"><a href="#MULTICOLREP">1.2.14. Multi-column reports</a></span></dt><dt><span class="sect2"><a href="#PDFDETAILS">1.2.15. PDF output format, fonts, layout details</a></span></dt><dt><span class="sect2"><a href="#UNITTESTS">1.2.16. Extensive set of unit tests</a></span></dt><dt><span class="sect2"><a href="#STDDEPS">1.2.17. Standard Linux dependencies</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PLANNED">1.3. OpenCReports planned features</a></span></dt><dd><dl><dt><span class="sect2"><a href="#MOREFORMATS">1.3.1. More output formats</a></span></dt><dt><span class="sect2"><a href="#GRAPHS">1.3.2. Graph and chart support in HTML and PDF output</a></span></dt><dt><span class="sect2"><a href="#VISUALEDITOR">1.3.3. Visual editor for report XML descriptions</a></span></dt></dl></dd></dl></div><div class="sect1" id="RLIB"><div class="titlepage"><div><div><h2 class="title" style="clear: both">1.1. The predecessor: RLIB <a href="#RLIB" class="id_link">#</a></h2></div></div></div><p>
+				</p></blockquote></div></div></div></div><hr /></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="chapter"><a href="#INTRODUCTION">1. Introduction and concepts</a></span></dt><dd><dl><dt><span class="sect1"><a href="#RLIB">1.1. The predecessor: RLIB</a></span></dt><dt><span class="sect1"><a href="#CONCEPTS">1.2. Concepts</a></span></dt><dt><span class="sect1"><a href="#PLANNED">1.3. OpenCReports planned features</a></span></dt></dl></dd><dt><span class="chapter"><a href="#XMLDESCRIPTOR">2. Report XML description</a></span></dt><dd><dl><dt><span class="sect1"><a href="#DESCSTRUCT">2.1. XML description structure</a></span></dt><dt><span class="sect1"><a href="#OCRPTTOPXML">2.2. OpenCReport element</a></span></dt><dt><span class="sect1"><a href="#SEARCHPATHS">2.3. Paths</a></span></dt><dt><span class="sect1"><a href="#DATASOURCES">2.4. Datasources</a></span></dt><dt><span class="sect1"><a href="#QUERIES">2.5. Queries</a></span></dt><dt><span class="sect1"><a href="#PARTS">2.6. Report parts</a></span></dt><dt><span class="sect1"><a href="#PARTROW">2.7. Part row</a></span></dt><dt><span class="sect1"><a href="#PARTCOL">2.8. Part column</a></span></dt><dt><span class="sect1"><a href="#REPORT">2.9. Report</a></span></dt><dt><span class="sect1"><a href="#LOADEDREPORT">2.10. Loaded report</a></span></dt><dt><span class="sect1"><a href="#VARIABLESNODE">2.11. Variables</a></span></dt><dt><span class="sect1"><a href="#VARIABLENODE">2.12. Variable</a></span></dt><dt><span class="sect1"><a href="#BREAKSNODE">2.13. Breaks</a></span></dt><dt><span class="sect1"><a href="#BREAKNODE">2.14. Break</a></span></dt><dt><span class="sect1"><a href="#OUTPUTNODE">2.15. Output</a></span></dt><dt><span class="sect1"><a href="#LINENODE">2.16. Line</a></span></dt><dt><span class="sect1"><a href="#TEXTELEMNODE">2.17. Text element</a></span></dt><dt><span class="sect1"><a href="#HLINENODE">2.18. HorizontalLine</a></span></dt><dt><span class="sect1"><a href="#IMAGENODE">2.19. Image</a></span></dt><dt><span class="sect1"><a href="#IMAGEENDNODE">2.20. Image end</a></span></dt><dt><span class="sect1"><a href="#COLORSPEC">2.21. Color specification</a></span></dt></dl></dd><dt><span class="chapter"><a href="#EXPRESSIONS">3. Expressions in OpenCReports</a></span></dt><dd><dl><dt><span class="sect1"><a href="#EXPRINTRO">3.1. Introduction</a></span></dt><dt><span class="sect1"><a href="#CONSTANTS">3.2. Constants</a></span></dt><dt><span class="sect1"><a href="#PRECALCEXPR">3.3. Precalculated expressions</a></span></dt><dt><span class="sect1"><a href="#IDENTIFIERS">3.4. Identifiers</a></span></dt><dt><span class="sect1"><a href="#OPSANDFUNC">3.5. Operators and functions</a></span></dt><dt><span class="sect1"><a href="#LISTOFFUNCS">3.6. Alphabetical list of functions</a></span></dt></dl></dd><dt><span class="chapter"><a href="#BREAKS">4. Report breaks</a></span></dt><dd><dl><dt><span class="sect1"><a href="#GROUPINGDATA">4.1. Grouping data</a></span></dt><dt><span class="sect1"><a href="#REPORTBREAKS">4.2. Report breaks in OpenCReports</a></span></dt></dl></dd><dt><span class="chapter"><a href="#VARIABLES">5. Report variables</a></span></dt><dd><dl><dt><span class="sect1"><a href="#USERVARINTRO">5.1. Introduction to report variables</a></span></dt><dt><span class="sect1"><a href="#EXPRVAR">5.2. Expression variables</a></span></dt><dt><span class="sect1"><a href="#USERVARSIMPLE">5.3. Variable types for simple statistics</a></span></dt><dt><span class="sect1"><a href="#CUSTOMVAR">5.4. Custom variables</a></span></dt><dt><span class="sect1"><a href="#PRECALCVAR">5.5. Precalculated variables</a></span></dt><dt><span class="sect1"><a href="#USERVARRESET">5.6. Resetting a variable on break boundaries</a></span></dt></dl></dd><dt><span class="chapter"><a href="#FORMATTING">6. Formatting</a></span></dt><dd><dl><dt><span class="sect1"><a href="#FORMATTINGFUNCS">6.1. Formatting functions</a></span></dt><dt><span class="sect1"><a href="#FORMATSTRINGS">6.2. Format strings</a></span></dt><dt><span class="sect1"><a href="#LEGACYFORMATSTRINGS">6.3. Legacy format strings</a></span></dt><dt><span class="sect1"><a href="#NEWFORMATSTRINGS">6.4. New style format strings</a></span></dt><dt><span class="sect1"><a href="#NEWFORMATSTRINGSGEN2">6.5. Second generation new style format strings</a></span></dt></dl></dd><dt><span class="chapter"><a href="#C-API-REFERENCE">7. C language API reference</a></span></dt><dd><dl><dt><span class="sect1"><a href="#C_HEADER">7.1. Header file</a></span></dt><dt><span class="sect1"><a href="#HIGHLEVELAPI">7.2. High level C API</a></span></dt><dt><span class="sect1"><a href="#LOWLEVELAPI">7.3. Low level C API</a></span></dt></dl></dd><dt><span class="chapter"><a href="#PHP-API-REFERENCE">8. PHP language API reference</a></span></dt><dd><dl><dt><span class="sect1"><a href="#PHPMODULE">8.1. The OpenCReports PHP module</a></span></dt><dt><span class="sect1"><a href="#MAINCLASS">8.2. The OpenCReport class</a></span></dt><dt><span class="sect1"><a href="#PHPHIGHLEVELAPI">8.3. High level PHP API</a></span></dt><dt><span class="sect1"><a href="#PHPLOWLEVELAPI">8.4. Low level PHP API</a></span></dt><dt><span class="sect1"><a href="#PHPDSCLASS">8.5. The OpenCReport\Datasource class</a></span></dt><dt><span class="sect1"><a href="#PHPQUERYCLASS">8.6. The OpenCReport\Query class</a></span></dt><dt><span class="sect1"><a href="#PHPQUERYRESULTCLASS">8.7. The OpenCReport\QueryResult class</a></span></dt><dt><span class="sect1"><a href="#PHPEXPRCLASS">8.8. The OpenCReport\Expr class</a></span></dt><dt><span class="sect1"><a href="#PHPRESULTCLASS">8.9. The OpenCReport\Result class</a></span></dt><dt><span class="sect1"><a href="#PHPPARTCLASS">8.10. The OpenCReport\Part class</a></span></dt><dt><span class="sect1"><a href="#PHPPARTROWCLASS">8.11. The OpenCReport\Row class</a></span></dt><dt><span class="sect1"><a href="#PHPPARTCOLCLASS">8.12. The OpenCReport\Column class</a></span></dt><dt><span class="sect1"><a href="#PHPREPORTCLASS">8.13. The OpenCReport\Report class</a></span></dt><dt><span class="sect1"><a href="#PHPVARIABLECLASS">8.14. The OpenCReport\Variable class</a></span></dt><dt><span class="sect1"><a href="#PHPBREAKCLASS">8.15. The OpenCReport\Break class</a></span></dt><dt><span class="sect1"><a href="#PHPOUTPUTCLASS">8.16. The OpenCReport\Output class</a></span></dt><dt><span class="sect1"><a href="#PHPLINECLASS">8.17. The OpenCReport\Line class</a></span></dt><dt><span class="sect1"><a href="#PHPHLINECLASS">8.18. The OpenCReport\HorizontalLine class</a></span></dt><dt><span class="sect1"><a href="#PHPIMAGECLASS">8.19. The OpenCReport\Image class</a></span></dt><dt><span class="sect1"><a href="#PHPTEXTCLASS">8.20. The OpenCReport\Text class</a></span></dt><dt><span class="sect1"><a href="#PHPRLIBCOMPAT">8.21. RLIB compatibility API</a></span></dt></dl></dd><dt><span class="chapter"><a href="#LICENSE">9. GNU Free Documentation License</a></span></dt></dl></div><div class="chapter" id="INTRODUCTION"><div class="titlepage"><div><div><h1 class="title">Chapter 1. Introduction and concepts</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#RLIB">1.1. The predecessor: RLIB</a></span></dt><dt><span class="sect1"><a href="#CONCEPTS">1.2. Concepts</a></span></dt><dd><dl><dt><span class="sect2"><a href="#WHATISAREPGEN">1.2.1. What is a report generator?</a></span></dt><dt><span class="sect2"><a href="#XMLBASEDDESC">1.2.2. XML based report description</a></span></dt><dt><span class="sect2"><a href="#COMPREHENSIVEAPI">1.2.3. Comprehensive API for report creation</a></span></dt><dt><span class="sect2"><a href="#STRICTPARSER">1.2.4. Strict expression parser</a></span></dt><dt><span class="sect2"><a href="#EXPROPT">1.2.5. Expression optimization</a></span></dt><dt><span class="sect2"><a href="#REPVARS">1.2.6. Report variables</a></span></dt><dt><span class="sect2"><a href="#SETOFFUNCS">1.2.7. Extensive and extensible set of functions</a></span></dt><dt><span class="sect2"><a href="#UTF8STRINGS">1.2.8. UTF-8 string handling</a></span></dt><dt><span class="sect2"><a href="#HIGHPRECNUMERICS">1.2.9. High precision numeric data type</a></span></dt><dt><span class="sect2"><a href="#DATETIMETYPES">1.2.10. Datetime and interval data types</a></span></dt><dt><span class="sect2"><a href="#AUTOCONV">1.2.11. Automatic input data conversion</a></span></dt><dt><span class="sect2"><a href="#ALIGNMENTS">1.2.12. Versatile field alignment and multi-row fields</a></span></dt><dt><span class="sect2"><a href="#REPBREAKS">1.2.13. Report breaks</a></span></dt><dt><span class="sect2"><a href="#MULTICOLREP">1.2.14. Multi-column reports</a></span></dt><dt><span class="sect2"><a href="#LAYOUTDETAILS">1.2.15. Layout details</a></span></dt><dt><span class="sect2"><a href="#OUTPUTFORMATS">1.2.16. Multiple output formats</a></span></dt><dt><span class="sect2"><a href="#UNITTESTS">1.2.17. Extensive set of unit tests</a></span></dt><dt><span class="sect2"><a href="#STDDEPS">1.2.18. Standard Linux dependencies</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PLANNED">1.3. OpenCReports planned features</a></span></dt><dd><dl><dt><span class="sect2"><a href="#GRAPHS">1.3.1. Graph and chart support in HTML and PDF output</a></span></dt><dt><span class="sect2"><a href="#VISUALEDITOR">1.3.2. Visual editor for report XML descriptions</a></span></dt></dl></dd></dl></div><div class="sect1" id="RLIB"><div class="titlepage"><div><div><h2 class="title" style="clear: both">1.1. The predecessor: RLIB <a href="#RLIB" class="id_link">#</a></h2></div></div></div><p>
 			The idea to write <a class="ulink" href="https://github.com/zboszor/OpenCReports" target="_top">OpenCReports</a>
 			started with my getting acqauinted with <a class="ulink" href="https://github.com/SICOM/rlib" target="_top">RLIB</a>
 			in 2005 and working with it (and on it) for a very long time,
@@ -28,7 +28,7 @@
 			The name OpenCReports came from the fact that it's
 			implemented in the C programming language in an
 			open way, and using a free software license.
-		</p></div><div class="sect1" id="CONCEPTS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">1.2. Concepts <a href="#CONCEPTS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="#WHATISAREPGEN">1.2.1. What is a report generator?</a></span></dt><dt><span class="sect2"><a href="#XMLBASEDDESC">1.2.2. XML based report description</a></span></dt><dt><span class="sect2"><a href="#COMPREHENSIVEAPI">1.2.3. Comprehensive API for report creation</a></span></dt><dt><span class="sect2"><a href="#STRICTPARSER">1.2.4. Strict expression parser</a></span></dt><dt><span class="sect2"><a href="#EXPROPT">1.2.5. Expression optimization</a></span></dt><dt><span class="sect2"><a href="#REPVARS">1.2.6. Report variables</a></span></dt><dt><span class="sect2"><a href="#SETOFFUNCS">1.2.7. Extensive and extensible set of functions</a></span></dt><dt><span class="sect2"><a href="#UTF8STRINGS">1.2.8. UTF-8 string handling</a></span></dt><dt><span class="sect2"><a href="#HIGHPRECNUMERICS">1.2.9. High precision numeric data type</a></span></dt><dt><span class="sect2"><a href="#DATETIMETYPES">1.2.10. Datetime and interval data types</a></span></dt><dt><span class="sect2"><a href="#AUTOCONV">1.2.11. Automatic input data conversion</a></span></dt><dt><span class="sect2"><a href="#ALIGNMENTS">1.2.12. Versatile field alignment and multi-row fields</a></span></dt><dt><span class="sect2"><a href="#REPBREAKS">1.2.13. Report breaks</a></span></dt><dt><span class="sect2"><a href="#MULTICOLREP">1.2.14. Multi-column reports</a></span></dt><dt><span class="sect2"><a href="#PDFDETAILS">1.2.15. PDF output format, fonts, layout details</a></span></dt><dt><span class="sect2"><a href="#UNITTESTS">1.2.16. Extensive set of unit tests</a></span></dt><dt><span class="sect2"><a href="#STDDEPS">1.2.17. Standard Linux dependencies</a></span></dt></dl></div><div class="sect2" id="WHATISAREPGEN"><div class="titlepage"><div><div><h3 class="title">1.2.1. What is a report generator? <a href="#WHATISAREPGEN" class="id_link">#</a></h3></div></div></div><p>
+		</p></div><div class="sect1" id="CONCEPTS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">1.2. Concepts <a href="#CONCEPTS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="#WHATISAREPGEN">1.2.1. What is a report generator?</a></span></dt><dt><span class="sect2"><a href="#XMLBASEDDESC">1.2.2. XML based report description</a></span></dt><dt><span class="sect2"><a href="#COMPREHENSIVEAPI">1.2.3. Comprehensive API for report creation</a></span></dt><dt><span class="sect2"><a href="#STRICTPARSER">1.2.4. Strict expression parser</a></span></dt><dt><span class="sect2"><a href="#EXPROPT">1.2.5. Expression optimization</a></span></dt><dt><span class="sect2"><a href="#REPVARS">1.2.6. Report variables</a></span></dt><dt><span class="sect2"><a href="#SETOFFUNCS">1.2.7. Extensive and extensible set of functions</a></span></dt><dt><span class="sect2"><a href="#UTF8STRINGS">1.2.8. UTF-8 string handling</a></span></dt><dt><span class="sect2"><a href="#HIGHPRECNUMERICS">1.2.9. High precision numeric data type</a></span></dt><dt><span class="sect2"><a href="#DATETIMETYPES">1.2.10. Datetime and interval data types</a></span></dt><dt><span class="sect2"><a href="#AUTOCONV">1.2.11. Automatic input data conversion</a></span></dt><dt><span class="sect2"><a href="#ALIGNMENTS">1.2.12. Versatile field alignment and multi-row fields</a></span></dt><dt><span class="sect2"><a href="#REPBREAKS">1.2.13. Report breaks</a></span></dt><dt><span class="sect2"><a href="#MULTICOLREP">1.2.14. Multi-column reports</a></span></dt><dt><span class="sect2"><a href="#LAYOUTDETAILS">1.2.15. Layout details</a></span></dt><dt><span class="sect2"><a href="#OUTPUTFORMATS">1.2.16. Multiple output formats</a></span></dt><dt><span class="sect2"><a href="#UNITTESTS">1.2.17. Extensive set of unit tests</a></span></dt><dt><span class="sect2"><a href="#STDDEPS">1.2.18. Standard Linux dependencies</a></span></dt></dl></div><div class="sect2" id="WHATISAREPGEN"><div class="titlepage"><div><div><h3 class="title">1.2.1. What is a report generator? <a href="#WHATISAREPGEN" class="id_link">#</a></h3></div></div></div><p>
 				A report generator uses a tabular data source, which contains
 				rows and columns of data. The columns have labels or names.
 				(An SQL database query is such a tabular data source.)
@@ -209,14 +209,8 @@
 				If a report is "narrow", so more columns would fit on
 				the same page, the report may be set to use multiple
 				columns on the same page.
-			</p></div><div class="sect2" id="PDFDETAILS"><div class="titlepage"><div><div><h3 class="title">1.2.15. PDF output format, fonts, layout details <a href="#PDFDETAILS" class="id_link">#</a></h3></div></div></div><p>
-				By using the excellent drawing possibilities of
-				Cairo, OpenCReports supports generating
-				the report in PDF format. RLIB relied on an
-				internal PDF generator in earlier versions called
-				RPDF, and used libHaru in later versions.
-			</p><p>
-				In RLIB, sizing of other details are a mix of units,
+			</p></div><div class="sect2" id="LAYOUTDETAILS"><div class="titlepage"><div><div><h3 class="title">1.2.15. Layout details <a href="#LAYOUTDETAILS" class="id_link">#</a></h3></div></div></div><p>
+				In RLIB, sizing of layout details are a mix of units,
 				making it harder to design the report layout:
 				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
 							field widths and report heights are in
@@ -258,13 +252,92 @@
 				On top of that, OpenCReports also has a new, consistent
 				size calculation method where everything is measured in
 				points.
-			</p></div><div class="sect2" id="UNITTESTS"><div class="titlepage"><div><div><h3 class="title">1.2.16. Extensive set of unit tests <a href="#UNITTESTS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="OUTPUTFORMATS"><div class="titlepage"><div><div><h3 class="title">1.2.16. Multiple output formats <a href="#OUTPUTFORMATS" class="id_link">#</a></h3></div></div></div><p>
+				OpenCReports supports several output formats:
+				PDF, HTML, CSV, TXT, XML and JSON.
+			</p><p>
+				By using the excellent drawing possibilities of
+				Cairo coupled with Pango for text rendering,
+				OpenCReports supports generating the report in
+				PDF format. PDF is the definitive output format
+				in OpenCReports, as in it supports every feature
+				described in <a class="xref" href="#XMLDESCRIPTOR" title="Chapter 2. Report XML description">XML description</a>, such as
+				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
+							page breaks (PDF is a multi-page format)
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							all four page margins: top, bottom, left, right
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							column breaks, multi-column reports
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							report column width and height
+						</p></li></ul></div><p>
+			</p><p>
+				When using the HTML output format, OpenCReports
+				attempts to imitate the PDF drawing capabilities
+				using CSS. However, there are inevitable differences.
+				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
+							The HTML output doesn't support page breaks.
+							HTML is rendered as a continuous flow of text
+							and other elements. As a consequence,
+							<code class="literal">r.pageno</code> and
+							<code class="literal">r.totpages</code> are both 1
+							for the whole output.
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							HTML output doesn't support column breaks.
+							As a consequence, a multi-column report layout
+							is rendered differently from PDF.
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							When a data row's column does not fit into the
+							width specified by the page margins or the
+							report column's width, it is rendered in the
+							remaining width differently from PDF. While PDF
+							uses the whole field width to render the data
+							field contents and uses bounding box to clip
+							the invisible part, CSS uses the remaining width
+							specified by either the margins or the report
+							column width to render the field. Left, right
+							and center alignment of the field is done
+							according to the remaining width for the field.
+						</p></li></ul></div><p>
+			</p><p>
+				When rendering field data wider than their
+				field widths, both the PDF and the HTML output drivers
+				use clipping (bounding box) to hide parts of the
+				field, fitting them into the designated area
+				<span class="emphasis"><em>visually</em></span>. Actual field data is
+				not truncated. In some viewer applications
+				(e.g. in Poppler based PDF viewers) a visibly
+				truncated field's whole text can be selected,
+				copied and pasted elsewhere to be viewed in its
+				entirety. Field data in HTML behave the same way
+				in browsers.
+			</p><p>
+				OpenCReports also supports CSV, XML and JSON as
+				output formats that don't truncate field data.
+				These are plaintext formats with their own internal
+				format. CSV is usually used for importing into office
+				applications or databases. In general, these formats
+				are used in applications where loss of data may
+				not be tolerated. These formats don't support page or
+				column breaks. CSV does not have a way to express
+				multiple inner reports in a table in the same report run.
+			</p><p>
+				OpenCReports also supports TXT (plaintext) as output
+				format, that approximates RLIB's TXT output.
+				This format may truncate field data because it expects
+				monospace font and character based field widths;
+				and fields in this format cannot be presented separately
+				like in other formats. The TXT format doesn't support
+				page or column breaks. Its rendering ignores font name
+				and font size settings and renders everything internally
+				using a monospace font at 12 point font size.
+			</p></div><div class="sect2" id="UNITTESTS"><div class="titlepage"><div><div><h3 class="title">1.2.17. Extensive set of unit tests <a href="#UNITTESTS" class="id_link">#</a></h3></div></div></div><p>
 				The unit tests ensure that OpenCReports' features keep
 				working when adding new features or fixes. Units tests
 				exercise many aspects of the high and low level API,
 				report description handling, runtime behavior and output
 				generation.
-			</p></div><div class="sect2" id="STDDEPS"><div class="titlepage"><div><div><h3 class="title">1.2.17. Standard Linux dependencies <a href="#STDDEPS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="STDDEPS"><div class="titlepage"><div><div><h3 class="title">1.2.18. Standard Linux dependencies <a href="#STDDEPS" class="id_link">#</a></h3></div></div></div><p>
 				OpenCReports uses
 				<a class="ulink" href="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home" target="_top">LibXML2</a>,
 				<a class="ulink" href="https://juliastrings.github.io/utf8proc/" target="_top">utf8proc</a>,
@@ -291,14 +364,11 @@
 				<code class="literal">docbook2html</code> from
 				<a class="ulink" href="http://sources.redhat.com/docbook-tools/" target="_top">Docbook</a>
 				is used to generate the documentation.
-			</p></div></div><div class="sect1" id="PLANNED"><div class="titlepage"><div><div><h2 class="title" style="clear: both">1.3. OpenCReports planned features <a href="#PLANNED" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="#MOREFORMATS">1.3.1. More output formats</a></span></dt><dt><span class="sect2"><a href="#GRAPHS">1.3.2. Graph and chart support in HTML and PDF output</a></span></dt><dt><span class="sect2"><a href="#VISUALEDITOR">1.3.3. Visual editor for report XML descriptions</a></span></dt></dl></div><div class="sect2" id="MOREFORMATS"><div class="titlepage"><div><div><h3 class="title">1.3.1. More output formats <a href="#MOREFORMATS" class="id_link">#</a></h3></div></div></div><p>
-				XML, CSV, plaintext and JSON are not currently supported as
-				output formats.
-			</p></div><div class="sect2" id="GRAPHS"><div class="titlepage"><div><div><h3 class="title">1.3.2. Graph and chart support in HTML and PDF output <a href="#GRAPHS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div></div><div class="sect1" id="PLANNED"><div class="titlepage"><div><div><h2 class="title" style="clear: both">1.3. OpenCReports planned features <a href="#PLANNED" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="#GRAPHS">1.3.1. Graph and chart support in HTML and PDF output</a></span></dt><dt><span class="sect2"><a href="#VISUALEDITOR">1.3.2. Visual editor for report XML descriptions</a></span></dt></dl></div><div class="sect2" id="GRAPHS"><div class="titlepage"><div><div><h3 class="title">1.3.1. Graph and chart support in HTML and PDF output <a href="#GRAPHS" class="id_link">#</a></h3></div></div></div><p>
 				Currently Gantt chart and various graph types (like
 				barchart, pie chart and their various subtypes) are
 				not supported.
-			</p></div><div class="sect2" id="VISUALEDITOR"><div class="titlepage"><div><div><h3 class="title">1.3.3. Visual editor for report XML descriptions <a href="#VISUALEDITOR" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="VISUALEDITOR"><div class="titlepage"><div><div><h3 class="title">1.3.2. Visual editor for report XML descriptions <a href="#VISUALEDITOR" class="id_link">#</a></h3></div></div></div><p>
 				There are other report generators on the market with
 				nice GUIs to create the report visually.
 			</p></div></div></div><div class="chapter" id="XMLDESCRIPTOR"><div class="titlepage"><div><div><h1 class="title">Chapter 2. Report XML description</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#DESCSTRUCT">2.1. XML description structure</a></span></dt><dd><dl><dt><span class="sect2"><a href="#XMLNOTES">2.1.1. Notes about XML syntax and attributes</a></span></dt></dl></dd><dt><span class="sect1"><a href="#OCRPTTOPXML">2.2. OpenCReport element</a></span></dt><dd><dl><dt><span class="sect2"><a href="#SIZEUNIT">2.2.1. Size unit attribute</a></span></dt><dt><span class="sect2"><a href="#NOQUERYSHOWNODATA">2.2.2. No query show NoData</a></span></dt><dt><span class="sect2"><a href="#REPORTHEIGHTAFTERLAST">2.2.3. Report height after last</a></span></dt><dt><span class="sect2"><a href="#PRECBITS">2.2.4. Precision bits</a></span></dt><dt><span class="sect2"><a href="#ROUNDINGMODE">2.2.5. Rounding mode</a></span></dt><dt><span class="sect2"><a href="#LOCALE">2.2.6. Locale</a></span></dt><dt><span class="sect2"><a href="#XLATESETTINGS">2.2.7. Translation settings</a></span></dt></dl></dd><dt><span class="sect1"><a href="#SEARCHPATHS">2.3. Paths</a></span></dt><dt><span class="sect1"><a href="#DATASOURCES">2.4. Datasources</a></span></dt><dd><dl><dt><span class="sect2"><a href="#MARIADBDS">2.4.1. MariaDB (MySQL) database connection</a></span></dt><dt><span class="sect2"><a href="#POSTGRESQLDS">2.4.2. PostgreSQL database connection</a></span></dt><dt><span class="sect2"><a href="#ODBCDS">2.4.3. ODBC database connection</a></span></dt><dt><span class="sect2"><a href="#CSVDS">2.4.4. CSV file datasource</a></span></dt><dt><span class="sect2"><a href="#JSONDS">2.4.5. JSON file datasource</a></span></dt><dt><span class="sect2"><a href="#XMLDS">2.4.6. XML file datasource</a></span></dt><dt><span class="sect2"><a href="#ARRAYDS">2.4.7. Array datasource</a></span></dt><dt><span class="sect2"><a href="#COMMONDSPROPS">2.4.8. Common datasource properties</a></span></dt></dl></dd><dt><span class="sect1"><a href="#QUERIES">2.5. Queries</a></span></dt><dd><dl><dt><span class="sect2"><a href="#SQLQUERIES">2.5.1. SQL queries for SQL datasources</a></span></dt><dt><span class="sect2"><a href="#FILEQUERIES">2.5.2. Queries for file based datasources</a></span></dt><dt><span class="sect2"><a href="#ARRAYQUERIES">2.5.3. Queries for array based datasources</a></span></dt><dt><span class="sect2"><a href="#FOLLOWERQUERIES">2.5.4. Follower queries</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PARTS">2.6. Report parts</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PARTATTRIBS">2.6.1. Part attributes</a></span></dt><dt><span class="sect2"><a href="#PARTSUBSECS">2.6.2. Part subsections</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PARTROW">2.7. Part row</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PARTROWATTS">2.7.1. Part row attributes</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PARTCOL">2.8. Part column</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PARTCOLATTS">2.8.1. Part column attributes</a></span></dt></dl></dd><dt><span class="sect1"><a href="#REPORT">2.9. Report</a></span></dt><dd><dl><dt><span class="sect2"><a href="#REPORTATTRIBS">2.9.1. Report attributes</a></span></dt><dt><span class="sect2"><a href="#REPSUBSECS">2.9.2. Report subsections</a></span></dt></dl></dd><dt><span class="sect1"><a href="#LOADEDREPORT">2.10. Loaded report</a></span></dt><dd><dl><dt><span class="sect2"><a href="#LREPATTS">2.10.1. Loaded Report attributes</a></span></dt></dl></dd><dt><span class="sect1"><a href="#VARIABLESNODE">2.11. Variables</a></span></dt><dt><span class="sect1"><a href="#VARIABLENODE">2.12. Variable</a></span></dt><dd><dl><dt><span class="sect2"><a href="#VARATTS">2.12.1. Variable attributes</a></span></dt></dl></dd><dt><span class="sect1"><a href="#BREAKSNODE">2.13. Breaks</a></span></dt><dt><span class="sect1"><a href="#BREAKNODE">2.14. Break</a></span></dt><dd><dl><dt><span class="sect2"><a href="#BREAKATTS">2.14.1. Break attributes</a></span></dt><dt><span class="sect2"><a href="#BREAKSUBSECS">2.14.2. Break subsections</a></span></dt></dl></dd><dt><span class="sect1"><a href="#OUTPUTNODE">2.15. Output</a></span></dt><dd><dl><dt><span class="sect2"><a href="#OUTPUTATTS">2.15.1. Output attributes</a></span></dt><dt><span class="sect2"><a href="#OUTPUTSUBSECS">2.15.2. Output subsections</a></span></dt></dl></dd><dt><span class="sect1"><a href="#LINENODE">2.16. Line</a></span></dt><dd><dl><dt><span class="sect2"><a href="#LINEATTS">2.16.1. Line attributes</a></span></dt><dt><span class="sect2"><a href="#LINESUBSECS">2.16.2. Line subsections</a></span></dt></dl></dd><dt><span class="sect1"><a href="#TEXTELEMNODE">2.17. Text element</a></span></dt><dd><dl><dt><span class="sect2"><a href="#TEXTELEMATTS">2.17.1. Text element attributes</a></span></dt></dl></dd><dt><span class="sect1"><a href="#HLINENODE">2.18. HorizontalLine</a></span></dt><dd><dl><dt><span class="sect2"><a href="#HLINEATTS">2.18.1. HorizontalLine attributes</a></span></dt></dl></dd><dt><span class="sect1"><a href="#IMAGENODE">2.19. Image</a></span></dt><dd><dl><dt><span class="sect2"><a href="#IMAGEATTS">2.19.1. Image attributes</a></span></dt></dl></dd><dt><span class="sect1"><a href="#IMAGEENDNODE">2.20. Image end</a></span></dt><dt><span class="sect1"><a href="#COLORSPEC">2.21. Color specification</a></span></dt></dl></div><div class="sect1" id="DESCSTRUCT"><div class="titlepage"><div><div><h2 class="title" style="clear: both">2.1. XML description structure <a href="#DESCSTRUCT" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="#XMLNOTES">2.1.1. Notes about XML syntax and attributes</a></span></dt></dl></div><p>
@@ -4646,10 +4716,10 @@ field value="query1.field1"
 				The result is:
 				</p><pre class="programlisting">You had 6 apples on 2022-05-01 and 2 oranges on 2022-05-02 in
 your pocket.</pre><p>
-			</p></div></div></div><div class="chapter" id="C-API-REFERENCE"><div class="titlepage"><div><div><h1 class="title">Chapter 7. C language API reference</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#C_HEADER">7.1. Header file</a></span></dt><dt><span class="sect1"><a href="#HIGHLEVELAPI">7.2. High level C API</a></span></dt><dd><dl><dt><span class="sect2"><a href="#REPHNDINIT">7.2.1. Report handler initialization</a></span></dt><dt><span class="sect2"><a href="#LOADREPXML">7.2.2. Load a report XML description</a></span></dt><dt><span class="sect2"><a href="#PARSEXMLFROMBUF">7.2.3. Parse report XML description from a buffer</a></span></dt><dt><span class="sect2"><a href="#SETOUTPFMT">7.2.4. Set report output format</a></span></dt><dt><span class="sect2"><a href="#RUNREPORT">7.2.5. Run the report</a></span></dt><dt><span class="sect2"><a href="#DUMPREPORT">7.2.6. Dump report result</a></span></dt><dt><span class="sect2"><a href="#GETRESULT">7.2.7. Get report result</a></span></dt><dt><span class="sect2"><a href="#GETCONTENTTYPE">7.2.8. Get report content type</a></span></dt><dt><span class="sect2"><a href="#REPHNDDESTROY">7.2.9. Report handler destruction</a></span></dt><dt><span class="sect2"><a href="#GETLIBVER">7.2.10. Get library version</a></span></dt></dl></dd><dt><span class="sect1"><a href="#LOWLEVELAPI">7.3. Low level C API</a></span></dt><dd><dl><dt><span class="sect2"><a href="#NUMERICTUNING">7.3.1. Numeric behavior related functions</a></span></dt><dt><span class="sect2"><a href="#LOCALEFUNCS">7.3.2. Locale related functions</a></span></dt><dt><span class="sect2"><a href="#DSQFUNCS">7.3.3. Data source and query related functions</a></span></dt><dt><span class="sect2"><a href="#EXPRFUNC">7.3.4. Expression related functions</a></span></dt><dt><span class="sect2"><a href="#RESULTFUNCS">7.3.5. Column data or expression result related functions</a></span></dt><dt><span class="sect2"><a href="#USERVARRELATEDFUNCS">7.3.6. Variable related functions</a></span></dt><dt><span class="sect2"><a href="#BREAKRELATEDFUNCS">7.3.7. Break related functions</a></span></dt><dt><span class="sect2"><a href="#USERFUNCFUNCS">7.3.8. Function related functions</a></span></dt><dt><span class="sect2"><a href="#PARTANDREPORTFUNCS">7.3.9. Report part and report related functions</a></span></dt><dt><span class="sect2"><a href="#LAYOUTFUNCS">7.3.10. Layout related functions</a></span></dt><dt><span class="sect2"><a href="#CALLBACKFUNCS">7.3.11. Callback related functions</a></span></dt><dt><span class="sect2"><a href="#ENVFUNCS">7.3.12. Environment related functions</a></span></dt><dt><span class="sect2"><a href="#FILEFUNCS">7.3.13. File handling related functions</a></span></dt><dt><span class="sect2"><a href="#COLORFUNCS">7.3.14. Color related functions</a></span></dt><dt><span class="sect2"><a href="#PAPERFUNCS">7.3.15. Paper size related functions</a></span></dt><dt><span class="sect2"><a href="#MEMORYFUNCS">7.3.16. Memory handling related functions</a></span></dt><dt><span class="sect2"><a href="#LISTFUNCS">7.3.17. List related functions</a></span></dt><dt><span class="sect2"><a href="#STRINGFUNCS">7.3.18. String related functions</a></span></dt></dl></dd></dl></div><div class="sect1" id="C_HEADER"><div class="titlepage"><div><div><h2 class="title" style="clear: both">7.1. Header file <a href="#C_HEADER" class="id_link">#</a></h2></div></div></div><p>
+			</p></div></div></div><div class="chapter" id="C-API-REFERENCE"><div class="titlepage"><div><div><h1 class="title">Chapter 7. C language API reference</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#C_HEADER">7.1. Header file</a></span></dt><dt><span class="sect1"><a href="#HIGHLEVELAPI">7.2. High level C API</a></span></dt><dd><dl><dt><span class="sect2"><a href="#REPHNDINIT">7.2.1. Report handler initialization</a></span></dt><dt><span class="sect2"><a href="#LOADREPXML">7.2.2. Load a report XML description</a></span></dt><dt><span class="sect2"><a href="#PARSEXMLFROMBUF">7.2.3. Parse report XML description from a buffer</a></span></dt><dt><span class="sect2"><a href="#SETOUTPFMT">7.2.4. Set report output format</a></span></dt><dt><span class="sect2"><a href="#SETOUTPPARAM">7.2.5. Set report output parameter</a></span></dt><dt><span class="sect2"><a href="#RUNREPORT">7.2.6. Run the report</a></span></dt><dt><span class="sect2"><a href="#DUMPREPORT">7.2.7. Dump report result</a></span></dt><dt><span class="sect2"><a href="#GETRESULT">7.2.8. Get report result</a></span></dt><dt><span class="sect2"><a href="#GETCONTENTTYPE">7.2.9. Get report content type</a></span></dt><dt><span class="sect2"><a href="#REPHNDDESTROY">7.2.10. Report handler destruction</a></span></dt><dt><span class="sect2"><a href="#GETLIBVER">7.2.11. Get library version</a></span></dt></dl></dd><dt><span class="sect1"><a href="#LOWLEVELAPI">7.3. Low level C API</a></span></dt><dd><dl><dt><span class="sect2"><a href="#NUMERICTUNING">7.3.1. Numeric behavior related functions</a></span></dt><dt><span class="sect2"><a href="#LOCALEFUNCS">7.3.2. Locale related functions</a></span></dt><dt><span class="sect2"><a href="#DSQFUNCS">7.3.3. Data source and query related functions</a></span></dt><dt><span class="sect2"><a href="#EXPRFUNC">7.3.4. Expression related functions</a></span></dt><dt><span class="sect2"><a href="#RESULTFUNCS">7.3.5. Column data or expression result related functions</a></span></dt><dt><span class="sect2"><a href="#USERVARRELATEDFUNCS">7.3.6. Variable related functions</a></span></dt><dt><span class="sect2"><a href="#BREAKRELATEDFUNCS">7.3.7. Break related functions</a></span></dt><dt><span class="sect2"><a href="#USERFUNCFUNCS">7.3.8. Function related functions</a></span></dt><dt><span class="sect2"><a href="#PARTANDREPORTFUNCS">7.3.9. Report part and report related functions</a></span></dt><dt><span class="sect2"><a href="#LAYOUTFUNCS">7.3.10. Layout related functions</a></span></dt><dt><span class="sect2"><a href="#CALLBACKFUNCS">7.3.11. Callback related functions</a></span></dt><dt><span class="sect2"><a href="#ENVFUNCS">7.3.12. Environment related functions</a></span></dt><dt><span class="sect2"><a href="#FILEFUNCS">7.3.13. File handling related functions</a></span></dt><dt><span class="sect2"><a href="#COLORFUNCS">7.3.14. Color related functions</a></span></dt><dt><span class="sect2"><a href="#PAPERFUNCS">7.3.15. Paper size related functions</a></span></dt><dt><span class="sect2"><a href="#MEMORYFUNCS">7.3.16. Memory handling related functions</a></span></dt><dt><span class="sect2"><a href="#LISTFUNCS">7.3.17. List related functions</a></span></dt><dt><span class="sect2"><a href="#STRINGFUNCS">7.3.18. String related functions</a></span></dt></dl></dd></dl></div><div class="sect1" id="C_HEADER"><div class="titlepage"><div><div><h2 class="title" style="clear: both">7.1. Header file <a href="#C_HEADER" class="id_link">#</a></h2></div></div></div><p>
 			For using OpenCReports, this single header must be used:
 			</p><pre class="programlisting">#include &lt;opencreport.h&gt;</pre><p>
-		</p></div><div class="sect1" id="HIGHLEVELAPI"><div class="titlepage"><div><div><h2 class="title" style="clear: both">7.2. High level C API <a href="#HIGHLEVELAPI" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="#REPHNDINIT">7.2.1. Report handler initialization</a></span></dt><dt><span class="sect2"><a href="#LOADREPXML">7.2.2. Load a report XML description</a></span></dt><dt><span class="sect2"><a href="#PARSEXMLFROMBUF">7.2.3. Parse report XML description from a buffer</a></span></dt><dt><span class="sect2"><a href="#SETOUTPFMT">7.2.4. Set report output format</a></span></dt><dt><span class="sect2"><a href="#RUNREPORT">7.2.5. Run the report</a></span></dt><dt><span class="sect2"><a href="#DUMPREPORT">7.2.6. Dump report result</a></span></dt><dt><span class="sect2"><a href="#GETRESULT">7.2.7. Get report result</a></span></dt><dt><span class="sect2"><a href="#GETCONTENTTYPE">7.2.8. Get report content type</a></span></dt><dt><span class="sect2"><a href="#REPHNDDESTROY">7.2.9. Report handler destruction</a></span></dt><dt><span class="sect2"><a href="#GETLIBVER">7.2.10. Get library version</a></span></dt></dl></div><p>
+		</p></div><div class="sect1" id="HIGHLEVELAPI"><div class="titlepage"><div><div><h2 class="title" style="clear: both">7.2. High level C API <a href="#HIGHLEVELAPI" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="#REPHNDINIT">7.2.1. Report handler initialization</a></span></dt><dt><span class="sect2"><a href="#LOADREPXML">7.2.2. Load a report XML description</a></span></dt><dt><span class="sect2"><a href="#PARSEXMLFROMBUF">7.2.3. Parse report XML description from a buffer</a></span></dt><dt><span class="sect2"><a href="#SETOUTPFMT">7.2.4. Set report output format</a></span></dt><dt><span class="sect2"><a href="#SETOUTPPARAM">7.2.5. Set report output parameter</a></span></dt><dt><span class="sect2"><a href="#RUNREPORT">7.2.6. Run the report</a></span></dt><dt><span class="sect2"><a href="#DUMPREPORT">7.2.7. Dump report result</a></span></dt><dt><span class="sect2"><a href="#GETRESULT">7.2.8. Get report result</a></span></dt><dt><span class="sect2"><a href="#GETCONTENTTYPE">7.2.9. Get report content type</a></span></dt><dt><span class="sect2"><a href="#REPHNDDESTROY">7.2.10. Report handler destruction</a></span></dt><dt><span class="sect2"><a href="#GETLIBVER">7.2.11. Get library version</a></span></dt></dl></div><p>
 			Example code using the high level C API where everything
 			concerning the report (including the data source)
 			is described in the report XML:
@@ -4708,24 +4778,129 @@ typedef enum ocrpt_format_type ocrpt_format_type;
 void
 ocrpt_set_output_format(opencreport *o,
                         ocrpt_format_type format);</pre><p>
-			</p></div><div class="sect2" id="RUNREPORT"><div class="titlepage"><div><div><h3 class="title">7.2.5. Run the report <a href="#RUNREPORT" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="SETOUTPPARAM"><div class="titlepage"><div><div><h3 class="title">7.2.5. Set report output parameter <a href="#SETOUTPPARAM" class="id_link">#</a></h3></div></div></div><p>
+				Set output parameters for the report.
+				</p><pre class="programlisting">void
+ocrpt_set_output_parameter(opencreport *o,
+                           const char *param,
+                           const char *value);</pre><p>
+			</p><p>
+				Possible parameters for the HTML output driver:
+				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">document_root</code> sets
+							the document root for trimming path prefix
+							from image paths.
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">meta</code> extends
+							the default
+							<code class="literal">&lt;meta charset="utf-8"&gt;</code>.
+                            <code class="literal">literal</code> (see
+							The passed-in string value may contain
+							the whole <code class="literal">&lt;meta ...&gt;</code>,
+							in which case the inner parameters are
+							used only. The <code class="literal">charset</code>
+							specification is ignored. Only the rest is used.
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">suppress_head</code> suppresses the default
+							<code class="literal">&lt;head&gt; ... &lt;/head&gt;</code> section.
+							Possible values to enable suppressing the
+							default <code class="literal">&lt;head&gt; ... &lt;/head&gt;</code>
+							are <code class="literal">yes</code>,
+							<code class="literal">true</code>,
+							<code class="literal">on</code> or any positive non-zero
+							number. Anything else disables it.
+							Be aware, that the default section contains
+							importand CSS stylesheet settings that are
+							needed for the correct layout.
+						</p></li></ul></div><p>
+			</p><p>
+				Possible parameters for the CSV output driver:
+				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">csv_filename</code> sets the file
+							name for <code class="literal">Content-Disposition</code>
+							in the HTTP metadata returned by
+							<code class="literal">ocrpt_get_content_type()</code>.
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">csv_as_text</code> sets the MIME type
+							for <code class="literal">Content-Type</code>
+							in the HTTP metadata returned by
+							<code class="literal">ocrpt_get_content_type()</code>
+							to <code class="literal">text/plain</code> when enabled.
+							By default it's <code class="literal">text/csv</code>.
+							Possible values to enable it are
+							<code class="literal">yes</code>,
+							<code class="literal">true</code>,
+							<code class="literal">on</code> or any positive non-zero
+							number. Anything else disables it.
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">csv_delimiter</code> (also aliased as
+							<code class="literal">csv_delimeter</code> according to
+							the historical typo in RLIB) sets the CSV field
+							delimiter to the first character of the string.
+							By default it's a comma.
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">no_quotes</code> will create a CSV
+							output with values unquoted.
+							Possible values to enable it are
+							<code class="literal">yes</code>,
+							<code class="literal">true</code>,
+							<code class="literal">on</code> or any positive non-zero
+							number. Anything else disables it.
+							It takes precedence over
+							<code class="literal">only_quote_strings</code>
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">only_quote_strings</code>
+							will create a CSV output with only string
+							values quoted.
+							Possible values to enable it are
+							<code class="literal">yes</code>,
+							<code class="literal">true</code>,
+							<code class="literal">on</code> or any positive non-zero
+							number. Anything else disables it.
+						</p></li></ul></div><p>
+			</p><p>
+				Note that some languages (e.g. German, Swedish
+				and Hungarian) use comma as the decimal separator
+				instead of decimal point. For these languages,
+				either set <code class="literal">csv_delimiter</code> or
+				set neither <code class="literal">no_quotes</code>, nor
+				<code class="literal">only_quote_strings</code>
+			</p><p>
+				Possible parameters for the XML output driver:
+				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">xml_rlib_compat</code> sets the
+							flag to create an RLIB compatible XML output.
+							Possible values to enable it are
+							<code class="literal">yes</code>,
+							<code class="literal">true</code>,
+							<code class="literal">on</code> or any positive non-zero
+							number. Anything else disables it.
+						</p><p>
+							When enabled, the toplevel element
+							will be <code class="literal">&lt;rlib&gt;</code>
+							and <code class="literal">&lt;Report&gt;</code>s
+							inside <code class="literal">&lt;pd&gt;</code>
+							won't be embedded in a
+							<code class="literal">report</code> element.
+						</p></li></ul></div><p>
+			</p></div><div class="sect2" id="RUNREPORT"><div class="titlepage"><div><div><h3 class="title">7.2.6. Run the report <a href="#RUNREPORT" class="id_link">#</a></h3></div></div></div><p>
 				This function executes the report, constructs
 				the result in memory. It returns <code class="literal">true</code>
 				for success, <code class="literal">false</code> for failure.
 				It is a failure if the output format is unset.
 				</p><pre class="programlisting">bool
 ocrpt_execute(opencreport *o);</pre><p>
-			</p></div><div class="sect2" id="DUMPREPORT"><div class="titlepage"><div><div><h3 class="title">7.2.6. Dump report result <a href="#DUMPREPORT" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="DUMPREPORT"><div class="titlepage"><div><div><h3 class="title">7.2.7. Dump report result <a href="#DUMPREPORT" class="id_link">#</a></h3></div></div></div><p>
 				Dump the report output on the program's
 				standard output channel.
 				</p><pre class="programlisting">void
 ocrpt_spool(opencreport *o);</pre><p>
-			</p></div><div class="sect2" id="GETRESULT"><div class="titlepage"><div><div><h3 class="title">7.2.7. Get report result <a href="#GETRESULT" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="GETRESULT"><div class="titlepage"><div><div><h3 class="title">7.2.8. Get report result <a href="#GETRESULT" class="id_link">#</a></h3></div></div></div><p>
 				Get the report output. The application
 				then can save it as a file.
 				</p><pre class="programlisting">const char *
 ocrpt_get_output(opencreport *o, size_t *length);</pre><p>
-			</p></div><div class="sect2" id="GETCONTENTTYPE"><div class="titlepage"><div><div><h3 class="title">7.2.8. Get report content type <a href="#GETCONTENTTYPE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="GETCONTENTTYPE"><div class="titlepage"><div><div><h3 class="title">7.2.9. Get report content type <a href="#GETCONTENTTYPE" class="id_link">#</a></h3></div></div></div><p>
 				Get the report content type for web publishing.
 				The content type depends on the output type
 				the report was executed with.
@@ -4736,13 +4911,13 @@ ocrpt_get_output(opencreport *o, size_t *length);</pre><p>
 				<code class="literal">NULL</code>.
 				</p><pre class="programlisting">const ocrpt_string **
 ocrpt_get_content_type(opencreport *o);</pre><p>
-			</p></div><div class="sect2" id="REPHNDDESTROY"><div class="titlepage"><div><div><h3 class="title">7.2.9. Report handler destruction <a href="#REPHNDDESTROY" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="REPHNDDESTROY"><div class="titlepage"><div><div><h3 class="title">7.2.10. Report handler destruction <a href="#REPHNDDESTROY" class="id_link">#</a></h3></div></div></div><p>
 				Calling this function frees up the report handler
 				structure and everything created for it, even
 				the details that were created by the low level API.
 				</p><pre class="programlisting">void
 ocrpt_free(opencreport *o);</pre><p>
-			</p></div><div class="sect2" id="GETLIBVER"><div class="titlepage"><div><div><h3 class="title">7.2.10. Get library version <a href="#GETLIBVER" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="GETLIBVER"><div class="titlepage"><div><div><h3 class="title">7.2.11. Get library version <a href="#GETLIBVER" class="id_link">#</a></h3></div></div></div><p>
 				This function reports the OpenCReports
 				library version.
 				</p><pre class="programlisting">const char *
@@ -5349,42 +5524,42 @@ ocrpt_expr_set_iterative_start_value(ocrpt_expr *e,
 					type. Used by parsing report description XML files
 					and unit tests.
 					</p><pre class="programlisting">const char *
-ocrpt_expr_get_string_value(ocrpt_expr *e);
+ocrpt_expr_get_string(ocrpt_expr *e);
 
 long
-ocrpt_expr_get_long_value(ocrpt_expr *e);
+ocrpt_expr_get_long(ocrpt_expr *e);
 
 double
-ocrpt_expr_get_double_value(ocrpt_expr *e);</pre><p>
+ocrpt_expr_get_double(ocrpt_expr *e);</pre><p>
 				</p></div><div class="sect3" id="SETEXPRCURVAL"><div class="titlepage"><div><div><h4 class="title">7.3.4.15. Set current value of an expression in a base type <a href="#SETEXPRCURVAL" class="id_link">#</a></h4></div></div></div><p>
 					Used by unit tests.
 					</p><pre class="programlisting">void
-ocrpt_expr_set_string_value(ocrpt_expr *e,
+ocrpt_expr_set_string(ocrpt_expr *e,
                             const char *s);
 
 void
-ocrpt_expr_set_long_value(ocrpt_expr *e,
+ocrpt_expr_set_long(ocrpt_expr *e,
                           long l);
 
 void
-ocrpt_expr_set_double_value(ocrpt_expr *e,
+ocrpt_expr_set_double(ocrpt_expr *e,
                             double d);</pre><p>
 				</p></div><div class="sect3" id="SETNTHEXPRVALUE"><div class="titlepage"><div><div><h4 class="title">7.3.4.16. Set nth value of an expression in a base type <a href="#SETNTHEXPRVALUE" class="id_link">#</a></h4></div></div></div><p>
 					Expressions use <code class="literal">OCRPT_EXPR_RESULTS</code>
 					number of values. With these functions, any of them
 					can be set. Used by unit tests.
 					</p><pre class="programlisting">void
-ocrpt_expr_set_nth_result_string_value(ocrpt_expr *e,
+ocrpt_expr_set_nth_result_string(ocrpt_expr *e,
                                        int which,
                                        const char *s);
 
 void
-ocrpt_expr_set_nth_result_long_value(ocrpt_expr *e,
+ocrpt_expr_set_nth_result_long(ocrpt_expr *e,
                                      int which,
                                      long l);
 
 void
-ocrpt_expr_set_nth_result_double_value(ocrpt_expr *e,
+ocrpt_expr_set_nth_result_double(ocrpt_expr *e,
                                        int which,
                                        double d);</pre><p>
 				</p></div><div class="sect3" id="CMPEXPRVALUES"><div class="titlepage"><div><div><h4 class="title">7.3.4.17. Compare the current of an expression with its previous value <a href="#CMPEXPRVALUES" class="id_link">#</a></h4></div></div></div><p>
@@ -6516,6 +6691,20 @@ ocrpt_env_set_query_func(ocrpt_env_query_func func);</pre><p>
 					</p><pre class="programlisting">ocrpt_result *
 ocrpt_env_get_c(opencreport *o,
                 const char *env);</pre><p>
+				</p></div><div class="sect3" id="SETMVARFUNC"><div class="titlepage"><div><div><h4 class="title">7.3.12.4. Add an "m" domain variable <a href="#SETMVARFUNC" class="id_link">#</a></h4></div></div></div><p>
+					Set an "m" domain variable.
+					If such a variable <code class="literal">name</code>
+					didn't exist yet, and <code class="literal">value</code>
+					is not <code class="literal">NULL</code>, then
+					the variable is set. If <code class="literal">value</code>
+					is <code class="literal">NULL</code>, the variable is
+					removed. Such an explicit variable takes
+					precedence over the environment variable
+					of the same name when used in expressions.
+					</p><pre class="programlisting">void
+ocrpt_set_mvariable(opencreport *o,
+                    const char *name,
+                    const char *value);</pre><p>
 				</p></div></div><div class="sect2" id="FILEFUNCS"><div class="titlepage"><div><div><h3 class="title">7.3.13. File handling related functions <a href="#FILEFUNCS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="GETCANONFILE"><div class="titlepage"><div><div><h4 class="title">7.3.13.1. Return a canonical file path <a href="#GETCANONFILE" class="id_link">#</a></h4></div></div></div><p>
 					The returned path contains only single
 					directory separators and doesn't contains
@@ -6826,7 +7015,7 @@ ocrpt_mem_string_append_c(ocrpt_string *string,
 					</p><pre class="programlisting">void
 ocrpt_mem_string_append_printf(ocrpt_string *string,
                                const char *format, ...);</pre><p>
-				</p></div></div></div></div><div class="chapter" id="PHP-API-REFERENCE"><div class="titlepage"><div><div><h1 class="title">Chapter 8. PHP language API reference</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#PHPMODULE">8.1. The OpenCReports PHP module</a></span></dt><dt><span class="sect1"><a href="#MAINCLASS">8.2. The OpenCReport class</a></span></dt><dt><span class="sect1"><a href="#PHPHIGHLEVELAPI">8.3. High level PHP API</a></span></dt><dd><dl><dt><span class="sect2"><a href="#MAINCLASSCONSTR">8.3.1. Constructor</a></span></dt><dt><span class="sect2"><a href="#PHPLOADXML">8.3.2. Load a report XML description</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTSETOUTPUTFORMAT">8.3.3. Set report output format</a></span></dt><dt><span class="sect2"><a href="#PHPRUNREPORT">8.3.4. Run the report</a></span></dt><dt><span class="sect2"><a href="#PHPDUMPREPORT">8.3.5. Dump report result</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTGETRESULT">8.3.6. Get report result</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTGETCONTENTTYPE">8.3.7. Get report content type</a></span></dt><dt><span class="sect2"><a href="#PHPGETLIBVER">8.3.8. Get library version</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPLOWLEVELAPI">8.4. Low level PHP API</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPNUMERICTUNING">8.4.1. Numeric behavior related methods</a></span></dt><dt><span class="sect2"><a href="#PHPLOCALEMETHODS">8.4.2. Locale related methods</a></span></dt><dt><span class="sect2"><a href="#PHPDSMETHODS">8.4.3. Data source and query related methods</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRFUNC">8.4.4. Expression related methods</a></span></dt><dt><span class="sect2"><a href="#PHPLAYOUTMETHODS">8.4.5. Layout part related methods</a></span></dt><dt><span class="sect2"><a href="#PHPCALLBACKMETHODS">8.4.6. Callback related methods</a></span></dt><dt><span class="sect2"><a href="#PHPENVMETHODS">8.4.7. Environment related methods</a></span></dt><dt><span class="sect2"><a href="#PHPRESULTMETHODS">8.4.8. Result related methods</a></span></dt><dt><span class="sect2"><a href="#PHPPATHMETHODS">8.4.9. Path related methods</a></span></dt><dt><span class="sect2"><a href="#PHPCOLORMETHODS">8.4.10. Color related methods</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPDSCLASS">8.5. The OpenCReport\Datasource class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPDSFREE">8.5.1. Free a datasource</a></span></dt><dt><span class="sect2"><a href="#PHPDSQUERYADD">8.5.2. Add a query to the datasource</a></span></dt><dt><span class="sect2"><a href="#PHPDSSETENCODING">8.5.3. Set datasource encoding</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPQUERYCLASS">8.6. The OpenCReport\Query class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPQUERYGETRESULT">8.6.1. Get result for a query's current row</a></span></dt><dt><span class="sect2"><a href="#PHPQUERYNAVSTART">8.6.2. Start navigation for a query</a></span></dt><dt><span class="sect2"><a href="#PHPQUERYNAVNEXT">8.6.3. Navigate to the next row</a></span></dt><dt><span class="sect2"><a href="#PHPQUERYADDFOLLOWER">8.6.4. Add a query follower</a></span></dt><dt><span class="sect2"><a href="#PHPQUERYADDN1FOLLOWER">8.6.5. Add an N:1 query follower</a></span></dt><dt><span class="sect2"><a href="#PHPQUERYFREE">8.6.6. Free a query</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPQUERYRESULTCLASS">8.7. The OpenCReport\QueryResult class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPQUERYRESULTCOLUMNS">8.7.1. Get number of columns for a query result</a></span></dt><dt><span class="sect2"><a href="#PHPQUERYRESULTCOLNAME">8.7.2. Get the nth column name for a query result</a></span></dt><dt><span class="sect2"><a href="#PHPQUERYRESULTCOLRESULT">8.7.3. Get the nth column result for a query result</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPEXPRCLASS">8.8. The OpenCReport\Expr class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPEXPRFREE">8.8.1. Free an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRPRINT">8.8.2. Print an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRNODES">8.8.3. Get the number of expression tree nodes</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRRESOLVE">8.8.4. Resolve an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPROPTIMIZE">8.8.5. Optimize an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPREVAL">8.8.6. Evaluate an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRGETRESULT">8.8.7. Get the result of an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETSTRINGVALUE">8.8.8. Set expression result to a string value</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETLONGVALUE">8.8.9. Set expression result to a long value</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETDOUBLEVALUE">8.8.10. Set expression result to a double value</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRGETNUMOPS">8.8.11. Get number of operands of a expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPROPGETRESULT">8.8.12. Get nth operands' result of a expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRCMPRESULTS">8.8.13. Compare the expression's current and previous results</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRINITRESULTS">8.8.14. Initialize expression results</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETNTHSTRINGVALUE">8.8.15. Set nth result of an expression to a string value</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETNTHLONGVALUE">8.8.16. Set nth result of an expression to a long value</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETNTHDOUBLEVALUE">8.8.17. Set nth result of an expression to a double value</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETITERATIVESTARTFLAG">8.8.18. Set iterative start flag of an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETDELAYED">8.8.19. Set expression to delayed</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPRESULTCLASS">8.9. The OpenCReport\Result class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPRESULTFREE">8.9.1. Free a result object</a></span></dt><dt><span class="sect2"><a href="#PHPRESULTCOPY">8.9.2. Copy a result object</a></span></dt><dt><span class="sect2"><a href="#PHPRESULTPRINT">8.9.3. Print a result object</a></span></dt><dt><span class="sect2"><a href="#PHPRESULTGETTYPE">8.9.4. Get result object value type</a></span></dt><dt><span class="sect2"><a href="#PHPRESULTISNULL">8.9.5. Detect whether result object value is NULL</a></span></dt><dt><span class="sect2"><a href="#PHPRESULTISSTRING">8.9.6. Detect whether result object value is a string</a></span></dt><dt><span class="sect2"><a href="#PHPRESULTISNUMBER">8.9.7. Detect whether result object value is a number</a></span></dt><dt><span class="sect2"><a href="#PHPRESULTGETSTRING">8.9.8. Get string value of a result object</a></span></dt><dt><span class="sect2"><a href="#PHPRESULTGETNUMBER">8.9.9. Get numeric value of a result object as a string</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPPARTCLASS">8.10. The OpenCReport\Part class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPPARTGETNEXT">8.10.1. Get the next report part</a></span></dt><dt><span class="sect2"><a href="#PHPPARTROWNEW">8.10.2. Create a new report part row</a></span></dt><dt><span class="sect2"><a href="#PHPPARTROWGETFIRST">8.10.3. Get the first report part row</a></span></dt><dt><span class="sect2"><a href="#PHPPARTADDITERATIONCB">8.10.4. Add iteration callback for the part</a></span></dt><dt><span class="sect2"><a href="#PHPPARTEQUALS">8.10.5. Check whether two parts are identical</a></span></dt><dt><span class="sect2"><a href="#PHPPARTSETITERATIONS">8.10.6. Check whether two parts are identical</a></span></dt><dt><span class="sect2"><a href="#PHPPARTSETFONTNAME">8.10.7. Set part font name</a></span></dt><dt><span class="sect2"><a href="#PHPPARTSETFONTSIZE">8.10.8. Set part font size</a></span></dt><dt><span class="sect2"><a href="#PHPPARTSETPAPER">8.10.9. Set part font size</a></span></dt><dt><span class="sect2"><a href="#PHPPARTSETORIENTATION">8.10.10. Set part orientation</a></span></dt><dt><span class="sect2"><a href="#PHPPARTSETTOPMARGIN">8.10.11. Set part top margin</a></span></dt><dt><span class="sect2"><a href="#PHPPARTSETBOTTOMMARGIN">8.10.12. Set part bottom margin</a></span></dt><dt><span class="sect2"><a href="#PHPPARTSETLEFTMARGIN">8.10.13. Set part left margin</a></span></dt><dt><span class="sect2"><a href="#PHPPARTSETRIGHTMARGIN">8.10.14. Set part right margin</a></span></dt><dt><span class="sect2"><a href="#PHPPARTSETSUPPRESS">8.10.15. Set part suppression</a></span></dt><dt><span class="sect2"><a href="#PHPPARTSETSPHF">8.10.16. Set suppression of the page header on the first page</a></span></dt><dt><span class="sect2"><a href="#PHPPARTPAGEHEADER">8.10.17. Get the part's page header</a></span></dt><dt><span class="sect2"><a href="#PHPPARTPAGEHEADERSETREPORT">8.10.18. Set the report object for the part's page header</a></span></dt><dt><span class="sect2"><a href="#PHPPARTPAGEFOOTER">8.10.19. Get the part's page footer</a></span></dt><dt><span class="sect2"><a href="#PHPPARTPAGEFOOTERSETREPORT">8.10.20. Set the report object for the part's page footer</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPPARTROWCLASS">8.11. The OpenCReport\Row class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPROWGETNEXT">8.11.1. Get the next part row</a></span></dt><dt><span class="sect2"><a href="#PHPROWCOLNEW">8.11.2. Create a new part column for the row</a></span></dt><dt><span class="sect2"><a href="#PHPROWCOLGETFIRST">8.11.3. Get first column of a part row</a></span></dt><dt><span class="sect2"><a href="#PHPROWSETSUPPRESS">8.11.4. Set suppression for the part row</a></span></dt><dt><span class="sect2"><a href="#PHPROWSETNEWPAGE">8.11.5. Set new page for the part row</a></span></dt><dt><span class="sect2"><a href="#PHPROWSETLAYOUT">8.11.6. Set layout type for the part row</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPPARTCOLCLASS">8.12. The OpenCReport\Column class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPCOLGETNEXT">8.12.1. Get next column</a></span></dt><dt><span class="sect2"><a href="#PHPCOLREPORTNEW">8.12.2. Create a new report in the column</a></span></dt><dt><span class="sect2"><a href="#PHPCOLREPORTGETFIRST">8.12.3. Get first report of a part column</a></span></dt><dt><span class="sect2"><a href="#PHPCOLSETSUPPRESS">8.12.4. Set part column suppression</a></span></dt><dt><span class="sect2"><a href="#PHPCOLSETWIDTH">8.12.5. Set part column width</a></span></dt><dt><span class="sect2"><a href="#PHPCOLSETHEIGHT">8.12.6. Set part column height</a></span></dt><dt><span class="sect2"><a href="#PHPCOLSETBORDERWIDTH">8.12.7. Set border width</a></span></dt><dt><span class="sect2"><a href="#PHPCOLSETBORDERCOLOR">8.12.8. Set border color</a></span></dt><dt><span class="sect2"><a href="#PHPCOLSETDETAILCOLS">8.12.9. Set number of detail columns</a></span></dt><dt><span class="sect2"><a href="#PHPCOLSETPADDING">8.12.10. Set column padding</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPREPORTCLASS">8.13. The OpenCReport\Report class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPREPORTGETNEXT">8.13.1. Get the next report</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTVARNEW">8.13.2. Create a new report variable</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTVARNEWFULL">8.13.3. Create a new custom report variable</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTEXPRPARSE">8.13.4. Parse and expression for the report</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTEXPRERROR">8.13.5. Get the error after a failed expression parsing</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTRESOLVEVARS">8.13.6. Resolve variables of the report</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTEVALVARS">8.13.7. Evaluate variables of the report</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTBREAKNEW">8.13.8. Create a new report break</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTBREAKGET">8.13.9. Get a report break by its name</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTBREAKGETFIRST">8.13.10. Get the first report break</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTRESOLVEBREAKS">8.13.11. Resolve breaks of the report</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTGETQUERYROWNUM">8.13.12. Get the current row number of the main query</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTADDSTARTCB">8.13.13. Add a "report start" callback</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTADDDONECB">8.13.14. Add a "report done" callback</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTADDNEWROWCB">8.13.15. Add a "new row" callback</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTADDITERATIONCB">8.13.16. Add an "iteration done" callback</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTADDPRECALCDONECB">8.13.17. Add a "precalculation done" callback</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTEQUALS">8.13.18. Check whether two report objects are the same</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTSETMAINQUERY">8.13.19. Set the report's main query</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTSETMAINQUERYBYNAME">8.13.20. Set the report's main query by name</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTSETSUPPRESS">8.13.21. Set the report suppression</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTSETITERATIONS">8.13.22. Set number of iterations for the report</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTSETFONTNAME">8.13.23. Set the font name for the report</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTSETFONTSIZE">8.13.24. Set the font size for the report</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTSETHEIGHT">8.13.25. Set the report height</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTSETFHPRIO">8.13.26. Set the report's field header prioroty</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTGETOUTPUT">8.13.27. Get output sections of the report</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPVARIABLECLASS">8.14. The OpenCReport\Variable class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPVARBASEEXPR">8.14.1. Get the base expression of a variable</a></span></dt><dt><span class="sect2"><a href="#PHPVARINTERMEDEXPR">8.14.2. Get the first intermediary expression of a variable</a></span></dt><dt><span class="sect2"><a href="#PHPVARINTERMED2EXPR">8.14.3. Get the second intermediary expression of a variable</a></span></dt><dt><span class="sect2"><a href="#PHPVARRESULTEXPR">8.14.4. Get the result expression of a variable</a></span></dt><dt><span class="sect2"><a href="#PHPVARSETPRECALC">8.14.5. Set the variable precalculated</a></span></dt><dt><span class="sect2"><a href="#PHPVARRESOLVE">8.14.6. Resolve expressions of a variable</a></span></dt><dt><span class="sect2"><a href="#PHPVAREVAL">8.14.7. Evaluate expressions of a variable</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPBREAKCLASS">8.15. The OpenCReport\Break class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPBREAKGETNEXT">8.15.1. Get next break</a></span></dt><dt><span class="sect2"><a href="#PHPBREAKBFADD">8.15.2. Add a breakfield to a break</a></span></dt><dt><span class="sect2"><a href="#PHPBREAKCHECKFIELDS">8.15.3. Check breakfields</a></span></dt><dt><span class="sect2"><a href="#PHPBREAKRESETVARS">8.15.4. Reset variables associated with a break</a></span></dt><dt><span class="sect2"><a href="#PHPBREAKADDTRIGGERCB">8.15.5. Add a "trigger" callback to a break</a></span></dt><dt><span class="sect2"><a href="#PHPBREAKNAME">8.15.6. Get the name of a break</a></span></dt><dt><span class="sect2"><a href="#PHPBREAKOUTPUTS">8.15.7. Get output sections of a break</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPOUTPUTCLASS">8.16. The OpenCReport\Output class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPOUTPUTSETSUPPRESS">8.16.1. Set suppression of the output section</a></span></dt><dt><span class="sect2"><a href="#PHPOUTPUTADDLINE">8.16.2. Add a (text) line</a></span></dt><dt><span class="sect2"><a href="#PHPOUTPUTADDHLINE">8.16.3. Add a horizontal line</a></span></dt><dt><span class="sect2"><a href="#PHPOUTPUTADDIMAGE">8.16.4. Add an image</a></span></dt><dt><span class="sect2"><a href="#PHPOUTPUTADDIMAGEEND">8.16.5. Add an image end marker</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPLINECLASS">8.17. The OpenCReport\Line class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPLINESETFONTNAME">8.17.1. Set the font name for the line</a></span></dt><dt><span class="sect2"><a href="#PHPLINESETFONTSIZE">8.17.2. Set the font size for the line</a></span></dt><dt><span class="sect2"><a href="#PHPLINESETBOLD">8.17.3. Set the font's bold flag for the line</a></span></dt><dt><span class="sect2"><a href="#PHPLINESETITALIC">8.17.4. Set the font's italic flag for the line</a></span></dt><dt><span class="sect2"><a href="#PHPLINESETSUPPRESS">8.17.5. Set line suppression</a></span></dt><dt><span class="sect2"><a href="#PHPLINESETCOLOR">8.17.6. Set text color for the line</a></span></dt><dt><span class="sect2"><a href="#PHPLINESETBGCOLOR">8.17.7. Set background color for the line</a></span></dt><dt><span class="sect2"><a href="#PHPLINEADDTEXT">8.17.8. Add a text element to the line</a></span></dt><dt><span class="sect2"><a href="#PHPLINEADDIMAGE">8.17.9. Add an image element to the line</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPHLINECLASS">8.18. The OpenCReport\HorizontalLine class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPHLINESETSIZE">8.18.1. Set the line width</a></span></dt><dt><span class="sect2"><a href="#PHPHLINESETINDENT">8.18.2. Set the line indentation</a></span></dt><dt><span class="sect2"><a href="#PHPHLINESETLENGTH">8.18.3. Set the line length</a></span></dt><dt><span class="sect2"><a href="#PHPHLINESETFONTSIZE">8.18.4. Set the line's font size</a></span></dt><dt><span class="sect2"><a href="#PHPHLINESETSUPPRESS">8.18.5. Set the suppression flag for the line</a></span></dt><dt><span class="sect2"><a href="#PHPHLINESETCOLOR">8.18.6. Set the line color</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPIMAGECLASS">8.19. The OpenCReport\Image class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPIMAGESETVALUE">8.19.1. Set the file name of the image</a></span></dt><dt><span class="sect2"><a href="#PHPIMAGESETSUPPRESS">8.19.2. Set the suppression flag for the image</a></span></dt><dt><span class="sect2"><a href="#PHPIMAGESETTYPE">8.19.3. Set the image type</a></span></dt><dt><span class="sect2"><a href="#PHPIMAGESETWIDTH">8.19.4. Set the image width</a></span></dt><dt><span class="sect2"><a href="#PHPIMAGESETHEIGHT">8.19.5. Set the image height</a></span></dt><dt><span class="sect2"><a href="#PHPIMAGESETALIGNMENT">8.19.6. Set the image alignment</a></span></dt><dt><span class="sect2"><a href="#PHPIMAGESETBGCOLOR">8.19.7. Set the image background color</a></span></dt><dt><span class="sect2"><a href="#PHPIMAGESETTEXTWIDTH">8.19.8. Set the image "text width"</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPTEXTCLASS">8.20. The OpenCReport\Text class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPTEXTSETVALUESTRING">8.20.1. Set literal value</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETVALUEEXPR">8.20.2. Set expression value</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETVALUEDELAYED">8.20.3. Set delayed flag for the field expression</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETFORMAT">8.20.4. Set the format string for the field expression</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETXLATE">8.20.5. Set the translation flag for the field expression</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETWIDTH">8.20.6. Set the field width</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETALIGN">8.20.7. Set the field alignment</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETCOLOR">8.20.8. Set the field text color</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETBGCOLOR">8.20.9. Set the field background color</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETFONTNAME">8.20.10. Set the field font name</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETFONTSIZE">8.20.11. Set the field font size</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETBOLD">8.20.12. Set the field's bold flag</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETITALIC">8.20.13. Set the field's italic flag</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETLINK">8.20.14. Set the field's link</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETMEMO">8.20.15. Set the field's memo flag</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETMEMOWRAP">8.20.16. Set the field's "wrap at characters" flag</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETMEMOMAXLINES">8.20.17. Set the field's maximum number of lines</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPRLIBCOMPAT">8.21. RLIB compatibility API</a></span></dt><dd><dl><dt><span class="sect2"><a href="#RLIBINIT">8.21.1. Initialize a report</a></span></dt><dt><span class="sect2"><a href="#RLIBDESTROY">8.21.2. Destroy a report</a></span></dt><dt><span class="sect2"><a href="#RLIBGETLIBVER">8.21.3. Get library version</a></span></dt><dt><span class="sect2"><a href="#RLIBADDMARIADS">8.21.4. Add a MySQL/MariaDB datasource</a></span></dt><dt><span class="sect2"><a href="#RLIBADDMARIADS2">8.21.5. Add a MySQL/MariaDB datasource from an INI group</a></span></dt><dt><span class="sect2"><a href="#RLIBADDPGDS">8.21.6. Add a PostgreSQL datasource</a></span></dt><dt><span class="sect2"><a href="#RLIBADDODBCDS">8.21.7. Add an ODBC datasource</a></span></dt><dt><span class="sect2"><a href="#RLIBADDARRAYDS">8.21.8. Add an array datasource</a></span></dt><dt><span class="sect2"><a href="#RLIBADDXMLDS">8.21.9. Add an XML datasource</a></span></dt><dt><span class="sect2"><a href="#RLIBADDCSVDS">8.21.10. Add a CSV datasource</a></span></dt><dt><span class="sect2"><a href="#RLIBADDQUERY">8.21.11. Add a query</a></span></dt><dt><span class="sect2"><a href="#RLIBADDFOLLOWER">8.21.12. Add a resultset follower</a></span></dt><dt><span class="sect2"><a href="#RLIBADDN1FOLLOWER">8.21.13. Add a resultset N:1 follower</a></span></dt><dt><span class="sect2"><a href="#RLIBSETDSENCODING">8.21.14. Set datasource encoding</a></span></dt><dt><span class="sect2"><a href="#RLIBLOADREPORT">8.21.15. Add a report XML</a></span></dt><dt><span class="sect2"><a href="#RLIBPARSEXMLFROMBUFFER">8.21.16. Add a report XML from buffer</a></span></dt><dt><span class="sect2"><a href="#RLIBADDSEARCHPATH">8.21.17. Add a search path</a></span></dt><dt><span class="sect2"><a href="#RLIBSETLOCALE">8.21.18. Set locale</a></span></dt><dt><span class="sect2"><a href="#RLIBSETUPXLATE">8.21.19. Setup translation</a></span></dt><dt><span class="sect2"><a href="#RLIBSETOUTPUTFORMAT">8.21.20. Set output format</a></span></dt><dt><span class="sect2"><a href="#RLIBADDUSERFUNC">8.21.21. Add a custom report function</a></span></dt><dt><span class="sect2"><a href="#RLIBSETOUTPUTENCODING">8.21.22. Set output encoding</a></span></dt><dt><span class="sect2"><a href="#RLIBADDREPORTPARAM">8.21.23. Add a report parameter</a></span></dt><dt><span class="sect2"><a href="#RLIBSETOUTPUTPARAM">8.21.24. Set an output parameter</a></span></dt><dt><span class="sect2"><a href="#RLIBREFRESHARRAY">8.21.25. Refresh array query contents</a></span></dt><dt><span class="sect2"><a href="#RLIBADDEVENTCB">8.21.26. Add an event callback</a></span></dt><dt><span class="sect2"><a href="#RLIBRUNREPORT">8.21.27. Execute the report</a></span></dt><dt><span class="sect2"><a href="#RLIBDUMPREPORT">8.21.28. Dump the report output</a></span></dt><dt><span class="sect2"><a href="#RLIBGETCONTENTTYPE">8.21.29. Get content type</a></span></dt><dt><span class="sect2"><a href="#RLIBSETRADIX">8.21.30. Set radix character</a></span></dt><dt><span class="sect2"><a href="#RLIBCOMPILEEXPR">8.21.31. Compile and evaluate an expression</a></span></dt><dt><span class="sect2"><a href="#RLIBADDGRAPHREGION">8.21.32. Add graph background region</a></span></dt><dt><span class="sect2"><a href="#RLIBCLEARREGION">8.21.33. Clear graph background region</a></span></dt><dt><span class="sect2"><a href="#RLIBSETGRAPHMINORTICK">8.21.34. Set graph minor tick</a></span></dt><dt><span class="sect2"><a href="#RLIBSETGRAPHMINORTICKLOC">8.21.35. Set graph minor tick by location</a></span></dt></dl></dd></dl></div><div class="sect1" id="PHPMODULE"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.1. The OpenCReports PHP module <a href="#PHPMODULE" class="id_link">#</a></h2></div></div></div><p>
+				</p></div></div></div></div><div class="chapter" id="PHP-API-REFERENCE"><div class="titlepage"><div><div><h1 class="title">Chapter 8. PHP language API reference</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#PHPMODULE">8.1. The OpenCReports PHP module</a></span></dt><dt><span class="sect1"><a href="#MAINCLASS">8.2. The OpenCReport class</a></span></dt><dt><span class="sect1"><a href="#PHPHIGHLEVELAPI">8.3. High level PHP API</a></span></dt><dd><dl><dt><span class="sect2"><a href="#MAINCLASSCONSTR">8.3.1. Constructor</a></span></dt><dt><span class="sect2"><a href="#PHPLOADXML">8.3.2. Load a report XML description</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTSETOUTPUTFORMAT">8.3.3. Set report output format</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTSETOUTPUTPARAM">8.3.4. Set report output parameter</a></span></dt><dt><span class="sect2"><a href="#PHPRUNREPORT">8.3.5. Run the report</a></span></dt><dt><span class="sect2"><a href="#PHPDUMPREPORT">8.3.6. Dump report result</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTGETRESULT">8.3.7. Get report result</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTGETCONTENTTYPE">8.3.8. Get report content type</a></span></dt><dt><span class="sect2"><a href="#PHPGETLIBVER">8.3.9. Get library version</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPLOWLEVELAPI">8.4. Low level PHP API</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPNUMERICTUNING">8.4.1. Numeric behavior related methods</a></span></dt><dt><span class="sect2"><a href="#PHPLOCALEMETHODS">8.4.2. Locale related methods</a></span></dt><dt><span class="sect2"><a href="#PHPDSMETHODS">8.4.3. Data source and query related methods</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRFUNC">8.4.4. Expression related methods</a></span></dt><dt><span class="sect2"><a href="#PHPLAYOUTMETHODS">8.4.5. Layout part related methods</a></span></dt><dt><span class="sect2"><a href="#PHPCALLBACKMETHODS">8.4.6. Callback related methods</a></span></dt><dt><span class="sect2"><a href="#PHPENVMETHODS">8.4.7. Environment related methods</a></span></dt><dt><span class="sect2"><a href="#PHPSETMVARMETHOD">8.4.8. Add "m" domain variable</a></span></dt><dt><span class="sect2"><a href="#PHPRESULTMETHODS">8.4.9. Result related methods</a></span></dt><dt><span class="sect2"><a href="#PHPPATHMETHODS">8.4.10. Path related methods</a></span></dt><dt><span class="sect2"><a href="#PHPCOLORMETHODS">8.4.11. Color related methods</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPDSCLASS">8.5. The OpenCReport\Datasource class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPDSFREE">8.5.1. Free a datasource</a></span></dt><dt><span class="sect2"><a href="#PHPDSQUERYADD">8.5.2. Add a query to the datasource</a></span></dt><dt><span class="sect2"><a href="#PHPDSSETENCODING">8.5.3. Set datasource encoding</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPQUERYCLASS">8.6. The OpenCReport\Query class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPQUERYGETRESULT">8.6.1. Get result for a query's current row</a></span></dt><dt><span class="sect2"><a href="#PHPQUERYNAVSTART">8.6.2. Start navigation for a query</a></span></dt><dt><span class="sect2"><a href="#PHPQUERYNAVNEXT">8.6.3. Navigate to the next row</a></span></dt><dt><span class="sect2"><a href="#PHPQUERYADDFOLLOWER">8.6.4. Add a query follower</a></span></dt><dt><span class="sect2"><a href="#PHPQUERYADDN1FOLLOWER">8.6.5. Add an N:1 query follower</a></span></dt><dt><span class="sect2"><a href="#PHPQUERYFREE">8.6.6. Free a query</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPQUERYRESULTCLASS">8.7. The OpenCReport\QueryResult class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPQUERYRESULTCOLUMNS">8.7.1. Get number of columns for a query result</a></span></dt><dt><span class="sect2"><a href="#PHPQUERYRESULTCOLNAME">8.7.2. Get the nth column name for a query result</a></span></dt><dt><span class="sect2"><a href="#PHPQUERYRESULTCOLRESULT">8.7.3. Get the nth column result for a query result</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPEXPRCLASS">8.8. The OpenCReport\Expr class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPEXPRFREE">8.8.1. Free an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRPRINT">8.8.2. Print an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRNODES">8.8.3. Get the number of expression tree nodes</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRRESOLVE">8.8.4. Resolve an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPROPTIMIZE">8.8.5. Optimize an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPREVAL">8.8.6. Evaluate an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRGETRESULT">8.8.7. Get the result of an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETSTRINGVALUE">8.8.8. Set expression result to a string value</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETLONGVALUE">8.8.9. Set expression result to a long value</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETDOUBLEVALUE">8.8.10. Set expression result to a double value</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETNUMBERVALUEFROMSTRING">8.8.11. Set expression result to a numeric value from string</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRGETNUMOPS">8.8.12. Get number of operands of a expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPROPGETRESULT">8.8.13. Get nth operands' result of a expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRCMPRESULTS">8.8.14. Compare the expression's current and previous results</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRINITRESULTS">8.8.15. Initialize expression results</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRGETSTRINGVALUE">8.8.16. Get string value of an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRGETLONGVALUE">8.8.17. Get long value of an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRGETDOUBLEVALUE">8.8.18. Get double value of an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRGETNUMBERVALUEASSTRING">8.8.19. Get numeric value of an expression as a string</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETNTHSTRINGVALUE">8.8.20. Set nth result of an expression to a string value</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETNTHLONGVALUE">8.8.21. Set nth result of an expression to a long value</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETNTHDOUBLEVALUE">8.8.22. Set nth result of an expression to a double value</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETITERATIVESTARTFLAG">8.8.23. Set iterative start flag of an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETDELAYED">8.8.24. Set expression to delayed</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPRESULTCLASS">8.9. The OpenCReport\Result class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPRESULTFREE">8.9.1. Free a result object</a></span></dt><dt><span class="sect2"><a href="#PHPRESULTCOPY">8.9.2. Copy a result object</a></span></dt><dt><span class="sect2"><a href="#PHPRESULTPRINT">8.9.3. Print a result object</a></span></dt><dt><span class="sect2"><a href="#PHPRESULTGETTYPE">8.9.4. Get result object value type</a></span></dt><dt><span class="sect2"><a href="#PHPRESULTISNULL">8.9.5. Detect whether result object value is NULL</a></span></dt><dt><span class="sect2"><a href="#PHPRESULTISSTRING">8.9.6. Detect whether result object value is a string</a></span></dt><dt><span class="sect2"><a href="#PHPRESULTISNUMBER">8.9.7. Detect whether result object value is a number</a></span></dt><dt><span class="sect2"><a href="#PHPRESULTGETSTRING">8.9.8. Get string value of a result object</a></span></dt><dt><span class="sect2"><a href="#PHPRESULTGETNUMBER">8.9.9. Get numeric value of a result object as a string</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPPARTCLASS">8.10. The OpenCReport\Part class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPPARTGETNEXT">8.10.1. Get the next report part</a></span></dt><dt><span class="sect2"><a href="#PHPPARTROWNEW">8.10.2. Create a new report part row</a></span></dt><dt><span class="sect2"><a href="#PHPPARTROWGETFIRST">8.10.3. Get the first report part row</a></span></dt><dt><span class="sect2"><a href="#PHPPARTADDITERATIONCB">8.10.4. Add iteration callback for the part</a></span></dt><dt><span class="sect2"><a href="#PHPPARTEQUALS">8.10.5. Check whether two parts are identical</a></span></dt><dt><span class="sect2"><a href="#PHPPARTSETITERATIONS">8.10.6. Check whether two parts are identical</a></span></dt><dt><span class="sect2"><a href="#PHPPARTSETFONTNAME">8.10.7. Set part font name</a></span></dt><dt><span class="sect2"><a href="#PHPPARTSETFONTSIZE">8.10.8. Set part font size</a></span></dt><dt><span class="sect2"><a href="#PHPPARTSETPAPER">8.10.9. Set part font size</a></span></dt><dt><span class="sect2"><a href="#PHPPARTSETORIENTATION">8.10.10. Set part orientation</a></span></dt><dt><span class="sect2"><a href="#PHPPARTSETTOPMARGIN">8.10.11. Set part top margin</a></span></dt><dt><span class="sect2"><a href="#PHPPARTSETBOTTOMMARGIN">8.10.12. Set part bottom margin</a></span></dt><dt><span class="sect2"><a href="#PHPPARTSETLEFTMARGIN">8.10.13. Set part left margin</a></span></dt><dt><span class="sect2"><a href="#PHPPARTSETRIGHTMARGIN">8.10.14. Set part right margin</a></span></dt><dt><span class="sect2"><a href="#PHPPARTSETSUPPRESS">8.10.15. Set part suppression</a></span></dt><dt><span class="sect2"><a href="#PHPPARTSETSPHF">8.10.16. Set suppression of the page header on the first page</a></span></dt><dt><span class="sect2"><a href="#PHPPARTPAGEHEADER">8.10.17. Get the part's page header</a></span></dt><dt><span class="sect2"><a href="#PHPPARTPAGEHEADERSETREPORT">8.10.18. Set the report object for the part's page header</a></span></dt><dt><span class="sect2"><a href="#PHPPARTPAGEFOOTER">8.10.19. Get the part's page footer</a></span></dt><dt><span class="sect2"><a href="#PHPPARTPAGEFOOTERSETREPORT">8.10.20. Set the report object for the part's page footer</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPPARTROWCLASS">8.11. The OpenCReport\Row class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPROWGETNEXT">8.11.1. Get the next part row</a></span></dt><dt><span class="sect2"><a href="#PHPROWCOLNEW">8.11.2. Create a new part column for the row</a></span></dt><dt><span class="sect2"><a href="#PHPROWCOLGETFIRST">8.11.3. Get first column of a part row</a></span></dt><dt><span class="sect2"><a href="#PHPROWSETSUPPRESS">8.11.4. Set suppression for the part row</a></span></dt><dt><span class="sect2"><a href="#PHPROWSETNEWPAGE">8.11.5. Set new page for the part row</a></span></dt><dt><span class="sect2"><a href="#PHPROWSETLAYOUT">8.11.6. Set layout type for the part row</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPPARTCOLCLASS">8.12. The OpenCReport\Column class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPCOLGETNEXT">8.12.1. Get next column</a></span></dt><dt><span class="sect2"><a href="#PHPCOLREPORTNEW">8.12.2. Create a new report in the column</a></span></dt><dt><span class="sect2"><a href="#PHPCOLREPORTGETFIRST">8.12.3. Get first report of a part column</a></span></dt><dt><span class="sect2"><a href="#PHPCOLSETSUPPRESS">8.12.4. Set part column suppression</a></span></dt><dt><span class="sect2"><a href="#PHPCOLSETWIDTH">8.12.5. Set part column width</a></span></dt><dt><span class="sect2"><a href="#PHPCOLSETHEIGHT">8.12.6. Set part column height</a></span></dt><dt><span class="sect2"><a href="#PHPCOLSETBORDERWIDTH">8.12.7. Set border width</a></span></dt><dt><span class="sect2"><a href="#PHPCOLSETBORDERCOLOR">8.12.8. Set border color</a></span></dt><dt><span class="sect2"><a href="#PHPCOLSETDETAILCOLS">8.12.9. Set number of detail columns</a></span></dt><dt><span class="sect2"><a href="#PHPCOLSETPADDING">8.12.10. Set column padding</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPREPORTCLASS">8.13. The OpenCReport\Report class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPREPORTGETNEXT">8.13.1. Get the next report</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTVARNEW">8.13.2. Create a new report variable</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTVARNEWFULL">8.13.3. Create a new custom report variable</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTEXPRPARSE">8.13.4. Parse and expression for the report</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTEXPRERROR">8.13.5. Get the error after a failed expression parsing</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTRESOLVEVARS">8.13.6. Resolve variables of the report</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTEVALVARS">8.13.7. Evaluate variables of the report</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTBREAKNEW">8.13.8. Create a new report break</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTBREAKGET">8.13.9. Get a report break by its name</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTBREAKGETFIRST">8.13.10. Get the first report break</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTRESOLVEBREAKS">8.13.11. Resolve breaks of the report</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTGETQUERYROWNUM">8.13.12. Get the current row number of the main query</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTADDSTARTCB">8.13.13. Add a "report start" callback</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTADDDONECB">8.13.14. Add a "report done" callback</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTADDNEWROWCB">8.13.15. Add a "new row" callback</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTADDITERATIONCB">8.13.16. Add an "iteration done" callback</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTADDPRECALCDONECB">8.13.17. Add a "precalculation done" callback</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTEQUALS">8.13.18. Check whether two report objects are the same</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTSETMAINQUERY">8.13.19. Set the report's main query</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTSETMAINQUERYBYNAME">8.13.20. Set the report's main query by name</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTSETSUPPRESS">8.13.21. Set the report suppression</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTSETITERATIONS">8.13.22. Set number of iterations for the report</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTSETFONTNAME">8.13.23. Set the font name for the report</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTSETFONTSIZE">8.13.24. Set the font size for the report</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTSETHEIGHT">8.13.25. Set the report height</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTSETFHPRIO">8.13.26. Set the report's field header prioroty</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTGETOUTPUT">8.13.27. Get output sections of the report</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPVARIABLECLASS">8.14. The OpenCReport\Variable class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPVARBASEEXPR">8.14.1. Get the base expression of a variable</a></span></dt><dt><span class="sect2"><a href="#PHPVARINTERMEDEXPR">8.14.2. Get the first intermediary expression of a variable</a></span></dt><dt><span class="sect2"><a href="#PHPVARINTERMED2EXPR">8.14.3. Get the second intermediary expression of a variable</a></span></dt><dt><span class="sect2"><a href="#PHPVARRESULTEXPR">8.14.4. Get the result expression of a variable</a></span></dt><dt><span class="sect2"><a href="#PHPVARSETPRECALC">8.14.5. Set the variable precalculated</a></span></dt><dt><span class="sect2"><a href="#PHPVARRESOLVE">8.14.6. Resolve expressions of a variable</a></span></dt><dt><span class="sect2"><a href="#PHPVAREVAL">8.14.7. Evaluate expressions of a variable</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPBREAKCLASS">8.15. The OpenCReport\Break class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPBREAKGETNEXT">8.15.1. Get next break</a></span></dt><dt><span class="sect2"><a href="#PHPBREAKBFADD">8.15.2. Add a breakfield to a break</a></span></dt><dt><span class="sect2"><a href="#PHPBREAKCHECKFIELDS">8.15.3. Check breakfields</a></span></dt><dt><span class="sect2"><a href="#PHPBREAKRESETVARS">8.15.4. Reset variables associated with a break</a></span></dt><dt><span class="sect2"><a href="#PHPBREAKADDTRIGGERCB">8.15.5. Add a "trigger" callback to a break</a></span></dt><dt><span class="sect2"><a href="#PHPBREAKNAME">8.15.6. Get the name of a break</a></span></dt><dt><span class="sect2"><a href="#PHPBREAKOUTPUTS">8.15.7. Get output sections of a break</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPOUTPUTCLASS">8.16. The OpenCReport\Output class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPOUTPUTSETSUPPRESS">8.16.1. Set suppression of the output section</a></span></dt><dt><span class="sect2"><a href="#PHPOUTPUTADDLINE">8.16.2. Add a (text) line</a></span></dt><dt><span class="sect2"><a href="#PHPOUTPUTADDHLINE">8.16.3. Add a horizontal line</a></span></dt><dt><span class="sect2"><a href="#PHPOUTPUTADDIMAGE">8.16.4. Add an image</a></span></dt><dt><span class="sect2"><a href="#PHPOUTPUTADDIMAGEEND">8.16.5. Add an image end marker</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPLINECLASS">8.17. The OpenCReport\Line class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPLINESETFONTNAME">8.17.1. Set the font name for the line</a></span></dt><dt><span class="sect2"><a href="#PHPLINESETFONTSIZE">8.17.2. Set the font size for the line</a></span></dt><dt><span class="sect2"><a href="#PHPLINESETBOLD">8.17.3. Set the font's bold flag for the line</a></span></dt><dt><span class="sect2"><a href="#PHPLINESETITALIC">8.17.4. Set the font's italic flag for the line</a></span></dt><dt><span class="sect2"><a href="#PHPLINESETSUPPRESS">8.17.5. Set line suppression</a></span></dt><dt><span class="sect2"><a href="#PHPLINESETCOLOR">8.17.6. Set text color for the line</a></span></dt><dt><span class="sect2"><a href="#PHPLINESETBGCOLOR">8.17.7. Set background color for the line</a></span></dt><dt><span class="sect2"><a href="#PHPLINEADDTEXT">8.17.8. Add a text element to the line</a></span></dt><dt><span class="sect2"><a href="#PHPLINEADDIMAGE">8.17.9. Add an image element to the line</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPHLINECLASS">8.18. The OpenCReport\HorizontalLine class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPHLINESETSIZE">8.18.1. Set the line width</a></span></dt><dt><span class="sect2"><a href="#PHPHLINESETINDENT">8.18.2. Set the line indentation</a></span></dt><dt><span class="sect2"><a href="#PHPHLINESETLENGTH">8.18.3. Set the line length</a></span></dt><dt><span class="sect2"><a href="#PHPHLINESETFONTSIZE">8.18.4. Set the line's font size</a></span></dt><dt><span class="sect2"><a href="#PHPHLINESETSUPPRESS">8.18.5. Set the suppression flag for the line</a></span></dt><dt><span class="sect2"><a href="#PHPHLINESETCOLOR">8.18.6. Set the line color</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPIMAGECLASS">8.19. The OpenCReport\Image class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPIMAGESETVALUE">8.19.1. Set the file name of the image</a></span></dt><dt><span class="sect2"><a href="#PHPIMAGESETSUPPRESS">8.19.2. Set the suppression flag for the image</a></span></dt><dt><span class="sect2"><a href="#PHPIMAGESETTYPE">8.19.3. Set the image type</a></span></dt><dt><span class="sect2"><a href="#PHPIMAGESETWIDTH">8.19.4. Set the image width</a></span></dt><dt><span class="sect2"><a href="#PHPIMAGESETHEIGHT">8.19.5. Set the image height</a></span></dt><dt><span class="sect2"><a href="#PHPIMAGESETALIGNMENT">8.19.6. Set the image alignment</a></span></dt><dt><span class="sect2"><a href="#PHPIMAGESETBGCOLOR">8.19.7. Set the image background color</a></span></dt><dt><span class="sect2"><a href="#PHPIMAGESETTEXTWIDTH">8.19.8. Set the image "text width"</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPTEXTCLASS">8.20. The OpenCReport\Text class</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PHPTEXTSETVALUESTRING">8.20.1. Set literal value</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETVALUEEXPR">8.20.2. Set expression value</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETVALUEDELAYED">8.20.3. Set delayed flag for the field expression</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETFORMAT">8.20.4. Set the format string for the field expression</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETXLATE">8.20.5. Set the translation flag for the field expression</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETWIDTH">8.20.6. Set the field width</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETALIGN">8.20.7. Set the field alignment</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETCOLOR">8.20.8. Set the field text color</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETBGCOLOR">8.20.9. Set the field background color</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETFONTNAME">8.20.10. Set the field font name</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETFONTSIZE">8.20.11. Set the field font size</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETBOLD">8.20.12. Set the field's bold flag</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETITALIC">8.20.13. Set the field's italic flag</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETLINK">8.20.14. Set the field's link</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETMEMO">8.20.15. Set the field's memo flag</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETMEMOWRAP">8.20.16. Set the field's "wrap at characters" flag</a></span></dt><dt><span class="sect2"><a href="#PHPTEXTSETMEMOMAXLINES">8.20.17. Set the field's maximum number of lines</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PHPRLIBCOMPAT">8.21. RLIB compatibility API</a></span></dt><dd><dl><dt><span class="sect2"><a href="#RLIBINIT">8.21.1. Initialize a report</a></span></dt><dt><span class="sect2"><a href="#RLIBDESTROY">8.21.2. Destroy a report</a></span></dt><dt><span class="sect2"><a href="#RLIBGETLIBVER">8.21.3. Get library version</a></span></dt><dt><span class="sect2"><a href="#RLIBADDMARIADS">8.21.4. Add a MySQL/MariaDB datasource</a></span></dt><dt><span class="sect2"><a href="#RLIBADDMARIADS2">8.21.5. Add a MySQL/MariaDB datasource from an INI group</a></span></dt><dt><span class="sect2"><a href="#RLIBADDPGDS">8.21.6. Add a PostgreSQL datasource</a></span></dt><dt><span class="sect2"><a href="#RLIBADDODBCDS">8.21.7. Add an ODBC datasource</a></span></dt><dt><span class="sect2"><a href="#RLIBADDARRAYDS">8.21.8. Add an array datasource</a></span></dt><dt><span class="sect2"><a href="#RLIBADDXMLDS">8.21.9. Add an XML datasource</a></span></dt><dt><span class="sect2"><a href="#RLIBADDCSVDS">8.21.10. Add a CSV datasource</a></span></dt><dt><span class="sect2"><a href="#RLIBADDQUERY">8.21.11. Add a query</a></span></dt><dt><span class="sect2"><a href="#RLIBADDFOLLOWER">8.21.12. Add a resultset follower</a></span></dt><dt><span class="sect2"><a href="#RLIBADDN1FOLLOWER">8.21.13. Add a resultset N:1 follower</a></span></dt><dt><span class="sect2"><a href="#RLIBSETDSENCODING">8.21.14. Set datasource encoding</a></span></dt><dt><span class="sect2"><a href="#RLIBLOADREPORT">8.21.15. Add a report XML</a></span></dt><dt><span class="sect2"><a href="#RLIBPARSEXMLFROMBUFFER">8.21.16. Add a report XML from buffer</a></span></dt><dt><span class="sect2"><a href="#RLIBADDSEARCHPATH">8.21.17. Add a search path</a></span></dt><dt><span class="sect2"><a href="#RLIBSETLOCALE">8.21.18. Set locale</a></span></dt><dt><span class="sect2"><a href="#RLIBSETUPXLATE">8.21.19. Setup translation</a></span></dt><dt><span class="sect2"><a href="#RLIBSETOUTPUTFORMAT">8.21.20. Set output format</a></span></dt><dt><span class="sect2"><a href="#RLIBADDUSERFUNC">8.21.21. Add a custom report function</a></span></dt><dt><span class="sect2"><a href="#RLIBSETOUTPUTENCODING">8.21.22. Set output encoding</a></span></dt><dt><span class="sect2"><a href="#RLIBADDREPORTPARAM">8.21.23. Add a report parameter</a></span></dt><dt><span class="sect2"><a href="#RLIBSETOUTPUTPARAM">8.21.24. Set an output parameter</a></span></dt><dt><span class="sect2"><a href="#RLIBREFRESHARRAY">8.21.25. Refresh array query contents</a></span></dt><dt><span class="sect2"><a href="#RLIBADDEVENTCB">8.21.26. Add an event callback</a></span></dt><dt><span class="sect2"><a href="#RLIBRUNREPORT">8.21.27. Execute the report</a></span></dt><dt><span class="sect2"><a href="#RLIBDUMPREPORT">8.21.28. Dump the report output</a></span></dt><dt><span class="sect2"><a href="#RLIBGETCONTENTTYPE">8.21.29. Get content type</a></span></dt><dt><span class="sect2"><a href="#RLIBSETRADIX">8.21.30. Set radix character</a></span></dt><dt><span class="sect2"><a href="#RLIBCOMPILEEXPR">8.21.31. Compile and evaluate an expression</a></span></dt><dt><span class="sect2"><a href="#RLIBADDGRAPHREGION">8.21.32. Add graph background region</a></span></dt><dt><span class="sect2"><a href="#RLIBCLEARREGION">8.21.33. Clear graph background region</a></span></dt><dt><span class="sect2"><a href="#RLIBSETGRAPHMINORTICK">8.21.34. Set graph minor tick</a></span></dt><dt><span class="sect2"><a href="#RLIBSETGRAPHMINORTICKLOC">8.21.35. Set graph minor tick by location</a></span></dt></dl></dd></dl></div><div class="sect1" id="PHPMODULE"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.1. The OpenCReports PHP module <a href="#PHPMODULE" class="id_link">#</a></h2></div></div></div><p>
 			<code class="literal">OpenCReports</code> comes with a PHP module,
 			which must be enabled in the PHP configuration:
 			</p><pre class="programlisting">extension=opencreports.so</pre><p>
@@ -6861,6 +7050,10 @@ ocrpt_mem_string_append_printf(ocrpt_string *string,
     public const OUTPUT_CSV;
     public const OUTPUT_XML;
     public final set_output_format(long $format): void;
+
+    public final set_output_parameter(
+                     string $param,
+                     string $value): void;
 
     public final execute(): bool;
     public final spool(): void;
@@ -6960,6 +7153,10 @@ ocrpt_mem_string_append_printf(ocrpt_string *string,
     public final result_new():
                      OpenCReport\Result;
 
+    public final set_mvariable(
+                     string $name,
+                     ?string $value = null): void;
+
     public final add_search_path(
                      string $path): void;
     public static final canonicalize_path(
@@ -6979,7 +7176,7 @@ ocrpt_mem_string_append_printf(ocrpt_string *string,
     public final set_report_height_after_last(
                      string $expr_string): void;
 }</pre><p>
-		</p></div><div class="sect1" id="PHPHIGHLEVELAPI"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.3. High level PHP API <a href="#PHPHIGHLEVELAPI" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="#MAINCLASSCONSTR">8.3.1. Constructor</a></span></dt><dt><span class="sect2"><a href="#PHPLOADXML">8.3.2. Load a report XML description</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTSETOUTPUTFORMAT">8.3.3. Set report output format</a></span></dt><dt><span class="sect2"><a href="#PHPRUNREPORT">8.3.4. Run the report</a></span></dt><dt><span class="sect2"><a href="#PHPDUMPREPORT">8.3.5. Dump report result</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTGETRESULT">8.3.6. Get report result</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTGETCONTENTTYPE">8.3.7. Get report content type</a></span></dt><dt><span class="sect2"><a href="#PHPGETLIBVER">8.3.8. Get library version</a></span></dt></dl></div><p>
+		</p></div><div class="sect1" id="PHPHIGHLEVELAPI"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.3. High level PHP API <a href="#PHPHIGHLEVELAPI" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="#MAINCLASSCONSTR">8.3.1. Constructor</a></span></dt><dt><span class="sect2"><a href="#PHPLOADXML">8.3.2. Load a report XML description</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTSETOUTPUTFORMAT">8.3.3. Set report output format</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTSETOUTPUTPARAM">8.3.4. Set report output parameter</a></span></dt><dt><span class="sect2"><a href="#PHPRUNREPORT">8.3.5. Run the report</a></span></dt><dt><span class="sect2"><a href="#PHPDUMPREPORT">8.3.6. Dump report result</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTGETRESULT">8.3.7. Get report result</a></span></dt><dt><span class="sect2"><a href="#PHPREPORTGETCONTENTTYPE">8.3.8. Get report content type</a></span></dt><dt><span class="sect2"><a href="#PHPGETLIBVER">8.3.9. Get library version</a></span></dt></dl></div><p>
 			Here is an example code using the high level
 			PHP API where everything concerning the report
 			(including the data source) is described in
@@ -7036,19 +7233,116 @@ OpenCReport::set_output_format(int $format): void;</pre><p>
 				in subclasses. With PHP 8.1 and newer, the
 				<code class="literal">final</code> flag is added so overriding
 				these constants will throw an exception.
-			</p></div><div class="sect2" id="PHPRUNREPORT"><div class="titlepage"><div><div><h3 class="title">8.3.4. Run the report <a href="#PHPRUNREPORT" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPREPORTSETOUTPUTPARAM"><div class="titlepage"><div><div><h3 class="title">8.3.4. Set report output parameter <a href="#PHPREPORTSETOUTPUTPARAM" class="id_link">#</a></h3></div></div></div><p>
+				</p><pre class="programlisting">public final
+OpenCReport::set_output_parameter(
+                     string $param,
+                     string $value): void;</pre><p>
+			</p><p>
+				Possible parameters for the HTML output driver:
+				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">document_root</code> sets
+							the document root for trimming path prefix
+							from image paths.
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">meta</code> extends
+							the default
+							<code class="literal">&lt;meta charset="utf-8"&gt;</code>.
+                            <code class="literal">literal</code> (see
+							The passed-in string value may contain
+							the whole <code class="literal">&lt;meta ...&gt;</code>,
+							in which case the inner parameters are
+							used only. The <code class="literal">charset</code>
+							specification is ignored. Only the rest is used.
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">suppress_head</code> suppresses the default
+							<code class="literal">&lt;head&gt; ... &lt;/head&gt;</code> section.
+							Possible values to enable suppressing the
+							default <code class="literal">&lt;head&gt; ... &lt;/head&gt;</code>
+							are <code class="literal">yes</code>,
+							<code class="literal">true</code> and
+							<code class="literal">on</code>.
+							Anything else disables it.
+							Be aware, that the default section contains
+							importand CSS stylesheet settings that are
+							needed for the correct layout.
+						</p></li></ul></div><p>
+			</p><p>
+				Possible parameters for the CSV output driver:
+				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">csv_filename</code> sets the file
+							name for <code class="literal">Content-Disposition</code>
+							in the HTTP metadata returned by
+							<code class="literal">ocrpt_get_content_type()</code>.
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">csv_as_text</code> sets the MIME type
+							for <code class="literal">Content-Type</code>
+							in the HTTP metadata returned by
+							<code class="literal">ocrpt_get_content_type()</code>.
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">csv_delimiter</code> (also aliased as
+							<code class="literal">csv_delimeter</code> according to
+							the historical typo in RLIB) sets the CSV field
+							delimiter to the first character of the string.
+							By default it's a comma.
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">no_quotes</code> will create a CSV
+							output with values unquoted.
+							Possible values to enable it are
+							<code class="literal">yes</code>,
+							<code class="literal">true</code>,
+							<code class="literal">on</code> or any positive non-zero
+							number. Anything else disables it.
+							It takes precedence over
+							<code class="literal">only_quote_strings</code>
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">only_quote_strings</code>
+							will create a CSV output with only string
+							values quoted.
+							Possible values to enable it are
+							<code class="literal">yes</code>,
+							<code class="literal">true</code>,
+							<code class="literal">on</code> or any positive non-zero
+							number. Anything else disables it.
+						</p></li></ul></div><p>
+			</p><p>
+				Note that some languages (e.g German, Swedish
+				and Hungarian) use comma as the decimal separator
+				instead of decimal point. For these languages,
+				either set <code class="literal">csv_delimiter</code> or
+				set neither <code class="literal">no_quotes</code>, nor
+				<code class="literal">only_quote_strings</code>
+			</p><p>
+				Possible parameters for the XML output driver:
+				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
+							<code class="literal">xml_rlib_compat</code> sets the
+							flag to create an RLIB compatible XML output.
+							Possible values to enable it are
+							<code class="literal">yes</code>,
+							<code class="literal">true</code>,
+							<code class="literal">on</code> or any positive non-zero
+							number. Anything else disables it.
+						</p><p>
+							When enabled, the toplevel element
+							will be <code class="literal">&lt;rlib&gt;</code>
+							and <code class="literal">&lt;Report&gt;</code>s
+							inside <code class="literal">&lt;pd&gt;</code>
+							won't be embedded in a
+							<code class="literal">report</code> element.
+						</p></li></ul></div><p>
+			</p></div><div class="sect2" id="PHPRUNREPORT"><div class="titlepage"><div><div><h3 class="title">8.3.5. Run the report <a href="#PHPRUNREPORT" class="id_link">#</a></h3></div></div></div><p>
 				This method executes the report, constructs
 				the result in memory. It returns <code class="literal">true</code>
 				for success, <code class="literal">false</code> for failure.
 				It is a failure if the output format is unset.
 				</p><pre class="programlisting">public final
 OpenCReport::execute(): bool;</pre><p>
-			</p></div><div class="sect2" id="PHPDUMPREPORT"><div class="titlepage"><div><div><h3 class="title">8.3.5. Dump report result <a href="#PHPDUMPREPORT" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPDUMPREPORT"><div class="titlepage"><div><div><h3 class="title">8.3.6. Dump report result <a href="#PHPDUMPREPORT" class="id_link">#</a></h3></div></div></div><p>
 				Dump the report output on the program's
 				standard output channel.
 				</p><pre class="programlisting">public final
 OpenCReport::spool(): void;</pre><p>
-			</p></div><div class="sect2" id="PHPREPORTGETRESULT"><div class="titlepage"><div><div><h3 class="title">8.3.6. Get report result <a href="#PHPREPORTGETRESULT" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPREPORTGETRESULT"><div class="titlepage"><div><div><h3 class="title">8.3.7. Get report result <a href="#PHPREPORTGETRESULT" class="id_link">#</a></h3></div></div></div><p>
 				Get the report output. The application
 				then can save it as a file.
 				This method returns the output in a
@@ -7057,7 +7351,7 @@ OpenCReport::spool(): void;</pre><p>
 				<code class="literal">false</code>.
 				</p><pre class="programlisting">public final
 OpenCReport::get_output(): string|false;</pre><p>
-			</p></div><div class="sect2" id="PHPREPORTGETCONTENTTYPE"><div class="titlepage"><div><div><h3 class="title">8.3.7. Get report content type <a href="#PHPREPORTGETCONTENTTYPE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPREPORTGETCONTENTTYPE"><div class="titlepage"><div><div><h3 class="title">8.3.8. Get report content type <a href="#PHPREPORTGETCONTENTTYPE" class="id_link">#</a></h3></div></div></div><p>
 				Get the report content type. The application
 				then can add it as HTTP header line(s)
 				to the request. This method returns an
@@ -7068,12 +7362,12 @@ OpenCReport::get_output(): string|false;</pre><p>
 				Otherwise it returns <code class="literal">false</code>.
 				</p><pre class="programlisting">public final
 OpenCReport::get_content_type(): array|false;</pre><p>
-			</p></div><div class="sect2" id="PHPGETLIBVER"><div class="titlepage"><div><div><h3 class="title">8.3.8. Get library version <a href="#PHPGETLIBVER" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPGETLIBVER"><div class="titlepage"><div><div><h3 class="title">8.3.9. Get library version <a href="#PHPGETLIBVER" class="id_link">#</a></h3></div></div></div><p>
 				This method reports the OpenCReports
 				library version.
 				</p><pre class="programlisting">public final static
 OpenCReport::version(): string;</pre><p>
-			</p></div></div><div class="sect1" id="PHPLOWLEVELAPI"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.4. Low level PHP API <a href="#PHPLOWLEVELAPI" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="#PHPNUMERICTUNING">8.4.1. Numeric behavior related methods</a></span></dt><dt><span class="sect2"><a href="#PHPLOCALEMETHODS">8.4.2. Locale related methods</a></span></dt><dt><span class="sect2"><a href="#PHPDSMETHODS">8.4.3. Data source and query related methods</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRFUNC">8.4.4. Expression related methods</a></span></dt><dt><span class="sect2"><a href="#PHPLAYOUTMETHODS">8.4.5. Layout part related methods</a></span></dt><dt><span class="sect2"><a href="#PHPCALLBACKMETHODS">8.4.6. Callback related methods</a></span></dt><dt><span class="sect2"><a href="#PHPENVMETHODS">8.4.7. Environment related methods</a></span></dt><dt><span class="sect2"><a href="#PHPRESULTMETHODS">8.4.8. Result related methods</a></span></dt><dt><span class="sect2"><a href="#PHPPATHMETHODS">8.4.9. Path related methods</a></span></dt><dt><span class="sect2"><a href="#PHPCOLORMETHODS">8.4.10. Color related methods</a></span></dt></dl></div><p>
+			</p></div></div><div class="sect1" id="PHPLOWLEVELAPI"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.4. Low level PHP API <a href="#PHPLOWLEVELAPI" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="#PHPNUMERICTUNING">8.4.1. Numeric behavior related methods</a></span></dt><dt><span class="sect2"><a href="#PHPLOCALEMETHODS">8.4.2. Locale related methods</a></span></dt><dt><span class="sect2"><a href="#PHPDSMETHODS">8.4.3. Data source and query related methods</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRFUNC">8.4.4. Expression related methods</a></span></dt><dt><span class="sect2"><a href="#PHPLAYOUTMETHODS">8.4.5. Layout part related methods</a></span></dt><dt><span class="sect2"><a href="#PHPCALLBACKMETHODS">8.4.6. Callback related methods</a></span></dt><dt><span class="sect2"><a href="#PHPENVMETHODS">8.4.7. Environment related methods</a></span></dt><dt><span class="sect2"><a href="#PHPSETMVARMETHOD">8.4.8. Add "m" domain variable</a></span></dt><dt><span class="sect2"><a href="#PHPRESULTMETHODS">8.4.9. Result related methods</a></span></dt><dt><span class="sect2"><a href="#PHPPATHMETHODS">8.4.10. Path related methods</a></span></dt><dt><span class="sect2"><a href="#PHPCOLORMETHODS">8.4.11. Color related methods</a></span></dt></dl></div><p>
 			The <a class="xref" href="#PHPHIGHLEVELAPI" title="8.3. High level PHP API">High level PHP API</a> is also part of the
 			low level API. The class methods described below allow
 			creating a report using program code, or simply
@@ -7402,17 +7696,32 @@ my_callback(OpenCReport $o,
 				</p><pre class="programlisting">public final
 OpenCReport::env_get(string $var_name):
                      OpenCReport\Result;</pre><p>
-			</p></div><div class="sect2" id="PHPRESULTMETHODS"><div class="titlepage"><div><div><h3 class="title">8.4.8. Result related methods <a href="#PHPRESULTMETHODS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPSETMVARMETHOD"><div class="titlepage"><div><div><h3 class="title">8.4.8. Add "m" domain variable <a href="#PHPSETMVARMETHOD" class="id_link">#</a></h3></div></div></div><p>
+				Add an "m" domain variable.
+				If such a variable <code class="literal">name</code>
+				didn't exist yet, and <code class="literal">value</code>
+				is not <code class="literal">NULL</code>, then
+				the variable is set. If <code class="literal">value</code>
+				is <code class="literal">NULL</code> or omitted, the
+				variable is removed. Such an explicit variable
+				takes precedence over the PHP global variable
+				or the environment variable of the same name when
+				used in expressions.
+				</p><pre class="programlisting">public final
+OpenCReport::set_mvariable(
+                     string $name,
+                     string $value): void;</pre><p>
+			</p></div><div class="sect2" id="PHPRESULTMETHODS"><div class="titlepage"><div><div><h3 class="title">8.4.9. Result related methods <a href="#PHPRESULTMETHODS" class="id_link">#</a></h3></div></div></div><p>
 				This method creates an uninitialized
 				<code class="literal">OpenCReport\Result</code>
 				with no value. See <a class="xref" href="#PHPRESULTCLASS" title="8.9. The OpenCReport\Result class">The OpenCReport\Result class</a>
 				to set the value.
 				</p><pre class="programlisting">public final
 OpenCReport::result_new(): OpenCReport\Result;</pre><p>
-			</p></div><div class="sect2" id="PHPPATHMETHODS"><div class="titlepage"><div><div><h3 class="title">8.4.9. Path related methods <a href="#PHPPATHMETHODS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="PHPADDSEARCHPATH"><div class="titlepage"><div><div><h4 class="title">8.4.9.1. Add a search path <a href="#PHPADDSEARCHPATH" class="id_link">#</a></h4></div></div></div><p>
+			</p></div><div class="sect2" id="PHPPATHMETHODS"><div class="titlepage"><div><div><h3 class="title">8.4.10. Path related methods <a href="#PHPPATHMETHODS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="PHPADDSEARCHPATH"><div class="titlepage"><div><div><h4 class="title">8.4.10.1. Add a search path <a href="#PHPADDSEARCHPATH" class="id_link">#</a></h4></div></div></div><p>
 						</p><pre class="programlisting">public final
 OpenCReport::add_search_path(string $path): void;</pre><p>
-					</p></div><div class="sect3" id="PHPGETCANONFILE"><div class="titlepage"><div><div><h4 class="title">8.4.9.2. Canonicalize path <a href="#PHPGETCANONFILE" class="id_link">#</a></h4></div></div></div><p>
+					</p></div><div class="sect3" id="PHPGETCANONFILE"><div class="titlepage"><div><div><h4 class="title">8.4.10.2. Canonicalize path <a href="#PHPGETCANONFILE" class="id_link">#</a></h4></div></div></div><p>
 						This method returns (a possibly modified)
 						path that will create a canonical
 						absolute path that doesn't contain
@@ -7421,13 +7730,13 @@ OpenCReport::add_search_path(string $path): void;</pre><p>
 						the actual target directory, etc.
 						</p><pre class="programlisting">public static final
 OpenCReport::canonicalize_path(string $path): string;</pre><p>
-					</p></div><div class="sect3" id="PHPFINDFILE"><div class="titlepage"><div><div><h4 class="title">8.4.9.3. Find a file <a href="#PHPFINDFILE" class="id_link">#</a></h4></div></div></div><p>
+					</p></div><div class="sect3" id="PHPFINDFILE"><div class="titlepage"><div><div><h4 class="title">8.4.10.3. Find a file <a href="#PHPFINDFILE" class="id_link">#</a></h4></div></div></div><p>
 						Find a (possibly relative) file using
 						the search paths and return the canonical
 						absolute path if found.
 						</p><pre class="programlisting">public final
 OpenCReport::find_file(string $path): $string;</pre><p>
-					</p></div></div><div class="sect2" id="PHPCOLORMETHODS"><div class="titlepage"><div><div><h3 class="title">8.4.10. Color related methods <a href="#PHPCOLORMETHODS" class="id_link">#</a></h3></div></div></div><p>
+					</p></div></div><div class="sect2" id="PHPCOLORMETHODS"><div class="titlepage"><div><div><h3 class="title">8.4.11. Color related methods <a href="#PHPCOLORMETHODS" class="id_link">#</a></h3></div></div></div><p>
 				Get an array with <code class="literal">double</code>
 				components for the color name or color
 				specification.
@@ -7597,7 +7906,7 @@ OpenCReport\QueryResult::column_name(long $index):
 				</p><pre class="programlisting">public final
 OpenCReport\QueryResult::column_result(long $index):
                      ?OpenCReport\Result;</pre><p>
-			</p></div></div><div class="sect1" id="PHPEXPRCLASS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.8. The OpenCReport\Expr class <a href="#PHPEXPRCLASS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="#PHPEXPRFREE">8.8.1. Free an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRPRINT">8.8.2. Print an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRNODES">8.8.3. Get the number of expression tree nodes</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRRESOLVE">8.8.4. Resolve an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPROPTIMIZE">8.8.5. Optimize an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPREVAL">8.8.6. Evaluate an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRGETRESULT">8.8.7. Get the result of an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETSTRINGVALUE">8.8.8. Set expression result to a string value</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETLONGVALUE">8.8.9. Set expression result to a long value</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETDOUBLEVALUE">8.8.10. Set expression result to a double value</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRGETNUMOPS">8.8.11. Get number of operands of a expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPROPGETRESULT">8.8.12. Get nth operands' result of a expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRCMPRESULTS">8.8.13. Compare the expression's current and previous results</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRINITRESULTS">8.8.14. Initialize expression results</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETNTHSTRINGVALUE">8.8.15. Set nth result of an expression to a string value</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETNTHLONGVALUE">8.8.16. Set nth result of an expression to a long value</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETNTHDOUBLEVALUE">8.8.17. Set nth result of an expression to a double value</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETITERATIVESTARTFLAG">8.8.18. Set iterative start flag of an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETDELAYED">8.8.19. Set expression to delayed</a></span></dt></dl></div><p>
+			</p></div></div><div class="sect1" id="PHPEXPRCLASS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.8. The OpenCReport\Expr class <a href="#PHPEXPRCLASS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="#PHPEXPRFREE">8.8.1. Free an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRPRINT">8.8.2. Print an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRNODES">8.8.3. Get the number of expression tree nodes</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRRESOLVE">8.8.4. Resolve an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPROPTIMIZE">8.8.5. Optimize an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPREVAL">8.8.6. Evaluate an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRGETRESULT">8.8.7. Get the result of an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETSTRINGVALUE">8.8.8. Set expression result to a string value</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETLONGVALUE">8.8.9. Set expression result to a long value</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETDOUBLEVALUE">8.8.10. Set expression result to a double value</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETNUMBERVALUEFROMSTRING">8.8.11. Set expression result to a numeric value from string</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRGETNUMOPS">8.8.12. Get number of operands of a expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPROPGETRESULT">8.8.13. Get nth operands' result of a expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRCMPRESULTS">8.8.14. Compare the expression's current and previous results</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRINITRESULTS">8.8.15. Initialize expression results</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRGETSTRINGVALUE">8.8.16. Get string value of an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRGETLONGVALUE">8.8.17. Get long value of an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRGETDOUBLEVALUE">8.8.18. Get double value of an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRGETNUMBERVALUEASSTRING">8.8.19. Get numeric value of an expression as a string</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETNTHSTRINGVALUE">8.8.20. Set nth result of an expression to a string value</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETNTHLONGVALUE">8.8.21. Set nth result of an expression to a long value</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETNTHDOUBLEVALUE">8.8.22. Set nth result of an expression to a double value</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETITERATIVESTARTFLAG">8.8.23. Set iterative start flag of an expression</a></span></dt><dt><span class="sect2"><a href="#PHPEXPRSETDELAYED">8.8.24. Set expression to delayed</a></span></dt></dl></div><p>
 			</p><pre class="programlisting">class OpenCReport\Expr {
     public final free(): void;
 
@@ -7612,12 +7921,14 @@ OpenCReport\QueryResult::column_result(long $index):
 
     public final get_result():
                      ?OpenCReport\Result;
-    public final set_string_value(
+    public final set_string(
                      string $value): void;
-    public final set_long_value(
+    public final set_long(
                      long $value): void;
-    public final set_double_value(
+    public final set_double(
                      double $value): void;
+    public final set_number(
+                     string $value): void;
 
     public final get_num_operands(): long;
 
@@ -7629,16 +7940,20 @@ OpenCReport\QueryResult::column_result(long $index):
 
     public final init_results(long $result_type):
                      void;
+    public final get_string(): ?string;
+    public final get_long(): long;
+    public final get_double(): double;
+    public final get_number(): ?string;
 
-    public final set_nth_result_string_value(
+    public final set_nth_result_string(
                      long $which,
                      string $value): void;
 
-    public final set_nth_result_long_value(
+    public final set_nth_result_long(
                      long $which,
                      long $value): void;
 
-    public final set_nth_result_double_value(
+    public final set_nth_result_double(
                      long $which,
                      double $value): void;
 
@@ -7678,66 +7993,90 @@ OpenCReport\Expr::get_result():
 			</p></div><div class="sect2" id="PHPEXPRSETSTRINGVALUE"><div class="titlepage"><div><div><h3 class="title">8.8.8. Set expression result to a string value <a href="#PHPEXPRSETSTRINGVALUE" class="id_link">#</a></h3></div></div></div><p>
 				Useful for user functions.
 				</p><pre class="programlisting">public final
-OpenCReport\Expr::set_string_value(
+OpenCReport\Expr::set_string(
 						 string $value): void;</pre><p>
 			</p></div><div class="sect2" id="PHPEXPRSETLONGVALUE"><div class="titlepage"><div><div><h3 class="title">8.8.9. Set expression result to a long value <a href="#PHPEXPRSETLONGVALUE" class="id_link">#</a></h3></div></div></div><p>
 				Useful for user functions.
 				</p><pre class="programlisting">public final
-OpenCReport\Expr::set_long_value(
+OpenCReport\Expr::set_long(
 						 long $value): void;</pre><p>
 			</p></div><div class="sect2" id="PHPEXPRSETDOUBLEVALUE"><div class="titlepage"><div><div><h3 class="title">8.8.10. Set expression result to a double value <a href="#PHPEXPRSETDOUBLEVALUE" class="id_link">#</a></h3></div></div></div><p>
 				Useful for user functions.
 				</p><pre class="programlisting">public final
-OpenCReport\Expr::set_double_value(
+OpenCReport\Expr::set_double(
 						 double $value): void;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRGETNUMOPS"><div class="titlepage"><div><div><h3 class="title">8.8.11. Get number of operands of a expression <a href="#PHPEXPRGETNUMOPS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRSETNUMBERVALUEFROMSTRING"><div class="titlepage"><div><div><h3 class="title">8.8.11. Set expression result to a numeric value from string <a href="#PHPEXPRSETNUMBERVALUEFROMSTRING" class="id_link">#</a></h3></div></div></div><p>
+				Useful for user functions.
+				This allows using
+				<a class="ulink" href="https://www.php.net/manual/en/book.bc.php" target="_top">BC Math</a>
+				</p><pre class="programlisting">public final
+OpenCReport\Expr::set_number_from_string(
+						 string $value): void;</pre><p>
+			</p></div><div class="sect2" id="PHPEXPRGETNUMOPS"><div class="titlepage"><div><div><h3 class="title">8.8.12. Get number of operands of a expression <a href="#PHPEXPRGETNUMOPS" class="id_link">#</a></h3></div></div></div><p>
 				Useful for user functions.
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::get_num_operands(): long;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPROPGETRESULT"><div class="titlepage"><div><div><h3 class="title">8.8.12. Get nth operands' result of a expression <a href="#PHPEXPROPGETRESULT" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPROPGETRESULT"><div class="titlepage"><div><div><h3 class="title">8.8.13. Get nth operands' result of a expression <a href="#PHPEXPROPGETRESULT" class="id_link">#</a></h3></div></div></div><p>
 				Useful for user functions.
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::operand_get_result(
 						 long $opidx):
 						 ?OpenCReport\Result;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRCMPRESULTS"><div class="titlepage"><div><div><h3 class="title">8.8.13. Compare the expression's current and previous results <a href="#PHPEXPRCMPRESULTS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRCMPRESULTS"><div class="titlepage"><div><div><h3 class="title">8.8.14. Compare the expression's current and previous results <a href="#PHPEXPRCMPRESULTS" class="id_link">#</a></h3></div></div></div><p>
 				Used internally by the report executor
 				and unit tests. Useful for implementing
 				a custom report executor with breaks.
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::cmp_results(): bool;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRINITRESULTS"><div class="titlepage"><div><div><h3 class="title">8.8.14. Initialize expression results <a href="#PHPEXPRINITRESULTS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRINITRESULTS"><div class="titlepage"><div><div><h3 class="title">8.8.15. Initialize expression results <a href="#PHPEXPRINITRESULTS" class="id_link">#</a></h3></div></div></div><p>
 				Used internally by the report executor
 				and unit tests. Useful for implementing
 				a custom report executor.
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::init_results(long $result_type):
 						 void;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRSETNTHSTRINGVALUE"><div class="titlepage"><div><div><h3 class="title">8.8.15. Set nth result of an expression to a string value <a href="#PHPEXPRSETNTHSTRINGVALUE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRGETSTRINGVALUE"><div class="titlepage"><div><div><h3 class="title">8.8.16. Get string value of an expression <a href="#PHPEXPRGETSTRINGVALUE" class="id_link">#</a></h3></div></div></div><p>
 				Used by unit tests.
 				</p><pre class="programlisting">public final
-OpenCReport\Expr::set_nth_result_string_value(
+OpenCReport\Expr::get_string(): ?string;</pre><p>
+			</p></div><div class="sect2" id="PHPEXPRGETLONGVALUE"><div class="titlepage"><div><div><h3 class="title">8.8.17. Get long value of an expression <a href="#PHPEXPRGETLONGVALUE" class="id_link">#</a></h3></div></div></div><p>
+				Used by unit tests.
+				</p><pre class="programlisting">public final
+OpenCReport\Expr::get_long(): long;</pre><p>
+			</p></div><div class="sect2" id="PHPEXPRGETDOUBLEVALUE"><div class="titlepage"><div><div><h3 class="title">8.8.18. Get double value of an expression <a href="#PHPEXPRGETDOUBLEVALUE" class="id_link">#</a></h3></div></div></div><p>
+				Used by unit tests.
+				</p><pre class="programlisting">public final
+OpenCReport\Expr::get_double(): double;</pre><p>
+			</p></div><div class="sect2" id="PHPEXPRGETNUMBERVALUEASSTRING"><div class="titlepage"><div><div><h3 class="title">8.8.19. Get numeric value of an expression as a string <a href="#PHPEXPRGETNUMBERVALUEASSTRING" class="id_link">#</a></h3></div></div></div><p>
+				Used internally by unit tests.
+				</p><pre class="programlisting">public final
+OpenCReport\Expr::get_number():
+                         ?string;</pre><p>
+			</p></div><div class="sect2" id="PHPEXPRSETNTHSTRINGVALUE"><div class="titlepage"><div><div><h3 class="title">8.8.20. Set nth result of an expression to a string value <a href="#PHPEXPRSETNTHSTRINGVALUE" class="id_link">#</a></h3></div></div></div><p>
+				Used by unit tests.
+				</p><pre class="programlisting">public final
+OpenCReport\Expr::set_nth_result_string(
 						 long $which,
 						 string $value): void;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRSETNTHLONGVALUE"><div class="titlepage"><div><div><h3 class="title">8.8.16. Set nth result of an expression to a long value <a href="#PHPEXPRSETNTHLONGVALUE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRSETNTHLONGVALUE"><div class="titlepage"><div><div><h3 class="title">8.8.21. Set nth result of an expression to a long value <a href="#PHPEXPRSETNTHLONGVALUE" class="id_link">#</a></h3></div></div></div><p>
 				Used by unit tests.
 				</p><pre class="programlisting">public final
-OpenCReport\Expr::set_nth_result_long_value(
+OpenCReport\Expr::set_nth_result_long(
 						 long $which,
 						 long $value): void;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRSETNTHDOUBLEVALUE"><div class="titlepage"><div><div><h3 class="title">8.8.17. Set nth result of an expression to a double value <a href="#PHPEXPRSETNTHDOUBLEVALUE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRSETNTHDOUBLEVALUE"><div class="titlepage"><div><div><h3 class="title">8.8.22. Set nth result of an expression to a double value <a href="#PHPEXPRSETNTHDOUBLEVALUE" class="id_link">#</a></h3></div></div></div><p>
 				Used by unit tests.
 				</p><pre class="programlisting">public final
-OpenCReport\Expr::set_nth_result_double_value(
+OpenCReport\Expr::set_nth_result_double(
 						 long $which,
 						 double $value): void;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRSETITERATIVESTARTFLAG"><div class="titlepage"><div><div><h3 class="title">8.8.18. Set iterative start flag of an expression <a href="#PHPEXPRSETITERATIVESTARTFLAG" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRSETITERATIVESTARTFLAG"><div class="titlepage"><div><div><h3 class="title">8.8.23. Set iterative start flag of an expression <a href="#PHPEXPRSETITERATIVESTARTFLAG" class="id_link">#</a></h3></div></div></div><p>
 				Used internally by the report executor
 				and by unit tests.
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::set_iterative_start_value(
 						 bool $value): void;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRSETDELAYED"><div class="titlepage"><div><div><h3 class="title">8.8.19. Set expression to delayed <a href="#PHPEXPRSETDELAYED" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRSETDELAYED"><div class="titlepage"><div><div><h3 class="title">8.8.24. Set expression to delayed <a href="#PHPEXPRSETDELAYED" class="id_link">#</a></h3></div></div></div><p>
 				A delayed expression's final value is
 				precalculated, and this value is used
 				in the output in every row of the report.
@@ -7804,6 +8143,7 @@ OpenCReport\Result::get_string(): ?string;</pre><p>
 				Useful for user functions.
 				The method may optionally use a format string
 				to specify the number of decimal digits.
+				See <a class="ulink" href="https://www.mpfr.org/mpfr-current/mpfr.html#Format-String" target="_top">MPFR format strings</a>.
 				The returned value may be used with
 				<a class="ulink" href="https://www.php.net/manual/en/book.bc.php" target="_top">BC Math</a>
 				in PHP or (if the precision is small enough)
@@ -8995,7 +9335,7 @@ OpenCReport\HorizontalLine::set_color(
 				relative to the work directory of the application,
 				or relative to any of the paths added with
 				<code class="literal">OpenCReport::add_search_path()</code>.
-				(See <a class="xref" href="#PHPADDSEARCHPATH" title="8.4.9.1. Add a search path">Section 8.4.9.1</a>.)
+				(See <a class="xref" href="#PHPADDSEARCHPATH" title="8.4.10.1. Add a search path">Section 8.4.10.1</a>.)
 				</p><pre class="programlisting">public final
 OpenCReport\Image::set_value(
                      ?string $expr_string = null): void;</pre><p>
@@ -9455,20 +9795,17 @@ rlib_set_output_encoding(
                      OpenCReport $r,
                      string $encoding): void;</pre><p>
 			</p></div><div class="sect2" id="RLIBADDREPORTPARAM"><div class="titlepage"><div><div><h3 class="title">8.21.23. Add a report parameter <a href="#RLIBADDREPORTPARAM" class="id_link">#</a></h3></div></div></div><p>
-				This function silently does nothing.
-				Currently no output format (other than PDF)
-				are implemented and there was no need for
-				report parameters yet in OpenCReports.
+				This function is equivalent to
+				<a class="xref" href="#PHPSETMVARMETHOD" title="8.4.8. Add &quot;m&quot; domain variable">OpenCReport::set_mvariable()</a>.
 				</p><pre class="programlisting">function
 rlib_add_parameter(
                      OpenCReport $r,
                      string $param,
-                     string $value): void;</pre><p>
+                     ?string $value = null): void;</pre><p>
 			</p></div><div class="sect2" id="RLIBSETOUTPUTPARAM"><div class="titlepage"><div><div><h3 class="title">8.21.24. Set an output parameter <a href="#RLIBSETOUTPUTPARAM" class="id_link">#</a></h3></div></div></div><p>
-				This function silently does nothing.
-				Currently no output format (other than PDF)
-				are implemented and there was no need for
-				output parameters yet in OpenCReports.
+				Set output parameters for the report.
+				For accepted parameters, see
+				<a class="xref" href="#PHPREPORTSETOUTPUTPARAM" title="8.3.4. Set report output parameter">Section 8.3.4</a>
 				</p><pre class="programlisting">function
 rlib_set_output_parameter(
                      OpenCReport $r,
