@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.2. OpenCReport element</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="descstruct.html" title="2.1. XML description structure" /><link rel="next" href="searchpaths.html" title="2.3. Paths" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">2.2. OpenCReport element</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="descstruct.html" title="2.1. XML description structure">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="xmldescriptor.html" title="Chapter 2. Report XML description">Up</a></td><th width="60%" align="center">Chapter 2. Report XML description</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.0 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="searchpaths.html" title="2.3. Paths">Next</a></td></tr></table><hr /></div><div class="sect1" id="OCRPTTOPXML"><div class="titlepage"><div><div><h2 class="title" style="clear: both">2.2. OpenCReport element <a href="#OCRPTTOPXML" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="ocrpttopxml.html#SIZEUNIT">2.2.1. Size unit attribute</a></span></dt><dt><span class="sect2"><a href="ocrpttopxml.html#NOQUERYSHOWNODATA">2.2.2. No query show NoData</a></span></dt><dt><span class="sect2"><a href="ocrpttopxml.html#REPORTHEIGHTAFTERLAST">2.2.3. Report height after last</a></span></dt><dt><span class="sect2"><a href="ocrpttopxml.html#PRECBITS">2.2.4. Precision bits</a></span></dt><dt><span class="sect2"><a href="ocrpttopxml.html#ROUNDINGMODE">2.2.5. Rounding mode</a></span></dt><dt><span class="sect2"><a href="ocrpttopxml.html#LOCALE">2.2.6. Locale</a></span></dt><dt><span class="sect2"><a href="ocrpttopxml.html#XLATESETTINGS">2.2.7. Translation settings</a></span></dt></dl></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.2. OpenCReport element</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="descstruct.html" title="2.1. XML description structure" /><link rel="next" href="searchpaths.html" title="2.3. Paths" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">2.2. OpenCReport element</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="descstruct.html" title="2.1. XML description structure">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="xmldescriptor.html" title="Chapter 2. Report XML description">Up</a></td><th width="60%" align="center">Chapter 2. Report XML description</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.1 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="searchpaths.html" title="2.3. Paths">Next</a></td></tr></table><hr /></div><div class="sect1" id="OCRPTTOPXML"><div class="titlepage"><div><div><h2 class="title" style="clear: both">2.2. OpenCReport element <a href="#OCRPTTOPXML" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="ocrpttopxml.html#SIZEUNIT">2.2.1. Size unit attribute</a></span></dt><dt><span class="sect2"><a href="ocrpttopxml.html#NOQUERYSHOWNODATA">2.2.2. No query show NoData</a></span></dt><dt><span class="sect2"><a href="ocrpttopxml.html#REPORTHEIGHTAFTERLAST">2.2.3. Report height after last</a></span></dt><dt><span class="sect2"><a href="ocrpttopxml.html#XMLFOLLOWERMATCHSINGLE">2.2.4. Follower match single</a></span></dt><dt><span class="sect2"><a href="ocrpttopxml.html#PRECBITS">2.2.5. Precision bits</a></span></dt><dt><span class="sect2"><a href="ocrpttopxml.html#ROUNDINGMODE">2.2.6. Rounding mode</a></span></dt><dt><span class="sect2"><a href="ocrpttopxml.html#LOCALE">2.2.7. Locale</a></span></dt><dt><span class="sect2"><a href="ocrpttopxml.html#XLATESETTINGS">2.2.8. Translation settings</a></span></dt></dl></div><p>
 			The toplevel <code class="literal">&lt;OpenCReport&gt;</code>
 			element controls some global settings and serves
 			as the topmost XML element for child elements.
@@ -85,12 +85,27 @@
 &lt;OpenCReport report_height_after_last="no"&gt;</pre><p>
 			</p><p>
 				Default is <code class="literal">false</code>.
-			</p></div><div class="sect2" id="PRECBITS"><div class="titlepage"><div><div><h3 class="title">2.2.4. Precision bits <a href="#PRECBITS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="XMLFOLLOWERMATCHSINGLE"><div class="titlepage"><div><div><h3 class="title">2.2.4. Follower match single <a href="#XMLFOLLOWERMATCHSINGLE" class="id_link">#</a></h3></div></div></div><p>
+				When set to <code class="literal">false</code>, N:1 followers behave
+				fully like <code class="literal">LEFT OUTER JOIN</code> in SQL,
+				with duplicating data from the primary query if multiple
+				matching rows exist in followers. When set to
+				<code class="literal">true</code>, only the first matching row is used.
+				The latter approximates the RLIB implementation.
+				</p><pre class="programlisting">&lt;OpenCReport follower_match_single="yes"&gt;
+&lt;OpenCReport follower_match_single="no"&gt;</pre><p>
+			</p><p>
+				Default is <code class="literal">false</code>, unless the report XML
+				descriptor uses either <code class="literal">&lt;Part&gt;</code> or
+				<code class="literal">&lt;Report&gt;</code> as the toplevel XML node.
+				In the latter case, this attribute is automatically set
+				to <code class="literal">true</code>.
+			</p></div><div class="sect2" id="PRECBITS"><div class="titlepage"><div><div><h3 class="title">2.2.5. Precision bits <a href="#PRECBITS" class="id_link">#</a></h3></div></div></div><p>
 				This controls the precision for numeric computations.
 				</p><pre class="programlisting">&lt;OpenCReport precision_bits="256"&gt;</pre><p>
 			</p><p>
 				Default is <code class="literal">256</code>.
-			</p></div><div class="sect2" id="ROUNDINGMODE"><div class="titlepage"><div><div><h3 class="title">2.2.5. Rounding mode <a href="#ROUNDINGMODE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="ROUNDINGMODE"><div class="titlepage"><div><div><h3 class="title">2.2.6. Rounding mode <a href="#ROUNDINGMODE" class="id_link">#</a></h3></div></div></div><p>
 				This controls the rounding mode for numeric computations.
 				Possible values are:
 				<code class="literal">nearest</code>,
@@ -109,7 +124,7 @@
 				Default is <code class="literal">nearest</code>.
 				According to the MPFR documentation,
 				<code class="literal">faithful</code> is experimental.
-			</p></div><div class="sect2" id="LOCALE"><div class="titlepage"><div><div><h3 class="title">2.2.6. Locale <a href="#LOCALE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="LOCALE"><div class="titlepage"><div><div><h3 class="title">2.2.7. Locale <a href="#LOCALE" class="id_link">#</a></h3></div></div></div><p>
 				This controls the language settings, like the decimal
 				separator, weekday names, month names and similar.
 				This setting is also used as the language of translation.
@@ -117,7 +132,7 @@
 			</p><p>
 				Default is <code class="literal">C</code> locale which
 				approximates US English.
-			</p></div><div class="sect2" id="XLATESETTINGS"><div class="titlepage"><div><div><h3 class="title">2.2.7. Translation settings <a href="#XLATESETTINGS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="XLATESETTINGS"><div class="titlepage"><div><div><h3 class="title">2.2.8. Translation settings <a href="#XLATESETTINGS" class="id_link">#</a></h3></div></div></div><p>
 				These two settings control the translation.
 				</p><pre class="programlisting">&lt;OpenCReport
     translation_domain="mydomain"
@@ -131,4 +146,4 @@
 				<code class="literal">mydomain.mo</code> files in them.
 				These <code class="literal">.mo</code> files contain translated
 				messages for a given language.
-			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="descstruct.html" title="2.1. XML description structure">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="xmldescriptor.html" title="Chapter 2. Report XML description">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="searchpaths.html" title="2.3. Paths">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.1. XML description structure </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.0 Manual">Home</a></td><td width="40%" align="right" valign="top"> 2.3. Paths</td></tr></table></div></body></html>
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="descstruct.html" title="2.1. XML description structure">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="xmldescriptor.html" title="Chapter 2. Report XML description">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="searchpaths.html" title="2.3. Paths">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.1. XML description structure </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.1 Manual">Home</a></td><td width="40%" align="right" valign="top"> 2.3. Paths</td></tr></table></div></body></html>

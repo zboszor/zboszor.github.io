@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>3.6. Alphabetical list of functions</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="opsandfunc.html" title="3.5. Operators and functions" /><link rel="next" href="breaks.html" title="Chapter 4. Report breaks" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">3.6. Alphabetical list of functions</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="opsandfunc.html" title="3.5. Operators and functions">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Up</a></td><th width="60%" align="center">Chapter 3. Expressions in OpenCReports</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.0 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="breaks.html" title="Chapter 4. Report breaks">Next</a></td></tr></table><hr /></div><div class="sect1" id="LISTOFFUNCS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">3.6. Alphabetical list of functions <a href="#LISTOFFUNCS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="listoffuncs.html#ABSFUNC">3.6.1. abs()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#ACOSFUNC">3.6.2. acos()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#ADDFUNC">3.6.3. add()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#ANDFUNC">3.6.4. and()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#ASINFUNC">3.6.5. asin()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#ATANFUNC">3.6.6. atan()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#BRROWNUMFUNC">3.6.7. brrownum()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#CEILFUNC">3.6.8. ceil()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#CHGDATEOFFUNC">3.6.9. chgdateof()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#CHGTIMEOFFUNC">3.6.10. chgtimeof()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#CONCATFUNC">3.6.11. concat()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#COSFUNC">3.6.12. cos()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#COTFUNC">3.6.13. cot()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#CSCFUNC">3.6.14. csc()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#DATEFUNC">3.6.15. date()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#DATEOFFUNC">3.6.16. dateof()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#DAYFUNC">3.6.17. day()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#DECFUNC">3.6.18. dec()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#DIMFUNC">3.6.19. dim()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#DIVFUNC">3.6.20. div()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#DTOSFUNC">3.6.21. dtos()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#DTOSFFUNC">3.6.22. dtosf()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#EQFUNC">3.6.23. eq()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#ERRORFUNC">3.6.24. error()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#EXPFUNC">3.6.25. exp()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#EXP10FUNC">3.6.26. exp10()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#EXP2FUNC">3.6.27. exp2()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#FACTORIALFUNC">3.6.28. factorial()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#FLOORFUNC">3.6.29. floor()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#FMODFUNC">3.6.30. fmod()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#FORMATFUNC">3.6.31. format()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#FXPVALFUNC">3.6.32. fxpval()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#GEFUNC">3.6.33. ge()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#GETTIMEINSECSFUNC">3.6.34. gettimeinsecs()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#GTFUNC">3.6.35. gt()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#IIFFUNC">3.6.36. iif()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#INCFUNC">3.6.37. inc()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#INTERVALFUNC">3.6.38. interval()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#ISNULLFUNC">3.6.39. isnull()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#LANDFUNC">3.6.40. land()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#LEFUNC">3.6.41. le()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#LEFTFUNC">3.6.42. left()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#LNFUNC">3.6.43. ln()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#LNOTFUNC">3.6.44. lnot()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#LOGFUNC">3.6.45. log()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#LOG10FUNC">3.6.46. log10()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#LOG2FUNC">3.6.47. log2()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#LORFUNC">3.6.48. lor()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#LOWERFUNC">3.6.49. lower()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#LTFUNC">3.6.50. lt()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#MIDFUNC">3.6.51. mid()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#MODFUNC">3.6.52. mod()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#MONTHFUNC">3.6.53. month()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#MULFUNC">3.6.54. mul()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#NEFUNC">3.6.55. ne()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#NOTFUNC">3.6.56. not()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#NOWFUNC">3.6.57. now()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#NULLFUNC">3.6.58. null()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#NULLDTFUNC">3.6.59. nulldt()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#NULLNFUNC">3.6.60. nulln()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#NULLSFUNC">3.6.61. nulls()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#ORFUNC">3.6.62. or()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#POWFUNC">3.6.63. pow()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#PREVVALFUNC">3.6.64. prevval()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#PRINTFFUNC">3.6.65. printf()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#PROPERFUNC">3.6.66. proper()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#RANDOMFUNC">3.6.67. random()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#REMAINDERFUNC">3.6.68. remainder()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#RIGHTFUNC">3.6.69. right()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#RINTFUNC">3.6.70. rint()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#ROUNDFUNC">3.6.71. round()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#ROWNUMFUNC">3.6.72. rownum()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#SECFUNC">3.6.73. sec()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#SETTIMEINSECSFUNC">3.6.74. settimeinsecs()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#SHLFUNC">3.6.75. shl()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#SHRFUNC">3.6.76. shr()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#SINFUNC">3.6.77. sin()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#SQRFUNC">3.6.78. sqr()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#SQRTFUNC">3.6.79. sqrt()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#STDWIYFUNC">3.6.80. stdwiy()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#STODFUNC">3.6.81. stod()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#STODTFUNC">3.6.82. stodt()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#STODTSQLFUNC">3.6.83. stodtsql()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#STRFUNC">3.6.84. str()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#SUBFUNC">3.6.85. sub()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#TANFUNC">3.6.86. tan()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#TIMEOFFUNC">3.6.87. timeof()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#TRANSLATEFUNC">3.6.88. translate()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#TRANSLATE2FUNC">3.6.89. translate2()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#TRUNCFUNC">3.6.90. trunc()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#TSTODFUNC">3.6.91. tstod()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#UMINUSFUNC">3.6.92. uminus()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#UPPERFUNC">3.6.93. upper()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#VALFUNC">3.6.94. val()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#WIYFUNC">3.6.95. wiy()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#WIY1FUNC">3.6.96. wiy1()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#WIYOFUNC">3.6.97. wiyo()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#XORFUNC">3.6.98. xor()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#YEARFUNC">3.6.99. year()</a></span></dt></dl></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>3.6. Alphabetical list of functions</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="opsandfunc.html" title="3.5. Operators and functions" /><link rel="next" href="breaks.html" title="Chapter 4. Report breaks" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">3.6. Alphabetical list of functions</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="opsandfunc.html" title="3.5. Operators and functions">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Up</a></td><th width="60%" align="center">Chapter 3. Expressions in OpenCReports</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.1 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="breaks.html" title="Chapter 4. Report breaks">Next</a></td></tr></table><hr /></div><div class="sect1" id="LISTOFFUNCS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">3.6. Alphabetical list of functions <a href="#LISTOFFUNCS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="listoffuncs.html#ABSFUNC">3.6.1. abs()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#ACOSFUNC">3.6.2. acos()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#ADDFUNC">3.6.3. add()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#ANDFUNC">3.6.4. and()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#ASINFUNC">3.6.5. asin()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#ATANFUNC">3.6.6. atan()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#BRROWNUMFUNC">3.6.7. brrownum()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#CEILFUNC">3.6.8. ceil()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#CHGDATEOFFUNC">3.6.9. chgdateof()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#CHGTIMEOFFUNC">3.6.10. chgtimeof()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#CONCATFUNC">3.6.11. concat()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#COSFUNC">3.6.12. cos()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#COTFUNC">3.6.13. cot()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#CSCFUNC">3.6.14. csc()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#DATEFUNC">3.6.15. date()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#DATEOFFUNC">3.6.16. dateof()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#DAYFUNC">3.6.17. day()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#DECFUNC">3.6.18. dec()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#DIMFUNC">3.6.19. dim()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#DIVFUNC">3.6.20. div()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#DTOSFUNC">3.6.21. dtos()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#DTOSFFUNC">3.6.22. dtosf()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#EQFUNC">3.6.23. eq()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#ERRORFUNC">3.6.24. error()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#EXPFUNC">3.6.25. exp()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#EXP10FUNC">3.6.26. exp10()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#EXP2FUNC">3.6.27. exp2()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#EVALFUNC">3.6.28. eval()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#FACTORIALFUNC">3.6.29. factorial()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#FLOORFUNC">3.6.30. floor()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#FMODFUNC">3.6.31. fmod()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#FORMATFUNC">3.6.32. format()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#FXPVALFUNC">3.6.33. fxpval()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#GEFUNC">3.6.34. ge()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#GETTIMEINSECSFUNC">3.6.35. gettimeinsecs()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#GTFUNC">3.6.36. gt()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#IIFFUNC">3.6.37. iif()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#INCFUNC">3.6.38. inc()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#INTERVALFUNC">3.6.39. interval()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#ISNULLFUNC">3.6.40. isnull()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#LANDFUNC">3.6.41. land()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#LEFUNC">3.6.42. le()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#LEFTFUNC">3.6.43. left()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#LNFUNC">3.6.44. ln()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#LNOTFUNC">3.6.45. lnot()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#LOGFUNC">3.6.46. log()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#LOG10FUNC">3.6.47. log10()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#LOG2FUNC">3.6.48. log2()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#LORFUNC">3.6.49. lor()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#LOWERFUNC">3.6.50. lower()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#LTFUNC">3.6.51. lt()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#MIDFUNC">3.6.52. mid()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#MODFUNC">3.6.53. mod()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#MONTHFUNC">3.6.54. month()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#MULFUNC">3.6.55. mul()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#NEFUNC">3.6.56. ne()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#NOTFUNC">3.6.57. not()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#NOWFUNC">3.6.58. now()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#NULLFUNC">3.6.59. null()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#NULLDTFUNC">3.6.60. nulldt()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#NULLNFUNC">3.6.61. nulln()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#NULLSFUNC">3.6.62. nulls()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#ORFUNC">3.6.63. or()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#POWFUNC">3.6.64. pow()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#PREVVALFUNC">3.6.65. prevval()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#PRINTFFUNC">3.6.66. printf()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#PROPERFUNC">3.6.67. proper()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#RANDOMFUNC">3.6.68. random()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#REMAINDERFUNC">3.6.69. remainder()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#RIGHTFUNC">3.6.70. right()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#RINTFUNC">3.6.71. rint()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#ROUNDFUNC">3.6.72. round()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#ROWNUMFUNC">3.6.73. rownum()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#SECFUNC">3.6.74. sec()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#SETTIMEINSECSFUNC">3.6.75. settimeinsecs()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#SHLFUNC">3.6.76. shl()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#SHRFUNC">3.6.77. shr()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#SINFUNC">3.6.78. sin()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#SQRFUNC">3.6.79. sqr()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#SQRTFUNC">3.6.80. sqrt()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#STDWIYFUNC">3.6.81. stdwiy()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#STODFUNC">3.6.82. stod()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#STODTFUNC">3.6.83. stodt()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#STODTSQLFUNC">3.6.84. stodtsql()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#STRFUNC">3.6.85. str()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#STRLENFUNC">3.6.86. strlen()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#SUBFUNC">3.6.87. sub()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#TANFUNC">3.6.88. tan()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#TIMEOFFUNC">3.6.89. timeof()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#TRANSLATEFUNC">3.6.90. translate()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#TRANSLATE2FUNC">3.6.91. translate2()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#TRUNCFUNC">3.6.92. trunc()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#TSTODFUNC">3.6.93. tstod()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#UMINUSFUNC">3.6.94. uminus()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#UPPERFUNC">3.6.95. upper()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#VALFUNC">3.6.96. val()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#WIYFUNC">3.6.97. wiy()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#WIY1FUNC">3.6.98. wiy1()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#WIYOFUNC">3.6.99. wiyo()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#XORFUNC">3.6.100. xor()</a></span></dt><dt><span class="sect2"><a href="listoffuncs.html#YEARFUNC">3.6.101. year()</a></span></dt></dl></div><p>
 			Most functions below operate in this way, unless noted otherwise:
 			</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
 						numeric and bitwise functions with more than two operands
@@ -123,14 +123,33 @@
 			</p></div><div class="sect2" id="EXP2FUNC"><div class="titlepage"><div><div><h3 class="title">3.6.27. exp2() <a href="#EXP2FUNC" class="id_link">#</a></h3></div></div></div><p>
 				It takes one numeric operand and returns 2 to the power
 				of the operand.
-			</p></div><div class="sect2" id="FACTORIALFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.28. factorial() <a href="#FACTORIALFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="EVALFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.28. eval() <a href="#EVALFUNC" class="id_link">#</a></h3></div></div></div><p>
+				It takes one string operand, which must be an expression
+				string. The expression is parsed. If it's correct, it is
+				inserted into the parent expression in place of the
+				function call. If there is a syntax error, the error is
+				re-thrown for the main expression.
+			</p><p>
+				This is a pseudo-function. The grammar detects its usage
+				and converts the embedded expression string into a regular
+				subexpression, like if it was inside parenthesis in the
+				parent expression contents. This allows the subexpression
+				to be optimized in the parent expression context.
+			</p><p>
+				Fox example, the expression <code class="literal">3 * eval('1 + 2')</code>
+				is optimized into the numeric constant <code class="literal">9</code>.
+			</p><p>
+				Note, that the grammar transformation only takes place if
+				there is no user defined function with the same name.
+				In this case, the user defined function is used.
+			</p></div><div class="sect2" id="FACTORIALFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.29. factorial() <a href="#FACTORIALFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Factorial function. It takes one numeric operand.
 				The postfix operator <code class="literal">!</code> is the alias for
 				this function.
-			</p></div><div class="sect2" id="FLOORFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.29. floor() <a href="#FLOORFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="FLOORFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.30. floor() <a href="#FLOORFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Rounds its operand to the next lower or equal integer.
 				It takes one numeric operands.
-			</p></div><div class="sect2" id="FMODFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.30. fmod() <a href="#FMODFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="FMODFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.31. fmod() <a href="#FMODFUNC" class="id_link">#</a></h3></div></div></div><p>
 				The result to the value of <code class="literal">x - ny</code>
 				(<code class="literal">x</code> and <code class="literal">y</code> being
 				its two numeric operands), rounded according to the
@@ -139,7 +158,7 @@
 				<code class="literal">x</code> divided by <code class="literal">y</code>,
 				<code class="literal">n</code> is rounded toward zero.
 				It takes two numeric operands.
-			</p></div><div class="sect2" id="FORMATFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.31. format() <a href="#FORMATFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="FORMATFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.32. format() <a href="#FORMATFUNC" class="id_link">#</a></h3></div></div></div><p>
 				It takes two operands, the first operand is of any type,
 				the second operand is a string. This function formats
 				the first value according to the second operand as a
@@ -149,7 +168,7 @@
 				It an RLIB compatibility function and is a special case
 				of the <code class="literal">printf()</code> function.
 				See also <a class="xref" href="formatting.html" title="Chapter 6. Formatting">Formatting data</a>
-			</p></div><div class="sect2" id="FXPVALFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.32. fxpval() <a href="#FXPVALFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="FXPVALFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.33. fxpval() <a href="#FXPVALFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Compatibility function for RLIB. It takes two operands.
 				The type of the first operand may be string containing
 				a numeric value or numeric. If it's a string, then it will
@@ -159,20 +178,20 @@
 				operand. One use case is that if the data contains prices
 				in cents, then <code class="literal">fxpval(data, 2)</code> puts the
 				decimal separator to the correct place.
-			</p></div><div class="sect2" id="GEFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.33. ge() <a href="#GEFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="GEFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.34. ge() <a href="#GEFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Greater-or-equal. It takes two operands of the same type,
 				which can be either numeric, string or datetime operands.
 				The operator <code class="literal">&gt;=</code> is the shortcut for
 				this function.
-			</p></div><div class="sect2" id="GETTIMEINSECSFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.34. gettimeinsecs() <a href="#GETTIMEINSECSFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="GETTIMEINSECSFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.35. gettimeinsecs() <a href="#GETTIMEINSECSFUNC" class="id_link">#</a></h3></div></div></div><p>
 				It takes one datetime operand. It converts the time part
 				of the datetime to seconds elapsed from 00:00:00.
-			</p></div><div class="sect2" id="GTFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.35. gt() <a href="#GTFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="GTFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.36. gt() <a href="#GTFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Greater-than. It takes two operands of the same type,
 				which can be either numeric, string or datetime operands.
 				The operator <code class="literal">&gt;</code> is the shortcut for
 				this function.
-			</p></div><div class="sect2" id="IIFFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.36. iif() <a href="#IIFFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="IIFFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.37. iif() <a href="#IIFFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Trinary function. It takes three operands of which the first one
 				is numeric, the second and third operands can be of any type.
 				If the first operand is non-zero (i.e.: "true") then
@@ -180,11 +199,11 @@
 				else it will be the third operand.
 				The trinary operator <code class="literal">exp1 ? exp2 : exp3</code>
 				is the shortcut for this function.
-			</p></div><div class="sect2" id="INCFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.37. inc() <a href="#INCFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="INCFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.38. inc() <a href="#INCFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Increment by one. It takes one numeric operand.
 				The operator <code class="literal">--</code> is the shortcut for it,
 				either in prefix or postfix uses.
-			</p></div><div class="sect2" id="INTERVALFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.38. interval() <a href="#INTERVALFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="INTERVALFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.39. interval() <a href="#INTERVALFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Convert the parameter(s) to an interval subtype of
 				the datetime type. It takes either one string operand
 				or six numeric operands. In the first case, the string
@@ -193,51 +212,51 @@
 				datetime part values. In the second case, the six numeric
 				operands are the values for the datetime parts, in the order
 				of years, months, days, hours, minutes and seconds.
-			</p></div><div class="sect2" id="ISNULLFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.39. isnull() <a href="#ISNULLFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="ISNULLFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.40. isnull() <a href="#ISNULLFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Returns numeric 1 if the operand is NULL, 0 otherwise.
 				It takes one operand of any type.
-			</p></div><div class="sect2" id="LANDFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.40. land() <a href="#LANDFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="LANDFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.41. land() <a href="#LANDFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Boolean logic AND. Operator <code class="literal">&amp;&amp;</code> is a
 				shortcut for this function. It takes two or more numeric
 				operands that are treated as boolean logic values. The
 				function is executed until the result is fully determined,
 				i.e. it stops at the first false value.
-			</p></div><div class="sect2" id="LEFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.41. le() <a href="#LEFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="LEFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.42. le() <a href="#LEFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Less-or-equal. It takes two operands of the same type,
 				which can be either numeric, string or datetime operands.
 				The operator <code class="literal">&lt;=</code> is the shortcut for
 				this function.
-			</p></div><div class="sect2" id="LEFTFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.42. left() <a href="#LEFTFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="LEFTFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.43. left() <a href="#LEFTFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Returns the leftmost N characters of a string.
 				It takes two operands, the first operand is the string,
 				the second is the numeric that is handled as an integer
 				and used to determine the returned string length.
-			</p></div><div class="sect2" id="LNFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.43. ln() <a href="#LNFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="LNFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.44. ln() <a href="#LNFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Alias for <code class="literal">log()</code>.
-			</p></div><div class="sect2" id="LNOTFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.44. lnot() <a href="#LNOTFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="LNOTFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.45. lnot() <a href="#LNOTFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Boolean logic NOT. Prefix operator <code class="literal">!</code> is
 				the shortcut for this function. It returns the negated
 				boolean value of its operand. It takes one numeric operand.
-			</p></div><div class="sect2" id="LOGFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.45. log() <a href="#LOGFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="LOGFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.46. log() <a href="#LOGFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Natural logarithm. It takes one nueric operand.
-			</p></div><div class="sect2" id="LOG10FUNC"><div class="titlepage"><div><div><h3 class="title">3.6.46. log10() <a href="#LOG10FUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="LOG10FUNC"><div class="titlepage"><div><div><h3 class="title">3.6.47. log10() <a href="#LOG10FUNC" class="id_link">#</a></h3></div></div></div><p>
 				Base-10 logarithm. It takes one nueric operand.
-			</p></div><div class="sect2" id="LOG2FUNC"><div class="titlepage"><div><div><h3 class="title">3.6.47. log2() <a href="#LOG2FUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="LOG2FUNC"><div class="titlepage"><div><div><h3 class="title">3.6.48. log2() <a href="#LOG2FUNC" class="id_link">#</a></h3></div></div></div><p>
 				Base-2 logarithm. It takes one nueric operand.
-			</p></div><div class="sect2" id="LORFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.48. lor() <a href="#LORFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="LORFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.49. lor() <a href="#LORFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Boolean logic OR. Operator <code class="literal">||</code> is a shortcut for
 				this function. It takes two or more numeric operands that
 				are treated as boolean logic values, with 0 being false and
 				true for anything else. The function is executed until the result is
 				determined fully, i.e. it stops at the first true value.
-			</p></div><div class="sect2" id="LOWERFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.49. lower() <a href="#LOWERFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="LOWERFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.50. lower() <a href="#LOWERFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Lowercase conversion. It takes one string operand.
-			</p></div><div class="sect2" id="LTFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.50. lt() <a href="#LTFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="LTFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.51. lt() <a href="#LTFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Less-than. It takes two operands of the same type,
 				which can be either numeric, string or datetime operands.
 				The operator <code class="literal">&lt;</code> is the shortcut for this
 				function.
-			</p></div><div class="sect2" id="MIDFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.51. mid() <a href="#MIDFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="MIDFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.52. mid() <a href="#MIDFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Return characters from the middle of the string.
 				It takes three operands, the first operand is the string,
 				the second and third are numeric values that are handled
@@ -248,47 +267,47 @@
 				Negative offsets count from the right end of the string,
 				i.e. <code class="literal">mid(s,-n,n)</code> is equivalent to
 				<code class="literal">right(s,n)</code>.
-			</p></div><div class="sect2" id="MODFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.52. mod() <a href="#MODFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="MODFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.53. mod() <a href="#MODFUNC" class="id_link">#</a></h3></div></div></div><p>
 				An alias of <code class="literal">remainder()</code>.
 				It takes two numeric operands.
-			</p></div><div class="sect2" id="MONTHFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.53. month() <a href="#MONTHFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="MONTHFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.54. month() <a href="#MONTHFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Returns the month value of a datetime. It takes one datetime operand.
-			</p></div><div class="sect2" id="MULFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.54. mul() <a href="#MULFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="MULFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.55. mul() <a href="#MULFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Multiplication. Operator <code class="literal">*</code> is a shortcut for
 				this function. It takes two or more numeric operands.
-			</p></div><div class="sect2" id="NEFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.55. ne() <a href="#NEFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="NEFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.56. ne() <a href="#NEFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Not equal. It takes two operands of the same type,
 				which can be either numeric, string or datetime operands.
 				The operator <code class="literal">!=</code> and <code class="literal">&lt;&gt;</code>
 				are shortcuts for it.
-			</p></div><div class="sect2" id="NOTFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.56. not() <a href="#NOTFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="NOTFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.57. not() <a href="#NOTFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Bitwise NOT. Prefix operator <code class="literal">~</code> is
 				the shortcut for this function. It returns the bit-by-bit
 				negated value of its operand. It takes one numeric operand.
-			</p></div><div class="sect2" id="NOWFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.57. now() <a href="#NOWFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="NOWFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.58. now() <a href="#NOWFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Returns the current timestamp. It is run only once
 				during running the report and the same value is used
 				everywhere where this function is used. Practically,
 				it is the time of generating the report.
 				It takes zero operands.
-			</p></div><div class="sect2" id="NULLFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.58. null() <a href="#NULLFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="NULLFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.59. null() <a href="#NULLFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Generate NULL value using the type of its operand.
 				It takes one operand of any type.
-			</p></div><div class="sect2" id="NULLDTFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.59. nulldt() <a href="#NULLDTFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="NULLDTFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.60. nulldt() <a href="#NULLDTFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Generate NULL of the datetime type. It takes no operands.
-			</p></div><div class="sect2" id="NULLNFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.60. nulln() <a href="#NULLNFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="NULLNFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.61. nulln() <a href="#NULLNFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Generate NULL of the numeric type. It takes no operands.
-			</p></div><div class="sect2" id="NULLSFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.61. nulls() <a href="#NULLSFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="NULLSFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.62. nulls() <a href="#NULLSFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Generate NULL of the string type. It takes no operands.
-			</p></div><div class="sect2" id="ORFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.62. or() <a href="#ORFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="ORFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.63. or() <a href="#ORFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Bitwise OR. Operator <code class="literal">|</code> is a shortcut for
 				this function. It takes two or more numeric operands.
-			</p></div><div class="sect2" id="POWFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.63. pow() <a href="#POWFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="POWFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.64. pow() <a href="#POWFUNC" class="id_link">#</a></h3></div></div></div><p>
 				This function raises the first operand to the power of its
 				second operand. It takes two numeric operands.
 				Operator <code class="literal">^</code> is the shortcut for
 				this function.
-			</p></div><div class="sect2" id="PREVVALFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.64. prevval() <a href="#PREVVALFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PREVVALFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.65. prevval() <a href="#PREVVALFUNC" class="id_link">#</a></h3></div></div></div><p>
 				This function accepts one subexpression and
 				returns the subexpression's previous value, i.e.
 				the value generated for the previous query row.
@@ -297,21 +316,21 @@
 			</p><p>
 				This function allows showing carried over values
 				e.g. in page headers.
-			</p></div><div class="sect2" id="PRINTFFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.65. printf() <a href="#PRINTFFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PRINTFFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.66. printf() <a href="#PRINTFFUNC" class="id_link">#</a></h3></div></div></div><p>
 				This function takes one or more operands. The first
 				operand is a string and used as the format string.
 				Subsequent operands have to be of the expected type
 				according to the format string, otherwise an error
 				is returned. If everything is correct, it returns
 				the formatted data as a string.
-			</p></div><div class="sect2" id="PROPERFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.66. proper() <a href="#PROPERFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PROPERFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.67. proper() <a href="#PROPERFUNC" class="id_link">#</a></h3></div></div></div><p>
 				This function takes one string operand. The function
 				returns the string converted lowecase, except the first
 				letter of the first word, which will be uppercase.
-			</p></div><div class="sect2" id="RANDOMFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.67. random() <a href="#RANDOMFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RANDOMFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.68. random() <a href="#RANDOMFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Generate a pseudo-random numeric value between 0 and 1.
 				It takes no operands.
-			</p></div><div class="sect2" id="REMAINDERFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.68. remainder() <a href="#REMAINDERFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="REMAINDERFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.69. remainder() <a href="#REMAINDERFUNC" class="id_link">#</a></h3></div></div></div><p>
 				The result to the value of <code class="literal">x - ny</code>
 				(<code class="literal">x</code> and <code class="literal">y</code> being
 				its two numeric operands), rounded according to the
@@ -320,127 +339,130 @@
 				<code class="literal">x</code> divided by <code class="literal">y</code>,
 				<code class="literal">n</code> is rounded toward to the nearest integer.
 				It takes two numeric operands.
-			</p></div><div class="sect2" id="RIGHTFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.69. right() <a href="#RIGHTFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RIGHTFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.70. right() <a href="#RIGHTFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Returns the rightmost N characters of a string.
 				It takes two operands, the first operand is the string,
 				the second is the numeric that is handled as an integer
 				and used to determine the returned string length.
-			</p></div><div class="sect2" id="RINTFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.70. rint() <a href="#RINTFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RINTFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.71. rint() <a href="#RINTFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Rounds its operand using the rounding mode set via
 				<code class="literal">ocrpt_set_rounding_mode()</code>.
 				It takes one numeric operand.
-			</p></div><div class="sect2" id="ROUNDFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.71. round() <a href="#ROUNDFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="ROUNDFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.72. round() <a href="#ROUNDFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Rounds its operand to the nearest representable integer,
 				rounding halfway cases away from zero.
 				It takes one numeric operand.
-			</p></div><div class="sect2" id="ROWNUMFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.72. rownum() <a href="#ROWNUMFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="ROWNUMFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.73. rownum() <a href="#ROWNUMFUNC" class="id_link">#</a></h3></div></div></div><p>
 				It takes either zero operands or one string operand.
 				If zero operands are passed, it returns the current
 				row number of the dataset. If one string operand is
 				passed, then it returns the current row number in
 				the named query of the dataset. See the follower
 				queries.
-			</p></div><div class="sect2" id="SECFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.73. sec() <a href="#SECFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="SECFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.74. sec() <a href="#SECFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Secant. It takes one numeric operand.
-			</p></div><div class="sect2" id="SETTIMEINSECSFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.74. settimeinsecs() <a href="#SETTIMEINSECSFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="SETTIMEINSECSFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.75. settimeinsecs() <a href="#SETTIMEINSECSFUNC" class="id_link">#</a></h3></div></div></div><p>
 				It takes two operands, the first operand is a datetime,
 				the second is numeric. This function returns a datetime
 				where the first operand's time part is changed to
 				<code class="literal">N</code> seconds
 				after 00:00:00, with <code class="literal">N</code> being the
 				second operand.
-			</p></div><div class="sect2" id="SHLFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.75. shl() <a href="#SHLFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="SHLFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.76. shl() <a href="#SHLFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Bitwise shift left. Shifts the first operand left with the
 				number of bits set indicated the second operand. The operand
 				<code class="literal">&lt;&lt;</code> is the shortcut for this
 				function. It takes two numeric operands.
-			</p></div><div class="sect2" id="SHRFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.76. shr() <a href="#SHRFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="SHRFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.77. shr() <a href="#SHRFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Bitwise shift right. Shifts the first operand right with the
 				number of bits indicated by the second operand. The operand
 				<code class="literal">&gt;&gt;</code> is the shortcut for this
 				function. It takes two numeric operands.
-			</p></div><div class="sect2" id="SINFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.77. sin() <a href="#SINFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="SINFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.78. sin() <a href="#SINFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Sine. It takes one numeric operand.
-			</p></div><div class="sect2" id="SQRFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.78. sqr() <a href="#SQRFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="SQRFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.79. sqr() <a href="#SQRFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Square. It takes one numeric operand.
-			</p></div><div class="sect2" id="SQRTFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.79. sqrt() <a href="#SQRTFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="SQRTFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.80. sqrt() <a href="#SQRTFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Square root. It takes one numeric operand.
-			</p></div><div class="sect2" id="STDWIYFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.80. stdwiy() <a href="#STDWIYFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="STDWIYFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.81. stdwiy() <a href="#STDWIYFUNC" class="id_link">#</a></h3></div></div></div><p>
 				It takes one datetime operand. This function returns
 				the  ISO-8601 week number of the operand as a decimal
 				number, range 01 to 53, where week 1 is the first week
 				that has at least 4 days in the new year.
-			</p></div><div class="sect2" id="STODFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.81. stod() <a href="#STODFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="STODFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.82. stod() <a href="#STODFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Alias for <code class="literal">stodt()</code>.
-			</p></div><div class="sect2" id="STODTFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.82. stodt() <a href="#STODTFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="STODTFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.83. stodt() <a href="#STODTFUNC" class="id_link">#</a></h3></div></div></div><p>
 				It takes one string operand. This function parses
 				the string and tries to convert it to a datetime value.
 				It is smart enough to recognize locale specific formats
 				and standard ISO-8601 formats. Handles whole datetime,
 				date-only and time-only values in the string.
-			</p></div><div class="sect2" id="STODTSQLFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.83. stodtsql() <a href="#STODTSQLFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="STODTSQLFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.84. stodtsql() <a href="#STODTSQLFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Alias for <code class="literal">stodt()</code>.
-			</p></div><div class="sect2" id="STRFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.84. str() <a href="#STRFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="STRFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.85. str() <a href="#STRFUNC" class="id_link">#</a></h3></div></div></div><p>
 				It takes three numeric operands. The first operand
 				is converted to a string with the specified integer and
 				decimal numeric digits, according to the second and third
 				operands.
-			</p></div><div class="sect2" id="SUBFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.85. sub() <a href="#SUBFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="STRLENFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.86. strlen() <a href="#STRLENFUNC" class="id_link">#</a></h3></div></div></div><p>
+				It takes one string operand. The function returns
+				the number of (UTF-8) characters in the string.
+			</p></div><div class="sect2" id="SUBFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.87. sub() <a href="#SUBFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Subtraction. Operator <code class="literal">-</code> is a shortcut for
 				this function. It takes two or more numeric operands.
-			</p></div><div class="sect2" id="TANFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.86. tan() <a href="#TANFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="TANFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.88. tan() <a href="#TANFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Tangent. It takes one numeric operand.
-			</p></div><div class="sect2" id="TIMEOFFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.87. timeof() <a href="#TIMEOFFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="TIMEOFFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.89. timeof() <a href="#TIMEOFFUNC" class="id_link">#</a></h3></div></div></div><p>
 				It takes one datetime operand.
 				It returns time part of the datetime operand.
-			</p></div><div class="sect2" id="TRANSLATEFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.88. translate() <a href="#TRANSLATEFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="TRANSLATEFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.90. translate() <a href="#TRANSLATEFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Translates its operand according to the translation
 				and locale settings using <code class="literal">dgettext()</code>
 				from Gettext. It takes one string operand.
-			</p></div><div class="sect2" id="TRANSLATE2FUNC"><div class="titlepage"><div><div><h3 class="title">3.6.89. translate2() <a href="#TRANSLATE2FUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="TRANSLATE2FUNC"><div class="titlepage"><div><div><h3 class="title">3.6.91. translate2() <a href="#TRANSLATE2FUNC" class="id_link">#</a></h3></div></div></div><p>
 				Translates its operands according to the translation
 				and locale settings using <code class="literal">dngettext()</code>
 				from Gettext. It takes three operands.
 				The first two operands are strings, for the singular
 				and plural strings. The third operand is the number
 				that determines which translation form is used.
-			</p></div><div class="sect2" id="TRUNCFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.90. trunc() <a href="#TRUNCFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="TRUNCFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.92. trunc() <a href="#TRUNCFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Rounds its operand to the next representable integer toward
 				zero. It takes one numeric operand.
-			</p></div><div class="sect2" id="TSTODFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.91. tstod() <a href="#TSTODFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="TSTODFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.93. tstod() <a href="#TSTODFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Alias for <code class="literal">stodt()</code>.
-			</p></div><div class="sect2" id="UMINUSFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.92. uminus() <a href="#UMINUSFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="UMINUSFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.94. uminus() <a href="#UMINUSFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Unary minus. Changes the sign of its numeric operand
 				from positive to negative, or vice versa. Operator unary
 				<code class="literal">-</code> is the shortcut of this function.
 				It takes one numeric operand.
-			</p></div><div class="sect2" id="UPPERFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.93. upper() <a href="#UPPERFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="UPPERFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.95. upper() <a href="#UPPERFUNC" class="id_link">#</a></h3></div></div></div><p>
 				It takes one string operand. This function converts
 				the string to uppercase.
-			</p></div><div class="sect2" id="VALFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.94. val() <a href="#VALFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="VALFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.96. val() <a href="#VALFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Numeric value. If a string operand is given, it returns
 				the converted numeric value. The value of a numeric operand
 				is passed through as is.
 				It takes one numeric or string operand.
-			</p></div><div class="sect2" id="WIYFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.95. wiy() <a href="#WIYFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="WIYFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.97. wiy() <a href="#WIYFUNC" class="id_link">#</a></h3></div></div></div><p>
 				It takes one datetime operand. This function returns
 				the week number of the operand as a decimal number,
 				range 00 to 53, starting with the first Sunday as
 				the first day of week 01.
-			</p></div><div class="sect2" id="WIY1FUNC"><div class="titlepage"><div><div><h3 class="title">3.6.96. wiy1() <a href="#WIY1FUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="WIY1FUNC"><div class="titlepage"><div><div><h3 class="title">3.6.98. wiy1() <a href="#WIY1FUNC" class="id_link">#</a></h3></div></div></div><p>
 				It takes one datetime operand. This function returns
 				the week number of the operand as a decimal number,
 				range 00 to 53, starting with the first Monday as
 				the first day of week 01.
-			</p></div><div class="sect2" id="WIYOFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.97. wiyo() <a href="#WIYOFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="WIYOFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.99. wiyo() <a href="#WIYOFUNC" class="id_link">#</a></h3></div></div></div><p>
 				It takes two operands, one datetime and one numeric.
 				This function returns the week number of the first
 				operand as a decimal number, range 00 to 53, starting
 				with the specified day number as the first day.
 				(0 = Sunday, 1 = Monday, 2 = Tuesday, ...)
-			</p></div><div class="sect2" id="XORFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.98. xor() <a href="#XORFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="XORFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.100. xor() <a href="#XORFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Bitwise exclusive OR. It takes two or more numeric operands.
-			</p></div><div class="sect2" id="YEARFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.99. year() <a href="#YEARFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="YEARFUNC"><div class="titlepage"><div><div><h3 class="title">3.6.101. year() <a href="#YEARFUNC" class="id_link">#</a></h3></div></div></div><p>
 				It takes one datetime operand. This function returns
 				the year value of the operand as a numeric value.
-			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="opsandfunc.html" title="3.5. Operators and functions">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="breaks.html" title="Chapter 4. Report breaks">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.5. Operators and functions </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.0 Manual">Home</a></td><td width="40%" align="right" valign="top"> Chapter 4. Report breaks</td></tr></table></div></body></html>
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="opsandfunc.html" title="3.5. Operators and functions">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="breaks.html" title="Chapter 4. Report breaks">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.5. Operators and functions </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.1 Manual">Home</a></td><td width="40%" align="right" valign="top"> Chapter 4. Report breaks</td></tr></table></div></body></html>
