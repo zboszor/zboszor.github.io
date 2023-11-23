@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>9.3. Colors, images, horizontal lines and fonts</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="example2.html" title="9.2. Simple report example with data access in code" /><link rel="next" href="license.html" title="Chapter 10. GNU Free Documentation License" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">9.3. Colors, images, horizontal lines and fonts</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="example2.html" title="9.2. Simple report example with data access in code">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="examples.html" title="Chapter 9. Examples">Up</a></td><th width="60%" align="center">Chapter 9. Examples</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.2 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="license.html" title="Chapter 10. GNU Free Documentation License">Next</a></td></tr></table><hr /></div><div class="sect1" id="EXAMPLE3"><div class="titlepage"><div><div><h2 class="title" style="clear: both">9.3. Colors, images, horizontal lines and fonts <a href="#EXAMPLE3" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="example3.html#EXAMPLE3DATA">9.3.1. Data</a></span></dt><dt><span class="sect2"><a href="example3.html#EXAMPLE3CODEC">9.3.2. C program code</a></span></dt><dt><span class="sect2"><a href="example3.html#EXAMPLE3CODEPHP">9.3.3. PHP program code</a></span></dt><dt><span class="sect2"><a href="example3.html#EXAMPLE3CODEPHPRLIB">9.3.4. RLIB compatible PHP program code</a></span></dt><dt><span class="sect2"><a href="example3.html#EXAMPLE3XML">9.3.5. Report description</a></span></dt><dt><span class="sect2"><a href="example3.html#EXAMPLE3PDF">9.3.6. Report PDF result</a></span></dt></dl></div><p>
+			This example below shows that reports may be more
+			exciting, with colors and images and other visual
+			elements and settings.
+		</p><div class="sect2" id="EXAMPLE3DATA"><div class="titlepage"><div><div><h3 class="title">9.3.1. Data <a href="#EXAMPLE3DATA" class="id_link">#</a></h3></div></div></div><p>
+				Data is created as follows in the same database
+				as the first example.
+				</p><pre class="programlisting">create table flintstones2
+(id serial primary key, name text, filename text);
+
+insert into flintstones2 (name, filename)
+values
+('Fred Flintstone', 'FredFlintstone.png'),
+('Wilma Flintstone', 'WilmaFlintstone.png'),
+('Pebbles Flintstone', 'PebblesFlintstone.png'),
+('Barney Rubble', 'BarneyRubble.png'),
+('Betty Rubble', 'BettyRubble.png'),
+('Bamm-Bamm Rubble', 'BammBammRubble.png'),
+('The Great Gazoo', 'TheGreatGazoo.png');</pre><p>
+			</p><p>
+				The data looks like this when queried:
+				</p><pre class="programlisting">ocrpttest=&gt; select * from flintstones2;
+ id |        name        |       filename        
+----+--------------------+-----------------------
+  1 | Fred Flintstone    | FredFlintstone.png
+  2 | Wilma Flintstone   | WilmaFlintstone.png
+  3 | Pebbles Flintstone | PebblesFlintstone.png
+  4 | Barney Rubble      | BarneyRubble.png
+  5 | Betty Rubble       | BettyRubble.png
+  6 | Bamm-Bamm Rubble   | BammBammRubble.png
+  7 | The Great Gazoo    | TheGreatGazoo.png
+(7 rows)</pre><p>
+			</p></div><div class="sect2" id="EXAMPLE3CODEC"><div class="titlepage"><div><div><h3 class="title">9.3.2. C program code <a href="#EXAMPLE3CODEC" class="id_link">#</a></h3></div></div></div><p>
+				The program code is almost identical to the
+				second example with the database connection
+				and the query added to program code, but
+				it loads a different report XML description.
+				</p><pre class="programlisting">#include &lt;stdio.h&gt;
+#include &lt;opencreport.h&gt;
+
+int main(int argc, char **argv) {
+    opencreport *o = ocrpt_init();
+    ocrpt_datasource *ds = ocrpt_datasource_add_postgresql(o, "pgsql", NULL, NULL, "ocrpttest", "ocrpt", NULL);
+
+    ocrpt_query_add_postgresql(ds, "q", "select * from flintstones2;");
+
+    if (!ocrpt_parse_xml(o, "example3.xml")) {
+        printf("XML parse error\n");
+        ocrpt_free(o);
+        return 0;
+    }
+
+    ocrpt_set_output_format(o, OCRPT_OUTPUT_PDF);
+    ocrpt_execute(o);
+    ocrpt_spool(o);
+    ocrpt_free(o);
+
+    return 0;
+}</pre><p>
+			</p></div><div class="sect2" id="EXAMPLE3CODEPHP"><div class="titlepage"><div><div><h3 class="title">9.3.3. PHP program code <a href="#EXAMPLE3CODEPHP" class="id_link">#</a></h3></div></div></div><p>
+				Here's the equivalent program code in PHP.
+				</p><pre class="programlisting">&lt;?php
+$o = new OpenCReport();
+$ds = $o-&gt;datasource_add_postgresql("pgsql", NULL, NULL, "ocrpttest", "ocrpt", NULL);
+
+$ds-&gt;query_add("q", "select * from flintstones2;");
+
+if (!$o-&gt;parse_xml("example3.xml")) {
+    echo "XML parse error" . PHP_EOL;
+    exit(0);
+}
+
+$o-&gt;execute();
+$o-&gt;spool();</pre><p>
+			</p></div><div class="sect2" id="EXAMPLE3CODEPHPRLIB"><div class="titlepage"><div><div><h3 class="title">9.3.4. RLIB compatible PHP program code <a href="#EXAMPLE3CODEPHPRLIB" class="id_link">#</a></h3></div></div></div><p>
+				Here's the equivalent program code in PHP,
+				using the RLIB compatibility functions.
+				</p><pre class="programlisting">&lt;?php
+$r = rlib_init();
+
+rlib_add_datasource_postgres($r, "pgsql", "dbname=ocrpttest user=ocrpt");
+rlib_add_query_as($r, "pgsql", "select * from flintstones2;", "q");
+
+if (!rlib_add_report($r, "example3.xml")) {
+    echo "XML parse error" . PHP_EOL;
+    exit(0);
+}
+
+rlib_execute($r);
+rlib_spool($r);</pre><p>
+			</p></div><div class="sect2" id="EXAMPLE3XML"><div class="titlepage"><div><div><h3 class="title">9.3.5. Report description <a href="#EXAMPLE3XML" class="id_link">#</a></h3></div></div></div><p>
+				The program code uses this file contents
+				from <code class="literal">example3.xml</code>.
+			</p><p>
+				Note the new settings:
+				<code class="literal">fontName="..."</code>,
+				<code class="literal">fontSize="..."</code>,
+				<code class="literal">bold="..."</code>,
+				<code class="literal">italic="..."</code>,
+				<code class="literal">color="..."</code>,
+				<code class="literal">bgcolor="..."</code>
+				and others.
+			</p><p>
+				Also note that the <code class="literal">value="..."</code>
+				setting indicates the file names that are used with
+				<code class="literal">&lt;Image&gt;</code> elements in the
+				report XML description. These files must be
+				present in the report application work directory,
+				or can be found in <a class="xref" href="searchpaths.html" title="2.3. Paths">Search paths</a>
+				added either in the report XML description or via
+				programming code.
+				</p><pre class="programlisting">&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE OpenCReport SYSTEM "opencreport.dtd"&gt;
+&lt;OpenCReport&gt;
+    &lt;Report query="q"&gt;
+        &lt;PageHeader&gt;
+            &lt;Output&gt;
+                &lt;Image width="227" height="92" value="'A_Flintstones_logo.png'" /&gt;
+                &lt;Line&gt;
+                    &lt;field fontName="'Arial'" fontSize="20" value="printf('Page %d / %d', r.pageno, r.totpages)" align="right" /&gt;
+                &lt;/Line&gt;
+            &lt;/Output&gt;
+        &lt;/PageHeader&gt;
+
+        &lt;PageFooter&gt;
+            &lt;Output&gt;
+                &lt;Image width="227" height="92" value="'A_Flintstones_logo.png'" /&gt;
+                &lt;Line&gt;
+                    &lt;field fontName="'Times New Roman'" fontSize="20" value="printf('Page %d / %d', r.pageno, r.totpages)" align="right" /&gt;
+                &lt;/Line&gt;
+            &lt;/Output&gt;
+        &lt;/PageFooter&gt;
+
+        &lt;Detail&gt;
+            &lt;FieldHeaders&gt;
+                &lt;Output&gt;
+                    &lt;HorizontalLine size="2" color="'black'" /&gt;
+                    &lt;HorizontalLine size="2" color="'green'" /&gt;
+                    &lt;Line bgcolor="'green'" bold="yes" fontSize="18"&gt;
+                        &lt;literal fontName="'Petaluma Script'" width="7" align="'center'"&gt;Picture&lt;/literal&gt;
+                        &lt;literal width="1"/&gt;
+                        &lt;literal fontName="'Carlito'" italic="yes"&gt;Name&lt;/literal&gt;
+                    &lt;/Line&gt;
+                    &lt;HorizontalLine size="2" color="'green'" /&gt;
+                    &lt;HorizontalLine size="2" color="'black'" /&gt;
+                    &lt;HorizontalLine size="2" color="'white'" /&gt;
+                &lt;/Output&gt;
+            &lt;/FieldHeaders&gt;
+
+            &lt;FieldDetails&gt;
+                &lt;Output&gt;
+                    &lt;Line fontSize="18"&gt;
+                        &lt;Image textWidth="7" bgcolor="'yellow'" align="'center'" value="filename" /&gt;
+                        &lt;literal width="1" bgcolor="'yellow'" /&gt;
+                        &lt;field color="'red'" bgcolor="'yellow'" value="name" /&gt;
+                    &lt;/Line&gt;
+                &lt;/Output&gt;
+            &lt;/FieldDetails&gt;
+        &lt;/Detail&gt;
+    &lt;/Report&gt;
+&lt;/OpenCReport&gt;</pre><p>
+			</p></div><div class="sect2" id="EXAMPLE3PDF"><div class="titlepage"><div><div><h3 class="title">9.3.6. Report PDF result <a href="#EXAMPLE3PDF" class="id_link">#</a></h3></div></div></div><p>
+				<span class="inlinemediaobject"><img src="example3.png" align="middle" /></span>
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="example2.html" title="9.2. Simple report example with data access in code">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="examples.html" title="Chapter 9. Examples">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="license.html" title="Chapter 10. GNU Free Documentation License">Next</a></td></tr><tr><td width="40%" align="left" valign="top">9.2. Simple report example with data access in code </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.2 Manual">Home</a></td><td width="40%" align="right" valign="top"> Chapter 10. GNU Free Documentation License</td></tr></table></div></body></html>
