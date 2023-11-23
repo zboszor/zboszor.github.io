@@ -6,7 +6,7 @@
 					with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
 					Texts.  A copy of the license is included in the section entitled "GNU
 					Free Documentation License".
-				</p></blockquote></div></div></div></div><hr /></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="chapter"><a href="#INTRODUCTION">1. Introduction and concepts</a></span></dt><dd><dl><dt><span class="sect1"><a href="#RLIB">1.1. The predecessor: RLIB</a></span></dt><dt><span class="sect1"><a href="#CONCEPTS">1.2. Concepts</a></span></dt><dt><span class="sect1"><a href="#PLANNED">1.3. OpenCReports planned features</a></span></dt></dl></dd><dt><span class="chapter"><a href="#XMLDESCRIPTOR">2. Report XML description</a></span></dt><dd><dl><dt><span class="sect1"><a href="#DESCSTRUCT">2.1. XML description structure</a></span></dt><dt><span class="sect1"><a href="#OCRPTTOPXML">2.2. OpenCReport element</a></span></dt><dt><span class="sect1"><a href="#SEARCHPATHS">2.3. Paths</a></span></dt><dt><span class="sect1"><a href="#DATASOURCES">2.4. Datasources</a></span></dt><dt><span class="sect1"><a href="#QUERIES">2.5. Queries</a></span></dt><dt><span class="sect1"><a href="#PARTS">2.6. Report parts</a></span></dt><dt><span class="sect1"><a href="#PARTROW">2.7. Part row</a></span></dt><dt><span class="sect1"><a href="#PARTCOL">2.8. Part column</a></span></dt><dt><span class="sect1"><a href="#REPORT">2.9. Report</a></span></dt><dt><span class="sect1"><a href="#LOADEDREPORT">2.10. Loaded report</a></span></dt><dt><span class="sect1"><a href="#VARIABLESNODE">2.11. Variables</a></span></dt><dt><span class="sect1"><a href="#VARIABLENODE">2.12. Variable</a></span></dt><dt><span class="sect1"><a href="#BREAKSNODE">2.13. Breaks</a></span></dt><dt><span class="sect1"><a href="#BREAKNODE">2.14. Break</a></span></dt><dt><span class="sect1"><a href="#OUTPUTNODE">2.15. Output</a></span></dt><dt><span class="sect1"><a href="#LINENODE">2.16. Line</a></span></dt><dt><span class="sect1"><a href="#TEXTELEMNODE">2.17. Text element</a></span></dt><dt><span class="sect1"><a href="#HLINENODE">2.18. HorizontalLine</a></span></dt><dt><span class="sect1"><a href="#IMAGENODE">2.19. Image</a></span></dt><dt><span class="sect1"><a href="#IMAGEENDNODE">2.20. Image end</a></span></dt><dt><span class="sect1"><a href="#COLORSPEC">2.21. Color specification</a></span></dt></dl></dd><dt><span class="chapter"><a href="#EXPRESSIONS">3. Expressions in OpenCReports</a></span></dt><dd><dl><dt><span class="sect1"><a href="#EXPRINTRO">3.1. Introduction</a></span></dt><dt><span class="sect1"><a href="#CONSTANTS">3.2. Constants</a></span></dt><dt><span class="sect1"><a href="#PRECALCEXPR">3.3. Precalculated expressions</a></span></dt><dt><span class="sect1"><a href="#IDENTIFIERS">3.4. Identifiers</a></span></dt><dt><span class="sect1"><a href="#OPSANDFUNC">3.5. Operators and functions</a></span></dt><dt><span class="sect1"><a href="#LISTOFFUNCS">3.6. Alphabetical list of functions</a></span></dt></dl></dd><dt><span class="chapter"><a href="#BREAKS">4. Report breaks</a></span></dt><dd><dl><dt><span class="sect1"><a href="#GROUPINGDATA">4.1. Grouping data</a></span></dt><dt><span class="sect1"><a href="#REPORTBREAKS">4.2. Report breaks in OpenCReports</a></span></dt></dl></dd><dt><span class="chapter"><a href="#VARIABLES">5. Report variables</a></span></dt><dd><dl><dt><span class="sect1"><a href="#USERVARINTRO">5.1. Introduction to report variables</a></span></dt><dt><span class="sect1"><a href="#EXPRVAR">5.2. Expression variables</a></span></dt><dt><span class="sect1"><a href="#USERVARSIMPLE">5.3. Variable types for simple statistics</a></span></dt><dt><span class="sect1"><a href="#CUSTOMVAR">5.4. Custom variables</a></span></dt><dt><span class="sect1"><a href="#PRECALCVAR">5.5. Precalculated variables</a></span></dt><dt><span class="sect1"><a href="#USERVARRESET">5.6. Resetting a variable on break boundaries</a></span></dt></dl></dd><dt><span class="chapter"><a href="#FORMATTING">6. Formatting</a></span></dt><dd><dl><dt><span class="sect1"><a href="#FORMATTINGFUNCS">6.1. Formatting functions</a></span></dt><dt><span class="sect1"><a href="#FORMATSTRINGS">6.2. Format strings</a></span></dt><dt><span class="sect1"><a href="#LEGACYFORMATSTRINGS">6.3. Legacy format strings</a></span></dt><dt><span class="sect1"><a href="#NEWFORMATSTRINGS">6.4. New style format strings</a></span></dt><dt><span class="sect1"><a href="#NEWFORMATSTRINGSGEN2">6.5. Second generation new style format strings</a></span></dt></dl></dd><dt><span class="chapter"><a href="#C-API-REFERENCE">7. C language API reference</a></span></dt><dd><dl><dt><span class="sect1"><a href="#C_HEADER">7.1. Header file</a></span></dt><dt><span class="sect1"><a href="#HIGHLEVELAPI">7.2. High level C API</a></span></dt><dt><span class="sect1"><a href="#LOWLEVELAPI">7.3. Low level C API</a></span></dt></dl></dd><dt><span class="chapter"><a href="#PHP-API-REFERENCE">8. PHP language API reference</a></span></dt><dd><dl><dt><span class="sect1"><a href="#PHPMODULE">8.1. The OpenCReports PHP module</a></span></dt><dt><span class="sect1"><a href="#MAINCLASS">8.2. The OpenCReport class</a></span></dt><dt><span class="sect1"><a href="#PHPHIGHLEVELAPI">8.3. High level PHP API</a></span></dt><dt><span class="sect1"><a href="#PHPLOWLEVELAPI">8.4. Low level PHP API</a></span></dt><dt><span class="sect1"><a href="#PHPDSCLASS">8.5. The OpenCReport\Datasource class</a></span></dt><dt><span class="sect1"><a href="#PHPQUERYCLASS">8.6. The OpenCReport\Query class</a></span></dt><dt><span class="sect1"><a href="#PHPQUERYRESULTCLASS">8.7. The OpenCReport\QueryResult class</a></span></dt><dt><span class="sect1"><a href="#PHPEXPRCLASS">8.8. The OpenCReport\Expr class</a></span></dt><dt><span class="sect1"><a href="#PHPRESULTCLASS">8.9. The OpenCReport\Result class</a></span></dt><dt><span class="sect1"><a href="#PHPPARTCLASS">8.10. The OpenCReport\Part class</a></span></dt><dt><span class="sect1"><a href="#PHPPARTROWCLASS">8.11. The OpenCReport\Row class</a></span></dt><dt><span class="sect1"><a href="#PHPPARTCOLCLASS">8.12. The OpenCReport\Column class</a></span></dt><dt><span class="sect1"><a href="#PHPREPORTCLASS">8.13. The OpenCReport\Report class</a></span></dt><dt><span class="sect1"><a href="#PHPVARIABLECLASS">8.14. The OpenCReport\Variable class</a></span></dt><dt><span class="sect1"><a href="#PHPBREAKCLASS">8.15. The OpenCReport\Break class</a></span></dt><dt><span class="sect1"><a href="#PHPOUTPUTCLASS">8.16. The OpenCReport\Output class</a></span></dt><dt><span class="sect1"><a href="#PHPLINECLASS">8.17. The OpenCReport\Line class</a></span></dt><dt><span class="sect1"><a href="#PHPHLINECLASS">8.18. The OpenCReport\HorizontalLine class</a></span></dt><dt><span class="sect1"><a href="#PHPIMAGECLASS">8.19. The OpenCReport\Image class</a></span></dt><dt><span class="sect1"><a href="#PHPTEXTCLASS">8.20. The OpenCReport\Text class</a></span></dt><dt><span class="sect1"><a href="#PHPRLIBCOMPAT">8.21. RLIB compatibility API</a></span></dt></dl></dd><dt><span class="chapter"><a href="#EXAMPLES">9. Examples</a></span></dt><dd><dl><dt><span class="sect1"><a href="#EXAMPLE1">9.1. Simple report example</a></span></dt></dl></dd><dt><span class="chapter"><a href="#LICENSE">10. GNU Free Documentation License</a></span></dt></dl></div><div class="chapter" id="INTRODUCTION"><div class="titlepage"><div><div><h1 class="title">Chapter 1. Introduction and concepts</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#RLIB">1.1. The predecessor: RLIB</a></span></dt><dt><span class="sect1"><a href="#CONCEPTS">1.2. Concepts</a></span></dt><dd><dl><dt><span class="sect2"><a href="#WHATISAREPGEN">1.2.1. What is a report generator?</a></span></dt><dt><span class="sect2"><a href="#XMLBASEDDESC">1.2.2. XML based report description</a></span></dt><dt><span class="sect2"><a href="#COMPREHENSIVEAPI">1.2.3. Comprehensive API for report creation</a></span></dt><dt><span class="sect2"><a href="#STRICTPARSER">1.2.4. Strict expression parser</a></span></dt><dt><span class="sect2"><a href="#EXPROPT">1.2.5. Expression optimization</a></span></dt><dt><span class="sect2"><a href="#REPVARS">1.2.6. Report variables</a></span></dt><dt><span class="sect2"><a href="#SETOFFUNCS">1.2.7. Extensive and extensible set of functions</a></span></dt><dt><span class="sect2"><a href="#UTF8STRINGS">1.2.8. UTF-8 string handling</a></span></dt><dt><span class="sect2"><a href="#HIGHPRECNUMERICS">1.2.9. High precision numeric data type</a></span></dt><dt><span class="sect2"><a href="#DATETIMETYPES">1.2.10. Datetime and interval data types</a></span></dt><dt><span class="sect2"><a href="#AUTOCONV">1.2.11. Automatic input data conversion</a></span></dt><dt><span class="sect2"><a href="#ALIGNMENTS">1.2.12. Versatile field alignment and multi-row fields</a></span></dt><dt><span class="sect2"><a href="#REPBREAKS">1.2.13. Report breaks</a></span></dt><dt><span class="sect2"><a href="#MULTICOLREP">1.2.14. Multi-column reports</a></span></dt><dt><span class="sect2"><a href="#LAYOUTDETAILS">1.2.15. Layout details</a></span></dt><dt><span class="sect2"><a href="#OUTPUTFORMATS">1.2.16. Multiple output formats</a></span></dt><dt><span class="sect2"><a href="#UNITTESTS">1.2.17. Extensive set of unit tests</a></span></dt><dt><span class="sect2"><a href="#STDDEPS">1.2.18. Standard Linux dependencies</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PLANNED">1.3. OpenCReports planned features</a></span></dt><dd><dl><dt><span class="sect2"><a href="#GRAPHS">1.3.1. Graph and chart support in HTML and PDF output</a></span></dt><dt><span class="sect2"><a href="#VISUALEDITOR">1.3.2. Visual editor for report XML descriptions</a></span></dt></dl></dd></dl></div><div class="sect1" id="RLIB"><div class="titlepage"><div><div><h2 class="title" style="clear: both">1.1. The predecessor: RLIB <a href="#RLIB" class="id_link">#</a></h2></div></div></div><p>
+				</p></blockquote></div></div></div></div><hr /></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="chapter"><a href="#INTRODUCTION">1. Introduction and concepts</a></span></dt><dd><dl><dt><span class="sect1"><a href="#RLIB">1.1. The predecessor: RLIB</a></span></dt><dt><span class="sect1"><a href="#CONCEPTS">1.2. Concepts</a></span></dt><dt><span class="sect1"><a href="#PLANNED">1.3. OpenCReports planned features</a></span></dt></dl></dd><dt><span class="chapter"><a href="#XMLDESCRIPTOR">2. Report XML description</a></span></dt><dd><dl><dt><span class="sect1"><a href="#DESCSTRUCT">2.1. XML description structure</a></span></dt><dt><span class="sect1"><a href="#OCRPTTOPXML">2.2. OpenCReport element</a></span></dt><dt><span class="sect1"><a href="#SEARCHPATHS">2.3. Paths</a></span></dt><dt><span class="sect1"><a href="#DATASOURCES">2.4. Datasources</a></span></dt><dt><span class="sect1"><a href="#QUERIES">2.5. Queries</a></span></dt><dt><span class="sect1"><a href="#PARTS">2.6. Report parts</a></span></dt><dt><span class="sect1"><a href="#PARTROW">2.7. Part row</a></span></dt><dt><span class="sect1"><a href="#PARTCOL">2.8. Part column</a></span></dt><dt><span class="sect1"><a href="#REPORT">2.9. Report</a></span></dt><dt><span class="sect1"><a href="#LOADEDREPORT">2.10. Loaded report</a></span></dt><dt><span class="sect1"><a href="#VARIABLESNODE">2.11. Variables</a></span></dt><dt><span class="sect1"><a href="#VARIABLENODE">2.12. Variable</a></span></dt><dt><span class="sect1"><a href="#BREAKSNODE">2.13. Breaks</a></span></dt><dt><span class="sect1"><a href="#BREAKNODE">2.14. Break</a></span></dt><dt><span class="sect1"><a href="#OUTPUTNODE">2.15. Output</a></span></dt><dt><span class="sect1"><a href="#LINENODE">2.16. Line</a></span></dt><dt><span class="sect1"><a href="#TEXTELEMNODE">2.17. Text element</a></span></dt><dt><span class="sect1"><a href="#HLINENODE">2.18. HorizontalLine</a></span></dt><dt><span class="sect1"><a href="#IMAGENODE">2.19. Image</a></span></dt><dt><span class="sect1"><a href="#IMAGEENDNODE">2.20. Image end</a></span></dt><dt><span class="sect1"><a href="#COLORSPEC">2.21. Color specification</a></span></dt></dl></dd><dt><span class="chapter"><a href="#EXPRESSIONS">3. Expressions in OpenCReports</a></span></dt><dd><dl><dt><span class="sect1"><a href="#EXPRINTRO">3.1. Introduction</a></span></dt><dt><span class="sect1"><a href="#CONSTANTS">3.2. Constants</a></span></dt><dt><span class="sect1"><a href="#PRECALCEXPR">3.3. Precalculated expressions</a></span></dt><dt><span class="sect1"><a href="#IDENTIFIERS">3.4. Identifiers</a></span></dt><dt><span class="sect1"><a href="#OPSANDFUNC">3.5. Operators and functions</a></span></dt><dt><span class="sect1"><a href="#LISTOFFUNCS">3.6. Alphabetical list of functions</a></span></dt></dl></dd><dt><span class="chapter"><a href="#BREAKS">4. Report breaks</a></span></dt><dd><dl><dt><span class="sect1"><a href="#GROUPINGDATA">4.1. Grouping data</a></span></dt><dt><span class="sect1"><a href="#REPORTBREAKS">4.2. Report breaks in OpenCReports</a></span></dt></dl></dd><dt><span class="chapter"><a href="#VARIABLES">5. Report variables</a></span></dt><dd><dl><dt><span class="sect1"><a href="#USERVARINTRO">5.1. Introduction to report variables</a></span></dt><dt><span class="sect1"><a href="#EXPRVAR">5.2. Expression variables</a></span></dt><dt><span class="sect1"><a href="#USERVARSIMPLE">5.3. Variable types for simple statistics</a></span></dt><dt><span class="sect1"><a href="#CUSTOMVAR">5.4. Custom variables</a></span></dt><dt><span class="sect1"><a href="#PRECALCVAR">5.5. Precalculated variables</a></span></dt><dt><span class="sect1"><a href="#USERVARRESET">5.6. Resetting a variable on break boundaries</a></span></dt></dl></dd><dt><span class="chapter"><a href="#FORMATTING">6. Formatting</a></span></dt><dd><dl><dt><span class="sect1"><a href="#FORMATTINGFUNCS">6.1. Formatting functions</a></span></dt><dt><span class="sect1"><a href="#FORMATSTRINGS">6.2. Format strings</a></span></dt><dt><span class="sect1"><a href="#LEGACYFORMATSTRINGS">6.3. Legacy format strings</a></span></dt><dt><span class="sect1"><a href="#NEWFORMATSTRINGS">6.4. New style format strings</a></span></dt><dt><span class="sect1"><a href="#NEWFORMATSTRINGSGEN2">6.5. Second generation new style format strings</a></span></dt></dl></dd><dt><span class="chapter"><a href="#C-API-REFERENCE">7. C language API reference</a></span></dt><dd><dl><dt><span class="sect1"><a href="#C_HEADER">7.1. Header file</a></span></dt><dt><span class="sect1"><a href="#HIGHLEVELAPI">7.2. High level C API</a></span></dt><dt><span class="sect1"><a href="#LOWLEVELAPI">7.3. Low level C API</a></span></dt></dl></dd><dt><span class="chapter"><a href="#PHP-API-REFERENCE">8. PHP language API reference</a></span></dt><dd><dl><dt><span class="sect1"><a href="#PHPMODULE">8.1. The OpenCReports PHP module</a></span></dt><dt><span class="sect1"><a href="#MAINCLASS">8.2. The OpenCReport class</a></span></dt><dt><span class="sect1"><a href="#PHPHIGHLEVELAPI">8.3. High level PHP API</a></span></dt><dt><span class="sect1"><a href="#PHPLOWLEVELAPI">8.4. Low level PHP API</a></span></dt><dt><span class="sect1"><a href="#PHPDSCLASS">8.5. The OpenCReport\Datasource class</a></span></dt><dt><span class="sect1"><a href="#PHPQUERYCLASS">8.6. The OpenCReport\Query class</a></span></dt><dt><span class="sect1"><a href="#PHPQUERYRESULTCLASS">8.7. The OpenCReport\QueryResult class</a></span></dt><dt><span class="sect1"><a href="#PHPEXPRCLASS">8.8. The OpenCReport\Expr class</a></span></dt><dt><span class="sect1"><a href="#PHPRESULTCLASS">8.9. The OpenCReport\Result class</a></span></dt><dt><span class="sect1"><a href="#PHPPARTCLASS">8.10. The OpenCReport\Part class</a></span></dt><dt><span class="sect1"><a href="#PHPPARTROWCLASS">8.11. The OpenCReport\Row class</a></span></dt><dt><span class="sect1"><a href="#PHPPARTCOLCLASS">8.12. The OpenCReport\Column class</a></span></dt><dt><span class="sect1"><a href="#PHPREPORTCLASS">8.13. The OpenCReport\Report class</a></span></dt><dt><span class="sect1"><a href="#PHPVARIABLECLASS">8.14. The OpenCReport\Variable class</a></span></dt><dt><span class="sect1"><a href="#PHPBREAKCLASS">8.15. The OpenCReport\Break class</a></span></dt><dt><span class="sect1"><a href="#PHPOUTPUTCLASS">8.16. The OpenCReport\Output class</a></span></dt><dt><span class="sect1"><a href="#PHPLINECLASS">8.17. The OpenCReport\Line class</a></span></dt><dt><span class="sect1"><a href="#PHPHLINECLASS">8.18. The OpenCReport\HorizontalLine class</a></span></dt><dt><span class="sect1"><a href="#PHPIMAGECLASS">8.19. The OpenCReport\Image class</a></span></dt><dt><span class="sect1"><a href="#PHPTEXTCLASS">8.20. The OpenCReport\Text class</a></span></dt><dt><span class="sect1"><a href="#PHPRLIBCOMPAT">8.21. RLIB compatibility API</a></span></dt></dl></dd><dt><span class="chapter"><a href="#EXAMPLES">9. Examples</a></span></dt><dd><dl><dt><span class="sect1"><a href="#EXAMPLE1">9.1. Simple report example</a></span></dt><dt><span class="sect1"><a href="#EXAMPLE2">9.2. Simple report example with data access in code</a></span></dt></dl></dd><dt><span class="chapter"><a href="#LICENSE">10. GNU Free Documentation License</a></span></dt></dl></div><div class="chapter" id="INTRODUCTION"><div class="titlepage"><div><div><h1 class="title">Chapter 1. Introduction and concepts</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#RLIB">1.1. The predecessor: RLIB</a></span></dt><dt><span class="sect1"><a href="#CONCEPTS">1.2. Concepts</a></span></dt><dd><dl><dt><span class="sect2"><a href="#WHATISAREPGEN">1.2.1. What is a report generator?</a></span></dt><dt><span class="sect2"><a href="#XMLBASEDDESC">1.2.2. XML based report description</a></span></dt><dt><span class="sect2"><a href="#COMPREHENSIVEAPI">1.2.3. Comprehensive API for report creation</a></span></dt><dt><span class="sect2"><a href="#STRICTPARSER">1.2.4. Strict expression parser</a></span></dt><dt><span class="sect2"><a href="#EXPROPT">1.2.5. Expression optimization</a></span></dt><dt><span class="sect2"><a href="#REPVARS">1.2.6. Report variables</a></span></dt><dt><span class="sect2"><a href="#SETOFFUNCS">1.2.7. Extensive and extensible set of functions</a></span></dt><dt><span class="sect2"><a href="#UTF8STRINGS">1.2.8. UTF-8 string handling</a></span></dt><dt><span class="sect2"><a href="#HIGHPRECNUMERICS">1.2.9. High precision numeric data type</a></span></dt><dt><span class="sect2"><a href="#DATETIMETYPES">1.2.10. Datetime and interval data types</a></span></dt><dt><span class="sect2"><a href="#AUTOCONV">1.2.11. Automatic input data conversion</a></span></dt><dt><span class="sect2"><a href="#ALIGNMENTS">1.2.12. Versatile field alignment and multi-row fields</a></span></dt><dt><span class="sect2"><a href="#REPBREAKS">1.2.13. Report breaks</a></span></dt><dt><span class="sect2"><a href="#MULTICOLREP">1.2.14. Multi-column reports</a></span></dt><dt><span class="sect2"><a href="#LAYOUTDETAILS">1.2.15. Layout details</a></span></dt><dt><span class="sect2"><a href="#OUTPUTFORMATS">1.2.16. Multiple output formats</a></span></dt><dt><span class="sect2"><a href="#UNITTESTS">1.2.17. Extensive set of unit tests</a></span></dt><dt><span class="sect2"><a href="#STDDEPS">1.2.18. Standard Linux dependencies</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PLANNED">1.3. OpenCReports planned features</a></span></dt><dd><dl><dt><span class="sect2"><a href="#GRAPHS">1.3.1. Graph and chart support in HTML and PDF output</a></span></dt><dt><span class="sect2"><a href="#VISUALEDITOR">1.3.2. Visual editor for report XML descriptions</a></span></dt></dl></dd></dl></div><div class="sect1" id="RLIB"><div class="titlepage"><div><div><h2 class="title" style="clear: both">1.1. The predecessor: RLIB <a href="#RLIB" class="id_link">#</a></h2></div></div></div><p>
 			The idea to write <a class="ulink" href="https://github.com/zboszor/OpenCReports" target="_top">OpenCReports</a>
 			started with my getting acqauinted with <a class="ulink" href="https://github.com/SICOM/rlib" target="_top">RLIB</a>
 			in 2005 and working with it (and on it) for a very long time,
@@ -10061,7 +10061,7 @@ rlib_graph_set_x_minor_tick_by_location(
                      OpenCReport $r,
                      string $graph,
                      double $location): void;</pre><p>
-			</p></div></div></div><div class="chapter" id="EXAMPLES"><div class="titlepage"><div><div><h1 class="title">Chapter 9. Examples</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#EXAMPLE1">9.1. Simple report example</a></span></dt><dd><dl><dt><span class="sect2"><a href="#EXAMPLE1DATA">9.1.1. Data</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE1CODEC">9.1.2. C program code</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE1CODEPHP">9.1.3. PHP program code</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE1CODEPHPRLIB">9.1.4. RLIB compatible PHP program code</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE1XML">9.1.5. Report description</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE1PDF">9.1.6. Report PDF result</a></span></dt></dl></dd></dl></div><div class="sect1" id="EXAMPLE1"><div class="titlepage"><div><div><h2 class="title" style="clear: both">9.1. Simple report example <a href="#EXAMPLE1" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="#EXAMPLE1DATA">9.1.1. Data</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE1CODEC">9.1.2. C program code</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE1CODEPHP">9.1.3. PHP program code</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE1CODEPHPRLIB">9.1.4. RLIB compatible PHP program code</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE1XML">9.1.5. Report description</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE1PDF">9.1.6. Report PDF result</a></span></dt></dl></div><p>
+			</p></div></div></div><div class="chapter" id="EXAMPLES"><div class="titlepage"><div><div><h1 class="title">Chapter 9. Examples</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#EXAMPLE1">9.1. Simple report example</a></span></dt><dd><dl><dt><span class="sect2"><a href="#EXAMPLE1DATA">9.1.1. Data</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE1CODEC">9.1.2. C program code</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE1CODEPHP">9.1.3. PHP program code</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE1CODEPHPRLIB">9.1.4. RLIB compatible PHP program code</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE1XML">9.1.5. Report description</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE1PDF">9.1.6. Report PDF result</a></span></dt></dl></dd><dt><span class="sect1"><a href="#EXAMPLE2">9.2. Simple report example with data access in code</a></span></dt><dd><dl><dt><span class="sect2"><a href="#EXAMPLE2DATA">9.2.1. Data</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE2CODEC">9.2.2. C program code</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE2CODEPHP">9.2.3. PHP program code</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE2CODEPHPRLIB">9.2.4. RLIB compatible PHP program code</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE2XML">9.2.5. Report description</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE2PDF">9.2.6. Report PDF result</a></span></dt></dl></dd></dl></div><div class="sect1" id="EXAMPLE1"><div class="titlepage"><div><div><h2 class="title" style="clear: both">9.1. Simple report example <a href="#EXAMPLE1" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="#EXAMPLE1DATA">9.1.1. Data</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE1CODEC">9.1.2. C program code</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE1CODEPHP">9.1.3. PHP program code</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE1CODEPHPRLIB">9.1.4. RLIB compatible PHP program code</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE1XML">9.1.5. Report description</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE1PDF">9.1.6. Report PDF result</a></span></dt></dl></div><p>
 			This example below uses a PostgreSQL query
 			to generate a report in PDF output format,
 			with many settings used as default:
@@ -10147,8 +10147,6 @@ $o-&gt;spool();</pre><p>
 				</p><pre class="programlisting">&lt;?php
 $r = rlib_init();
 
-rlib_add_report($r, "example1.xml");
-
 if (!rlib_add_report($r, "example1.xml")) {
     echo "XML parse error" . PHP_EOL;
     exit(0);
@@ -10226,6 +10224,139 @@ rlib_spool($r);</pre><p>
 &lt;/OpenCReport&gt;</pre><p>
 			</p></div><div class="sect2" id="EXAMPLE1PDF"><div class="titlepage"><div><div><h3 class="title">9.1.6. Report PDF result <a href="#EXAMPLE1PDF" class="id_link">#</a></h3></div></div></div><p>
 				<span class="inlinemediaobject"><img src="images/example1.png" align="middle" /></span>
+			</p></div></div><div class="sect1" id="EXAMPLE2"><div class="titlepage"><div><div><h2 class="title" style="clear: both">9.2. Simple report example with data access in code <a href="#EXAMPLE2" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="#EXAMPLE2DATA">9.2.1. Data</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE2CODEC">9.2.2. C program code</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE2CODEPHP">9.2.3. PHP program code</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE2CODEPHPRLIB">9.2.4. RLIB compatible PHP program code</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE2XML">9.2.5. Report description</a></span></dt><dt><span class="sect2"><a href="#EXAMPLE2PDF">9.2.6. Report PDF result</a></span></dt></dl></div><p>
+			This example below is mostly the same as the
+			previous one, with one exception: the database
+			access is done from program code instead of
+			putting it into the report XML description file.
+		</p><div class="sect2" id="EXAMPLE2DATA"><div class="titlepage"><div><div><h3 class="title">9.2.1. Data <a href="#EXAMPLE2DATA" class="id_link">#</a></h3></div></div></div><p>
+				As the same data is used as in the previous example,
+				it's not duplicated here.
+			</p></div><div class="sect2" id="EXAMPLE2CODEC"><div class="titlepage"><div><div><h3 class="title">9.2.2. C program code <a href="#EXAMPLE2CODEC" class="id_link">#</a></h3></div></div></div><p>
+				The program code adds the datasource and
+				the query before loading the report XML
+				description. The order of these are not
+				important, as the <code class="literal">ocrpt_execute()</code>
+				call performs matching expressions with
+				query column names internally.
+				</p><pre class="programlisting">#include &lt;stdio.h&gt;
+#include &lt;opencreport.h&gt;
+
+int main(int argc, char **argv) {
+    opencreport *o = ocrpt_init();
+    ocrpt_datasource *ds = ocrpt_datasource_add_postgresql(o, "pgsql", NULL, NULL, "ocrpttest", "ocrpt", NULL);
+
+    ocrpt_query_add_postgresql(ds, "q", "select * from flintstones;");
+
+    if (!ocrpt_parse_xml(o, "example2.xml")) {
+        printf("XML parse error\n");
+        ocrpt_free(o);
+        return 0;
+    }
+
+    ocrpt_set_output_format(o, OCRPT_OUTPUT_PDF);
+    ocrpt_execute(o);
+    ocrpt_spool(o);
+    ocrpt_free(o);
+
+    return 0;
+}</pre><p>
+			</p></div><div class="sect2" id="EXAMPLE2CODEPHP"><div class="titlepage"><div><div><h3 class="title">9.2.3. PHP program code <a href="#EXAMPLE2CODEPHP" class="id_link">#</a></h3></div></div></div><p>
+				Here's the equivalent program code in PHP.
+				</p><pre class="programlisting">&lt;?php
+$o = new OpenCReport();
+$ds = $o-&gt;datasource_add_postgresql("pgsql", NULL, NULL, "ocrpttest", "ocrpt", NULL);
+
+$ds-&gt;query_add("q", "select * from flintstones;");
+
+if (!$o-&gt;parse_xml("example2.xml")) {
+    echo "XML parse error" . PHP_EOL;
+    exit(0);
+}
+
+$o-&gt;execute();
+$o-&gt;spool();
+</pre><p>
+			</p></div><div class="sect2" id="EXAMPLE2CODEPHPRLIB"><div class="titlepage"><div><div><h3 class="title">9.2.4. RLIB compatible PHP program code <a href="#EXAMPLE2CODEPHPRLIB" class="id_link">#</a></h3></div></div></div><p>
+				Here's the equivalent program code in PHP,
+				using the RLIB compatibility functions.
+				</p><pre class="programlisting">&lt;?php
+$r = rlib_init();
+
+rlib_add_datasource_postgres($r, "pgsql", "dbname=ocrpttest user=ocrpt");
+rlib_add_query_as($r, "pgsql", "select * from flintstones;", "q");
+
+if (!rlib_add_report($r, "example2.xml")) {
+    echo "XML parse error" . PHP_EOL;
+    exit(0);
+}
+
+rlib_execute($r);
+rlib_spool($r);
+</pre><p>
+			</p></div><div class="sect2" id="EXAMPLE2XML"><div class="titlepage"><div><div><h3 class="title">9.2.5. Report description <a href="#EXAMPLE2XML" class="id_link">#</a></h3></div></div></div><p>
+				The program code uses this file contents
+				from <code class="literal">example2.xml</code>.
+				</p><pre class="programlisting">&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE OpenCReport SYSTEM "opencreport.dtd"&gt;
+&lt;OpenCReport&gt;
+    &lt;Report query="q"&gt;
+        &lt;PageHeader&gt;
+            &lt;Output&gt;
+                &lt;Line&gt;
+                    &lt;literal width="20"&gt;The Flintstones&lt;/literal&gt;
+                    &lt;field value="printf('Page %d / %d', r.pageno, r.totpages)" align="right" /&gt;
+                &lt;/Line&gt;
+            &lt;/Output&gt;
+        &lt;/PageHeader&gt;
+
+        &lt;PageFooter&gt;
+            &lt;Output&gt;
+                &lt;Line&gt;
+                    &lt;literal&gt;The Flintstones&lt;/literal&gt;
+                    &lt;field value="printf('Page %d / %d', r.pageno, r.totpages)" align="right" /&gt;
+                &lt;/Line&gt;
+            &lt;/Output&gt;
+        &lt;/PageFooter&gt;
+
+        &lt;Detail&gt;
+            &lt;FieldHeaders&gt;
+                &lt;Output&gt;
+                    &lt;Line&gt;
+                        &lt;literal width="4" align="'right'"&gt;ID&lt;/literal&gt;
+                        &lt;literal width="1"/&gt;
+                        &lt;literal width="20"&gt;Name&lt;/literal&gt;
+                        &lt;literal width="1"/&gt;
+                        &lt;literal width="8" align="'center'"&gt;Property&lt;/literal&gt;
+                        &lt;literal width="1"/&gt;
+                        &lt;literal width="6"&gt;Age&lt;/literal&gt;
+                        &lt;literal width="1"/&gt;
+                        &lt;literal width="5" align="'center'"&gt;Adult&lt;/literal&gt;
+                    &lt;/Line&gt;
+                &lt;/Output&gt;
+            &lt;/FieldHeaders&gt;
+
+            &lt;FieldDetails&gt;
+                &lt;Output&gt;
+                    &lt;Line&gt;
+                        &lt;field width="4" align="right" value="id" /&gt;
+                        &lt;literal width="1"/&gt;
+                        &lt;field width="20" value="name" /&gt;
+                        &lt;literal width="1"/&gt;
+                        &lt;field width="8" align="'center'" value="property" /&gt;
+                        &lt;literal width="1"/&gt;
+                        &lt;field width="6" align="'right'" value="age" format="'%.2d'" /&gt;
+                        &lt;literal width="1"/&gt;
+                        &lt;field value="adult ? 'yes' : 'no'" width="5" align="'center'"/&gt;
+                    &lt;/Line&gt;
+                &lt;/Output&gt;
+            &lt;/FieldDetails&gt;
+        &lt;/Detail&gt;
+    &lt;/Report&gt;
+&lt;/OpenCReport&gt;</pre><p>
+			</p></div><div class="sect2" id="EXAMPLE2PDF"><div class="titlepage"><div><div><h3 class="title">9.2.6. Report PDF result <a href="#EXAMPLE2PDF" class="id_link">#</a></h3></div></div></div><p>
+				The result is identical to the previous example,
+				it's not duplicated here.
 			</p></div></div></div><div class="chapter" id="LICENSE"><div class="titlepage"><div><div><h1 class="title">Chapter 10. GNU Free Documentation License</h1></div></div></div><p>
 		</p><pre class="programlisting">                GNU Free Documentation License
                  Version 1.3, 3 November 2008
