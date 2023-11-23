@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>3.5. Operators and functions</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="identifiers.html" title="3.4. Identifiers" /><link rel="next" href="listoffuncs.html" title="3.6. Alphabetical list of functions" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">3.5. Operators and functions</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="identifiers.html" title="3.4. Identifiers">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Up</a></td><th width="60%" align="center">Chapter 3. Expressions in OpenCReports</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.2 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="listoffuncs.html" title="3.6. Alphabetical list of functions">Next</a></td></tr></table><hr /></div><div class="sect1" id="OPSANDFUNC"><div class="titlepage"><div><div><h2 class="title" style="clear: both">3.5. Operators and functions <a href="#OPSANDFUNC" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="opsandfunc.html#TERNARYOP">3.5.1. Ternary operator</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#LOGICALOPS">3.5.2. Logical operators with two operands</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#BITWISEOPS">3.5.3. Bitwise operators with two operands</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#EQNEOPS">3.5.4. Equality and inequality comparison operators</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#CMPOPS">3.5.5. Other comparison operators</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#VECCMPOPS">3.5.6. Vector comparison operators</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#SHIFTOPS">3.5.7. Bitwise shifts</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#ADDSUBOPS">3.5.8. Addition and subtraction</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#MULDIVMODOPS">3.5.9. Multiplication, division and modulo (remainder)</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#POWOP">3.5.10. Power-of operator</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#FACTOP">3.5.11. Factorial operator</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#UNARYPREFIXOPS">3.5.12. Unary plus and minus, logical and bitwise NOT, prefix increment and decrement</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#POSTFIXOPS">3.5.13. Postfix increment and decrement</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#FUNCCALLS">3.5.14. Function calls and implicit multiplication</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#PARENS">3.5.15. Parentheses</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#TOKMATCHANDPREC">3.5.16. Token matching, precendence and syntax errors</a></span></dt></dl></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>3.5. Operators and functions</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="identifiers.html" title="3.4. Identifiers" /><link rel="next" href="listoffuncs.html" title="3.6. Alphabetical list of functions" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">3.5. Operators and functions</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="identifiers.html" title="3.4. Identifiers">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Up</a></td><th width="60%" align="center">Chapter 3. Expressions in OpenCReports</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.2 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="listoffuncs.html" title="3.6. Alphabetical list of functions">Next</a></td></tr></table><hr /></div><div class="sect1" id="OPSANDFUNC"><div class="titlepage"><div><div><h2 class="title" style="clear: both">3.5. Operators and functions <a href="#OPSANDFUNC" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="opsandfunc.html#TERNARYOP">3.5.1. Ternary operator</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#LOGICALOPS">3.5.2. Logical operators with two operands</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#BITWISEOPS">3.5.3. Bitwise operators with two operands</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#EQNEOPS">3.5.4. Equality and inequality comparison operators</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#CMPOPS">3.5.5. Other comparison operators</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#SHIFTOPS">3.5.6. Bitwise shifts</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#ADDSUBOPS">3.5.7. Addition and subtraction</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#MULDIVMODOPS">3.5.8. Multiplication, division and modulo (remainder)</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#POWOP">3.5.9. Power-of operator</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#FACTOP">3.5.10. Factorial operator</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#UNARYPREFIXOPS">3.5.11. Unary plus and minus, logical and bitwise NOT, prefix increment and decrement</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#POSTFIXOPS">3.5.12. Postfix increment and decrement</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#FUNCCALLS">3.5.13. Function calls and implicit multiplication</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#PARENS">3.5.14. Parentheses</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#TOKMATCHANDPREC">3.5.15. Token matching, precendence and syntax errors</a></span></dt></dl></div><p>
 			OpenCReports expressions can use several operators and functions.
 			The operator precedence is mostly as expected from the C
 			programming language. One notable exception is implicit
@@ -35,46 +35,57 @@
 			</p><p>
 				The inequality comparison operator can be written as
 				<code class="literal">&lt;&gt;</code> or <code class="literal">!=</code>.
-			</p></div><div class="sect2" id="CMPOPS"><div class="titlepage"><div><div><h3 class="title">3.5.5. Other comparison operators <a href="#CMPOPS" class="id_link">#</a></h3></div></div></div><p>
+			</p><div class="sect3" id="VECTEQNEOPS"><div class="titlepage"><div><div><h4 class="title">3.5.4.1. Equality and inequality comparison operators on vectors <a href="#VECTEQNEOPS" class="id_link">#</a></h4></div></div></div><p>
+					Vector equality and inequality comparisons
+					have the same precedence as scalar comparisons.
+					These are not vectors in the mathematical sense,
+					but a comma separated list of scalars inside
+					brackets (<code class="literal">[ ... ]</code>), with
+					<code class="literal">op</code> being any of the above
+					operators:
+					</p><pre class="programlisting">[ expa1, expa2, ... ] op [ expb1, expb2, ... ]</pre><p>
+				</p><p>
+					Such comparisons are expanded into a logic operator
+					form:
+					</p><pre class="programlisting">(expa1 op expb1) and (expa2 op expb2) and ...</pre><p>
+				</p><p>
+					Please, note that because of the mechanical conversion
+					from the vector form to the expanded logic operator form,
+					the following two lines have different meaning:
+					</p><pre class="programlisting">not ([ expa1, expa2, ... ] = [ expb1, expb2, ... ])
+					[ expa1, expa2, ... ] != [ expb1, expb2, ... ]</pre><p>
+				</p></div></div><div class="sect2" id="CMPOPS"><div class="titlepage"><div><div><h3 class="title">3.5.5. Other comparison operators <a href="#CMPOPS" class="id_link">#</a></h3></div></div></div><p>
 				Less-than (<code class="literal">&lt;</code>),
 				less-or-equal (<code class="literal">&lt;=</code>),
 				greater-than (<code class="literal">&gt;</code>) and
 				greater-or-equal (<code class="literal">&gt;=</code>).
-			</p></div><div class="sect2" id="VECCMPOPS"><div class="titlepage"><div><div><h3 class="title">3.5.6. Vector comparison operators <a href="#VECCMPOPS" class="id_link">#</a></h3></div></div></div><p>
-				Vector comparison uses the following syntax, with
-				<code class="literal">op</code> being any of the equality,
-				inequality or other comparison operators.
-				</p><pre class="programlisting">[ expa1, expa2, ... ] op [ expb1, expb2, ... ]</pre><p>
-			</p><p>
-				This is a shortcut for:
-				</p><pre class="programlisting">(expa1 op expb1) and (expa2 op expb2) and ...</pre><p>
-			</p><p>
-				Please, note that because of the mechanical conversion
-				from the vector form to the expanded logic operator form,
-				the following two lines have different meaning:
-				</p><pre class="programlisting">not ([ expa1, expa2, ... ] = [ expb1, expb2, ... ])
-				[ expa1, expa2, ... ] != [ expb1, expb2, ... ]</pre><p>
-			</p></div><div class="sect2" id="SHIFTOPS"><div class="titlepage"><div><div><h3 class="title">3.5.7. Bitwise shifts <a href="#SHIFTOPS" class="id_link">#</a></h3></div></div></div><p>
+			</p><div class="sect3" id="VECTCMPOPS"><div class="titlepage"><div><div><h4 class="title">3.5.5.1. Other comparison operators on vectors <a href="#VECTCMPOPS" class="id_link">#</a></h4></div></div></div><p>
+					Vector comparisons using <code class="literal">&lt;</code>,
+					<code class="literal">&gt;</code>, etc. operators have
+					the same precedence as their scalar counterpart.
+					These are also expanded into the logic form, see
+					<a class="xref" href="opsandfunc.html#VECTEQNEOPS" title="3.5.4.1. Equality and inequality comparison operators on vectors">Section 3.5.4.1</a> above.
+				</p></div></div><div class="sect2" id="SHIFTOPS"><div class="titlepage"><div><div><h3 class="title">3.5.6. Bitwise shifts <a href="#SHIFTOPS" class="id_link">#</a></h3></div></div></div><p>
 				Bitwise shift left (<code class="literal">a &gt;&gt; b</code>) and
 				bitwise shift right (<code class="literal">a &lt;&lt; b</code>).
-			</p></div><div class="sect2" id="ADDSUBOPS"><div class="titlepage"><div><div><h3 class="title">3.5.8. Addition and subtraction <a href="#ADDSUBOPS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="ADDSUBOPS"><div class="titlepage"><div><div><h3 class="title">3.5.7. Addition and subtraction <a href="#ADDSUBOPS" class="id_link">#</a></h3></div></div></div><p>
 				<code class="literal">a + b</code> and <code class="literal">a - b</code>.
-			</p></div><div class="sect2" id="MULDIVMODOPS"><div class="titlepage"><div><div><h3 class="title">3.5.9. Multiplication, division and modulo (remainder) <a href="#MULDIVMODOPS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="MULDIVMODOPS"><div class="titlepage"><div><div><h3 class="title">3.5.8. Multiplication, division and modulo (remainder) <a href="#MULDIVMODOPS" class="id_link">#</a></h3></div></div></div><p>
 				<code class="literal">a * b</code>, <code class="literal">a / b</code> and
 				<code class="literal">a % b</code>.
-			</p></div><div class="sect2" id="POWOP"><div class="titlepage"><div><div><h3 class="title">3.5.10. Power-of operator <a href="#POWOP" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="POWOP"><div class="titlepage"><div><div><h3 class="title">3.5.9. Power-of operator <a href="#POWOP" class="id_link">#</a></h3></div></div></div><p>
 				<code class="literal">a ^ b</code> works as a-to-the-power-of-b.
-			</p></div><div class="sect2" id="FACTOP"><div class="titlepage"><div><div><h3 class="title">3.5.11. Factorial operator <a href="#FACTOP" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="FACTOP"><div class="titlepage"><div><div><h3 class="title">3.5.10. Factorial operator <a href="#FACTOP" class="id_link">#</a></h3></div></div></div><p>
 				<code class="literal">a!</code>, the '!' sign used as postfix operator.
-			</p></div><div class="sect2" id="UNARYPREFIXOPS"><div class="titlepage"><div><div><h3 class="title">3.5.12. Unary plus and minus, logical and bitwise NOT, prefix increment and decrement <a href="#UNARYPREFIXOPS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="UNARYPREFIXOPS"><div class="titlepage"><div><div><h3 class="title">3.5.11. Unary plus and minus, logical and bitwise NOT, prefix increment and decrement <a href="#UNARYPREFIXOPS" class="id_link">#</a></h3></div></div></div><p>
 				Unary plus (<code class="literal">+a</code>), unary minus (<code class="literal">-a</code>),
 				logical NOT (<code class="literal">!a</code>, '!' used as prefix operator),
 				bitwise NOT (<code class="literal">~a</code>), prefix increment (<code class="literal">++a</code>)
 				and prefix decrement (<code class="literal">--a</code>).
-			</p></div><div class="sect2" id="POSTFIXOPS"><div class="titlepage"><div><div><h3 class="title">3.5.13. Postfix increment and decrement <a href="#POSTFIXOPS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="POSTFIXOPS"><div class="titlepage"><div><div><h3 class="title">3.5.12. Postfix increment and decrement <a href="#POSTFIXOPS" class="id_link">#</a></h3></div></div></div><p>
 				Postfix increment (<code class="literal">a++</code>) and decrement
 				(<code class="literal">a--</code>).
-			</p></div><div class="sect2" id="FUNCCALLS"><div class="titlepage"><div><div><h3 class="title">3.5.14. Function calls and implicit multiplication <a href="#FUNCCALLS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="FUNCCALLS"><div class="titlepage"><div><div><h3 class="title">3.5.13. Function calls and implicit multiplication <a href="#FUNCCALLS" class="id_link">#</a></h3></div></div></div><p>
 				Function calls execute a function on operands:
 				<code class="literal">function(operand[, ...])</code>. A function name
 				is a single word known by OpenCReports at the time of parsing,
@@ -148,9 +159,9 @@
 							there is only a single identifier according to
 							token matching.
 						</p></li></ul></div><p>
-			</p></div><div class="sect2" id="PARENS"><div class="titlepage"><div><div><h3 class="title">3.5.15. Parentheses <a href="#PARENS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PARENS"><div class="titlepage"><div><div><h3 class="title">3.5.14. Parentheses <a href="#PARENS" class="id_link">#</a></h3></div></div></div><p>
 				Parenthesized expressions are always computed first.
-			</p></div><div class="sect2" id="TOKMATCHANDPREC"><div class="titlepage"><div><div><h3 class="title">3.5.16. Token matching, precendence and syntax errors <a href="#TOKMATCHANDPREC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="TOKMATCHANDPREC"><div class="titlepage"><div><div><h3 class="title">3.5.15. Token matching, precendence and syntax errors <a href="#TOKMATCHANDPREC" class="id_link">#</a></h3></div></div></div><p>
 				Expression parsing works on two levels: token matching (the
 				job of Flex) and applying grammar (the job of Bison).
 				Token matching breaks up the expression string into tokens
