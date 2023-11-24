@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>9.7. N:1 follower queries (RLIB compatibility limits)</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="example6.html" title="9.6. N:1 follower queries" /><link rel="next" href="license.html" title="Chapter 10. GNU Free Documentation License" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">9.7. N:1 follower queries (RLIB compatibility limits)</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="example6.html" title="9.6. N:1 follower queries">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="examples.html" title="Chapter 9. Examples">Up</a></td><th width="60%" align="center">Chapter 9. Examples</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.3 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="license.html" title="Chapter 10. GNU Free Documentation License">Next</a></td></tr></table><hr /></div><div class="sect1" id="EXAMPLE7"><div class="titlepage"><div><div><h2 class="title" style="clear: both">9.7. N:1 follower queries (RLIB compatibility limits) <a href="#EXAMPLE7" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="example7.html#EXAMPLE7DATA">9.7.1. Data</a></span></dt><dt><span class="sect2"><a href="example7.html#EXAMPLE7CODEC">9.7.2. C program code</a></span></dt><dt><span class="sect2"><a href="example7.html#EXAMPLE7CODEPHP">9.7.3. PHP program code</a></span></dt><dt><span class="sect2"><a href="example7.html#EXAMPLE7CODEPHPRLIB">9.7.4. RLIB compatible PHP program code</a></span></dt><dt><span class="sect2"><a href="example7.html#EXAMPLE7XML">9.7.5. Report description</a></span></dt><dt><span class="sect2"><a href="example7.html#EXAMPLE7PDF">9.7.6. Report PDF result</a></span></dt></dl></div><p>
+			This example below exercises two N:1 (N-to-one) follower queries
+			along with the main query.
+			For more information, see <a class="xref" href="queries.html#FOLLOWERQUERIES" title="2.5.4. Follower queries">Follower queries</a>.
+		</p><div class="sect2" id="EXAMPLE7DATA"><div class="titlepage"><div><div><h3 class="title">9.7.1. Data <a href="#EXAMPLE7DATA" class="id_link">#</a></h3></div></div></div><p>
+				The same data is used as in the previous example.
+			</p><p>
+				The query that the RLIB compatible method for
+				N:1 followers in this report simulates is:
+				</p><pre class="programlisting">ocrpttest=&gt; select * from data
+ocrpttest-&gt; left outer join lateral (select * from more_data
+ocrpttest-&gt;      where data.id = more_data.boss_id
+ocrpttest-&gt;      order by more_data.id limit 1) x on (true)
+ocrpttest-&gt; left outer join lateral (select * from moar_data
+ocrpttest-&gt;      where x.id = moar_data.sk_id
+ocrpttest-&gt;      order by moar_data.sk_id limit 1) y on (true);
+ id |          name          | id | boss_id |      name       | sk_id |      name       
+----+------------------------+----+---------+-----------------+-------+-----------------
+  1 | Snow White             |  1 |       1 | Doc             |       | 
+  2 | Batman                 |  8 |       2 | Robin           |       | 
+  3 | Cinderella             |  9 |       3 | Fairy Godmother |     9 | Prince Charming
+  4 | Hansel                 | 12 |       4 | Gretel          |       | 
+  5 | Little Red Riding Hood |    |         |                 |       | 
+  6 | Robin Hood             | 13 |       6 | Little John     |    13 | Will Scarlet
+(6 rows)</pre><p>
+			</p><p>
+				Note the amount of hoops the SQL query has
+				to jump through to implement the <code class="literal">LIMIT 1</code>
+				clause on both lateral derived queries that results
+				in limiting the number of rows to the main query's
+				number of rows.
+			</p></div><div class="sect2" id="EXAMPLE7CODEC"><div class="titlepage"><div><div><h3 class="title">9.7.2. C program code <a href="#EXAMPLE7CODEC" class="id_link">#</a></h3></div></div></div><p>
+				The program code is identical to the previous example,
+				except that it uses a different report XML description.
+				</p><pre class="programlisting">#include &lt;stdio.h&gt;
+#include &lt;opencreport.h&gt;
+
+int main(int argc, char **argv) {
+    opencreport *o = ocrpt_init();
+    ocrpt_datasource *ds = ocrpt_datasource_add_postgresql(o, "pgsql", NULL, NULL, "ocrpttest", "ocrpt", NULL);
+    ocrpt_query *q1 = ocrpt_query_add_postgresql(ds, "q1", "select * from data;");
+    ocrpt_query *q2 = ocrpt_query_add_postgresql(ds, "q2", "select * from more_data;");
+    ocrpt_query *q3 = ocrpt_query_add_postgresql(ds, "q3", "select * from moar_data;");
+
+    ocrpt_expr *match = ocrpt_expr_parse(o, "q1.id = q2.boss_id", NULL);
+    ocrpt_query_add_follower_n_to_1(q1, q2, match);
+
+    ocrpt_expr *match2 = ocrpt_expr_parse(o, "q2.id = q3.sk_id", NULL);
+    ocrpt_query_add_follower_n_to_1(q2, q3, match2);
+
+    if (!ocrpt_parse_xml(o, "example7.xml")) {
+        printf("XML parse error\n");
+        ocrpt_free(o);
+        return 0;
+    }
+
+    ocrpt_set_output_format(o, OCRPT_OUTPUT_PDF);
+    ocrpt_execute(o);
+    ocrpt_spool(o);
+    ocrpt_free(o);
+
+    return 0;
+}}</pre><p>
+			</p></div><div class="sect2" id="EXAMPLE7CODEPHP"><div class="titlepage"><div><div><h3 class="title">9.7.3. PHP program code <a href="#EXAMPLE7CODEPHP" class="id_link">#</a></h3></div></div></div><p>
+				Here's the equivalent program code in PHP.
+				</p><pre class="programlisting">&lt;?php
+$o = new OpenCReport();
+$ds = $o-&gt;datasource_add_postgresql("pgsql", NULL, NULL, "ocrpttest", "ocrpt", NULL);
+$q1 = $ds-&gt;query_add("q1", "select * from data;");
+$q2 = $ds-&gt;query_add("q2", "select * from more_data;");
+$q3 = $ds-&gt;query_add("q3", "select * from moar_data;");
+
+$match1 = $o-&gt;expr_parse("q1.id = q2.boss_id");
+$q1-&gt;add_follower_n_to_1($q2, $match1);
+
+$match2 = $o-&gt;expr_parse("q2.id = q3.sk_id");
+$q2-&gt;add_follower_n_to_1($q3, $match2);
+
+if (!$o-&gt;parse_xml("example7.xml")) {
+    echo "XML parse error" . PHP_EOL;
+    exit(0);
+}
+
+$o-&gt;execute();
+$o-&gt;spool();</pre><p>
+			</p></div><div class="sect2" id="EXAMPLE7CODEPHPRLIB"><div class="titlepage"><div><div><h3 class="title">9.7.4. RLIB compatible PHP program code <a href="#EXAMPLE7CODEPHPRLIB" class="id_link">#</a></h3></div></div></div><p>
+				Here's the equivalent program code in PHP,
+				using the RLIB compatibility functions.
+				Note that the RLIB compatible API is more limited
+				as it expects a single field name matching.
+				</p><pre class="programlisting">&lt;?php
+$r = rlib_init();
+
+rlib_add_datasource_postgres($r, "pgsql", "dbname=ocrpttest user=ocrpt");
+rlib_add_query_as($r, "pgsql", "select * from data;", "q1");
+rlib_add_query_as($r, "pgsql", "select * from more_data;", "q2");
+rlib_add_query_as($r, "pgsql", "select * from moar_data;", "q3");
+
+rlib_add_resultset_follower_n_to_1($r, "q1", "id", "q2", "boss_id");
+rlib_add_resultset_follower_n_to_1($r, "q2", "id", "q3", "sk_id");
+
+if (!rlib_add_report($r, "example7.xml")) {
+    echo "XML parse error" . PHP_EOL;
+    exit(0);
+}
+
+rlib_execute($r);
+rlib_spool($r);</pre><p>
+			</p></div><div class="sect2" id="EXAMPLE7XML"><div class="titlepage"><div><div><h3 class="title">9.7.5. Report description <a href="#EXAMPLE7XML" class="id_link">#</a></h3></div></div></div><p>
+				The program code uses this file contents
+				from <code class="literal">example7.xml</code>.
+				It is different in one detail from the previous
+				example: the toplevel XML node is
+				<code class="literal">&lt;Report&gt;</code> instead of
+				<code class="literal">&lt;OpenCReport&gt;</code>.
+				This results in the RLIB compatibility flag
+				to be enabled automatically. See the
+				<a class="xref" href="ocrpttopxml.html#XMLFOLLOWERMATCHSINGLE" title="2.2.4. Follower match single">Follower match single attribute</a>
+				or the equivalent calls in the C and PHP API
+				documentation) to be enabled automatically.
+				</p><pre class="programlisting">&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE report &gt;
+&lt;Report orientation="landscape"&gt;
+    &lt;Detail&gt;
+        &lt;FieldHeaders&gt;
+            &lt;Output&gt;
+                &lt;Line&gt;
+                    &lt;literal width="30"&gt;Boss name&lt;/literal&gt;
+                    &lt;literal width="1"/&gt;
+                    &lt;literal width="30"&gt;Sidekick name&lt;/literal&gt;
+                    &lt;literal width="1"/&gt;
+                    &lt;literal width="30"&gt;Sidekick's sidekick name&lt;/literal&gt;
+                &lt;/Line&gt;
+            &lt;/Output&gt;
+        &lt;/FieldHeaders&gt;
+        &lt;FieldDetails&gt;
+            &lt;Output&gt;
+                &lt;Line&gt;
+                    &lt;field value="q1.name" width="30" align="left" /&gt;
+                    &lt;literal width="1"/&gt;
+                    &lt;field value="q2.name" width="30" align="left" /&gt;
+                    &lt;literal width="1"/&gt;
+                    &lt;field value="q3.name" width="30" align="left" /&gt;
+                &lt;/Line&gt;
+            &lt;/Output&gt;
+        &lt;/FieldDetails&gt;
+    &lt;/Detail&gt;
+&lt;/Report&gt;</pre><p>
+			</p></div><div class="sect2" id="EXAMPLE7PDF"><div class="titlepage"><div><div><h3 class="title">9.7.6. Report PDF result <a href="#EXAMPLE7PDF" class="id_link">#</a></h3></div></div></div><p>
+				<span class="inlinemediaobject"><img src="example7.png" align="middle" /></span>
+			</p><p>
+				Note that compared to
+				<a class="ulink" href="https://github.com/SICOM/rlib" target="_top">RLIB</a>,
+				<code class="literal">OpenCReports</code> likely do not
+				produce the same output. This is due to the incomplete
+				and faulty implementation of follower queries in
+				<code class="literal">RLIB</code>. <code class="literal">OpenCReports</code>
+				faithfully implements <code class="literal">LEFT OUTER JOIN</code>
+				with limiting the number of dependent matching rows to 1
+				that <span class="emphasis"><em>approximates</em></span> the RLIB behaviour.
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="example6.html" title="9.6. N:1 follower queries">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="examples.html" title="Chapter 9. Examples">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="license.html" title="Chapter 10. GNU Free Documentation License">Next</a></td></tr><tr><td width="40%" align="left" valign="top">9.6. N:1 follower queries </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.3 Manual">Home</a></td><td width="40%" align="right" valign="top"> Chapter 10. GNU Free Documentation License</td></tr></table></div></body></html>

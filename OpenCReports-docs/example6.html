@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>9.6. N:1 follower queries</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="example5.html" title="9.5. Follower queries" /><link rel="next" href="example7.html" title="9.7. N:1 follower queries (RLIB compatibility limits)" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">9.6. N:1 follower queries</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="example5.html" title="9.5. Follower queries">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="examples.html" title="Chapter 9. Examples">Up</a></td><th width="60%" align="center">Chapter 9. Examples</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.3 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="example7.html" title="9.7. N:1 follower queries (RLIB compatibility limits)">Next</a></td></tr></table><hr /></div><div class="sect1" id="EXAMPLE6"><div class="titlepage"><div><div><h2 class="title" style="clear: both">9.6. N:1 follower queries <a href="#EXAMPLE6" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="example6.html#EXAMPLE6DATA">9.6.1. Data</a></span></dt><dt><span class="sect2"><a href="example6.html#EXAMPLE6CODEC">9.6.2. C program code</a></span></dt><dt><span class="sect2"><a href="example6.html#EXAMPLE6CODEPHP">9.6.3. PHP program code</a></span></dt><dt><span class="sect2"><a href="example6.html#EXAMPLE6CODEPHPRLIB">9.6.4. RLIB compatible PHP program code</a></span></dt><dt><span class="sect2"><a href="example6.html#EXAMPLE6XML">9.6.5. Report description</a></span></dt><dt><span class="sect2"><a href="example6.html#EXAMPLE6PDF">9.6.6. Report PDF result</a></span></dt></dl></div><p>
+			This example below exercises two N:1 (N-to-one) follower queries
+			along with the main query.
+			For more information, see <a class="xref" href="queries.html#FOLLOWERQUERIES" title="2.5.4. Follower queries">Follower queries</a>.
+		</p><div class="sect2" id="EXAMPLE6DATA"><div class="titlepage"><div><div><h3 class="title">9.6.1. Data <a href="#EXAMPLE6DATA" class="id_link">#</a></h3></div></div></div><p>
+				Data is created as follows in the same database
+				using the same user as the first example.
+				</p><pre class="programlisting">create table data (id serial unique, name text);
+
+create table more_data (
+id serial unique,
+boss_id int,
+name text,
+foreign key (boss_id) references data (id));
+
+create table moar_data (
+sk_id int,
+name text,
+foreign key (sk_id) references more_data (id));
+
+insert into data (name)
+values
+('Snow White'),
+('Batman'),
+('Cinderella'),
+('Hansel'),
+('Little Red Riding Hood'),
+('Robin Hood');
+
+insert into more_data (boss_id, name)
+values
+(1, 'Doc'),
+(1, 'Dopey'),
+(1, 'Sneezy'),
+(1, 'Happy'),
+(1, 'Bashful'),
+(1, 'Sleepy'),
+(1, 'Grumpy'),
+(2, 'Robin'),
+(3, 'Fairy Godmother'),
+(3, 'Mice'),
+(3, 'Pidgeons'),
+(4, 'Gretel'),
+(6, 'Little John');
+
+insert into moar_data (sk_id, name)
+values
+(3, 'Coughy'),
+(3, 'Crippley'),
+(9, 'Prince Charming'),
+(9, 'Shrek'),
+(13, 'Will Scarlet'),
+(13, 'Brother Tuck');</pre><p>
+			</p><p>
+				The query that the N:1 followers in this report simulate is:
+				</p><pre class="programlisting">ocrpttest=&gt; select * from data left outer join more_data on (data.id = more_data.boss_id)
+ocrpttest-&gt; left outer join moar_data on (more_data.id = moar_data.sk_id)
+ocrpttest-&gt; order by data.id, more_data.id;
+ id |          name          | id | boss_id |      name       | sk_id |      name       
+----+------------------------+----+---------+-----------------+-------+-----------------
+  1 | Snow White             |  1 |       1 | Doc             |       | 
+  1 | Snow White             |  2 |       1 | Dopey           |       | 
+  1 | Snow White             |  3 |       1 | Sneezy          |     3 | Coughy
+  1 | Snow White             |  3 |       1 | Sneezy          |     3 | Crippley
+  1 | Snow White             |  4 |       1 | Happy           |       | 
+  1 | Snow White             |  5 |       1 | Bashful         |       | 
+  1 | Snow White             |  6 |       1 | Sleepy          |       | 
+  1 | Snow White             |  7 |       1 | Grumpy          |       | 
+  2 | Batman                 |  8 |       2 | Robin           |       | 
+  3 | Cinderella             |  9 |       3 | Fairy Godmother |     9 | Shrek
+  3 | Cinderella             |  9 |       3 | Fairy Godmother |     9 | Prince Charming
+  3 | Cinderella             | 10 |       3 | Mice            |       | 
+  3 | Cinderella             | 11 |       3 | Pidgeons        |       | 
+  4 | Hansel                 | 12 |       4 | Gretel          |       | 
+  5 | Little Red Riding Hood |    |         |                 |       | 
+  6 | Robin Hood             | 13 |       6 | Little John     |    13 | Will Scarlet
+  6 | Robin Hood             | 13 |       6 | Little John     |    13 | Brother Tuck
+(17 rows)</pre><p>
+			</p></div><div class="sect2" id="EXAMPLE6CODEC"><div class="titlepage"><div><div><h3 class="title">9.6.2. C program code <a href="#EXAMPLE6CODEC" class="id_link">#</a></h3></div></div></div><p>
+				The program code adds the three queries and establishes
+				the follower links between them. Note that the match
+				expressions can be anything, just like in SQL using
+				the <code class="literal">LEFT OUTER JOIN ON ( ... )</code> clause.
+				</p><pre class="programlisting">#include &lt;stdio.h&gt;
+#include &lt;opencreport.h&gt;
+
+int main(int argc, char **argv) {
+    opencreport *o = ocrpt_init();
+    ocrpt_datasource *ds = ocrpt_datasource_add_postgresql(o, "pgsql", NULL, NULL, "ocrpttest", "ocrpt", NULL);
+    ocrpt_query *q1 = ocrpt_query_add_postgresql(ds, "q1", "select * from data;");
+    ocrpt_query *q2 = ocrpt_query_add_postgresql(ds, "q2", "select * from more_data;");
+    ocrpt_query *q3 = ocrpt_query_add_postgresql(ds, "q3", "select * from moar_data;");
+
+    ocrpt_expr *match = ocrpt_expr_parse(o, "q1.id = q2.boss_id", NULL);
+    ocrpt_query_add_follower_n_to_1(q1, q2, match);
+
+    ocrpt_expr *match2 = ocrpt_expr_parse(o, "q2.id = q3.sk_id", NULL);
+    ocrpt_query_add_follower_n_to_1(q2, q3, match2);
+
+    if (!ocrpt_parse_xml(o, "example6.xml")) {
+        printf("XML parse error\n");
+        ocrpt_free(o);
+        return 0;
+    }
+
+    ocrpt_set_output_format(o, OCRPT_OUTPUT_PDF);
+    ocrpt_execute(o);
+    ocrpt_spool(o);
+    ocrpt_free(o);
+
+    return 0;
+}}</pre><p>
+			</p></div><div class="sect2" id="EXAMPLE6CODEPHP"><div class="titlepage"><div><div><h3 class="title">9.6.3. PHP program code <a href="#EXAMPLE6CODEPHP" class="id_link">#</a></h3></div></div></div><p>
+				Here's the equivalent program code in PHP.
+				</p><pre class="programlisting">&lt;?php
+$o = new OpenCReport();
+$ds = $o-&gt;datasource_add_postgresql("pgsql", NULL, NULL, "ocrpttest", "ocrpt", NULL);
+$q1 = $ds-&gt;query_add("q1", "select * from data;");
+$q2 = $ds-&gt;query_add("q2", "select * from more_data;");
+$q3 = $ds-&gt;query_add("q3", "select * from moar_data;");
+
+$match1 = $o-&gt;expr_parse("q1.id = q2.boss_id");
+$q1-&gt;add_follower_n_to_1($q2, $match1);
+
+$match2 = $o-&gt;expr_parse("q2.id = q3.sk_id");
+$q2-&gt;add_follower_n_to_1($q3, $match2);
+
+if (!$o-&gt;parse_xml("example6.xml")) {
+    echo "XML parse error" . PHP_EOL;
+    exit(0);
+}
+
+$o-&gt;execute();
+$o-&gt;spool();</pre><p>
+			</p></div><div class="sect2" id="EXAMPLE6CODEPHPRLIB"><div class="titlepage"><div><div><h3 class="title">9.6.4. RLIB compatible PHP program code <a href="#EXAMPLE6CODEPHPRLIB" class="id_link">#</a></h3></div></div></div><p>
+				Here's the equivalent program code in PHP,
+				using the RLIB compatibility functions.
+				Note that the RLIB compatible API is more limited
+				as it expects a single field name matching.
+				</p><pre class="programlisting">&lt;?php
+$r = rlib_init();
+
+rlib_add_datasource_postgres($r, "pgsql", "dbname=ocrpttest user=ocrpt");
+rlib_add_query_as($r, "pgsql", "select * from data;", "q1");
+rlib_add_query_as($r, "pgsql", "select * from more_data;", "q2");
+rlib_add_query_as($r, "pgsql", "select * from moar_data;", "q3");
+
+rlib_add_resultset_follower_n_to_1($r, "q1", "id", "q2", "boss_id");
+rlib_add_resultset_follower_n_to_1($r, "q2", "id", "q3", "sk_id");
+
+if (!rlib_add_report($r, "example6.xml")) {
+    echo "XML parse error" . PHP_EOL;
+    exit(0);
+}
+
+rlib_execute($r);
+rlib_spool($r);</pre><p>
+			</p></div><div class="sect2" id="EXAMPLE6XML"><div class="titlepage"><div><div><h3 class="title">9.6.5. Report description <a href="#EXAMPLE6XML" class="id_link">#</a></h3></div></div></div><p>
+				The program code uses this file contents
+				from <code class="literal">example6.xml</code>.
+			</p><p>
+				Note that when using multiple queries in the same
+				report, column names may be identical. Because
+				of this, using <code class="literal">queryname.columnname</code>
+				will indicate which one is needed. When using
+				<code class="literal">columnname</code> then it will mean
+				the first query's column.
+				</p><pre class="programlisting">&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE report &gt;
+&lt;OpenCReport&gt;
+&lt;Report orientation="landscape"&gt;
+    &lt;Detail&gt;
+        &lt;FieldHeaders&gt;
+            &lt;Output&gt;
+                &lt;Line&gt;
+                    &lt;literal width="30"&gt;Boss name&lt;/literal&gt;
+                    &lt;literal width="1"/&gt;
+                    &lt;literal width="30"&gt;Sidekick name&lt;/literal&gt;
+                    &lt;literal width="1"/&gt;
+                    &lt;literal width="30"&gt;Sidekick's sidekick name&lt;/literal&gt;
+                &lt;/Line&gt;
+            &lt;/Output&gt;
+        &lt;/FieldHeaders&gt;
+        &lt;FieldDetails&gt;
+            &lt;Output&gt;
+                &lt;Line&gt;
+                    &lt;field value="q1.name" width="30" align="left" /&gt;
+                    &lt;literal width="1"/&gt;
+                    &lt;field value="q2.name" width="30" align="left" /&gt;
+                    &lt;literal width="1"/&gt;
+                    &lt;field value="q3.name" width="30" align="left" /&gt;
+                &lt;/Line&gt;
+            &lt;/Output&gt;
+        &lt;/FieldDetails&gt;
+    &lt;/Detail&gt;
+&lt;/Report&gt;
+&lt;/OpenCReport&gt;</pre><p>
+			</p></div><div class="sect2" id="EXAMPLE6PDF"><div class="titlepage"><div><div><h3 class="title">9.6.6. Report PDF result <a href="#EXAMPLE6PDF" class="id_link">#</a></h3></div></div></div><p>
+				<span class="inlinemediaobject"><img src="example6.png" align="middle" /></span>
+			</p><p>
+				Note that compared to
+				<a class="ulink" href="https://github.com/SICOM/rlib" target="_top">RLIB</a>,
+				<code class="literal">OpenCReports</code> likely do not
+				produce the same output. This is due to the incomplete
+				and faulty implementation of follower queries in
+				<code class="literal">RLIB</code>. <code class="literal">OpenCReports</code>
+				faithfully implements <code class="literal">LEFT OUTER JOIN</code>.
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="example5.html" title="9.5. Follower queries">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="examples.html" title="Chapter 9. Examples">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="example7.html" title="9.7. N:1 follower queries (RLIB compatibility limits)">Next</a></td></tr><tr><td width="40%" align="left" valign="top">9.5. Follower queries </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.3 Manual">Home</a></td><td width="40%" align="right" valign="top"> 9.7. N:1 follower queries (RLIB compatibility limits)</td></tr></table></div></body></html>
