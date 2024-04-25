@@ -1,16 +1,59 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>3.1. Introduction</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="expressions.html" title="Chapter 3. Expressions in OpenCReports" /><link rel="next" href="constants.html" title="3.2. Constants" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">3.1. Introduction</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Up</a></td><th width="60%" align="center">Chapter 3. Expressions in OpenCReports</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.5 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="constants.html" title="3.2. Constants">Next</a></td></tr></table><hr /></div><div class="sect1" id="EXPRINTRO"><div class="titlepage"><div><div><h2 class="title" style="clear: both">3.1. Introduction <a href="#EXPRINTRO" class="id_link">#</a></h2></div></div></div><p>
-			There are four data types in OpenCReports:
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>3.1. Introduction</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="expressions.html" title="Chapter 3. Expressions in OpenCReports" /><link rel="next" href="constants.html" title="3.2. Constants" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">3.1. Introduction</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Up</a></td><th width="60%" align="center">Chapter 3. Expressions in OpenCReports</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="constants.html" title="3.2. Constants">Next</a></td></tr></table><hr /></div><div class="sect1" id="EXPRINTRO"><div class="titlepage"><div><div><h2 class="title" style="clear: both">3.1. Introduction <a href="#EXPRINTRO" class="id_link">#</a></h2></div></div></div><p>
+			The previous section described <a class="xref" href="datasources.html" title="2.1. Data sources">Data sources</a>
+			and <a class="xref" href="queries.html" title="2.2. Queries">Queries</a> which provide
+			<span class="emphasis"><em>raw data</em></span>. Raw data can be used as is,
+			or can be processed further for the purposes of the report.
+			This is where <span class="emphasis"><em>expressions</em></span> come in.
+		</p><p>
+			There are three main data types in OpenCReports:
 			<code class="literal">numeric</code>, <code class="literal">string</code>,
-			<code class="literal">datetime</code> and <code class="literal">error</code>.
-			Expressions can return any of these types.
+			and <code class="literal">datetime</code>.
+			OpenCReports automatically detects the type of raw data
+			supplied by <a class="xref" href="queries.html" title="2.2. Queries">Queries</a> for SQL and some
+			file based <a class="xref" href="datasources.html" title="2.1. Data sources">Data sources</a>, and the
+			application can supply extra data to indicate column
+			data types.
+		</p><p>
+			Expressions can use and result in any of these types.
 		</p><p>
 			A <code class="literal">numeric</code> expression's result is
 			a number. It uses high numeric precision. Most functions
 			and operators deal with numbers.
 		</p><p>
-			A <code class="literal">string</code> expression's result is a
-			string. Strings can be concatenated or otherwise processed
+			For historic record, RLIB was designed for the US
+			and for slower computers. It used a fixed point numeric
+			representation. For the US, with its strong currency
+			and prices expressed in low numbers, this was an
+			acceptable design decision at the time. But for countries,
+			where currencies are a few orders of magnitude weaker and
+			conversely, the prices are similarly higher, the fixed
+			point numeric value range was easily overflown (especially
+			in report variables that added values), leading
+			to wrong data in the report output.
+		</p><p>
+			Another potential problem with fixed point numeric
+			representation is that converting numbers from the
+			input data to this internal representation always
+			rounds down. The numeric error (i.e. the difference
+			between floating point values and fixed point values)
+			can be demonstrated even with small data sets that
+			add up percentages.
+		</p><p>
+			OpenCReports uses high precision floating point values.
+			Technically, it's 256-bit precision GNU MPFR numerics by default,
+			and the precision can be modified by the application if needed.
+			This allows handling very large and very small numbers
+			and directly consuming the SQL <code class="literal">numeric</code>
+			and <code class="literal">decimal</code> types or arbitrary precision,
+			or using <code class="literal">bcmath</code> numerics in PHP.
+			This also allows scientific computation or monetary
+			calculations even with late stage
+			<a class="ulink" href="https://en.wikipedia.org/wiki/Hyperinflation" target="_top">hyperinflation</a>
+			prices.
+		</p><p>
+			A <code class="literal">string</code> expression's result is arbitrary
+			text. Strings can be concatenated or otherwise processed
 			by string functions.
 		</p><p>
 			A <code class="literal">datetime</code> expression may store a date,
@@ -19,9 +62,14 @@
 			added to or subtracted from another <code class="literal">datetime</code>
 			value.
 		</p><p>
-			An <code class="literal">error</code> expression is a special case of
-			strings: it stores a string literal (which is an error message)
-			but it cannot be further processed by functions or operators.
-			Instead, an error is propagated up from subexpressions to
-			the final result of the expression.
-		</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="constants.html" title="3.2. Constants">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 3. Expressions in OpenCReports </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.5 Manual">Home</a></td><td width="40%" align="right" valign="top"> 3.2. Constants</td></tr></table></div></body></html>
+			There is a further data type: <code class="literal">error</code>.
+			Errors usually occur if there is an error in processing,
+			e.g. when a function argument does not match its expected
+			parameter data type. The <code class="literal">error</code> type is
+			a special case of strings: it stores a string literal,
+			the <span class="emphasis"><em>error message</em></span>. As opposed to the
+			string data type, an <code class="literal">error</code> cannot be
+			processed further by passing them as function arguments or
+			operator operands. Instead, the first error is propagated
+			up from subexpressions to the final result of the expression.
+		</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="constants.html" title="3.2. Constants">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 3. Expressions in OpenCReports </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="40%" align="right" valign="top"> 3.2. Constants</td></tr></table></div></body></html>

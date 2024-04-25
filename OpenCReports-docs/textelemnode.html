@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.17. Text element</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="linenode.html" title="2.16. Line" /><link rel="next" href="hlinenode.html" title="2.18. HorizontalLine" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">2.17. Text element</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="linenode.html" title="2.16. Line">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="xmldescriptor.html" title="Chapter 2. Report XML description">Up</a></td><th width="60%" align="center">Chapter 2. Report XML description</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.5 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="hlinenode.html" title="2.18. HorizontalLine">Next</a></td></tr></table><hr /></div><div class="sect1" id="TEXTELEMNODE"><div class="titlepage"><div><div><h2 class="title" style="clear: both">2.17. Text element <a href="#TEXTELEMNODE" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="textelemnode.html#TEXTELEMATTS">2.17.1. Text element attributes</a></span></dt></dl></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>8.17. Text element</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="linenode.html" title="8.16. Line" /><link rel="next" href="hlinenode.html" title="8.18. HorizontalLine" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">8.17. Text element</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="linenode.html" title="8.16. Line">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="xmldescriptor.html" title="Chapter 8. Report XML description">Up</a></td><th width="60%" align="center">Chapter 8. Report XML description</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="hlinenode.html" title="8.18. HorizontalLine">Next</a></td></tr></table><hr /></div><div class="sect1" id="TEXTELEMNODE"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.17. Text element <a href="#TEXTELEMNODE" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="textelemnode.html#TEXTELEMATTS">8.17.1. Text element attributes</a></span></dt></dl></div><p>
 			Two variants are accepted.
 			</p><pre class="programlisting">&lt;Line&gt;
     &lt;field value="expression..." ... /&gt;
@@ -13,8 +13,16 @@
 			only attributes or XML values.
 		</p><p>
 			The two variants are interchangeable, see
-			<a class="xref" href="textelemnode.html#ELEMVALUEATTR" title="2.17.1.1. Value">Text element value</a> below.
-		</p><div class="sect2" id="TEXTELEMATTS"><div class="titlepage"><div><div><h3 class="title">2.17.1. Text element attributes <a href="#TEXTELEMATTS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="ELEMVALUEATTR"><div class="titlepage"><div><div><h4 class="title">2.17.1.1. Value <a href="#ELEMVALUEATTR" class="id_link">#</a></h4></div></div></div><p>
+			<a class="xref" href="textelemnode.html#ELEMVALUEATTR" title="8.17.1.1. Value">Text element value</a> below.
+		</p><div class="sect2" id="TEXTELEMATTS"><div class="titlepage"><div><div><h3 class="title">8.17.1. Text element attributes <a href="#TEXTELEMATTS" class="id_link">#</a></h3></div></div></div><p>
+				Note that <a class="xref" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Expressions</a> in attribute
+				settings below depend on the parent node context.
+				Some may only use constant expressions or query column
+				references from <a class="xref" href="queries.html#INDEPENDENTQUERIES" title="2.2.4.2. Independent queries">Independent queries</a>.
+				Child nodes of <code class="literal">&lt;Output&gt;</code> nodes in
+				<code class="literal">&lt;Report&gt;</code> context may also
+				use report query column references.
+			</p><div class="sect3" id="ELEMVALUEATTR"><div class="titlepage"><div><div><h4 class="title">8.17.1.1. Value <a href="#ELEMVALUEATTR" class="id_link">#</a></h4></div></div></div><p>
 					The value of the text element. It's accepted in two
 					ways: in the <code class="literal">value</code> attribute or as
 					the XML value for the <code class="literal">field</code> and
@@ -33,12 +41,14 @@
 					On the other hand, the value is taken as a literal
 					string from the XML value in the second and fourth
 					examples above.
-				</p></div><div class="sect3" id="TEXTELEMDELAYED"><div class="titlepage"><div><div><h4 class="title">2.17.1.2. Delayed (precalculated) value <a href="#TEXTELEMDELAYED" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="TEXTELEMDELAYED"><div class="titlepage"><div><div><h4 class="title">8.17.1.2. Delayed (precalculated) value <a href="#TEXTELEMDELAYED" class="id_link">#</a></h4></div></div></div><p>
 					This setting indicates whether the value is
-					"precalculated", i.e. the value for the last
-					row in the data set is used, or it would be
-					the actual value for the current row in the
-					data set.
+					"delayed" or "precalculated", i.e. the value for
+					the last row in the data set is used for every row.
+					It is equivalent to referencing an
+					<a class="xref" href="exprvar.html" title="5.2. Expression variables">Expression variable</a> with
+					<code class="literal">precalculate="yes"</code> and
+					without <code class="literal">resetonbreak</code>.
 					</p><pre class="programlisting">&lt;field delayed="yes" /&gt;
 &lt;field precalculate="yes" /&gt;</pre><p>
 				</p><p>
@@ -46,35 +56,117 @@
 				</p><p>
 					This setting is only applicable for
 					line elements in the
-					<a class="xref" href="outputnode.html" title="2.15. Output">Output node</a> node in
-					<code class="literal">&lt;ReportHeader&gt;</code>,
-					<code class="literal">&lt;ReportFooter&gt;</code>,
-					<code class="literal">&lt;Fieldheaders&gt;</code>
-					<code class="literal">&lt;FieldDetails&gt;</code>,
-					since they are the ones under the
-					<code class="literal">&lt;Report&gt;</code> scope
-					with a query.
+					<a class="xref" href="outputnode.html" title="8.15. Output">Output node</a> node in
+					<code class="literal">&lt;Report&gt;</code> context.
 				</p><p>
-					Note that in <code class="literal">OpenCReports</code>,
-					an expression may mix references to precalculated
-					variables with non-precalculated variables and
-					query field references. The result will use the
-					precalculated value only for the precalculated
-					variables. Other references will use values derived
-					from the current row in the data set.
+					Note that in OpenCReports, an expression may mix
+					references to precalculated variables with
+					non-precalculated variables and query field references.
+					The result will use the precalculated value only for
+					the precalculated variables. Other references will
+					use values derived from the current row in the data set.
 					This is an extension over RLIB.
-				</p></div><div class="sect3" id="FORMATATTR"><div class="titlepage"><div><div><h4 class="title">2.17.1.3. Format string <a href="#FORMATATTR" class="id_link">#</a></h4></div></div></div><p>
-					The format string is used to format the
-					<code class="literal">value</code> to be displayed
-					in the generated output. For example, to
-					print a number with two decimal places:
-					</p><pre class="programlisting">&lt;field value="3" format="'%.2d'" /&gt;</pre><p>
+				</p></div><div class="sect3" id="FORMATATTR"><div class="titlepage"><div><div><h4 class="title">8.17.1.3. Format string <a href="#FORMATATTR" class="id_link">#</a></h4></div></div></div><p>
+					The format string is one way to format the
+					field <code class="literal">value</code> to be displayed
+					in the generated output.
 				</p><p>
 					The format string is expected to be a string
 					so quoting around it is needed.
 				</p><p>
-					See <a class="xref" href="formatting.html" title="Chapter 6. Formatting">Formatting data</a> for details.
-				</p></div><div class="sect3" id="TEXTELEMWIDTH"><div class="titlepage"><div><div><h4 class="title">2.17.1.4. Width <a href="#TEXTELEMWIDTH" class="id_link">#</a></h4></div></div></div><p>
+					See <a class="xref" href="formatting.html" title="Chapter 7. Formatting">Formatting data</a> for details.
+				</p><div class="sect4" id="FORMATATTREXAMPLES"><div class="titlepage"><div><div><h5 class="title">8.17.1.3.1. Format attribute examples <a href="#FORMATATTREXAMPLES" class="id_link">#</a></h5></div></div></div><p>
+						Format a value as a string, first as is, second
+						with adding a surrounding text:
+						</p><pre class="programlisting">&lt;field value="query1.field1" format="'%s'" &gt;
+
+&lt;field value="query1.field1"
+       format="'Look, there is a %s there!'" &gt;</pre><p>
+					</p><p>
+						Here's the same with the "new syle" formatting flag:
+						</p><pre class="programlisting">&lt;field value="query1.field1" format="'!&amp;%s'" /&gt;
+
+&lt;field value="query1.field1"
+       format="'Look, there is a !&amp;%s there!'" &gt;</pre><p>
+					</p><p>
+						Also, with the 2nd generation new style formatting
+						flag:
+						</p><pre class="programlisting">&lt;field value="query1.field1"
+       format="'!&amp;{%s}'" ... /&gt;</pre><p>
+					</p><p>
+						Here's an example to truncate a string
+						to 6 characters using format string flags
+						in legacy and both new style formatting flags:
+</p><pre class="programlisting">&lt;field value="query1.field1"
+       format="'%6.6s'" ... /&gt;
+
+&lt;field value="query1.field1"
+       format="'!&amp;%6.6s'" ... /&gt;
+
+&lt;field value="query1.field1"
+       format="'!&amp;{%6.6s}'" ... /&gt;</pre><p>
+					</p><p>
+						Format a numeric value with three decimal places,
+						first as is, second with adding a surrounding text:
+						</p><pre class="programlisting">&lt;field value="query1.field1"
+       format="'%.3d'" &gt;
+
+&lt;field value="query1.field1"
+       format="'You have %.3d apples.'" &gt;</pre><p>
+					</p><p>
+						Convert a number from a string and the value with two
+						decimal places:
+						</p><pre class="programlisting">&lt;field value="val(query1.field1)"
+       format="'%.2d'" /&gt;</pre><p>
+					</p><p>
+						Here are the same examples using the "new style"
+						formatting flags:
+						</p><pre class="programlisting">&lt;field value="query1.field1"
+       format="'!#%.3d'" &gt;
+
+&lt;field value="query1.field1"
+       format="'You have !#%.3d apples.'" &gt;
+
+&lt;field value="val(query1.field1)"
+       format="'!#%.2d'" /&gt;</pre><p>
+					</p><p>
+						Here are the same examples using the 2nd generation
+						new style formatting flags:
+						</p><pre class="programlisting">&lt;field value="query1.field1"
+       format="'!#{%.3d}'" &gt;
+
+&lt;field value="query1.field1"
+       format="'You have !#{%.3d} apples.'" &gt;
+
+&lt;field value="val(query1.field1)"
+       format="'!#%.2d'" /&gt;</pre><p>
+					</p><p>
+						Format a numeric value with monetary details
+						either using the first or the second generation
+						format strings:
+						</p><pre class="programlisting">&lt;field value="query1.field1"
+       format="'!$%=*#150n'" /&gt;
+
+&lt;field value="query1.field1"
+       format="'!${%=*#150n}'" /&gt;</pre><p>
+					</p><p>
+						Format a datetime value, first with the preferred
+						datetime format for the locale, then only the year,
+						month and day using the YYYY-MM-DD format:
+						</p><pre class="programlisting">&lt;field value="query1.field1"
+       format="'!@%c'" /&gt;
+
+&lt;field value="query1.field1"
+       format="'!@%Y-%m-%d'" ... /&gt;</pre><p>
+					</p><p>
+						Here's the same using the second generation
+						format strings:
+						</p><pre class="programlisting">&lt;field value="query1.field1"
+       format="'!@{%c}'" ... /&gt;
+
+&lt;field value="query1.field1"
+       format="'!@{%Y-%m-%d}'" ... /&gt;</pre><p>
+					</p></div></div><div class="sect3" id="TEXTELEMWIDTH"><div class="titlepage"><div><div><h4 class="title">8.17.1.4. Width <a href="#TEXTELEMWIDTH" class="id_link">#</a></h4></div></div></div><p>
 					The field width.
 					</p><pre class="programlisting">&lt;field value="3" format="'%.2d'" width="6" /&gt;</pre><p>
 				</p><p>
@@ -88,42 +180,43 @@
 					will be the remaining page or column width.
 				</p><p>
 					If set, the width's unit depends on the
-					<a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="2.2.1. Size unit attribute">Size unit attribute</a>.
+					<a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="8.2.1. Size unit attribute">Size unit attribute</a>.
 				</p><p>
-					When the <a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="2.2.1. Size unit attribute">Size unit attribute</a> is set to
+					When the <a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="8.2.1. Size unit attribute">Size unit attribute</a> is set to
 					<code class="literal">rlib</code>, the field width is measured
 					in number of characters.
 				</p><p>
 					The character width is queried from the font set by
-					<a class="xref" href="linenode.html#LINEFONTNAME" title="2.16.1.1. Font name">Line font name</a> and
-					<a class="xref" href="linenode.html#LINEFONTSIZE" title="2.16.1.2. Font size">Line font size</a>,
-					<a class="xref" href="report.html#REPORTFONTNAME" title="2.9.1.1. Font name">Report font name</a> and
-					<a class="xref" href="report.html#REPORTFONTSIZE" title="2.9.1.2. Font size">Report font size</a>, or
-					<a class="xref" href="parts.html#PARTFONTNAME" title="2.6.1.1. Font name">Part font name</a> and
-					<a class="xref" href="parts.html#PARTFONTSIZE" title="2.6.1.2. Font size">Part font size</a>
+					<a class="xref" href="linenode.html#LINEFONTNAME" title="8.16.1.1. Font name">Line font name</a> and
+					<a class="xref" href="linenode.html#LINEFONTSIZE" title="8.16.1.2. Font size">Line font size</a>,
+					<a class="xref" href="report.html#REPORTFONTNAME" title="8.9.1.1. Font name">Report font name</a> and
+					<a class="xref" href="report.html#REPORTFONTSIZE" title="8.9.1.2. Font size">Report font size</a>, or
+					<a class="xref" href="parts.html#PARTFONTNAME" title="8.6.1.1. Font name">Part font name</a> and
+					<a class="xref" href="parts.html#PARTFONTSIZE" title="8.6.1.2. Font size">Part font size</a>
 					in decreasing order of precedence.
 				</p><p>
-					<a class="xref" href="textelemnode.html#TEXTELEMFONTNAME" title="2.17.1.8. Font name">Text element font name</a> and
-					<a class="xref" href="textelemnode.html#TEXTELEMFONTSIZE" title="2.17.1.9. Font size">Text element font size</a> DO NOT influence
-					the font width used to determine the field width.
+					<a class="xref" href="textelemnode.html#TEXTELEMFONTNAME" title="8.17.1.8. Font name">Text element font name</a> and
+					<a class="xref" href="textelemnode.html#TEXTELEMFONTSIZE" title="8.17.1.9. Font size">Text element font size</a>
+					<span class="emphasis"><em>do not influence</em></span>
+					the field width calculation.
 				</p><p>
 					This allows using uniquely set font name and size for
 					individual text elements, including proportional
-					fonts.
+					fonts, using the RLIB compatible field width settings.
 				</p><p>
 					When using different font names or font sizes for
 					different text elements in the same
 					<code class="literal">&lt;Line&gt;</code>, the text elements
 					are aligned vertically so all text elements are
 					rendered on the same typographic baseline.
-				</p></div><div class="sect3" id="TEXTELEMALIGN"><div class="titlepage"><div><div><h4 class="title">2.17.1.5. Alignment <a href="#TEXTELEMALIGN" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="TEXTELEMALIGN"><div class="titlepage"><div><div><h4 class="title">8.17.1.5. Alignment <a href="#TEXTELEMALIGN" class="id_link">#</a></h4></div></div></div><p>
 					It specifies the alignment for the text element.
 					It works in accordance with the
-					<a class="xref" href="textelemnode.html#TEXTELEMWIDTH" title="2.17.1.4. Width">Text element width</a>, i.e. the field's
+					<a class="xref" href="textelemnode.html#TEXTELEMWIDTH" title="8.17.1.4. Width">Text element width</a>, i.e. the field's
 					formatted value (as text) is aligned inside the
 					specified field width.
 					</p><pre class="programlisting">&lt;field value="3" format="'%.2d'"
-      width="6" align="'center' /"&gt;</pre><p>
+       width="6" align="'center'" /&gt;</pre><p>
 				</p><p>
 					The alignment values may be
 					<code class="literal">left</code>,
@@ -132,59 +225,62 @@
 					<code class="literal">justified</code>.
 				</p><p>
 					Justified alignment is like left alignment,
-					but for a multi-line field all lines but the
-					last are justified. This is best used With
-					the default word wrapping. In this case,
-					the spacing between words is enlarged.
-					<code class="literal">justified</code> and
-					<code class="literal">left</code> behave the same
-					for regular single-line fields.
+					but for <a class="xref" href="textelemnode.html#MEMO" title="8.17.1.13. Multi-line (memo) field">Multi-line (memo) field</a>s,
+					all lines but the last are justified.
+					This is best used with the default word wrapping.
+					In this case, the spacing between words is enlarged.
+					<code class="literal">justified</code> and <code class="literal">left</code>
+					behave the same for single-line fields.
 				</p><p>
 					Default is <code class="literal">left</code>.
 				</p><p>
-					<code class="literal">OpenCReports</code> decoupled
+					OpenCReports decoupled
 					the data from displaying it. For example,
 					with the PDF output, the text element is not
 					truncated to the element width. Instead,
 					pixel perfect alignment is used together
 					with masking the parts of the value with
-					a bounding box. This is a deviation from
-					RLIB where data was approximately truncated,
-					because it was designed with monospace fonts
-					in mind, and widths were specified in number
-					of characters.
-				</p></div><div class="sect3" id="TEXTCOLOR"><div class="titlepage"><div><div><h4 class="title">2.17.1.6. Text color <a href="#TEXTCOLOR" class="id_link">#</a></h4></div></div></div><p>
+					a bounding box. This is an improvement over
+					RLIB where data was truncated (in every output
+					formats) because it was designed for using only
+					monospace fonts.
+				</p></div><div class="sect3" id="TEXTCOLOR"><div class="titlepage"><div><div><h4 class="title">8.17.1.6. Text color <a href="#TEXTCOLOR" class="id_link">#</a></h4></div></div></div><p>
 					This color is used to render text. It's accepted
 					with both American and  British spelling.
 					</p><pre class="programlisting">&lt;Line color="'blue'"&gt;
 &lt;Line colour="'blue'"&gt;</pre><p>
 				</p><p>
-					Default is what's set for <a class="xref" href="linenode.html" title="2.16. Line">Line node</a>,
+					Default is what's set for <a class="xref" href="linenode.html" title="8.16. Line">Line node</a>,
 					otherwise <code class="literal">black</code>.
-					See <a class="xref" href="colorspec.html" title="2.22. Color specification">Color specification</a>.
-				</p></div><div class="sect3" id="TEXTBGCOLOR"><div class="titlepage"><div><div><h4 class="title">2.17.1.7. Background color <a href="#TEXTBGCOLOR" class="id_link">#</a></h4></div></div></div><p>
+					See <a class="xref" href="colorspec.html" title="8.22. Color specification">Color specification</a>.
+				</p></div><div class="sect3" id="TEXTBGCOLOR"><div class="titlepage"><div><div><h4 class="title">8.17.1.7. Background color <a href="#TEXTBGCOLOR" class="id_link">#</a></h4></div></div></div><p>
 					This color is used to render the background
 					rectangle under the text. It's accepted
 					with both American and  British spelling.
 					</p><pre class="programlisting">&lt;Line bgcolor="'blue'"&gt;
 &lt;Line bgcolour="'blue'"&gt;</pre><p>
 				</p><p>
-					Default is <code class="literal">white</code>.
-					See <a class="xref" href="colorspec.html" title="2.22. Color specification">Color specification</a>.
-				</p></div><div class="sect3" id="TEXTELEMFONTNAME"><div class="titlepage"><div><div><h4 class="title">2.17.1.8. Font name <a href="#TEXTELEMFONTNAME" class="id_link">#</a></h4></div></div></div><p>
+					Default is what's set for <a class="xref" href="linenode.html" title="8.16. Line">Line node</a>,
+					otherwise <code class="literal">white</code>.
+					See <a class="xref" href="colorspec.html" title="8.22. Color specification">Color specification</a>.
+				</p></div><div class="sect3" id="TEXTELEMFONTNAME"><div class="titlepage"><div><div><h4 class="title">8.17.1.8. Font name <a href="#TEXTELEMFONTNAME" class="id_link">#</a></h4></div></div></div><p>
 					The font name attribute specifies the font
 					for the text element's scope.
 					It may be specified in two forms, the first one
 					is the preferred name, the second is for RLIB
 					compatibility:
-					</p><pre class="programlisting">&lt;Part font_name="Arial"&gt;
-&lt;Part fontName="Arial"&gt;</pre><p>
+					</p><pre class="programlisting">&lt;Part font_name="'Arial'"&gt;
+&lt;Part fontName="'Arial'"&gt;</pre><p>
 				</p><p>
 					If both forms are specified, <code class="literal">font_name</code>
 					is used.
 				</p><p>
-					Default font name is <code class="literal">Courier</code>.
-				</p></div><div class="sect3" id="TEXTELEMFONTSIZE"><div class="titlepage"><div><div><h4 class="title">2.17.1.9. Font size <a href="#TEXTELEMFONTSIZE" class="id_link">#</a></h4></div></div></div><p>
+					Default font name is what's set (in decreasing priority)
+					in <a class="xref" href="linenode.html#LINEFONTNAME" title="8.16.1.1. Font name">Line font name</a>,
+					<a class="xref" href="report.html#REPORTFONTNAME" title="8.9.1.1. Font name">Report font name</a> or
+					<a class="xref" href="parts.html#PARTFONTNAME" title="8.6.1.1. Font name">Part font name</a>.
+					If none of them is set, it's <code class="literal">Courier</code>.
+				</p></div><div class="sect3" id="TEXTELEMFONTSIZE"><div class="titlepage"><div><div><h4 class="title">8.17.1.9. Font size <a href="#TEXTELEMFONTSIZE" class="id_link">#</a></h4></div></div></div><p>
 					The font size attribute specifies the font size
 					for the text element's scope.
 					It may be specified in two forms, the first one
@@ -196,28 +292,32 @@
 					If both forms are specified, <code class="literal">font_size</code>
 					is used.
 				</p><p>
-					Default font size is 12.
-				</p></div><div class="sect3" id="TEXTBOLD"><div class="titlepage"><div><div><h4 class="title">2.17.1.10. Bold font <a href="#TEXTBOLD" class="id_link">#</a></h4></div></div></div><p>
+					Default font name is what's set (in decreasing priority)
+					in <a class="xref" href="linenode.html#LINEFONTSIZE" title="8.16.1.2. Font size">Line font size</a>,
+					<a class="xref" href="report.html#REPORTFONTSIZE" title="8.9.1.2. Font size">Report font size</a> or
+					<a class="xref" href="parts.html#PARTFONTSIZE" title="8.6.1.2. Font size">Part font size</a>.
+					If none of them is set, it's <code class="literal">12</code>.
+				</p></div><div class="sect3" id="TEXTBOLD"><div class="titlepage"><div><div><h4 class="title">8.17.1.10. Bold font <a href="#TEXTBOLD" class="id_link">#</a></h4></div></div></div><p>
 					Whether the text element uses bold font.
-					It overrides the <a class="xref" href="linenode.html#LINEBOLDATTR" title="2.16.1.3. Bold font">Line bold attribute</a>
+					It overrides the <a class="xref" href="linenode.html#LINEBOLDATTR" title="8.16.1.3. Bold font">Line bold attribute</a>
 					for this text element.
 					</p><pre class="programlisting">&lt;field bold="yes" /&gt;</pre><p>
 				</p><p>
 					Default is what's set for
-					<a class="xref" href="linenode.html#LINEBOLDATTR" title="2.16.1.3. Bold font">Line bold attribute</a>.
+					<a class="xref" href="linenode.html#LINEBOLDATTR" title="8.16.1.3. Bold font">Line bold attribute</a>.
 					<code class="literal">false</code> if both are unset.
-				</p></div><div class="sect3" id="TEXTITALIC"><div class="titlepage"><div><div><h4 class="title">2.17.1.11. Italic font <a href="#TEXTITALIC" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="TEXTITALIC"><div class="titlepage"><div><div><h4 class="title">8.17.1.11. Italic font <a href="#TEXTITALIC" class="id_link">#</a></h4></div></div></div><p>
 					Whether the text element uses italic font.
-					It overrides the <a class="xref" href="linenode.html#LINEITALICATTR" title="2.16.1.4. Italic font">Line italic attribute</a>
+					It overrides the <a class="xref" href="linenode.html#LINEITALICATTR" title="8.16.1.4. Italic font">Line italic attribute</a>
 					for this text element.
 					It is accepted in two forms:
 					</p><pre class="programlisting">&lt;field italic="yes" /&gt;
 &lt;field italics="yes" /&gt;</pre><p>
 				</p><p>
 					Default is what's set for
-					<a class="xref" href="linenode.html#LINEITALICATTR" title="2.16.1.4. Italic font">Line italic attribute</a>.
+					<a class="xref" href="linenode.html#LINEITALICATTR" title="8.16.1.4. Italic font">Line italic attribute</a>.
 					<code class="literal">false</code> if both are unset.
-				</p></div><div class="sect3" id="WEBLINK"><div class="titlepage"><div><div><h4 class="title">2.17.1.12. Web link <a href="#WEBLINK" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="WEBLINK"><div class="titlepage"><div><div><h4 class="title">8.17.1.12. Web link <a href="#WEBLINK" class="id_link">#</a></h4></div></div></div><p>
 					This attribute adds a weblink to the text element.
 					E.g. clicking on this text element in the generated
 					PDF will open a browser with the website.
@@ -225,10 +325,10 @@
        link="'https://github.com/zboszor/OpenCReports'" /&gt;</pre><p>
 				</p><p>
 					Default is no weblink.
-				</p></div><div class="sect3" id="MEMO"><div class="titlepage"><div><div><h4 class="title">2.17.1.13. Multi-line (memo) field <a href="#MEMO" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="MEMO"><div class="titlepage"><div><div><h4 class="title">8.17.1.13. Multi-line (memo) field <a href="#MEMO" class="id_link">#</a></h4></div></div></div><p>
 					This attribute allows breaking long text fields
 					to multiple lines according to the 
-					<a class="xref" href="textelemnode.html#TEXTELEMWIDTH" title="2.17.1.4. Width">Text element width</a>.
+					<a class="xref" href="textelemnode.html#TEXTELEMWIDTH" title="8.17.1.4. Width">Text element width</a>.
 					</p><pre class="programlisting">&lt;field value="'This is a long text...'"
        width="12" memo="yes" /&gt;</pre><p>
 				</p><p>
@@ -237,8 +337,8 @@
 				</p><p>
 					Every line of the text element (regardless if it's a memo
 					field or not) is aligned according to
-					<a class="xref" href="textelemnode.html#TEXTELEMALIGN" title="2.17.1.5. Alignment">Text element alignment</a>.
-				</p></div><div class="sect3" id="MEMOWRAP"><div class="titlepage"><div><div><h4 class="title">2.17.1.14. Multi-line field wrapping <a href="#MEMOWRAP" class="id_link">#</a></h4></div></div></div><p>
+					<a class="xref" href="textelemnode.html#TEXTELEMALIGN" title="8.17.1.5. Alignment">Text element alignment</a>.
+				</p></div><div class="sect3" id="MEMOWRAP"><div class="titlepage"><div><div><h4 class="title">8.17.1.14. Multi-line field wrapping <a href="#MEMOWRAP" class="id_link">#</a></h4></div></div></div><p>
 					This attribute allows wrapping multi-line
 					text at characters as opposed to words.
 					</p><pre class="programlisting">&lt;field value="'This is a long text...'"
@@ -247,23 +347,19 @@
 					Default is <code class="literal">false</code>, i.e. the field
 					is wrapped at word boundaries.
 				</p><p>
-					In <code class="literal">OpenCReports</code>, character
-					wrapping adds hyphenation, thanks to Pango rendering.
-					This is a deviation from RLIB.
-				</p></div><div class="sect3" id="MEMOROWLIMIT"><div class="titlepage"><div><div><h4 class="title">2.17.1.15. Multi-line field row limit <a href="#MEMOROWLIMIT" class="id_link">#</a></h4></div></div></div><p>
+					In OpenCReports, character wrapping adds hyphenation.
+					This is an improvement over RLIB.
+				</p></div><div class="sect3" id="MEMOROWLIMIT"><div class="titlepage"><div><div><h4 class="title">8.17.1.15. Multi-line field row limit <a href="#MEMOROWLIMIT" class="id_link">#</a></h4></div></div></div><p>
 					This attribute allows limiting multi-line
 					text with a maximum row number.
 					</p><pre class="programlisting">&lt;field value="'This is a long text...'"
        width="12" memo="yes" memo_max_lines="20" /&gt;</pre><p>
 				</p><p>
 					Default is no limit.
-				</p><p>
-					In <code class="literal">OpenCReports</code>, character
-					wrapping adds hyphenation, thanks to Pango rendering.
-					This is a deviation from RLIB.
-				</p></div><div class="sect3" id="TEXTXLATE"><div class="titlepage"><div><div><h4 class="title">2.17.1.16. Translation <a href="#TEXTXLATE" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="TEXTXLATE"><div class="titlepage"><div><div><h4 class="title">8.17.1.16. Translation <a href="#TEXTXLATE" class="id_link">#</a></h4></div></div></div><p>
 					This attribute allows the text element to
-					be translated to a different language.
+					be translated to a specified language or locale.
+					See <a class="xref" href="ocrpttopxml.html#LOCALE" title="8.2.7. Locale">Locale</a>.
 					</p><pre class="programlisting">&lt;field value="'This is a field'"
        translate="yes" /&gt;</pre><p>
 				</p><p>
@@ -274,8 +370,8 @@
 					and the language (locale) must be correctly set up.
 				</p><p>
 					OpenCReports will attempt to translate
-					both the format string and the text element's
-					value. For example, if the format string
+					both the format string (if specified) and the text
+					element's value. For example, if the format string
 					has a translated variant in the translations,
 					then this formatted result will be translated:
 					</p><pre class="programlisting">&lt;field value="q.apples"
@@ -284,15 +380,15 @@
 				</p><p>
 					Default is <code class="literal">no</code>.
 				</p><p>
-					And alternative way is to use the translation
+					An alternative way is to use the translation
 					functions directly in the field expression.
-					See <a class="xref" href="listoffuncs.html#TRANSLATEFUNC" title="3.6.90. translate()">translate()</a>
-					and <a class="xref" href="listoffuncs.html#TRANSLATE2FUNC" title="3.6.91. translate2()">translate2()</a>.
+					See <a class="xref" href="miscfuncs.html#TRANSLATEFUNC" title="4.13.14. translate()">translate()</a>
+					and <a class="xref" href="miscfuncs.html#TRANSLATE2FUNC" title="4.13.15. translate2()">translate2()</a>.
 					When using them, the <code class="literal">translate="yes"</code>
 					attribute is not needed.
-				</p></div><div class="sect3" id="TEXTCOLID"><div class="titlepage"><div><div><h4 class="title">2.17.1.17. Column number <a href="#TEXTCOLID" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="TEXTCOLID"><div class="titlepage"><div><div><h4 class="title">8.17.1.17. Column number <a href="#TEXTCOLID" class="id_link">#</a></h4></div></div></div><p>
 					This attribute is accepted for RLIB compatibility,
 					but it's unused.
 					</p><pre class="programlisting">&lt;field value="'This is a long text...'"
        col="3" /&gt;</pre><p>
-				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="linenode.html" title="2.16. Line">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="xmldescriptor.html" title="Chapter 2. Report XML description">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="hlinenode.html" title="2.18. HorizontalLine">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.16. Line </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.5 Manual">Home</a></td><td width="40%" align="right" valign="top"> 2.18. HorizontalLine</td></tr></table></div></body></html>
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="linenode.html" title="8.16. Line">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="xmldescriptor.html" title="Chapter 8. Report XML description">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="hlinenode.html" title="8.18. HorizontalLine">Next</a></td></tr><tr><td width="40%" align="left" valign="top">8.16. Line </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="40%" align="right" valign="top"> 8.18. HorizontalLine</td></tr></table></div></body></html>

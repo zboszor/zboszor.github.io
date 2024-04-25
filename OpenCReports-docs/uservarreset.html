@@ -1,54 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>5.6. Resetting a variable on break boundaries</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="precalcvar.html" title="5.5. Precalculated variables" /><link rel="next" href="formatting.html" title="Chapter 6. Formatting" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">5.6. Resetting a variable on break boundaries</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="precalcvar.html" title="5.5. Precalculated variables">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="variables.html" title="Chapter 5. Report variables">Up</a></td><th width="60%" align="center">Chapter 5. Report variables</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.5 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="formatting.html" title="Chapter 6. Formatting">Next</a></td></tr></table><hr /></div><div class="sect1" id="USERVARRESET"><div class="titlepage"><div><div><h2 class="title" style="clear: both">5.6. Resetting a variable on break boundaries <a href="#USERVARRESET" class="id_link">#</a></h2></div></div></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>6.3. Resetting a variable on break boundaries</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="reportbreaks.html" title="6.2. Report breaks in OpenCReports" /><link rel="next" href="breakexample.html" title="6.4. Example" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">6.3. Resetting a variable on break boundaries</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="reportbreaks.html" title="6.2. Report breaks in OpenCReports">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="breaks.html" title="Chapter 6. Report breaks">Up</a></td><th width="60%" align="center">Chapter 6. Report breaks</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="breakexample.html" title="6.4. Example">Next</a></td></tr></table><hr /></div><div class="sect1" id="USERVARRESET"><div class="titlepage"><div><div><h2 class="title" style="clear: both">6.3. Resetting a variable on break boundaries <a href="#USERVARRESET" class="id_link">#</a></h2></div></div></div><p>
 			It may also be useful to use a regular or precalculated
-			variable that only considers data rows in break periods.
+			variable that only considers data rows in break ranges.
 			For example printing a running average for detail rows
 			in breaks, or printing the total average calculated for
-			a break period in the header for that period.
+			a break range in the header for that period.
 		</p><p>
 			For this purpose, variables may be reset on break boundaries.
-			</p><pre class="programlisting">&lt;Report&gt;
-    &lt;Breaks&gt;
-        &lt;Break name="break1" ... &gt;
-            &lt;BreaksHeader&gt;
-                &lt;Output&gt;
-                    &lt;field value="v.var1" /&gt;
-                &lt;/Output&gt;
-            &lt;/BreaksHeader&gt;
-            &lt;BreaksFields&gt;
-                &lt;BreaksField value="query1.field2" /&gt;
-            &lt;/BreaksFields&gt;
-        &lt;/Break&gt;
-    &lt;/Breaks&gt;
-
-    &lt;Variables&gt;
-        &lt;Variable
-            name="var1"
-            value="query1.field1"
-            type="average"
-            precalculate="yes"
-            resetonbreak="'break1'" /&gt;
-    &lt;/Variables&gt;
-    ...
-&lt;/Report&gt;</pre><p>
-		</p><p>
-			To demistify such a variable, here is the
-			equivalent of the above using a
-			<code class="literal">custom</code> variable.
-			The value returned by the <a class="xref" href="listoffuncs.html#BRROWNUMFUNC" title="3.6.7. brrownum()">Break row number function</a>
-			automatically resets at every break boundary, so it
-			can be used as below.
-			</p><pre class="programlisting">&lt;Variables&gt;
-    &lt;Variable
-        name="var1"
-        type="custom"
-        baseexpr="query1.field1"
-        intermedexpr="(brrownum('break1') == 1 ? 0 : r.self) +
-                      (isnull(r.baseexpr) ?
-                          0 : r.baseexpr)"
-        intermed2expr="r.self +
-                       (isnull(r.baseexpr) ? 0 : 1)"
-        resultexpr="r.intermedexpr / r.intermed2expr"
-        /&gt;
-&lt;/Variables&gt;</pre><p>
-		</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="precalcvar.html" title="5.5. Precalculated variables">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="variables.html" title="Chapter 5. Report variables">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="formatting.html" title="Chapter 6. Formatting">Next</a></td></tr><tr><td width="40%" align="left" valign="top">5.5. Precalculated variables </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.5 Manual">Home</a></td><td width="40%" align="right" valign="top"> Chapter 6. Formatting</td></tr></table></div></body></html>
+			See examples of such variables in
+			<a class="xref" href="variablenode.html#RESETONBREAK" title="8.12.1.5. Reset on break">Reset on break attribute</a> and
+			<a class="xref" href="variablenode.html#PRECALCVARATTR" title="8.12.1.6. Precalculate (delayed)">Precalculate attribute</a> in the
+			<a class="xref" href="variablenode.html" title="8.12. Variable">Variable node</a> section of the
+			<a class="xref" href="xmldescriptor.html" title="Chapter 8. Report XML description">Report XML description</a> chapter.
+		</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="reportbreaks.html" title="6.2. Report breaks in OpenCReports">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="breaks.html" title="Chapter 6. Report breaks">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="breakexample.html" title="6.4. Example">Next</a></td></tr><tr><td width="40%" align="left" valign="top">6.2. Report breaks in OpenCReports </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="40%" align="right" valign="top"> 6.4. Example</td></tr></table></div></body></html>

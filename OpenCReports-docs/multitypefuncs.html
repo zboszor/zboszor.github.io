@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>4.11. Type agnostic functions</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="datetimefuncs.html" title="4.10. Datetime functions" /><link rel="next" href="formatfuncs.html" title="4.12. Formatting and conversion functions" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">4.11. Type agnostic functions</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="datetimefuncs.html" title="4.10. Datetime functions">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="functions.html" title="Chapter 4. Functions">Up</a></td><th width="60%" align="center">Chapter 4. Functions</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="formatfuncs.html" title="4.12. Formatting and conversion functions">Next</a></td></tr></table><hr /></div><div class="sect1" id="MULTITYPEFUNCS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">4.11. Type agnostic functions <a href="#MULTITYPEFUNCS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="multitypefuncs.html#ADDFUNC">4.11.1. add()</a></span></dt><dt><span class="sect2"><a href="multitypefuncs.html#DECFUNC">4.11.2. dec()</a></span></dt><dt><span class="sect2"><a href="multitypefuncs.html#INCFUNC">4.11.3. inc()</a></span></dt><dt><span class="sect2"><a href="multitypefuncs.html#SUBFUNC">4.11.4. sub()</a></span></dt></dl></div><div class="sect2" id="ADDFUNC"><div class="titlepage"><div><div><h3 class="title">4.11.1. add() <a href="#ADDFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Add the operands. It takes two or more operands of different
+				types and returns the sensible result for cases that make
+				sense. It throws an error for invalid cases.
+				Operator <code class="literal">+</code> is a shortcut for this function.
+			</p><p>
+				For <code class="literal">numeric</code> arguments, it's the arithmetic
+				addition.
+			</p><p>
+				For <code class="literal">string</code> arguments, it is equivalent
+				to concatenation, i.e. the <a class="xref" href="stringfuncs.html#CONCATFUNC" title="4.9.1. concat()">concat() function</a>.
+			</p><p>
+				Certain combinations of <code class="literal">datetime</code>
+				and <code class="literal">numeric</code> arguments make sense.
+				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+							normal <code class="literal">datetime</code> and
+							<code class="literal">numeric</code> added together
+							results in the <code class="literal">datetime</code>
+							value increased by the specified number of
+							seconds or days, depending on whether the
+							<code class="literal">datetime</code> value
+							<span class="emphasis"><em>has valid time part or not</em></span>,
+							respectively
+						</p></li><li class="listitem"><p>
+							the interval subtype of <code class="literal">datetime</code>
+							and <code class="literal">numeric</code> added together
+							results in the <code class="literal">datetime</code>
+							value increased by the specified number of
+							seconds
+						</p></li><li class="listitem"><p>
+							normal <code class="literal">datetime</code> and
+							the interval subtype of the <code class="literal">datetime</code>
+							added together results in the
+							normal <code class="literal">datetime</code> value increased
+							by the specified time interval
+						</p></li><li class="listitem"><p>
+							two intervals added together results in
+							the first interval increased by the 
+							second interval
+						</p></li></ul></div><p>
+			</p></div><div class="sect2" id="DECFUNC"><div class="titlepage"><div><div><h3 class="title">4.11.2. dec() <a href="#DECFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Decrement by one. It takes one numeric or datetime operand.
+				The operator <code class="literal">--</code> is the shortcut for it,
+				either as prefix or postfix operator.
+			</p></div><div class="sect2" id="INCFUNC"><div class="titlepage"><div><div><h3 class="title">4.11.3. inc() <a href="#INCFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Increment by one. It takes one numeric or datetime operand.
+				The operator <code class="literal">++</code> is the shortcut for it,
+				either as prefix or postfix operator.
+			</p></div><div class="sect2" id="SUBFUNC"><div class="titlepage"><div><div><h3 class="title">4.11.4. sub() <a href="#SUBFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Subtract the second, etc. operands from the first.
+				It takes two or more operands of different types and
+				returns the sensible result for cases that make
+				sense. It throws an error for invalid cases.
+				Operator <code class="literal">-</code> is a shortcut for this function.
+			</p><p>
+				For <code class="literal">numeric</code> arguments, it's simply
+				the arithmetic subtraction.
+			</p><p>
+				For <code class="literal">string</code> arguments, it throws an error.
+			</p><p>
+				Certain combinations of <code class="literal">datetime</code>
+				and <code class="literal">numeric</code> arguments make sense.
+				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+							a <code class="literal">numeric</code> value subtracted
+							from a normal <code class="literal">datetime</code>
+							results in the <code class="literal">datetime</code>
+							value decreased by the specified number of
+							seconds or days, depending on whether the
+							<code class="literal">datetime</code> value
+							<span class="emphasis"><em>has valid time part or not</em></span>,
+							respectively
+						</p></li><li class="listitem"><p>
+							a <code class="literal">numeric</code> value subtracted
+							from the interval subtype of <code class="literal">datetime</code>
+							results in the <code class="literal">datetime</code>
+							value decreased by the specified number of
+							seconds
+						</p></li><li class="listitem"><p>
+							an interval value subtracted from a normal
+							<code class="literal">datetime</code> value
+							results in the normal <code class="literal">datetime</code>
+							value decreased by the specified time interval
+						</p></li><li class="listitem"><p>
+							two intervals subtracted results in
+							the first interval decreased by the
+							second interval
+						</p></li></ul></div><p>
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="datetimefuncs.html" title="4.10. Datetime functions">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="functions.html" title="Chapter 4. Functions">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="formatfuncs.html" title="4.12. Formatting and conversion functions">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.10. Datetime functions </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="40%" align="right" valign="top"> 4.12. Formatting and conversion functions</td></tr></table></div></body></html>

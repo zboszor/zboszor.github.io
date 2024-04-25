@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>8.16. The OpenCReport\Output class</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phpbreakclass.html" title="8.15. The OpenCReport\Break class" /><link rel="next" href="phplineclass.html" title="8.17. The OpenCReport\Line class" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">8.16. The OpenCReport\Output class</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phpbreakclass.html" title="8.15. The OpenCReport\Break class">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 8. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 8. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.5 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phplineclass.html" title="8.17. The OpenCReport\Line class">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPOUTPUTCLASS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.16. The OpenCReport\Output class <a href="#PHPOUTPUTCLASS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phpoutputclass.html#PHPOUTPUTSETSUPPRESS">8.16.1. Set suppression of the output section</a></span></dt><dt><span class="sect2"><a href="phpoutputclass.html#PHPOUTPUTADDLINE">8.16.2. Add a (text) line</a></span></dt><dt><span class="sect2"><a href="phpoutputclass.html#PHPOUTPUTADDHLINE">8.16.3. Add a horizontal line</a></span></dt><dt><span class="sect2"><a href="phpoutputclass.html#PHPOUTPUTADDIMAGE">8.16.4. Add an image</a></span></dt><dt><span class="sect2"><a href="phpoutputclass.html#PHPOUTPUTADDBARCODE">8.16.5. Add a barcode</a></span></dt><dt><span class="sect2"><a href="phpoutputclass.html#PHPOUTPUTADDIMAGEEND">8.16.6. Add an image end marker</a></span></dt></dl></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>12.16. The OpenCReport\Output class</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phpbreakclass.html" title="12.15. The OpenCReport\Break class" /><link rel="next" href="phplineclass.html" title="12.17. The OpenCReport\Line class" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">12.16. The OpenCReport\Output class</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phpbreakclass.html" title="12.15. The OpenCReport\Break class">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 12. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phplineclass.html" title="12.17. The OpenCReport\Line class">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPOUTPUTCLASS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">12.16. The OpenCReport\Output class <a href="#PHPOUTPUTCLASS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phpoutputclass.html#PHPOUTPUTSETSUPPRESS">12.16.1. Set suppression of the output section</a></span></dt><dt><span class="sect2"><a href="phpoutputclass.html#PHPOUTPUTADDLINE">12.16.2. Add a (text) line</a></span></dt><dt><span class="sect2"><a href="phpoutputclass.html#PHPOUTPUTADDHLINE">12.16.3. Add a horizontal line</a></span></dt><dt><span class="sect2"><a href="phpoutputclass.html#PHPOUTPUTADDIMAGE">12.16.4. Add an image</a></span></dt><dt><span class="sect2"><a href="phpoutputclass.html#PHPOUTPUTADDBARCODE">12.16.5. Add a barcode</a></span></dt><dt><span class="sect2"><a href="phpoutputclass.html#PHPOUTPUTADDIMAGEEND">12.16.6. Add an image end marker</a></span></dt></dl></div><p>
 			</p><pre class="programlisting">class OpenCReport\Output {
     public final set_suppress(
                      ?string $expr_string = null): void;
@@ -15,7 +15,7 @@
 
     public final add_image_end(): void;
 }</pre><p>
-		</p><div class="sect2" id="PHPOUTPUTSETSUPPRESS"><div class="titlepage"><div><div><h3 class="title">8.16.1. Set suppression of the output section <a href="#PHPOUTPUTSETSUPPRESS" class="id_link">#</a></h3></div></div></div><p>
+		</p><div class="sect2" id="PHPOUTPUTSETSUPPRESS"><div class="titlepage"><div><div><h3 class="title">12.16.1. Set suppression of the output section <a href="#PHPOUTPUTSETSUPPRESS" class="id_link">#</a></h3></div></div></div><p>
 				Set suppression of the output section.
 				The expression must evaluate to a numeric
 				value which will be treated as a boolean,
@@ -24,52 +24,52 @@
 				</p><pre class="programlisting">public final
 OpenCReport\Output::set_suppress(
                      ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPOUTPUTADDLINE"><div class="titlepage"><div><div><h3 class="title">8.16.2. Add a (text) line <a href="#PHPOUTPUTADDLINE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPOUTPUTADDLINE"><div class="titlepage"><div><div><h3 class="title">12.16.2. Add a (text) line <a href="#PHPOUTPUTADDLINE" class="id_link">#</a></h3></div></div></div><p>
 				Add a (text) line to the output section.
 				A line may have children elements, like
 				<code class="literal">OpenCReport\Text</code>,
 				<code class="literal">OpenCReport\Image</code> and
 				<code class="literal">OpenCReport\Barcode</code>.
-				(See <a class="xref" href="phptextclass.html" title="8.20. The OpenCReport\Text class">Section 8.20</a>, <a class="xref" href="phpimageclass.html" title="8.19. The OpenCReport\Image class">Section 8.19</a> and
-				<a class="xref" href="phpbarcodeclass.html" title="8.21. The OpenCReport\Barcode class">Section 8.21</a>.)
+				(See <a class="xref" href="phptextclass.html" title="12.20. The OpenCReport\Text class">Section 12.20</a>, <a class="xref" href="phpimageclass.html" title="12.19. The OpenCReport\Image class">Section 12.19</a> and
+				<a class="xref" href="phpbarcodeclass.html" title="12.21. The OpenCReport\Barcode class">Section 12.21</a>.)
 				For class methods of <code class="literal">OpenCReport\Line</code>,
-				see <a class="xref" href="phplineclass.html" title="8.17. The OpenCReport\Line class">Section 8.17</a>.
+				see <a class="xref" href="phplineclass.html" title="12.17. The OpenCReport\Line class">Section 12.17</a>.
 				</p><pre class="programlisting">public final
 OpenCReport\Output::add_line():
                      ?OpenCReport\Line;</pre><p>
-			</p></div><div class="sect2" id="PHPOUTPUTADDHLINE"><div class="titlepage"><div><div><h3 class="title">8.16.3. Add a horizontal line <a href="#PHPOUTPUTADDHLINE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPOUTPUTADDHLINE"><div class="titlepage"><div><div><h3 class="title">12.16.3. Add a horizontal line <a href="#PHPOUTPUTADDHLINE" class="id_link">#</a></h3></div></div></div><p>
 				Add a horizontal line (a visual separator)
 				to the output section.
 				For class methods of <code class="literal">OpenCReport\HorizontalLine</code>,
-				see <a class="xref" href="phplineclass.html" title="8.17. The OpenCReport\Line class">Section 8.17</a>.
+				see <a class="xref" href="phplineclass.html" title="12.17. The OpenCReport\Line class">Section 12.17</a>.
 				</p><pre class="programlisting">public final
 OpenCReport\Output::add_hline():
                      ?OpenCReport\HorizontalLine;</pre><p>
-			</p></div><div class="sect2" id="PHPOUTPUTADDIMAGE"><div class="titlepage"><div><div><h3 class="title">8.16.4. Add an image <a href="#PHPOUTPUTADDIMAGE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPOUTPUTADDIMAGE"><div class="titlepage"><div><div><h3 class="title">12.16.4. Add an image <a href="#PHPOUTPUTADDIMAGE" class="id_link">#</a></h3></div></div></div><p>
 				Add an image to the output section.
 				The image will indent every subsequent
 				elements in the section, except other images
 				and barcodes (see below).
 				For class methods of <code class="literal">OpenCReport\Image</code>,
-				see <a class="xref" href="phplineclass.html" title="8.17. The OpenCReport\Line class">Section 8.17</a>.
+				see <a class="xref" href="phplineclass.html" title="12.17. The OpenCReport\Line class">Section 12.17</a>.
 				</p><pre class="programlisting">public final
 OpenCReport\Output::add_image():
                      ?OpenCReport\Image;</pre><p>
-			</p></div><div class="sect2" id="PHPOUTPUTADDBARCODE"><div class="titlepage"><div><div><h3 class="title">8.16.5. Add a barcode <a href="#PHPOUTPUTADDBARCODE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPOUTPUTADDBARCODE"><div class="titlepage"><div><div><h3 class="title">12.16.5. Add a barcode <a href="#PHPOUTPUTADDBARCODE" class="id_link">#</a></h3></div></div></div><p>
 				Add a barcode to the output section.
 				The barcode behaves just like an image,
 				i.e. it will indent every subsequent
 				elements in the section, except other images
 				and barcodes.
 				For class methods of <code class="literal">OpenCReport\Barcode</code>,
-				see <a class="xref" href="phplineclass.html" title="8.17. The OpenCReport\Line class">Section 8.17</a>.
+				see <a class="xref" href="phplineclass.html" title="12.17. The OpenCReport\Line class">Section 12.17</a>.
 				</p><pre class="programlisting">public final
 OpenCReport\Output::add_barcode():
                      ?OpenCReport\Barcode;</pre><p>
-			</p></div><div class="sect2" id="PHPOUTPUTADDIMAGEEND"><div class="titlepage"><div><div><h3 class="title">8.16.6. Add an image end marker <a href="#PHPOUTPUTADDIMAGEEND" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPOUTPUTADDIMAGEEND"><div class="titlepage"><div><div><h3 class="title">12.16.6. Add an image end marker <a href="#PHPOUTPUTADDIMAGEEND" class="id_link">#</a></h3></div></div></div><p>
 				Add an image end marker to the output section.
 				Subsequent elements in the section won't be indented
 				and will be drawn vertically below the previous image.
 				</p><pre class="programlisting">public final
 OpenCReport\Output::add_image_end(): void;</pre><p>
-			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phpbreakclass.html" title="8.15. The OpenCReport\Break class">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 8. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phplineclass.html" title="8.17. The OpenCReport\Line class">Next</a></td></tr><tr><td width="40%" align="left" valign="top">8.15. The OpenCReport\Break class </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.5 Manual">Home</a></td><td width="40%" align="right" valign="top"> 8.17. The OpenCReport\Line class</td></tr></table></div></body></html>
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phpbreakclass.html" title="12.15. The OpenCReport\Break class">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phplineclass.html" title="12.17. The OpenCReport\Line class">Next</a></td></tr><tr><td width="40%" align="left" valign="top">12.15. The OpenCReport\Break class </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="40%" align="right" valign="top"> 12.17. The OpenCReport\Line class</td></tr></table></div></body></html>

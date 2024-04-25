@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>4.13. Miscellaneous functions</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="formatfuncs.html" title="4.12. Formatting and conversion functions" /><link rel="next" href="variables.html" title="Chapter 5. Report variables" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">4.13. Miscellaneous functions</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="formatfuncs.html" title="4.12. Formatting and conversion functions">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="functions.html" title="Chapter 4. Functions">Up</a></td><th width="60%" align="center">Chapter 4. Functions</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="variables.html" title="Chapter 5. Report variables">Next</a></td></tr></table><hr /></div><div class="sect1" id="MISCFUNCS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">4.13. Miscellaneous functions <a href="#MISCFUNCS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="miscfuncs.html#BRROWNUMFUNC">4.13.1. brrownum()</a></span></dt><dt><span class="sect2"><a href="miscfuncs.html#ERRORFUNC">4.13.2. error()</a></span></dt><dt><span class="sect2"><a href="miscfuncs.html#EVALFUNC">4.13.3. eval()</a></span></dt><dt><span class="sect2"><a href="miscfuncs.html#FXPVALFUNC">4.13.4. fxpval()</a></span></dt><dt><span class="sect2"><a href="miscfuncs.html#IIFFUNC">4.13.5. iif()</a></span></dt><dt><span class="sect2"><a href="miscfuncs.html#ISNULLFUNC">4.13.6. isnull()</a></span></dt><dt><span class="sect2"><a href="miscfuncs.html#NULLFUNC">4.13.7. null()</a></span></dt><dt><span class="sect2"><a href="miscfuncs.html#NULLDTFUNC">4.13.8. nulldt()</a></span></dt><dt><span class="sect2"><a href="miscfuncs.html#NULLNFUNC">4.13.9. nulln()</a></span></dt><dt><span class="sect2"><a href="miscfuncs.html#NULLSFUNC">4.13.10. nulls()</a></span></dt><dt><span class="sect2"><a href="miscfuncs.html#PREVVALFUNC">4.13.11. prevval()</a></span></dt><dt><span class="sect2"><a href="miscfuncs.html#RANDOMFUNC">4.13.12. random()</a></span></dt><dt><span class="sect2"><a href="miscfuncs.html#ROWNUMFUNC">4.13.13. rownum()</a></span></dt><dt><span class="sect2"><a href="miscfuncs.html#TRANSLATEFUNC">4.13.14. translate()</a></span></dt><dt><span class="sect2"><a href="miscfuncs.html#TRANSLATE2FUNC">4.13.15. translate2()</a></span></dt></dl></div><div class="sect2" id="BRROWNUMFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.1. brrownum() <a href="#BRROWNUMFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Current row number of a break since its last break boundary.
+				The row number restarts from 1 at every break boundary.
+				It takes one string operand, the name of the break.
+			</p></div><div class="sect2" id="ERRORFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.2. error() <a href="#ERRORFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Return an artificially generated error. It takes one
+				string operand, the error message. Used by unit tests
+				but it may be useful in some other cases.
+			</p></div><div class="sect2" id="EVALFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.3. eval() <a href="#EVALFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Parse an expression string. If it's correct, it is
+				inserted into the parent expression in place of the
+				function call. If there is a syntax error, the error is
+				re-thrown for the main expression.
+				It takes one string operand.
+			</p><p>
+				This is a pseudo-function. The grammar detects its use
+				and converts the embedded expression string into a regular
+				subexpression, like if it was inside parenthesis in the
+				parent expression contents. This allows the subexpression
+				to be optimized in the parent expression context.
+			</p><p>
+				Fox example, the expression <code class="literal">3 * eval('1 + 2')</code>
+				is optimized into the numeric constant <code class="literal">9</code>.
+			</p><p>
+				Note, that the grammar transformation only takes place if
+				there is no user defined function with the same name.
+				In this case, the user defined function is used.
+			</p></div><div class="sect2" id="FXPVALFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.4. fxpval() <a href="#FXPVALFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Move the decimal separator to the left by the specified
+				number of digits. It takes two operands. The first operand
+				may either be a string containing a numeric value, or a numeric.
+				If it's a string, then it will be converted to numeric first.
+				The second operand is numeric.
+			</p><p>
+				It is an RLIB compatibility function.
+				The function divides the numeric value of the first operand
+				with 10 to the power of the value of the second operand.
+				One use case is that if the value of the first operand contains
+				prices in cents, then <code class="literal">fxpval(data, 2)</code> puts the
+				decimal separator to the correct place.
+			</p></div><div class="sect2" id="IIFFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.5. iif() <a href="#IIFFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Ternary function. It takes three operands of which the first
+				one is numeric, the second and third operands can be of any
+				type. If the first operand is non-zero (i.e.: "true") then
+				it returns the second operand, otherwise the third operand.
+				The ternary operator <code class="literal">exp1 ? exp2 : exp3</code>
+				is a shortcut for this function.
+			</p></div><div class="sect2" id="ISNULLFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.6. isnull() <a href="#ISNULLFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Returns numeric 1 if the operand is NULL, 0 otherwise.
+				It takes one operand of any type.
+			</p></div><div class="sect2" id="NULLFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.7. null() <a href="#NULLFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Generate NULL value using the type of its operand.
+				It takes one operand of any type.
+			</p></div><div class="sect2" id="NULLDTFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.8. nulldt() <a href="#NULLDTFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Generate NULL of the datetime type. It takes zero operands.
+			</p></div><div class="sect2" id="NULLNFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.9. nulln() <a href="#NULLNFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Generate NULL of the numeric type. It takes zero operands.
+			</p></div><div class="sect2" id="NULLSFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.10. nulls() <a href="#NULLSFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Generate NULL of the string type. It takes zero operands.
+			</p></div><div class="sect2" id="PREVVALFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.11. prevval() <a href="#PREVVALFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Return the previous value. It takes one operand
+				of any type.
+			</p><p>
+				The interesting use case for this function is non-constant
+				expressions. It returns the operand's previous value, i.e.
+				the value generated for the previous query row.
+				If there is no previous value row, the result is an error.
+				This function allows showing values carried over from
+				the previous page to be shown in a header section of the
+				current page.
+			</p></div><div class="sect2" id="RANDOMFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.12. random() <a href="#RANDOMFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Generate a pseudo-random numeric value between 0 and 1.
+				It takes zero operands.
+			</p></div><div class="sect2" id="ROWNUMFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.13. rownum() <a href="#ROWNUMFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Return the row number of a query in the report.
+				It takes either zero operands or one string operand.
+				If zero operands are passed, it returns the current
+				row number of the primary query. If a string operand
+				is passed, then it returns the current row number of
+				the query with that name. See <a class="xref" href="queries.html" title="2.2. Queries">Queries</a>.
+			</p></div><div class="sect2" id="TRANSLATEFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.14. translate() <a href="#TRANSLATEFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Translate the operand.
+				It takes one string operand.
+			</p><p>
+				This function returns the translated version of the string
+				operand according to translation and locale settings using
+				<code class="literal">dgettext()</code> from Gettext.
+			</p></div><div class="sect2" id="TRANSLATE2FUNC"><div class="titlepage"><div><div><h3 class="title">4.13.15. translate2() <a href="#TRANSLATE2FUNC" class="id_link">#</a></h3></div></div></div><p>
+				Translate the operands using singular and plural variants
+				and the number of the object in the statement.
+				It takes three operands.
+				The first two operands are strings, for the singular
+				and plural strings. The third operand is the number
+				that determines which translation form is used.
+			</p><p>
+				This function translates its operands according to the
+				translation and locale settings using
+				<code class="literal">dngettext()</code> from Gettext.
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="formatfuncs.html" title="4.12. Formatting and conversion functions">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="functions.html" title="Chapter 4. Functions">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="variables.html" title="Chapter 5. Report variables">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.12. Formatting and conversion functions </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="40%" align="right" valign="top"> Chapter 5. Report variables</td></tr></table></div></body></html>

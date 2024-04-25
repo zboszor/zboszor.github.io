@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>8.21. The OpenCReport\Barcode class</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phptextclass.html" title="8.20. The OpenCReport\Text class" /><link rel="next" href="phprlibcompat.html" title="8.22. RLIB compatibility API" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">8.21. The OpenCReport\Barcode class</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phptextclass.html" title="8.20. The OpenCReport\Text class">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 8. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 8. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.5 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phprlibcompat.html" title="8.22. RLIB compatibility API">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPBARCODECLASS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.21. The OpenCReport\Barcode class <a href="#PHPBARCODECLASS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phpbarcodeclass.html#PHPBARCODESETVALUE">8.21.1. Set the barcode value</a></span></dt><dt><span class="sect2"><a href="phpbarcodeclass.html#PHPBARCODESETVALUEDELAYED">8.21.2. Set the barcode value delayed</a></span></dt><dt><span class="sect2"><a href="phpbarcodeclass.html#PHPBARCODESETSUPPRESS">8.21.3. Set the barcode suppression</a></span></dt><dt><span class="sect2"><a href="phpbarcodeclass.html#PHPBARCODESETTYPE">8.21.4. Set the barcode type</a></span></dt><dt><span class="sect2"><a href="phpbarcodeclass.html#PHPBARCODESETWIDTH">8.21.5. Set the barcode width</a></span></dt><dt><span class="sect2"><a href="phpbarcodeclass.html#PHPBARCODESETHEIGHT">8.21.6. Set the barcode height</a></span></dt><dt><span class="sect2"><a href="phpbarcodeclass.html#PHPBARCODESETCOLOR">8.21.7. Set the barcode image line color</a></span></dt><dt><span class="sect2"><a href="phpbarcodeclass.html#PHPBARCODESETBGCOLOR">8.21.8. Set the barcode image background color</a></span></dt></dl></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>12.21. The OpenCReport\Barcode class</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phptextclass.html" title="12.20. The OpenCReport\Text class" /><link rel="next" href="phprlibcompat.html" title="12.22. RLIB compatibility API" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">12.21. The OpenCReport\Barcode class</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phptextclass.html" title="12.20. The OpenCReport\Text class">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 12. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phprlibcompat.html" title="12.22. RLIB compatibility API">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPBARCODECLASS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">12.21. The OpenCReport\Barcode class <a href="#PHPBARCODECLASS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phpbarcodeclass.html#PHPBARCODESETVALUE">12.21.1. Set the barcode value</a></span></dt><dt><span class="sect2"><a href="phpbarcodeclass.html#PHPBARCODESETVALUEDELAYED">12.21.2. Set the barcode value delayed</a></span></dt><dt><span class="sect2"><a href="phpbarcodeclass.html#PHPBARCODESETSUPPRESS">12.21.3. Set the barcode suppression</a></span></dt><dt><span class="sect2"><a href="phpbarcodeclass.html#PHPBARCODESETTYPE">12.21.4. Set the barcode type</a></span></dt><dt><span class="sect2"><a href="phpbarcodeclass.html#PHPBARCODESETWIDTH">12.21.5. Set the barcode width</a></span></dt><dt><span class="sect2"><a href="phpbarcodeclass.html#PHPBARCODESETHEIGHT">12.21.6. Set the barcode height</a></span></dt><dt><span class="sect2"><a href="phpbarcodeclass.html#PHPBARCODESETCOLOR">12.21.7. Set the barcode image line color</a></span></dt><dt><span class="sect2"><a href="phpbarcodeclass.html#PHPBARCODESETBGCOLOR">12.21.8. Set the barcode image background color</a></span></dt></dl></div><p>
 			</p><pre class="programlisting">class OpenCReport\Barcode {
     public final set_value(
                      ?string $expr_string = null): void;
 
     public final set_value_delayed(
+                     ?string $expr_string = null): void;
+
+    public final set_suppress(
                      ?string $expr_string = null): void;
 
     public final set_type(
@@ -22,7 +25,7 @@
     public final set_bgcolor(
                      ?string $expr_string = null): void;
 }</pre><p>
-		</p><div class="sect2" id="PHPBARCODESETVALUE"><div class="titlepage"><div><div><h3 class="title">8.21.1. Set the barcode value <a href="#PHPBARCODESETVALUE" class="id_link">#</a></h3></div></div></div><p>
+		</p><div class="sect2" id="PHPBARCODESETVALUE"><div class="titlepage"><div><div><h3 class="title">12.21.1. Set the barcode value <a href="#PHPBARCODESETVALUE" class="id_link">#</a></h3></div></div></div><p>
 				Set the barcode's value from
 				an expression string. The expression
 				must evaluate to a string, whose
@@ -31,14 +34,14 @@
 				</p><pre class="programlisting">public final
 OpenCReport\Barcode::set_value(
                      ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPBARCODESETVALUEDELAYED"><div class="titlepage"><div><div><h3 class="title">8.21.2. Set the barcode value delayed <a href="#PHPBARCODESETVALUEDELAYED" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPBARCODESETVALUEDELAYED"><div class="titlepage"><div><div><h3 class="title">12.21.2. Set the barcode value delayed <a href="#PHPBARCODESETVALUEDELAYED" class="id_link">#</a></h3></div></div></div><p>
 				Set the barcode's value delayed from
 				an expression string. The expression
 				must evaluate to a boolean value.
 				</p><pre class="programlisting">public final
 OpenCReport\Barcode::set_value_delayed(
                      ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPBARCODESETSUPPRESS"><div class="titlepage"><div><div><h3 class="title">8.21.3. Set the barcode suppression <a href="#PHPBARCODESETSUPPRESS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPBARCODESETSUPPRESS"><div class="titlepage"><div><div><h3 class="title">12.21.3. Set the barcode suppression <a href="#PHPBARCODESETSUPPRESS" class="id_link">#</a></h3></div></div></div><p>
 				Set the barcode's suppression value from
 				an expression string. The expression
 				must evaluate to a boolean value.
@@ -48,7 +51,7 @@ OpenCReport\Barcode::set_suppress(
 			</p><p>
 				Default value is <code class="literal">false</code>,
 				i.e. no suppression.
-			</p></div><div class="sect2" id="PHPBARCODESETTYPE"><div class="titlepage"><div><div><h3 class="title">8.21.4. Set the barcode type <a href="#PHPBARCODESETTYPE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPBARCODESETTYPE"><div class="titlepage"><div><div><h3 class="title">12.21.4. Set the barcode type <a href="#PHPBARCODESETTYPE" class="id_link">#</a></h3></div></div></div><p>
 				Set the barcode type.
 				</p><pre class="programlisting">public final
 OpenCReport\Barcode::set_type(
@@ -80,30 +83,30 @@ OpenCReport\Barcode::set_type(
 				<code class="literal">value</code> is invalid
 				for any of the above listed types,
 				the barcode is not rendered.
-			</p></div><div class="sect2" id="PHPBARCODESETWIDTH"><div class="titlepage"><div><div><h3 class="title">8.21.5. Set the barcode width <a href="#PHPBARCODESETWIDTH" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPBARCODESETWIDTH"><div class="titlepage"><div><div><h3 class="title">12.21.5. Set the barcode width <a href="#PHPBARCODESETWIDTH" class="id_link">#</a></h3></div></div></div><p>
 				Set the barcode image width.
 				</p><pre class="programlisting">public final
 OpenCReport\Barcode::set_width(
                      ?string $expr_string = null): void;</pre><p>
 			</p><p>
 				The width is set according to
-				<a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="2.2.1. Size unit attribute">Size unit attribute</a>,
+				<a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="8.2.1. Size unit attribute">Size unit attribute</a>,
 				either in points (1/72th inch) or
 				in (monospace) font width units
 				set by <code class="literal">&lt;Line&gt;</code>.
-			</p></div><div class="sect2" id="PHPBARCODESETHEIGHT"><div class="titlepage"><div><div><h3 class="title">8.21.6. Set the barcode height <a href="#PHPBARCODESETHEIGHT" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPBARCODESETHEIGHT"><div class="titlepage"><div><div><h3 class="title">12.21.6. Set the barcode height <a href="#PHPBARCODESETHEIGHT" class="id_link">#</a></h3></div></div></div><p>
 				Set the barcode image height.
 				</p><pre class="programlisting">public final
 OpenCReport\Barcode::set_height(
                      ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPBARCODESETCOLOR"><div class="titlepage"><div><div><h3 class="title">8.21.7. Set the barcode image line color <a href="#PHPBARCODESETCOLOR" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPBARCODESETCOLOR"><div class="titlepage"><div><div><h3 class="title">12.21.7. Set the barcode image line color <a href="#PHPBARCODESETCOLOR" class="id_link">#</a></h3></div></div></div><p>
 				Set the barcode image line color.
 				</p><pre class="programlisting">public final
 OpenCReport\Barcode::set_color(
                      ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPBARCODESETBGCOLOR"><div class="titlepage"><div><div><h3 class="title">8.21.8. Set the barcode image background color <a href="#PHPBARCODESETBGCOLOR" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPBARCODESETBGCOLOR"><div class="titlepage"><div><div><h3 class="title">12.21.8. Set the barcode image background color <a href="#PHPBARCODESETBGCOLOR" class="id_link">#</a></h3></div></div></div><p>
 				Set the barcode image background color.
 				</p><pre class="programlisting">public final
 OpenCReport\Barcode::set_bgcolor(
                      ?string $expr_string = null): void;</pre><p>
-			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phptextclass.html" title="8.20. The OpenCReport\Text class">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 8. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phprlibcompat.html" title="8.22. RLIB compatibility API">Next</a></td></tr><tr><td width="40%" align="left" valign="top">8.20. The OpenCReport\Text class </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.5 Manual">Home</a></td><td width="40%" align="right" valign="top"> 8.22. RLIB compatibility API</td></tr></table></div></body></html>
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phptextclass.html" title="12.20. The OpenCReport\Text class">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phprlibcompat.html" title="12.22. RLIB compatibility API">Next</a></td></tr><tr><td width="40%" align="left" valign="top">12.20. The OpenCReport\Text class </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="40%" align="right" valign="top"> 12.22. RLIB compatibility API</td></tr></table></div></body></html>

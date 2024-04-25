@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.21. Barcode element</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="imageendnode.html" title="2.20. Image end" /><link rel="next" href="colorspec.html" title="2.22. Color specification" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">2.21. Barcode element</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="imageendnode.html" title="2.20. Image end">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="xmldescriptor.html" title="Chapter 2. Report XML description">Up</a></td><th width="60%" align="center">Chapter 2. Report XML description</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.5 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="colorspec.html" title="2.22. Color specification">Next</a></td></tr></table><hr /></div><div class="sect1" id="BARCODENODE"><div class="titlepage"><div><div><h2 class="title" style="clear: both">2.21. Barcode element <a href="#BARCODENODE" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="barcodenode.html#BARCODEATTS">2.21.1. Barcode element attributes</a></span></dt></dl></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>8.21. Barcode element</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="imageendnode.html" title="8.20. Image end" /><link rel="next" href="colorspec.html" title="8.22. Color specification" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">8.21. Barcode element</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="imageendnode.html" title="8.20. Image end">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="xmldescriptor.html" title="Chapter 8. Report XML description">Up</a></td><th width="60%" align="center">Chapter 8. Report XML description</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="colorspec.html" title="8.22. Color specification">Next</a></td></tr></table><hr /></div><div class="sect1" id="BARCODENODE"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.21. Barcode element <a href="#BARCODENODE" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="barcodenode.html#BARCODEATTS">8.21.1. Barcode element attributes</a></span></dt></dl></div><p>
 			This line or output element renders a barcode in various formats.
 			</p><pre class="programlisting">&lt;Line&gt;
     &lt;Barcode value="expression..." ... /&gt;
@@ -7,7 +7,15 @@
 		</p><p>
 			The <code class="literal">Barcode</code> does not have child nodes,
 			only attributes.
-		</p><div class="sect2" id="BARCODEATTS"><div class="titlepage"><div><div><h3 class="title">2.21.1. Barcode element attributes <a href="#BARCODEATTS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="BCSUPPRESSATTR"><div class="titlepage"><div><div><h4 class="title">2.21.1.1. Suppress <a href="#BCSUPPRESSATTR" class="id_link">#</a></h4></div></div></div><p>
+		</p><div class="sect2" id="BARCODEATTS"><div class="titlepage"><div><div><h3 class="title">8.21.1. Barcode element attributes <a href="#BARCODEATTS" class="id_link">#</a></h3></div></div></div><p>
+				Note that <a class="xref" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Expressions</a> in attribute
+				settings below depend on the parent node context.
+				Some may only use constant expressions or query column
+				references from <a class="xref" href="queries.html#INDEPENDENTQUERIES" title="2.2.4.2. Independent queries">Independent queries</a>.
+				Child nodes of <code class="literal">&lt;Output&gt;</code> nodes in
+				<code class="literal">&lt;Report&gt;</code> context may also
+				use report query column references.
+			</p><div class="sect3" id="BCSUPPRESSATTR"><div class="titlepage"><div><div><h4 class="title">8.21.1.1. Suppress <a href="#BCSUPPRESSATTR" class="id_link">#</a></h4></div></div></div><p>
 					<code class="literal">&lt;Barcode&gt;</code> elements
 					in <code class="literal">&lt;Output&gt;</code> may be
 					suppressed.
@@ -23,7 +31,7 @@
 					variable (since it can't - or shouldn't - change
 					during the report execution) is considered
 					constant. See <a class="xref" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Expressions</a>.
-				</p></div><div class="sect3" id="BCVALUEATTR"><div class="titlepage"><div><div><h4 class="title">2.21.1.2. Value <a href="#BCVALUEATTR" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="BCVALUEATTR"><div class="titlepage"><div><div><h4 class="title">8.21.1.2. Value <a href="#BCVALUEATTR" class="id_link">#</a></h4></div></div></div><p>
 					The string value to be encoded as barcode.
 					</p><pre class="programlisting">&lt;Line&gt;
     &lt;Barcode value="'1234567890128'" /&gt;
@@ -32,7 +40,7 @@
 					The value is parsed as an expression
 					from the <code class="literal">value</code> attribute.
 					See <a class="xref" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Expressions</a>.
-				</p></div><div class="sect3" id="BARCODEDELAYED"><div class="titlepage"><div><div><h4 class="title">2.21.1.3. Delayed (precalculated) value <a href="#BARCODEDELAYED" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="BARCODEDELAYED"><div class="titlepage"><div><div><h4 class="title">8.21.1.3. Delayed (precalculated) value <a href="#BARCODEDELAYED" class="id_link">#</a></h4></div></div></div><p>
 					This setting indicates whether the value is
 					"precalculated", i.e. the value for the last
 					row in the data set is used, or it would be
@@ -45,7 +53,7 @@
 				</p><p>
 					This setting is only applicable for
 					line elements in the
-					<a class="xref" href="outputnode.html" title="2.15. Output">Output node</a> node in
+					<a class="xref" href="outputnode.html" title="8.15. Output">Output node</a> node in
 					<code class="literal">&lt;ReportHeader&gt;</code>,
 					<code class="literal">&lt;ReportFooter&gt;</code>,
 					<code class="literal">&lt;Fieldheaders&gt;</code>
@@ -53,7 +61,7 @@
 					since they are the ones under the
 					<code class="literal">&lt;Report&gt;</code> scope
 					with a query.
-				</p></div><div class="sect3" id="BARCODETYPEATTR"><div class="titlepage"><div><div><h4 class="title">2.21.1.4. Barcode type <a href="#BARCODETYPEATTR" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="BARCODETYPEATTR"><div class="titlepage"><div><div><h4 class="title">8.21.1.4. Barcode type <a href="#BARCODETYPEATTR" class="id_link">#</a></h4></div></div></div><p>
 					The format string is used to format the
 					<code class="literal">value</code> to be displayed
 					in the generated output. For example, to
@@ -86,7 +94,7 @@
 					<code class="literal">value</code> is invalid
 					for any of the above listed types,
 					the barcode is not rendered.
-				</p></div><div class="sect3" id="BARCODEWIDTH"><div class="titlepage"><div><div><h4 class="title">2.21.1.5. Width <a href="#BARCODEWIDTH" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="BARCODEWIDTH"><div class="titlepage"><div><div><h4 class="title">8.21.1.5. Width <a href="#BARCODEWIDTH" class="id_link">#</a></h4></div></div></div><p>
 					The field width.
 					</p><pre class="programlisting">&lt;Barcode value="'...'" width="6" /&gt;</pre><p>
 				</p><p>
@@ -95,7 +103,7 @@
 					of the barcode's inherent encoding width.
 				</p><p>
 					If set, the barcode is scaled to the specified width.
-					Its unit depends on the <a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="2.2.1. Size unit attribute">Size unit attribute</a>.
+					Its unit depends on the <a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="8.2.1. Size unit attribute">Size unit attribute</a>.
 				</p><p>
 					When the field is the last one in the
 					<code class="literal">&lt;Line&gt;</code> and its width
@@ -103,11 +111,11 @@
 					of the line, the barcode is either rendered as is,
 					or it's scaled to the remaining width.
 				</p><p>
-					When the <a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="2.2.1. Size unit attribute">Size unit attribute</a> is set to
+					When the <a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="8.2.1. Size unit attribute">Size unit attribute</a> is set to
 					<code class="literal">rlib</code>, the field width is measured
 					in number of characters that is set for the
 					<code class="literal">&lt;Line&gt;</code>.
-				</p></div><div class="sect3" id="BARCODEHEIGHT"><div class="titlepage"><div><div><h4 class="title">2.21.1.6. Height <a href="#BARCODEHEIGHT" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="BARCODEHEIGHT"><div class="titlepage"><div><div><h4 class="title">8.21.1.6. Height <a href="#BARCODEHEIGHT" class="id_link">#</a></h4></div></div></div><p>
 					The field height.
 					</p><pre class="programlisting">&lt;Barcode value="'...'" height="6" /&gt;</pre><p>
 				</p><p>
@@ -119,7 +127,8 @@
 					the barcode height controls the line height, with
 					empty space added before and after the text elements
 					vertically. is scaled to the specified width.
-					Its unit depends on the <a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="2.2.1. Size unit attribute">Size unit attribute</a>.
+					It's measured in <code class="literal">points</code>, i.e. 1/72th
+					of an inch.
 				</p><p>
 					When the field is the last one in the
 					<code class="literal">&lt;Line&gt;</code> and its width
@@ -127,27 +136,23 @@
 					of the line, the barcode is either rendered as is
 					(if the remaining width is larger), or it's
 					scaled down to the remaining width.
-				</p><p>
-					When the <a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="2.2.1. Size unit attribute">Size unit attribute</a> is set to
-					<code class="literal">rlib</code>, the field width is measured
-					in number of characters that is set for the
-					<code class="literal">&lt;Line&gt;</code>.
-				</p></div><div class="sect3" id="BARCODECOLOR"><div class="titlepage"><div><div><h4 class="title">2.21.1.7. Barcode color <a href="#BARCODECOLOR" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="BARCODECOLOR"><div class="titlepage"><div><div><h4 class="title">8.21.1.7. Barcode color <a href="#BARCODECOLOR" class="id_link">#</a></h4></div></div></div><p>
 					This color is used to render the barcode's bars.
 					It's accepted with both American and  British spelling.
 					</p><pre class="programlisting">&lt;Barcode color="'blue'"&gt;
 &lt;Barcode colour="'blue'"&gt;</pre><p>
 				</p><p>
-					Default is what's set for <a class="xref" href="linenode.html" title="2.16. Line">Line node</a>,
+					Default is what's set for <a class="xref" href="linenode.html" title="8.16. Line">Line node</a>,
 					otherwise <code class="literal">black</code>.
-					See <a class="xref" href="colorspec.html" title="2.22. Color specification">Color specification</a>.
-				</p></div><div class="sect3" id="BARCODEBGCOLOR"><div class="titlepage"><div><div><h4 class="title">2.21.1.8. Barcode background color <a href="#BARCODEBGCOLOR" class="id_link">#</a></h4></div></div></div><p>
+					See <a class="xref" href="colorspec.html" title="8.22. Color specification">Color specification</a>.
+				</p></div><div class="sect3" id="BARCODEBGCOLOR"><div class="titlepage"><div><div><h4 class="title">8.21.1.8. Barcode background color <a href="#BARCODEBGCOLOR" class="id_link">#</a></h4></div></div></div><p>
 					This color is used to render the background
 					(the "gaps") in the barcode. It's accepted
 					with both American and  British spelling.
 					</p><pre class="programlisting">&lt;Barcode bgcolor="'blue'"&gt;
 &lt;Barcode bgcolour="'blue'"&gt;</pre><p>
 				</p><p>
-					Default is <code class="literal">white</code>.
-					See <a class="xref" href="colorspec.html" title="2.22. Color specification">Color specification</a>.
-				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="imageendnode.html" title="2.20. Image end">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="xmldescriptor.html" title="Chapter 2. Report XML description">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="colorspec.html" title="2.22. Color specification">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.20. Image end </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.5 Manual">Home</a></td><td width="40%" align="right" valign="top"> 2.22. Color specification</td></tr></table></div></body></html>
+					Default is what's set for <a class="xref" href="linenode.html" title="8.16. Line">Line node</a>,
+					otherwise <code class="literal">white</code>.
+					See <a class="xref" href="colorspec.html" title="8.22. Color specification">Color specification</a>.
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="imageendnode.html" title="8.20. Image end">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="xmldescriptor.html" title="Chapter 8. Report XML description">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="colorspec.html" title="8.22. Color specification">Next</a></td></tr><tr><td width="40%" align="left" valign="top">8.20. Image end </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="40%" align="right" valign="top"> 8.22. Color specification</td></tr></table></div></body></html>

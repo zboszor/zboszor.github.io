@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>3.5. Operators and functions</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="identifiers.html" title="3.4. Identifiers" /><link rel="next" href="listoffuncs.html" title="3.6. Alphabetical list of functions" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">3.5. Operators and functions</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="identifiers.html" title="3.4. Identifiers">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Up</a></td><th width="60%" align="center">Chapter 3. Expressions in OpenCReports</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.5 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="listoffuncs.html" title="3.6. Alphabetical list of functions">Next</a></td></tr></table><hr /></div><div class="sect1" id="OPSANDFUNC"><div class="titlepage"><div><div><h2 class="title" style="clear: both">3.5. Operators and functions <a href="#OPSANDFUNC" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="opsandfunc.html#TERNARYOP">3.5.1. Ternary operator</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#LOGICALOPS">3.5.2. Logical operators with two operands</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#BITWISEOPS">3.5.3. Bitwise operators with two operands</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#EQNEOPS">3.5.4. Equality and inequality comparison operators</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#CMPOPS">3.5.5. Other comparison operators</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#SHIFTOPS">3.5.6. Bitwise shifts</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#ADDSUBOPS">3.5.7. Addition and subtraction</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#MULDIVMODOPS">3.5.8. Multiplication, division and modulo (remainder)</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#POWOP">3.5.9. Power-of operator</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#FACTOP">3.5.10. Factorial operator</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#UNARYPREFIXOPS">3.5.11. Unary plus and minus, logical and bitwise NOT, prefix increment and decrement</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#POSTFIXOPS">3.5.12. Postfix increment and decrement</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#FUNCCALLS">3.5.13. Function calls and implicit multiplication</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#PARENS">3.5.14. Parentheses</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#TOKMATCHANDPREC">3.5.15. Token matching, precendence and syntax errors</a></span></dt></dl></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>3.5. Operators and functions</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="identifiers.html" title="3.4. Identifiers" /><link rel="next" href="functions.html" title="Chapter 4. Functions" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">3.5. Operators and functions</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="identifiers.html" title="3.4. Identifiers">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Up</a></td><th width="60%" align="center">Chapter 3. Expressions in OpenCReports</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="functions.html" title="Chapter 4. Functions">Next</a></td></tr></table><hr /></div><div class="sect1" id="OPSANDFUNC"><div class="titlepage"><div><div><h2 class="title" style="clear: both">3.5. Operators and functions <a href="#OPSANDFUNC" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="opsandfunc.html#TERNARYOP">3.5.1. Ternary operator</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#LOGICOPS">3.5.2. Boolean logic operators with two operands</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#BITWISEOPS">3.5.3. Bitwise operators with two operands</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#EQNEOPS">3.5.4. Equality and inequality comparison operators</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#CMPOPS">3.5.5. Other comparison operators</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#SHIFTOPS">3.5.6. Bitwise shifts</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#ADDSUBOPS">3.5.7. Addition and subtraction</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#MULDIVMODOPS">3.5.8. Multiplication, division and modulo (remainder)</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#POWOP">3.5.9. Power-of operator</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#FACTOP">3.5.10. Factorial operator</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#UNARYPREFIXOPS">3.5.11. Unary plus and minus, logical and bitwise NOT, prefix increment and decrement</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#POSTFIXOPS">3.5.12. Postfix increment and decrement</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#FUNCCALLS">3.5.13. Function calls and implicit multiplication</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#PARENS">3.5.14. Parentheses</a></span></dt><dt><span class="sect2"><a href="opsandfunc.html#TOKMATCHANDPREC">3.5.15. A note on token matching, precendence and syntax errors</a></span></dt></dl></div><p>
 			OpenCReports expressions can use several operators and functions.
 			The operator precedence is mostly as expected from the C
 			programming language. One notable exception is implicit
 			multiplication. The precedence classes are as below,
 			in increasing order of precedence.
+		</p><p>
+			Note that all of the operators are implemented internally
+			as a function call to the equivalent function. Since every
+			function may be overridden by user functions, the operators
+			may work differently than the documentation.
 		</p><div class="sect2" id="TERNARYOP"><div class="titlepage"><div><div><h3 class="title">3.5.1. Ternary operator <a href="#TERNARYOP" class="id_link">#</a></h3></div></div></div><p>
-				The ternary operator is as in the C language:
-				</p><pre class="programlisting">expression1 ? expression2 : expression3
-				</pre><p>
+				The ternary operator works as in the C, PHP and other
+				languages:
+				</p><pre class="programlisting">expression1 ? expression2 : expression3</pre><p>
 				It's evaluated as follows: if the value of numeric
 				<code class="literal">expression1</code> is <code class="literal">true</code>
 				(i.e. non-zero), then the result is the <code class="literal">expression2</code>,
@@ -17,13 +22,20 @@
 				<code class="literal">expression3</code> may differ, i.e. the
 				result type will be the type of the underlying expression
 				but it can result in runtime errors.
-			</p></div><div class="sect2" id="LOGICALOPS"><div class="titlepage"><div><div><h3 class="title">3.5.2. Logical operators with two operands <a href="#LOGICALOPS" class="id_link">#</a></h3></div></div></div><p>
-				Logical OR can be written as <code class="literal">||</code> or
+			</p><p>
+				Internally, it's implemented using the
+				<a class="xref" href="miscfuncs.html#IIFFUNC" title="4.13.5. iif()">iif() function</a>.
+			</p></div><div class="sect2" id="LOGICOPS"><div class="titlepage"><div><div><h3 class="title">3.5.2. Boolean logic operators with two operands <a href="#LOGICOPS" class="id_link">#</a></h3></div></div></div><p>
+				Logic OR can be written as <code class="literal">||</code> or
 				<code class="literal">or</code>. Example: <code class="literal">a || b</code>
 			</p><p>
-				Logical AND can be written as <code class="literal">&amp;&amp;</code> or
-				<code class="literal">and</code>. Logical AND has precedence over OR.
+				Logic AND can be written as <code class="literal">&amp;&amp;</code> or
+				<code class="literal">and</code>. Logic AND has precedence over OR.
 				Example: <code class="literal">a &amp;&amp; b</code>
+			</p><p>
+				Internally, they are implemented using the
+				<a class="xref" href="boolfuncs.html#LANDFUNC" title="4.4.1. land()">Boolean AND</a> and
+				<a class="xref" href="boolfuncs.html#LORFUNC" title="4.4.3. lor()">Boolean OR</a> functions.
 			</p></div><div class="sect2" id="BITWISEOPS"><div class="titlepage"><div><div><h3 class="title">3.5.3. Bitwise operators with two operands <a href="#BITWISEOPS" class="id_link">#</a></h3></div></div></div><p>
 			The bitwise operators in this precedence class and in their
 			increasing order of precedence are:
@@ -41,8 +53,8 @@
 					These are not vectors in the mathematical sense,
 					but a comma separated list of scalars inside
 					brackets (<code class="literal">[ ... ]</code>), with
-					<code class="literal">op</code> being any of the above
-					operators:
+					<code class="literal">op</code> being any of the
+					equality or inequality comparison operators:
 					</p><pre class="programlisting">[ expa1, expa2, ... ] op [ expb1, expb2, ... ]</pre><p>
 				</p><p>
 					Such comparisons are expanded into a logic operator
@@ -53,7 +65,7 @@
 					from the vector form to the expanded logic operator form,
 					the following two lines have different meaning:
 					</p><pre class="programlisting">not ([ expa1, expa2, ... ] = [ expb1, expb2, ... ])
-					[ expa1, expa2, ... ] != [ expb1, expb2, ... ]</pre><p>
+[ expa1, expa2, ... ] != [ expb1, expb2, ... ]</pre><p>
 				</p></div></div><div class="sect2" id="CMPOPS"><div class="titlepage"><div><div><h3 class="title">3.5.5. Other comparison operators <a href="#CMPOPS" class="id_link">#</a></h3></div></div></div><p>
 				Less-than (<code class="literal">&lt;</code>),
 				less-or-equal (<code class="literal">&lt;=</code>),
@@ -115,14 +127,30 @@
 							expression.
 							</p><pre class="programlisting">x(a+b)</pre><p>
 						</p><p>
-							This is only treated as implicit
-							multiplication if the identifier name is not known as
-							a function name at the time of parsing and there is
-							a single expression inside the parentheses.
-							No expressions, a single expression with a known function
-							name as the identifier, or a series of comma delimited
-							series of expressions are treated as a function call and
-							the function call validity is checked against the number
+							This is only treated as implicit multiplication
+							if the following conditions are met:
+							</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
+										the <code class="literal">x</code> identifier
+										is not a function name at the time
+										of parsing
+									</p></li><li class="listitem"><p>
+										there is a single expression
+										inside the parentheses
+									</p></li></ul></div><p>
+						</p><p>
+							If any of the conditions below are true,
+							the expression is treated as a function call:
+							</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
+										<code class="literal">x</code> is a known
+										function name
+									</p></li><li class="listitem"><p>
+										there is no expression inside the parentheses
+									</p></li><li class="listitem"><p>
+										a series of comma delimited
+										expressions is inside the
+										parentheses
+									</p></li></ul></div><p>
+							The function call validity is checked against the number
 							of operands, with a potential parser error. If there's
 							an ambiguity between function names and identifiers
 							provided by data sources, it can be avoided by using
@@ -161,12 +189,11 @@
 						</p></li></ul></div><p>
 			</p></div><div class="sect2" id="PARENS"><div class="titlepage"><div><div><h3 class="title">3.5.14. Parentheses <a href="#PARENS" class="id_link">#</a></h3></div></div></div><p>
 				Parenthesized expressions are always computed first.
-			</p></div><div class="sect2" id="TOKMATCHANDPREC"><div class="titlepage"><div><div><h3 class="title">3.5.15. Token matching, precendence and syntax errors <a href="#TOKMATCHANDPREC" class="id_link">#</a></h3></div></div></div><p>
-				Expression parsing works on two levels: token matching (the
-				job of Flex) and applying grammar (the job of Bison).
-				Token matching breaks up the expression string into tokens
-				in a greedy way: without whitepace delimiters, the longest
-				possible token is chosen.
+			</p></div><div class="sect2" id="TOKMATCHANDPREC"><div class="titlepage"><div><div><h3 class="title">3.5.15. A note on token matching, precendence and syntax errors <a href="#TOKMATCHANDPREC" class="id_link">#</a></h3></div></div></div><p>
+				Expression parsing works on two levels: token matching and
+				applying grammar. Token matching breaks up the expression
+				string into tokens in a greedy way: without whitepace
+				delimiters, the longest possible token is chosen.
 			</p><p>
 				This may lead to slight confusion when coupled with
 				implicit multiplication. For example, the expression
@@ -183,22 +210,35 @@
 				whitespace and parentheses gratituously.
 			</p><p>
 				Expression parsing handles precedence and whitespaces.
-				For example, these below do not mean the same thing:
+				For example, these below do not mean exactly the same:
 				</p><pre class="programlisting">a++ + ++b
-a+++++b
-				</pre><p>
+a+++++b</pre><p>
 				The former is obvious, but the latter may be a little
-				surprising: <code class="literal">(a++)++ + b</code>, but not when
-				considering precedence and the Flex lexer behaviour to
-				match the the longest known token first. In this case,
-				to make the expression unambiguous, whitespace or parenthesis
-				should be used. Another ambiguous example:
-				</p><pre class="programlisting">a++b
-				</pre><p>
+				surprising: <code class="literal">(a++)++ + b</code>.
+				This is how the lexer or token matching works, i.e.
+				it matches the longest applicable token first.
+			</p><p>
+				If <code class="literal">a</code> and <code class="literal">b</code> are
+				numbers, then the result of both expressions is
+				<code class="literal">a + b + 2</code>, but the way it's arrived at
+				is different.
+			</p><p>
+				However, the <code class="literal">++</code> (increment) and
+				<code class="literal">--</code> (decrement) operators may be
+				interpreted differently for other types. For example,
+				if both <code class="literal">a</code> and <code class="literal">b</code> are
+				of the <code class="literal">datetime</code> type, then the result
+				also depends on whether one of them is an interval datetime,
+				and the other (regular) datetime value has valid time or not.
+				To make the expression unambiguous, whitespace and/or
+				parenthesis should be used.
+			</p><p>
+				Another ambiguous example: </p><pre class="programlisting">a++b</pre><p>
 				The above may be interpreted as <code class="literal">a + +b</code>
-				but since no whitespace is used, Flex is free to interpret
-				it as <code class="literal">a++ b</code>, because <code class="literal">++</code>
-				is longer than <code class="literal">+</code>, so the former is matched
-				first as an operator token. This is a syntax error and
-				expression parsing throws an error for it.
-			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="identifiers.html" title="3.4. Identifiers">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="listoffuncs.html" title="3.6. Alphabetical list of functions">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.4. Identifiers </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.5 Manual">Home</a></td><td width="40%" align="right" valign="top"> 3.6. Alphabetical list of functions</td></tr></table></div></body></html>
+				but since no whitespace is used, the tokenizer is free to
+				interpret it as <code class="literal">a++ b</code>, because
+				<code class="literal">++</code> is longer than <code class="literal">+</code>,
+				so the former is matched first as an operator token.
+				This is a syntax error and expression parsing throws
+				an error for it.
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="identifiers.html" title="3.4. Identifiers">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="functions.html" title="Chapter 4. Functions">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.4. Identifiers </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="40%" align="right" valign="top"> Chapter 4. Functions</td></tr></table></div></body></html>

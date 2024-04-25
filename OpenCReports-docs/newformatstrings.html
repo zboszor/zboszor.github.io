@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>6.4. New style format strings</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="legacyformatstrings.html" title="6.3. Legacy format strings" /><link rel="next" href="newformatstringsgen2.html" title="6.5. Second generation new style format strings" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">6.4. New style format strings</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="legacyformatstrings.html" title="6.3. Legacy format strings">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="formatting.html" title="Chapter 6. Formatting">Up</a></td><th width="60%" align="center">Chapter 6. Formatting</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.5 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="newformatstringsgen2.html" title="6.5. Second generation new style format strings">Next</a></td></tr></table><hr /></div><div class="sect1" id="NEWFORMATSTRINGS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">6.4. New style format strings <a href="#NEWFORMATSTRINGS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="newformatstrings.html#NEWFORMATSTRINGSSTRING">6.4.1. New style format string for strings</a></span></dt><dt><span class="sect2"><a href="newformatstrings.html#NEWFORMATSTRINGSNUM">6.4.2. New style format string for numeric data</a></span></dt><dt><span class="sect2"><a href="newformatstrings.html#NEWFORMATSTRINGSMONEY">6.4.3. New style format string for monetary data</a></span></dt><dt><span class="sect2"><a href="newformatstrings.html#NEWFORMATSTRINGSDATETIME">6.4.4. New style format string for datetime values</a></span></dt></dl></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>7.4. New style format strings</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="legacyformatstrings.html" title="7.3. Legacy format strings" /><link rel="next" href="newformatstringsgen2.html" title="7.5. Second generation new style format strings" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">7.4. New style format strings</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="legacyformatstrings.html" title="7.3. Legacy format strings">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="formatting.html" title="Chapter 7. Formatting">Up</a></td><th width="60%" align="center">Chapter 7. Formatting</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="newformatstringsgen2.html" title="7.5. Second generation new style format strings">Next</a></td></tr></table><hr /></div><div class="sect1" id="NEWFORMATSTRINGS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">7.4. New style format strings <a href="#NEWFORMATSTRINGS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="newformatstrings.html#NEWFORMATSTRINGSSTRING">7.4.1. New style format string for strings</a></span></dt><dt><span class="sect2"><a href="newformatstrings.html#NEWFORMATSTRINGSNUM">7.4.2. New style format string for numeric data</a></span></dt><dt><span class="sect2"><a href="newformatstrings.html#NEWFORMATSTRINGSMONEY">7.4.3. New style format string for monetary data</a></span></dt><dt><span class="sect2"><a href="newformatstrings.html#NEWFORMATSTRINGSDATETIME">7.4.4. New style format string for datetime values</a></span></dt><dt><span class="sect2"><a href="newformatstrings.html#NEWFORMATSTRINGEXAMPLES">7.4.5. New style format string examples</a></span></dt></dl></div><p>
 			RLIB supported "new style" format strings that allowed
 			formatting numeric data as monetary values and allowed
 			to disambiguate between format strings used for different
 			data types. This was needed because some format flags
 			are used in both <code class="literal">printf()</code>,
 			<code class="literal">strfmon()</code> and <code class="literal">strftime()</code>.
-		</p><div class="sect2" id="NEWFORMATSTRINGSSTRING"><div class="titlepage"><div><div><h3 class="title">6.4.1. New style format string for strings <a href="#NEWFORMATSTRINGSSTRING" class="id_link">#</a></h3></div></div></div><p>
+		</p><div class="sect2" id="NEWFORMATSTRINGSSTRING"><div class="titlepage"><div><div><h3 class="title">7.4.1. New style format string for strings <a href="#NEWFORMATSTRINGSSTRING" class="id_link">#</a></h3></div></div></div><p>
 				This is an extension over RLIB, which didn't have
 				such a notion. In OpenCReports, the new style flag
-				is prefixed with <code class="literal">!&amp;</code>
-				</p><pre class="programlisting">&lt;field ... format="'!&amp;%s'" ... /&gt;</pre><p>
-			</p></div><div class="sect2" id="NEWFORMATSTRINGSNUM"><div class="titlepage"><div><div><h3 class="title">6.4.2. New style format string for numeric data <a href="#NEWFORMATSTRINGSNUM" class="id_link">#</a></h3></div></div></div><p>
-				The new style flag is prefixed with <code class="literal">!#</code>
-				</p><pre class="programlisting">&lt;field ... format="'!#%5.3d'" ... /&gt;</pre><p>
-			</p></div><div class="sect2" id="NEWFORMATSTRINGSMONEY"><div class="titlepage"><div><div><h3 class="title">6.4.3. New style format string for monetary data <a href="#NEWFORMATSTRINGSMONEY" class="id_link">#</a></h3></div></div></div><p>
-				The new style flag is prefixed with <code class="literal">!$</code>
-				</p><pre class="programlisting">&lt;field ... format="'!$%=*#150n'" ... /&gt;</pre><p>
-			</p><p>
-				Formatting monetary values uses <code class="literal">strfmon()</code>.
-				See
-				<a class="ulink" href="https://man7.org/linux/man-pages/man3/strfmon.3.html" target="_top">strfmon(3)</a>
+				is prefixed with <code class="literal">!&amp;</code>.
+			</p></div><div class="sect2" id="NEWFORMATSTRINGSNUM"><div class="titlepage"><div><div><h3 class="title">7.4.2. New style format string for numeric data <a href="#NEWFORMATSTRINGSNUM" class="id_link">#</a></h3></div></div></div><p>
+				The new style flag is the legacy flag prefixed with <code class="literal">!#</code>
+			</p></div><div class="sect2" id="NEWFORMATSTRINGSMONEY"><div class="titlepage"><div><div><h3 class="title">7.4.3. New style format string for monetary data <a href="#NEWFORMATSTRINGSMONEY" class="id_link">#</a></h3></div></div></div><p>
+				There was way to format numeric data using the legacy
+				formatting flags. The new style flag is prefixed with
+				<code class="literal">!$</code> and uses the flags of
+				<code class="literal">strfmon()</code>. See the
+				<a class="ulink" href="https://man7.org/linux/man-pages/man3/strfmon.3.html" target="_top">strfmon()</a>
+				function for details.
 			</p><p>
 				To print the correct currency name, the locale must be
 				set for the report. Only one locale can be set, so
 				a single currency name will be used for every value
 				using monetary formatting.
-			</p></div><div class="sect2" id="NEWFORMATSTRINGSDATETIME"><div class="titlepage"><div><div><h3 class="title">6.4.4. New style format string for datetime values <a href="#NEWFORMATSTRINGSDATETIME" class="id_link">#</a></h3></div></div></div><p>
-				The new style flag is prefixed with <code class="literal">!@</code>
-				Formatting a datetime value uses <code class="literal">strftime()</code>.
-				</p><pre class="programlisting">&lt;field ... format="'!@%c'" ... /&gt;
-
-&lt;field ... format="'!@%Y-%m-%d'" ... /&gt;</pre><p>
-			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="legacyformatstrings.html" title="6.3. Legacy format strings">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="formatting.html" title="Chapter 6. Formatting">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="newformatstringsgen2.html" title="6.5. Second generation new style format strings">Next</a></td></tr><tr><td width="40%" align="left" valign="top">6.3. Legacy format strings </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.5 Manual">Home</a></td><td width="40%" align="right" valign="top"> 6.5. Second generation new style format strings</td></tr></table></div></body></html>
+			</p></div><div class="sect2" id="NEWFORMATSTRINGSDATETIME"><div class="titlepage"><div><div><h3 class="title">7.4.4. New style format string for datetime values <a href="#NEWFORMATSTRINGSDATETIME" class="id_link">#</a></h3></div></div></div><p>
+				The new style flag is the legacy flags prefixed with
+				<code class="literal">!@</code>. Formatting a datetime value uses
+				<a class="ulink" href="https://man7.org/linux/man-pages/man3/strftime.3.html" target="_top">strftime()</a>.
+			</p></div><div class="sect2" id="NEWFORMATSTRINGEXAMPLES"><div class="titlepage"><div><div><h3 class="title">7.4.5. New style format string examples <a href="#NEWFORMATSTRINGEXAMPLES" class="id_link">#</a></h3></div></div></div><p>
+				Examples for using these in the
+				<a class="xref" href="textelemnode.html#FORMATATTR" title="8.17.1.3. Format string">Text element format attribute</a> can be found in the
+				<a class="xref" href="textelemnode.html#FORMATATTREXAMPLES" title="8.17.1.3.1. Format attribute examples">Format attribute examples</a>.
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="legacyformatstrings.html" title="7.3. Legacy format strings">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="formatting.html" title="Chapter 7. Formatting">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="newformatstringsgen2.html" title="7.5. Second generation new style format strings">Next</a></td></tr><tr><td width="40%" align="left" valign="top">7.3. Legacy format strings </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="40%" align="right" valign="top"> 7.5. Second generation new style format strings</td></tr></table></div></body></html>
