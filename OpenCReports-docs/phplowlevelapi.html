@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>8.4. Low level PHP API</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phphighlevelapi.html" title="8.3. High level PHP API" /><link rel="next" href="phpdsclass.html" title="8.5. The OpenCReport\Datasource class" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">8.4. Low level PHP API</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phphighlevelapi.html" title="8.3. High level PHP API">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 8. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 8. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.5 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phpdsclass.html" title="8.5. The OpenCReport\Datasource class">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPLOWLEVELAPI"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.4. Low level PHP API <a href="#PHPLOWLEVELAPI" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phplowlevelapi.html#PHPNUMERICTUNING">8.4.1. Numeric behavior related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPLOCALEMETHODS">8.4.2. Locale related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPDSMETHODS">8.4.3. Data source and query related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPEXPRFUNC">8.4.4. Expression related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPLAYOUTMETHODS">8.4.5. Layout part related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPCALLBACKMETHODS">8.4.6. Callback related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPENVMETHODS">8.4.7. Environment related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPSETMVARMETHOD">8.4.8. Add "m" domain variable</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPRESULTMETHODS">8.4.9. Result related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPPATHMETHODS">8.4.10. Path related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPCOLORMETHODS">8.4.11. Color related methods</a></span></dt></dl></div><p>
-			The <a class="xref" href="phphighlevelapi.html" title="8.3. High level PHP API">High level PHP API</a> is also part of the
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>12.4. Low level PHP API</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phphighlevelapi.html" title="12.3. High level PHP API" /><link rel="next" href="phpdsclass.html" title="12.5. The OpenCReport\Datasource class" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">12.4. Low level PHP API</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phphighlevelapi.html" title="12.3. High level PHP API">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 12. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phpdsclass.html" title="12.5. The OpenCReport\Datasource class">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPLOWLEVELAPI"><div class="titlepage"><div><div><h2 class="title" style="clear: both">12.4. Low level PHP API <a href="#PHPLOWLEVELAPI" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phplowlevelapi.html#PHPNUMERICTUNING">12.4.1. Numeric behavior related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPLOCALEMETHODS">12.4.2. Locale related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPDSMETHODS">12.4.3. Data source and query related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPEXPRFUNC">12.4.4. Expression related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPLAYOUTMETHODS">12.4.5. Layout part related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPCALLBACKMETHODS">12.4.6. Callback related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPENVMETHODS">12.4.7. Environment related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPSETMVARMETHOD">12.4.8. Add "m" domain variable</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPRESULTMETHODS">12.4.9. Result related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPPATHMETHODS">12.4.10. Path related methods</a></span></dt><dt><span class="sect2"><a href="phplowlevelapi.html#PHPCOLORMETHODS">12.4.11. Color related methods</a></span></dt></dl></div><p>
+			The <a class="xref" href="phphighlevelapi.html" title="12.3. High level PHP API">High level PHP API</a> is also part of the
 			low level API. The class methods described below allow
 			creating a report using program code, or simply
 			fine tuning the report behavior by mostly using the
-			<a class="xref" href="phphighlevelapi.html" title="8.3. High level PHP API">High level PHP API</a>.
+			<a class="xref" href="phphighlevelapi.html" title="12.3. High level PHP API">High level PHP API</a>.
 		</p><p>
 			Note that whenever the method argument is
 			<code class="literal">string $expr_string</code>,
@@ -22,12 +22,15 @@
 			their parent objects' C representation.
 			Such a "use after free" is a sure way to
 			crash the PHP process.
-		</p><div class="sect2" id="PHPNUMERICTUNING"><div class="titlepage"><div><div><h3 class="title">8.4.1. Numeric behavior related methods <a href="#PHPNUMERICTUNING" class="id_link">#</a></h3></div></div></div><div class="sect3" id="PHPSETNUMPREC"><div class="titlepage"><div><div><h4 class="title">8.4.1.1. <code class="literal">Set numeric precision</code> <a href="#PHPSETNUMPREC" class="id_link">#</a></h4></div></div></div><p>
+		</p><div class="sect2" id="PHPNUMERICTUNING"><div class="titlepage"><div><div><h3 class="title">12.4.1. Numeric behavior related methods <a href="#PHPNUMERICTUNING" class="id_link">#</a></h3></div></div></div><div class="sect3" id="PHPSETNUMPREC"><div class="titlepage"><div><div><h4 class="title">12.4.1.1. <code class="literal">Set numeric precision</code> <a href="#PHPSETNUMPREC" class="id_link">#</a></h4></div></div></div><p>
 					The default is 256 bits of floating point precision.
 				</p><pre class="programlisting">public final
 OpenCReport::set_numeric_precision_bits(
                      string $expr_string): void;</pre><p>
-				</p></div><div class="sect3" id="PHPSETROUNDINGMODE"><div class="titlepage"><div><div><h4 class="title">8.4.1.2. Set rounding mode <a href="#PHPSETROUNDINGMODE" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="PHPGETNUMPREC"><div class="titlepage"><div><div><h4 class="title">12.4.1.2. <code class="literal">Get numeric precision</code> <a href="#PHPGETNUMPREC" class="id_link">#</a></h4></div></div></div><p>
+				</p><pre class="programlisting">public final
+OpenCReport::get_numeric_precision_bits(): long;</pre><p>
+				</p></div><div class="sect3" id="PHPSETROUNDINGMODE"><div class="titlepage"><div><div><h4 class="title">12.4.1.3. Set rounding mode <a href="#PHPSETROUNDINGMODE" class="id_link">#</a></h4></div></div></div><p>
 					The rounding modes may be
 					<code class="literal">nearest</code>,
 					<code class="literal">to_minus_inf</code>,
@@ -39,7 +42,7 @@ OpenCReport::set_numeric_precision_bits(
 					</p><pre class="programlisting">final public
 OpenCReport::set_rounding_mode(
                      string $expr_string): void;</pre><p>
-				</p></div></div><div class="sect2" id="PHPLOCALEMETHODS"><div class="titlepage"><div><div><h3 class="title">8.4.2. Locale related methods <a href="#PHPLOCALEMETHODS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="PHPSETUPXLATE"><div class="titlepage"><div><div><h4 class="title">8.4.2.1. Set up translation <a href="#PHPSETUPXLATE" class="id_link">#</a></h4></div></div></div><p>
+				</p></div></div><div class="sect2" id="PHPLOCALEMETHODS"><div class="titlepage"><div><div><h3 class="title">12.4.2. Locale related methods <a href="#PHPLOCALEMETHODS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="PHPSETUPXLATE"><div class="titlepage"><div><div><h4 class="title">12.4.2.1. Set up translation <a href="#PHPSETUPXLATE" class="id_link">#</a></h4></div></div></div><p>
 					Setting up the translation needs two parameters:
 					the so called <span class="emphasis"><em>translation domain</em></span>
 					and the toplevel directory for the translations.
@@ -48,7 +51,7 @@ OpenCReport::set_rounding_mode(
 OpenCReport::bindtextdomain(
                      string $domainname,
                      string $dirname): void;</pre><p>
-				</p></div><div class="sect3" id="PHPSETLOCALE"><div class="titlepage"><div><div><h4 class="title">8.4.2.2. Set report locale <a href="#PHPSETLOCALE" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="PHPSETLOCALE"><div class="titlepage"><div><div><h4 class="title">12.4.2.2. Set report locale <a href="#PHPSETLOCALE" class="id_link">#</a></h4></div></div></div><p>
 					Setting the locale for the report does not affect
 					the main program or other threads. Locale setting
 					includes the language, the country. The UTF-8 suffix
@@ -56,122 +59,92 @@ OpenCReport::bindtextdomain(
 					<code class="literal">de_DE.UTF-8</code>
 					</p><pre class="programlisting">public final
 OpenCReport::set_locale(string $locale): void;</pre><p>
-				</p></div></div><div class="sect2" id="PHPDSMETHODS"><div class="titlepage"><div><div><h3 class="title">8.4.3. Data source and query related methods <a href="#PHPDSMETHODS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="PHPADDARRAYDS"><div class="titlepage"><div><div><h4 class="title">8.4.3.1. Add an array datasource <a href="#PHPADDARRAYDS" class="id_link">#</a></h4></div></div></div><p>
+				</p></div></div><div class="sect2" id="PHPDSMETHODS"><div class="titlepage"><div><div><h3 class="title">12.4.3. Data source and query related methods <a href="#PHPDSMETHODS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="PHPADDDS"><div class="titlepage"><div><div><h4 class="title">12.4.3.1. Add a datasource <a href="#PHPADDDS" class="id_link">#</a></h4></div></div></div><p>
 					For the <code class="literal">OpenCReport\Datasource</code>
-					class methods, see <a class="xref" href="phpdsclass.html" title="8.5. The OpenCReport\Datasource class">The OpenCReport\Datasource class</a>
+					class methods, see <a class="xref" href="phpdsclass.html" title="12.5. The OpenCReport\Datasource class">The OpenCReport\Datasource class</a>
 					</p><pre class="programlisting">public final
-OpenCReport::datasource_add_array(string $source_name):
-                     ?OpenCReport\Datasource;</pre><p>
-				</p></div><div class="sect3" id="PHPADDCSVDS"><div class="titlepage"><div><div><h4 class="title">8.4.3.2. Add a CSV datasource <a href="#PHPADDCSVDS" class="id_link">#</a></h4></div></div></div><p>
-					For the <code class="literal">OpenCReport\Datasource</code>
-					class methods, see <a class="xref" href="phpdsclass.html" title="8.5. The OpenCReport\Datasource class">The OpenCReport\Datasource class</a>
-					</p><pre class="programlisting">public final
-OpenCReport::datasource_add_csv(string $source_name):
-                     ?OpenCReport\Datasource;</pre><p>
-				</p></div><div class="sect3" id="PHPADDJSONDS"><div class="titlepage"><div><div><h4 class="title">8.4.3.3. Add a JSON datasource <a href="#PHPADDJSONDS" class="id_link">#</a></h4></div></div></div><p>
-					For the <code class="literal">OpenCReport\Datasource</code>
-					class methods, see <a class="xref" href="phpdsclass.html" title="8.5. The OpenCReport\Datasource class">The OpenCReport\Datasource class</a>.
-					</p><pre class="programlisting">public final
-OpenCReport::datasource_add_json(string $source_name):
-                     ?OpenCReport\Datasource;</pre><p>
-				</p></div><div class="sect3" id="PHPADDXMLDS"><div class="titlepage"><div><div><h4 class="title">8.4.3.4. Add an XML datasource <a href="#PHPADDXMLDS" class="id_link">#</a></h4></div></div></div><p>
-					For the <code class="literal">OpenCReport\Datasource</code>
-					class methods, see <a class="xref" href="phpdsclass.html" title="8.5. The OpenCReport\Datasource class">The OpenCReport\Datasource class</a>.
-					</p><pre class="programlisting">public final
-OpenCReport::datasource_add_xml(string $source_name):
-                     ?OpenCReport\Datasource;</pre><p>
-				</p></div><div class="sect3" id="PHPADDPGDS"><div class="titlepage"><div><div><h4 class="title">8.4.3.5. Add an PostgreSQL datasource <a href="#PHPADDPGDS" class="id_link">#</a></h4></div></div></div><p>
-					For the <code class="literal">OpenCReport\Datasource</code>
-					class methods, see <a class="xref" href="phpdsclass.html" title="8.5. The OpenCReport\Datasource class">The OpenCReport\Datasource class</a>.
-					</p><pre class="programlisting">public final
-OpenCReport::datasource_add_postgresql(
-                     string $source_name,
-                     string $host = null,
-                     string $port = null,
-                     string $dbname = null,
-                     string $user = null,
-                     string $password = null):
-                     ?OpenCReport\Datasource;
-
-public final
-OpenCReport::datasource_add_postgresql2(
-                     string $source_name,
-                     string $connection_info = null):
-                     ?OpenCReport\Datasource;</pre><p>
-				</p></div><div class="sect3" id="PHPADDMARIADS"><div class="titlepage"><div><div><h4 class="title">8.4.3.6. Add a MariaDB datasource <a href="#PHPADDMARIADS" class="id_link">#</a></h4></div></div></div><p>
-					For the <code class="literal">OpenCReport\Datasource</code>
-					class methods, see <a class="xref" href="phpdsclass.html" title="8.5. The OpenCReport\Datasource class">The OpenCReport\Datasource class</a>.
-					</p><pre class="programlisting">public final
-OpenCReport::datasource_add_mariadb(
-                     string $source_name,
-                     string $host = null,
-                     string $port = null,
-                     string $dbname = null,
-                     string $user = null,
-                     string $password = null,
-                     string $unix_socket = null):
-                     ?OpenCReport\Datasource;
-
-public final
-OpenCReport::datasource_add_mariadb2(
-                     string $source_name,
-                     string $option_file = null,
-                     string $group = null):
-                     ?OpenCReport\Datasource;</pre><p>
-				</p></div><div class="sect3" id="PHPADDODBCDS"><div class="titlepage"><div><div><h4 class="title">8.4.3.7. Add an ODBC datasource <a href="#PHPADDODBCDS" class="id_link">#</a></h4></div></div></div><p>
-					For the <code class="literal">OpenCReport\Datasource</code>
-					class methods, see <a class="xref" href="phpdsclass.html" title="8.5. The OpenCReport\Datasource class">The OpenCReport\Datasource class</a>.
-					</p><pre class="programlisting">public final
-OpenCReport::datasource_add_odbc(
-                     string $source_name,
-                     string $dbname = null,
-                     ?string $user,
-                     ?string $password):
-                     ?OpenCReport\Datasource;
-
-public final
-OpenCReport::datasource_add_odbc2(
-                     string $source_name,
-                     string $connection_info = null):
+OpenCReport::datasource_add(string $source_name,
+                            string $source_type,
+                            ?array $conn_params = null):
                      ?OpenCReport\Datasource;</pre><p>
 				</p><p>
-					For the parameters, see <a class="xref" href="datasources.html#ODBCDS" title="2.4.3. ODBC database connection">ODBC database connection</a>.
-				</p></div><div class="sect3" id="PHPGETDS"><div class="titlepage"><div><div><h4 class="title">8.4.3.8. Get a named datasource <a href="#PHPGETDS" class="id_link">#</a></h4></div></div></div><p>
+					This method adds a datasource of the specified
+					type to the report, using the optional connection
+					parameters.
+				</p><p>
+					The possible datasource types are:
+					<code class="literal">array</code>, <code class="literal">csv</code>,
+					<code class="literal">json</code>, <code class="literal">xml</code>,
+					<code class="literal">mariadb</code> (also aliased as
+					<code class="literal">mysql</code>), <code class="literal">postgresql</code>
+					and <code class="literal">odbc</code>.
+				</p><p>
+					The connection parameter array is an associative
+					array which contains keys and value pairs.
+					The contents of this array is needed to connect
+					to SQL databases. For example:
+					</p><pre class="programlisting">$conn_params = [
+    "dbname" =&gt; "mydatabase",
+    "user" =&gt; "myuser"
+];</pre><p>
+				</p><p>
+					The <code class="literal">array</code>,
+					<code class="literal">csv</code>, <code class="literal">json</code>,
+					and <code class="literal">xml</code> datasource types do not
+					need connection parameters.
+				</p><p>
+					The list of connection parameters
+					to establish database connection for
+					<code class="literal">mariadb</code>,
+					<code class="literal">postgresql</code>, and
+					<code class="literal">odbc</code> are listed at
+					<a class="xref" href="lowlevelapi.html#ADDDS" title="10.1.3.1. Add a datasource">Section 10.1.3.1</a>, in the
+					<a class="xref" href="c-api-ref-low.html" title="Chapter 10. Low level C language API reference">Low level C API Reference</a>.
+				</p></div><div class="sect3" id="PHPGETDS"><div class="titlepage"><div><div><h4 class="title">12.4.3.2. Get a named datasource <a href="#PHPGETDS" class="id_link">#</a></h4></div></div></div><p>
 					For the <code class="literal">OpenCReport\Datasource</code>
-					class methods, see <a class="xref" href="phpdsclass.html" title="8.5. The OpenCReport\Datasource class">The OpenCReport\Datasource class</a>.
+					class methods, see <a class="xref" href="phpdsclass.html" title="12.5. The OpenCReport\Datasource class">The OpenCReport\Datasource class</a>.
 					</p><pre class="programlisting">public final
 OpenCReport:: datasource_get(string $source_name):
                      ?OpenCReport\Datasource;</pre><p>
-				</p></div><div class="sect3" id="PHPGETQUERY"><div class="titlepage"><div><div><h4 class="title">8.4.3.9. Get a named query <a href="#PHPGETQUERY" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="PHPGETQUERY"><div class="titlepage"><div><div><h4 class="title">12.4.3.3. Get a named query <a href="#PHPGETQUERY" class="id_link">#</a></h4></div></div></div><p>
 					For the <code class="literal">OpenCReport\Query</code>
-					class methods, see <a class="xref" href="phpqueryclass.html" title="8.6. The OpenCReport\Query class">The OpenCReport\Query class</a>.
+					class methods, see <a class="xref" href="phpqueryclass.html" title="12.6. The OpenCReport\Query class">The OpenCReport\Query class</a>.
 					</p><pre class="programlisting">public final
 OpenCReport::query_get(string $query_name):
                      ?OpenCReport\Query;</pre><p>
-				</p></div><div class="sect3" id="PHPREFRESHQUERY"><div class="titlepage"><div><div><h4 class="title">8.4.3.10. Refresh the internal representation of array queries <a href="#PHPREFRESHQUERY" class="id_link">#</a></h4></div></div></div><p>
-					When adding an array query, the PHP array
-					is internally transformed into a C array
-					representation, decoupling it from the source data.
-					The PHP array may be modified during
-					executing the report, e.g. in an event callback.
-					This method makes the internal representation
-					reflect the new data.
-					</p><pre class="programlisting">public static final
+				</p></div><div class="sect3" id="PHPREFRESHQUERY"><div class="titlepage"><div><div><h4 class="title">12.4.3.4. Refresh the internal representation of array queries <a href="#PHPREFRESHQUERY" class="id_link">#</a></h4></div></div></div><p>
+					A two dimensional array (actually, a one dimensional
+					array of one dimensional arrays) can be used in PHP
+					as an array query.
+				</p><p>
+					The PHP array may be modified during executing the
+					report, e.g. in an event callback called after one
+					iteration of a report part. This method refreshes the
+					the query's internals to be aware of the new contents
+					of the array.
+					</p><pre class="programlisting">public final
 query_refresh(): void;</pre><p>
 				</p><p>
 					There are some limitations what may be
 					done to the source PHP array, though.
 					</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
-								Changes to the first row of data
-								(the column names) are ignored.
+								The array contents must not change
+								during a report iteration, i.e. in a
+								new row callback and some others.
+								This would invalidate the contents of
+								the PHP internal representation in a way
+								that OpenCReports may break in subtle ways.
 							</p></li><li class="listitem" style="list-style-type: disc"><p>
-								The number of rows and columns
-								in the data must not change.
+								Changes to the first row of the array
+								(i.e. the column names) are ignored.
+							</p></li><li class="listitem" style="list-style-type: disc"><p>
+								The number of columns in the array
+								must not change.
 							</p></li></ul></div><p>
-				</p></div></div><div class="sect2" id="PHPEXPRFUNC"><div class="titlepage"><div><div><h3 class="title">8.4.4. Expression related methods <a href="#PHPEXPRFUNC" class="id_link">#</a></h3></div></div></div><p>
+				</p></div></div><div class="sect2" id="PHPEXPRFUNC"><div class="titlepage"><div><div><h3 class="title">12.4.4. Expression related methods <a href="#PHPEXPRFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Expressions in OpenCReports is explained in the
 				<a class="xref" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Expressions</a> chapter.
-			</p><div class="sect3" id="PHPPARSEEXPR"><div class="titlepage"><div><div><h4 class="title">8.4.4.1. Parse an expression <a href="#PHPPARSEEXPR" class="id_link">#</a></h4></div></div></div><p>
+			</p><div class="sect3" id="PHPPARSEEXPR"><div class="titlepage"><div><div><h4 class="title">12.4.4.1. Parse an expression <a href="#PHPPARSEEXPR" class="id_link">#</a></h4></div></div></div><p>
 					The expression string may not reference
 					report specific identifiers.
 					</p><pre class="programlisting">public final
@@ -184,7 +157,7 @@ OpenCReport::expr_parse(string $expr_string):
 					is returned by:
 					</p><pre class="programlisting">public final
 OpenCReport::expr_error(): ?string;</pre><p>
-				</p></div><div class="sect3" id="PHPADDUSERFUNC"><div class="titlepage"><div><div><h4 class="title">8.4.4.2. Add a custom report function <a href="#PHPADDUSERFUNC" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="PHPADDUSERFUNC"><div class="titlepage"><div><div><h4 class="title">12.4.4.2. Add a custom report function <a href="#PHPADDUSERFUNC" class="id_link">#</a></h4></div></div></div><p>
 					</p><pre class="programlisting">public final
 OpenCReport::function_add(
                      string $expr_func_name,
@@ -229,14 +202,14 @@ OpenCReport::function_add(
 				</p><p>
 					For class methods of
 					<code class="literal">OpenCReport\Expr</code>,
-					please see <a class="xref" href="phpexprclass.html" title="8.8. The OpenCReport\Expr class">The OpenCReport\Expr class</a>.
-				</p></div></div><div class="sect2" id="PHPLAYOUTMETHODS"><div class="titlepage"><div><div><h3 class="title">8.4.5. Layout part related methods <a href="#PHPLAYOUTMETHODS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="PHPADDPART"><div class="titlepage"><div><div><h4 class="title">8.4.5.1. Add a new report (layout) part <a href="#PHPADDPART" class="id_link">#</a></h4></div></div></div><p>
+					please see <a class="xref" href="phpexprclass.html" title="12.8. The OpenCReport\Expr class">The OpenCReport\Expr class</a>.
+				</p></div></div><div class="sect2" id="PHPLAYOUTMETHODS"><div class="titlepage"><div><div><h3 class="title">12.4.5. Layout part related methods <a href="#PHPLAYOUTMETHODS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="PHPADDPART"><div class="titlepage"><div><div><h4 class="title">12.4.5.1. Add a new report (layout) part <a href="#PHPADDPART" class="id_link">#</a></h4></div></div></div><p>
 					For class methods of
 					<code class="literal">OpenCReport\Part</code>,
-					see <a class="xref" href="phppartclass.html" title="8.10. The OpenCReport\Part class">The OpenCReport\Part class</a>.
+					see <a class="xref" href="phppartclass.html" title="12.10. The OpenCReport\Part class">The OpenCReport\Part class</a>.
 					</p><pre class="programlisting">public final
 OpenCReport::part_new(): OpenCReport\Part;</pre><p>
-				</p></div><div class="sect3" id="PHPGETFIRSTPART"><div class="titlepage"><div><div><h4 class="title">8.4.5.2. Get first (layout) part <a href="#PHPGETFIRSTPART" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="PHPGETFIRSTPART"><div class="titlepage"><div><div><h4 class="title">12.4.5.2. Get first (layout) part <a href="#PHPGETFIRSTPART" class="id_link">#</a></h4></div></div></div><p>
 					This function returns an object
 					of the <code class="literal">OpenCReport\Part</code>
 					class. The object is internally marked
@@ -247,38 +220,38 @@ OpenCReport::part_new(): OpenCReport\Part;</pre><p>
 					parent <code class="literal">OpenCReport</code> object.
 					</p><pre class="programlisting">public final
 OpenCReport::part_get_first(): OpenCReport\Part;</pre><p>
-				</p></div><div class="sect3" id="PHPPARTSETPAPERTYPE"><div class="titlepage"><div><div><h4 class="title">8.4.5.3. Set paper type <a href="#PHPPARTSETPAPERTYPE" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="PHPPARTSETPAPERTYPE"><div class="titlepage"><div><div><h4 class="title">12.4.5.3. Set paper type <a href="#PHPPARTSETPAPERTYPE" class="id_link">#</a></h4></div></div></div><p>
 					Set the paper type using the paper name,
 					i.e. <code class="literal">'letter'</code>,
 					<code class="literal">'A4'</code>, etc.
 					</p><pre class="programlisting">public final
 OpenCReport::set_paper(string $paper): void;</pre><p>
-				</p></div><div class="sect3" id="PHPPARTSETSIZEUNIT"><div class="titlepage"><div><div><h4 class="title">8.4.5.4. Set size unit <a href="#PHPPARTSETSIZEUNIT" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="PHPPARTSETSIZEUNIT"><div class="titlepage"><div><div><h4 class="title">12.4.5.4. Set size unit <a href="#PHPPARTSETSIZEUNIT" class="id_link">#</a></h4></div></div></div><p>
 					Set the size unit.
-					See <a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="2.2.1. Size unit attribute">Size unit attribute</a>.
+					See <a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="8.2.1. Size unit attribute">Size unit attribute</a>.
 					Possible settings are
 					<code class="literal">points</code> and <code class="literal">rlib</code>.
 					Default is <code class="literal">rlib</code>
 					for RLIB compatibility.
 					</p><pre class="programlisting">public final
 OpenCReport::set_size_unit(string $expr_string): void;</pre><p>
-				</p></div><div class="sect3" id="PHPPARTSETNQSND"><div class="titlepage"><div><div><h4 class="title">8.4.5.5. Set "no query show NoData" property <a href="#PHPPARTSETNQSND" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="PHPPARTSETNQSND"><div class="titlepage"><div><div><h4 class="title">12.4.5.5. Set "no query show NoData" property <a href="#PHPPARTSETNQSND" class="id_link">#</a></h4></div></div></div><p>
 					</p><pre class="programlisting">public final
 OpenCReport::set_noquery_show_nodata(
                      string $expr_string): void;</pre><p>
-				</p></div><div class="sect3" id="PHPPARTSETRHAL"><div class="titlepage"><div><div><h4 class="title">8.4.5.6. Set "report height after last" property <a href="#PHPPARTSETRHAL" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="PHPPARTSETRHAL"><div class="titlepage"><div><div><h4 class="title">12.4.5.6. Set "report height after last" property <a href="#PHPPARTSETRHAL" class="id_link">#</a></h4></div></div></div><p>
 					</p><pre class="programlisting">public final
 OpenCReport::set_report_height_after_last(
                      string $expr_string): void;</pre><p>
-				</p></div><div class="sect3" id="PHPPARTSETFMS"><div class="titlepage"><div><div><h4 class="title">8.4.5.7. Set "follower match single" property <a href="#PHPPARTSETFMS" class="id_link">#</a></h4></div></div></div><p>
-					See <a class="xref" href="ocrpttopxml.html#XMLFOLLOWERMATCHSINGLE" title="2.2.4. Follower match single">Follower match single attribute</a>.
+				</p></div><div class="sect3" id="PHPPARTSETFMS"><div class="titlepage"><div><div><h4 class="title">12.4.5.7. Set "follower match single" property <a href="#PHPPARTSETFMS" class="id_link">#</a></h4></div></div></div><p>
+					See <a class="xref" href="ocrpttopxml.html#XMLFOLLOWERMATCHSINGLE" title="8.2.4. Follower match single">Follower match single attribute</a>.
 					</p><pre class="programlisting">public final
 OpenCReport::set_follower_match_single(
                      string $expr_string): void;
 public final
 OpenCReport::set_follower_match_single_direct(
                      bool $value): void;</pre><p>
-				</p></div></div><div class="sect2" id="PHPCALLBACKMETHODS"><div class="titlepage"><div><div><h3 class="title">8.4.6. Callback related methods <a href="#PHPCALLBACKMETHODS" class="id_link">#</a></h3></div></div></div><p>
+				</p></div></div><div class="sect2" id="PHPCALLBACKMETHODS"><div class="titlepage"><div><div><h3 class="title">12.4.6. Callback related methods <a href="#PHPCALLBACKMETHODS" class="id_link">#</a></h3></div></div></div><p>
 				These methods add a callback function
 				that are called at certain points
 				during executing the report.
@@ -322,7 +295,7 @@ my_callback(OpenCReport $o,
 				</p><pre class="programlisting">function
 my_callback(OpenCReport $o,
             OpenCReport\Report $r)</pre><p>
-			</p></div><div class="sect2" id="PHPENVMETHODS"><div class="titlepage"><div><div><h3 class="title">8.4.7. Environment related methods <a href="#PHPENVMETHODS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPENVMETHODS"><div class="titlepage"><div><div><h3 class="title">12.4.7. Environment related methods <a href="#PHPENVMETHODS" class="id_link">#</a></h3></div></div></div><p>
 				In PHP, the "environment" includes both
 				global variables and actual environment
 				variables. If a global variable name exists
@@ -336,7 +309,7 @@ my_callback(OpenCReport $o,
 				</p><pre class="programlisting">public final
 OpenCReport::env_get(string $var_name):
                      OpenCReport\Result;</pre><p>
-			</p></div><div class="sect2" id="PHPSETMVARMETHOD"><div class="titlepage"><div><div><h3 class="title">8.4.8. Add "m" domain variable <a href="#PHPSETMVARMETHOD" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPSETMVARMETHOD"><div class="titlepage"><div><div><h3 class="title">12.4.8. Add "m" domain variable <a href="#PHPSETMVARMETHOD" class="id_link">#</a></h3></div></div></div><p>
 				Add an "m" domain variable.
 				If such a variable <code class="literal">name</code>
 				didn't exist yet, and <code class="literal">value</code>
@@ -351,17 +324,17 @@ OpenCReport::env_get(string $var_name):
 OpenCReport::set_mvariable(
                      string $name,
                      string $value): void;</pre><p>
-			</p></div><div class="sect2" id="PHPRESULTMETHODS"><div class="titlepage"><div><div><h3 class="title">8.4.9. Result related methods <a href="#PHPRESULTMETHODS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPRESULTMETHODS"><div class="titlepage"><div><div><h3 class="title">12.4.9. Result related methods <a href="#PHPRESULTMETHODS" class="id_link">#</a></h3></div></div></div><p>
 				This method creates an uninitialized
 				<code class="literal">OpenCReport\Result</code>
-				with no value. See <a class="xref" href="phpresultclass.html" title="8.9. The OpenCReport\Result class">The OpenCReport\Result class</a>
+				with no value. See <a class="xref" href="phpresultclass.html" title="12.9. The OpenCReport\Result class">The OpenCReport\Result class</a>
 				to set the value.
 				</p><pre class="programlisting">public final
 OpenCReport::result_new(): OpenCReport\Result;</pre><p>
-			</p></div><div class="sect2" id="PHPPATHMETHODS"><div class="titlepage"><div><div><h3 class="title">8.4.10. Path related methods <a href="#PHPPATHMETHODS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="PHPADDSEARCHPATH"><div class="titlepage"><div><div><h4 class="title">8.4.10.1. Add a search path <a href="#PHPADDSEARCHPATH" class="id_link">#</a></h4></div></div></div><p>
+			</p></div><div class="sect2" id="PHPPATHMETHODS"><div class="titlepage"><div><div><h3 class="title">12.4.10. Path related methods <a href="#PHPPATHMETHODS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="PHPADDSEARCHPATH"><div class="titlepage"><div><div><h4 class="title">12.4.10.1. Add a search path <a href="#PHPADDSEARCHPATH" class="id_link">#</a></h4></div></div></div><p>
 						</p><pre class="programlisting">public final
 OpenCReport::add_search_path(string $path): void;</pre><p>
-					</p></div><div class="sect3" id="PHPGETCANONFILE"><div class="titlepage"><div><div><h4 class="title">8.4.10.2. Canonicalize path <a href="#PHPGETCANONFILE" class="id_link">#</a></h4></div></div></div><p>
+					</p></div><div class="sect3" id="PHPGETCANONFILE"><div class="titlepage"><div><div><h4 class="title">12.4.10.2. Canonicalize path <a href="#PHPGETCANONFILE" class="id_link">#</a></h4></div></div></div><p>
 						This method returns (a possibly modified)
 						path that will create a canonical
 						absolute path that doesn't contain
@@ -370,13 +343,13 @@ OpenCReport::add_search_path(string $path): void;</pre><p>
 						the actual target directory, etc.
 						</p><pre class="programlisting">public static final
 OpenCReport::canonicalize_path(string $path): string;</pre><p>
-					</p></div><div class="sect3" id="PHPFINDFILE"><div class="titlepage"><div><div><h4 class="title">8.4.10.3. Find a file <a href="#PHPFINDFILE" class="id_link">#</a></h4></div></div></div><p>
+					</p></div><div class="sect3" id="PHPFINDFILE"><div class="titlepage"><div><div><h4 class="title">12.4.10.3. Find a file <a href="#PHPFINDFILE" class="id_link">#</a></h4></div></div></div><p>
 						Find a (possibly relative) file using
 						the search paths and return the canonical
 						absolute path if found.
 						</p><pre class="programlisting">public final
 OpenCReport::find_file(string $path): $string;</pre><p>
-					</p></div></div><div class="sect2" id="PHPCOLORMETHODS"><div class="titlepage"><div><div><h3 class="title">8.4.11. Color related methods <a href="#PHPCOLORMETHODS" class="id_link">#</a></h3></div></div></div><p>
+					</p></div></div><div class="sect2" id="PHPCOLORMETHODS"><div class="titlepage"><div><div><h3 class="title">12.4.11. Color related methods <a href="#PHPCOLORMETHODS" class="id_link">#</a></h3></div></div></div><p>
 				Get an array with <code class="literal">double</code>
 				components for the color name or color
 				specification.
@@ -384,4 +357,4 @@ OpenCReport::find_file(string $path): $string;</pre><p>
 OpenCReport::final get_color(
                      string $color_name,
                      ?bool $bgcolor = false): array;</pre><p>
-			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phphighlevelapi.html" title="8.3. High level PHP API">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 8. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phpdsclass.html" title="8.5. The OpenCReport\Datasource class">Next</a></td></tr><tr><td width="40%" align="left" valign="top">8.3. High level PHP API </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.5 Manual">Home</a></td><td width="40%" align="right" valign="top"> 8.5. The OpenCReport\Datasource class</td></tr></table></div></body></html>
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phphighlevelapi.html" title="12.3. High level PHP API">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phpdsclass.html" title="12.5. The OpenCReport\Datasource class">Next</a></td></tr><tr><td width="40%" align="left" valign="top">12.3. High level PHP API </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="40%" align="right" valign="top"> 12.5. The OpenCReport\Datasource class</td></tr></table></div></body></html>

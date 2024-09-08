@@ -1,36 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.2. OpenCReport element</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="descstruct.html" title="2.1. XML description structure" /><link rel="next" href="searchpaths.html" title="2.3. Paths" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">2.2. OpenCReport element</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="descstruct.html" title="2.1. XML description structure">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="xmldescriptor.html" title="Chapter 2. Report XML description">Up</a></td><th width="60%" align="center">Chapter 2. Report XML description</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.5 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="searchpaths.html" title="2.3. Paths">Next</a></td></tr></table><hr /></div><div class="sect1" id="OCRPTTOPXML"><div class="titlepage"><div><div><h2 class="title" style="clear: both">2.2. OpenCReport element <a href="#OCRPTTOPXML" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="ocrpttopxml.html#SIZEUNIT">2.2.1. Size unit attribute</a></span></dt><dt><span class="sect2"><a href="ocrpttopxml.html#NOQUERYSHOWNODATA">2.2.2. No query show NoData</a></span></dt><dt><span class="sect2"><a href="ocrpttopxml.html#REPORTHEIGHTAFTERLAST">2.2.3. Report height after last</a></span></dt><dt><span class="sect2"><a href="ocrpttopxml.html#XMLFOLLOWERMATCHSINGLE">2.2.4. Follower match single</a></span></dt><dt><span class="sect2"><a href="ocrpttopxml.html#PRECBITS">2.2.5. Precision bits</a></span></dt><dt><span class="sect2"><a href="ocrpttopxml.html#ROUNDINGMODE">2.2.6. Rounding mode</a></span></dt><dt><span class="sect2"><a href="ocrpttopxml.html#LOCALE">2.2.7. Locale</a></span></dt><dt><span class="sect2"><a href="ocrpttopxml.html#XLATESETTINGS">2.2.8. Translation settings</a></span></dt></dl></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>8.2. OpenCReport element</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="descstruct.html" title="8.1. XML description structure" /><link rel="next" href="searchpaths.html" title="8.3. Paths" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">8.2. OpenCReport element</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="descstruct.html" title="8.1. XML description structure">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="xmldescriptor.html" title="Chapter 8. Report XML description">Up</a></td><th width="60%" align="center">Chapter 8. Report XML description</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="searchpaths.html" title="8.3. Paths">Next</a></td></tr></table><hr /></div><div class="sect1" id="OCRPTTOPXML"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.2. OpenCReport element <a href="#OCRPTTOPXML" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="ocrpttopxml.html#SIZEUNIT">8.2.1. Size unit attribute</a></span></dt><dt><span class="sect2"><a href="ocrpttopxml.html#NOQUERYSHOWNODATA">8.2.2. No query show NoData</a></span></dt><dt><span class="sect2"><a href="ocrpttopxml.html#REPORTHEIGHTAFTERLAST">8.2.3. Report height after last</a></span></dt><dt><span class="sect2"><a href="ocrpttopxml.html#XMLFOLLOWERMATCHSINGLE">8.2.4. Follower match single</a></span></dt><dt><span class="sect2"><a href="ocrpttopxml.html#PRECBITS">8.2.5. Precision bits</a></span></dt><dt><span class="sect2"><a href="ocrpttopxml.html#ROUNDINGMODE">8.2.6. Rounding mode</a></span></dt><dt><span class="sect2"><a href="ocrpttopxml.html#LOCALE">8.2.7. Locale</a></span></dt><dt><span class="sect2"><a href="ocrpttopxml.html#XLATESETTINGS">8.2.8. Translation settings</a></span></dt></dl></div><p>
 			The toplevel <code class="literal">&lt;OpenCReport&gt;</code>
 			element controls some global settings and serves
 			as the topmost XML element for child elements.
-		</p><div class="sect2" id="SIZEUNIT"><div class="titlepage"><div><div><h3 class="title">2.2.1. Size unit attribute <a href="#SIZEUNIT" class="id_link">#</a></h3></div></div></div><p>
+		</p><div class="sect2" id="SIZEUNIT"><div class="titlepage"><div><div><h3 class="title">8.2.1. Size unit attribute <a href="#SIZEUNIT" class="id_link">#</a></h3></div></div></div><p>
 				The <code class="literal">size_unit</code> attribute
 				specifies report behaviour for size related
 				settings:
-				</p><pre class="programlisting">&lt;OpenCReport size_unit="rlib"&gt;
-&lt;OpenCReport size_unit="points"&gt;</pre><p>
+				</p><pre class="programlisting">&lt;OpenCReport size_unit="'rlib'"&gt;
+&lt;OpenCReport size_unit="'points'"&gt;</pre><p>
 			</p><p>
 				Default is <code class="literal">rlib</code>
-				which is the legacy RLIB behavior, with the
-				known inconsistency in size related settings:
+				which is the legacy RLIB behavior, where
+				sizing of layout details are a mix of units,
+				making it harder to design the report layout:
 				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
 							width for <code class="literal">field</code> and
 							<code class="literal">literal</code> (see
-							<a class="xref" href="outputnode.html" title="2.15. Output">Output node</a>) are in
+							<a class="xref" href="outputnode.html" title="8.15. Output">Output node</a>) are in
 							number of characters. This is influenced
 							by the font size set in either
-							<a class="xref" href="parts.html#PARTFONTSIZE" title="2.6.1.2. Font size">Part font size</a>,
-							<a class="xref" href="report.html#REPORTFONTSIZE" title="2.9.1.2. Font size">Report font size</a> or
-							<a class="xref" href="linenode.html#LINEFONTSIZE" title="2.16.1.2. Font size">Line font size</a>.
+							<a class="xref" href="parts.html#PARTFONTSIZE" title="8.6.1.2. Font size">Part font size</a>,
+							<a class="xref" href="report.html#REPORTFONTSIZE" title="8.9.1.2. Font size">Report font size</a> or
+							<a class="xref" href="linenode.html#LINEFONTSIZE" title="8.16.1.2. Font size">Line font size</a>.
 						</p></li><li class="listitem" style="list-style-type: disc"><p>
-							height for <a class="xref" href="partcol.html" title="2.8. Part column">Part column</a>
+							height for <a class="xref" href="partcol.html" title="8.8. Part column">Part column</a>
 							is measured in number of characters
-							influenced by <a class="xref" href="parts.html#PARTFONTSIZE" title="2.6.1.2. Font size">Part font size</a>
+							influenced by <a class="xref" href="parts.html#PARTFONTSIZE" title="8.6.1.2. Font size">Part font size</a>
 						</p></li><li class="listitem" style="list-style-type: disc"><p>
-							height for <a class="xref" href="report.html" title="2.9. Report">Report</a>
-							is measured in number of characters
-							influenced by <a class="xref" href="parts.html#PARTFONTSIZE" title="2.6.1.2. Font size">Part font size</a>
-							and <a class="xref" href="report.html#REPORTFONTSIZE" title="2.9.1.2. Font size">Report font size</a>
+							height for <a class="xref" href="report.html" title="8.9. Report">Report</a>
+							is measured in percentage of
+							<a class="xref" href="partcol.html" title="8.8. Part column">Part column</a> and considered
+							to be a minimum value, so padding is added
+							if the report contents end earlier
+							than the limit
 						</p></li><li class="listitem" style="list-style-type: disc"><p>
 							width of horizontal lines and the
 							optional border width around reports
@@ -40,52 +43,77 @@
 							reports is measured in inches
 						</p></li></ul></div><p>
 			</p><p>
-				Note that the default setting (as in RLIB)
-				only ever expected monospace fonts that have the
-				same width for every character. It also expected that
-				the character height is identical to the character
-				width. The latter detail is false for many monospace
-				fonts, i.e. their height is usually greater than
-				their width.
+				Note that RLIB only expected monospace
+				fonts that have the same width for every character. It also
+				expected that the character height is identical to the
+				character width. The latter expectation is false for many
+				monospace fonts, i.e. their height is usually greater than
+				their width. Also, there are problems with field widths
+				calculated in number of characters. Widths using
+				a 12 point font (for example, used for regular text)
+				is not the same as widths using a 20 point font
+				used for text in a header line. Due to this, width of header
+				and data lines will not align properly and it will show
+				when using background color for both of them.
 			</p><p>
 				With proportional fonts (where the width of
 				characters depend on their image, i.e. an "i" is
 				thinner than an "m") width of text fields cannot
-				reliably be set in "number of characters" because
-				it's not an exact value. There is a workaround for
-				this in <code class="literal">OpenCReports</code> but it's
-				an over-engineered solution and isn't available
-				in RLIB so it's not backward compatible either.
-				But it's there if someone wants to port reports
-				from RLIB and only make superficial changes.
-				See <a class="xref" href="textelemnode.html#TEXTELEMWIDTH" title="2.17.1.4. Width">Text element width</a>.
+				reliably be set in a "number of characters" unit
+				because it's not an exact value. There is a workaround
+				for this in OpenCReports but it isn't available
+				in RLIB so it's not backward compatible.
+				See <a class="xref" href="textelemnode.html#TEXTELEMWIDTH" title="8.17.1.4. Width">Text element width</a>.
 			</p><p>
 				When <code class="literal">size_unit</code> is set to
 				<code class="literal">points</code>, all size related
 				settings in the report are in points,
-				a.k.a. 1/72th inch. Straightforward and consistent.
-			</p></div><div class="sect2" id="NOQUERYSHOWNODATA"><div class="titlepage"><div><div><h3 class="title">2.2.2. No query show NoData <a href="#NOQUERYSHOWNODATA" class="id_link">#</a></h3></div></div></div><p>
-				This controls whether <a class="xref" href="report.html#NODATANODE" title="2.9.2.8. Alternate output for no data">NoData node</a>
-				is shown when the report's <a class="xref" href="loadedreport.html#QUERYATTR" title="2.10.1.2. Query">Query attribute</a>
-				is set to a non-existing query name.
+				a.k.a. 1/72th inch. It's consistent and avoids the
+				above described issues.
+			</p></div><div class="sect2" id="NOQUERYSHOWNODATA"><div class="titlepage"><div><div><h3 class="title">8.2.2. No query show NoData <a href="#NOQUERYSHOWNODATA" class="id_link">#</a></h3></div></div></div><p>
+				The report uses data from <a class="xref" href="queriesnode.html" title="8.5. Queries">Queries</a>
+				through the report's <a class="xref" href="loadedreport.html#QUERYATTR" title="8.10.1.2. Query">Query attribute</a>.
+				When a query provides no data rows, an alternative section
+				called <a class="xref" href="report.html#NODATANODE" title="8.9.2.8. Alternate output for no data">NoData node</a> with static information
+				may be shown instead if it exists in the report.
+				The report uses the first query declared in
+				<a class="xref" href="queriesnode.html" title="8.5. Queries">Queries</a> if it's not explicitly set
+				via <a class="xref" href="loadedreport.html#QUERYATTR" title="8.10.1.2. Query">Query attribute</a>.
+			</p><p>
+				RLIB had a trick to disable showing the
+				<a class="xref" href="report.html#NODATANODE" title="8.9.2.8. Alternate output for no data">NoData node</a>. This was enabled by
+				specifying a query name that does not exist.
+				This option controls the layout behaviour for that case.
 				</p><pre class="programlisting">&lt;OpenCReport noquery_show_nodata="yes"&gt;
 &lt;OpenCReport noquery_show_nodata="no"&gt;</pre><p>
 			</p><p>
-				Default is <code class="literal">true</code> when
-				<code class="literal">OpenCReport</code> is the toplevel node,
-				<code class="literal">false</code> when either
-				<code class="literal">&lt;Part&gt;</code> or <code class="literal">&lt;Report&gt;</code>
+				Default is <code class="literal">true</code> (or <code class="literal">yes</code>)
+				when <code class="literal">&lt;OpenCReport&gt;</code> is the toplevel node,
+				<code class="literal">false</code> (or <code class="literal">no</code>) when
+				either <code class="literal">&lt;Part&gt;</code> or
+				<code class="literal">&lt;Report&gt;</code>
 				is the toplevel node for RLIB compatibility.
-				See <a class="xref" href="report.html#NODATANODE" title="2.9.2.8. Alternate output for no data">NoData node</a>.
-			</p></div><div class="sect2" id="REPORTHEIGHTAFTERLAST"><div class="titlepage"><div><div><h3 class="title">2.2.3. Report height after last <a href="#REPORTHEIGHTAFTERLAST" class="id_link">#</a></h3></div></div></div><p>
-				It controls whether report height is applied
+			</p></div><div class="sect2" id="REPORTHEIGHTAFTERLAST"><div class="titlepage"><div><div><h3 class="title">8.2.3. Report height after last <a href="#REPORTHEIGHTAFTERLAST" class="id_link">#</a></h3></div></div></div><p>
+				A report may specify its height through
+				<a class="xref" href="report.html#REPORTHEIGHT" title="8.9.1.9. Height">Report height</a>.
+				Multiple <code class="literal">&lt;Report&gt;</code>
+				nodes may exist in the same
+				<code class="literal">&lt;pd&gt;</code> section.
+				For more information, see <a class="xref" href="partcol.html" title="8.8. Part column">Part column</a>
+				and <a class="xref" href="report.html" title="8.9. Report">Report</a>.
+			</p><p>
+				This option controls whether report height is applied
 				after the last <code class="literal">&lt;Report&gt;</code>
-				in the <code class="literal">&lt;pd&gt;</code> node.
+				in the same <code class="literal">&lt;pd&gt;</code> node.
 				</p><pre class="programlisting">&lt;OpenCReport report_height_after_last="yes"&gt;
 &lt;OpenCReport report_height_after_last="no"&gt;</pre><p>
 			</p><p>
 				Default is <code class="literal">false</code>.
-			</p></div><div class="sect2" id="XMLFOLLOWERMATCHSINGLE"><div class="titlepage"><div><div><h3 class="title">2.2.4. Follower match single <a href="#XMLFOLLOWERMATCHSINGLE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="XMLFOLLOWERMATCHSINGLE"><div class="titlepage"><div><div><h3 class="title">8.2.4. Follower match single <a href="#XMLFOLLOWERMATCHSINGLE" class="id_link">#</a></h3></div></div></div><p>
+				<a class="xref" href="queriesnode.html" title="8.5. Queries">Queries</a> may be daisy-chained together
+				as <a class="xref" href="queries.html#FOLLOWERQUERIES" title="2.2.4.1. Follower queries">Follower queries</a> in two ways, regular
+				and N:1 followers. See the links for details.
+			</p><p>
 				When set to <code class="literal">false</code>, N:1 followers behave
 				fully like <code class="literal">LEFT OUTER JOIN</code> in SQL,
 				with duplicating data from the primary query if multiple
@@ -95,17 +123,18 @@
 				</p><pre class="programlisting">&lt;OpenCReport follower_match_single="yes"&gt;
 &lt;OpenCReport follower_match_single="no"&gt;</pre><p>
 			</p><p>
-				Default is <code class="literal">false</code>, unless the report XML
-				descriptor uses either <code class="literal">&lt;Part&gt;</code> or
-				<code class="literal">&lt;Report&gt;</code> as the toplevel XML node.
-				In the latter case, this attribute is automatically set
-				to <code class="literal">true</code>.
-			</p></div><div class="sect2" id="PRECBITS"><div class="titlepage"><div><div><h3 class="title">2.2.5. Precision bits <a href="#PRECBITS" class="id_link">#</a></h3></div></div></div><p>
+				Default is <code class="literal">yes</code> in RLIB compatibility
+				mode, i.e. when either <code class="literal">&lt;Part&gt;</code> or
+				<code class="literal">&lt;Report&gt;</code> are used as the
+				toplevel XML node for the report description.
+				Otherwise the default is <code class="literal">no</code>.
+			</p></div><div class="sect2" id="PRECBITS"><div class="titlepage"><div><div><h3 class="title">8.2.5. Precision bits <a href="#PRECBITS" class="id_link">#</a></h3></div></div></div><p>
 				This controls the precision for numeric computations.
-				</p><pre class="programlisting">&lt;OpenCReport precision_bits="256"&gt;</pre><p>
+				For more information, see <a class="xref" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Expressions</a>
+				</p><pre class="programlisting">&lt;OpenCReport precision_bits="512"&gt;</pre><p>
 			</p><p>
 				Default is <code class="literal">256</code>.
-			</p></div><div class="sect2" id="ROUNDINGMODE"><div class="titlepage"><div><div><h3 class="title">2.2.6. Rounding mode <a href="#ROUNDINGMODE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="ROUNDINGMODE"><div class="titlepage"><div><div><h3 class="title">8.2.6. Rounding mode <a href="#ROUNDINGMODE" class="id_link">#</a></h3></div></div></div><p>
 				This controls the rounding mode for numeric computations.
 				Possible values are:
 				<code class="literal">nearest</code>,
@@ -122,9 +151,9 @@
 &lt;OpenCReport rounding_mode="faithful"&gt;</pre><p>
 			</p><p>
 				Default is <code class="literal">nearest</code>.
-				According to the MPFR documentation,
+				Note that according to the MPFR documentation,
 				<code class="literal">faithful</code> is experimental.
-			</p></div><div class="sect2" id="LOCALE"><div class="titlepage"><div><div><h3 class="title">2.2.7. Locale <a href="#LOCALE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="LOCALE"><div class="titlepage"><div><div><h3 class="title">8.2.7. Locale <a href="#LOCALE" class="id_link">#</a></h3></div></div></div><p>
 				This controls the language settings, like the decimal
 				separator, weekday names, month names and similar.
 				This setting is also used as the language of translation.
@@ -132,13 +161,14 @@
 			</p><p>
 				Default is <code class="literal">C</code> locale which
 				approximates US English.
-			</p></div><div class="sect2" id="XLATESETTINGS"><div class="titlepage"><div><div><h3 class="title">2.2.8. Translation settings <a href="#XLATESETTINGS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="XLATESETTINGS"><div class="titlepage"><div><div><h3 class="title">8.2.8. Translation settings <a href="#XLATESETTINGS" class="id_link">#</a></h3></div></div></div><p>
 				These two settings control the translation.
 				</p><pre class="programlisting">&lt;OpenCReport
     translation_domain="mydomain"
     translation_directory="/path/to/translation/files"&gt;</pre><p>
 			</p><p>
-				Translation is based on GNU Gettext.
+				Translation is based on
+				<a class="ulink" href="https://www.gnu.org/software/gettext/" target="_top">GNU Gettext</a>.
 				A subdirectory tree is expected under the specified
 				translation directory in the form of
 				<code class="literal">locale/LC_MESSAGES</code> (e.g.:
@@ -146,4 +176,4 @@
 				<code class="literal">mydomain.mo</code> files in them.
 				These <code class="literal">.mo</code> files contain translated
 				messages for a given language.
-			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="descstruct.html" title="2.1. XML description structure">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="xmldescriptor.html" title="Chapter 2. Report XML description">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="searchpaths.html" title="2.3. Paths">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.1. XML description structure </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.5 Manual">Home</a></td><td width="40%" align="right" valign="top"> 2.3. Paths</td></tr></table></div></body></html>
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="descstruct.html" title="8.1. XML description structure">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="xmldescriptor.html" title="Chapter 8. Report XML description">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="searchpaths.html" title="8.3. Paths">Next</a></td></tr><tr><td width="40%" align="left" valign="top">8.1. XML description structure </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="40%" align="right" valign="top"> 8.3. Paths</td></tr></table></div></body></html>

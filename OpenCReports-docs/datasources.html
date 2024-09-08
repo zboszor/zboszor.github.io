@@ -1,306 +1,252 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.4. Datasources</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="searchpaths.html" title="2.3. Paths" /><link rel="next" href="queries.html" title="2.5. Queries" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">2.4. Datasources</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="searchpaths.html" title="2.3. Paths">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="xmldescriptor.html" title="Chapter 2. Report XML description">Up</a></td><th width="60%" align="center">Chapter 2. Report XML description</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.5 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="queries.html" title="2.5. Queries">Next</a></td></tr></table><hr /></div><div class="sect1" id="DATASOURCES"><div class="titlepage"><div><div><h2 class="title" style="clear: both">2.4. Datasources <a href="#DATASOURCES" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="datasources.html#MARIADBDS">2.4.1. MariaDB (MySQL) database connection</a></span></dt><dt><span class="sect2"><a href="datasources.html#POSTGRESQLDS">2.4.2. PostgreSQL database connection</a></span></dt><dt><span class="sect2"><a href="datasources.html#ODBCDS">2.4.3. ODBC database connection</a></span></dt><dt><span class="sect2"><a href="datasources.html#CSVDS">2.4.4. CSV file datasource</a></span></dt><dt><span class="sect2"><a href="datasources.html#JSONDS">2.4.5. JSON file datasource</a></span></dt><dt><span class="sect2"><a href="datasources.html#XMLDS">2.4.6. XML file datasource</a></span></dt><dt><span class="sect2"><a href="datasources.html#ARRAYDS">2.4.7. Array datasource</a></span></dt><dt><span class="sect2"><a href="datasources.html#COMMONDSPROPS">2.4.8. Common datasource properties</a></span></dt></dl></div><p>
-			Datasources in OpenCReports are either database
-			connections, or accessors (mini-drivers) for data
-			files in certain formats.
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.1. Data sources</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="dsandqueries.html" title="Chapter 2. Data sources and queries" /><link rel="next" href="queries.html" title="2.2. Queries" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">2.1. Data sources</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="dsandqueries.html" title="Chapter 2. Data sources and queries">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="dsandqueries.html" title="Chapter 2. Data sources and queries">Up</a></td><th width="60%" align="center">Chapter 2. Data sources and queries</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="queries.html" title="2.2. Queries">Next</a></td></tr></table><hr /></div><div class="sect1" id="DATASOURCES"><div class="titlepage"><div><div><h2 class="title" style="clear: both">2.1. Data sources <a href="#DATASOURCES" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="datasources.html#SQLDATASOURCES">2.1.1. SQL based data sources</a></span></dt><dt><span class="sect2"><a href="datasources.html#FILEDATASOURCES">2.1.2. File based data sources</a></span></dt><dt><span class="sect2"><a href="datasources.html#DATADATASOURCE">2.1.3. Application data based datasource</a></span></dt><dt><span class="sect2"><a href="datasources.html#APPDEFINEDDS">2.1.4. Application defined data sources</a></span></dt></dl></div><p>
+			OpenCReport separates data access into two entities:
+			a data source driver and a query.
 		</p><p>
-			Datasource descriptions are in the following format:
-			</p><pre class="programlisting">&lt;Datasources&gt;
-    &lt;Datasource name="mysource" type="..." ... /&gt;
-&lt;/Datasources&gt;</pre><p>
-		</p><p>
-			A report may have multiple datasources, i.e.
-			the description may list multiple
-			<code class="literal">&lt;Datasource&gt;</code> lines.
-		</p><p>
-			Datasources must have unique names in a report and
-			their type may be:
-			<code class="literal">mariadb</code> (or <code class="literal">mysql</code>),
-			<code class="literal">postgresql</code>, <code class="literal">odbc</code>,
-			<code class="literal">csv</code>, <code class="literal">json</code>,
-			<code class="literal">xml</code> or <code class="literal">array</code>.
-		</p><div class="sect2" id="MARIADBDS"><div class="titlepage"><div><div><h3 class="title">2.4.1. MariaDB (MySQL) database connection <a href="#MARIADBDS" class="id_link">#</a></h3></div></div></div><p>
-				A MariaDB database connection may be declared in three
-				ways. Either by using the database host and port,
-				the database name, user name and password directly:
-				</p><pre class="programlisting">&lt;Datasource
-    name="mysource" type="mariadb"
-    host="..." port="..."
-    dbname="..." user="..." password="..." /&gt;</pre><p>
-				or alternatively, instead of the host and port,
-				specifying the UNIX Domain Socket file for
-				a local connection if it's not in the standard
-				location:
-				</p><pre class="programlisting">&lt;Datasource
-    name="mysource" type="mariadb"
-    unix_socket="..."
-    dbname="..." user="..." password="..." /&gt;</pre><p>
-				or moving these details out to an external
-				configuration file in an INI file format:
-				</p><pre class="programlisting">&lt;Datasource
-    name="mysource" type="mariadb"
-    optionfile="myconn.cnf" group="myconn" /&gt;</pre><p>
+			OpenCReports supports diverse data sources:
+			</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
+						<a class="xref" href="datasources.html#SQLDATASOURCES" title="2.1.1. SQL based data sources">SQL based data sources</a>
+					</p></li><li class="listitem" style="list-style-type: disc"><p>
+						<a class="xref" href="datasources.html#FILEDATASOURCES" title="2.1.2. File based data sources">File based data sources</a>
+					</p></li><li class="listitem" style="list-style-type: disc"><p>
+						<a class="xref" href="datasources.html#DATADATASOURCE" title="2.1.3. Application data based datasource">Application data based data source</a>
+					</p></li><li class="listitem" style="list-style-type: disc"><p>
+						<a class="xref" href="datasources.html#APPDEFINEDDS" title="2.1.4. Application defined data sources">Application defined data sources</a>
+					</p></li></ul></div><p>
+		</p><div class="sect2" id="SQLDATASOURCES"><div class="titlepage"><div><div><h3 class="title">2.1.1. SQL based data sources <a href="#SQLDATASOURCES" class="id_link">#</a></h3></div></div></div><p>
+				SQL is the acronym for Standard Query Language.
+				Many database software comply with the standard
+				to a certain extent. The standard is occasionally
+				revised, and a certain database software version
+				complies to a specific version of the standard
+				to a certain extent.
 			</p><p>
-				In the second case, the configuration file <code class="literal">myconn.cnf</code>
-				would contain something like this:
-				</p><pre class="programlisting">[myconn]
-!include /etc/my.cnf
-database=mydb
-user=myuser
-#password=
-#host=
-#port=
-#unix_socket=</pre><p>
-				Please note that the INI group name <code class="literal">[myconn]</code>
-				matches <code class="literal">group="myconn"</code> in the above
-				datasource declaration.
+				In general, database software are designed to
+				store massive amounts of data and retrieve it
+				as fast as possible. Database software and its data
+				can be accessed through a network connection
+				(even if it's installed in the same machine) or
+				a faster local connection if both the database server
+				and client are installed on the same computer.
 			</p><p>
-				The database name and user name are mandatory. The
-				user password is optional, depending on the database
-				security authentication setup.
+				The SQL based data sources OpenCReports natively
+				supports are:
+				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
+							<a class="ulink" href="https://mariadb.org/" target="_top">MariaDB</a>
+							and <a class="ulink" href="https://www.mysql.com/" target="_top">MySQL</a>
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							<a class="ulink" href="https://www.postgresql.org/" target="_top">PostgreSQL</a>
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							Any SQL database server with a compliant
+							<a class="ulink" href="https://learn.microsoft.com/en-us/sql/odbc/microsoft-open-database-connectivity-odbc" target="_top">ODBC</a>
+							driver
+						</p></li></ul></div><p>
+			</p><div class="sect3" id="MARIADBSOURCE"><div class="titlepage"><div><div><h4 class="title">2.1.1.1. MariaDB/MySQL data source <a href="#MARIADBSOURCE" class="id_link">#</a></h4></div></div></div><p>
+					<a class="ulink" href="https://mariadb.org/" target="_top">MariaDB</a>
+					is a fork of <a class="ulink" href="https://www.mysql.com/" target="_top">MySQL</a>
+					developing in a different direction but still
+					maintaining strong compatibility with each other.
+					The database client library is compatible with both,
+					therefore OpenCReports supports both with the same
+					driver.
+				</p></div><div class="sect3" id="POSTGRESSOURCE"><div class="titlepage"><div><div><h4 class="title">2.1.1.2. PostgreSQL data source <a href="#POSTGRESSOURCE" class="id_link">#</a></h4></div></div></div><p>
+					<a class="ulink" href="https://www.postgresql.org/" target="_top">PostgreSQL</a>
+					(in their own words) is The World's Most Advanced Open
+					Source Relational Database. OpenCReports supports using
+					PostgreSQL.
+				</p><p>
+					The PostgreSQL datasource driver in OpenCReports is
+					especially economic with memory by using a
+					<a class="ulink" href="https://www.postgresql.org/docs/current/sql-declare.html" target="_top"><code class="literal">WITH HOLD cursor</code></a>
+					and the PostgreSQL specific
+					<a class="ulink" href="https://www.postgresql.org/docs/current/sql-fetch.html" target="_top"><code class="literal">FETCH count</code></a>
+					SQL statement to retrieve a specified number of rows in
+					one round, as opposed to retrieving every row in one
+					round that most database software supports.
+				</p><p>
+					This makes the report run slower for longer query results
+					compared to other databases, but allows generating the report
+					from extremely large datasets when other databases may
+					fail due to memory exhaustion.
+				</p></div><div class="sect3" id="ODBCSOURCE"><div class="titlepage"><div><div><h4 class="title">2.1.1.3. ODBC data source <a href="#ODBCSOURCE" class="id_link">#</a></h4></div></div></div><p>
+					OpenCReports supports using a generic ODBC connection
+					to any database servers using a compliant client driver.
+					OpenCReports uses a standard ODBC manager library,
+					so it is able to use any ODBC DSN (Data Source Name)
+					configured for the system or the user.
+				</p></div><div class="sect3" id="SQLDSNOTES"><div class="titlepage"><div><div><h4 class="title">2.1.1.4. Special note for SQL datasources <a href="#SQLDSNOTES" class="id_link">#</a></h4></div></div></div><p>
+					The database client libraries for MariaDB,
+					PostgreSQL and ODBC return all the query rows
+					from the database server at once by default.
+					As such, it is possible that a long query result
+					doesn't fit into the computer memory.
+				</p><p>
+					The report needs to traverse the query result twice
+					to pre-compute "delayed" values (see
+					<a class="xref" href="precalcexpr.html" title="3.3. Delayed (precalculated) expressions">precalculated</a> and
+					<a class="xref" href="precalcvar.html" title="5.5. Precalculated variables">Precalculated variables</a>),
+					so it needs to be able to rewind the data set
+					once it was read to the end.
+				</p><p>
+					The alternative API in MariaDB to load the rows one by
+					one doesn't allow rewinding, so it's not usable
+					for the report's purposes.
+				</p><p>
+					It is only PostgreSQL that allows using an
+					<span class="emphasis"><em>SQL cursor</em></span> as a standalone entity,
+					i.e. outside SQL procedures as defined by the SQL
+					standard. This PostgreSQL extension to the standard
+					allows saving memory in such a way that it allows
+					processing very long query results. Behind the scenes,
+					a <code class="literal">WITH HOLD</code> cursor is used and
+					1024 rows are loaded in one go from the server.
+				</p></div></div><div class="sect2" id="FILEDATASOURCES"><div class="titlepage"><div><div><h3 class="title">2.1.2. File based data sources <a href="#FILEDATASOURCES" class="id_link">#</a></h3></div></div></div><p>
+				The file based data sources OpenCReports supports are:
+				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
+							<a class="ulink" href="https://en.wikipedia.org/wiki/Comma-separated_values" target="_top">Comma-separated values</a>
+							a.k.a. <code class="literal">CSV</code>
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							<a class="ulink" href="https://en.wikipedia.org/wiki/XML" target="_top">eXtensible Markup Language</a>
+							a.k.a. <code class="literal">XML</code>
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							<a class="ulink" href="https://en.wikipedia.org/wiki/JSON" target="_top">JavaScript Object Notation</a>
+							a.k.a. <code class="literal">JSON</code>
+						</p></li></ul></div><p>
 			</p><p>
-				The database host and port, or the socket file location
-				are all optional. Without these, a local connection is
-				attempted using the default settings. If the host name
-				is specified but the port isn't, the remote host is
-				used on the default port (as known by the local MariaDB
-				database client library).
-			</p></div><div class="sect2" id="POSTGRESQLDS"><div class="titlepage"><div><div><h3 class="title">2.4.2. PostgreSQL database connection <a href="#POSTGRESQLDS" class="id_link">#</a></h3></div></div></div><p>
-				A PostgreSQL database connection may be declared in three
-				ways. Either by using the database host and port,
-				the database name, user name and password directly:
-				</p><pre class="programlisting">&lt;Datasource
-    name="mysource" type="postgresql"
-    host="..." port="..."
-    dbname="..." user="..." password="..." /&gt;</pre><p>
-				or alternatively, instead of the host and port,
-				specifying the UNIX Domain Socket file for
-				a local connection if it's not in the standard
-				location:
-				</p><pre class="programlisting">&lt;Datasource
-    name="mysource" type="postgresql"
-    unix_socket="..."
-    dbname="..." user="..." password="..." /&gt;</pre><p>
-				or using a so called connection string:
-				</p><pre class="programlisting">&lt;Datasource
-    name="mysource" type="postgresql"
-    connstr="..." /&gt;</pre><p>
-			</p><p>
-				For the connection string format, see the
-				<a class="ulink" href="https://www.postgresql.org/docs" target="_top">PostgreSQL documentation</a>.
-			</p><p>
-				The database name and user name are mandatory. The
-				user password is optional, depending on the database
-				security authentication setup.
-			</p><p>
-				The database host and port, or the socket file location
-				are all optional. Without these, a local connection is
-				attempted using the default settings. If the host name
-				is specified but the port isn't, the remote host is
-				used on the default port (as known by the local PostgreSQL
-				database client library).
-			</p></div><div class="sect2" id="ODBCDS"><div class="titlepage"><div><div><h3 class="title">2.4.3. ODBC database connection <a href="#ODBCDS" class="id_link">#</a></h3></div></div></div><p>
-				The above described MariaDB and PostgreSQL database
-				connection types are using their respective client
-				libraries. There is a more generic way, i.e. ODBC.
-				ODBC was invented by Microsoft in the 1990s for Windows.
-				See
-				<a class="ulink" href="https://docs.microsoft.com/en-us/sql/odbc/microsoft-open-database-connectivity-odbc" target="_top">Microsoft Open Database Connectivity (ODBC)</a>
-				In their solution, there's an abstract client library
-				and individual database drivers adhere to the APIs
-				offered by ODBC toplevel library. Since then, UNIX and
-				UNIX-like systems also gained their ODBC client libraries
-				in two different implementations, both of which are
-				supported by OpenCReports:
-				<a class="ulink" href="https://www.unixodbc.org" target="_top">unixODBC</a>
-				and
-				<a class="ulink" href="https://www.iodbc.org" target="_top">iODBC</a>.
-			</p><p>
-				An ODBC database setup is done a differently. There are
-				two system-wide configuration files. The first one is
-				<code class="literal">odbcinst.ini</code> that lists the database
-				drivers installed into the system. The second one is
-				<code class="literal">odbc.ini</code> which references the first
-				one and lists pre-defined database connections. These
-				database connections are named. In ODBC speak, these
-				are called Data Source Names or DSNs. The DSNs specify
-				the low level connection parameters, like the database
-				host and port, and optionally the user name and
-				password, too.
-			</p><p>
-				Thus, an ODBC database connection may be declared in two
-				ways. The first way is by using the DSN name, and
-				optionally the user name and password:
-				</p><pre class="programlisting">&lt;Datasource
-    name="mysource" type="odbc"
-    dbname="..." user="..." password="..." /&gt;</pre><p>
-				In this case, the <code class="literal">dbname</code> attribute
-				is not the low level database name, but the ODBC
-				abstract DSN name.
-			</p><p>
-				There's also a way to use the so called connection string
-				which contain the same connection information:
-				</p><pre class="programlisting">&lt;Datasource
-    name="mysource" type="odbc"
-    connstr="..." /&gt;</pre><p>
-			</p><p>
-				For the connection string format, see the
-				<a class="ulink" href="https://www.connectionstrings.com/" target="_top">public examples</a>.
-			</p></div><div class="sect2" id="CSVDS"><div class="titlepage"><div><div><h3 class="title">2.4.4. CSV file datasource <a href="#CSVDS" class="id_link">#</a></h3></div></div></div><p>
-				CSV ("Comma Separated Values") is a simple tabulated
-				file format. Every line must have the same number of
-				columns, for which the values are separated by commas.
-				The first line in the file contains the column names.
-			</p><p>
-				A CSV file datasource is declared very simply:
-				</p><pre class="programlisting">&lt;Datasource name="mysource" type="'csv'" /&gt;</pre><p>
-				In this case, the actual CSV file is not declared,
-				only that a "query" using a CSV file will be listed
-				later under <code class="literal">&lt;Queries&gt;</code>.
-			</p><p>
-				This datasource is less smart than others, in that
-				is cannot specify data type for columns. Every column
-				is assumed to be a string, regardless if the values
-				themselves are quoted or not in the file. Data
-				conversion functions must be used, like
-				<code class="literal">val()</code>, <code class="literal">stodt()</code>
-				or <code class="literal">interval()</code>.
-			</p></div><div class="sect2" id="JSONDS"><div class="titlepage"><div><div><h3 class="title">2.4.5. JSON file datasource <a href="#JSONDS" class="id_link">#</a></h3></div></div></div><p>
-				Similarly to CSV, the JSON file datasource is also declared
-				very simply:
-				</p><pre class="programlisting">&lt;Datasource name="mysource" type="'json'" /&gt;</pre><p>
-				In this case, the actual JSON file is not declared,
-				only that a "query" using a JSON file will be listed
-				later under <code class="literal">&lt;Queries&gt;</code>.
-			</p><p>
-				A JSON file datasource is expected in this format:
-				</p><pre class="programlisting">{
-    "columns": ["colname1", ... ],
-    "coltypes": ["type", ... ],
-    "rows": [
-	    { "colname1": value1, ...  },
-        ...
-    ]
+				The <code class="literal">XML</code> and <code class="literal">JSON</code>
+				file types expect the data presented in a certain
+				structure <span class="emphasis"><em>syntax</em></span>. The
+				<span class="emphasis"><em>semantics</em></span> is application defined.
+				The expected format for these file types are described
+				below.
+			</p><div class="sect3" id="CSVDS"><div class="titlepage"><div><div><h4 class="title">2.1.2.1. CSV file type <a href="#CSVDS" class="id_link">#</a></h4></div></div></div><p>
+					CSV ("Comma Separated Values") is a simple tabulated
+					file format. Every line must have the same number of
+					columns, the values are separated by commas.
+					The first line in the file contains the column names.
+				</p><p>
+					Using only the CSV file, the data type cannot be
+					determined. Because of this, every column is assumed
+					to be a string, regardless if the values themselves
+					are quoted or not in the file. Data conversion functions
+					must be used, see for example <a class="xref" href="formatfuncs.html#VALFUNC" title="4.12.4. val()">Section 4.12.4</a>,
+					<a class="xref" href="datetimefuncs.html#STODTFUNC" title="4.10.16. stodt()">Section 4.10.16</a> and
+					<a class="xref" href="datetimefuncs.html#INTERVALFUNC" title="4.10.10. interval()">Section 4.10.10</a>.
+				</p><p>
+					Using either report XML description or programming code,
+					an optional set of type indicators may be added along
+					with the CSV input file, so the explicit conversion
+					functions may be omitted from expressions using the data.
+				</p></div><div class="sect3" id="JSONDS"><div class="titlepage"><div><div><h4 class="title">2.1.2.2. JSON file type <a href="#JSONDS" class="id_link">#</a></h4></div></div></div><p>
+					A JSON file is expected in this format:
+					</p><pre class="programlisting">{
+	"columns": ["colname1", ... ],
+	"coltypes": ["type", ... ],
+	"rows": [
+		{ "colname1": value1, ...  },
+		...
+	]
 }</pre><p>
-			</p><p>
-				The JSON file is expected to list the column
-				names in a string array called <code class="literal">columns</code>.
-			</p><p>
-				The column types are optionally listed in the string
-				array called <code class="literal">coltypes</code>. If they are
-				listed, the <code class="literal">coltypes</code> array must have
-				the same number of strings as the <code class="literal">columns</code>
-				array. The types may be <code class="literal">string</code>,
-				<code class="literal">number</code> or <code class="literal">datatime</code>.
-				If the column type array is missing, then all data
-				values are assumed to be strings and data conversion
-				functions must be used, like <code class="literal">val()</code>,
-				<code class="literal">stodt()</code> or <code class="literal">interval()</code>.
-			</p><p>
-				The rows are listed in an array called <code class="literal">rows</code>
-				and column data values for each row are in a collection
-				with data names from the <code class="literal">columns</code> and
-				data types from the <code class="literal">coltypes</code> arrays.
-			</p></div><div class="sect2" id="XMLDS"><div class="titlepage"><div><div><h3 class="title">2.4.6. XML file datasource <a href="#XMLDS" class="id_link">#</a></h3></div></div></div><p>
-				Similarly to CSV and JSON, the XML file datasource is also declared
-				very simply:
-				</p><pre class="programlisting">&lt;Datasource name="mysource" type="'xml'" /&gt;</pre><p>
-				In this case, the actual XML file is not declared,
-				only that a "query" using an XML file will be listed
-				later under <code class="literal">&lt;Queries&gt;</code>.
-			</p><p>
-				An XML file datasource is expected in this format:
-				</p><pre class="programlisting">&lt;?xml version="1.0"?&gt;
+				</p><p>
+					The JSON file is expected to list the column
+					names in a string array called <code class="literal">columns</code>.
+				</p><p>
+					The column types are optionally listed in the string
+					array called <code class="literal">coltypes</code>. If they are
+					listed, the <code class="literal">coltypes</code> array must have
+					the same number of strings as the <code class="literal">columns</code>
+					array. The type names are <code class="literal">string</code>,
+					<code class="literal">number</code> or <code class="literal">datatime</code>.
+					If the column type array is missing, then all data
+					values are assumed to be strings and data conversion
+					functions must be used, see for example
+					<a class="xref" href="formatfuncs.html#VALFUNC" title="4.12.4. val()">Section 4.12.4</a>,
+					<a class="xref" href="datetimefuncs.html#STODTFUNC" title="4.10.16. stodt()">Section 4.10.16</a> and
+					<a class="xref" href="datetimefuncs.html#INTERVALFUNC" title="4.10.10. interval()">Section 4.10.10</a>.
+				</p><p>
+					The data rows are listed in a <span class="emphasis"><em>JSON array</em></span>
+					called <code class="literal">rows</code> and column data values for
+					each row are in a <span class="emphasis"><em>JSON collection</em></span> with
+					data names from the <code class="literal">columns</code> and
+					data types from the <code class="literal">coltypes</code> arrays.
+				</p><p>
+					The sections <code class="literal">columns</code>,
+					<code class="literal">coltypes</code> and
+					<code class="literal">rows</code> may appear in any order.
+				</p><p>
+					When the <code class="literal">coltypes</code> part is missing
+					from the JSON input file, then using either report XML
+					description or programming code, an optional set of type
+					indicators may be added along with the JSON input file,
+					so the explicit conversion functions may be omitted from
+					expressions using the data.
+				</p></div><div class="sect3" id="XMLDS"><div class="titlepage"><div><div><h4 class="title">2.1.2.3. XML file type <a href="#XMLDS" class="id_link">#</a></h4></div></div></div><p>
+					An XML file datasource is expected in this format:
+					</p><pre class="programlisting">&lt;?xml version="1.0"?&gt;
 &lt;data&gt;
-    &lt;rows&gt;
-        &lt;row&gt;
-            &lt;col&gt;value&lt;/col&gt;
-            ...
-        &lt;/row&gt;
-        ...
-    &lt;/rows&gt;
-    &lt;fields&gt;
-        &lt;field&gt;column1&lt;/field&gt;
-        ...
-    &lt;/fields&gt;
-    &lt;coltypes&gt;
-        &lt;col&gt;type1&lt;/col&gt;
-        ...
-    &lt;/coltypes&gt;
+	&lt;rows&gt;
+		&lt;row&gt;
+			&lt;col&gt;value&lt;/col&gt;
+			...
+		&lt;/row&gt;
+		...
+	&lt;/rows&gt;
+	&lt;fields&gt;
+		&lt;field&gt;column1&lt;/field&gt;
+		...
+	&lt;/fields&gt;
+	&lt;coltypes&gt;
+		&lt;col&gt;type1&lt;/col&gt;
+		...
+	&lt;/coltypes&gt;
 &lt;/data&gt;</pre><p>
-				The XML section names <code class="literal">&lt;data&gt;</code>,
-				<code class="literal">&lt;rows&gt;</code> and
-				<code class="literal">&lt;fields&gt;</code>
-				are the same as they were in RLIB for its XML data
-				source. The order of <code class="literal">&lt;rows&gt;</code>
-				and <code class="literal">&lt;fields&gt;</code> is not important.
-				But the order of field names in <code class="literal">&lt;fields&gt;</code>
-				must match the column value order in each
-				<code class="literal">&lt;row&gt;</code>.
+					The XML section names <code class="literal">&lt;data&gt;</code>,
+					<code class="literal">&lt;rows&gt;</code> and
+					<code class="literal">&lt;fields&gt;</code>
+					are the same as they were in RLIB for its XML data
+					source. The order of <code class="literal">&lt;rows&gt;</code>
+					and <code class="literal">&lt;fields&gt;</code> is not important.
+					But the order of field names in <code class="literal">&lt;fields&gt;</code>
+					must match the column value order in each
+					<code class="literal">&lt;row&gt;</code>.
+				</p><p>
+					The optional section &lt;coltypes&gt; is new in
+					OpenCReports. If it's present, then it must list
+					the data types in the same order as section
+					<code class="literal">&lt;fields&gt;</code>.
+					The types may be <code class="literal">string</code>,
+					<code class="literal">number</code> or <code class="literal">datatime</code>.
+					If this section is not present, all values are assumed
+					to be strings and data conversion functions must be
+					used, see for example
+					<a class="xref" href="formatfuncs.html#VALFUNC" title="4.12.4. val()">Section 4.12.4</a>,
+					<a class="xref" href="datetimefuncs.html#STODTFUNC" title="4.10.16. stodt()">Section 4.10.16</a> and
+					<a class="xref" href="datetimefuncs.html#INTERVALFUNC" title="4.10.10. interval()">Section 4.10.10</a>.
+				</p><p>
+					When the <code class="literal">coltypes</code> part is missing
+					from the XML input file, then using either report XML
+					description or programming code, an optional set of type
+					indicators may be added along with the XML input file,
+					so the explicit conversion functions may be omitted from
+					expressions using the data.
+				</p></div></div><div class="sect2" id="DATADATASOURCE"><div class="titlepage"><div><div><h3 class="title">2.1.3. Application data based datasource <a href="#DATADATASOURCE" class="id_link">#</a></h3></div></div></div><p>
+				Applications may also have internal data that can be used
+				as input for OpenCReports.
 			</p><p>
-				The section &lt;coltypes&gt; is new in OpenCReports and
-				is optional. If it's present, then it must list
-				the data types in the same order as the section
-				<code class="literal">&lt;fields&gt;</code>.
-				The types may be <code class="literal">string</code>,
-				<code class="literal">number</code> or <code class="literal">datatime</code>.
-				If this section is not present, all values are assumed
-				to be strings and data conversion functions must be
-				used, like <code class="literal">val()</code>, <code class="literal">stodt()</code>
-				or <code class="literal">interval()</code>.
-			</p></div><div class="sect2" id="ARRAYDS"><div class="titlepage"><div><div><h3 class="title">2.4.7. Array datasource <a href="#ARRAYDS" class="id_link">#</a></h3></div></div></div><p>
-				Arrays are global in-memory structures in the
-				application that should be accessible to the
-				OpenCReports library. For example, when using
-				the C programming language, global non-static
-				symbols are visible to libraries if the application
-				is compiled with <code class="literal">-rdynamic</code>.
+				OpenCReports supports using two-dimensional C arrays as directly
+				accessible application data. Such arrays must be declared as
+				</p><pre class="programlisting">char *array[ROWS][COLUMNS]</pre><p>
+				or converted to it if using OpenCReports from a different
+				language. Each element is a pointer to a zero-terminated
+				C string. The first row contains the names of columns.
 			</p><p>
-				Similarly to file based datasources, the array
-				datasource is declared very simply:
-				</p><pre class="programlisting">&lt;Datasource name="mysource" type="'array'" /&gt;</pre><p>
-				In this case, the actual array is not declared,
-				only that a "query" using an array will be listed
-				later under <code class="literal">&lt;Queries&gt;</code>.
+				Optionally, a set of type indicators may be supplied,
+				similarly to the <a class="xref" href="datasources.html#FILEDATASOURCES" title="2.1.2. File based data sources">File based data sources</a>.
+			</p></div><div class="sect2" id="APPDEFINEDDS"><div class="titlepage"><div><div><h3 class="title">2.1.4. Application defined data sources <a href="#APPDEFINEDDS" class="id_link">#</a></h3></div></div></div><p>
+				OpenCReports allows application defined datasource
+				drivers that may even override built-in datasource
+				drivers.
 			</p><p>
-				A C array is declared in this format:
-				</p><pre class="programlisting">const char *array[ROWS + 1][COLUMNS] = {
-    { "column1", ... },
-    { "value1",  ... },
-    ...
-};</pre><p>
-				The array is declared as a two-dimensional array of
-				C strings. The first row of the array is the column
-				names, <code class="literal">[ROWS + 1]</code> in the array
-				declaration accounts for the title row.
-			</p><p>
-				All rows have the same number of columns. Column values
-				may be NULL, in which case they will be treated the same
-				as SQL NULLs in SQL query results.
-			</p><p>
-				Optionally, a column types array is declared
-				separately:
-				</p><pre class="programlisting">#include &lt;opencreport.h&gt;
-
-const enum ocrpt_result_type coltypes[COLUMNS] = {
-    ...
-};</pre><p>
-				If this array is present, it must have the same number
-				of <code class="literal">COLUMNS</code> as the matching data
-				array. The <code class="literal">enum ocrpt_result_type</code>
-				usable in data array type declaration are
-				<code class="literal">OCRPT_RESULT_STRING</code>,
-				<code class="literal">OCRPT_RESULT_NUMBER</code> and
-				<code class="literal">OCRPT_RESULT_DATETIME</code>. 
-			</p></div><div class="sect2" id="COMMONDSPROPS"><div class="titlepage"><div><div><h3 class="title">2.4.8. Common datasource properties <a href="#COMMONDSPROPS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="DSENCODING"><div class="titlepage"><div><div><h4 class="title">2.4.8.1. Encoding <a href="#DSENCODING" class="id_link">#</a></h4></div></div></div><p>
-					OpenCReports expects strings in UTF-8 encoding.
-					However, some datasources may use a different
-					encoding. To use and display strings from the
-					datasource, an internal conversion to UTF-8 is
-					needed. To perform this correctly, the datasource
-					encoding must be set.
-					</p><pre class="programlisting">&lt;Datasource
-    name="mysource"
-    ...
-    encoding="ISO-8859-2" /&gt;</pre><p>
-				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="searchpaths.html" title="2.3. Paths">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="xmldescriptor.html" title="Chapter 2. Report XML description">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="queries.html" title="2.5. Queries">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.3. Paths </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.5 Manual">Home</a></td><td width="40%" align="right" valign="top"> 2.5. Queries</td></tr></table></div></body></html>
+				An application defined data source may be any of the
+				previously listed types: SQL, file or data based.
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="dsandqueries.html" title="Chapter 2. Data sources and queries">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="dsandqueries.html" title="Chapter 2. Data sources and queries">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="queries.html" title="2.2. Queries">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 2. Data sources and queries </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="40%" align="right" valign="top"> 2.2. Queries</td></tr></table></div></body></html>

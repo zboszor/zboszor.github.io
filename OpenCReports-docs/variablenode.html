@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.12. Variable</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="variablesnode.html" title="2.11. Variables" /><link rel="next" href="breaksnode.html" title="2.13. Breaks" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">2.12. Variable</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="variablesnode.html" title="2.11. Variables">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="xmldescriptor.html" title="Chapter 2. Report XML description">Up</a></td><th width="60%" align="center">Chapter 2. Report XML description</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.5 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="breaksnode.html" title="2.13. Breaks">Next</a></td></tr></table><hr /></div><div class="sect1" id="VARIABLENODE"><div class="titlepage"><div><div><h2 class="title" style="clear: both">2.12. Variable <a href="#VARIABLENODE" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="variablenode.html#VARATTS">2.12.1. Variable attributes</a></span></dt></dl></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>8.12. Variable</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="variablesnode.html" title="8.11. Variables" /><link rel="next" href="breaksnode.html" title="8.13. Breaks" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">8.12. Variable</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="variablesnode.html" title="8.11. Variables">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="xmldescriptor.html" title="Chapter 8. Report XML description">Up</a></td><th width="60%" align="center">Chapter 8. Report XML description</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="breaksnode.html" title="8.13. Breaks">Next</a></td></tr></table><hr /></div><div class="sect1" id="VARIABLENODE"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.12. Variable <a href="#VARIABLENODE" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="variablenode.html#VARATTS">8.12.1. Variable attributes</a></span></dt></dl></div><p>
 			This node describes one
 			<code class="literal">&lt;Variable&gt;</code> node.
 			It has no children nodes, only attributes.
 			</p><pre class="programlisting">&lt;Variable ... /&gt;</pre><p>
-		</p><div class="sect2" id="VARATTS"><div class="titlepage"><div><div><h3 class="title">2.12.1. Variable attributes <a href="#VARATTS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="VARNAME"><div class="titlepage"><div><div><h4 class="title">2.12.1.1. Name <a href="#VARNAME" class="id_link">#</a></h4></div></div></div><p>
+		</p><div class="sect2" id="VARATTS"><div class="titlepage"><div><div><h3 class="title">8.12.1. Variable attributes <a href="#VARATTS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="VARNAME"><div class="titlepage"><div><div><h4 class="title">8.12.1.1. Name <a href="#VARNAME" class="id_link">#</a></h4></div></div></div><p>
 					The name of the variable. It must be
 					unique in the list of variables for
 					the parent <code class="literal">&lt;Report&gt;</code> node.
 					</p><pre class="programlisting">&lt;Variable name="var1" /&gt;</pre><p>
-				</p></div><div class="sect3" id="VARVALUE"><div class="titlepage"><div><div><h4 class="title">2.12.1.2. Value <a href="#VARVALUE" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="VARVALUE"><div class="titlepage"><div><div><h4 class="title">8.12.1.2. Value <a href="#VARVALUE" class="id_link">#</a></h4></div></div></div><p>
 					The "value" of the variable, or rather,
 					the expression from which the value is
 					computed. Variables' values are computed
@@ -18,7 +18,7 @@
 					field names of queries that are declared
 					in the XML description or in programming code.
 					</p><pre class="programlisting">&lt;Variable value="q1.field1 + 2 * q2.field2" /&gt;</pre><p>
-				</p></div><div class="sect3" id="VARTYPE"><div class="titlepage"><div><div><h4 class="title">2.12.1.3. Type <a href="#VARTYPE" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="VARTYPE"><div class="titlepage"><div><div><h4 class="title">8.12.1.3. Type <a href="#VARTYPE" class="id_link">#</a></h4></div></div></div><p>
 					The type of the variable. Several variable
 					types exist:
 					</p><pre class="programlisting">&lt;Variable value="q1.field" type="expression"/&gt;
@@ -34,20 +34,22 @@
 &lt;Variable value="q1.field" type="highest"/&gt;
 &lt;Variable value="q1.field" type="lowest"/&gt;
 
-&lt;Variable value="q1.field" type="custom"/&gt;</pre><p>
+&lt;Variable type="custom" ... /&gt;</pre><p>
 				</p><p>
-					Default type is <code class="literal">expression</code>,
-					this is just a shortcut for the value expression
-					that saves both typing and time to generate the
-					report.
+					Default type is <code class="literal">expression</code>.
+					This is just a shortcut for the computed value
+					of the expression that saves both typing (in other
+					expressions referencing this variable) and time
+					to generate the report. This can be considered
+					a manual optimization.
 				</p><p>
 					The <code class="literal">count</code> and
 					<code class="literal">countall</code> variable
 					types count the number of expression
 					results for the data set. The former
 					leaves out NULL values, the latter includes them.
-					This is equivalent to COUNT(field) and COUNT(*)
-					in SQL.
+					This is equivalent to <code class="literal">COUNT(field)</code>
+					and <code class="literal">COUNT(*)</code> in SQL.
 				</p><p>
 					The <code class="literal">sum</code> variable type
 					sums the non-NULL values of the expression
@@ -77,7 +79,155 @@
 					predefined types are not enough, for example,
 					when the base type needs to be something else
 					then a number. See below.
-				</p></div><div class="sect3" id="CUSTOMVARATTRS"><div class="titlepage"><div><div><h4 class="title">2.12.1.4. Custom variable attributes <a href="#CUSTOMVARATTRS" class="id_link">#</a></h4></div></div></div><p>
+				</p><div class="sect4" id="XMLVAREXAMPLES"><div class="titlepage"><div><div><h5 class="title">8.12.1.3.1. Complete variable examples <a href="#XMLVAREXAMPLES" class="id_link">#</a></h5></div></div></div><p>
+						Here's a complete example of an expression variable:
+						</p><pre class="programlisting">&lt;Report&gt;
+    &lt;Variables&gt;
+        &lt;Variable
+            name="var1"
+            value="query1.field1 + query2.field2"
+            type="expression" /&gt;
+    &lt;/Variables&gt;
+
+    &lt;Detail&gt;
+        &lt;FieldHeaders&gt;
+            &lt;literal value="'My variable'" /&gt;
+        &lt;/FieldHeaders&gt;
+
+        &lt;FieldDetails&gt;
+            &lt;field value="v.var1" /&gt;
+        &lt;/FieldDetails&gt;
+    &lt;/Detail&gt;
+&lt;/Report&gt;</pre><p>
+					</p><p>
+						Note, that in this simple example, there is
+						no difference if the variable is used in
+						the <code class="literal">&lt;field&gt;</code> or the
+						<code class="literal">query1.field1 + query2.field2</code>
+						expression. The efficiency of not computing
+						the variable again for the same data row can be
+						observed when the variable is used multiple times
+						and the report processes a huge data set.
+					</p><p>
+						Here's a complete example of using a variable:
+						</p><pre class="programlisting">&lt;Report&gt;
+    &lt;Variables&gt;
+        &lt;Variable
+            name="var1"
+            value="r.self + query1.field1 + query2.field2"
+            type="expression" /&gt;
+    &lt;/Variables&gt;
+
+    &lt;Detail&gt;
+        &lt;FieldHeaders&gt;
+            &lt;literal value="'My variable'" /&gt;
+        &lt;/FieldHeaders&gt;
+
+        &lt;FieldDetails&gt;
+            &lt;field value="v.var1" /&gt;
+        &lt;/FieldDetails&gt;
+    &lt;/Detail&gt;
+&lt;/Report&gt;</pre><p>
+					</p><p>
+						The trick is to use the <code class="literal">r.self</code>
+						internal variable.
+					</p><p>
+						Please note, that the above example will
+						not work as is, because for the first row,
+						<span class="emphasis"><em>there is no previous row</em></span>.
+						But there is a trick to avoid such problems,
+						namely using the <a class="xref" href="opsandfunc.html#TERNARYOP" title="3.5.1. Ternary operator">Ternary operator</a>
+						(or its equivalent, the <a class="xref" href="miscfuncs.html#IIFFUNC" title="4.13.5. iif()">iif() function</a>) and the
+						<code class="literal">rownum()</code> to perform only safe
+						computations. (Note that the <code class="literal">value=...</code>
+						part below is a single line.)
+						</p><pre class="programlisting">&lt;Variable&gt;
+    ...
+    value="rownum() == 1 ?
+           query1.field1 + query2.field2 :
+           r.self + query1.field1 + query2.field2"
+    ...
+&lt;/Variable&gt;</pre><p>
+					</p><p>
+						This example shows the correct operation of
+						an iterative expression. For the first row,
+						set a known good value. For every subsequent rows,
+						the previous row value may be used for deriving
+						the new value from.
+					</p><p>
+						The above spelled out example can also be written
+						as a <code class="literal">sum</code>ming variable:
+						</p><pre class="programlisting">&lt;Report&gt;
+    &lt;Variables&gt;
+        &lt;Variable
+            name="var1"
+            value="query1.field1 + query2.field2"
+            type="sum" /&gt;
+    &lt;/Variables&gt;
+
+    &lt;Detail&gt;
+        &lt;FieldHeaders&gt;
+            &lt;literal value="'My variable'" /&gt;
+        &lt;/FieldHeaders&gt;
+
+        &lt;FieldDetails&gt;
+            &lt;field value="v.var1" /&gt;
+        &lt;/FieldDetails&gt;
+    &lt;/Detail&gt;
+&lt;/Report&gt;</pre><p>
+					</p><p>
+						Here are two examples of the 
+						<code class="literal">count</code> and
+						<code class="literal">countall</code> variable types:
+						</p><pre class="programlisting">&lt;Report&gt;
+    &lt;Variables&gt;
+        &lt;Variable
+            name="var1"
+            value="query1.field1"
+            type="count" /&gt;
+
+        &lt;Variable
+            name="var2"
+            value="query1.field1"
+            type="countall" /&gt;
+    &lt;/Variables&gt;
+&lt;/Report&gt;</pre><p>
+					</p><p>
+						Here are two examples of using the
+						<code class="literal">average</code> and
+						<code class="literal">averageall</code>
+						variable types:
+						</p><pre class="programlisting">&lt;Report&gt;
+    &lt;Variables&gt;
+        &lt;Variable
+            name="var1"
+            value="query1.field1"
+            type="average" /&gt;
+
+        &lt;Variable
+            name="var2"
+            value="query1.field1"
+            type="averageall" /&gt;
+    &lt;/Variables&gt;
+&lt;/Report&gt;</pre><p>
+					</p><p>
+						Here are two examples of using
+						<code class="literal">highest</code> and
+						<code class="literal">lowest</code> variable types:
+						</p><pre class="programlisting">&lt;Report&gt;
+    &lt;Variables&gt;
+        &lt;Variable
+            name="var1"
+            value="query1.field1"
+            type="highest" /&gt;
+
+        &lt;Variable
+            name="var2"
+            value="query1.field1"
+            type="lowest" /&gt;
+    &lt;/Variables&gt;
+&lt;/Report&gt;</pre><p>
+					</p></div></div><div class="sect3" id="CUSTOMVARATTRS"><div class="titlepage"><div><div><h4 class="title">8.12.1.4. Custom variable attributes <a href="#CUSTOMVARATTRS" class="id_link">#</a></h4></div></div></div><p>
 					These attributes below define a custom variable.
 					A base expression, up to two intermediary expressions
 					and one result expression may be defined, together
@@ -95,7 +245,7 @@
 					are <a class="xref" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Expressions</a>.
 				</p><p>
 					Iterative or recursive variables can use
-					<a class="xref" href="identifiers.html#EXPRSELF" title="3.4.3.2.7. Expression self reference">Expression self reference</a>.
+					<a class="xref" href="identifiers.html#EXPRSELF" title="3.4.4.2.7. Expression self reference">Expression self reference</a>.
 				</p><p>
 					Possible values for <code class="literal">basetype</code> are
 					<code class="literal">number</code>, <code class="literal">string</code>
@@ -107,51 +257,125 @@
 				</p><p>
 					Note that the <code class="literal">baseexpr</code> attribute
 					is an alias for <code class="literal">value</code>.
-				</p></div><div class="sect3" id="RESETONBREAK"><div class="titlepage"><div><div><h4 class="title">2.12.1.5. Reset on break <a href="#RESETONBREAK" class="id_link">#</a></h4></div></div></div><p>
-					A variable may reset on break boundaries to the
-					<code class="literal">baseexpr</code> value. See
-					<a class="xref" href="breaknode.html" title="2.14. Break">Break node</a> and <a class="xref" href="breaks.html" title="Chapter 4. Report breaks">Report breaks</a>
+				</p><div class="sect4" id="XMLCUSTOMVAREXAMPLE"><div class="titlepage"><div><div><h5 class="title">8.12.1.4.1. Custom variable example <a href="#XMLCUSTOMVAREXAMPLE" class="id_link">#</a></h5></div></div></div><p>
+						For example, the <code class="literal">average</code> variable
+						works this way behind the scenes as written below.
+						</p><pre class="programlisting">&lt;Report&gt;
+    &lt;Variables&gt;
+        &lt;Variable
+            name="averagevar1"
+            type="custom"
+            basetype="number"
+            baseexpr="query1.field1"
+            intermedexpr="(rownum() == 1 ? 0 : r.self) +
+                          (isnull(r.baseexpr) ?
+                              0 : r.baseexpr)"
+            intermed2expr="r.self +
+                           (isnull(r.baseexpr) ? 0 : 1)"
+            resultexpr="r.intermedexpr / r.intermed2expr"
+            /&gt;
+    &lt;/Variables&gt;
+&lt;/Report&gt;</pre><p>
+					</p></div></div><div class="sect3" id="RESETONBREAK"><div class="titlepage"><div><div><h4 class="title">8.12.1.5. Reset on break <a href="#RESETONBREAK" class="id_link">#</a></h4></div></div></div><p>
+					A variable may be reset on break boundaries to the
+					base expression value, e.g. 0 for
+					<code class="literal">count</code> and other pre-defined variable
+					types. See <a class="xref" href="breaknode.html" title="8.14. Break">Break node</a> and
+					<a class="xref" href="breaks.html" title="Chapter 6. Report breaks">Report breaks</a>.
 					</p><pre class="programlisting">&lt;Variable resetonbreak="break1" /&gt;</pre><p>
 				</p><p>
 					Default is unset, i.e. no reset on a break.
-				</p></div><div class="sect3" id="PRECALCVARATTR"><div class="titlepage"><div><div><h4 class="title">2.12.1.6. Precalculate (delayed) <a href="#PRECALCVARATTR" class="id_link">#</a></h4></div></div></div><p>
-					A variable may work two ways. One is to generate an
-					immediate value that is either derived from the current
-					row, or derived from the current and previous rows.
-					Say, for a variable of the <code class="literal">average</code>
-					type, the value of the variable for the 5th row
-					is the average value of the base expression of the
-					first 5 rows.
 				</p><p>
-					The other way is <a class="xref" href="precalcvar.html" title="5.5. Precalculated variables">Precalculated variables</a>,
-					that are derived from either the last data row or
-					all rows, and supply that value for every data row.
+					Here's an example to use a variable that's value
+					is reset on a break boundary:
+					</p><pre class="programlisting">&lt;Report&gt;
+    &lt;Breaks&gt;
+        &lt;Break name="break1" ... &gt;
+            &lt;BreaksHeader&gt;
+                &lt;Output&gt;
+                    &lt;field value="v.var1" /&gt;
+                &lt;/Output&gt;
+            &lt;/BreaksHeader&gt;
+            &lt;BreaksFields&gt;
+                &lt;BreaksField value="query1.field2" /&gt;
+            &lt;/BreaksFields&gt;
+        &lt;/Break&gt;
+    &lt;/Breaks&gt;
+
+    &lt;Variables&gt;
+        &lt;Variable
+            name="var1"
+            value="query1.field1"
+            type="average"
+            precalculate="yes"
+            resetonbreak="'break1'" /&gt;
+    &lt;/Variables&gt;
+    ...
+&lt;/Report&gt;</pre><p>
+				</p><p>
+				</p></div><div class="sect3" id="PRECALCVARATTR"><div class="titlepage"><div><div><h4 class="title">8.12.1.6. Precalculate (delayed) <a href="#PRECALCVARATTR" class="id_link">#</a></h4></div></div></div><p>
+					A variable may work two ways. The first way is to
+					generate an immediate value that is valid for the current
+					row. See <a class="xref" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Expressions</a>. An expression
+					may reference the value computed for previous data row,
+					see <a class="xref" href="identifiers.html#EXPRSELF" title="3.4.4.2.7. Expression self reference">Expression self reference</a>.
+				</p><p>
+					The other way is <a class="xref" href="precalcvar.html" title="5.5. Precalculated variables">Precalculated variables</a>.
 					The attribute is accepted under two names:
 					</p><pre class="programlisting">&lt;Variable precalculate="yes" /&gt;
 &lt;Variable delayed="yes" /&gt;</pre><p>
 				</p><p>
 					Default is <code class="literal">no</code>.
 				</p><p>
-					<code class="literal">precalculate="yes"</code> (or
-					<code class="literal">delayed="yes"</code> may be combined
-					with <code class="literal">resetonbreak="..."</code>.
-					In this case, a precalculated value is
-					computed for the break periods separately.
+					A precalculated variable may also use the
+					<a class="xref" href="variablenode.html#RESETONBREAK" title="8.12.1.5. Reset on break">Reset on break attribute</a>. In this case,
+					the precalculated value is computed for each
+					break range separately.
 				</p><p>
-					Precalculated variables may be used to show values in
-					<code class="literal">&lt;ReportHeader&gt;</code>,
-					<code class="literal">&lt;ReportFooter&gt;</code>,
-					<code class="literal">&lt;FieldHeaders&gt;</code>,
-					<code class="literal">&lt;FieldDetails&gt;</code>,
-					<code class="literal">&lt;BreakHeader&gt;</code> and
-					<code class="literal">&lt;BreakFooter&gt;</code>
-					but not in
-					<code class="literal">&lt;PageHeader&gt;</code> and
-					<code class="literal">&lt;PageFooter&gt;</code>.
-					The reason for this is that the former headers,
-					footers and details are in
-					<code class="literal">&lt;Report&gt;</code> scope with a query.
-					On the other hand, the latter two are in
-					<code class="literal">&lt;Part&gt;</code> scope that don't know
-					about queries.
-				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="variablesnode.html" title="2.11. Variables">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="xmldescriptor.html" title="Chapter 2. Report XML description">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="breaksnode.html" title="2.13. Breaks">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.11. Variables </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.5 Manual">Home</a></td><td width="40%" align="right" valign="top"> 2.13. Breaks</td></tr></table></div></body></html>
+					Precalculated variables may be used to show totals in
+					e.g. <a class="xref" href="report.html#REPHEADER" title="8.9.2.3. Report header">Report header</a>,
+					in <code class="literal">&lt;FieldHeaders&gt;</code> in
+					<a class="xref" href="report.html#DETAILNODE" title="8.9.2.7. Detail">Detail node</a>,
+					in <a class="xref" href="breaknode.html#BREAKHEADERNODE" title="8.14.2.1. BreakHeader">BreakHeader</a>
+					and in
+					<a class="xref" href="report.html#REPORTPAGEHEADER" title="8.9.2.1. Page header">Report page header</a>,
+					among other places.
+				</p><p>
+					Here's an example of a precalculated variable:
+					</p><pre class="programlisting">&lt;Report&gt;
+    &lt;Variables&gt;
+        &lt;Variable
+            name="var1"
+            value="query1.field1"
+            type="average"
+            precalculate="yes" /&gt;
+    &lt;/Variables&gt;
+
+    &lt;ReportHeader&gt;
+        &lt;Output&gt;
+            &lt;field value="v.var1"&gt;
+        &lt;/Output&gt;
+    &lt;/ReportHeader&gt;
+&lt;/Report&gt;</pre><p>
+				</p><p>
+					To reveal the internals of a variable
+					that's value is reset on break boundaries,
+					here is the equivalent using a
+					<code class="literal">custom</code> variable.
+					The value returned by the <a class="xref" href="miscfuncs.html#BRROWNUMFUNC" title="4.13.1. brrownum()">Break row number function</a>
+					automatically resets at every break boundary, so it
+					can be used as below.
+					</p><pre class="programlisting">&lt;Variables&gt;
+    &lt;Variable
+        name="var1"
+        type="custom"
+        baseexpr="query1.field1"
+        intermedexpr="(brrownum('break1') == 1 ? 0 : r.self) +
+                      (isnull(r.baseexpr) ?
+                          0 : r.baseexpr)"
+        intermed2expr="r.self +
+                       (isnull(r.baseexpr) ? 0 : 1)"
+        resultexpr="r.intermedexpr / r.intermed2expr"
+        /&gt;
+&lt;/Variables&gt;</pre><p>
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="variablesnode.html" title="8.11. Variables">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="xmldescriptor.html" title="Chapter 8. Report XML description">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="breaksnode.html" title="8.13. Breaks">Next</a></td></tr><tr><td width="40%" align="left" valign="top">8.11. Variables </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="40%" align="right" valign="top"> 8.13. Breaks</td></tr></table></div></body></html>

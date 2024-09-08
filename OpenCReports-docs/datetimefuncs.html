@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>4.10. Datetime functions</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="stringfuncs.html" title="4.9. String functions" /><link rel="next" href="multitypefuncs.html" title="4.11. Type agnostic functions" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">4.10. Datetime functions</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="stringfuncs.html" title="4.9. String functions">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="functions.html" title="Chapter 4. Functions">Up</a></td><th width="60%" align="center">Chapter 4. Functions</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="multitypefuncs.html" title="4.11. Type agnostic functions">Next</a></td></tr></table><hr /></div><div class="sect1" id="DATETIMEFUNCS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">4.10. Datetime functions <a href="#DATETIMEFUNCS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="datetimefuncs.html#CHGDATEOFFUNC">4.10.1. chgdateof()</a></span></dt><dt><span class="sect2"><a href="datetimefuncs.html#CHGTIMEOFFUNC">4.10.2. chgtimeof()</a></span></dt><dt><span class="sect2"><a href="datetimefuncs.html#DATEFUNC">4.10.3. date()</a></span></dt><dt><span class="sect2"><a href="datetimefuncs.html#DATEOFFUNC">4.10.4. dateof()</a></span></dt><dt><span class="sect2"><a href="datetimefuncs.html#DAYFUNC">4.10.5. day()</a></span></dt><dt><span class="sect2"><a href="datetimefuncs.html#DIMFUNC">4.10.6. dim()</a></span></dt><dt><span class="sect2"><a href="datetimefuncs.html#DTOSFUNC">4.10.7. dtos()</a></span></dt><dt><span class="sect2"><a href="datetimefuncs.html#DTOSFFUNC">4.10.8. dtosf()</a></span></dt><dt><span class="sect2"><a href="datetimefuncs.html#GETTIMEINSECSFUNC">4.10.9. gettimeinsecs()</a></span></dt><dt><span class="sect2"><a href="datetimefuncs.html#INTERVALFUNC">4.10.10. interval()</a></span></dt><dt><span class="sect2"><a href="datetimefuncs.html#MONTHFUNC">4.10.11. month()</a></span></dt><dt><span class="sect2"><a href="datetimefuncs.html#NOWFUNC">4.10.12. now()</a></span></dt><dt><span class="sect2"><a href="datetimefuncs.html#SETTIMEINSECSFUNC">4.10.13. settimeinsecs()</a></span></dt><dt><span class="sect2"><a href="datetimefuncs.html#STDWIYFUNC">4.10.14. stdwiy()</a></span></dt><dt><span class="sect2"><a href="datetimefuncs.html#STODFUNC">4.10.15. stod()</a></span></dt><dt><span class="sect2"><a href="datetimefuncs.html#STODTFUNC">4.10.16. stodt()</a></span></dt><dt><span class="sect2"><a href="datetimefuncs.html#STODTSQLFUNC">4.10.17. stodtsql()</a></span></dt><dt><span class="sect2"><a href="datetimefuncs.html#TIMEOFFUNC">4.10.18. timeof()</a></span></dt><dt><span class="sect2"><a href="datetimefuncs.html#TSTODFUNC">4.10.19. tstod()</a></span></dt><dt><span class="sect2"><a href="datetimefuncs.html#WIYFUNC">4.10.20. wiy()</a></span></dt><dt><span class="sect2"><a href="datetimefuncs.html#WIY1FUNC">4.10.21. wiy1()</a></span></dt><dt><span class="sect2"><a href="datetimefuncs.html#WIYOFUNC">4.10.22. wiyo()</a></span></dt><dt><span class="sect2"><a href="datetimefuncs.html#YEARFUNC">4.10.23. year()</a></span></dt></dl></div><div class="sect2" id="CHGDATEOFFUNC"><div class="titlepage"><div><div><h3 class="title">4.10.1. chgdateof() <a href="#CHGDATEOFFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Change the date part of the first operand to
+				the date part of the second operand.
+				It takes two datetime operands.
+			</p></div><div class="sect2" id="CHGTIMEOFFUNC"><div class="titlepage"><div><div><h3 class="title">4.10.2. chgtimeof() <a href="#CHGTIMEOFFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Change the time part of the first operand to
+				the date part of the second operand.
+				It takes two datetime operands.
+			</p></div><div class="sect2" id="DATEFUNC"><div class="titlepage"><div><div><h3 class="title">4.10.3. date() <a href="#DATEFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Return the current date. It takes zero operands.
+			</p></div><div class="sect2" id="DATEOFFUNC"><div class="titlepage"><div><div><h3 class="title">4.10.4. dateof() <a href="#DATEOFFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Return the date part.
+				It takes one datetime operand.
+			</p></div><div class="sect2" id="DAYFUNC"><div class="titlepage"><div><div><h3 class="title">4.10.5. day() <a href="#DAYFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Return the day of month value as a number.
+				It takes one datetime operand.
+			</p></div><div class="sect2" id="DIMFUNC"><div class="titlepage"><div><div><h3 class="title">4.10.6. dim() <a href="#DIMFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Returns the number of days in the month according to
+				the year and month values of the operand.
+				It takes one datetime operand.
+			</p></div><div class="sect2" id="DTOSFUNC"><div class="titlepage"><div><div><h3 class="title">4.10.7. dtos() <a href="#DTOSFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Convert a datetime to string.
+				The date part of the datetime is formatted according
+				to the date format of the currently set locale.
+				It takes one datetime operand.
+			</p></div><div class="sect2" id="DTOSFFUNC"><div class="titlepage"><div><div><h3 class="title">4.10.8. dtosf() <a href="#DTOSFFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Convert a datetime to formatted string.
+				It takes two operands, one datetime and one string.
+				It takes the second (string) operand as a format string and
+				formats the datetime value according to the format string.
+				If the second operand is NULL or empty string,
+				this function behaves like the <a class="xref" href="datetimefuncs.html#DTOSFUNC" title="4.10.7. dtos()">dtos() function</a>.
+				Otherwise it behaves like the <a class="xref" href="formatfuncs.html#FORMATFUNC" title="4.12.1. format()">format() function</a>
+				with the operands reversed.
+			</p></div><div class="sect2" id="GETTIMEINSECSFUNC"><div class="titlepage"><div><div><h3 class="title">4.10.9. gettimeinsecs() <a href="#GETTIMEINSECSFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Convert the time part of the datetime to seconds elapsed
+				from 00:00:00. It takes one datetime operand.
+			</p></div><div class="sect2" id="INTERVALFUNC"><div class="titlepage"><div><div><h3 class="title">4.10.10. interval() <a href="#INTERVALFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Convert the parameter(s) to an interval subtype of
+				the datetime type. It takes either one string operand,
+				or six numeric operands.
+			</p><p>
+				In the first case, the string is parsed for interval values,
+				like <code class="literal">1 year</code> or <code class="literal">2 months</code>,
+				etc., and sets the specific datetime part values.
+			</p><p>
+				In the second case, the six numeric operands are the values
+				for the datetime parts, in the order of years, months, days,
+				hours, minutes and seconds.
+			</p></div><div class="sect2" id="MONTHFUNC"><div class="titlepage"><div><div><h3 class="title">4.10.11. month() <a href="#MONTHFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Return the month value of a datetime. It takes one datetime operand.
+			</p></div><div class="sect2" id="NOWFUNC"><div class="titlepage"><div><div><h3 class="title">4.10.12. now() <a href="#NOWFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Return the current timestamp in a datetime value.
+				It takes zero operands.
+			</p><p>
+				The "current timestamp" is determined at the beginning
+				of generating the report. This function returns the same
+				stable value for the lifetime of the report.
+			</p></div><div class="sect2" id="SETTIMEINSECSFUNC"><div class="titlepage"><div><div><h3 class="title">4.10.13. settimeinsecs() <a href="#SETTIMEINSECSFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Return a datetime with the time part of a datetime changed
+				to the specified seconds after 00:00:00.
+				It takes two operands, the first operand is a datetime,
+				the second is a numeric integer.
+			</p></div><div class="sect2" id="STDWIYFUNC"><div class="titlepage"><div><div><h3 class="title">4.10.14. stdwiy() <a href="#STDWIYFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Return the  ISO-8601 week number of a datetime as a decimal
+				number, range 01 to 53, where week 1 is the first week
+				that has at least 4 days in the new year.
+				It takes one datetime operand.
+			</p></div><div class="sect2" id="STODFUNC"><div class="titlepage"><div><div><h3 class="title">4.10.15. stod() <a href="#STODFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Alias for <code class="literal">stodt()</code>.
+			</p></div><div class="sect2" id="STODTFUNC"><div class="titlepage"><div><div><h3 class="title">4.10.16. stodt() <a href="#STODTFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Convert a string to a datetime value.
+				It takes one string operand.
+			</p><p>
+				This function is smart enough to recognize locale
+				specific and standard ISO-8601 formats. It handles
+				whole datetime, date-only and time-only values in
+				the string.
+			</p></div><div class="sect2" id="STODTSQLFUNC"><div class="titlepage"><div><div><h3 class="title">4.10.17. stodtsql() <a href="#STODTSQLFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Alias for <code class="literal">stodt()</code>.
+			</p></div><div class="sect2" id="TIMEOFFUNC"><div class="titlepage"><div><div><h3 class="title">4.10.18. timeof() <a href="#TIMEOFFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Return time part of the datetime operand.
+				It takes one datetime operand.
+			</p></div><div class="sect2" id="TSTODFUNC"><div class="titlepage"><div><div><h3 class="title">4.10.19. tstod() <a href="#TSTODFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Alias for <code class="literal">stodt()</code>.
+			</p></div><div class="sect2" id="WIYFUNC"><div class="titlepage"><div><div><h3 class="title">4.10.20. wiy() <a href="#WIYFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Return the week number of the operand as a decimal number,
+				range 00 to 53, starting with the first Sunday as
+				the first day of week 01.
+				It takes one datetime operand.
+			</p></div><div class="sect2" id="WIY1FUNC"><div class="titlepage"><div><div><h3 class="title">4.10.21. wiy1() <a href="#WIY1FUNC" class="id_link">#</a></h3></div></div></div><p>
+				Return the week number of the operand as a decimal number,
+				range 00 to 53, starting with the first Monday as
+				the first day of week 01.
+				It takes one datetime operand.
+			</p></div><div class="sect2" id="WIYOFUNC"><div class="titlepage"><div><div><h3 class="title">4.10.22. wiyo() <a href="#WIYOFUNC" class="id_link">#</a></h3></div></div></div><p>
+				This function returns the week number of the first
+				operand as a decimal number, range 00 to 53, starting
+				with the specified day number as the first day.
+				(0 = Sunday, 1 = Monday, 2 = Tuesday, ...)
+				It takes two operands, the first is a datetime, the
+				second is a numeric integer.
+			</p></div><div class="sect2" id="YEARFUNC"><div class="titlepage"><div><div><h3 class="title">4.10.23. year() <a href="#YEARFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Return the year value of the operand as a numeric value.
+				It takes one datetime operand.
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="stringfuncs.html" title="4.9. String functions">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="functions.html" title="Chapter 4. Functions">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="multitypefuncs.html" title="4.11. Type agnostic functions">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.9. String functions </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="40%" align="right" valign="top"> 4.11. Type agnostic functions</td></tr></table></div></body></html>

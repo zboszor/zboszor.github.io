@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>4.1. Introduction</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="functions.html" title="Chapter 4. Functions" /><link rel="next" href="arithfuncs.html" title="4.2. Arithmetic functions" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">4.1. Introduction</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="functions.html" title="Chapter 4. Functions">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="functions.html" title="Chapter 4. Functions">Up</a></td><th width="60%" align="center">Chapter 4. Functions</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="arithfuncs.html" title="4.2. Arithmetic functions">Next</a></td></tr></table><hr /></div><div class="sect1" id="FUNCSINTRO"><div class="titlepage"><div><div><h2 class="title" style="clear: both">4.1. Introduction <a href="#FUNCSINTRO" class="id_link">#</a></h2></div></div></div><p>
+			This section lists the functions supported by OpenCReports
+			in topics, and alphabetically in their topic.
+		</p><p>
+			Most functions below operate in this way, unless noted otherwise:
+			</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+						numeric and bitwise functions with more than two operands
+						take their first operand and perform the same operation
+						using the second, third, etc. operands repeatedly.
+					</p></li><li class="listitem"><p>
+						if any of the operands is an error (resulting from
+						runtime processing of a subexpression), then the
+						result will use the exact error of the first operand
+						that is an error.
+					</p></li><li class="listitem"><p>
+						if any of the operands is NULL (e.g. the data source
+						is SQL and the field value is SQL NULL) then the
+						result will also be NULL.
+					</p></li><li class="listitem"><p>
+						Boolean logic functions treat their operands with
+						0 being false and anything else (even fractions less
+						than 0.5) as true.
+					</p></li><li class="listitem"><p>
+						Bitwise functions treat their operands as 64-bit
+						numeric values, with rounding if they are fractions.
+					</p></li><li class="listitem"><p>
+						String arithmetics operate on UTF-8 encoded strings
+						and count in number of UTF-8 characters instead of
+						byte length.
+					</p></li></ul></div><p>
+		</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="functions.html" title="Chapter 4. Functions">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="functions.html" title="Chapter 4. Functions">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="arithfuncs.html" title="4.2. Arithmetic functions">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 4. Functions </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="40%" align="right" valign="top"> 4.2. Arithmetic functions</td></tr></table></div></body></html>
