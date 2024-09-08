@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>8.9. Report</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="partcol.html" title="8.8. Part column" /><link rel="next" href="loadedreport.html" title="8.10. Loaded report" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">8.9. Report</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="partcol.html" title="8.8. Part column">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="xmldescriptor.html" title="Chapter 8. Report XML description">Up</a></td><th width="60%" align="center">Chapter 8. Report XML description</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="loadedreport.html" title="8.10. Loaded report">Next</a></td></tr></table><hr /></div><div class="sect1" id="REPORT"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.9. Report <a href="#REPORT" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="report.html#REPORTATTRIBS">8.9.1. Report attributes</a></span></dt><dt><span class="sect2"><a href="report.html#REPSUBSECS">8.9.2. Report subsections</a></span></dt></dl></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>8.9. Report</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="partcol.html" title="8.8. Part column" /><link rel="next" href="loadedreport.html" title="8.10. Loaded report" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">8.9. Report</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="partcol.html" title="8.8. Part column">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="xmldescriptor.html" title="Chapter 8. Report XML description">Up</a></td><th width="60%" align="center">Chapter 8. Report XML description</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.7 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="loadedreport.html" title="8.10. Loaded report">Next</a></td></tr></table><hr /></div><div class="sect1" id="REPORT"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.9. Report <a href="#REPORT" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="report.html#REPORTATTRIBS">8.9.1. Report attributes</a></span></dt><dt><span class="sect2"><a href="report.html#REPSUBSECS">8.9.2. Report subsections</a></span></dt></dl></div><p>
 			This section may occur in a wider context or
 			standalone in an OpenCReports XML report
 			description file.
@@ -190,51 +190,83 @@
 					Height of the report.
 					</p><pre class="programlisting">&lt;Report height="120"&gt;</pre><p>
 				</p><p>
-					When <a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="8.2.1. Size unit attribute">Size unit attribute</a> is set to
-					<code class="literal">rlib</code> (the default),
-					the report height is measured in characters,
-					which is controlled by <a class="xref" href="report.html#REPORTFONTSIZE" title="8.9.1.2. Font size">Report font size</a>.
-					Note, that the font width and height may differ,
-					depending on the font face controlled by
-					<a class="xref" href="report.html#REPORTFONTNAME" title="8.9.1.1. Font name">Report font name</a>. Report height is
-					computed from the font height.
-				</p><p>
-					When <a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="8.2.1. Size unit attribute">Size unit attribute</a> is set to
-					<code class="literal">points</code>, height is measured
-					in points.
-				</p><p>
-					Report details are layed out up to the
-					specified height. If the report would run longer
-					than the specified height, it gets truncated.
-					When the report fits in the specified height,
-					the next report starts with the remaining height
-					added as padding before it.
-				</p><p>
-					If the <code class="literal">&lt;Report&gt;</code> is the last
-					one in the <code class="literal">&lt;pd&gt;</code> node, then
-					the report may or may not be padded with the remaining
-					height, depending on the
-					<a class="xref" href="ocrpttopxml.html#REPORTHEIGHTAFTERLAST" title="8.2.3. Report height after last">Report height after last attribute</a>.
-				</p><p>
-					If height is unset for the parent
-					<code class="literal">&lt;pd&gt;</code> node, it is expanded
-					with this vertical padding.
-				</p><p>
-					In case height is set for both the parent
-					<code class="literal">&lt;pd&gt;</code> node and the
-					<code class="literal">&lt;Report&gt;</code> nodes in it,
-					the height value for <code class="literal">&lt;pd&gt;</code>
-					is applied first. It would limit the displayed
-					rows in whichever <code class="literal">&lt;Report&gt;</code> node
-					is terminated by it. Subsequent
-					<code class="literal">&lt;Report&gt;</code> nodes would
-					no be displayed in that <code class="literal">&lt;pd&gt;</code>
-					node.
-				</p><p>
-					Note, that OpenCReports allows fixed-height
-					reports to break over page boundaries.
-					This is a deviation from RLIB.
-				</p></div><div class="sect3" id="REPORTITER"><div class="titlepage"><div><div><h4 class="title">8.9.1.10. Iterations <a href="#REPORTITER" class="id_link">#</a></h4></div></div></div><p>
+					This setting is interpreted differently depending on
+					whether the report XML description uses
+					<code class="literal">&lt;OpenCReport&gt;</code>
+					as the toplevel node, or it uses
+					either <code class="literal">&lt;Part&gt;</code> or
+					<code class="literal">&lt;Report&gt;</code>.
+				</p><div class="sect4" id="REPORTHEIGHTOCRPT"><div class="titlepage"><div><div><h5 class="title">8.9.1.9.1. Report height in OpenCReports mode <a href="#REPORTHEIGHTOCRPT" class="id_link">#</a></h5></div></div></div><p>
+						When <a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="8.2.1. Size unit attribute">Size unit attribute</a> is set to
+						<code class="literal">rlib</code> (the default),
+						the report height is measured in characters,
+						which is controlled by <a class="xref" href="report.html#REPORTFONTSIZE" title="8.9.1.2. Font size">Report font size</a>.
+						Note, that the font width and height may differ,
+						depending on the font face controlled by
+						<a class="xref" href="report.html#REPORTFONTNAME" title="8.9.1.1. Font name">Report font name</a>. Report height is
+						computed from the font height.
+					</p><p>
+						When <a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="8.2.1. Size unit attribute">Size unit attribute</a> is set to
+						<code class="literal">points</code>, height is measured
+						in points.
+					</p><p>
+						Report details are layed out up to the
+						specified height. If the report would run longer
+						than the specified height, it gets truncated.
+						When the report fits in the specified height,
+						the next report starts with the remaining height
+						added as padding before it.
+					</p><p>
+						If the <code class="literal">&lt;Report&gt;</code> is the last
+						one in the <code class="literal">&lt;pd&gt;</code> node, then
+						the report may or may not be padded with the remaining
+						height, depending on the
+						<a class="xref" href="ocrpttopxml.html#REPORTHEIGHTAFTERLAST" title="8.2.3. Report height after last">Report height after last attribute</a>.
+					</p><p>
+						If height is unset for the parent
+						<code class="literal">&lt;pd&gt;</code> node, it is expanded
+						with this vertical padding.
+					</p><p>
+						In case height is set for both the parent
+						<code class="literal">&lt;pd&gt;</code> node and the
+						<code class="literal">&lt;Report&gt;</code> nodes in it,
+						the height value for <code class="literal">&lt;pd&gt;</code>
+						is applied first. It would limit the displayed
+						rows in whichever <code class="literal">&lt;Report&gt;</code> node
+						is terminated by it. Subsequent
+						<code class="literal">&lt;Report&gt;</code> nodes would
+						no be displayed in that <code class="literal">&lt;pd&gt;</code>
+						node.
+					</p><p>
+						Note, that OpenCReports allows fixed-height
+						reports to break over page boundaries.
+						This is a deviation from RLIB.
+					</p></div><div class="sect4" id="REPORTHEIGHTRLIB"><div class="titlepage"><div><div><h5 class="title">8.9.1.9.2. Report height in RLIB compatibility mode <a href="#REPORTHEIGHTRLIB" class="id_link">#</a></h5></div></div></div><p>
+						When parsing XML descriptions from RLIB, i.e. when
+						either <code class="literal">&lt;Part&gt;</code> or
+						<code class="literal">&lt;Report&gt;</code> is used as
+						the toplevel node, compatibility mode is turned on
+						for interpreting this setting.
+					</p><p>
+						In this mode, the report height is interpreted
+						as a percentage of the height set in
+						<a class="xref" href="partcol.html#PARTCOLHEIGHT" title="8.8.1.2. Height">Part column height attribute</a>. In this case,
+						the report height setting is a hint, to use it
+						as <span class="emphasis"><em>minimum height</em></span>.
+						If the <code class="literal">&lt;Report&gt;</code> is rendered
+						on the same page from start to end, and is shorter
+						than the height of the parent
+						<code class="literal">&lt;pd&gt;</code> node, then a gap is
+						added to the <code class="literal">&lt;Report&gt;</code>.
+						If there are multiple <code class="literal">&lt;Report&gt;</code>
+						nodes in the same <code class="literal">&lt;pd&gt;</code>
+						node, this will separate them visually.
+					</p><p>
+						Note, that this behaviour is not available when
+						using the programming API to create a report.
+						It's only for RLIB compatibility which relied
+						only on the report XML description file.
+					</p></div></div><div class="sect3" id="REPORTITER"><div class="titlepage"><div><div><h4 class="title">8.9.1.10. Iterations <a href="#REPORTITER" class="id_link">#</a></h4></div></div></div><p>
 					The same <code class="literal">&lt;Report&gt;</code> may be
 					executed multiple times.
 					</p><pre class="programlisting">&lt;Report iterations="3"&gt;</pre><p>
@@ -522,4 +554,4 @@
 					<a class="xref" href="ocrpttopxml.html#NOQUERYSHOWNODATA" title="8.2.2. No query show NoData">No query show NoData attribute</a> is set, then
 					the <code class="literal">&lt;NoData&gt;</code> section
 					is not displayed.
-				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="partcol.html" title="8.8. Part column">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="xmldescriptor.html" title="Chapter 8. Report XML description">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="loadedreport.html" title="8.10. Loaded report">Next</a></td></tr><tr><td width="40%" align="left" valign="top">8.8. Part column </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.6 Manual">Home</a></td><td width="40%" align="right" valign="top"> 8.10. Loaded report</td></tr></table></div></body></html>
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="partcol.html" title="8.8. Part column">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="xmldescriptor.html" title="Chapter 8. Report XML description">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="loadedreport.html" title="8.10. Loaded report">Next</a></td></tr><tr><td width="40%" align="left" valign="top">8.8. Part column </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.7 Manual">Home</a></td><td width="40%" align="right" valign="top"> 8.10. Loaded report</td></tr></table></div></body></html>
