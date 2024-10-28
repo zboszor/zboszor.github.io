@@ -21,16 +21,6 @@ rlib_free(OpenCReport $r): void;</pre><p>
 				</p><pre class="programlisting">function
 rlib_version(void): string;</pre><p>
 			</p></div><div class="sect2" id="RLIBADDMARIADS"><div class="titlepage"><div><div><h3 class="title">12.22.4. Add a MySQL/MariaDB datasource <a href="#RLIBADDMARIADS" class="id_link">#</a></h3></div></div></div><p>
-				This function is mostly equivalent to
-				<code class="literal">OpenCReport::datasource_add_mariadb()</code>
-				except that this function does not have a
-				<code class="literal">port</code> parameter and it
-				doesn't handle the port the way RLIB handled
-				it as an afterthought, i.e. the value of
-				<code class="literal">$host</code> could have a
-				<code class="literal">:port</code> suffix. Only
-				the default port will be used, which may be
-				set in the MySQL or MariaDB configuration.
 				</p><pre class="programlisting">function
 rlib_add_datasource_mysql(
                      OpenCReport $r,
@@ -40,9 +30,21 @@ rlib_add_datasource_mysql(
                      string $password,
                      string $dbname):
                      OpenCReport\Datasource;</pre><p>
+			</p><p>
+				This function is equivalent to using
+				<code class="literal">OpenCReport::datasource_add()</code>
+				with the MariaDB input driver with expanded connection
+				parameters, but without specifying a custom port:
+				</p><pre class="programlisting">$o = new OpenCReport();
+
+$conn_params = [
+    "host" =&gt; "myserver",
+    "dbname" =&gt; "ocrpttest",
+    "user" =&gt; "ocrpt"
+];
+
+$ds = $o-&gt;datasource_add("mariadb", "mariadb", $conn_params);</pre><p>
 			</p></div><div class="sect2" id="RLIBADDMARIADS2"><div class="titlepage"><div><div><h3 class="title">12.22.5. Add a MySQL/MariaDB datasource from an INI group <a href="#RLIBADDMARIADS2" class="id_link">#</a></h3></div></div></div><p>
-				This function is equivalent to
-				<code class="literal">OpenCReport::datasource_add_mariadb2()</code>.
 				</p><pre class="programlisting">function
 rlib_add_datasource_mysql_from_group(
                      OpenCReport $r,
@@ -50,18 +52,37 @@ rlib_add_datasource_mysql_from_group(
                      string $group,
                      ?string $option_file = null):
                      OpenCReport\Datasource;</pre><p>
+			</p><p>
+				This function is equivalent to using
+				<code class="literal">OpenCReport::datasource_add()</code>
+				with MariaDB input driver, using the option file and
+				group parameters:
+				</p><pre class="programlisting">$o = new OpenCReport();
+
+$conn_params = [
+    "optionfile" =&gt; "./mariadb/ocrpt.cnf",
+    "group" =&gt; "ocrpt"
+];
+
+$ds = $o-&gt;datasource_add("mariadb", "mariadb", $conn_params);</pre><p>
 			</p></div><div class="sect2" id="RLIBADDPGDS"><div class="titlepage"><div><div><h3 class="title">12.22.6. Add a PostgreSQL datasource <a href="#RLIBADDPGDS" class="id_link">#</a></h3></div></div></div><p>
-				This function is equivalent to
-				<code class="literal">OpenCReport::datasource_add_postgresql2()</code>.
 				</p><pre class="programlisting">function
 rlib_add_datasource_postgres(
                      OpenCReport $r,
                      string $source_name,
                      ?string $connection_info = null):
                      OpenCReport\Datasource;</pre><p>
+			</p><p>
+				This function is equivalent to using
+				<code class="literal">OpenCReport::datasource_add()</code>
+				with the PostgreSQL input driver using
+				the connection info string:
+				</p><pre class="programlisting">$o = new OpenCReport();
+
+$conn_params = [ "connstr" =&gt; "dbname=ocrpttest user=ocrpt" ];
+
+$ds = $o-&gt;datasource_add("pgsql", "postgresql", $conn_params);</pre><p>
 			</p></div><div class="sect2" id="RLIBADDODBCDS"><div class="titlepage"><div><div><h3 class="title">12.22.7. Add an ODBC datasource <a href="#RLIBADDODBCDS" class="id_link">#</a></h3></div></div></div><p>
-				This function is equivalent to
-				<code class="literal">OpenCReport::datasource_add_odbc()</code>.
 				</p><pre class="programlisting">function
 rlib_add_datasource_odbc(
                      OpenCReport $r,
@@ -70,30 +91,58 @@ rlib_add_datasource_odbc(
                      ?string $user, = null,
                      ?string $password = null):
                      OpenCReport\Datasource;</pre><p>
+			</p><p>
+				This function is equivalent to using
+				<code class="literal">OpenCReport::datasource_add()</code>
+				with the ODBC input driver with expanded connection
+				parameters:
+				</p><pre class="programlisting">$o = new OpenCReport();
+
+$conn_params = [
+    "dbname" =&gt; "mydb",
+    "user" =&gt; "myuser"
+];
+
+$ds = $o-&gt;datasource_add("odbc", "odbc", $conn_params);</pre><p>
 			</p></div><div class="sect2" id="RLIBADDARRAYDS"><div class="titlepage"><div><div><h3 class="title">12.22.8. Add an array datasource <a href="#RLIBADDARRAYDS" class="id_link">#</a></h3></div></div></div><p>
-				This function is equivalent to
-				<code class="literal">OpenCReport::datasource_add_array()</code>.
 				</p><pre class="programlisting">function
 rlib_add_datasource_array(
                      OpenCReport $r,
                      string $source_name):
                      OpenCReport\Datasource;</pre><p>
+			</p><p>
+				This function is equivalent to using
+				<code class="literal">OpenCReport::datasource_add()</code>
+				with the array input driver:
+				</p><pre class="programlisting">$o = new OpenCReport();
+
+$ds = $o-&gt;datasource_add("array", "array");</pre><p>
 			</p></div><div class="sect2" id="RLIBADDXMLDS"><div class="titlepage"><div><div><h3 class="title">12.22.9. Add an XML datasource <a href="#RLIBADDXMLDS" class="id_link">#</a></h3></div></div></div><p>
-				This function is equivalent to
-				<code class="literal">OpenCReport::datasource_add_xml()</code>.
 				</p><pre class="programlisting">function
 rlib_add_datasource_xml(
                      OpenCReport $r,
                      string $source_name):
                      OpenCReport\Datasource;</pre><p>
+			</p><p>
+				This function is equivalent to using
+				<code class="literal">OpenCReport::datasource_add()</code>
+				with the XML input driver:
+				</p><pre class="programlisting">$o = new OpenCReport();
+
+$ds = $o-&gt;datasource_add("xml", "xml");</pre><p>
 			</p></div><div class="sect2" id="RLIBADDCSVDS"><div class="titlepage"><div><div><h3 class="title">12.22.10. Add a CSV datasource <a href="#RLIBADDCSVDS" class="id_link">#</a></h3></div></div></div><p>
-				This function is equivalent to
-				<code class="literal">OpenCReport::datasource_add_csv()</code>.
 				</p><pre class="programlisting">function
 rlib_add_datasource_csv(
                      OpenCReport $r,
                      string $source_name):
                      OpenCReport\Datasource;</pre><p>
+			</p><p>
+				This function is equivalent to using
+				<code class="literal">OpenCReport::datasource_add()</code>
+				with the CSV input driver:
+				</p><pre class="programlisting">$o = new OpenCReport();
+
+$ds = $o-&gt;datasource_add("csv", "csv");</pre><p>
 			</p></div><div class="sect2" id="RLIBADDQUERY"><div class="titlepage"><div><div><h3 class="title">12.22.11. Add a query <a href="#RLIBADDQUERY" class="id_link">#</a></h3></div></div></div><p>
 				This function is equivalent to
 				<code class="literal">OpenCReport\Datasource::query_add()</code>

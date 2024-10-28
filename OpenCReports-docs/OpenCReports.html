@@ -8793,8 +8793,8 @@ OpenCReport::final get_color(
 			This class has no constructor, so such an object
 			cannot be created or used on its own. A datasource
 			only is only useful as part of a report. The
-			<code class="literal">OpenCReport::datasource_add_*</code>
-			methods return an object of this class.
+			<code class="literal">OpenCReport::datasource_add()</code>
+			method return an object of this class.
 			</p><pre class="programlisting">class OpenCReport\Datasource {
     public final free(): void;
 
@@ -10802,16 +10802,6 @@ rlib_free(OpenCReport $r): void;</pre><p>
 				</p><pre class="programlisting">function
 rlib_version(void): string;</pre><p>
 			</p></div><div class="sect2" id="RLIBADDMARIADS"><div class="titlepage"><div><div><h3 class="title">12.22.4. Add a MySQL/MariaDB datasource <a href="#RLIBADDMARIADS" class="id_link">#</a></h3></div></div></div><p>
-				This function is mostly equivalent to
-				<code class="literal">OpenCReport::datasource_add_mariadb()</code>
-				except that this function does not have a
-				<code class="literal">port</code> parameter and it
-				doesn't handle the port the way RLIB handled
-				it as an afterthought, i.e. the value of
-				<code class="literal">$host</code> could have a
-				<code class="literal">:port</code> suffix. Only
-				the default port will be used, which may be
-				set in the MySQL or MariaDB configuration.
 				</p><pre class="programlisting">function
 rlib_add_datasource_mysql(
                      OpenCReport $r,
@@ -10821,9 +10811,21 @@ rlib_add_datasource_mysql(
                      string $password,
                      string $dbname):
                      OpenCReport\Datasource;</pre><p>
+			</p><p>
+				This function is equivalent to using
+				<code class="literal">OpenCReport::datasource_add()</code>
+				with the MariaDB input driver with expanded connection
+				parameters, but without specifying a custom port:
+				</p><pre class="programlisting">$o = new OpenCReport();
+
+$conn_params = [
+    "host" =&gt; "myserver",
+    "dbname" =&gt; "ocrpttest",
+    "user" =&gt; "ocrpt"
+];
+
+$ds = $o-&gt;datasource_add("mariadb", "mariadb", $conn_params);</pre><p>
 			</p></div><div class="sect2" id="RLIBADDMARIADS2"><div class="titlepage"><div><div><h3 class="title">12.22.5. Add a MySQL/MariaDB datasource from an INI group <a href="#RLIBADDMARIADS2" class="id_link">#</a></h3></div></div></div><p>
-				This function is equivalent to
-				<code class="literal">OpenCReport::datasource_add_mariadb2()</code>.
 				</p><pre class="programlisting">function
 rlib_add_datasource_mysql_from_group(
                      OpenCReport $r,
@@ -10831,18 +10833,37 @@ rlib_add_datasource_mysql_from_group(
                      string $group,
                      ?string $option_file = null):
                      OpenCReport\Datasource;</pre><p>
+			</p><p>
+				This function is equivalent to using
+				<code class="literal">OpenCReport::datasource_add()</code>
+				with MariaDB input driver, using the option file and
+				group parameters:
+				</p><pre class="programlisting">$o = new OpenCReport();
+
+$conn_params = [
+    "optionfile" =&gt; "./mariadb/ocrpt.cnf",
+    "group" =&gt; "ocrpt"
+];
+
+$ds = $o-&gt;datasource_add("mariadb", "mariadb", $conn_params);</pre><p>
 			</p></div><div class="sect2" id="RLIBADDPGDS"><div class="titlepage"><div><div><h3 class="title">12.22.6. Add a PostgreSQL datasource <a href="#RLIBADDPGDS" class="id_link">#</a></h3></div></div></div><p>
-				This function is equivalent to
-				<code class="literal">OpenCReport::datasource_add_postgresql2()</code>.
 				</p><pre class="programlisting">function
 rlib_add_datasource_postgres(
                      OpenCReport $r,
                      string $source_name,
                      ?string $connection_info = null):
                      OpenCReport\Datasource;</pre><p>
+			</p><p>
+				This function is equivalent to using
+				<code class="literal">OpenCReport::datasource_add()</code>
+				with the PostgreSQL input driver using
+				the connection info string:
+				</p><pre class="programlisting">$o = new OpenCReport();
+
+$conn_params = [ "connstr" =&gt; "dbname=ocrpttest user=ocrpt" ];
+
+$ds = $o-&gt;datasource_add("pgsql", "postgresql", $conn_params);</pre><p>
 			</p></div><div class="sect2" id="RLIBADDODBCDS"><div class="titlepage"><div><div><h3 class="title">12.22.7. Add an ODBC datasource <a href="#RLIBADDODBCDS" class="id_link">#</a></h3></div></div></div><p>
-				This function is equivalent to
-				<code class="literal">OpenCReport::datasource_add_odbc()</code>.
 				</p><pre class="programlisting">function
 rlib_add_datasource_odbc(
                      OpenCReport $r,
@@ -10851,30 +10872,58 @@ rlib_add_datasource_odbc(
                      ?string $user, = null,
                      ?string $password = null):
                      OpenCReport\Datasource;</pre><p>
+			</p><p>
+				This function is equivalent to using
+				<code class="literal">OpenCReport::datasource_add()</code>
+				with the ODBC input driver with expanded connection
+				parameters:
+				</p><pre class="programlisting">$o = new OpenCReport();
+
+$conn_params = [
+    "dbname" =&gt; "mydb",
+    "user" =&gt; "myuser"
+];
+
+$ds = $o-&gt;datasource_add("odbc", "odbc", $conn_params);</pre><p>
 			</p></div><div class="sect2" id="RLIBADDARRAYDS"><div class="titlepage"><div><div><h3 class="title">12.22.8. Add an array datasource <a href="#RLIBADDARRAYDS" class="id_link">#</a></h3></div></div></div><p>
-				This function is equivalent to
-				<code class="literal">OpenCReport::datasource_add_array()</code>.
 				</p><pre class="programlisting">function
 rlib_add_datasource_array(
                      OpenCReport $r,
                      string $source_name):
                      OpenCReport\Datasource;</pre><p>
+			</p><p>
+				This function is equivalent to using
+				<code class="literal">OpenCReport::datasource_add()</code>
+				with the array input driver:
+				</p><pre class="programlisting">$o = new OpenCReport();
+
+$ds = $o-&gt;datasource_add("array", "array");</pre><p>
 			</p></div><div class="sect2" id="RLIBADDXMLDS"><div class="titlepage"><div><div><h3 class="title">12.22.9. Add an XML datasource <a href="#RLIBADDXMLDS" class="id_link">#</a></h3></div></div></div><p>
-				This function is equivalent to
-				<code class="literal">OpenCReport::datasource_add_xml()</code>.
 				</p><pre class="programlisting">function
 rlib_add_datasource_xml(
                      OpenCReport $r,
                      string $source_name):
                      OpenCReport\Datasource;</pre><p>
+			</p><p>
+				This function is equivalent to using
+				<code class="literal">OpenCReport::datasource_add()</code>
+				with the XML input driver:
+				</p><pre class="programlisting">$o = new OpenCReport();
+
+$ds = $o-&gt;datasource_add("xml", "xml");</pre><p>
 			</p></div><div class="sect2" id="RLIBADDCSVDS"><div class="titlepage"><div><div><h3 class="title">12.22.10. Add a CSV datasource <a href="#RLIBADDCSVDS" class="id_link">#</a></h3></div></div></div><p>
-				This function is equivalent to
-				<code class="literal">OpenCReport::datasource_add_csv()</code>.
 				</p><pre class="programlisting">function
 rlib_add_datasource_csv(
                      OpenCReport $r,
                      string $source_name):
                      OpenCReport\Datasource;</pre><p>
+			</p><p>
+				This function is equivalent to using
+				<code class="literal">OpenCReport::datasource_add()</code>
+				with the CSV input driver:
+				</p><pre class="programlisting">$o = new OpenCReport();
+
+$ds = $o-&gt;datasource_add("csv", "csv");</pre><p>
 			</p></div><div class="sect2" id="RLIBADDQUERY"><div class="titlepage"><div><div><h3 class="title">12.22.11. Add a query <a href="#RLIBADDQUERY" class="id_link">#</a></h3></div></div></div><p>
 				This function is equivalent to
 				<code class="literal">OpenCReport\Datasource::query_add()</code>
@@ -11321,9 +11370,16 @@ rlib_spool($r);</pre><p>
 
 int main(int argc, char **argv) {
     opencreport *o = ocrpt_init();
-    ocrpt_datasource *ds = ocrpt_datasource_add_postgresql(o, "pgsql", NULL, NULL, "ocrpttest", "ocrpt", NULL);
 
-    ocrpt_query_add_postgresql(ds, "q", "select * from flintstones;");
+    struct ocrpt_input_connect_parameter conn_params[] = {
+        { .param_name = "dbname", .param_value = "ocrpttest" },
+        { .param_name = "user", .param_value = "ocrpt" },
+        { NULL }
+    };
+
+    ocrpt_datasource *ds = ocrpt_datasource_add(o, "pgsql", "postgresql", conn_params);
+
+    ocrpt_query_add_sql(ds, "q", "select * from flintstones;");
 
     if (!ocrpt_parse_xml(o, "example2.xml")) {
         printf("XML parse error\n");
@@ -11342,7 +11398,13 @@ int main(int argc, char **argv) {
 				Here's the equivalent program code in PHP.
 				</p><pre class="programlisting">&lt;?php
 $o = new OpenCReport();
-$ds = $o-&gt;datasource_add_postgresql("pgsql", NULL, NULL, "ocrpttest", "ocrpt", NULL);
+
+$conn_params = [
+    "dbname" =&gt; "ocrpttest",
+    "user" =&gt; "ocrpt"
+];
+
+$ds = $o-&gt;datasource_add("pgsql", "postgresql", $conn_params);
 
 $ds-&gt;query_add("q", "select * from flintstones;");
 
@@ -11480,9 +11542,16 @@ values
 
 int main(int argc, char **argv) {
     opencreport *o = ocrpt_init();
-    ocrpt_datasource *ds = ocrpt_datasource_add_postgresql(o, "pgsql", NULL, NULL, "ocrpttest", "ocrpt", NULL);
 
-    ocrpt_query_add_postgresql(ds, "q", "select * from flintstones2;");
+    struct ocrpt_input_connect_parameter conn_params[] = {
+        { .param_name = "dbname", .param_value = "ocrpttest" },
+        { .param_name = "user", .param_value = "ocrpt" },
+        { NULL }
+    };
+
+    ocrpt_datasource *ds = ocrpt_datasource_add(o, "pgsql", "postgresql", conn_params);
+
+    ocrpt_query_add_sql(ds, "q", "select * from flintstones2;");
 
     if (!ocrpt_parse_xml(o, "example3.xml")) {
         printf("XML parse error\n");
@@ -11501,7 +11570,13 @@ int main(int argc, char **argv) {
 				Here's the equivalent program code in PHP.
 				</p><pre class="programlisting">&lt;?php
 $o = new OpenCReport();
-$ds = $o-&gt;datasource_add_postgresql("pgsql", NULL, NULL, "ocrpttest", "ocrpt", NULL);
+
+$conn_params = [
+    "dbname" =&gt; "ocrpttest",
+    "user" =&gt; "ocrpt"
+];
+
+$ds = $o-&gt;datasource_add("pgsql", "postgresql", $conn_params);
 
 $ds-&gt;query_add("q", "select * from flintstones2;");
 
@@ -11641,9 +11716,15 @@ values
 
 int main(int argc, char **argv) {
     opencreport *o = ocrpt_init();
-    ocrpt_datasource *ds = ocrpt_datasource_add_postgresql(o, "pgsql", NULL, NULL, "ocrpttest", "ocrpt", NULL);
 
-    ocrpt_query_add_postgresql(ds, "q", "select * from flintstones3;");
+    struct ocrpt_input_connect_parameter conn_params[] = {
+        { .param_name = "connstr", .param_value = "dbname=ocrpttest user=ocrpt" },
+        { NULL }
+    };
+
+    ocrpt_datasource *ds = ocrpt_datasource_add(o, "pgsql", "postgresql", conn_params);
+
+    ocrpt_query_add_sql(ds, "q", "select * from flintstones3;");
 
     if (!ocrpt_parse_xml(o, "example4.xml")) {
         printf("XML parse error\n");
@@ -11662,7 +11743,10 @@ int main(int argc, char **argv) {
 				Here's the equivalent program code in PHP.
 				</p><pre class="programlisting">&lt;?php
 $o = new OpenCReport();
-$ds = $o-&gt;datasource_add_postgresql("pgsql", NULL, NULL, "ocrpttest", "ocrpt", NULL);
+
+$conn_params = [ "connstr" =&gt; "dbname=ocrpttest user=ocrpt" ];
+
+$ds = $o-&gt;datasource_add("pgsql", "postgresql", $conn_params);
 
 $ds-&gt;query_add("q", "select * from flintstones3;");
 
@@ -11830,9 +11914,16 @@ ocrpttest=&gt; select * from flintstones5;
 
 int main(int argc, char **argv) {
     opencreport *o = ocrpt_init();
-    ocrpt_datasource *ds = ocrpt_datasource_add_postgresql(o, "pgsql", NULL, NULL, "ocrpttest", "ocrpt", NULL);
-    ocrpt_query *q1 = ocrpt_query_add_postgresql(ds, "q1", "select * from flintstones4;");
-    ocrpt_query *q2 = ocrpt_query_add_postgresql(ds, "q2", "select * from flintstones5;");
+
+    struct ocrpt_input_connect_parameter conn_params[] = {
+        { .param_name = "dbname", .param_value = "ocrpttest" },
+        { .param_name = "user", .param_value = "ocrpt" },
+        { NULL }
+    };
+
+    ocrpt_datasource *ds = ocrpt_datasource_add(o, "pgsql", "postgresql", conn_params);
+    ocrpt_query *q1 = ocrpt_query_add_sql(ds, "q1", "select * from flintstones4;");
+    ocrpt_query *q2 = ocrpt_query_add_sql(ds, "q2", "select * from flintstones5;");
 
     ocrpt_query_add_follower(q1, q2);
 
@@ -11853,7 +11944,13 @@ int main(int argc, char **argv) {
 				Here's the equivalent program code in PHP.
 				</p><pre class="programlisting">&lt;?php
 $o = new OpenCReport();
-$ds = $o-&gt;datasource_add_postgresql("pgsql", NULL, NULL, "ocrpttest", "ocrpt", NULL);
+
+$conn_params = [
+    "dbname" =&gt; "ocrpttest",
+    "user" =&gt; "ocrpt"
+];
+
+$ds = $o-&gt;datasource_add("pgsql", "postgresql", $conn_params);
 $q1 = $ds-&gt;query_add("q1", "select * from flintstones4;");
 $q2 = $ds-&gt;query_add("q2", "select * from flintstones5;");
 
@@ -12023,10 +12120,15 @@ ocrpttest-&gt; order by data.id, more_data.id;
 
 int main(int argc, char **argv) {
     opencreport *o = ocrpt_init();
-    ocrpt_datasource *ds = ocrpt_datasource_add_postgresql(o, "pgsql", NULL, NULL, "ocrpttest", "ocrpt", NULL);
-    ocrpt_query *q1 = ocrpt_query_add_postgresql(ds, "q1", "select * from data order by id;");
-    ocrpt_query *q2 = ocrpt_query_add_postgresql(ds, "q2", "select * from more_data order by id;");
-    ocrpt_query *q3 = ocrpt_query_add_postgresql(ds, "q3", "select * from moar_data order by sk_id;");
+    struct ocrpt_input_connect_parameter conn_params[] = {
+        { .param_name = "dbname", .param_value = "ocrpttest" },
+        { .param_name = "user", .param_value = "ocrpt" },
+        { NULL }
+    };
+    ocrpt_datasource *ds = ocrpt_datasource_add(o, "pgsql", "postgresql", conn_params);
+    ocrpt_query *q1 = ocrpt_query_add_sql(ds, "q1", "select * from data order by id;");
+    ocrpt_query *q2 = ocrpt_query_add_sql(ds, "q2", "select * from more_data order by id;");
+    ocrpt_query *q3 = ocrpt_query_add_sql(ds, "q3", "select * from moar_data order by sk_id;");
 
     ocrpt_expr *match = ocrpt_expr_parse(o, "q1.id = q2.boss_id", NULL);
     ocrpt_query_add_follower_n_to_1(q1, q2, match);
@@ -12051,7 +12153,13 @@ int main(int argc, char **argv) {
 				Here's the equivalent program code in PHP.
 				</p><pre class="programlisting">&lt;?php
 $o = new OpenCReport();
-$ds = $o-&gt;datasource_add_postgresql("pgsql", NULL, NULL, "ocrpttest", "ocrpt", NULL);
+
+$conn_params = [
+        "dbname" =&gt; "ocrpttest",
+        "user" =&gt; "ocrpt"
+];
+
+$ds = $o-&gt;datasource_add("pgsql", "postgresql", $conn_params);
 $q1 = $ds-&gt;query_add("q1", "select * from data order by id;");
 $q2 = $ds-&gt;query_add("q2", "select * from more_data order by id;");
 $q3 = $ds-&gt;query_add("q3", "select * from moar_data order by sk_id;");
@@ -12181,10 +12289,15 @@ ocrpttest-&gt;      order by moar_data.sk_id limit 1) y on (true);
 
 int main(int argc, char **argv) {
     opencreport *o = ocrpt_init();
-    ocrpt_datasource *ds = ocrpt_datasource_add_postgresql(o, "pgsql", NULL, NULL, "ocrpttest", "ocrpt", NULL);
-    ocrpt_query *q1 = ocrpt_query_add_postgresql(ds, "q1", "select * from data order by id;");
-    ocrpt_query *q2 = ocrpt_query_add_postgresql(ds, "q2", "select * from more_data order by id;");
-    ocrpt_query *q3 = ocrpt_query_add_postgresql(ds, "q3", "select * from moar_data order by sk_id;");
+    struct ocrpt_input_connect_parameter conn_params[] = {
+        { .param_name = "dbname", .param_value = "ocrpttest" },
+        { .param_name = "user", .param_value = "ocrpt" },
+        { NULL }
+    };
+    ocrpt_datasource *ds = ocrpt_datasource_add(o, "pgsql", "postgresql", conn_params);
+    ocrpt_query *q1 = ocrpt_query_add_sql(ds, "q1", "select * from data order by id;");
+    ocrpt_query *q2 = ocrpt_query_add_sql(ds, "q2", "select * from more_data order by id;");
+    ocrpt_query *q3 = ocrpt_query_add_sql(ds, "q3", "select * from moar_data order by sk_id;");
 
     ocrpt_expr *match = ocrpt_expr_parse(o, "q1.id = q2.boss_id", NULL);
     ocrpt_query_add_follower_n_to_1(q1, q2, match);
@@ -12209,7 +12322,11 @@ int main(int argc, char **argv) {
 				Here's the equivalent program code in PHP.
 				</p><pre class="programlisting">&lt;?php
 $o = new OpenCReport();
-$ds = $o-&gt;datasource_add_postgresql("pgsql", NULL, NULL, "ocrpttest", "ocrpt", NULL);
+$conn_params = [
+        "dbname" =&gt; "ocrpttest",
+        "user" =&gt; "ocrpt"
+];
+$ds = $o-&gt;datasource_add("pgsql", "postgresql", $conn_params);
 $q1 = $ds-&gt;query_add("q1", "select * from data order by id;");
 $q2 = $ds-&gt;query_add("q2", "select * from more_data order by id;");
 $q3 = $ds-&gt;query_add("q3", "select * from moar_data order by sk_id;");
