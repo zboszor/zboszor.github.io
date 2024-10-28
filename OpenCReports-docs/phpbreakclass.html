@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>12.15. The OpenCReport\Break class</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phpvariableclass.html" title="12.14. The OpenCReport\Variable class" /><link rel="next" href="phpoutputclass.html" title="12.16. The OpenCReport\Output class" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">12.15. The OpenCReport\Break class</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phpvariableclass.html" title="12.14. The OpenCReport\Variable class">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 12. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.7 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phpoutputclass.html" title="12.16. The OpenCReport\Output class">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPBREAKCLASS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">12.15. The OpenCReport\Break class <a href="#PHPBREAKCLASS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phpbreakclass.html#PHPBREAKGETNEXT">12.15.1. Get next break</a></span></dt><dt><span class="sect2"><a href="phpbreakclass.html#PHPBREAKBFADD">12.15.2. Add a breakfield to a break</a></span></dt><dt><span class="sect2"><a href="phpbreakclass.html#PHPBREAKCHECKFIELDS">12.15.3. Check breakfields</a></span></dt><dt><span class="sect2"><a href="phpbreakclass.html#PHPBREAKRESETVARS">12.15.4. Reset variables associated with a break</a></span></dt><dt><span class="sect2"><a href="phpbreakclass.html#PHPBREAKADDTRIGGERCB">12.15.5. Add a "trigger" callback to a break</a></span></dt><dt><span class="sect2"><a href="phpbreakclass.html#PHPBREAKNAME">12.15.6. Get the name of a break</a></span></dt><dt><span class="sect2"><a href="phpbreakclass.html#PHPBREAKOUTPUTS">12.15.7. Get output sections of a break</a></span></dt></dl></div><p>
-			</p><pre class="programlisting">class OpenCReport\Break {
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>12.15. The OpenCReport\ReportBreak class</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phpvariableclass.html" title="12.14. The OpenCReport\Variable class" /><link rel="next" href="phpoutputclass.html" title="12.16. The OpenCReport\Output class" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">12.15. The OpenCReport\ReportBreak class</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phpvariableclass.html" title="12.14. The OpenCReport\Variable class">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 12. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.8 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phpoutputclass.html" title="12.16. The OpenCReport\Output class">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPBREAKCLASS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">12.15. The OpenCReport\ReportBreak class <a href="#PHPBREAKCLASS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phpbreakclass.html#PHPBREAKGETNEXT">12.15.1. Get next break</a></span></dt><dt><span class="sect2"><a href="phpbreakclass.html#PHPBREAKBFADD">12.15.2. Add a breakfield to a break</a></span></dt><dt><span class="sect2"><a href="phpbreakclass.html#PHPBREAKCHECKFIELDS">12.15.3. Check breakfields</a></span></dt><dt><span class="sect2"><a href="phpbreakclass.html#PHPBREAKRESETVARS">12.15.4. Reset variables associated with a break</a></span></dt><dt><span class="sect2"><a href="phpbreakclass.html#PHPBREAKADDTRIGGERCB">12.15.5. Add a "trigger" callback to a break</a></span></dt><dt><span class="sect2"><a href="phpbreakclass.html#PHPBREAKNAME">12.15.6. Get the name of a break</a></span></dt><dt><span class="sect2"><a href="phpbreakclass.html#PHPBREAKOUTPUTS">12.15.7. Get output sections of a break</a></span></dt></dl></div><p>
+			</p><pre class="programlisting">class OpenCReport\ReportBreak {
     public final get_next():
-                     ?OpenCReport\Break;
+                     ?OpenCReport\ReportBreak;
 
     public final breakfield_add(
                      OpenCReport\Expr $breakfield_expr):
@@ -29,15 +29,15 @@
 				i.e. one that was created by
 				<code class="literal">OpenCReport\Report::break_get_first()</code>.
 				</p><pre class="programlisting">public final
-OpenCReport\Break::get_next():
-                     ?OpenCReport\Break;</pre><p>
+OpenCReport\ReportBreak::get_next():
+                     ?OpenCReport\ReportBreak;</pre><p>
 			</p></div><div class="sect2" id="PHPBREAKBFADD"><div class="titlepage"><div><div><h3 class="title">12.15.2. Add a breakfield to a break <a href="#PHPBREAKBFADD" class="id_link">#</a></h3></div></div></div><p>
 				Add a breakfield to a break.
 				A break may consists of multiple breakfields.
 				A break triggers if any of the breakfields
 				change from one data line to another.
 				</p><pre class="programlisting">public final
-OpenCReport\Break::breakfield_add(
+OpenCReport\ReportBreak::breakfield_add(
                      OpenCReport\Expr $breakfield_expr):
                      void;</pre><p>
 			</p></div><div class="sect2" id="PHPBREAKCHECKFIELDS"><div class="titlepage"><div><div><h3 class="title">12.15.3. Check breakfields <a href="#PHPBREAKCHECKFIELDS" class="id_link">#</a></h3></div></div></div><p>
@@ -51,7 +51,7 @@ OpenCReport\Break::breakfield_add(
 				and also used by unit tests. It may be useful
 				to implement a custom report executor.
 				</p><pre class="programlisting">public final
-OpenCReport\Break::check_fields(): bool;</pre><p>
+OpenCReport\ReportBreak::check_fields(): bool;</pre><p>
 			</p></div><div class="sect2" id="PHPBREAKRESETVARS"><div class="titlepage"><div><div><h3 class="title">12.15.4. Reset variables associated with a break <a href="#PHPBREAKRESETVARS" class="id_link">#</a></h3></div></div></div><p>
 				Reset report variables associated with a break.
 				Such variables were created with specifying the
@@ -61,11 +61,11 @@ OpenCReport\Break::check_fields(): bool;</pre><p>
 				and also used by unit tests. It may be useful
 				to implement a custom report executor.
 				</p><pre class="programlisting">public final
-OpenCReport\Break::reset_vars(): void;</pre><p>
+OpenCReport\ReportBreak::reset_vars(): void;</pre><p>
 			</p></div><div class="sect2" id="PHPBREAKADDTRIGGERCB"><div class="titlepage"><div><div><h3 class="title">12.15.5. Add a "trigger" callback to a break <a href="#PHPBREAKADDTRIGGERCB" class="id_link">#</a></h3></div></div></div><p>
 				Add a "trigger" callback to the break.
 				</p><pre class="programlisting">public final
-OpenCReport\Break::add_trigger_cb(
+OpenCReport\ReportBreak::add_trigger_cb(
                      ?string $callback):
                      void;</pre><p>
 			</p></div><div class="sect2" id="PHPBREAKNAME"><div class="titlepage"><div><div><h3 class="title">12.15.6. Get the name of a break <a href="#PHPBREAKNAME" class="id_link">#</a></h3></div></div></div><p>
@@ -74,7 +74,7 @@ OpenCReport\Break::add_trigger_cb(
 				XML descriptor but variables are added
 				afterwards from code.
 				</p><pre class="programlisting">public final
-OpenCReport\Break::name(): string;</pre><p>
+OpenCReport\ReportBreak::name(): string;</pre><p>
 			</p></div><div class="sect2" id="PHPBREAKOUTPUTS"><div class="titlepage"><div><div><h3 class="title">12.15.7. Get output sections of a break <a href="#PHPBREAKOUTPUTS" class="id_link">#</a></h3></div></div></div><p>
 				Get the header and footer sections of a break.
 				See also <a class="xref" href="breaknode.html#BREAKHEADERNODE" title="8.14.2.1. BreakHeader">BreakHeader</a> and
@@ -82,8 +82,8 @@ OpenCReport\Break::name(): string;</pre><p>
 				For class methods of <code class="literal">OpenCReport\Output</code>,
 				see <a class="xref" href="phpoutputclass.html" title="12.16. The OpenCReport\Output class">Section 12.16</a>
 				</p><pre class="programlisting">public final
-OpenCReport\Break::header(): OpenCReport\Output;
+OpenCReport\ReportBreak::header(): OpenCReport\Output;
 
 public final
-OpenCReport\Break::footer(): OpenCReport\Output;</pre><p>
-			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phpvariableclass.html" title="12.14. The OpenCReport\Variable class">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phpoutputclass.html" title="12.16. The OpenCReport\Output class">Next</a></td></tr><tr><td width="40%" align="left" valign="top">12.14. The OpenCReport\Variable class </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.7 Manual">Home</a></td><td width="40%" align="right" valign="top"> 12.16. The OpenCReport\Output class</td></tr></table></div></body></html>
+OpenCReport\ReportBreak::footer(): OpenCReport\Output;</pre><p>
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phpvariableclass.html" title="12.14. The OpenCReport\Variable class">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phpoutputclass.html" title="12.16. The OpenCReport\Output class">Next</a></td></tr><tr><td width="40%" align="left" valign="top">12.14. The OpenCReport\Variable class </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.8 Manual">Home</a></td><td width="40%" align="right" valign="top"> 12.16. The OpenCReport\Output class</td></tr></table></div></body></html>
