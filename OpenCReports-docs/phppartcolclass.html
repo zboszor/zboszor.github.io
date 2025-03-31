@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>12.12. The OpenCReport\Column class</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phppartrowclass.html" title="12.11. The OpenCReport\Row class" /><link rel="next" href="phpreportclass.html" title="12.13. The OpenCReport\Report class" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">12.12. The OpenCReport\Column class</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phppartrowclass.html" title="12.11. The OpenCReport\Row class">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 12. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.8 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phpreportclass.html" title="12.13. The OpenCReport\Report class">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPPARTCOLCLASS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">12.12. The OpenCReport\Column class <a href="#PHPPARTCOLCLASS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phppartcolclass.html#PHPCOLGETNEXT">12.12.1. Get next column</a></span></dt><dt><span class="sect2"><a href="phppartcolclass.html#PHPCOLREPORTNEW">12.12.2. Create a new report in the column</a></span></dt><dt><span class="sect2"><a href="phppartcolclass.html#PHPCOLREPORTGETFIRST">12.12.3. Get first report of a part column</a></span></dt><dt><span class="sect2"><a href="phppartcolclass.html#PHPCOLSETSUPPRESS">12.12.4. Set part column suppression</a></span></dt><dt><span class="sect2"><a href="phppartcolclass.html#PHPCOLSETWIDTH">12.12.5. Set part column width</a></span></dt><dt><span class="sect2"><a href="phppartcolclass.html#PHPCOLSETHEIGHT">12.12.6. Set part column height</a></span></dt><dt><span class="sect2"><a href="phppartcolclass.html#PHPCOLSETBORDERWIDTH">12.12.7. Set border width</a></span></dt><dt><span class="sect2"><a href="phppartcolclass.html#PHPCOLSETBORDERCOLOR">12.12.8. Set border color</a></span></dt><dt><span class="sect2"><a href="phppartcolclass.html#PHPCOLSETDETAILCOLS">12.12.9. Set number of detail columns</a></span></dt><dt><span class="sect2"><a href="phppartcolclass.html#PHPCOLSETPADDING">12.12.10. Set column padding</a></span></dt></dl></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>12.12. The OpenCReport\Column class</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phppartrowclass.html" title="12.11. The OpenCReport\Row class" /><link rel="next" href="phpreportclass.html" title="12.13. The OpenCReport\Report class" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">12.12. The OpenCReport\Column class</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phppartrowclass.html" title="12.11. The OpenCReport\Row class">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 12. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.9 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phpreportclass.html" title="12.13. The OpenCReport\Report class">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPPARTCOLCLASS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">12.12. The OpenCReport\Column class <a href="#PHPPARTCOLCLASS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phppartcolclass.html#PHPCOLGETNEXT">12.12.1. Get next column</a></span></dt><dt><span class="sect2"><a href="phppartcolclass.html#PHPCOLREPORTNEW">12.12.2. Create a new report in the column</a></span></dt><dt><span class="sect2"><a href="phppartcolclass.html#PHPCOLREPORTGETFIRST">12.12.3. Get first report of a part column</a></span></dt><dt><span class="sect2"><a href="phppartcolclass.html#PHPCOLSETSUPPRESS">12.12.4. Set or get part column suppression</a></span></dt><dt><span class="sect2"><a href="phppartcolclass.html#PHPCOLSETWIDTH">12.12.5. Set or get part column width</a></span></dt><dt><span class="sect2"><a href="phppartcolclass.html#PHPCOLSETHEIGHT">12.12.6. Set or get part column height</a></span></dt><dt><span class="sect2"><a href="phppartcolclass.html#PHPCOLSETBORDERWIDTH">12.12.7. Set or get border width</a></span></dt><dt><span class="sect2"><a href="phppartcolclass.html#PHPCOLSETBORDERCOLOR">12.12.8. Set or get border color</a></span></dt><dt><span class="sect2"><a href="phppartcolclass.html#PHPCOLSETDETAILCOLS">12.12.9. Set or get number of detail columns</a></span></dt><dt><span class="sect2"><a href="phppartcolclass.html#PHPCOLSETPADDING">12.12.10. Set or get column padding</a></span></dt></dl></div><p>
 			</p><pre class="programlisting">class OpenCReport\Column {
     public final get_next():
                      ?OpenCReport\Column;
@@ -11,25 +11,53 @@
                      ?OpenCReport\Report;
 
     public final set_suppress(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ??OpenCReport\Expr;
+
+    public final get_suppress():
+                     ??OpenCReport\Expr;
 
     public final set_width(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_width():
+                     ?OpenCReport\Expr;
 
     public final set_width(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_width():
+                     ?OpenCReport\Expr;
 
     public final set_border_width(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_border_width():
+                     ?OpenCReport\Expr;
 
     public final set_border_color(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_border_color():
+                     ?OpenCReport\Expr;
 
     public final set_detail_columns(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_detail_columns():
+                     ?OpenCReport\Expr;
 
     public final set_column_padding(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_column_padding():
+                     ?OpenCReport\Expr;
 }</pre><p>
 		</p><div class="sect2" id="PHPCOLGETNEXT"><div class="titlepage"><div><div><h3 class="title">12.12.1. Get next column <a href="#PHPCOLGETNEXT" class="id_link">#</a></h3></div></div></div><p>
 				Get the next object in the chain of part columns.
@@ -54,18 +82,28 @@ OpenCReport\Column::report_new():
 				</p><pre class="programlisting">public final
 OpenCReport\Column::report_get_first():
                      ?OpenCReport\Report;</pre><p>
-			</p></div><div class="sect2" id="PHPCOLSETSUPPRESS"><div class="titlepage"><div><div><h3 class="title">12.12.4. Set part column suppression <a href="#PHPCOLSETSUPPRESS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPCOLSETSUPPRESS"><div class="titlepage"><div><div><h3 class="title">12.12.4. Set or get part column suppression <a href="#PHPCOLSETSUPPRESS" class="id_link">#</a></h3></div></div></div><p>
 				</p><pre class="programlisting">public final
 OpenCReport\Column::set_suppress(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPCOLSETWIDTH"><div class="titlepage"><div><div><h3 class="title">12.12.5. Set part column width <a href="#PHPCOLSETWIDTH" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Column::get_suppress():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPCOLSETWIDTH"><div class="titlepage"><div><div><h3 class="title">12.12.5. Set or get part column width <a href="#PHPCOLSETWIDTH" class="id_link">#</a></h3></div></div></div><p>
 				Set the width of the whole part column.
 				If an inner report is wider than the column
 				width, it's rendering is truncated.
 				</p><pre class="programlisting">public final
 OpenCReport\Column::set_width(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPCOLSETHEIGHT"><div class="titlepage"><div><div><h3 class="title">12.12.6. Set part column height <a href="#PHPCOLSETHEIGHT" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Column::get_width():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPCOLSETHEIGHT"><div class="titlepage"><div><div><h3 class="title">12.12.6. Set or get part column height <a href="#PHPCOLSETHEIGHT" class="id_link">#</a></h3></div></div></div><p>
 				Set the part column height. During report
 				execution, the column height is calculated
 				for rendering. Inner reports and the height of
@@ -80,22 +118,37 @@ OpenCReport\Column::set_width(
 				fully rendered.
 				</p><pre class="programlisting">public final
 OpenCReport\Column::set_height(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPCOLSETBORDERWIDTH"><div class="titlepage"><div><div><h3 class="title">12.12.7. Set border width <a href="#PHPCOLSETBORDERWIDTH" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Column::get_height():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPCOLSETBORDERWIDTH"><div class="titlepage"><div><div><h3 class="title">12.12.7. Set or get border width <a href="#PHPCOLSETBORDERWIDTH" class="id_link">#</a></h3></div></div></div><p>
 				Set the border width around the part column.
 				The width is in points (1/72 inches).
 				Default is 0, i.e. a border is not rendered
 				around the part column.
 				</p><pre class="programlisting">public final
 OpenCReport\Column::set_border_width(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPCOLSETBORDERCOLOR"><div class="titlepage"><div><div><h3 class="title">12.12.8. Set border color <a href="#PHPCOLSETBORDERCOLOR" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Column::get_border_width():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPCOLSETBORDERCOLOR"><div class="titlepage"><div><div><h3 class="title">12.12.8. Set or get border color <a href="#PHPCOLSETBORDERCOLOR" class="id_link">#</a></h3></div></div></div><p>
 				Set the border color around the part column.
 				Only used if the border width is set.
 				</p><pre class="programlisting">public final
 OpenCReport\Column::set_border_color(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPCOLSETDETAILCOLS"><div class="titlepage"><div><div><h3 class="title">12.12.9. Set number of detail columns <a href="#PHPCOLSETDETAILCOLS" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Column::get_border_color():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPCOLSETDETAILCOLS"><div class="titlepage"><div><div><h3 class="title">12.12.9. Set or get number of detail columns <a href="#PHPCOLSETDETAILCOLS" class="id_link">#</a></h3></div></div></div><p>
 				Set the number of detail columns in
 				the part column. Inner reports inside the
 				part column may be narrow and visually wasteful
@@ -105,12 +158,22 @@ OpenCReport\Column::set_border_color(
 				column would result in a page break.
 				</p><pre class="programlisting">public final
 OpenCReport\Column::set_detail_columns(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPCOLSETPADDING"><div class="titlepage"><div><div><h3 class="title">12.12.10. Set column padding <a href="#PHPCOLSETPADDING" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Column::get_detail_columns():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPCOLSETPADDING"><div class="titlepage"><div><div><h3 class="title">12.12.10. Set or get column padding <a href="#PHPCOLSETPADDING" class="id_link">#</a></h3></div></div></div><p>
 				Set the padding between detail columns.
 				It is used if the number of detail
 				columns is greater than 1.
 				</p><pre class="programlisting">public final
 OpenCReport\Column::set_column_padding(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phppartrowclass.html" title="12.11. The OpenCReport\Row class">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phpreportclass.html" title="12.13. The OpenCReport\Report class">Next</a></td></tr><tr><td width="40%" align="left" valign="top">12.11. The OpenCReport\Row class </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.8 Manual">Home</a></td><td width="40%" align="right" valign="top"> 12.13. The OpenCReport\Report class</td></tr></table></div></body></html>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Column::get_column_padding():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phppartrowclass.html" title="12.11. The OpenCReport\Row class">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phpreportclass.html" title="12.13. The OpenCReport\Report class">Next</a></td></tr><tr><td width="40%" align="left" valign="top">12.11. The OpenCReport\Row class </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.9 Manual">Home</a></td><td width="40%" align="right" valign="top"> 12.13. The OpenCReport\Report class</td></tr></table></div></body></html>

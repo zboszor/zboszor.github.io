@@ -1,26 +1,54 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>12.17. The OpenCReport\Line class</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phpoutputclass.html" title="12.16. The OpenCReport\Output class" /><link rel="next" href="phphlineclass.html" title="12.18. The OpenCReport\HorizontalLine class" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">12.17. The OpenCReport\Line class</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phpoutputclass.html" title="12.16. The OpenCReport\Output class">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 12. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.8 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phphlineclass.html" title="12.18. The OpenCReport\HorizontalLine class">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPLINECLASS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">12.17. The OpenCReport\Line class <a href="#PHPLINECLASS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phplineclass.html#PHPLINESETFONTNAME">12.17.1. Set the font name for the line</a></span></dt><dt><span class="sect2"><a href="phplineclass.html#PHPLINESETFONTSIZE">12.17.2. Set the font size for the line</a></span></dt><dt><span class="sect2"><a href="phplineclass.html#PHPLINESETBOLD">12.17.3. Set the font's bold flag for the line</a></span></dt><dt><span class="sect2"><a href="phplineclass.html#PHPLINESETITALIC">12.17.4. Set the font's italic flag for the line</a></span></dt><dt><span class="sect2"><a href="phplineclass.html#PHPLINESETSUPPRESS">12.17.5. Set line suppression</a></span></dt><dt><span class="sect2"><a href="phplineclass.html#PHPLINESETCOLOR">12.17.6. Set text color for the line</a></span></dt><dt><span class="sect2"><a href="phplineclass.html#PHPLINESETBGCOLOR">12.17.7. Set background color for the line</a></span></dt><dt><span class="sect2"><a href="phplineclass.html#PHPLINEADDTEXT">12.17.8. Add a text element to the line</a></span></dt><dt><span class="sect2"><a href="phplineclass.html#PHPLINEADDIMAGE">12.17.9. Add an image element to the line</a></span></dt></dl></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>12.17. The OpenCReport\Line class</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phpoutputclass.html" title="12.16. The OpenCReport\Output class" /><link rel="next" href="phphlineclass.html" title="12.18. The OpenCReport\HorizontalLine class" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">12.17. The OpenCReport\Line class</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phpoutputclass.html" title="12.16. The OpenCReport\Output class">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 12. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.9 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phphlineclass.html" title="12.18. The OpenCReport\HorizontalLine class">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPLINECLASS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">12.17. The OpenCReport\Line class <a href="#PHPLINECLASS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phplineclass.html#PHPLINESETFONTNAME">12.17.1. Set or get the font name for the line</a></span></dt><dt><span class="sect2"><a href="phplineclass.html#PHPLINESETFONTSIZE">12.17.2. Set or get the font size for the line</a></span></dt><dt><span class="sect2"><a href="phplineclass.html#PHPLINESETBOLD">12.17.3. Set or get the font's bold flag for the line</a></span></dt><dt><span class="sect2"><a href="phplineclass.html#PHPLINESETITALIC">12.17.4. Set or get the font's italic flag for the line</a></span></dt><dt><span class="sect2"><a href="phplineclass.html#PHPLINESETSUPPRESS">12.17.5. Set or get line suppression</a></span></dt><dt><span class="sect2"><a href="phplineclass.html#PHPLINESETCOLOR">12.17.6. Set or get text color for the line</a></span></dt><dt><span class="sect2"><a href="phplineclass.html#PHPLINESETBGCOLOR">12.17.7. Set or get background color for the line</a></span></dt><dt><span class="sect2"><a href="phplineclass.html#PHPLINEADDTEXT">12.17.8. Add a text element to the line</a></span></dt><dt><span class="sect2"><a href="phplineclass.html#PHPLINEADDIMAGE">12.17.9. Add an image element to the line</a></span></dt><dt><span class="sect2"><a href="phplineclass.html#PHPLINEGETFIRSTELEM">12.17.10. Get the first line element</a></span></dt></dl></div><p>
 			</p><pre class="programlisting">class OpenCReport\Line {
     public final set_font_name(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_font_name():
+                     ?OpenCReport\Expr;
 
     public final set_font_size(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_font_size():
+                     ?OpenCReport\Expr;
 
     public final set_bold(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_bold():
+                     ?OpenCReport\Expr;
 
     public final set_italic(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_italic():
+                     ?OpenCReport\Expr;
 
     public final set_suppress(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_suppress():
+                     ?OpenCReport\Expr;
 
     public final set_color(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_color():
+                     ?OpenCReport\Expr;
 
     public final set_bgcolor(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_bgcolor():
+                     ?OpenCReport\Expr;
 
     public final add_text():
                      ?OpenCReport\Text;
@@ -30,22 +58,35 @@
 
     public final add_barcode():
                      ?OpenCReport\Barcode;
+
+    public final get_first_element():
+                     ?OpenCReport\LineElement;
 }</pre><p>
-		</p><div class="sect2" id="PHPLINESETFONTNAME"><div class="titlepage"><div><div><h3 class="title">12.17.1. Set the font name for the line <a href="#PHPLINESETFONTNAME" class="id_link">#</a></h3></div></div></div><p>
+		</p><div class="sect2" id="PHPLINESETFONTNAME"><div class="titlepage"><div><div><h3 class="title">12.17.1. Set or get the font name for the line <a href="#PHPLINESETFONTNAME" class="id_link">#</a></h3></div></div></div><p>
 				Set the font name for the line.
 				This font will be used for child text elements
 				that don't set the font name themselves.
 				</p><pre class="programlisting">public final
 OpenCReport\Line::set_font_name(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPLINESETFONTSIZE"><div class="titlepage"><div><div><h3 class="title">12.17.2. Set the font size for the line <a href="#PHPLINESETFONTSIZE" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Line::get_font_name():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPLINESETFONTSIZE"><div class="titlepage"><div><div><h3 class="title">12.17.2. Set or get the font size for the line <a href="#PHPLINESETFONTSIZE" class="id_link">#</a></h3></div></div></div><p>
 				Set the font size for the line.
 				This font size will be used for child text elements
 				that don't set the font size themselves.
 				</p><pre class="programlisting">public final
 OpenCReport\Line::set_font_size(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPLINESETBOLD"><div class="titlepage"><div><div><h3 class="title">12.17.3. Set the font's bold flag for the line <a href="#PHPLINESETBOLD" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Line::get_font_size():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPLINESETBOLD"><div class="titlepage"><div><div><h3 class="title">12.17.3. Set or get the font's bold flag for the line <a href="#PHPLINESETBOLD" class="id_link">#</a></h3></div></div></div><p>
 				Set the font's bold flag for the line.
 				The expression must evaluate to a numeric
 				value that is treated as a boolean, i.e. 0 or non-0.
@@ -54,8 +95,13 @@ OpenCReport\Line::set_font_size(
 				that don't set it themselves.
 				</p><pre class="programlisting">public final
 OpenCReport\Line::set_bold(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPLINESETITALIC"><div class="titlepage"><div><div><h3 class="title">12.17.4. Set the font's italic flag for the line <a href="#PHPLINESETITALIC" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Line::get_bold():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPLINESETITALIC"><div class="titlepage"><div><div><h3 class="title">12.17.4. Set or get the font's italic flag for the line <a href="#PHPLINESETITALIC" class="id_link">#</a></h3></div></div></div><p>
 				Set the font's italic flag for the line.
 				The expression must evaluate to a numeric
 				value that is treated as a boolean, i.e. 0 or non-0.
@@ -64,8 +110,13 @@ OpenCReport\Line::set_bold(
 				that don't set it themselves.
 				</p><pre class="programlisting">public final
 OpenCReport\Line::set_italic(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPLINESETSUPPRESS"><div class="titlepage"><div><div><h3 class="title">12.17.5. Set line suppression <a href="#PHPLINESETSUPPRESS" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Line::get_italic():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPLINESETSUPPRESS"><div class="titlepage"><div><div><h3 class="title">12.17.5. Set or get line suppression <a href="#PHPLINESETSUPPRESS" class="id_link">#</a></h3></div></div></div><p>
 				Set the suppression flag for the line.
 				The expression must evaluate to a numeric
 				value that is treated as a boolean, i.e. 0 or non-0.
@@ -76,23 +127,38 @@ OpenCReport\Line::set_italic(
 				be suppressed, i.e. not rendered.
 				</p><pre class="programlisting">public final
 OpenCReport\Line::set_suppress(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPLINESETCOLOR"><div class="titlepage"><div><div><h3 class="title">12.17.6. Set text color for the line <a href="#PHPLINESETCOLOR" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Line::set_suppress():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPLINESETCOLOR"><div class="titlepage"><div><div><h3 class="title">12.17.6. Set or get text color for the line <a href="#PHPLINESETCOLOR" class="id_link">#</a></h3></div></div></div><p>
 				Set text color for the line.
 				See <a class="xref" href="colorspec.html" title="8.22. Color specification">Color specification</a>.
 				This text color will be used for child elements
 				that don't set the text color themselves.
 				</p><pre class="programlisting">public final
 OpenCReport\Line::set_color(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPLINESETBGCOLOR"><div class="titlepage"><div><div><h3 class="title">12.17.7. Set background color for the line <a href="#PHPLINESETBGCOLOR" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Line::get_color():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPLINESETBGCOLOR"><div class="titlepage"><div><div><h3 class="title">12.17.7. Set or get background color for the line <a href="#PHPLINESETBGCOLOR" class="id_link">#</a></h3></div></div></div><p>
 				Set background color for the line.
 				See <a class="xref" href="colorspec.html" title="8.22. Color specification">Color specification</a>.
 				This background color will be used for child elements
 				that don't set the background color themselves.
 				</p><pre class="programlisting">public final
 OpenCReport\Line::set_bgcolor(
-                     ?string $expr_string = null): void;</pre><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Line::get_bgcolor():
+                     ?OpenCReport\Expr;</pre><p>
 			</p></div><div class="sect2" id="PHPLINEADDTEXT"><div class="titlepage"><div><div><h3 class="title">12.17.8. Add a text element to the line <a href="#PHPLINEADDTEXT" class="id_link">#</a></h3></div></div></div><p>
 				Add a child text element to the line.
 				For class methods  of <code class="literal">OpenCReport\Text</code>,
@@ -107,4 +173,14 @@ OpenCReport\Line::add_text():
 				</p><pre class="programlisting">public final
 OpenCReport\Line::add_image():
                      ?OpenCReport\Image;</pre><p>
-			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phpoutputclass.html" title="12.16. The OpenCReport\Output class">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phphlineclass.html" title="12.18. The OpenCReport\HorizontalLine class">Next</a></td></tr><tr><td width="40%" align="left" valign="top">12.16. The OpenCReport\Output class </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.8 Manual">Home</a></td><td width="40%" align="right" valign="top"> 12.18. The OpenCReport\HorizontalLine class</td></tr></table></div></body></html>
+			</p></div><div class="sect2" id="PHPLINEGETFIRSTELEM"><div class="titlepage"><div><div><h3 class="title">12.17.10. Get the first line element <a href="#PHPLINEGETFIRSTELEM" class="id_link">#</a></h3></div></div></div><p>
+				Get the first element of the line.
+				It starts an iterator for the output, and
+				return the first element via an
+				<code class="literal">OpenCReport\LineElement</code>
+				object, or <code class="literal">null</code> if there is
+				none. See also <a class="xref" href="phplineelemclass.html" title="12.23. The OpenCReport\LineElement class">Section 12.23</a>.
+				</p><pre class="programlisting">public final
+OpenCReport\Line::get_first_element():
+                     ?OpenCReport\LineElement;</pre><p>
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phpoutputclass.html" title="12.16. The OpenCReport\Output class">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phphlineclass.html" title="12.18. The OpenCReport\HorizontalLine class">Next</a></td></tr><tr><td width="40%" align="left" valign="top">12.16. The OpenCReport\Output class </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.9 Manual">Home</a></td><td width="40%" align="right" valign="top"> 12.18. The OpenCReport\HorizontalLine class</td></tr></table></div></body></html>

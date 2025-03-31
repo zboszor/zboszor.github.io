@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>12.10. The OpenCReport\Part class</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phpresultclass.html" title="12.9. The OpenCReport\Result class" /><link rel="next" href="phppartrowclass.html" title="12.11. The OpenCReport\Row class" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">12.10. The OpenCReport\Part class</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phpresultclass.html" title="12.9. The OpenCReport\Result class">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 12. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.8 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phppartrowclass.html" title="12.11. The OpenCReport\Row class">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPPARTCLASS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">12.10. The OpenCReport\Part class <a href="#PHPPARTCLASS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phppartclass.html#PHPPARTGETNEXT">12.10.1. Get the next report part</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTROWNEW">12.10.2. Create a new report part row</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTROWGETFIRST">12.10.3. Get the first report part row</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTADDITERATIONCB">12.10.4. Add iteration callback for the part</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTEQUALS">12.10.5. Check whether two parts are identical</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTSETITERATIONS">12.10.6. Check whether two parts are identical</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTSETFONTNAME">12.10.7. Set part font name</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTSETFONTSIZE">12.10.8. Set part font size</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTSETPAPER">12.10.9. Set part font size</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTSETORIENTATION">12.10.10. Set part orientation</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTSETTOPMARGIN">12.10.11. Set part top margin</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTSETBOTTOMMARGIN">12.10.12. Set part bottom margin</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTSETLEFTMARGIN">12.10.13. Set part left margin</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTSETRIGHTMARGIN">12.10.14. Set part right margin</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTSETSUPPRESS">12.10.15. Set part suppression</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTSETSPHF">12.10.16. Set suppression of the page header on the first page</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTPAGEHEADER">12.10.17. Get the part's page header</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTPAGEHEADERSETREPORT">12.10.18. Set the report object for the part's page header</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTPAGEFOOTER">12.10.19. Get the part's page footer</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTPAGEFOOTERSETREPORT">12.10.20. Set the report object for the part's page footer</a></span></dt></dl></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>12.10. The OpenCReport\Part class</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phpresultclass.html" title="12.9. The OpenCReport\Result class" /><link rel="next" href="phppartrowclass.html" title="12.11. The OpenCReport\Row class" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">12.10. The OpenCReport\Part class</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phpresultclass.html" title="12.9. The OpenCReport\Result class">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 12. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.9 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phppartrowclass.html" title="12.11. The OpenCReport\Row class">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPPARTCLASS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">12.10. The OpenCReport\Part class <a href="#PHPPARTCLASS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phppartclass.html#PHPPARTGETNEXT">12.10.1. Get the next report part</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTROWNEW">12.10.2. Create a new report part row</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTROWGETFIRST">12.10.3. Get the first report part row</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTADDITERATIONCB">12.10.4. Add iteration callback for the part</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTEQUALS">12.10.5. Check whether two parts are identical</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTSETITERATIONS">12.10.6. Set or get number of part iterations</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTSETFONTNAME">12.10.7. Set or get part font name</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTSETFONTSIZE">12.10.8. Set or get part font size</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTSETPAPER">12.10.9. Set or get paper type</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTSETORIENTATION">12.10.10. Set or get part orientation</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTSETTOPMARGIN">12.10.11. Set or get part top margin</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTSETBOTTOMMARGIN">12.10.12. Set or get part bottom margin</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTSETLEFTMARGIN">12.10.13. Set or get part left margin</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTSETRIGHTMARGIN">12.10.14. Set or get part right margin</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTSETSUPPRESS">12.10.15. Set or get part suppression</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTSETSPHF">12.10.16. Set or get suppression of the page header on the first page</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTPAGEHEADER">12.10.17. Get the part's page header</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTPAGEHEADERSETREPORT">12.10.18. Set the report object for the part's page header</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTPAGEFOOTER">12.10.19. Get the part's page footer</a></span></dt><dt><span class="sect2"><a href="phppartclass.html#PHPPARTPAGEFOOTERSETREPORT">12.10.20. Set the report object for the part's page footer</a></span></dt></dl></div><p>
 			</p><pre class="programlisting">class OpenCReport\Part {
     public final get_next():
                      ?OpenCReport\Part;
@@ -17,37 +17,81 @@
                      OpenCReport\Part $part): bool;
 
     public final set_iterations(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_iterations():
+                     ?OpenCReport\Expr;
 
     public final set_font_name(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_font_name():
+                     ?OpenCReport\Expr;
 
     public final set_font_size(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_font_size():
+                     ?OpenCReport\Expr;
 
     public final set_paper(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_paper():
+                     ?OpenCReport\Expr;
 
     public final set_orientation(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_orientation():
+                     ?OpenCReport\Expr;
 
     public final set_top_margin(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_top_margin():
+                     ?OpenCReport\Expr;
 
     public final set_bottom_margin(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_bottom_margin():
+                     ?OpenCReport\Expr;
 
     public final set_left_margin(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_left_margin():
+                     ?OpenCReport\Expr;
 
     public final set_right_margin(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_right_margin():
+                     ?OpenCReport\Expr;
 
     public final set_suppress(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_suppress():
+                     ?OpenCReport\Expr;
 
     public final set_suppress_pageheader_firstpage(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_suppress_pageheader_firstpage():
+                     ?OpenCReport\Expr;
 
     public final page_header():
                      ?OpenCReport\Output;
@@ -99,7 +143,7 @@ OpenCReport\Part::add_iteration_cb(
 				</p><pre class="programlisting">public final
 OpenCReport\Part::equals(
                      OpenCReport\Part $part): bool;</pre><p>
-			</p></div><div class="sect2" id="PHPPARTSETITERATIONS"><div class="titlepage"><div><div><h3 class="title">12.10.6. Check whether two parts are identical <a href="#PHPPARTSETITERATIONS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPPARTSETITERATIONS"><div class="titlepage"><div><div><h3 class="title">12.10.6. Set or get number of part iterations <a href="#PHPPARTSETITERATIONS" class="id_link">#</a></h3></div></div></div><p>
 				Set the number of iterations for the part.
 				The expression must evaluate to a numeric
 				(integer) value. The part and all of its
@@ -107,20 +151,40 @@ OpenCReport\Part::equals(
 				this many times. Default is 1.
 				</p><pre class="programlisting">public final
 OpenCReport\Part::set_iterations(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPPARTSETFONTNAME"><div class="titlepage"><div><div><h3 class="title">12.10.7. Set part font name <a href="#PHPPARTSETFONTNAME" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Part::get_iterations():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPPARTSETFONTNAME"><div class="titlepage"><div><div><h3 class="title">12.10.7. Set or get part font name <a href="#PHPPARTSETFONTNAME" class="id_link">#</a></h3></div></div></div><p>
 				</p><pre class="programlisting">public final
 OpenCReport\Part::set_font_name(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPPARTSETFONTSIZE"><div class="titlepage"><div><div><h3 class="title">12.10.8. Set part font size <a href="#PHPPARTSETFONTSIZE" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Part::get_font_name():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPPARTSETFONTSIZE"><div class="titlepage"><div><div><h3 class="title">12.10.8. Set or get part font size <a href="#PHPPARTSETFONTSIZE" class="id_link">#</a></h3></div></div></div><p>
 				</p><pre class="programlisting">public final
 OpenCReport\Part::set_font_size(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPPARTSETPAPER"><div class="titlepage"><div><div><h3 class="title">12.10.9. Set part font size <a href="#PHPPARTSETPAPER" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Part::get_font_size():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPPARTSETPAPER"><div class="titlepage"><div><div><h3 class="title">12.10.9. Set or get paper type <a href="#PHPPARTSETPAPER" class="id_link">#</a></h3></div></div></div><p>
 				</p><pre class="programlisting">public final
 OpenCReport\Part::set_paper(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPPARTSETORIENTATION"><div class="titlepage"><div><div><h3 class="title">12.10.10. Set part orientation <a href="#PHPPARTSETORIENTATION" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Part::get_paper():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPPARTSETORIENTATION"><div class="titlepage"><div><div><h3 class="title">12.10.10. Set or get part orientation <a href="#PHPPARTSETORIENTATION" class="id_link">#</a></h3></div></div></div><p>
 				The expression must evaluate
 				to a string value. The possible
 				values are <code class="literal">portrait</code>
@@ -128,31 +192,61 @@ OpenCReport\Part::set_paper(
 				Default is <code class="literal">portrait</code>.
 				</p><pre class="programlisting">public final
 OpenCReport\Part::set_orientation(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPPARTSETTOPMARGIN"><div class="titlepage"><div><div><h3 class="title">12.10.11. Set part top margin <a href="#PHPPARTSETTOPMARGIN" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Part::get_orientation():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPPARTSETTOPMARGIN"><div class="titlepage"><div><div><h3 class="title">12.10.11. Set or get part top margin <a href="#PHPPARTSETTOPMARGIN" class="id_link">#</a></h3></div></div></div><p>
 				</p><pre class="programlisting">public final
 OpenCReport\Part::set_top_margin(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPPARTSETBOTTOMMARGIN"><div class="titlepage"><div><div><h3 class="title">12.10.12. Set part bottom margin <a href="#PHPPARTSETBOTTOMMARGIN" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Part::get_top_margin():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPPARTSETBOTTOMMARGIN"><div class="titlepage"><div><div><h3 class="title">12.10.12. Set or get part bottom margin <a href="#PHPPARTSETBOTTOMMARGIN" class="id_link">#</a></h3></div></div></div><p>
 				</p><pre class="programlisting">public final
 OpenCReport\Part::set_bottom_margin(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPPARTSETLEFTMARGIN"><div class="titlepage"><div><div><h3 class="title">12.10.13. Set part left margin <a href="#PHPPARTSETLEFTMARGIN" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Part::get_bottom_margin():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPPARTSETLEFTMARGIN"><div class="titlepage"><div><div><h3 class="title">12.10.13. Set or get part left margin <a href="#PHPPARTSETLEFTMARGIN" class="id_link">#</a></h3></div></div></div><p>
 				</p><pre class="programlisting">public final
 OpenCReport\Part::set_left_margin(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPPARTSETRIGHTMARGIN"><div class="titlepage"><div><div><h3 class="title">12.10.14. Set part right margin <a href="#PHPPARTSETRIGHTMARGIN" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Part::get_left_margin():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPPARTSETRIGHTMARGIN"><div class="titlepage"><div><div><h3 class="title">12.10.14. Set or get part right margin <a href="#PHPPARTSETRIGHTMARGIN" class="id_link">#</a></h3></div></div></div><p>
 				</p><pre class="programlisting">public final
 OpenCReport\Part::set_right_margin(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPPARTSETSUPPRESS"><div class="titlepage"><div><div><h3 class="title">12.10.15. Set part suppression <a href="#PHPPARTSETSUPPRESS" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Part::get_right_margin():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPPARTSETSUPPRESS"><div class="titlepage"><div><div><h3 class="title">12.10.15. Set or get part suppression <a href="#PHPPARTSETSUPPRESS" class="id_link">#</a></h3></div></div></div><p>
 				Set whether the part is suppressed, i.e.
 				all its subsections are omitted from calculating
 				and rendering. Default is <code class="literal">false</code>.
 				</p><pre class="programlisting">public final
 OpenCReport\Part::set_suppress(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPPARTSETSPHF"><div class="titlepage"><div><div><h3 class="title">12.10.16. Set suppression of the page header on the first page <a href="#PHPPARTSETSPHF" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Part::get_suppress():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPPARTSETSPHF"><div class="titlepage"><div><div><h3 class="title">12.10.16. Set or get suppression of the page header on the first page <a href="#PHPPARTSETSPHF" class="id_link">#</a></h3></div></div></div><p>
 				Set whether the page header of the part is
 				suppressed on the first page. The expression
 				must evaluate to a numeric value, which is
@@ -160,7 +254,12 @@ OpenCReport\Part::set_suppress(
 				Default is <code class="literal">false</code>.
 				</p><pre class="programlisting">public final
 OpenCReport\Part::set_suppress_pageheader_firstpage(
-                     ?string $expr_string = null): void;</pre><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Part::set_suppress_pageheader_firstpage():
+                     ?OpenCReport\Expr;</pre><p>
 			</p></div><div class="sect2" id="PHPPARTPAGEHEADER"><div class="titlepage"><div><div><h3 class="title">12.10.17. Get the part's page header <a href="#PHPPARTPAGEHEADER" class="id_link">#</a></h3></div></div></div><p>
 				Get the part's page header <code class="literal">&lt;Output&gt;</code>
 				section. See <a class="xref" href="phpoutputclass.html" title="12.16. The OpenCReport\Output class">Section 12.16</a> and
@@ -199,4 +298,4 @@ OpenCReport\Part::page_footer():
 OpenCReport\Part::page_footer_set_report(
                      OpenCReport\Report $report):
                      void;</pre><p>
-			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phpresultclass.html" title="12.9. The OpenCReport\Result class">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phppartrowclass.html" title="12.11. The OpenCReport\Row class">Next</a></td></tr><tr><td width="40%" align="left" valign="top">12.9. The OpenCReport\Result class </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.8 Manual">Home</a></td><td width="40%" align="right" valign="top"> 12.11. The OpenCReport\Row class</td></tr></table></div></body></html>
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phpresultclass.html" title="12.9. The OpenCReport\Result class">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phppartrowclass.html" title="12.11. The OpenCReport\Row class">Next</a></td></tr><tr><td width="40%" align="left" valign="top">12.9. The OpenCReport\Result class </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.9 Manual">Home</a></td><td width="40%" align="right" valign="top"> 12.11. The OpenCReport\Row class</td></tr></table></div></body></html>

@@ -1,70 +1,141 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>12.20. The OpenCReport\Text class</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phpimageclass.html" title="12.19. The OpenCReport\Image class" /><link rel="next" href="phpbarcodeclass.html" title="12.21. The OpenCReport\Barcode class" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">12.20. The OpenCReport\Text class</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phpimageclass.html" title="12.19. The OpenCReport\Image class">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 12. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.8 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phpbarcodeclass.html" title="12.21. The OpenCReport\Barcode class">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPTEXTCLASS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">12.20. The OpenCReport\Text class <a href="#PHPTEXTCLASS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETVALUESTRING">12.20.1. Set literal value</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETVALUEEXPR">12.20.2. Set expression value</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETVALUEDELAYED">12.20.3. Set delayed flag for the field expression</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETFORMAT">12.20.4. Set the format string for the field expression</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETXLATE">12.20.5. Set the translation flag for the field expression</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETWIDTH">12.20.6. Set the field width</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETALIGN">12.20.7. Set the field alignment</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETCOLOR">12.20.8. Set the field text color</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETBGCOLOR">12.20.9. Set the field background color</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETFONTNAME">12.20.10. Set the field font name</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETFONTSIZE">12.20.11. Set the field font size</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETBOLD">12.20.12. Set the field's bold flag</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETITALIC">12.20.13. Set the field's italic flag</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETLINK">12.20.14. Set the field's link</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETMEMO">12.20.15. Set the field's memo flag</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETMEMOWRAP">12.20.16. Set the field's "wrap at characters" flag</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETMEMOMAXLINES">12.20.17. Set the field's maximum number of lines</a></span></dt></dl></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>12.20. The OpenCReport\Text class</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phpimageclass.html" title="12.19. The OpenCReport\Image class" /><link rel="next" href="phpbarcodeclass.html" title="12.21. The OpenCReport\Barcode class" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">12.20. The OpenCReport\Text class</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phpimageclass.html" title="12.19. The OpenCReport\Image class">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 12. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.9 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phpbarcodeclass.html" title="12.21. The OpenCReport\Barcode class">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPTEXTCLASS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">12.20. The OpenCReport\Text class <a href="#PHPTEXTCLASS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETVALUESTRING">12.20.1. Set literal value</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETVALUEEXPR">12.20.2. Set or get expression value</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETVALUEDELAYED">12.20.3. Set or get delayed flag for the field expression</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETFORMAT">12.20.4. Set or get the format string for the field expression</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETXLATE">12.20.5. Set or get the translation flag for the field expression</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETWIDTH">12.20.6. Set or get the field width</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETALIGN">12.20.7. Set or get the field alignment</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETCOLOR">12.20.8. Set or get the field text color</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETBGCOLOR">12.20.9. Set or get the field background color</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETFONTNAME">12.20.10. Set or get the field font name</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETFONTSIZE">12.20.11. Set or get the field font size</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETBOLD">12.20.12. Set or get the field's bold flag</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETITALIC">12.20.13. Set or get the field's italic flag</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETLINK">12.20.14. Set or get the field's link</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETMEMO">12.20.15. Set or get the field's memo flag</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETMEMOWRAP">12.20.16. Set or get the field's "wrap at characters" flag</a></span></dt><dt><span class="sect2"><a href="phptextclass.html#PHPTEXTSETMEMOMAXLINES">12.20.17. Set or get the field's maximum number of lines</a></span></dt></dl></div><p>
 			</p><pre class="programlisting">class OpenCReport\Text {
     public final set_value_string(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
 
     public final set_value_expr(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_value():
+                     ?OpenCReport\Expr;
 
     public final set_value_delayed(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_value_delayed():
+                     ?OpenCReport\Expr;
 
     public final set_format(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_format():
+                     ?OpenCReport\Expr;
 
     public final set_translate(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_translate():
+                     ?OpenCReport\Expr;
 
     public final set_width(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_width():
+                     ?OpenCReport\Expr;
 
     public final set_alignment(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_alignment():
+                     ?OpenCReport\Expr;
 
     public final set_color(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_color():
+                     ?OpenCReport\Expr;
 
     public final set_bgcolor(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_bgcolor():
+                     ?OpenCReport\Expr;
 
     public final set_font_name(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_font_name():
+                     ?OpenCReport\Expr;
 
     public final set_font_size(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_font_size():
+                     ?OpenCReport\Expr;
 
     public final set_bold(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_bold():
+                     ?OpenCReport\Expr;
 
     public final set_italic(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_italic():
+                     ?OpenCReport\Expr;
 
     public final set_link(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_link():
+                     ?OpenCReport\Expr;
 
     public final set_memo(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_memo():
+                     ?OpenCReport\Expr;
 
     public final set_memo_wrap_chars(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_memo_wrap_chars():
+                     ?OpenCReport\Expr;
 
     public final set_memo_max_lines(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_memo_max_lines():
+                     ?OpenCReport\Expr;
 }</pre><p>
 		</p><div class="sect2" id="PHPTEXTSETVALUESTRING"><div class="titlepage"><div><div><h3 class="title">12.20.1. Set literal value <a href="#PHPTEXTSETVALUESTRING" class="id_link">#</a></h3></div></div></div><p>
 				Set the literal value for the text element.
 				</p><pre class="programlisting">public final
 OpenCReport\Text::set_value_string(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPTEXTSETVALUEEXPR"><div class="titlepage"><div><div><h3 class="title">12.20.2. Set expression value <a href="#PHPTEXTSETVALUEEXPR" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPTEXTSETVALUEEXPR"><div class="titlepage"><div><div><h3 class="title">12.20.2. Set or get expression value <a href="#PHPTEXTSETVALUEEXPR" class="id_link">#</a></h3></div></div></div><p>
 				Set the expression value for the text element.
 				And expression may depend on data row values.
 				See <a class="xref" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Expressions</a>.
 				</p><pre class="programlisting">public final
 OpenCReport\Text::set_value_expr(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPTEXTSETVALUEDELAYED"><div class="titlepage"><div><div><h3 class="title">12.20.3. Set delayed flag for the field expression <a href="#PHPTEXTSETVALUEDELAYED" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Text::get_value():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPTEXTSETVALUEDELAYED"><div class="titlepage"><div><div><h3 class="title">12.20.3. Set or get delayed flag for the field expression <a href="#PHPTEXTSETVALUEDELAYED" class="id_link">#</a></h3></div></div></div><p>
 				Set delayed flag for the field expression.
 				When set to <code class="literal">true</code>, the field
 				expression's last value is calculated during
@@ -73,16 +144,26 @@ OpenCReport\Text::set_value_expr(
 				rendering the report.
 				</p><pre class="programlisting">public final
 OpenCReport\Text::set_value_delayed(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPTEXTSETFORMAT"><div class="titlepage"><div><div><h3 class="title">12.20.4. Set the format string for the field expression <a href="#PHPTEXTSETFORMAT" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Text::get_value_delayed():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPTEXTSETFORMAT"><div class="titlepage"><div><div><h3 class="title">12.20.4. Set or get the format string for the field expression <a href="#PHPTEXTSETFORMAT" class="id_link">#</a></h3></div></div></div><p>
 				Set the format string for the field expression.
 				This format string will be used instead of
 				the default formats for specific types.
 				See <a class="xref" href="formatting.html" title="Chapter 7. Formatting">Formatting data</a>
 				</p><pre class="programlisting">public final
 OpenCReport\Text::set_format(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPTEXTSETXLATE"><div class="titlepage"><div><div><h3 class="title">12.20.5. Set the translation flag for the field expression <a href="#PHPTEXTSETXLATE" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Text::set_format():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPTEXTSETXLATE"><div class="titlepage"><div><div><h3 class="title">12.20.5. Set or get the translation flag for the field expression <a href="#PHPTEXTSETXLATE" class="id_link">#</a></h3></div></div></div><p>
 				Set the translation flag for the field expression.
 				When set to <code class="literal">true</code>, the field
 				value will be translated according to the locale
@@ -90,72 +171,127 @@ OpenCReport\Text::set_format(
 				See <a class="xref" href="phplowlevelapi.html#PHPLOCALEMETHODS" title="12.4.2. Locale related methods">Section 12.4.2</a>
 				</p><pre class="programlisting">public final
 OpenCReport\Text::set_translate(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPTEXTSETWIDTH"><div class="titlepage"><div><div><h3 class="title">12.20.6. Set the field width <a href="#PHPTEXTSETWIDTH" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Text::get_translate():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPTEXTSETWIDTH"><div class="titlepage"><div><div><h3 class="title">12.20.6. Set or get the field width <a href="#PHPTEXTSETWIDTH" class="id_link">#</a></h3></div></div></div><p>
 				Set the field width.
 				See <a class="xref" href="textelemnode.html#TEXTELEMWIDTH" title="8.17.1.4. Width">Text element width</a>
 				</p><pre class="programlisting">public final
 OpenCReport\Text::set_width(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPTEXTSETALIGN"><div class="titlepage"><div><div><h3 class="title">12.20.7. Set the field alignment <a href="#PHPTEXTSETALIGN" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Text::get_width():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPTEXTSETALIGN"><div class="titlepage"><div><div><h3 class="title">12.20.7. Set or get the field alignment <a href="#PHPTEXTSETALIGN" class="id_link">#</a></h3></div></div></div><p>
 				Set the field alignment.
 				See <a class="xref" href="textelemnode.html#TEXTELEMALIGN" title="8.17.1.5. Alignment">Text element alignment</a>
 				</p><pre class="programlisting">public final
 OpenCReport\Text::set_alignment(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPTEXTSETCOLOR"><div class="titlepage"><div><div><h3 class="title">12.20.8. Set the field text color <a href="#PHPTEXTSETCOLOR" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Text::get_alignment():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPTEXTSETCOLOR"><div class="titlepage"><div><div><h3 class="title">12.20.8. Set or get the field text color <a href="#PHPTEXTSETCOLOR" class="id_link">#</a></h3></div></div></div><p>
 				Set the field text color.
 				See <a class="xref" href="textelemnode.html#TEXTCOLOR" title="8.17.1.6. Text color">Section 8.17.1.6</a>
 				</p><pre class="programlisting">public final
 OpenCReport\Text::set_color(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPTEXTSETBGCOLOR"><div class="titlepage"><div><div><h3 class="title">12.20.9. Set the field background color <a href="#PHPTEXTSETBGCOLOR" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Text::get_color():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPTEXTSETBGCOLOR"><div class="titlepage"><div><div><h3 class="title">12.20.9. Set or get the field background color <a href="#PHPTEXTSETBGCOLOR" class="id_link">#</a></h3></div></div></div><p>
 				Set the field background color.
 				See <a class="xref" href="textelemnode.html#TEXTBGCOLOR" title="8.17.1.7. Background color">Section 8.17.1.7</a>
 				</p><pre class="programlisting">public final
 OpenCReport\Text::set_bgcolor(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPTEXTSETFONTNAME"><div class="titlepage"><div><div><h3 class="title">12.20.10. Set the field font name <a href="#PHPTEXTSETFONTNAME" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Text::get_bgcolor():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPTEXTSETFONTNAME"><div class="titlepage"><div><div><h3 class="title">12.20.10. Set or get the field font name <a href="#PHPTEXTSETFONTNAME" class="id_link">#</a></h3></div></div></div><p>
 				Set the field font name.
 				See <a class="xref" href="textelemnode.html#TEXTELEMFONTNAME" title="8.17.1.8. Font name">Text element font name</a>
 				</p><pre class="programlisting">public final
 OpenCReport\Text::set_font_name(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPTEXTSETFONTSIZE"><div class="titlepage"><div><div><h3 class="title">12.20.11. Set the field font size <a href="#PHPTEXTSETFONTSIZE" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Text::get_font_name():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPTEXTSETFONTSIZE"><div class="titlepage"><div><div><h3 class="title">12.20.11. Set or get the field font size <a href="#PHPTEXTSETFONTSIZE" class="id_link">#</a></h3></div></div></div><p>
 				Set the field font size.
 				See <a class="xref" href="textelemnode.html#TEXTELEMFONTSIZE" title="8.17.1.9. Font size">Text element font size</a>
 				</p><pre class="programlisting">public final
 OpenCReport\Text::set_font_size(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPTEXTSETBOLD"><div class="titlepage"><div><div><h3 class="title">12.20.12. Set the field's bold flag <a href="#PHPTEXTSETBOLD" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Text::get_font_size():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPTEXTSETBOLD"><div class="titlepage"><div><div><h3 class="title">12.20.12. Set or get the field's bold flag <a href="#PHPTEXTSETBOLD" class="id_link">#</a></h3></div></div></div><p>
 				Set the field's bold flag.
 				See <a class="xref" href="textelemnode.html#TEXTBOLD" title="8.17.1.10. Bold font">Section 8.17.1.10</a>
 				</p><pre class="programlisting">public final
 OpenCReport\Text::set_bold(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPTEXTSETITALIC"><div class="titlepage"><div><div><h3 class="title">12.20.13. Set the field's italic flag <a href="#PHPTEXTSETITALIC" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Text::get_bold():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPTEXTSETITALIC"><div class="titlepage"><div><div><h3 class="title">12.20.13. Set or get the field's italic flag <a href="#PHPTEXTSETITALIC" class="id_link">#</a></h3></div></div></div><p>
 				Set the field's italic flag.
 				See <a class="xref" href="textelemnode.html#TEXTITALIC" title="8.17.1.11. Italic font">Section 8.17.1.11</a>
 				</p><pre class="programlisting">public final
 OpenCReport\Text::set_italic(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPTEXTSETLINK"><div class="titlepage"><div><div><h3 class="title">12.20.14. Set the field's link <a href="#PHPTEXTSETLINK" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Text::get_italic():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPTEXTSETLINK"><div class="titlepage"><div><div><h3 class="title">12.20.14. Set or get the field's link <a href="#PHPTEXTSETLINK" class="id_link">#</a></h3></div></div></div><p>
 				Set the field's link URL.
 				When set, the text field becomes a link
 				with the specified URL.
 				See <a class="xref" href="textelemnode.html#WEBLINK" title="8.17.1.12. Web link">Section 8.17.1.12</a>
 				</p><pre class="programlisting">public final
 OpenCReport\Text::set_link(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPTEXTSETMEMO"><div class="titlepage"><div><div><h3 class="title">12.20.15. Set the field's memo flag <a href="#PHPTEXTSETMEMO" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Text::get_link():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPTEXTSETMEMO"><div class="titlepage"><div><div><h3 class="title">12.20.15. Set or get the field's memo flag <a href="#PHPTEXTSETMEMO" class="id_link">#</a></h3></div></div></div><p>
 				Set the field's memo (multi-line text) flag.
 				When set to <code class="literal">true</code>,
 				the text field becomes a multi-line field.
 				See <a class="xref" href="textelemnode.html#MEMO" title="8.17.1.13. Multi-line (memo) field">Multi-line (memo) field</a>
 				</p><pre class="programlisting">public final
 OpenCReport\Text::set_memo(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPTEXTSETMEMOWRAP"><div class="titlepage"><div><div><h3 class="title">12.20.16. Set the field's "wrap at characters" flag <a href="#PHPTEXTSETMEMOWRAP" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Text::get_memo():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPTEXTSETMEMOWRAP"><div class="titlepage"><div><div><h3 class="title">12.20.16. Set or get the field's "wrap at characters" flag <a href="#PHPTEXTSETMEMOWRAP" class="id_link">#</a></h3></div></div></div><p>
 				Set the field's "wrap at characters" flag.
 				Only used when the memo flag is set to
 				<code class="literal">true</code>.
@@ -166,8 +302,13 @@ OpenCReport\Text::set_memo(
 				See <a class="xref" href="textelemnode.html#MEMOWRAP" title="8.17.1.14. Multi-line field wrapping">Section 8.17.1.14</a>
 				</p><pre class="programlisting">public final
 OpenCReport\Text::set_memo_wrap_chars(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPTEXTSETMEMOMAXLINES"><div class="titlepage"><div><div><h3 class="title">12.20.17. Set the field's maximum number of lines <a href="#PHPTEXTSETMEMOMAXLINES" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Text::get_memo_wrap_chars():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPTEXTSETMEMOMAXLINES"><div class="titlepage"><div><div><h3 class="title">12.20.17. Set or get the field's maximum number of lines <a href="#PHPTEXTSETMEMOMAXLINES" class="id_link">#</a></h3></div></div></div><p>
 				Set the field's maximum number of lines.
 				Only used when the memo flag is set to
 				<code class="literal">true</code>. The text field's value
@@ -176,5 +317,10 @@ OpenCReport\Text::set_memo_wrap_chars(
 				See <a class="xref" href="textelemnode.html#MEMOROWLIMIT" title="8.17.1.15. Multi-line field row limit">Section 8.17.1.15</a>
 				</p><pre class="programlisting">public final
 OpenCReport\Text::set_memo_max_lines(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phpimageclass.html" title="12.19. The OpenCReport\Image class">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phpbarcodeclass.html" title="12.21. The OpenCReport\Barcode class">Next</a></td></tr><tr><td width="40%" align="left" valign="top">12.19. The OpenCReport\Image class </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.8 Manual">Home</a></td><td width="40%" align="right" valign="top"> 12.21. The OpenCReport\Barcode class</td></tr></table></div></body></html>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\Text::get_memo_max_lines():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phpimageclass.html" title="12.19. The OpenCReport\Image class">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phpbarcodeclass.html" title="12.21. The OpenCReport\Barcode class">Next</a></td></tr><tr><td width="40%" align="left" valign="top">12.19. The OpenCReport\Image class </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.9 Manual">Home</a></td><td width="40%" align="right" valign="top"> 12.21. The OpenCReport\Barcode class</td></tr></table></div></body></html>

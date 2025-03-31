@@ -1,61 +1,114 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>12.18. The OpenCReport\HorizontalLine class</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phplineclass.html" title="12.17. The OpenCReport\Line class" /><link rel="next" href="phpimageclass.html" title="12.19. The OpenCReport\Image class" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">12.18. The OpenCReport\HorizontalLine class</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phplineclass.html" title="12.17. The OpenCReport\Line class">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 12. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.8 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phpimageclass.html" title="12.19. The OpenCReport\Image class">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPHLINECLASS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">12.18. The OpenCReport\HorizontalLine class <a href="#PHPHLINECLASS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phphlineclass.html#PHPHLINESETSIZE">12.18.1. Set the line width</a></span></dt><dt><span class="sect2"><a href="phphlineclass.html#PHPHLINESETALIGN">12.18.2. Set the line alignment</a></span></dt><dt><span class="sect2"><a href="phphlineclass.html#PHPHLINESETINDENT">12.18.3. Set the line indentation</a></span></dt><dt><span class="sect2"><a href="phphlineclass.html#PHPHLINESETLENGTH">12.18.4. Set the line length</a></span></dt><dt><span class="sect2"><a href="phphlineclass.html#PHPHLINESETFONTSIZE">12.18.5. Set the line's font size</a></span></dt><dt><span class="sect2"><a href="phphlineclass.html#PHPHLINESETSUPPRESS">12.18.6. Set the suppression flag for the line</a></span></dt><dt><span class="sect2"><a href="phphlineclass.html#PHPHLINESETCOLOR">12.18.7. Set the line color</a></span></dt></dl></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>12.18. The OpenCReport\HorizontalLine class</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phplineclass.html" title="12.17. The OpenCReport\Line class" /><link rel="next" href="phpimageclass.html" title="12.19. The OpenCReport\Image class" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">12.18. The OpenCReport\HorizontalLine class</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phplineclass.html" title="12.17. The OpenCReport\Line class">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 12. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.9 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phpimageclass.html" title="12.19. The OpenCReport\Image class">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPHLINECLASS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">12.18. The OpenCReport\HorizontalLine class <a href="#PHPHLINECLASS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phphlineclass.html#PHPHLINESETSIZE">12.18.1. Set the line width</a></span></dt><dt><span class="sect2"><a href="phphlineclass.html#PHPHLINESETALIGN">12.18.2. Set or get the line alignment</a></span></dt><dt><span class="sect2"><a href="phphlineclass.html#PHPHLINESETINDENT">12.18.3. Set or get the line indentation</a></span></dt><dt><span class="sect2"><a href="phphlineclass.html#PHPHLINESETLENGTH">12.18.4. Set or get the line length</a></span></dt><dt><span class="sect2"><a href="phphlineclass.html#PHPHLINESETFONTSIZE">12.18.5. Set or get the line's font size</a></span></dt><dt><span class="sect2"><a href="phphlineclass.html#PHPHLINESETSUPPRESS">12.18.6. Set or get the suppression flag for the line</a></span></dt><dt><span class="sect2"><a href="phphlineclass.html#PHPHLINESETCOLOR">12.18.7. Set or get the line color</a></span></dt></dl></div><p>
 			</p><pre class="programlisting">class OpenCReport\HorizontalLine {
     public final set_size(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
 
-    public final set_align(
-                     ?string $expr_string = null): void;
+    public final get_size():
+                     ?OpenCReport\Expr;
 
-    public final set_indent(
-                     ?string $expr_string = null): void;
+    public final set_alignment(
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_alignment():
+                     ?OpenCReport\Expr;
+
+    public final set_indentation(
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_indentation():
+                     ?OpenCReport\Expr;
 
     public final set_length(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_length():
+                     ?OpenCReport\Expr;
 
     public final set_font_size(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_font_size():
+                     ?OpenCReport\Expr;
 
     public final set_suppress(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_suppress():
+                     ?OpenCReport\Expr;
 
     public final set_color(
-                     ?string $expr_string = null): void;
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+    public final get_color():
+                     ?OpenCReport\Expr;
 }</pre><p>
 		</p><div class="sect2" id="PHPHLINESETSIZE"><div class="titlepage"><div><div><h3 class="title">12.18.1. Set the line width <a href="#PHPHLINESETSIZE" class="id_link">#</a></h3></div></div></div><p>
-				Set the line width in points.
+				Set or get the line width in points.
 				Also see <a class="xref" href="hlinenode.html#HLINEWIDTH" title="8.18.1.1. Line width">Section 8.18.1.1</a>
 				</p><pre class="programlisting">public final
 OpenCReport\HorizontalLine::set_size(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPHLINESETALIGN"><div class="titlepage"><div><div><h3 class="title">12.18.2. Set the line alignment <a href="#PHPHLINESETALIGN" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\HorizontalLine::get_size():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPHLINESETALIGN"><div class="titlepage"><div><div><h3 class="title">12.18.2. Set or get the line alignment <a href="#PHPHLINESETALIGN" class="id_link">#</a></h3></div></div></div><p>
 				Set the line alignment.
 				Also see <a class="xref" href="hlinenode.html#HLINEALIGN" title="8.18.1.2. Line alignment">Section 8.18.1.2</a>
 				</p><pre class="programlisting">public final
-OpenCReport\HorizontalLine::set_align(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPHLINESETINDENT"><div class="titlepage"><div><div><h3 class="title">12.18.3. Set the line indentation <a href="#PHPHLINESETINDENT" class="id_link">#</a></h3></div></div></div><p>
+OpenCReport\HorizontalLine::set_alignment(
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\HorizontalLine::get_alignment():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPHLINESETINDENT"><div class="titlepage"><div><div><h3 class="title">12.18.3. Set or get the line indentation <a href="#PHPHLINESETINDENT" class="id_link">#</a></h3></div></div></div><p>
 				Set the line indentation, i.e. starting point
 				to the right of the left side of the report.
 				Also see <a class="xref" href="hlinenode.html#HLINEINDENT" title="8.18.1.3. Indentation">Section 8.18.1.3</a>
 				</p><pre class="programlisting">public final
-OpenCReport\HorizontalLine::set_indent(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPHLINESETLENGTH"><div class="titlepage"><div><div><h3 class="title">12.18.4. Set the line length <a href="#PHPHLINESETLENGTH" class="id_link">#</a></h3></div></div></div><p>
+OpenCReport\HorizontalLine::set_indentation(
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\HorizontalLine::get_indentation():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPHLINESETLENGTH"><div class="titlepage"><div><div><h3 class="title">12.18.4. Set or get the line length <a href="#PHPHLINESETLENGTH" class="id_link">#</a></h3></div></div></div><p>
 				Set the line length.
 				See <a class="xref" href="hlinenode.html#HLINELENGTH" title="8.18.1.4. Length">HorizontalLine length</a> and
 				<a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="8.2.1. Size unit attribute">Size unit attribute</a>.
 				</p><pre class="programlisting">public final
 OpenCReport\HorizontalLine::set_length(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPHLINESETFONTSIZE"><div class="titlepage"><div><div><h3 class="title">12.18.5. Set the line's font size <a href="#PHPHLINESETFONTSIZE" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\HorizontalLine::get_length():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPHLINESETFONTSIZE"><div class="titlepage"><div><div><h3 class="title">12.18.5. Set or get the line's font size <a href="#PHPHLINESETFONTSIZE" class="id_link">#</a></h3></div></div></div><p>
 				Set the line's font size. This font size
 				is used in calculating the line length.
 				See <a class="xref" href="hlinenode.html#HLINEFONTSIZE" title="8.18.1.5. Font size">HorizontalLine font size</a>
 				</p><pre class="programlisting">public final
 OpenCReport\HorizontalLine::set_font_size(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPHLINESETSUPPRESS"><div class="titlepage"><div><div><h3 class="title">12.18.6. Set the suppression flag for the line <a href="#PHPHLINESETSUPPRESS" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\HorizontalLine::get_font_size():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPHLINESETSUPPRESS"><div class="titlepage"><div><div><h3 class="title">12.18.6. Set or get the suppression flag for the line <a href="#PHPHLINESETSUPPRESS" class="id_link">#</a></h3></div></div></div><p>
 				Set the suppression flag for the line.
 				The expression must evaluate to a numeric
 				value that is treated as a boolean, i.e. 0 or non-0.
@@ -63,11 +116,21 @@ OpenCReport\HorizontalLine::set_font_size(
 				is not rendered. Default is <code class="literal">false</code>.
 				</p><pre class="programlisting">public final
 OpenCReport\HorizontalLine::set_suppress(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div><div class="sect2" id="PHPHLINESETCOLOR"><div class="titlepage"><div><div><h3 class="title">12.18.7. Set the line color <a href="#PHPHLINESETCOLOR" class="id_link">#</a></h3></div></div></div><p>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\HorizontalLine::get_suppress():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div><div class="sect2" id="PHPHLINESETCOLOR"><div class="titlepage"><div><div><h3 class="title">12.18.7. Set or get the line color <a href="#PHPHLINESETCOLOR" class="id_link">#</a></h3></div></div></div><p>
 				Set the line color.
 				See <a class="xref" href="colorspec.html" title="8.22. Color specification">Color specification</a>.
 				</p><pre class="programlisting">public final
 OpenCReport\HorizontalLine::set_color(
-                     ?string $expr_string = null): void;</pre><p>
-			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phplineclass.html" title="12.17. The OpenCReport\Line class">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phpimageclass.html" title="12.19. The OpenCReport\Image class">Next</a></td></tr><tr><td width="40%" align="left" valign="top">12.17. The OpenCReport\Line class </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.8 Manual">Home</a></td><td width="40%" align="right" valign="top"> 12.19. The OpenCReport\Image class</td></tr></table></div></body></html>
+                     ?string $expr_string = null):
+                     ?OpenCReport\Expr;
+
+public final
+OpenCReport\HorizontalLine::get_color():
+                     ?OpenCReport\Expr;</pre><p>
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phplineclass.html" title="12.17. The OpenCReport\Line class">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phpimageclass.html" title="12.19. The OpenCReport\Image class">Next</a></td></tr><tr><td width="40%" align="left" valign="top">12.17. The OpenCReport\Line class </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.9 Manual">Home</a></td><td width="40%" align="right" valign="top"> 12.19. The OpenCReport\Image class</td></tr></table></div></body></html>

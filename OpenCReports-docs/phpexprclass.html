@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>12.8. The OpenCReport\Expr class</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phpqueryresultclass.html" title="12.7. The OpenCReport\QueryResult class" /><link rel="next" href="phpresultclass.html" title="12.9. The OpenCReport\Result class" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">12.8. The OpenCReport\Expr class</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phpqueryresultclass.html" title="12.7. The OpenCReport\QueryResult class">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 12. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.8 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phpresultclass.html" title="12.9. The OpenCReport\Result class">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPEXPRCLASS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">12.8. The OpenCReport\Expr class <a href="#PHPEXPRCLASS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRFREE">12.8.1. Free an expression</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRPRINT">12.8.2. Print an expression</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRNODES">12.8.3. Get the number of expression tree nodes</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRRESOLVE">12.8.4. Resolve an expression</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPROPTIMIZE">12.8.5. Optimize an expression</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPREVAL">12.8.6. Evaluate an expression</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRGETRESULT">12.8.7. Get the result of an expression</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRSETSTRINGVALUE">12.8.8. Set expression result to a string value</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRSETLONGVALUE">12.8.9. Set expression result to a long value</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRSETDOUBLEVALUE">12.8.10. Set expression result to a double value</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRSETNUMBERVALUEFROMSTRING">12.8.11. Set expression result to a numeric value from string</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRGETNUMOPS">12.8.12. Get number of operands of a expression</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPROPGETRESULT">12.8.13. Get nth operands' result of a expression</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRCMPRESULTS">12.8.14. Compare the expression's current and previous results</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRINITRESULTS">12.8.15. Initialize expression results</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRGETSTRINGVALUE">12.8.16. Get string value of an expression</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRGETLONGVALUE">12.8.17. Get long value of an expression</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRGETDOUBLEVALUE">12.8.18. Get double value of an expression</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRGETNUMBERVALUEASSTRING">12.8.19. Get numeric value of an expression as a string</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRSETNTHSTRINGVALUE">12.8.20. Set nth result of an expression to a string value</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRSETNTHLONGVALUE">12.8.21. Set nth result of an expression to a long value</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRSETNTHDOUBLEVALUE">12.8.22. Set nth result of an expression to a double value</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRSETITERATIVESTARTFLAG">12.8.23. Set iterative start flag of an expression</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRSETDELAYED">12.8.24. Set expression to delayed</a></span></dt></dl></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>12.8. The OpenCReport\Expr class</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phpqueryresultclass.html" title="12.7. The OpenCReport\QueryResult class" /><link rel="next" href="phpresultclass.html" title="12.9. The OpenCReport\Result class" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">12.8. The OpenCReport\Expr class</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phpqueryresultclass.html" title="12.7. The OpenCReport\QueryResult class">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 12. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.9 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phpresultclass.html" title="12.9. The OpenCReport\Result class">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPEXPRCLASS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">12.8. The OpenCReport\Expr class <a href="#PHPEXPRCLASS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRFREE">12.8.1. Free an expression</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRGETEXPRSTRING">12.8.2. Get the original expression string</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRPRINT">12.8.3. Print an expression</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRNODES">12.8.4. Get the number of expression tree nodes</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRRESOLVE">12.8.5. Resolve an expression</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPROPTIMIZE">12.8.6. Optimize an expression</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPREVAL">12.8.7. Evaluate an expression</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRGETRESULT">12.8.8. Get the result of an expression</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRSETSTRINGVALUE">12.8.9. Set expression result to a string value</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRSETLONGVALUE">12.8.10. Set expression result to a long value</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRSETDOUBLEVALUE">12.8.11. Set expression result to a double value</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRSETNUMBERVALUEFROMSTRING">12.8.12. Set expression result to a numeric value from string</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRGETNUMOPS">12.8.13. Get number of operands of a expression</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPROPGETRESULT">12.8.14. Get nth operands' result of a expression</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRCMPRESULTS">12.8.15. Compare the expression's current and previous results</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRINITRESULTS">12.8.16. Initialize expression results</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRGETSTRINGVALUE">12.8.17. Get string value of an expression</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRGETLONGVALUE">12.8.18. Get long value of an expression</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRGETDOUBLEVALUE">12.8.19. Get double value of an expression</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRGETNUMBERVALUEASSTRING">12.8.20. Get numeric value of an expression as a string</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRSETNTHSTRINGVALUE">12.8.21. Set nth result of an expression to a string value</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRSETNTHLONGVALUE">12.8.22. Set nth result of an expression to a long value</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRSETNTHDOUBLEVALUE">12.8.23. Set nth result of an expression to a double value</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRSETITERATIVESTARTFLAG">12.8.24. Set iterative start flag of an expression</a></span></dt><dt><span class="sect2"><a href="phpexprclass.html#PHPEXPRSETDELAYED">12.8.25. Set expression to delayed</a></span></dt></dl></div><p>
 			</p><pre class="programlisting">class OpenCReport\Expr {
     public final free(): void;
+
+    public final get_expr_string(): string;
 
     public final print(): void;
 
@@ -60,120 +62,123 @@
 				Used by unit tests.
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::free(): void;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRPRINT"><div class="titlepage"><div><div><h3 class="title">12.8.2. Print an expression <a href="#PHPEXPRPRINT" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRGETEXPRSTRING"><div class="titlepage"><div><div><h3 class="title">12.8.2. Get the original expression string <a href="#PHPEXPRGETEXPRSTRING" class="id_link">#</a></h3></div></div></div><p>
+				</p><pre class="programlisting">public final
+OpenCReport\Expr::get_expr_string(): string;</pre><p>
+			</p></div><div class="sect2" id="PHPEXPRPRINT"><div class="titlepage"><div><div><h3 class="title">12.8.3. Print an expression <a href="#PHPEXPRPRINT" class="id_link">#</a></h3></div></div></div><p>
 				Used by unit tests.
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::print(): void;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRNODES"><div class="titlepage"><div><div><h3 class="title">12.8.3. Get the number of expression tree nodes <a href="#PHPEXPRNODES" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRNODES"><div class="titlepage"><div><div><h3 class="title">12.8.4. Get the number of expression tree nodes <a href="#PHPEXPRNODES" class="id_link">#</a></h3></div></div></div><p>
 				Used by unit tests to compare the expression
 				tree before and after optimization.
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::nodes(): long;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRRESOLVE"><div class="titlepage"><div><div><h3 class="title">12.8.4. Resolve an expression <a href="#PHPEXPRRESOLVE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRRESOLVE"><div class="titlepage"><div><div><h3 class="title">12.8.5. Resolve an expression <a href="#PHPEXPRRESOLVE" class="id_link">#</a></h3></div></div></div><p>
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::resolve(): void;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPROPTIMIZE"><div class="titlepage"><div><div><h3 class="title">12.8.5. Optimize an expression <a href="#PHPEXPROPTIMIZE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPROPTIMIZE"><div class="titlepage"><div><div><h3 class="title">12.8.6. Optimize an expression <a href="#PHPEXPROPTIMIZE" class="id_link">#</a></h3></div></div></div><p>
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::optimize(): void;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPREVAL"><div class="titlepage"><div><div><h3 class="title">12.8.6. Evaluate an expression <a href="#PHPEXPREVAL" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPREVAL"><div class="titlepage"><div><div><h3 class="title">12.8.7. Evaluate an expression <a href="#PHPEXPREVAL" class="id_link">#</a></h3></div></div></div><p>
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::eval():
 						 ?OpenCReport\Result;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRGETRESULT"><div class="titlepage"><div><div><h3 class="title">12.8.7. Get the result of an expression <a href="#PHPEXPRGETRESULT" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRGETRESULT"><div class="titlepage"><div><div><h3 class="title">12.8.8. Get the result of an expression <a href="#PHPEXPRGETRESULT" class="id_link">#</a></h3></div></div></div><p>
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::get_result():
 						 ?OpenCReport\Result;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRSETSTRINGVALUE"><div class="titlepage"><div><div><h3 class="title">12.8.8. Set expression result to a string value <a href="#PHPEXPRSETSTRINGVALUE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRSETSTRINGVALUE"><div class="titlepage"><div><div><h3 class="title">12.8.9. Set expression result to a string value <a href="#PHPEXPRSETSTRINGVALUE" class="id_link">#</a></h3></div></div></div><p>
 				Useful for user functions.
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::set_string(
 						 string $value): void;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRSETLONGVALUE"><div class="titlepage"><div><div><h3 class="title">12.8.9. Set expression result to a long value <a href="#PHPEXPRSETLONGVALUE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRSETLONGVALUE"><div class="titlepage"><div><div><h3 class="title">12.8.10. Set expression result to a long value <a href="#PHPEXPRSETLONGVALUE" class="id_link">#</a></h3></div></div></div><p>
 				Useful for user functions.
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::set_long(
 						 long $value): void;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRSETDOUBLEVALUE"><div class="titlepage"><div><div><h3 class="title">12.8.10. Set expression result to a double value <a href="#PHPEXPRSETDOUBLEVALUE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRSETDOUBLEVALUE"><div class="titlepage"><div><div><h3 class="title">12.8.11. Set expression result to a double value <a href="#PHPEXPRSETDOUBLEVALUE" class="id_link">#</a></h3></div></div></div><p>
 				Useful for user functions.
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::set_double(
 						 double $value): void;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRSETNUMBERVALUEFROMSTRING"><div class="titlepage"><div><div><h3 class="title">12.8.11. Set expression result to a numeric value from string <a href="#PHPEXPRSETNUMBERVALUEFROMSTRING" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRSETNUMBERVALUEFROMSTRING"><div class="titlepage"><div><div><h3 class="title">12.8.12. Set expression result to a numeric value from string <a href="#PHPEXPRSETNUMBERVALUEFROMSTRING" class="id_link">#</a></h3></div></div></div><p>
 				Useful for user functions.
 				This allows using
 				<a class="ulink" href="https://www.php.net/manual/en/book.bc.php" target="_top">BC Math</a>
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::set_number_from_string(
 						 string $value): void;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRGETNUMOPS"><div class="titlepage"><div><div><h3 class="title">12.8.12. Get number of operands of a expression <a href="#PHPEXPRGETNUMOPS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRGETNUMOPS"><div class="titlepage"><div><div><h3 class="title">12.8.13. Get number of operands of a expression <a href="#PHPEXPRGETNUMOPS" class="id_link">#</a></h3></div></div></div><p>
 				Useful for user functions.
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::get_num_operands(): long;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPROPGETRESULT"><div class="titlepage"><div><div><h3 class="title">12.8.13. Get nth operands' result of a expression <a href="#PHPEXPROPGETRESULT" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPROPGETRESULT"><div class="titlepage"><div><div><h3 class="title">12.8.14. Get nth operands' result of a expression <a href="#PHPEXPROPGETRESULT" class="id_link">#</a></h3></div></div></div><p>
 				Useful for user functions.
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::operand_get_result(
 						 long $opidx):
 						 ?OpenCReport\Result;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRCMPRESULTS"><div class="titlepage"><div><div><h3 class="title">12.8.14. Compare the expression's current and previous results <a href="#PHPEXPRCMPRESULTS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRCMPRESULTS"><div class="titlepage"><div><div><h3 class="title">12.8.15. Compare the expression's current and previous results <a href="#PHPEXPRCMPRESULTS" class="id_link">#</a></h3></div></div></div><p>
 				Used internally by the report executor
 				and unit tests. Useful for implementing
 				a custom report executor with breaks.
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::cmp_results(): bool;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRINITRESULTS"><div class="titlepage"><div><div><h3 class="title">12.8.15. Initialize expression results <a href="#PHPEXPRINITRESULTS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRINITRESULTS"><div class="titlepage"><div><div><h3 class="title">12.8.16. Initialize expression results <a href="#PHPEXPRINITRESULTS" class="id_link">#</a></h3></div></div></div><p>
 				Used internally by the report executor
 				and unit tests. Useful for implementing
 				a custom report executor.
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::init_results(long $result_type):
 						 void;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRGETSTRINGVALUE"><div class="titlepage"><div><div><h3 class="title">12.8.16. Get string value of an expression <a href="#PHPEXPRGETSTRINGVALUE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRGETSTRINGVALUE"><div class="titlepage"><div><div><h3 class="title">12.8.17. Get string value of an expression <a href="#PHPEXPRGETSTRINGVALUE" class="id_link">#</a></h3></div></div></div><p>
 				Used by unit tests.
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::get_string(): ?string;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRGETLONGVALUE"><div class="titlepage"><div><div><h3 class="title">12.8.17. Get long value of an expression <a href="#PHPEXPRGETLONGVALUE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRGETLONGVALUE"><div class="titlepage"><div><div><h3 class="title">12.8.18. Get long value of an expression <a href="#PHPEXPRGETLONGVALUE" class="id_link">#</a></h3></div></div></div><p>
 				Used by unit tests.
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::get_long(): long;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRGETDOUBLEVALUE"><div class="titlepage"><div><div><h3 class="title">12.8.18. Get double value of an expression <a href="#PHPEXPRGETDOUBLEVALUE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRGETDOUBLEVALUE"><div class="titlepage"><div><div><h3 class="title">12.8.19. Get double value of an expression <a href="#PHPEXPRGETDOUBLEVALUE" class="id_link">#</a></h3></div></div></div><p>
 				Used by unit tests.
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::get_double(): double;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRGETNUMBERVALUEASSTRING"><div class="titlepage"><div><div><h3 class="title">12.8.19. Get numeric value of an expression as a string <a href="#PHPEXPRGETNUMBERVALUEASSTRING" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRGETNUMBERVALUEASSTRING"><div class="titlepage"><div><div><h3 class="title">12.8.20. Get numeric value of an expression as a string <a href="#PHPEXPRGETNUMBERVALUEASSTRING" class="id_link">#</a></h3></div></div></div><p>
 				Used internally by unit tests.
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::get_number():
                          ?string;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRSETNTHSTRINGVALUE"><div class="titlepage"><div><div><h3 class="title">12.8.20. Set nth result of an expression to a string value <a href="#PHPEXPRSETNTHSTRINGVALUE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRSETNTHSTRINGVALUE"><div class="titlepage"><div><div><h3 class="title">12.8.21. Set nth result of an expression to a string value <a href="#PHPEXPRSETNTHSTRINGVALUE" class="id_link">#</a></h3></div></div></div><p>
 				Used by unit tests.
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::set_nth_result_string(
 						 long $which,
 						 string $value): void;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRSETNTHLONGVALUE"><div class="titlepage"><div><div><h3 class="title">12.8.21. Set nth result of an expression to a long value <a href="#PHPEXPRSETNTHLONGVALUE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRSETNTHLONGVALUE"><div class="titlepage"><div><div><h3 class="title">12.8.22. Set nth result of an expression to a long value <a href="#PHPEXPRSETNTHLONGVALUE" class="id_link">#</a></h3></div></div></div><p>
 				Used by unit tests.
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::set_nth_result_long(
 						 long $which,
 						 long $value): void;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRSETNTHDOUBLEVALUE"><div class="titlepage"><div><div><h3 class="title">12.8.22. Set nth result of an expression to a double value <a href="#PHPEXPRSETNTHDOUBLEVALUE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRSETNTHDOUBLEVALUE"><div class="titlepage"><div><div><h3 class="title">12.8.23. Set nth result of an expression to a double value <a href="#PHPEXPRSETNTHDOUBLEVALUE" class="id_link">#</a></h3></div></div></div><p>
 				Used by unit tests.
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::set_nth_result_double(
 						 long $which,
 						 double $value): void;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRSETITERATIVESTARTFLAG"><div class="titlepage"><div><div><h3 class="title">12.8.23. Set iterative start flag of an expression <a href="#PHPEXPRSETITERATIVESTARTFLAG" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRSETITERATIVESTARTFLAG"><div class="titlepage"><div><div><h3 class="title">12.8.24. Set iterative start flag of an expression <a href="#PHPEXPRSETITERATIVESTARTFLAG" class="id_link">#</a></h3></div></div></div><p>
 				Used internally by the report executor
 				and by unit tests.
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::set_iterative_start_value(
 						 bool $value): void;</pre><p>
-			</p></div><div class="sect2" id="PHPEXPRSETDELAYED"><div class="titlepage"><div><div><h3 class="title">12.8.24. Set expression to delayed <a href="#PHPEXPRSETDELAYED" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PHPEXPRSETDELAYED"><div class="titlepage"><div><div><h3 class="title">12.8.25. Set expression to delayed <a href="#PHPEXPRSETDELAYED" class="id_link">#</a></h3></div></div></div><p>
 				A delayed expression's final value is
 				precalculated, and this value is used
 				in the output in every row of the report.
 				</p><pre class="programlisting">public final
 OpenCReport\Expr::set_delayed(
 						 bool $value): void;</pre><p>
-			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phpqueryresultclass.html" title="12.7. The OpenCReport\QueryResult class">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phpresultclass.html" title="12.9. The OpenCReport\Result class">Next</a></td></tr><tr><td width="40%" align="left" valign="top">12.7. The OpenCReport\QueryResult class </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.8 Manual">Home</a></td><td width="40%" align="right" valign="top"> 12.9. The OpenCReport\Result class</td></tr></table></div></body></html>
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phpqueryresultclass.html" title="12.7. The OpenCReport\QueryResult class">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phpresultclass.html" title="12.9. The OpenCReport\Result class">Next</a></td></tr><tr><td width="40%" align="left" valign="top">12.7. The OpenCReport\QueryResult class </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.9 Manual">Home</a></td><td width="40%" align="right" valign="top"> 12.9. The OpenCReport\Result class</td></tr></table></div></body></html>

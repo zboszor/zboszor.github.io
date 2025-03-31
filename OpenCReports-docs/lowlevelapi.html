@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>10.1. Low level C API</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="c-api-ref-low.html" title="Chapter 10. Low level C language API reference" /><link rel="next" href="c-api-ds-impl.html" title="Chapter 11. Implement a datasource input driver" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">10.1. Low level C API</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="c-api-ref-low.html" title="Chapter 10. Low level C language API reference">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="c-api-ref-low.html" title="Chapter 10. Low level C language API reference">Up</a></td><th width="60%" align="center">Chapter 10. Low level C language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.8 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="c-api-ds-impl.html" title="Chapter 11. Implement a datasource input driver">Next</a></td></tr></table><hr /></div><div class="sect1" id="LOWLEVELAPI"><div class="titlepage"><div><div><h2 class="title" style="clear: both">10.1. Low level C API <a href="#LOWLEVELAPI" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="lowlevelapi.html#NUMERICTUNING">10.1.1. Numeric behavior related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#LOCALEFUNCS">10.1.2. Locale related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#DSQFUNCS">10.1.3. Data source and query related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#EXPRFUNC">10.1.4. Expression related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#RESULTFUNCS">10.1.5. Column data or expression result related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#USERVARRELATEDFUNCS">10.1.6. Variable related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#BREAKRELATEDFUNCS">10.1.7. Break related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#USERFUNCFUNCS">10.1.8. Function related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#PARTANDREPORTFUNCS">10.1.9. Report part and report related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#LAYOUTFUNCS">10.1.10. Layout related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#CALLBACKFUNCS">10.1.11. Callback related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#ENVFUNCS">10.1.12. Environment related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#FILEFUNCS">10.1.13. File handling related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#COLORFUNCS">10.1.14. Color related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#PAPERFUNCS">10.1.15. Paper size related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#MEMORYFUNCS">10.1.16. Memory handling related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#LISTFUNCS">10.1.17. List related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#CSTRINGFUNCS">10.1.18. String related functions</a></span></dt></dl></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>10.1. Low level C API</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="c-api-ref-low.html" title="Chapter 10. Low level C language API reference" /><link rel="next" href="c-api-ds-impl.html" title="Chapter 11. Implement a datasource input driver" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">10.1. Low level C API</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="c-api-ref-low.html" title="Chapter 10. Low level C language API reference">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="c-api-ref-low.html" title="Chapter 10. Low level C language API reference">Up</a></td><th width="60%" align="center">Chapter 10. Low level C language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.9 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="c-api-ds-impl.html" title="Chapter 11. Implement a datasource input driver">Next</a></td></tr></table><hr /></div><div class="sect1" id="LOWLEVELAPI"><div class="titlepage"><div><div><h2 class="title" style="clear: both">10.1. Low level C API <a href="#LOWLEVELAPI" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="lowlevelapi.html#NUMERICTUNING">10.1.1. Numeric behavior related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#LOCALEFUNCS">10.1.2. Locale related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#DSQFUNCS">10.1.3. Data source and query related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#EXPRFUNC">10.1.4. Expression related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#RESULTFUNCS">10.1.5. Column data or expression result related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#USERVARRELATEDFUNCS">10.1.6. Variable related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#BREAKRELATEDFUNCS">10.1.7. Break related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#USERFUNCFUNCS">10.1.8. Function related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#PARTANDREPORTFUNCS">10.1.9. Report part and report related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#LAYOUTFUNCS">10.1.10. Layout related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#CALLBACKFUNCS">10.1.11. Callback related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#ENVFUNCS">10.1.12. Environment related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#FILEFUNCS">10.1.13. File handling related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#COLORFUNCS">10.1.14. Color related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#PAPERFUNCS">10.1.15. Paper size related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#MEMORYFUNCS">10.1.16. Memory handling related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#LISTFUNCS">10.1.17. List related functions</a></span></dt><dt><span class="sect2"><a href="lowlevelapi.html#CSTRINGFUNCS">10.1.18. String related functions</a></span></dt></dl></div><p>
 			The low level API extends the <a class="xref" href="highlevelapi.html" title="9.2. High level C API">High level C API</a>
 			to either fine-tune the report behaviour, or to create
 			a report purely from program code.
@@ -559,20 +559,25 @@ ocrpt_report_expr_parse(ocrpt_report *r,
 					or the global <code class="literal">opencreport</code> structure.
 					</p><pre class="programlisting">void
 ocrpt_expr_free(ocrpt_expr *e);</pre><p>
-				</p></div><div class="sect3" id="RESOLVEEXPR"><div class="titlepage"><div><div><h4 class="title">10.1.4.4. Resolve expression references <a href="#RESOLVEEXPR" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="EXPRGETSTRING"><div class="titlepage"><div><div><h4 class="title">10.1.4.4. Get the original expression string <a href="#EXPRGETSTRING" class="id_link">#</a></h4></div></div></div><p>
+					Get the original expression string from an
+					expression parse tree.
+					</p><pre class="programlisting">const char *
+ocrpt_expr_get_expr_string(ocrpt_expr *e);</pre><p>
+				</p></div><div class="sect3" id="RESOLVEEXPR"><div class="titlepage"><div><div><h4 class="title">10.1.4.5. Resolve expression references <a href="#RESOLVEEXPR" class="id_link">#</a></h4></div></div></div><p>
 					This function resolves variable (identifier)
 					references in the expression. This is needed
 					to bind query columns to expressions that
 					use them.
 					</p><pre class="programlisting">void
 ocrpt_expr_resolve(ocrpt_expr *e);</pre><p>
-				</p></div><div class="sect3" id="OPTIMIZEEXPR"><div class="titlepage"><div><div><h4 class="title">10.1.4.5. Optimize an expression <a href="#OPTIMIZEEXPR" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="OPTIMIZEEXPR"><div class="titlepage"><div><div><h4 class="title">10.1.4.6. Optimize an expression <a href="#OPTIMIZEEXPR" class="id_link">#</a></h4></div></div></div><p>
 					This function optimizes an expression so
 					it may needs fewer computation steps during
 					report execution.
 					</p><pre class="programlisting">void
 ocrpt_expr_optimize(ocrpt_expr *e);</pre><p>
-				</p></div><div class="sect3" id="EVALEXPR"><div class="titlepage"><div><div><h4 class="title">10.1.4.6. Evaluate an expression <a href="#EVALEXPR" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="EVALEXPR"><div class="titlepage"><div><div><h4 class="title">10.1.4.7. Evaluate an expression <a href="#EVALEXPR" class="id_link">#</a></h4></div></div></div><p>
 					This function evaluates the expression.
 					It returns the expression's
 					<code class="literal">ocrpt_result</code> result structure.
@@ -586,7 +591,7 @@ ocrpt_expr_optimize(ocrpt_expr *e);</pre><p>
 					otherwise the result is not valid.
 					</p><pre class="programlisting">ocrpt_result *
 ocrpt_expr_eval(ocrpt_expr *e);</pre><p>
-				</p></div><div class="sect3" id="GETEXPRRESULTWNOEVAL"><div class="titlepage"><div><div><h4 class="title">10.1.4.7. Get expression result without evaluation <a href="#GETEXPRRESULTWNOEVAL" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="GETEXPRRESULTWNOEVAL"><div class="titlepage"><div><div><h4 class="title">10.1.4.8. Get expression result without evaluation <a href="#GETEXPRRESULTWNOEVAL" class="id_link">#</a></h4></div></div></div><p>
 					This function returns the expression result
 					if it was already evaluated.
 					The result <span class="emphasis"><em>must not</em></span> be freed with
@@ -595,23 +600,23 @@ ocrpt_expr_eval(ocrpt_expr *e);</pre><p>
 					Used by unit tests.
 					</p><pre class="programlisting">ocrpt_result *
 ocrpt_expr_get_result(ocrpt_expr *e);</pre><p>
-				</p></div><div class="sect3" id="PRINTEXPR"><div class="titlepage"><div><div><h4 class="title">10.1.4.8. Print an expression tree <a href="#PRINTEXPR" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="PRINTEXPR"><div class="titlepage"><div><div><h4 class="title">10.1.4.9. Print an expression tree <a href="#PRINTEXPR" class="id_link">#</a></h4></div></div></div><p>
 					Print an expression tree in its processed form on the
 					standard output. Used by unit tests.
 					</p><pre class="programlisting">void
 ocrpt_expr_print(ocrpt_expr *e);</pre><p>
-				</p></div><div class="sect3" id="PRINTEXPRWRESULT"><div class="titlepage"><div><div><h4 class="title">10.1.4.9. Print an expression tree with subexpressions and their results <a href="#PRINTEXPRWRESULT" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="PRINTEXPRWRESULT"><div class="titlepage"><div><div><h4 class="title">10.1.4.10. Print an expression tree with subexpressions and their results <a href="#PRINTEXPRWRESULT" class="id_link">#</a></h4></div></div></div><p>
 					Print an expression tree with subexpressions
 					and their results in its processed form on the
 					standard output. Used by unit tests.
 					</p><pre class="programlisting">void
 ocrpt_expr_result_deep_print(ocrpt_expr *e);</pre><p>
-				</p></div><div class="sect3" id="EXPRNODESNUM"><div class="titlepage"><div><div><h4 class="title">10.1.4.10. Count the number of expression nodes <a href="#EXPRNODESNUM" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="EXPRNODESNUM"><div class="titlepage"><div><div><h4 class="title">10.1.4.11. Count the number of expression nodes <a href="#EXPRNODESNUM" class="id_link">#</a></h4></div></div></div><p>
 					This function returns the number of expression nodes.
 					Used by unit tests to validate optimizazion.
 					</p><pre class="programlisting">int32_t
 ocrpt_expr_nodes(ocrpt_expr *e);</pre><p>
-				</p></div><div class="sect3" id="INITEXPRTYPE"><div class="titlepage"><div><div><h4 class="title">10.1.4.11. Initialize expression result type <a href="#INITEXPRTYPE" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="INITEXPRTYPE"><div class="titlepage"><div><div><h4 class="title">10.1.4.12. Initialize expression result type <a href="#INITEXPRTYPE" class="id_link">#</a></h4></div></div></div><p>
 					OpenCReports keeps track of the last three query
 					rows and computes three result values for expressions
 					for internal reasons. These functions initialize
@@ -629,18 +634,18 @@ bool ocrpt_expr_init_result(ocrpt_expr *e,
 
 void ocrpt_expr_init_results(ocrpt_expr *e,
                              enum ocrpt_result_type type);</pre><p>
-				</p></div><div class="sect3" id="SETERROR"><div class="titlepage"><div><div><h4 class="title">10.1.4.12. Set an error string as expression result <a href="#SETERROR" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="SETERROR"><div class="titlepage"><div><div><h4 class="title">10.1.4.13. Set an error string as expression result <a href="#SETERROR" class="id_link">#</a></h4></div></div></div><p>
 					</p><pre class="programlisting">ocrpt_result *
 ocrpt_expr_make_error_result(ocrpt_expr *e,
                              const char *format, ...);</pre><p>
-				</p></div><div class="sect3" id="SETSTARTFLAG"><div class="titlepage"><div><div><h4 class="title">10.1.4.13. Set start value flag for an iterative expression <a href="#SETSTARTFLAG" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="SETSTARTFLAG"><div class="titlepage"><div><div><h4 class="title">10.1.4.14. Set start value flag for an iterative expression <a href="#SETSTARTFLAG" class="id_link">#</a></h4></div></div></div><p>
 					Set whether the iterative expression's first
 					value is computed from its base expression
 					or from its result expression.
 					</p><pre class="programlisting">void
 ocrpt_expr_set_iterative_start_value(ocrpt_expr *e,
                                      bool start_with_init);</pre><p>
-				</p></div><div class="sect3" id="GETEXPRCURVAL"><div class="titlepage"><div><div><h4 class="title">10.1.4.14. Get current value of an expression in base type <a href="#GETEXPRCURVAL" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="GETEXPRCURVAL"><div class="titlepage"><div><div><h4 class="title">10.1.4.15. Get current value of an expression in base type <a href="#GETEXPRCURVAL" class="id_link">#</a></h4></div></div></div><p>
 					Get the current value of an expression in a C base
 					type. Used by parsing report description XML files
 					and unit tests.
@@ -652,7 +657,7 @@ ocrpt_expr_get_long(ocrpt_expr *e);
 
 double
 ocrpt_expr_get_double(ocrpt_expr *e);</pre><p>
-				</p></div><div class="sect3" id="SETEXPRCURVAL"><div class="titlepage"><div><div><h4 class="title">10.1.4.15. Set current value of an expression in a base type <a href="#SETEXPRCURVAL" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="SETEXPRCURVAL"><div class="titlepage"><div><div><h4 class="title">10.1.4.16. Set current value of an expression in a base type <a href="#SETEXPRCURVAL" class="id_link">#</a></h4></div></div></div><p>
 					Used by unit tests.
 					</p><pre class="programlisting">void
 ocrpt_expr_set_string(ocrpt_expr *e,
@@ -665,7 +670,7 @@ ocrpt_expr_set_long(ocrpt_expr *e,
 void
 ocrpt_expr_set_double(ocrpt_expr *e,
                             double d);</pre><p>
-				</p></div><div class="sect3" id="SETNTHEXPRVALUE"><div class="titlepage"><div><div><h4 class="title">10.1.4.16. Set nth value of an expression in a base type <a href="#SETNTHEXPRVALUE" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="SETNTHEXPRVALUE"><div class="titlepage"><div><div><h4 class="title">10.1.4.17. Set nth value of an expression in a base type <a href="#SETNTHEXPRVALUE" class="id_link">#</a></h4></div></div></div><p>
 					Expressions use <code class="literal">OCRPT_EXPR_RESULTS</code>
 					number of values. With these functions, any of them
 					can be set. Used by unit tests.
@@ -683,18 +688,18 @@ void
 ocrpt_expr_set_nth_result_double(ocrpt_expr *e,
                                        int which,
                                        double d);</pre><p>
-				</p></div><div class="sect3" id="CMPEXPRVALUES"><div class="titlepage"><div><div><h4 class="title">10.1.4.17. Compare the current of an expression with its previous value <a href="#CMPEXPRVALUES" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="CMPEXPRVALUES"><div class="titlepage"><div><div><h4 class="title">10.1.4.18. Compare the current of an expression with its previous value <a href="#CMPEXPRVALUES" class="id_link">#</a></h4></div></div></div><p>
 					Compare the current value of an expression with its
 					previous value and return <code class="literal">true</code>
 					if they are equal. It's used to implement
 					<a class="xref" href="breaks.html" title="Chapter 6. Report breaks">Report breaks</a>.
 					</p><pre class="programlisting">bool
 ocrpt_expr_cmp_results(ocrpt_expr *e);</pre><p>
-				</p></div><div class="sect3" id="SETEXPRDELAYED"><div class="titlepage"><div><div><h4 class="title">10.1.4.18. Set delayed flag of an expression <a href="#SETEXPRDELAYED" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="SETEXPRDELAYED"><div class="titlepage"><div><div><h4 class="title">10.1.4.19. Set delayed flag of an expression <a href="#SETEXPRDELAYED" class="id_link">#</a></h4></div></div></div><p>
 					</p><pre class="programlisting">void
 ocrpt_expr_set_delayed(ocrpt_expr *e,
                        bool delayed);</pre><p>
-				</p></div><div class="sect3" id="SETEXPRFIELDEXPRREF"><div class="titlepage"><div><div><h4 class="title">10.1.4.19. Set field expression reference for an expression <a href="#SETEXPRFIELDEXPRREF" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="SETEXPRFIELDEXPRREF"><div class="titlepage"><div><div><h4 class="title">10.1.4.20. Set field expression reference for an expression <a href="#SETEXPRFIELDEXPRREF" class="id_link">#</a></h4></div></div></div><p>
 					If <code class="literal">e</code> contains <code class="literal">r.value</code>,
 					the expression <code class="literal">rvalue</code> will be used to
 					resolve this reference.
@@ -818,6 +823,7 @@ ocrpt_result_datetime_is_time_valid(ocrpt_result *result);</pre><p>
 					may be created. For a custom variable,
 					see the next function.
 					</p><pre class="programlisting">enum ocrpt_var_type {
+    OCRPT_VARIABLE_INVALID,
     OCRPT_VARIABLE_EXPRESSION,
     OCRPT_VARIABLE_COUNT,
     OCRPT_VARIABLE_COUNTALL,
@@ -835,6 +841,7 @@ ocrpt_variable_new(ocrpt_report *r,
                    ocrpt_var_type type,
                    const char *name,
                    const char *expr,
+                   const char *ignoreexpr,
                    const char *reset_on_break_name);</pre><p>
 				</p></div><div class="sect3" id="CREATECUSTOMUSERVAR"><div class="titlepage"><div><div><h4 class="title">10.1.6.2. Create a custom variable <a href="#CREATECUSTOMUSERVAR" class="id_link">#</a></h4></div></div></div><p>
 					Create a custom variable of the specified type
@@ -844,15 +851,23 @@ ocrpt_variable_new_full(ocrpt_report *r,
                         enum ocrpt_result_type type,
                         const char *name,
                         const char *baseexpr,
+                        const char *ignoreexpr,
                         const char *intermedexpr,
                         const char *intermed2expr,
                         const char *resultexpr,
                         const char *reset_on_break_name);</pre><p>
-				</p></div><div class="sect3" id="USERVARGETSUBEXPRS"><div class="titlepage"><div><div><h4 class="title">10.1.6.3. Get subexpressions of a variable <a href="#USERVARGETSUBEXPRS" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="USERVARGETTYPE"><div class="titlepage"><div><div><h4 class="title">10.1.6.3. Get the variable type <a href="#USERVARGETTYPE" class="id_link">#</a></h4></div></div></div><p>
+					Get the type of the variable.
+					</p><pre class="programlisting">ocrpt_var_type
+ocrpt_variable_get_type(ocrpt_var *v);</pre><p>
+				</p></div><div class="sect3" id="USERVARGETSUBEXPRS"><div class="titlepage"><div><div><h4 class="title">10.1.6.4. Get subexpressions of a variable <a href="#USERVARGETSUBEXPRS" class="id_link">#</a></h4></div></div></div><p>
 					Get subexpressions of a previously created
 					basic or custom variable.
 					</p><pre class="programlisting">ocrpt_expr *
 ocrpt_variable_baseexpr(ocrpt_var *v);
+
+ocrpt_expr *
+ocrpt_variable_ignoreexpr(ocrpt_var *v);
 
 ocrpt_expr *
 ocrpt_variable_intermedexpr(ocrpt_var *v);
@@ -862,23 +877,32 @@ ocrpt_variable_intermed2expr(ocrpt_var *v);
 
 ocrpt_expr *
 ocrpt_variable_resultexpr(ocrpt_var *v);</pre><p>
-				</p></div><div class="sect3" id="USERVARSETPRECALC"><div class="titlepage"><div><div><h4 class="title">10.1.6.4. Set precalculate flag for a variable <a href="#USERVARSETPRECALC" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="USERVARSETPRECALC"><div class="titlepage"><div><div><h4 class="title">10.1.6.5. Set or get precalculate flag for a variable <a href="#USERVARSETPRECALC" class="id_link">#</a></h4></div></div></div><p>
 					The expression must evaluate to a
 					numeric (boolean) value.
 					</p><pre class="programlisting">void
 ocrpt_variable_set_precalculate(ocrpt_var *var, 
-                                const char *expr_string);</pre><p>
-				</p></div><div class="sect3" id="USERVARRESOLVE"><div class="titlepage"><div><div><h4 class="title">10.1.6.5. Resolve a variable <a href="#USERVARRESOLVE" class="id_link">#</a></h4></div></div></div><p>
+                                const char *expr_string);
+
+ocrpt_expr *
+ocrpt_variable_get_precalculate(ocrpt_var *var);</pre><p>
+				</p></div><div class="sect3" id="USERVARRESOLVE"><div class="titlepage"><div><div><h4 class="title">10.1.6.6. Resolve a variable <a href="#USERVARRESOLVE" class="id_link">#</a></h4></div></div></div><p>
 					Resolve subexpressions of a variable
 					so it can be evaluated correctly.
 					</p><pre class="programlisting">void
 ocrpt_variable_resolve(ocrpt_var *v);</pre><p>
-				</p></div><div class="sect3" id="USERVAREVAL"><div class="titlepage"><div><div><h4 class="title">10.1.6.6. Evaluate a variable <a href="#USERVAREVAL" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="USERVAREVAL"><div class="titlepage"><div><div><h4 class="title">10.1.6.7. Evaluate a variable <a href="#USERVAREVAL" class="id_link">#</a></h4></div></div></div><p>
 					After evaluation, the result is in the
 					expression returned by
 					<code class="literal">ocrpt_variable_resultexpr()</code>.
 					</p><pre class="programlisting">void
 ocrpt_variable_evaluate(ocrpt_var *v);</pre><p>
+				</p></div><div class="sect3" id="USERVARITER"><div class="titlepage"><div><div><h4 class="title">10.1.6.8. Iterate over variables of a report <a href="#USERVARITER" class="id_link">#</a></h4></div></div></div><p>
+					Iterate over variables of a report. The first call
+					needs the iterator list pointer to be set to NULL.
+					</p><pre class="programlisting">ocrpt_var *
+ocrpt_variable_get_next(ocrpt_report *r,
+                     ocrpt_list **list);</pre><p>
 				</p></div></div><div class="sect2" id="BREAKRELATEDFUNCS"><div class="titlepage"><div><div><h3 class="title">10.1.7. Break related functions <a href="#BREAKRELATEDFUNCS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="CREATEBREAK"><div class="titlepage"><div><div><h4 class="title">10.1.7.1. Create a break <a href="#CREATEBREAK" class="id_link">#</a></h4></div></div></div><p>
 					Create a break. No need to free it,
 					<code class="literal">ocrpt_free()</code> does it.
@@ -1080,7 +1104,7 @@ ocrpt_report_resolve_expressions(ocrpt_report *r);</pre><p>
 				</p></div><div class="sect3" id="REPORTEVALEXPRS"><div class="titlepage"><div><div><h4 class="title">10.1.9.12. Evaluate all report expressions <a href="#REPORTEVALEXPRS" class="id_link">#</a></h4></div></div></div><p>
 					</p><pre class="programlisting">void
 ocrpt_report_evaluate_expressions(ocrpt_report *r);</pre><p>
-				</p></div></div><div class="sect2" id="LAYOUTFUNCS"><div class="titlepage"><div><div><h3 class="title">10.1.10. Layout related functions <a href="#LAYOUTFUNCS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="LAYOUTGLOBALOPTS"><div class="titlepage"><div><div><h4 class="title">10.1.10.1. Global layout options <a href="#LAYOUTGLOBALOPTS" class="id_link">#</a></h4></div></div></div><div class="sect4" id="LAYOUTSIZEUNIT"><div class="titlepage"><div><div><h5 class="title">10.1.10.1.1. Set "size unit" option <a href="#LAYOUTSIZEUNIT" class="id_link">#</a></h5></div></div></div><p>
+				</p></div></div><div class="sect2" id="LAYOUTFUNCS"><div class="titlepage"><div><div><h3 class="title">10.1.10. Layout related functions <a href="#LAYOUTFUNCS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="LAYOUTGLOBALOPTS"><div class="titlepage"><div><div><h4 class="title">10.1.10.1. Global layout options <a href="#LAYOUTGLOBALOPTS" class="id_link">#</a></h4></div></div></div><div class="sect4" id="LAYOUTSIZEUNIT"><div class="titlepage"><div><div><h5 class="title">10.1.10.1.1. Set or get "size unit" option <a href="#LAYOUTSIZEUNIT" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="8.2.1. Size unit attribute">Size unit attribute</a>.
 						The expression string must evaluate to
 						a string value, where <code class="literal">points</code>
@@ -1089,60 +1113,92 @@ ocrpt_report_evaluate_expressions(ocrpt_report *r);</pre><p>
 						Any other value will make the layout rendering
 						use the convoluted RLIB compatible size units,
 						mostly based on font sizes.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_set_size_unit(opencreport *o,
                     const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="LAYOUTNQSND"><div class="titlepage"><div><div><h5 class="title">10.1.10.1.2. Set "no query show NoData" option <a href="#LAYOUTNQSND" class="id_link">#</a></h5></div></div></div><p>
+					</p><p>
+						The expression also has a getter function,
+						so its result (value) can be queried.
+						Which may be useful, in case it's set in
+						the report XML description and callbacks
+						and the report processing needs to inspect it.
+						</p><pre class="programlisting">ocrpt_expr *
+ocrpt_get_size_unit(opencreport *o);</pre><p>
+					</p></div><div class="sect4" id="LAYOUTNQSND"><div class="titlepage"><div><div><h5 class="title">10.1.10.1.2. Set or get "no query show NoData" option <a href="#LAYOUTNQSND" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="ocrpttopxml.html#NOQUERYSHOWNODATA" title="8.2.2. No query show NoData">No query show NoData attribute</a>.
 						The expression string should evaluate to
 						a boolean value.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_set_noquery_show_nodata(opencreport *o,
-                              const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="LAYOUTRHAL"><div class="titlepage"><div><div><h5 class="title">10.1.10.1.3. Set "report height after last" option <a href="#LAYOUTRHAL" class="id_link">#</a></h5></div></div></div><p>
+                              const char *expr_string);
+
+ocrpt_expr *
+ocrpt_get_noquery_show_nodata(opencreport *o);</pre><p>
+					</p></div><div class="sect4" id="LAYOUTRHAL"><div class="titlepage"><div><div><h5 class="title">10.1.10.1.3. Set or get "report height after last" option <a href="#LAYOUTRHAL" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="ocrpttopxml.html#REPORTHEIGHTAFTERLAST" title="8.2.3. Report height after last">Report height after last attribute</a>.
 						The expression string should evaluate to
 						a boolean value.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_set_report_height_after_last(opencreport *o,
-                                   const char *expr_string);</pre><p>
+                                   const char *expr_string);
+
+ocrpt_expr *
+ocrpt_get_report_height_after_last(opencreport *o);</pre><p>
 					</p></div><div class="sect4" id="FOLLOWERMATCHSINGLE"><div class="titlepage"><div><div><h5 class="title">10.1.10.1.4. Set "follower match single" option <a href="#FOLLOWERMATCHSINGLE" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="ocrpttopxml.html#XMLFOLLOWERMATCHSINGLE" title="8.2.4. Follower match single">Follower match single attribute</a>.
 						The expression string should evaluate to
 						a boolean value.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_set_follower_match_single(opencreport *o,
-                                const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="FOLLOWERMATCHSINGLEDIRECT"><div class="titlepage"><div><div><h5 class="title">10.1.10.1.5. Set "follower match single" option directly <a href="#FOLLOWERMATCHSINGLEDIRECT" class="id_link">#</a></h5></div></div></div><p>
+                                const char *expr_string);
+
+ocrpt_expr *
+ocrpt_get_follower_match_single(opencreport *o);</pre><p>
+					</p></div><div class="sect4" id="FOLLOWERMATCHSINGLEDIRECT"><div class="titlepage"><div><div><h5 class="title">10.1.10.1.5. Set or get "follower match single" option directly <a href="#FOLLOWERMATCHSINGLEDIRECT" class="id_link">#</a></h5></div></div></div><p>
 						See above and <a class="xref" href="ocrpttopxml.html#XMLFOLLOWERMATCHSINGLE" title="8.2.4. Follower match single">Follower match single attribute</a>.
 						The  difference is that the modified behaviour
 						is set directly and immediately. Used by unit tests.
 						</p><pre class="programlisting">void
 ocrpt_set_follower_match_single_direct(opencreport *o,
-                                       bool value);</pre><p>
-					</p></div></div><div class="sect3" id="PARTOPTS"><div class="titlepage"><div><div><h4 class="title">10.1.10.2. Report part options <a href="#PARTOPTS" class="id_link">#</a></h4></div></div></div><div class="sect4" id="SETPARTITER"><div class="titlepage"><div><div><h5 class="title">10.1.10.2.1. Set part iterations <a href="#SETPARTITER" class="id_link">#</a></h5></div></div></div><p>
+                                       bool value);
+
+bool
+ocrpt_get_follower_match_single_direct(opencreport *o);</pre><p>
+					</p></div></div><div class="sect3" id="PARTOPTS"><div class="titlepage"><div><div><h4 class="title">10.1.10.2. Report part options <a href="#PARTOPTS" class="id_link">#</a></h4></div></div></div><div class="sect4" id="SETPARTITER"><div class="titlepage"><div><div><h5 class="title">10.1.10.2.1. Set or get part iterations <a href="#SETPARTITER" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="parts.html#PARTITER" title="8.6.1.9. Iterations">Part iterations attribute</a>.
 						The expression string must evaluate to
 						a numeric value.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_part_set_iterations(ocrpt_part *p,
-                          const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="SETPARTFONTNAME"><div class="titlepage"><div><div><h5 class="title">10.1.10.2.2. Set part font name <a href="#SETPARTFONTNAME" class="id_link">#</a></h5></div></div></div><p>
+                          const char *expr_string);
+
+ocrpt_expr *
+ocrpt_part_get_iterations(ocrpt_part *p);</pre><p>
+					</p></div><div class="sect4" id="SETPARTFONTNAME"><div class="titlepage"><div><div><h5 class="title">10.1.10.2.2. Set or get part font name <a href="#SETPARTFONTNAME" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="parts.html#PARTFONTNAME" title="8.6.1.1. Font name">Part font name</a>.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_part_set_font_name(ocrpt_part *p,
-                         const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="SETPARTFONTSIZE"><div class="titlepage"><div><div><h5 class="title">10.1.10.2.3. Set part font size <a href="#SETPARTFONTSIZE" class="id_link">#</a></h5></div></div></div><p>
+                         const char *expr_string);
+
+ocrpt_expr *
+ocrpt_part_get_font_name(ocrpt_part *p);</pre><p>
+					</p></div><div class="sect4" id="SETPARTFONTSIZE"><div class="titlepage"><div><div><h5 class="title">10.1.10.2.3. Set or get part font size <a href="#SETPARTFONTSIZE" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="parts.html#PARTFONTSIZE" title="8.6.1.2. Font size">Part font size</a>.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_part_set_font_size(ocrpt_part *p,
-                         const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="SETPARTPAPERTYPE"><div class="titlepage"><div><div><h5 class="title">10.1.10.2.4. Set part paper type <a href="#SETPARTPAPERTYPE" class="id_link">#</a></h5></div></div></div><p>
+                         const char *expr_string);
+
+ocrpt_expr *
+ocrpt_part_get_font_size(ocrpt_part *p);</pre><p>
+					</p></div><div class="sect4" id="SETPARTPAPERTYPE"><div class="titlepage"><div><div><h5 class="title">10.1.10.2.4. Set or get part paper type <a href="#SETPARTPAPERTYPE" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="parts.html#PAPERTYPE" title="8.6.1.8. Paper type">Paper type</a>.
-						</p><pre class="programlisting">void
-ocrpt_part_set_paper_by_name(ocrpt_part *p,
-                             const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="SETPARTORIENTATION"><div class="titlepage"><div><div><h5 class="title">10.1.10.2.5. Set part paper's orientation <a href="#SETPARTORIENTATION" class="id_link">#</a></h5></div></div></div><p>
+						</p><pre class="programlisting">ocrpt_expr *
+ocrpt_part_set_paper_type(ocrpt_part *p,
+                             const char *expr_string);
+
+ocrpt_expr *
+ocrpt_part_get_paper_type(ocrpt_part *p);</pre><p>
+					</p></div><div class="sect4" id="SETPARTORIENTATION"><div class="titlepage"><div><div><h5 class="title">10.1.10.2.5. Set or get part paper's orientation <a href="#SETPARTORIENTATION" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="parts.html#PARTPAGEORIENTATION" title="8.6.1.6. Orientation">Part page orientation</a>.
 						The expression string must evaluate to a string
 						value, with possible options of
@@ -1150,57 +1206,84 @@ ocrpt_part_set_paper_by_name(ocrpt_part *p,
 						<code class="literal">landscape</code>. By default,
 						the part uses <code class="literal">portrait</code>
 						orientation.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_part_set_orientation(ocrpt_part *p,
-                           const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="PARTSETMARGINS"><div class="titlepage"><div><div><h5 class="title">10.1.10.2.6. Set part margins <a href="#PARTSETMARGINS" class="id_link">#</a></h5></div></div></div><p>
+                           const char *expr_string);
+
+ocrpt_expr *
+ocrpt_part_get_orientation(ocrpt_part *p);</pre><p>
+					</p></div><div class="sect4" id="PARTSETMARGINS"><div class="titlepage"><div><div><h5 class="title">10.1.10.2.6. Set or get part margins <a href="#PARTSETMARGINS" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="parts.html#MARGINSETTINGS" title="8.6.1.7. Margin settings">Margin settings</a>.
 						The margin values must be passed in via strings
 						as they can be expressions.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_part_set_top_margin(ocrpt_part *p,
                           const char *expr_string);
 
-void
+ocrpt_expr *
+ocrpt_part_get_top_margin(ocrpt_part *p);
+
+ocrpt_expr *
 ocrpt_part_set_bottom_margin(ocrpt_part *p,
                              const char *expr_string);
 
-void
+ocrpt_expr *
+ocrpt_part_get_bottom_margin(ocrpt_part *p);
+
+ocrpt_expr *
 ocrpt_part_set_left_margin(ocrpt_part *p,
                            const char *expr_string);
 
-void
+ocrpt_expr *
+ocrpt_part_get_left_margin(ocrpt_part *p);
+
+ocrpt_expr *
 ocrpt_part_set_right_margin(ocrpt_part *p,
-                            const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="PARTSETSUPPRESS"><div class="titlepage"><div><div><h5 class="title">10.1.10.2.7. Set part suppression <a href="#PARTSETSUPPRESS" class="id_link">#</a></h5></div></div></div><p>
+                            const char *expr_string);
+
+ocrpt_expr *
+ocrpt_part_get_right_margin(ocrpt_part *p);</pre><p>
+					</p></div><div class="sect4" id="PARTSETSUPPRESS"><div class="titlepage"><div><div><h5 class="title">10.1.10.2.7. Set or get part suppression <a href="#PARTSETSUPPRESS" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="parts.html#PARTSUPPRESS" title="8.6.1.10. Suppress">Part suppress attribute</a>.
 						The expression string must evaluate to
 						a numeric (boolean) value.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_part_set_suppress(ocrpt_part *p,
-                        const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="PARTSETPHSFP"><div class="titlepage"><div><div><h5 class="title">10.1.10.2.8. Set part's page header suppressed on the first page <a href="#PARTSETPHSFP" class="id_link">#</a></h5></div></div></div><p>
+                        const char *expr_string);
+
+ocrpt_expr *
+ocrpt_part_get_suppress(ocrpt_part *p);</pre><p>
+					</p></div><div class="sect4" id="PARTSETPHSFP"><div class="titlepage"><div><div><h5 class="title">10.1.10.2.8. Set or get part's page header suppressed on the first page <a href="#PARTSETPHSFP" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="parts.html#SUPPRESSPAGEHEADERFIRSTPAGE" title="8.6.1.11. Suppress page header on the first page">Suppress page header on the first page</a>.
 						The expression string must evaluate to
 						a numeric (boolean) value.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_part_set_suppress_pageheader_firstpage(ocrpt_part *p,
-                                             const char *expr_string);</pre><p>
-					</p></div></div><div class="sect3" id="PARTROWOPTS"><div class="titlepage"><div><div><h4 class="title">10.1.10.3. Part row options <a href="#PARTROWOPTS" class="id_link">#</a></h4></div></div></div><div class="sect4" id="PARTROWSETSUPPRESS"><div class="titlepage"><div><div><h5 class="title">10.1.10.3.1. Set part row suppression <a href="#PARTROWSETSUPPRESS" class="id_link">#</a></h5></div></div></div><p>
+                                             const char *expr_string);
+
+ocrpt_expr *
+ocrpt_part_get_suppress_pageheader_firstpage(ocrpt_part *p);</pre><p>
+					</p></div></div><div class="sect3" id="PARTROWOPTS"><div class="titlepage"><div><div><h4 class="title">10.1.10.3. Part row options <a href="#PARTROWOPTS" class="id_link">#</a></h4></div></div></div><div class="sect4" id="PARTROWSETSUPPRESS"><div class="titlepage"><div><div><h5 class="title">10.1.10.3.1. Set or get part row suppression <a href="#PARTROWSETSUPPRESS" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="partrow.html#PARTROWSUPPRESS" title="8.7.1.3. Suppress">Part row suppress attribute</a>.
 						The expression string must evaluate to
 						a numeric (boolean) value.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_part_row_set_suppress(ocrpt_part_row *pr,
-                            const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="PARTROWSETNEWPAGE"><div class="titlepage"><div><div><h5 class="title">10.1.10.3.2. Set part row new page <a href="#PARTROWSETNEWPAGE" class="id_link">#</a></h5></div></div></div><p>
+                            const char *expr_string);
+
+ocrpt_expr *
+ocrpt_part_row_get_suppress(ocrpt_part_row *pr);</pre><p>
+					</p></div><div class="sect4" id="PARTROWSETNEWPAGE"><div class="titlepage"><div><div><h5 class="title">10.1.10.3.2. Set or get part row new page <a href="#PARTROWSETNEWPAGE" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="partrow.html#PARTROWNEWPAGE" title="8.7.1.2. New page">Part row new page attribute</a>.
 						The expression string must evaluate to
 						a numeric (boolean) value.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_part_row_set_newpage(ocrpt_part_row *pr,
-                           const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="PARTROWSETLAYOUT"><div class="titlepage"><div><div><h5 class="title">10.1.10.3.3. Set part row layout mode <a href="#PARTROWSETLAYOUT" class="id_link">#</a></h5></div></div></div><p>
+                           const char *expr_string);
+
+ocrpt_expr *
+ocrpt_part_row_get_newpage(ocrpt_part_row *pr);</pre><p>
+					</p></div><div class="sect4" id="PARTROWSETLAYOUT"><div class="titlepage"><div><div><h5 class="title">10.1.10.3.3. Set or get part row layout mode <a href="#PARTROWSETLAYOUT" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="partrow.html#PARTROWLAYOUT" title="8.7.1.1. Layout">Part row layout attribute</a>.
 						The expression string must evaluate
 						to a string value, with possible options
@@ -1208,104 +1291,146 @@ ocrpt_part_row_set_newpage(ocrpt_part_row *pr,
 						<code class="literal">fixed</code>. This setting
 						is ignored, it's only accepted for RLIB
 						compatibility.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_part_row_set_layout(ocrpt_part_row *pr,
-                          const char *expr_string);</pre><p>
-					</p></div></div><div class="sect3" id="PARTCOLOPTS"><div class="titlepage"><div><div><h4 class="title">10.1.10.4. Part column options <a href="#PARTCOLOPTS" class="id_link">#</a></h4></div></div></div><div class="sect4" id="PARTCOLSETSUPPRESS"><div class="titlepage"><div><div><h5 class="title">10.1.10.4.1. Set part column suppression <a href="#PARTCOLSETSUPPRESS" class="id_link">#</a></h5></div></div></div><p>
+                          const char *expr_string);
+
+ocrpt_expr *
+ocrpt_part_row_get_layout(ocrpt_part_row *pr);</pre><p>
+					</p></div></div><div class="sect3" id="PARTCOLOPTS"><div class="titlepage"><div><div><h4 class="title">10.1.10.4. Part column options <a href="#PARTCOLOPTS" class="id_link">#</a></h4></div></div></div><div class="sect4" id="PARTCOLSETSUPPRESS"><div class="titlepage"><div><div><h5 class="title">10.1.10.4.1. Set or get part column suppression <a href="#PARTCOLSETSUPPRESS" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="partcol.html#PARTCOLSUPPRESS" title="8.8.1.7. Suppress">Part column suppress attribute</a>.
 						The expression must evaluate to a numeric
 						(boolean) value.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_part_column_set_suppress(ocrpt_part_column *pd,
-                               const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="PARTCOLSETWIDTH"><div class="titlepage"><div><div><h5 class="title">10.1.10.4.2. Set part column width <a href="#PARTCOLSETWIDTH" class="id_link">#</a></h5></div></div></div><p>
+                               const char *expr_string);
+
+ocrpt_expr *
+ocrpt_part_column_get_suppress(ocrpt_part_column *pd);</pre><p>
+					</p></div><div class="sect4" id="PARTCOLSETWIDTH"><div class="titlepage"><div><div><h5 class="title">10.1.10.4.2. Set or get part column width <a href="#PARTCOLSETWIDTH" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="partcol.html#PARTCOLWIDTH" title="8.8.1.1. Width">Part column width attribute</a>.
 						The expression must evaluate to a numeric
 						value.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_part_column_set_width(ocrpt_part_column *pd,
-                            const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="PARTCOLSETHEIGHT"><div class="titlepage"><div><div><h5 class="title">10.1.10.4.3. Set part column height <a href="#PARTCOLSETHEIGHT" class="id_link">#</a></h5></div></div></div><p>
+                            const char *expr_string);
+
+ocrpt_expr *
+ocrpt_part_column_get_width(ocrpt_part_column *pd);</pre><p>
+					</p></div><div class="sect4" id="PARTCOLSETHEIGHT"><div class="titlepage"><div><div><h5 class="title">10.1.10.4.3. Set or get part column height <a href="#PARTCOLSETHEIGHT" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="partcol.html#PARTCOLHEIGHT" title="8.8.1.2. Height">Part column height attribute</a>.
 						The expression must evaluate to a numeric
 						value.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_part_column_set_height(ocrpt_part_column *pd,
-                             const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="PARTCOLSETBORDERWIDTH"><div class="titlepage"><div><div><h5 class="title">10.1.10.4.4. Set part column border width <a href="#PARTCOLSETBORDERWIDTH" class="id_link">#</a></h5></div></div></div><p>
+                             const char *expr_string);
+
+ocrpt_expr *
+ocrpt_part_column_get_height(ocrpt_part_column *pd);</pre><p>
+					</p></div><div class="sect4" id="PARTCOLSETBORDERWIDTH"><div class="titlepage"><div><div><h5 class="title">10.1.10.4.4. Set or get part column border width <a href="#PARTCOLSETBORDERWIDTH" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="partcol.html#PDBORDERWIDTH" title="8.8.1.3. Border width">Part column border width</a>.
 						The expression must evaluate to a numeric
 						value.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_part_column_set_border_width(ocrpt_part_column *pd,
-                                   const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="PARTCOLSETBORDERCOLOR"><div class="titlepage"><div><div><h5 class="title">10.1.10.4.5. Set part column border color <a href="#PARTCOLSETBORDERCOLOR" class="id_link">#</a></h5></div></div></div><p>
+                                   const char *expr_string);
+
+ocrpt_expr *
+ocrpt_part_column_get_border_width(ocrpt_part_column *pd);</pre><p>
+					</p></div><div class="sect4" id="PARTCOLSETBORDERCOLOR"><div class="titlepage"><div><div><h5 class="title">10.1.10.4.5. Set or get part column border color <a href="#PARTCOLSETBORDERCOLOR" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="partcol.html#PDBORDERCOLOR" title="8.8.1.4. Border color">Part column border color</a>.
 						The expression must evaluate to a string
 						value with a valid color name or specification.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_part_column_set_border_color(ocrpt_part_column *pd,
-                                   const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="PARTCOLSETCOLUMNS"><div class="titlepage"><div><div><h5 class="title">10.1.10.4.6. Set part column's number of detail columns <a href="#PARTCOLSETCOLUMNS" class="id_link">#</a></h5></div></div></div><p>
+                                   const char *expr_string);
+
+ocrpt_expr *
+ocrpt_part_column_get_border_color(ocrpt_part_column *pd);</pre><p>
+					</p></div><div class="sect4" id="PARTCOLSETCOLUMNS"><div class="titlepage"><div><div><h5 class="title">10.1.10.4.6. Set or get part column's number of detail columns <a href="#PARTCOLSETCOLUMNS" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="partcol.html#DETAILCOLUMNS" title="8.8.1.5. Detail columns">Detail columns</a>.
 						The expression must evaluate to a numeric
 						value.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_part_column_set_detail_columns(ocrpt_part_column *pd,
-                                     const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="PARTCOLSETPADDING"><div class="titlepage"><div><div><h5 class="title">10.1.10.4.7. Set part column's detail column padding <a href="#PARTCOLSETPADDING" class="id_link">#</a></h5></div></div></div><p>
+                                     const char *expr_string);
+
+ocrpt_expr *
+ocrpt_part_column_get_detail_columns(ocrpt_part_column *pd);</pre><p>
+					</p></div><div class="sect4" id="PARTCOLSETPADDING"><div class="titlepage"><div><div><h5 class="title">10.1.10.4.7. Set or get part column's detail column padding <a href="#PARTCOLSETPADDING" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="partcol.html#COLUMNPADDING" title="8.8.1.6. Column padding">Column padding</a>.
 						The expression must evaluate to a numeric
 						value.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_part_column_set_column_padding(ocrpt_part_column *pd,
-                                     const char *expr_string);</pre><p>
-					</p></div></div><div class="sect3" id="REPORTSOPTS"><div class="titlepage"><div><div><h4 class="title">10.1.10.5. Report options <a href="#REPORTSOPTS" class="id_link">#</a></h4></div></div></div><div class="sect4" id="REPORTSETSUPPRESS"><div class="titlepage"><div><div><h5 class="title">10.1.10.5.1. Set report suppression <a href="#REPORTSETSUPPRESS" class="id_link">#</a></h5></div></div></div><p>
+                                     const char *expr_string);
+
+ocrpt_expr *
+ocrpt_part_column_get_column_padding(ocrpt_part_column *pd);</pre><p>
+					</p></div></div><div class="sect3" id="REPORTSOPTS"><div class="titlepage"><div><div><h4 class="title">10.1.10.5. Report options <a href="#REPORTSOPTS" class="id_link">#</a></h4></div></div></div><div class="sect4" id="REPORTSETSUPPRESS"><div class="titlepage"><div><div><h5 class="title">10.1.10.5.1. Set or get report suppression <a href="#REPORTSETSUPPRESS" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="report.html#REPORTSUPPRESS" title="8.9.1.11. Suppress">Report suppress attribute</a>.
 						The expression must evaluate to a numeric
 						(boolean) value.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_report_set_suppress(ocrpt_report *r,
-                          const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="REPORTSETITERATION"><div class="titlepage"><div><div><h5 class="title">10.1.10.5.2. Set report iterations <a href="#REPORTSETITERATION" class="id_link">#</a></h5></div></div></div><p>
+                          const char *expr_string);
+
+ocrpt_expr *
+ocrpt_report_get_suppress(ocrpt_report *r);</pre><p>
+					</p></div><div class="sect4" id="REPORTSETITERATION"><div class="titlepage"><div><div><h5 class="title">10.1.10.5.2. Set or get report iterations <a href="#REPORTSETITERATION" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="report.html#REPORTITER" title="8.9.1.10. Iterations">Report iterations attribute</a>.
 						The expression must evaluate to a numeric
 						value.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_report_set_iterations(ocrpt_report *r,
-                            const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="REPORTSETFONTNAME"><div class="titlepage"><div><div><h5 class="title">10.1.10.5.3. Set report font name <a href="#REPORTSETFONTNAME" class="id_link">#</a></h5></div></div></div><p>
+                            const char *expr_string);
+
+ocrpt_expr *
+ocrpt_report_get_iterations(ocrpt_report *r);</pre><p>
+					</p></div><div class="sect4" id="REPORTSETFONTNAME"><div class="titlepage"><div><div><h5 class="title">10.1.10.5.3. Set or get report font name <a href="#REPORTSETFONTNAME" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="report.html#REPORTFONTNAME" title="8.9.1.1. Font name">Report font name</a>.
 						The expression must evaluate to a string
 						value, with fallback to plain string:
 						in case of a parsing error, the value
 						string is taken as is.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_report_set_font_name(ocrpt_report *r,
-                           const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="REPORTSETFONTSIZE"><div class="titlepage"><div><div><h5 class="title">10.1.10.5.4. Set report font size <a href="#REPORTSETFONTSIZE" class="id_link">#</a></h5></div></div></div><p>
+                           const char *expr_string);
+
+ocrpt_expr *
+ocrpt_report_get_font_name(ocrpt_report *r);</pre><p>
+					</p></div><div class="sect4" id="REPORTSETFONTSIZE"><div class="titlepage"><div><div><h5 class="title">10.1.10.5.4. Set or get report font size <a href="#REPORTSETFONTSIZE" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="report.html#REPORTFONTSIZE" title="8.9.1.2. Font size">Report font size</a>.
 						The expression must evaluate to a numeric
 						value.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_report_set_font_size(ocrpt_report *r,
-                           const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="REPORTSETHEIGHT"><div class="titlepage"><div><div><h5 class="title">10.1.10.5.5. Set report height <a href="#REPORTSETHEIGHT" class="id_link">#</a></h5></div></div></div><p>
+                           const char *expr_string);
+
+ocrpt_expr *
+ocrpt_report_get_font_size(ocrpt_report *r);</pre><p>
+					</p></div><div class="sect4" id="REPORTSETHEIGHT"><div class="titlepage"><div><div><h5 class="title">10.1.10.5.5. Set or get report height <a href="#REPORTSETHEIGHT" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="report.html#REPORTHEIGHT" title="8.9.1.9. Height">Report height</a>.
 						The expression must evaluate to a numeric
 						value.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_report_set_height(ocrpt_report *r,
-                        const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="REPORTSETFHPRIO"><div class="titlepage"><div><div><h5 class="title">10.1.10.5.6. Set report's field header priority <a href="#REPORTSETFHPRIO" class="id_link">#</a></h5></div></div></div><p>
+                        const char *expr_string);
+
+ocrpt_expr *
+ocrpt_report_get_height(ocrpt_report *r);</pre><p>
+					</p></div><div class="sect4" id="REPORTSETFHPRIO"><div class="titlepage"><div><div><h5 class="title">10.1.10.5.6. Set or get report's field header priority <a href="#REPORTSETFHPRIO" class="id_link">#</a></h5></div></div></div><p>
 						See <a class="xref" href="report.html#REPORTFHPRIORITY" title="8.9.1.14. Field header priority">Report field header priority attribute</a>.
 						The expression must evaluate to a string
 						value with the options of <code class="literal">high</code>
 						and <code class="literal">low</code>. Default is
 						<code class="literal">low</code>.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_report_set_fieldheader_priority(ocrpt_report *r,
-                                      const char *expr_string);</pre><p>
+                                      const char *expr_string);
+
+ocrpt_expr *
+ocrpt_report_get_fieldheader_priority(ocrpt_report *r);</pre><p>
 					</p></div></div><div class="sect3" id="PARTGETLAYOUTSECTIONS"><div class="titlepage"><div><div><h4 class="title">10.1.10.6. Get part layout sections <a href="#PARTGETLAYOUTSECTIONS" class="id_link">#</a></h4></div></div></div><p>
 					Get the part's
 					<code class="literal">&lt;Output&gt;</code> sections for
@@ -1350,7 +1475,72 @@ ocrpt_layout_report_field_header(ocrpt_report *r);
 
 ocrpt_output *
 ocrpt_layout_report_field_details(ocrpt_report *r);</pre><p>
-				</p></div><div class="sect3" id="BREAKGETLAYOUTSECTIONS"><div class="titlepage"><div><div><h4 class="title">10.1.10.9. Get break layout sections <a href="#BREAKGETLAYOUTSECTIONS" class="id_link">#</a></h4></div></div></div><p>
+				</p><div class="sect4" id="REPORTLAYOUTITERATOR"><div class="titlepage"><div><div><h5 class="title">10.1.10.8.1. Miscellaneous report layout and line element functions <a href="#REPORTLAYOUTITERATOR" class="id_link">#</a></h5></div></div></div><p>
+						It is possible to load a report XML descriptor and
+						modify the layout contents defined by it using code.
+					</p><p>
+						The first iterator function loops through toplevel
+						output elements: line, horizontal line, image, barcode.
+						An abstract opaque pointer type is returned by the
+						iterator. Further boolean functions determine the
+						actual element type. The <code class="literal">void **iter</code>
+						pointer must point to a <code class="literal">NULL</code>
+						pointer initially and the iterator function returns
+						<code class="literal">NULL</code> when there are no more
+						elements in the output section. Depending on the
+						boolean function results, the abstract opaque
+						pointer type can be case to the actual output
+						element type: <code class="literal">ocrpt_line *</code>,
+						<code class="literal">ocrpt_hline *</code>,
+						<code class="literal">ocrpt_image *</code> or
+						<code class="literal">ocrpt_barcode *</code>.
+						</p><pre class="programlisting">struct ocrpt_output_element;
+typedef struct ocrpt_output_element ocrpt_output_element;
+
+ocrpt_output_element *
+ocrpt_output_element_get_next(ocrpt_output *output, ocrpt_list **iter);
+
+bool
+ocrpt_output_element_is_line(ocrpt_output_element *elem);
+
+bool
+ocrpt_output_element_is_hline(ocrpt_output_element *elem);
+
+bool
+ocrpt_output_element_is_image(ocrpt_output_element *elem);
+
+bool
+ocrpt_output_element_is_barcode(ocrpt_output_element *elem);</pre><p>
+					</p><p>
+						The second iterator function loops through line
+						elements: text, image and barcode.
+						An abstract opaque pointer type is returned by the
+						iterator. Further boolean functions determine the
+						actual element type. The <code class="literal">void **iter</code>
+						pointer must point to a <code class="literal">NULL</code>
+						pointer initially and the iterator function returns
+						<code class="literal">NULL</code> when there are no more
+						elements in the output section. Depending on the
+						boolean function results, the abstract opaque
+						pointer type can be cast to the actual output
+						element type: <code class="literal">ocrpt_text *</code>,
+						<code class="literal">ocrpt_image *</code> or
+						<code class="literal">ocrpt_barcode *</code>.
+						</p><pre class="programlisting">struct ocrpt_line_element;
+typedef struct ocrpt_line_element ocrpt_line_element;
+
+ocrpt_line_element *
+ocrpt_line_element_get_next(ocrpt_line *line, void **iter);
+
+bool
+ocrpt_line_element_is_text(ocrpt_line_element *elem);
+
+bool
+ocrpt_line_element_is_image(ocrpt_line_element *elem);
+
+bool
+ocrpt_line_element_is_barcode(ocrpt_line_element *elem);</pre><p>
+					</p></div></div><div class="sect3" id="BREAKGETLAYOUTSECTIONS"><div class="titlepage"><div><div><h4 class="title">10.1.10.9. Get break layout sections <a href="#BREAKGETLAYOUTSECTIONS" class="id_link">#</a></h4></div></div></div><p>
 					Get the break's
 					<code class="literal">&lt;Output&gt;</code> sections for
 					<code class="literal">&lt;BreakHeader&gt;</code> or
@@ -1366,11 +1556,14 @@ ocrpt_break_get_footer(ocrpt_break *br);</pre><p>
 					expressions. Other sections may depend on data derived
 					from query columns.
 					See <a class="xref" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Expressions</a>.
-				</p><div class="sect4" id="OUTPUTSETSUPPRESS"><div class="titlepage"><div><div><h5 class="title">10.1.10.10.1. Set output section suppression <a href="#OUTPUTSETSUPPRESS" class="id_link">#</a></h5></div></div></div><p>
+				</p><div class="sect4" id="OUTPUTSETSUPPRESS"><div class="titlepage"><div><div><h5 class="title">10.1.10.10.1. Set or get output section suppression <a href="#OUTPUTSETSUPPRESS" class="id_link">#</a></h5></div></div></div><p>
 						Set suppression from an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_output_set_suppress(ocrpt_output *output,
-                          const char *expr_string);</pre><p>
+                          const char *expr_string);
+
+ocrpt_expr *
+ocrpt_output_get_suppress(ocrpt_output *output);</pre><p>
 					</p></div></div><div class="sect3" id="OUTPUTADDLINE"><div class="titlepage"><div><div><h4 class="title">10.1.10.11. Add a text line to an output section <a href="#OUTPUTADDLINE" class="id_link">#</a></h4></div></div></div><p>
 					</p><pre class="programlisting">ocrpt_line *
 ocrpt_output_add_line(ocrpt_output *output);</pre><p>
@@ -1380,48 +1573,69 @@ ocrpt_output_add_line(ocrpt_output *output);</pre><p>
 					Settings in other sections may depend
 					on data derived from query columns.
 					See <a class="xref" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Expressions</a>.
-				</p><div class="sect4" id="LINESETFONTNAME"><div class="titlepage"><div><div><h5 class="title">10.1.10.12.1. Set line font name <a href="#LINESETFONTNAME" class="id_link">#</a></h5></div></div></div><p>
+				</p><div class="sect4" id="LINESETFONTNAME"><div class="titlepage"><div><div><h5 class="title">10.1.10.12.1. Set or get line font name <a href="#LINESETFONTNAME" class="id_link">#</a></h5></div></div></div><p>
 						Set the text line's font name from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_line_set_font_name(ocrpt_line *line,
-                         const char *expr_string);</pre><p>
+                         const char *expr_string);
+
+ocrpt_expr *
+ocrpt_line_get_font_name(ocrpt_line *line);</pre><p>
 					</p></div><div class="sect4" id="LINESETFONTSIZE"><div class="titlepage"><div><div><h5 class="title">10.1.10.12.2. Set line font size <a href="#LINESETFONTSIZE" class="id_link">#</a></h5></div></div></div><p>
 						Set the text line's font size from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_line_set_font_size(ocrpt_line *line,
-                         const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="LINESETBOLD"><div class="titlepage"><div><div><h5 class="title">10.1.10.12.3. Set line bold value <a href="#LINESETBOLD" class="id_link">#</a></h5></div></div></div><p>
+                         const char *expr_string);
+
+ocrpt_expr *
+ocrpt_line_get_font_size(ocrpt_line *line);</pre><p>
+					</p></div><div class="sect4" id="LINESETBOLD"><div class="titlepage"><div><div><h5 class="title">10.1.10.12.3. Set or get line bold value <a href="#LINESETBOLD" class="id_link">#</a></h5></div></div></div><p>
 						Set the text line's bold value from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_line_set_bold(ocrpt_line *line,
-                    const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="LINESETITALIC"><div class="titlepage"><div><div><h5 class="title">10.1.10.12.4. Set line italic value <a href="#LINESETITALIC" class="id_link">#</a></h5></div></div></div><p>
+                    const char *expr_string);
+
+ocrpt_expr *
+ocrpt_line_get_bold(ocrpt_line *line);</pre><p>
+					</p></div><div class="sect4" id="LINESETITALIC"><div class="titlepage"><div><div><h5 class="title">10.1.10.12.4. Set or get line italic value <a href="#LINESETITALIC" class="id_link">#</a></h5></div></div></div><p>
 						Set the text line's italic value from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_line_set_italic(ocrpt_line *line,
-                      const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="LINESETSUPPRESS"><div class="titlepage"><div><div><h5 class="title">10.1.10.12.5. Set line suppression <a href="#LINESETSUPPRESS" class="id_link">#</a></h5></div></div></div><p>
+                      const char *expr_string);
+
+ocrpt_expr *
+ocrpt_line_get_italic(ocrpt_line *line);</pre><p>
+					</p></div><div class="sect4" id="LINESETSUPPRESS"><div class="titlepage"><div><div><h5 class="title">10.1.10.12.5. Set or get line suppression <a href="#LINESETSUPPRESS" class="id_link">#</a></h5></div></div></div><p>
 						Set the text line's suppression value from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_line_set_suppress(ocrpt_line *line,
-                        const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="LINESSETTEXTCOLOR"><div class="titlepage"><div><div><h5 class="title">10.1.10.12.6. Set line text color <a href="#LINESSETTEXTCOLOR" class="id_link">#</a></h5></div></div></div><p>
+                        const char *expr_string);
+
+ocrpt_expr *
+ocrpt_line_get_suppress(ocrpt_line *line);</pre><p>
+					</p></div><div class="sect4" id="LINESSETTEXTCOLOR"><div class="titlepage"><div><div><h5 class="title">10.1.10.12.6. Set or get line text color <a href="#LINESSETTEXTCOLOR" class="id_link">#</a></h5></div></div></div><p>
 						Set the text line's text color from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_line_set_color(ocrpt_line *line,
-                     const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="LINESETBGCOLOR"><div class="titlepage"><div><div><h5 class="title">10.1.10.12.7. Set line background color <a href="#LINESETBGCOLOR" class="id_link">#</a></h5></div></div></div><p>
-						Set the text line's background color from
+                     const char *expr_string);
+
+ocrpt_expr *
+ocrpt_line_get_color(ocrpt_line *line);</pre><p>
+					</p></div><div class="sect4" id="LINESETBGCOLOR"><div class="titlepage"><div><div><h5 class="title">10.1.10.12.7. Set or get line background color <a href="#LINESETBGCOLOR" class="id_link">#</a></h5></div></div></div><p>
+						Set or get the text line's background color from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_line_set_bgcolor(ocrpt_line *line,
-                       const char *expr_string);</pre><p>
+                       const char *expr_string);
+
+ocrpt_expr *
+ocrpt_line_get_bgcolor(ocrpt_line *line);</pre><p>
 					</p></div></div><div class="sect3" id="LINEADDTEXT"><div class="titlepage"><div><div><h4 class="title">10.1.10.13. Add a text element to a text line <a href="#LINEADDTEXT" class="id_link">#</a></h4></div></div></div><p>
 					</p><pre class="programlisting">ocrpt_text *
 ocrpt_line_add_text(ocrpt_line *line);</pre><p>
@@ -1434,105 +1648,151 @@ ocrpt_line_add_text(ocrpt_line *line);</pre><p>
 				</p><div class="sect4" id="TEXTSETLITERAL"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.1. Set text element literal value <a href="#TEXTSETLITERAL" class="id_link">#</a></h5></div></div></div><p>
 						Set the text element's literal value from
 						a string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_text_set_value_string(ocrpt_text *text,
                             const char *string);</pre><p>
-					</p></div><div class="sect4" id="TEXTSETVALUE"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.2. Set text element value <a href="#TEXTSETVALUE" class="id_link">#</a></h5></div></div></div><p>
+					</p></div><div class="sect4" id="TEXTSETVALUE"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.2. Set or get text element value <a href="#TEXTSETVALUE" class="id_link">#</a></h5></div></div></div><p>
 						Set the text element's value from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_text_set_value_expr(ocrpt_text *text,
                           const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="TEXTSETDELAYED"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.3. Set text element value's delayed property <a href="#TEXTSETDELAYED" class="id_link">#</a></h5></div></div></div><p>
+					</p><p>
+						The getter function for the text element's
+						value also works when the text value is set
+						as a literal.
+						</p><pre class="programlisting">ocrpt_expr *
+ocrpt_text_get_value(ocrpt_text *text);</pre><p>
+					</p></div><div class="sect4" id="TEXTSETDELAYED"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.3. Set or get text element value's delayed property <a href="#TEXTSETDELAYED" class="id_link">#</a></h5></div></div></div><p>
 						Set the text element value's delayed
 						property from an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_text_set_value_delayed(ocrpt_text *text,
-                             const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="TEXTSETFORMATSTRING"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.4. Set text element format string <a href="#TEXTSETFORMATSTRING" class="id_link">#</a></h5></div></div></div><p>
+                             const char *expr_string);
+
+
+ocrpt_expr *
+ocrpt_text_get_value_delayed(ocrpt_text *text);</pre><p>
+					</p></div><div class="sect4" id="TEXTSETFORMATSTRING"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.4. Set or get text element format string <a href="#TEXTSETFORMATSTRING" class="id_link">#</a></h5></div></div></div><p>
 						Set the text element's format string from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_text_set_format(ocrpt_text *text,
-                      const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="TEXTSETXLATE"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.5. Set text element translation <a href="#TEXTSETXLATE" class="id_link">#</a></h5></div></div></div><p>
+                      const char *expr_string);
+
+ocrpt_expr *
+ocrpt_text_get_format(ocrpt_text *text);</pre><p>
+					</p></div><div class="sect4" id="TEXTSETXLATE"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.5. Set or get text element translation <a href="#TEXTSETXLATE" class="id_link">#</a></h5></div></div></div><p>
 						Set the text element's translation from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_text_set_translate(ocrpt_text *text,
-                         const char *expr_string);</pre><p>
+                         const char *expr_string);
+
+ocrpt_expr *
+ocrpt_text_get_translate(ocrpt_text *text);</pre><p>
 					</p><p>
 						OpenCReports will attempt to translate
 						both the format string and the text element's
 						value.
-					</p></div><div class="sect4" id="TEXTSETWIDTH"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.6. Set text element field width <a href="#TEXTSETWIDTH" class="id_link">#</a></h5></div></div></div><p>
+					</p></div><div class="sect4" id="TEXTSETWIDTH"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.6. Set or get text element field width <a href="#TEXTSETWIDTH" class="id_link">#</a></h5></div></div></div><p>
 						Set the text element's field width from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_text_set_width(ocrpt_text *text,
-                     const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="TEXTSETALIGNMENT"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.7. Set text element alignment <a href="#TEXTSETALIGNMENT" class="id_link">#</a></h5></div></div></div><p>
+                     const char *expr_string);
+
+ocrpt_expr *
+ocrpt_text_get_width(ocrpt_text *text);</pre><p>
+					</p></div><div class="sect4" id="TEXTSETALIGNMENT"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.7. Set or get text element alignment <a href="#TEXTSETALIGNMENT" class="id_link">#</a></h5></div></div></div><p>
 						Set the text element's alignment from
 						a string or an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_text_set_alignment(ocrpt_text *text,
-                         const char *expr_string);</pre><p>
+                         const char *expr_string);
+
+ocrpt_expr *
+ocrpt_text_get_alignment(ocrpt_text *text);</pre><p>
 					</p><p>
 						String values <code class="literal">left</code>,
 						<code class="literal">right</code>,
 						<code class="literal">center</code> and
 						<code class="literal">justified</code> are
 						accepted either as is, or as an expression.
-					</p></div><div class="sect4" id="TEXTSETCOLOR"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.8. Set text element text color <a href="#TEXTSETCOLOR" class="id_link">#</a></h5></div></div></div><p>
+					</p></div><div class="sect4" id="TEXTSETCOLOR"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.8. Set or get text element text color <a href="#TEXTSETCOLOR" class="id_link">#</a></h5></div></div></div><p>
 						Set the text element's text color from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_text_set_color(ocrpt_text *text,
-                     const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="TEXTSETBGCOLOR"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.9. Set text element background color <a href="#TEXTSETBGCOLOR" class="id_link">#</a></h5></div></div></div><p>
+                     const char *expr_string);
+
+ocrpt_expr *
+ocrpt_text_get_color(ocrpt_text *text);</pre><p>
+					</p></div><div class="sect4" id="TEXTSETBGCOLOR"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.9. Set or get text element background color <a href="#TEXTSETBGCOLOR" class="id_link">#</a></h5></div></div></div><p>
 						Set the text element's background color from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_text_set_bgcolor(ocrpt_text *text,
-                       const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="TEXTSETFONTNAME"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.10. Set text element font name <a href="#TEXTSETFONTNAME" class="id_link">#</a></h5></div></div></div><p>
+                       const char *expr_string);
+
+ocrpt_expr *
+ocrpt_text_get_bgcolor(ocrpt_text *text);</pre><p>
+					</p></div><div class="sect4" id="TEXTSETFONTNAME"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.10. Set or get text element font name <a href="#TEXTSETFONTNAME" class="id_link">#</a></h5></div></div></div><p>
 						Set the text element's font name from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_text_set_font_name(ocrpt_text *text,
-                         const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="TEXTSETFONTSIZE"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.11. Set text element font size <a href="#TEXTSETFONTSIZE" class="id_link">#</a></h5></div></div></div><p>
+                         const char *expr_string);
+
+ocrpt_expr *
+ocrpt_text_get_font_name(ocrpt_text *text);</pre><p>
+					</p></div><div class="sect4" id="TEXTSETFONTSIZE"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.11. Set or get text element font size <a href="#TEXTSETFONTSIZE" class="id_link">#</a></h5></div></div></div><p>
 						Set the text element's font size from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_text_set_font_size(ocrpt_text *text,
-                         const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="TEXTSETBOLD"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.12. Set text element bold value <a href="#TEXTSETBOLD" class="id_link">#</a></h5></div></div></div><p>
+                         const char *expr_string);
+
+ocrpt_expr *
+ocrpt_text_get_font_size(ocrpt_text *text);</pre><p>
+					</p></div><div class="sect4" id="TEXTSETBOLD"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.12. Set or get text element bold value <a href="#TEXTSETBOLD" class="id_link">#</a></h5></div></div></div><p>
 						Set the text element's bold value from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_text_set_bold(ocrpt_text *text,
-                    const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="TEXTSETITALIC"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.13. Set text element italic value <a href="#TEXTSETITALIC" class="id_link">#</a></h5></div></div></div><p>
+                    const char *expr_string);
+
+ocrpt_expr *
+ocrpt_text_get_bold(ocrpt_text *text);</pre><p>
+					</p></div><div class="sect4" id="TEXTSETITALIC"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.13. Set or get text element italic value <a href="#TEXTSETITALIC" class="id_link">#</a></h5></div></div></div><p>
 						Set the text element's italic value from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_text_set_italic(ocrpt_text *text,
-                      const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="TEXTSETLINK"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.14. Set text element link URL <a href="#TEXTSETLINK" class="id_link">#</a></h5></div></div></div><p>
+                      const char *expr_string);
+
+ocrpt_expr *
+ocrpt_text_get_italic(ocrpt_text *text);</pre><p>
+					</p></div><div class="sect4" id="TEXTSETLINK"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.14. Set or get text element link URL <a href="#TEXTSETLINK" class="id_link">#</a></h5></div></div></div><p>
 						Set the text element's link URL from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_text_set_link(ocrpt_text *text,
-                    const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="TEXTSETMEMO"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.15. Set text element multiline property <a href="#TEXTSETMEMO" class="id_link">#</a></h5></div></div></div><p>
+                    const char *expr_string);
+
+ocrpt_expr *
+ocrpt_text_get_link(ocrpt_text *text);</pre><p>
+					</p></div><div class="sect4" id="TEXTSETMEMO"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.15. Set or get text element multiline property <a href="#TEXTSETMEMO" class="id_link">#</a></h5></div></div></div><p>
 						Set the text element's multiline property
 						from an expression string. The expression
 						must evaluate to a numeric (boolean) value.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_text_set_memo(ocrpt_text *text,
-                    const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="TEXTSETMEMOWRAP"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.16. Set text element "wrap at characters" property <a href="#TEXTSETMEMOWRAP" class="id_link">#</a></h5></div></div></div><p>
+                    const char *expr_string);
+
+ocrpt_expr *
+ocrpt_text_get_memo(ocrpt_text *text);</pre><p>
+					</p></div><div class="sect4" id="TEXTSETMEMOWRAP"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.16. Set or get text element "wrap at characters" property <a href="#TEXTSETMEMOWRAP" class="id_link">#</a></h5></div></div></div><p>
 						Set the text element's "wrap at characters"
 						property from an expression string.
 						The expression must evaluate to a numeric
@@ -1540,10 +1800,13 @@ ocrpt_text_set_memo(ocrpt_text *text,
 						for multiline fields. When unset or set to
 						<code class="literal">false</code>, multiline text
 						fields wrap at word boundaries.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_text_set_memo_wrap_chars(ocrpt_text *text,
-                               const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="TEXTSETMEMOLINES"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.17. Set text element maximum lines <a href="#TEXTSETMEMOLINES" class="id_link">#</a></h5></div></div></div><p>
+                               const char *expr_string);
+
+ocrpt_expr *
+ocrpt_text_get_memo_wrap_chars(ocrpt_text *text);</pre><p>
+					</p></div><div class="sect4" id="TEXTSETMEMOLINES"><div class="titlepage"><div><div><h5 class="title">10.1.10.14.17. Set or get text element maximum lines <a href="#TEXTSETMEMOLINES" class="id_link">#</a></h5></div></div></div><p>
 						Set the text element's maximum lines
 						property from an expression string.
 						The expression must evaluate to a numeric
@@ -1555,9 +1818,12 @@ ocrpt_text_set_memo_wrap_chars(ocrpt_text *text,
 						field value. The used font size, the field's width
 						and word/character wrapping influence the
 						number of lines the field value is rendered into.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_text_set_memo_max_lines(ocrpt_text *text,
-                              const char *expr_string);</pre><p>
+                              const char *expr_string);
+
+ocrpt_expr *
+ocrpt_text_get_memo_max_lines(ocrpt_text *text);</pre><p>
 					</p></div></div><div class="sect3" id="OUTPUTADDHLINE"><div class="titlepage"><div><div><h4 class="title">10.1.10.15. Add a horizontal line to an output section <a href="#OUTPUTADDHLINE" class="id_link">#</a></h4></div></div></div><p>
 					</p><pre class="programlisting">ocrpt_hline *
 ocrpt_output_add_hline(ocrpt_output *output);</pre><p>
@@ -1567,13 +1833,16 @@ ocrpt_output_add_hline(ocrpt_output *output);</pre><p>
 					Settings in other sections may depend
 					on data derived from query columns.
 					See <a class="xref" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Expressions</a>.
-				</p><div class="sect4" id="HLINESETWIDTH"><div class="titlepage"><div><div><h5 class="title">10.1.10.16.1. Set horizontal line size (width) <a href="#HLINESETWIDTH" class="id_link">#</a></h5></div></div></div><p>
+				</p><div class="sect4" id="HLINESETWIDTH"><div class="titlepage"><div><div><h5 class="title">10.1.10.16.1. Set or get horizontal line size (width) <a href="#HLINESETWIDTH" class="id_link">#</a></h5></div></div></div><p>
 						Set the horizontal line's size (width) from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_hline_set_size(ocrpt_hline *hline,
-                     const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="HLINESETALIGN"><div class="titlepage"><div><div><h5 class="title">10.1.10.16.2. Set horizontal line alignment <a href="#HLINESETALIGN" class="id_link">#</a></h5></div></div></div><p>
+                     const char *expr_string);
+
+ocrpt_expr *
+ocrpt_hline_get_size(ocrpt_hline *hline);</pre><p>
+					</p></div><div class="sect4" id="HLINESETALIGN"><div class="titlepage"><div><div><h5 class="title">10.1.10.16.2. Set or get horizontal line alignment <a href="#HLINESETALIGN" class="id_link">#</a></h5></div></div></div><p>
 						Set the horizontal line's alignment from
 						an expression string. Possibly values are
 						<code class="literal">left</code>,
@@ -1583,80 +1852,110 @@ ocrpt_hline_set_size(ocrpt_hline *hline,
 						The alignment is only applied if the line
 						length is shorter than the designated page
 						or column width without the margins.
-						</p><pre class="programlisting">void
-ocrpt_hline_set_align(ocrpt_hline *hline,
-                      const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="HLINESETINDENTATION"><div class="titlepage"><div><div><h5 class="title">10.1.10.16.3. Set horizontal line indentation <a href="#HLINESETINDENTATION" class="id_link">#</a></h5></div></div></div><p>
+						</p><pre class="programlisting">ocrpt_expr *
+ocrpt_hline_set_alignment(ocrpt_hline *hline,
+                      const char *expr_string);
+
+ocrpt_expr *
+ocrpt_hline_get_alignment(ocrpt_hline *hline);</pre><p>
+					</p></div><div class="sect4" id="HLINESETINDENTATION"><div class="titlepage"><div><div><h5 class="title">10.1.10.16.3. Set or get horizontal line indentation <a href="#HLINESETINDENTATION" class="id_link">#</a></h5></div></div></div><p>
 						Set the horizontal line's indentation value from
 						an expression string. The indentation is used if
 						<code class="literal">left</code> alignment is set.
-						</p><pre class="programlisting">void
-ocrpt_hline_set_indent(ocrpt_hline *hline,
-                       const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="HLINESETLENGTH"><div class="titlepage"><div><div><h5 class="title">10.1.10.16.4. Set horizontal line length <a href="#HLINESETLENGTH" class="id_link">#</a></h5></div></div></div><p>
+						</p><pre class="programlisting">ocrpt_expr *
+ocrpt_hline_set_indentation(ocrpt_hline *hline,
+                       const char *expr_string);
+
+ocrpt_expr *
+ocrpt_hline_get_indentation(ocrpt_hline *hline);</pre><p>
+					</p></div><div class="sect4" id="HLINESETLENGTH"><div class="titlepage"><div><div><h5 class="title">10.1.10.16.4. Set or get horizontal line length <a href="#HLINESETLENGTH" class="id_link">#</a></h5></div></div></div><p>
 						Set the horizontal line's length from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_hline_set_length(ocrpt_hline *hline,
-                       const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="HLINESETFONTSIZE"><div class="titlepage"><div><div><h5 class="title">10.1.10.16.5. Set horizontal line font size <a href="#HLINESETFONTSIZE" class="id_link">#</a></h5></div></div></div><p>
+                       const char *expr_string);
+
+ocrpt_expr *
+ocrpt_hline_get_length(ocrpt_hline *hline);</pre><p>
+					</p></div><div class="sect4" id="HLINESETFONTSIZE"><div class="titlepage"><div><div><h5 class="title">10.1.10.16.5. Set or get horizontal line font size <a href="#HLINESETFONTSIZE" class="id_link">#</a></h5></div></div></div><p>
 						Set the horizontal line's font size from
 						an expression string. It's used in indentation
 						and length calculations if <a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="8.2.1. Size unit attribute">Size unit attribute</a>
 						is set to <code class="literal">rlib</code>.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_hline_set_font_size(ocrpt_hline *hline,
-                          const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="HLINESETSUPPRESS"><div class="titlepage"><div><div><h5 class="title">10.1.10.16.6. Set horizontal line suppression <a href="#HLINESETSUPPRESS" class="id_link">#</a></h5></div></div></div><p>
+                          const char *expr_string);
+
+ocrpt_expr *
+ocrpt_hline_get_font_size(ocrpt_hline *hline);</pre><p>
+					</p></div><div class="sect4" id="HLINESETSUPPRESS"><div class="titlepage"><div><div><h5 class="title">10.1.10.16.6. Set or get horizontal line suppression <a href="#HLINESETSUPPRESS" class="id_link">#</a></h5></div></div></div><p>
 						Set the horizontal line's suppression from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_hline_set_suppress(ocrpt_hline *hline,
-                         const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="HLINESETCOLOR"><div class="titlepage"><div><div><h5 class="title">10.1.10.16.7. Set horizontal line color <a href="#HLINESETCOLOR" class="id_link">#</a></h5></div></div></div><p>
+                         const char *expr_string);
+
+ocrpt_expr *
+ocrpt_hline_get_suppress(ocrpt_hline *hline);</pre><p>
+					</p></div><div class="sect4" id="HLINESETCOLOR"><div class="titlepage"><div><div><h5 class="title">10.1.10.16.7. Set or get horizontal line color <a href="#HLINESETCOLOR" class="id_link">#</a></h5></div></div></div><p>
 						Set the horizontal line's color from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_hline_set_color(ocrpt_hline *hline,
-                      const char *expr_string);</pre><p>
+                      const char *expr_string);
+
+ocrpt_expr *
+ocrpt_hline_get_color(ocrpt_hline *hline);</pre><p>
 					</p></div></div><div class="sect3" id="OUTPUTADDBARCODE"><div class="titlepage"><div><div><h4 class="title">10.1.10.17. Add a barcode to an output section <a href="#OUTPUTADDBARCODE" class="id_link">#</a></h4></div></div></div><p>
 					</p><pre class="programlisting">ocrpt_barcode *
 ocrpt_output_add_barcode(ocrpt_output *output);</pre><p>
 				</p></div><div class="sect3" id="TEXTADDBARCODE"><div class="titlepage"><div><div><h4 class="title">10.1.10.18. Add a barcode to a text line <a href="#TEXTADDBARCODE" class="id_link">#</a></h4></div></div></div><p>
 					</p><pre class="programlisting">ocrpt_barcode *
 ocrpt_line_add_barcode(ocrpt_line *line);</pre><p>
-				</p></div><div class="sect3" id="BARCODESETTINGS"><div class="titlepage"><div><div><h4 class="title">10.1.10.19. Barcode settings <a href="#BARCODESETTINGS" class="id_link">#</a></h4></div></div></div><div class="sect4" id="BARCODESETVALUE"><div class="titlepage"><div><div><h5 class="title">10.1.10.19.1. Set barcode value <a href="#BARCODESETVALUE" class="id_link">#</a></h5></div></div></div><p>
+				</p></div><div class="sect3" id="BARCODESETTINGS"><div class="titlepage"><div><div><h4 class="title">10.1.10.19. Barcode settings <a href="#BARCODESETTINGS" class="id_link">#</a></h4></div></div></div><div class="sect4" id="BARCODESETVALUE"><div class="titlepage"><div><div><h5 class="title">10.1.10.19.1. Set or get barcode value <a href="#BARCODESETVALUE" class="id_link">#</a></h5></div></div></div><p>
 						Set the barcode's value from
 						an expression string. The expression
 						must evaluate to a string, whose
 						value is the string to be encoded
 						as a barcode.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_barcode_set_value(ocrpt_barcode *bc,
-                        const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="BARCODESETVALUEDELAYED"><div class="titlepage"><div><div><h5 class="title">10.1.10.19.2. Set barcode value delayed <a href="#BARCODESETVALUEDELAYED" class="id_link">#</a></h5></div></div></div><p>
+                        const char *expr_string);
+
+ocrpt_expr *
+ocrpt_barcode_get_value(ocrpt_barcode *bc);</pre><p>
+					</p></div><div class="sect4" id="BARCODESETVALUEDELAYED"><div class="titlepage"><div><div><h5 class="title">10.1.10.19.2. Set or get barcode value delayed <a href="#BARCODESETVALUEDELAYED" class="id_link">#</a></h5></div></div></div><p>
 						Set the barcode's value delayed from
 						an expression string. The expression
 						must evaluate to a boolean value.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_barcode_set_value_delayed(ocrpt_barcode *bc,
-                                const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="BARCODESETSUPPRESS"><div class="titlepage"><div><div><h5 class="title">10.1.10.19.3. Set barcode suppression <a href="#BARCODESETSUPPRESS" class="id_link">#</a></h5></div></div></div><p>
+                                const char *expr_string);
+
+ocrpt_expr *
+ocrpt_barcode_get_value_delayed(ocrpt_barcode *bc);</pre><p>
+					</p></div><div class="sect4" id="BARCODESETSUPPRESS"><div class="titlepage"><div><div><h5 class="title">10.1.10.19.3. Set or get barcode suppression <a href="#BARCODESETSUPPRESS" class="id_link">#</a></h5></div></div></div><p>
 						Set the barcode's suppression value from
 						an expression string. The expression
 						must evaluate to a boolean value.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_barcode_set_suppress(ocrpt_barcode *bc,
-                           const char *expr_string);</pre><p>
+                           const char *expr_string);
+
+ocrpt_expr *
+ocrpt_barcode_get_suppress(ocrpt_barcode *bc);</pre><p>
 					</p><p>
 						Default value is <code class="literal">false</code>,
 						i.e. no suppression.
-					</p></div><div class="sect4" id="BARCODESETTYPE"><div class="titlepage"><div><div><h5 class="title">10.1.10.19.4. Set barcode type <a href="#BARCODESETTYPE" class="id_link">#</a></h5></div></div></div><p>
+					</p></div><div class="sect4" id="BARCODESETTYPE"><div class="titlepage"><div><div><h5 class="title">10.1.10.19.4. Set or get barcode type <a href="#BARCODESETTYPE" class="id_link">#</a></h5></div></div></div><p>
 						Set the barcode's type from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_barcode_set_type(ocrpt_barcode *bc,
-                       const char *expr_string);</pre><p>
+                       const char *expr_string);
+
+ocrpt_expr *
+ocrpt_barcode_get_type(ocrpt_barcode *bc);</pre><p>
 					</p><p>
 						The type may be optional, in which
 						case it's autodetected and the barcode
@@ -1684,24 +1983,30 @@ ocrpt_barcode_set_type(ocrpt_barcode *bc,
 						<code class="literal">value</code> is invalid
 						for any of the above listed types,
 						the barcode is not rendered.
-					</p></div><div class="sect4" id="BARCODESETWIDTH"><div class="titlepage"><div><div><h5 class="title">10.1.10.19.5. Set barcode width <a href="#BARCODESETWIDTH" class="id_link">#</a></h5></div></div></div><p>
+					</p></div><div class="sect4" id="BARCODESETWIDTH"><div class="titlepage"><div><div><h5 class="title">10.1.10.19.5. Set or get barcode width <a href="#BARCODESETWIDTH" class="id_link">#</a></h5></div></div></div><p>
 						Set the barcode's width from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_barcode_set_width(ocrpt_barcode *bc,
-                        const char *expr_string);</pre><p>
+                        const char *expr_string);
+
+ocrpt_expr *
+ocrpt_barcode_get_width(ocrpt_barcode *bc);</pre><p>
 					</p><p>
 						The width is set according to
 						<a class="xref" href="ocrpttopxml.html#SIZEUNIT" title="8.2.1. Size unit attribute">Size unit attribute</a>,
 						either in points (1/72th inch) or
 						in (monospace) font width units
 						set by <code class="literal">&lt;Line&gt;</code>.
-					</p></div><div class="sect4" id="BARCODESETHEIGHT"><div class="titlepage"><div><div><h5 class="title">10.1.10.19.6. Set barcode width <a href="#BARCODESETHEIGHT" class="id_link">#</a></h5></div></div></div><p>
+					</p></div><div class="sect4" id="BARCODESETHEIGHT"><div class="titlepage"><div><div><h5 class="title">10.1.10.19.6. Set or get barcode width <a href="#BARCODESETHEIGHT" class="id_link">#</a></h5></div></div></div><p>
 						Set the barcode's height from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_barcode_set_height(ocrpt_barcode *bc,
-                         const char *expr_string);</pre><p>
+                         const char *expr_string);
+
+ocrpt_expr *
+ocrpt_barcode_get_height(ocrpt_barcode *bc);</pre><p>
 					</p><p>
 						This setting is always in points, i.e.
 						1/72th of an inch. The line height will
@@ -1712,18 +2017,24 @@ ocrpt_barcode_set_height(ocrpt_barcode *bc,
 						in the same <code class="literal">&lt;Line&gt;</code>
 						in a way that the elements of the same line
 						will appear (approximately) centered vertically.
-					</p></div><div class="sect4" id="BARCODESETCOLOR"><div class="titlepage"><div><div><h5 class="title">10.1.10.19.7. Set barcode line color <a href="#BARCODESETCOLOR" class="id_link">#</a></h5></div></div></div><p>
+					</p></div><div class="sect4" id="BARCODESETCOLOR"><div class="titlepage"><div><div><h5 class="title">10.1.10.19.7. Set or get barcode line color <a href="#BARCODESETCOLOR" class="id_link">#</a></h5></div></div></div><p>
 						Set the barcode's line color from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_barcode_set_color(ocrpt_barcode *bc,
-                         const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="BARCODESETBGCOLOR"><div class="titlepage"><div><div><h5 class="title">10.1.10.19.8. Set barcode background color <a href="#BARCODESETBGCOLOR" class="id_link">#</a></h5></div></div></div><p>
+                         const char *expr_string);
+
+ocrpt_expr *
+ocrpt_barcode_get_color(ocrpt_barcode *bc);</pre><p>
+					</p></div><div class="sect4" id="BARCODESETBGCOLOR"><div class="titlepage"><div><div><h5 class="title">10.1.10.19.8. Set or get barcode background color <a href="#BARCODESETBGCOLOR" class="id_link">#</a></h5></div></div></div><p>
 						Set the barcode's background color from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_barcode_set_bgcolor(ocrpt_barcode *bc,
-                         const char *expr_string);</pre><p>
+                         const char *expr_string);
+
+ocrpt_expr *
+ocrpt_barcode_get_bgcolor(ocrpt_barcode *bc);</pre><p>
 					</p></div></div><div class="sect3" id="OUTPUTADDIMAGE"><div class="titlepage"><div><div><h4 class="title">10.1.10.20. Add an image to an output section <a href="#OUTPUTADDIMAGE" class="id_link">#</a></h4></div></div></div><p>
 					</p><pre class="programlisting">ocrpt_image *
 ocrpt_output_add_image(ocrpt_output *output);</pre><p>
@@ -1736,60 +2047,84 @@ ocrpt_line_add_image(ocrpt_line *line);</pre><p>
 					Settings in other sections may depend
 					on data derived from query columns.
 					See <a class="xref" href="expressions.html" title="Chapter 3. Expressions in OpenCReports">Expressions</a>.
-				</p><div class="sect4" id="IMAGESETVALUE"><div class="titlepage"><div><div><h5 class="title">10.1.10.22.1. Set image value <a href="#IMAGESETVALUE" class="id_link">#</a></h5></div></div></div><p>
+				</p><div class="sect4" id="IMAGESETVALUE"><div class="titlepage"><div><div><h5 class="title">10.1.10.22.1. Set or get image value <a href="#IMAGESETVALUE" class="id_link">#</a></h5></div></div></div><p>
 						Set the image's value (filename) from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_image_set_value(ocrpt_image *image,
-                      const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="IMAGESETSUPPRESS"><div class="titlepage"><div><div><h5 class="title">10.1.10.22.2. Set image suppression <a href="#IMAGESETSUPPRESS" class="id_link">#</a></h5></div></div></div><p>
+                      const char *expr_string);
+
+ocrpt_expr *
+ocrpt_image_get_value(ocrpt_image *image);</pre><p>
+					</p></div><div class="sect4" id="IMAGESETSUPPRESS"><div class="titlepage"><div><div><h5 class="title">10.1.10.22.2. Set or get image suppression <a href="#IMAGESETSUPPRESS" class="id_link">#</a></h5></div></div></div><p>
 						Set the image's suppression from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_image_set_suppress(ocrpt_image *image,
-                         const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="IMAGESETTYPE"><div class="titlepage"><div><div><h5 class="title">10.1.10.22.3. Set image type <a href="#IMAGESETTYPE" class="id_link">#</a></h5></div></div></div><p>
+                         const char *expr_string);
+
+ocrpt_expr *
+ocrpt_image_get_suppress(ocrpt_image *image);</pre><p>
+					</p></div><div class="sect4" id="IMAGESETTYPE"><div class="titlepage"><div><div><h5 class="title">10.1.10.22.3. Set or get image type <a href="#IMAGESETTYPE" class="id_link">#</a></h5></div></div></div><p>
 						Set the image's type from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_image_set_type(ocrpt_image *image,
-                     const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="IMAGESETWIDTH"><div class="titlepage"><div><div><h5 class="title">10.1.10.22.4. Set image width <a href="#IMAGESETWIDTH" class="id_link">#</a></h5></div></div></div><p>
+                     const char *expr_string);
+
+ocrpt_expr *
+ocrpt_image_get_type(ocrpt_image *image);</pre><p>
+					</p></div><div class="sect4" id="IMAGESETWIDTH"><div class="titlepage"><div><div><h5 class="title">10.1.10.22.4. Set or get image width <a href="#IMAGESETWIDTH" class="id_link">#</a></h5></div></div></div><p>
 						Set the image's width from
 						an expression string. Used when
 						the image is directly added to
 						an output section.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_image_set_width(ocrpt_image *image,
-                      const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="IMAGESETHEIGHT"><div class="titlepage"><div><div><h5 class="title">10.1.10.22.5. Set image height <a href="#IMAGESETHEIGHT" class="id_link">#</a></h5></div></div></div><p>
+                      const char *expr_string);
+
+ocrpt_expr *
+ocrpt_image_get_width(ocrpt_image *image);</pre><p>
+					</p></div><div class="sect4" id="IMAGESETHEIGHT"><div class="titlepage"><div><div><h5 class="title">10.1.10.22.5. Set or get image height <a href="#IMAGESETHEIGHT" class="id_link">#</a></h5></div></div></div><p>
 						Set the image's width from
 						an expression string. Used when
 						the image is directly added to
 						an output section.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_image_set_height(ocrpt_image *image,
-                       const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="IMAGESETALIGNMENT"><div class="titlepage"><div><div><h5 class="title">10.1.10.22.6. Set image alignment <a href="#IMAGESETALIGNMENT" class="id_link">#</a></h5></div></div></div><p>
+                       const char *expr_string);
+
+ocrpt_expr *
+ocrpt_image_get_height(ocrpt_image *image);</pre><p>
+					</p></div><div class="sect4" id="IMAGESETALIGNMENT"><div class="titlepage"><div><div><h5 class="title">10.1.10.22.6. Set or get image alignment <a href="#IMAGESETALIGNMENT" class="id_link">#</a></h5></div></div></div><p>
 						Set the image's alignment from
 						an expression string. Used when
 						the image is added to text line.
-						</p><pre class="programlisting">void
-ocrpt_image_set_align(ocrpt_image *image,
-                      const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="IMAGESETBGCOLOR"><div class="titlepage"><div><div><h5 class="title">10.1.10.22.7. Set image background color <a href="#IMAGESETBGCOLOR" class="id_link">#</a></h5></div></div></div><p>
+						</p><pre class="programlisting">ocrpt_expr *
+ocrpt_image_set_alignment(ocrpt_image *image,
+                      const char *expr_string);
+
+ocrpt_expr *
+ocrpt_image_get_alignment(ocrpt_image *image);</pre><p>
+					</p></div><div class="sect4" id="IMAGESETBGCOLOR"><div class="titlepage"><div><div><h5 class="title">10.1.10.22.7. Set or get image background color <a href="#IMAGESETBGCOLOR" class="id_link">#</a></h5></div></div></div><p>
 						Set the image's background color from
 						an expression string.
-						</p><pre class="programlisting">void
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_image_set_bgcolor(ocrpt_image *image,
-                        const char *expr_string);</pre><p>
-					</p></div><div class="sect4" id="IMAGESSETFIELDWIDTH"><div class="titlepage"><div><div><h5 class="title">10.1.10.22.8. Set image field width <a href="#IMAGESSETFIELDWIDTH" class="id_link">#</a></h5></div></div></div><p>
+                        const char *expr_string);
+
+ocrpt_expr *
+ocrpt_image_get_bgcolor(ocrpt_image *image);</pre><p>
+					</p></div><div class="sect4" id="IMAGESSETFIELDWIDTH"><div class="titlepage"><div><div><h5 class="title">10.1.10.22.8. Set or get image field width <a href="#IMAGESSETFIELDWIDTH" class="id_link">#</a></h5></div></div></div><p>
 						Set the image's field width from
 						an expression string. Used when
-						the image is added to text line.
-						</p><pre class="programlisting">void
+						the image is added to a text line.
+						</p><pre class="programlisting">ocrpt_expr *
 ocrpt_image_set_text_width(ocrpt_image *image,
-                           const char *expr_string);</pre><p>
+                           const char *expr_string);
+
+ocrpt_expr *
+ocrpt_image_get_text_width(ocrpt_image *image);</pre><p>
 					</p></div></div><div class="sect3" id="OUTPUTADDIMAGEEND"><div class="titlepage"><div><div><h4 class="title">10.1.10.23. Add an image end marker to an output section <a href="#OUTPUTADDIMAGEEND" class="id_link">#</a></h4></div></div></div><p>
 					</p><pre class="programlisting">void
 ocrpt_output_add_image_end(ocrpt_output *output);</pre><p>
@@ -2269,4 +2604,4 @@ ocrpt_mem_string_append_c(ocrpt_string *string,
 					</p><pre class="programlisting">void
 ocrpt_mem_string_append_printf(ocrpt_string *string,
                                const char *format, ...);</pre><p>
-				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="c-api-ref-low.html" title="Chapter 10. Low level C language API reference">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="c-api-ref-low.html" title="Chapter 10. Low level C language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="c-api-ds-impl.html" title="Chapter 11. Implement a datasource input driver">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 10. Low level C language API reference </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.8 Manual">Home</a></td><td width="40%" align="right" valign="top"> Chapter 11. Implement a datasource input driver</td></tr></table></div></body></html>
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="c-api-ref-low.html" title="Chapter 10. Low level C language API reference">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="c-api-ref-low.html" title="Chapter 10. Low level C language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="c-api-ds-impl.html" title="Chapter 11. Implement a datasource input driver">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 10. Low level C language API reference </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.9 Manual">Home</a></td><td width="40%" align="right" valign="top"> Chapter 11. Implement a datasource input driver</td></tr></table></div></body></html>

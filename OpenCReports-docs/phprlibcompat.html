@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>12.22. RLIB compatibility API</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phpbarcodeclass.html" title="12.21. The OpenCReport\Barcode class" /><link rel="next" href="examples.html" title="Chapter 13. Examples" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">12.22. RLIB compatibility API</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phpbarcodeclass.html" title="12.21. The OpenCReport\Barcode class">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 12. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.8 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="examples.html" title="Chapter 13. Examples">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPRLIBCOMPAT"><div class="titlepage"><div><div><h2 class="title" style="clear: both">12.22. RLIB compatibility API <a href="#PHPRLIBCOMPAT" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phprlibcompat.html#RLIBINIT">12.22.1. Initialize a report</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBDESTROY">12.22.2. Destroy a report</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBGETLIBVER">12.22.3. Get library version</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDMARIADS">12.22.4. Add a MySQL/MariaDB datasource</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDMARIADS2">12.22.5. Add a MySQL/MariaDB datasource from an INI group</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDPGDS">12.22.6. Add a PostgreSQL datasource</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDODBCDS">12.22.7. Add an ODBC datasource</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDARRAYDS">12.22.8. Add an array datasource</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDXMLDS">12.22.9. Add an XML datasource</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDCSVDS">12.22.10. Add a CSV datasource</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDQUERY">12.22.11. Add a query</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDFOLLOWER">12.22.12. Add a resultset follower</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDN1FOLLOWER">12.22.13. Add a resultset N:1 follower</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBSETDSENCODING">12.22.14. Set datasource encoding</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBLOADREPORT">12.22.15. Add a report XML</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBPARSEXMLFROMBUFFER">12.22.16. Add a report XML from buffer</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDSEARCHPATH">12.22.17. Add a search path</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBSETLOCALE">12.22.18. Set locale</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBSETUPXLATE">12.22.19. Setup translation</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBSETOUTPUTFORMAT">12.22.20. Set output format</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDUSERFUNC">12.22.21. Add a custom report function</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBSETOUTPUTENCODING">12.22.22. Set output encoding</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDREPORTPARAM">12.22.23. Add a report parameter</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBSETOUTPUTPARAM">12.22.24. Set an output parameter</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBREFRESHARRAY">12.22.25. Refresh array query contents</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDEVENTCB">12.22.26. Add an event callback</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBRUNREPORT">12.22.27. Execute the report</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBDUMPREPORT">12.22.28. Dump the report output</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBGETCONTENTTYPE">12.22.29. Get content type</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBSETRADIX">12.22.30. Set radix character</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBCOMPILEEXPR">12.22.31. Compile and evaluate an expression</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDGRAPHREGION">12.22.32. Add graph background region</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBCLEARREGION">12.22.33. Clear graph background region</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBSETGRAPHMINORTICK">12.22.34. Set graph minor tick</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBSETGRAPHMINORTICKLOC">12.22.35. Set graph minor tick by location</a></span></dt></dl></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>12.24. RLIB compatibility API</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phplineelemclass.html" title="12.23. The OpenCReport\LineElement class" /><link rel="next" href="examples.html" title="Chapter 13. Examples" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">12.24. RLIB compatibility API</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phplineelemclass.html" title="12.23. The OpenCReport\LineElement class">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 12. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.9 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="examples.html" title="Chapter 13. Examples">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPRLIBCOMPAT"><div class="titlepage"><div><div><h2 class="title" style="clear: both">12.24. RLIB compatibility API <a href="#PHPRLIBCOMPAT" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="phprlibcompat.html#RLIBINIT">12.24.1. Initialize a report</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBDESTROY">12.24.2. Destroy a report</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBGETLIBVER">12.24.3. Get library version</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDMARIADS">12.24.4. Add a MySQL/MariaDB datasource</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDMARIADS2">12.24.5. Add a MySQL/MariaDB datasource from an INI group</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDPGDS">12.24.6. Add a PostgreSQL datasource</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDODBCDS">12.24.7. Add an ODBC datasource</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDARRAYDS">12.24.8. Add an array datasource</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDXMLDS">12.24.9. Add an XML datasource</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDCSVDS">12.24.10. Add a CSV datasource</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDQUERY">12.24.11. Add a query</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDFOLLOWER">12.24.12. Add a resultset follower</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDN1FOLLOWER">12.24.13. Add a resultset N:1 follower</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBSETDSENCODING">12.24.14. Set datasource encoding</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBLOADREPORT">12.24.15. Add a report XML</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBPARSEXMLFROMBUFFER">12.24.16. Add a report XML from buffer</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDSEARCHPATH">12.24.17. Add a search path</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBSETLOCALE">12.24.18. Set locale</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBSETUPXLATE">12.24.19. Setup translation</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBSETOUTPUTFORMAT">12.24.20. Set output format</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDUSERFUNC">12.24.21. Add a custom report function</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBSETOUTPUTENCODING">12.24.22. Set output encoding</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDREPORTPARAM">12.24.23. Add a report parameter</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBSETOUTPUTPARAM">12.24.24. Set an output parameter</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBREFRESHARRAY">12.24.25. Refresh array query contents</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDEVENTCB">12.24.26. Add an event callback</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBRUNREPORT">12.24.27. Execute the report</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBDUMPREPORT">12.24.28. Dump the report output</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBGETCONTENTTYPE">12.24.29. Get content type</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBSETRADIX">12.24.30. Set radix character</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBCOMPILEEXPR">12.24.31. Compile and evaluate an expression</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBADDGRAPHREGION">12.24.32. Add graph background region</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBCLEARREGION">12.24.33. Clear graph background region</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBSETGRAPHMINORTICK">12.24.34. Set graph minor tick</a></span></dt><dt><span class="sect2"><a href="phprlibcompat.html#RLIBSETGRAPHMINORTICKLOC">12.24.35. Set graph minor tick by location</a></span></dt></dl></div><p>
 			These functions mimic the behaviour
 			of the RLIB PHP API but their declaration
 			differ in a way that the RLIB compatibility
@@ -7,20 +7,20 @@
 			<code class="literal">OpenCReport</code> objects,
 			making the OpenCReports methods and
 			RLIB compatibility functions inter-operable.
-		</p><div class="sect2" id="RLIBINIT"><div class="titlepage"><div><div><h3 class="title">12.22.1. Initialize a report <a href="#RLIBINIT" class="id_link">#</a></h3></div></div></div><p>
+		</p><div class="sect2" id="RLIBINIT"><div class="titlepage"><div><div><h3 class="title">12.24.1. Initialize a report <a href="#RLIBINIT" class="id_link">#</a></h3></div></div></div><p>
 				</p><pre class="programlisting">function
 rlib_init(): ?OpenCReport;</pre><p>
 			</p><p>
 				Note that initializing the report using this function
 				automatically enables some RLIB compatibility settings,
 				like the output parameter "xml_rlib_compat".
-			</p></div><div class="sect2" id="RLIBDESTROY"><div class="titlepage"><div><div><h3 class="title">12.22.2. Destroy a report <a href="#RLIBDESTROY" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBDESTROY"><div class="titlepage"><div><div><h3 class="title">12.24.2. Destroy a report <a href="#RLIBDESTROY" class="id_link">#</a></h3></div></div></div><p>
 				</p><pre class="programlisting">function
 rlib_free(OpenCReport $r): void;</pre><p>
-			</p></div><div class="sect2" id="RLIBGETLIBVER"><div class="titlepage"><div><div><h3 class="title">12.22.3. Get library version <a href="#RLIBGETLIBVER" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBGETLIBVER"><div class="titlepage"><div><div><h3 class="title">12.24.3. Get library version <a href="#RLIBGETLIBVER" class="id_link">#</a></h3></div></div></div><p>
 				</p><pre class="programlisting">function
 rlib_version(void): string;</pre><p>
-			</p></div><div class="sect2" id="RLIBADDMARIADS"><div class="titlepage"><div><div><h3 class="title">12.22.4. Add a MySQL/MariaDB datasource <a href="#RLIBADDMARIADS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBADDMARIADS"><div class="titlepage"><div><div><h3 class="title">12.24.4. Add a MySQL/MariaDB datasource <a href="#RLIBADDMARIADS" class="id_link">#</a></h3></div></div></div><p>
 				</p><pre class="programlisting">function
 rlib_add_datasource_mysql(
                      OpenCReport $r,
@@ -44,7 +44,7 @@ $conn_params = [
 ];
 
 $ds = $o-&gt;datasource_add("mariadb", "mariadb", $conn_params);</pre><p>
-			</p></div><div class="sect2" id="RLIBADDMARIADS2"><div class="titlepage"><div><div><h3 class="title">12.22.5. Add a MySQL/MariaDB datasource from an INI group <a href="#RLIBADDMARIADS2" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBADDMARIADS2"><div class="titlepage"><div><div><h3 class="title">12.24.5. Add a MySQL/MariaDB datasource from an INI group <a href="#RLIBADDMARIADS2" class="id_link">#</a></h3></div></div></div><p>
 				</p><pre class="programlisting">function
 rlib_add_datasource_mysql_from_group(
                      OpenCReport $r,
@@ -65,7 +65,7 @@ $conn_params = [
 ];
 
 $ds = $o-&gt;datasource_add("mariadb", "mariadb", $conn_params);</pre><p>
-			</p></div><div class="sect2" id="RLIBADDPGDS"><div class="titlepage"><div><div><h3 class="title">12.22.6. Add a PostgreSQL datasource <a href="#RLIBADDPGDS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBADDPGDS"><div class="titlepage"><div><div><h3 class="title">12.24.6. Add a PostgreSQL datasource <a href="#RLIBADDPGDS" class="id_link">#</a></h3></div></div></div><p>
 				</p><pre class="programlisting">function
 rlib_add_datasource_postgres(
                      OpenCReport $r,
@@ -82,7 +82,7 @@ rlib_add_datasource_postgres(
 $conn_params = [ "connstr" =&gt; "dbname=ocrpttest user=ocrpt" ];
 
 $ds = $o-&gt;datasource_add("pgsql", "postgresql", $conn_params);</pre><p>
-			</p></div><div class="sect2" id="RLIBADDODBCDS"><div class="titlepage"><div><div><h3 class="title">12.22.7. Add an ODBC datasource <a href="#RLIBADDODBCDS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBADDODBCDS"><div class="titlepage"><div><div><h3 class="title">12.24.7. Add an ODBC datasource <a href="#RLIBADDODBCDS" class="id_link">#</a></h3></div></div></div><p>
 				</p><pre class="programlisting">function
 rlib_add_datasource_odbc(
                      OpenCReport $r,
@@ -104,7 +104,7 @@ $conn_params = [
 ];
 
 $ds = $o-&gt;datasource_add("odbc", "odbc", $conn_params);</pre><p>
-			</p></div><div class="sect2" id="RLIBADDARRAYDS"><div class="titlepage"><div><div><h3 class="title">12.22.8. Add an array datasource <a href="#RLIBADDARRAYDS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBADDARRAYDS"><div class="titlepage"><div><div><h3 class="title">12.24.8. Add an array datasource <a href="#RLIBADDARRAYDS" class="id_link">#</a></h3></div></div></div><p>
 				</p><pre class="programlisting">function
 rlib_add_datasource_array(
                      OpenCReport $r,
@@ -117,7 +117,7 @@ rlib_add_datasource_array(
 				</p><pre class="programlisting">$o = new OpenCReport();
 
 $ds = $o-&gt;datasource_add("array", "array");</pre><p>
-			</p></div><div class="sect2" id="RLIBADDXMLDS"><div class="titlepage"><div><div><h3 class="title">12.22.9. Add an XML datasource <a href="#RLIBADDXMLDS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBADDXMLDS"><div class="titlepage"><div><div><h3 class="title">12.24.9. Add an XML datasource <a href="#RLIBADDXMLDS" class="id_link">#</a></h3></div></div></div><p>
 				</p><pre class="programlisting">function
 rlib_add_datasource_xml(
                      OpenCReport $r,
@@ -130,7 +130,7 @@ rlib_add_datasource_xml(
 				</p><pre class="programlisting">$o = new OpenCReport();
 
 $ds = $o-&gt;datasource_add("xml", "xml");</pre><p>
-			</p></div><div class="sect2" id="RLIBADDCSVDS"><div class="titlepage"><div><div><h3 class="title">12.22.10. Add a CSV datasource <a href="#RLIBADDCSVDS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBADDCSVDS"><div class="titlepage"><div><div><h3 class="title">12.24.10. Add a CSV datasource <a href="#RLIBADDCSVDS" class="id_link">#</a></h3></div></div></div><p>
 				</p><pre class="programlisting">function
 rlib_add_datasource_csv(
                      OpenCReport $r,
@@ -143,7 +143,7 @@ rlib_add_datasource_csv(
 				</p><pre class="programlisting">$o = new OpenCReport();
 
 $ds = $o-&gt;datasource_add("csv", "csv");</pre><p>
-			</p></div><div class="sect2" id="RLIBADDQUERY"><div class="titlepage"><div><div><h3 class="title">12.22.11. Add a query <a href="#RLIBADDQUERY" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBADDQUERY"><div class="titlepage"><div><div><h3 class="title">12.24.11. Add a query <a href="#RLIBADDQUERY" class="id_link">#</a></h3></div></div></div><p>
 				This function is equivalent to
 				<code class="literal">OpenCReport\Datasource::query_add()</code>
 				with a different order of parameters.
@@ -155,7 +155,7 @@ rlib_add_query_as(
                      string $array_or_file_or_sql,
                      string $name):
                      OpenCReport\Datasource;</pre><p>
-			</p></div><div class="sect2" id="RLIBADDFOLLOWER"><div class="titlepage"><div><div><h3 class="title">12.22.12. Add a resultset follower <a href="#RLIBADDFOLLOWER" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBADDFOLLOWER"><div class="titlepage"><div><div><h3 class="title">12.24.12. Add a resultset follower <a href="#RLIBADDFOLLOWER" class="id_link">#</a></h3></div></div></div><p>
 				This function is about equivalent to
 				<code class="literal">OpenCReport\Query::add_follower()</code>.
 				The <code class="literal">$leader</code> and
@@ -166,7 +166,7 @@ rlib_add_resultset_follower(
                      OpenCReport $r,
                      string $leader,
                      string $follower): bool;</pre><p>
-			</p></div><div class="sect2" id="RLIBADDN1FOLLOWER"><div class="titlepage"><div><div><h3 class="title">12.22.13. Add a resultset N:1 follower <a href="#RLIBADDN1FOLLOWER" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBADDN1FOLLOWER"><div class="titlepage"><div><div><h3 class="title">12.24.13. Add a resultset N:1 follower <a href="#RLIBADDN1FOLLOWER" class="id_link">#</a></h3></div></div></div><p>
 				This function is about equivalent to
 				<code class="literal">OpenCReport\Query::add_follower_n_to_1()</code>.
 				The former allows an arbitrary match expression,
@@ -183,7 +183,7 @@ rlib_add_resultset_follower_n_to_1(
                      string $leader_field,
                      string $follower,
                      string $follower_field): bool;</pre><p>
-			</p></div><div class="sect2" id="RLIBSETDSENCODING"><div class="titlepage"><div><div><h3 class="title">12.22.14. Set datasource encoding <a href="#RLIBSETDSENCODING" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBSETDSENCODING"><div class="titlepage"><div><div><h3 class="title">12.24.14. Set datasource encoding <a href="#RLIBSETDSENCODING" class="id_link">#</a></h3></div></div></div><p>
 				This function is equivalent to
 				<code class="literal">OpenCReport\Datasource::set_encoding()</code>.
 				See <a class="xref" href="phpdsclass.html#PHPDSSETENCODING" title="12.5.3. Set datasource encoding">Section 12.5.3</a>
@@ -192,35 +192,35 @@ rlib_set_datasource_encoding(
                      OpenCReport $r,
                      string $name,
                      string $encoding): void;</pre><p>
-			</p></div><div class="sect2" id="RLIBLOADREPORT"><div class="titlepage"><div><div><h3 class="title">12.22.15. Add a report XML <a href="#RLIBLOADREPORT" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBLOADREPORT"><div class="titlepage"><div><div><h3 class="title">12.24.15. Add a report XML <a href="#RLIBLOADREPORT" class="id_link">#</a></h3></div></div></div><p>
 				This function is equivalent to
 				<code class="literal">OpenCReport::parse_xml()</code>.
 				</p><pre class="programlisting">function
 rlib_add_report(
                      OpenCReport $r,
                      string $filename): bool;</pre><p>
-			</p></div><div class="sect2" id="RLIBPARSEXMLFROMBUFFER"><div class="titlepage"><div><div><h3 class="title">12.22.16. Add a report XML from buffer <a href="#RLIBPARSEXMLFROMBUFFER" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBPARSEXMLFROMBUFFER"><div class="titlepage"><div><div><h3 class="title">12.24.16. Add a report XML from buffer <a href="#RLIBPARSEXMLFROMBUFFER" class="id_link">#</a></h3></div></div></div><p>
 				This function is equivalent to
 				<code class="literal">OpenCReport::parse_xml_from_buffer()</code>.
 				</p><pre class="programlisting">function
 rlib_add_report_from_buffer(
                      OpenCReport $r,
                      string $buffer): bool;</pre><p>
-			</p></div><div class="sect2" id="RLIBADDSEARCHPATH"><div class="titlepage"><div><div><h3 class="title">12.22.17. Add a search path <a href="#RLIBADDSEARCHPATH" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBADDSEARCHPATH"><div class="titlepage"><div><div><h3 class="title">12.24.17. Add a search path <a href="#RLIBADDSEARCHPATH" class="id_link">#</a></h3></div></div></div><p>
 				This function is equivalent to
 				<code class="literal">OpenCReport::add_search_path()</code>.
 				</p><pre class="programlisting">function
 rlib_add_search_path(
                      OpenCReport $r,
                      string $path): bool;</pre><p>
-			</p></div><div class="sect2" id="RLIBSETLOCALE"><div class="titlepage"><div><div><h3 class="title">12.22.18. Set locale <a href="#RLIBSETLOCALE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBSETLOCALE"><div class="titlepage"><div><div><h3 class="title">12.24.18. Set locale <a href="#RLIBSETLOCALE" class="id_link">#</a></h3></div></div></div><p>
 				This function is equivalent to
 				<code class="literal">OpenCReport::set_locale()</code>.
 				</p><pre class="programlisting">function
 rlib_set_locale(
                      OpenCReport $r,
                      string $locale): void;</pre><p>
-			</p></div><div class="sect2" id="RLIBSETUPXLATE"><div class="titlepage"><div><div><h3 class="title">12.22.19. Setup translation <a href="#RLIBSETUPXLATE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBSETUPXLATE"><div class="titlepage"><div><div><h3 class="title">12.24.19. Setup translation <a href="#RLIBSETUPXLATE" class="id_link">#</a></h3></div></div></div><p>
 				This function is equivalent to
 				<code class="literal">OpenCReport::bindtextdomain()</code>.
 				</p><pre class="programlisting">function
@@ -228,7 +228,7 @@ rlib_bindtextdomain(
                      OpenCReport $r,
                      string $domain,
                      string $dirname): void;</pre><p>
-			</p></div><div class="sect2" id="RLIBSETOUTPUTFORMAT"><div class="titlepage"><div><div><h3 class="title">12.22.20. Set output format <a href="#RLIBSETOUTPUTFORMAT" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBSETOUTPUTFORMAT"><div class="titlepage"><div><div><h3 class="title">12.24.20. Set output format <a href="#RLIBSETOUTPUTFORMAT" class="id_link">#</a></h3></div></div></div><p>
 				This function is about equivalent to
 				<code class="literal">OpenCReport::set_output_format()</code>
 				but accepts textual format names (like
@@ -238,7 +238,7 @@ rlib_bindtextdomain(
 rlib_set_output_format_from_text(
                      OpenCReport $r,
                      string $format): void;</pre><p>
-			</p></div><div class="sect2" id="RLIBADDUSERFUNC"><div class="titlepage"><div><div><h3 class="title">12.22.21. Add a custom report function <a href="#RLIBADDUSERFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBADDUSERFUNC"><div class="titlepage"><div><div><h3 class="title">12.24.21. Add a custom report function <a href="#RLIBADDUSERFUNC" class="id_link">#</a></h3></div></div></div><p>
 				This function is the RLIB compatible
 				variant of <code class="literal">OpenCReport::function_add()</code>.
 				Unlike the OpenCReports API, the function
@@ -266,7 +266,7 @@ rlib_add_function(
 				any PHP base type (<code class="literal">string</code>,
 				<code class="literal">long</code>, <code class="literal">double</code>
 				or <code class="literal">bool</code>).
-			</p></div><div class="sect2" id="RLIBSETOUTPUTENCODING"><div class="titlepage"><div><div><h3 class="title">12.22.22. Set output encoding <a href="#RLIBSETOUTPUTENCODING" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBSETOUTPUTENCODING"><div class="titlepage"><div><div><h3 class="title">12.24.22. Set output encoding <a href="#RLIBSETOUTPUTENCODING" class="id_link">#</a></h3></div></div></div><p>
 				This function silently does nothing.
 				For PDF, it's not relevant. Other
 				(CURRENTLY NOT IMPLEMENTED) output formats
@@ -275,7 +275,7 @@ rlib_add_function(
 rlib_set_output_encoding(
                      OpenCReport $r,
                      string $encoding): void;</pre><p>
-			</p></div><div class="sect2" id="RLIBADDREPORTPARAM"><div class="titlepage"><div><div><h3 class="title">12.22.23. Add a report parameter <a href="#RLIBADDREPORTPARAM" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBADDREPORTPARAM"><div class="titlepage"><div><div><h3 class="title">12.24.23. Add a report parameter <a href="#RLIBADDREPORTPARAM" class="id_link">#</a></h3></div></div></div><p>
 				This function is equivalent to
 				<a class="xref" href="phplowlevelapi.html#PHPSETMVARMETHOD" title="12.4.8. Add &quot;m&quot; domain variable">OpenCReport::set_mvariable()</a>.
 				</p><pre class="programlisting">function
@@ -283,22 +283,22 @@ rlib_add_parameter(
                      OpenCReport $r,
                      string $param,
                      ?string $value = null): void;</pre><p>
-			</p></div><div class="sect2" id="RLIBSETOUTPUTPARAM"><div class="titlepage"><div><div><h3 class="title">12.22.24. Set an output parameter <a href="#RLIBSETOUTPUTPARAM" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBSETOUTPUTPARAM"><div class="titlepage"><div><div><h3 class="title">12.24.24. Set an output parameter <a href="#RLIBSETOUTPUTPARAM" class="id_link">#</a></h3></div></div></div><p>
 				Set output parameters for the report.
 				For accepted parameters, see
-				<a class="xref" href="phphighlevelapi.html#PHPREPORTSETOUTPUTPARAM" title="12.3.4. Set report output parameter">Section 12.3.4</a>
+				<a class="xref" href="phphighlevelapi.html#PHPREPORTSETOUTPUTPARAM" title="12.3.6. Set report output parameter">Section 12.3.6</a>
 				</p><pre class="programlisting">function
 rlib_set_output_parameter(
                      OpenCReport $r,
                      string $param,
                      string $value): void;</pre><p>
-			</p></div><div class="sect2" id="RLIBREFRESHARRAY"><div class="titlepage"><div><div><h3 class="title">12.22.25. Refresh array query contents <a href="#RLIBREFRESHARRAY" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBREFRESHARRAY"><div class="titlepage"><div><div><h3 class="title">12.24.25. Refresh array query contents <a href="#RLIBREFRESHARRAY" class="id_link">#</a></h3></div></div></div><p>
 				This function is equivalent to executing
 				<a class="xref" href="phplowlevelapi.html#PHPREFRESHQUERY" title="12.4.3.4. Refresh the internal representation of array queries">OpenCReport::query_refresh()</a>.
 				The same limitations apply.
 				</p><pre class="programlisting">function
 rlib_query_refresh(OpenCReport $r): void;</pre><p>
-			</p></div><div class="sect2" id="RLIBADDEVENTCB"><div class="titlepage"><div><div><h3 class="title">12.22.26. Add an event callback <a href="#RLIBADDEVENTCB" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBADDEVENTCB"><div class="titlepage"><div><div><h3 class="title">12.24.26. Add an event callback <a href="#RLIBADDEVENTCB" class="id_link">#</a></h3></div></div></div><p>
 				This function adds a callback for
 				the specified <code class="literal">$signal</code>
 				in an RLIB compatible way. The signal
@@ -336,26 +336,26 @@ rlib_signal_connect(
 				for single-part single-report reports. For
 				more special purposes, the callback creation
 				class methods are recommended.
-			</p></div><div class="sect2" id="RLIBRUNREPORT"><div class="titlepage"><div><div><h3 class="title">12.22.27. Execute the report <a href="#RLIBRUNREPORT" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBRUNREPORT"><div class="titlepage"><div><div><h3 class="title">12.24.27. Execute the report <a href="#RLIBRUNREPORT" class="id_link">#</a></h3></div></div></div><p>
 				It is equivalent to <code class="literal">OpenCReport::execute()</code>
 				</p><pre class="programlisting">function
 rlib_execute(OpenCReport $r): bool;</pre><p>
-			</p></div><div class="sect2" id="RLIBDUMPREPORT"><div class="titlepage"><div><div><h3 class="title">12.22.28. Dump the report output <a href="#RLIBDUMPREPORT" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBDUMPREPORT"><div class="titlepage"><div><div><h3 class="title">12.24.28. Dump the report output <a href="#RLIBDUMPREPORT" class="id_link">#</a></h3></div></div></div><p>
 				It is equivalent to <code class="literal">OpenCReport::spool()</code>
 				</p><pre class="programlisting">function
 rlib_spool(OpenCReport $r): ?string;</pre><p>
-			</p></div><div class="sect2" id="RLIBGETCONTENTTYPE"><div class="titlepage"><div><div><h3 class="title">12.22.29. Get content type <a href="#RLIBGETCONTENTTYPE" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBGETCONTENTTYPE"><div class="titlepage"><div><div><h3 class="title">12.24.29. Get content type <a href="#RLIBGETCONTENTTYPE" class="id_link">#</a></h3></div></div></div><p>
 				It is equivalent to <code class="literal">OpenCReport::get_content_type()</code>
 				</p><pre class="programlisting">function
 rlib_get_content_type(OpenCReport $r): ?string;</pre><p>
-			</p></div><div class="sect2" id="RLIBSETRADIX"><div class="titlepage"><div><div><h3 class="title">12.22.30. Set radix character <a href="#RLIBSETRADIX" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBSETRADIX"><div class="titlepage"><div><div><h3 class="title">12.24.30. Set radix character <a href="#RLIBSETRADIX" class="id_link">#</a></h3></div></div></div><p>
 				This function silently does nothing.
 				Formatting numbers correctly follow the
 				locale information regarding the decimal
 				separator.
 				</p><pre class="programlisting">function
 rlib_set_radix_character(OpenCReport $r): void;</pre><p>
-			</p></div><div class="sect2" id="RLIBCOMPILEEXPR"><div class="titlepage"><div><div><h3 class="title">12.22.31. Compile and evaluate an expression <a href="#RLIBCOMPILEEXPR" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBCOMPILEEXPR"><div class="titlepage"><div><div><h3 class="title">12.24.31. Compile and evaluate an expression <a href="#RLIBCOMPILEEXPR" class="id_link">#</a></h3></div></div></div><p>
 				</p><pre class="programlisting">function
 rlib_compile_infix(string $expr_string):
                      string|double|null;</pre><p>
@@ -372,7 +372,7 @@ rlib_compile_infix(string $expr_string):
 				internal object. For this reason, the
 				expression may not reference any query
 				columns or report variables.
-			</p></div><div class="sect2" id="RLIBADDGRAPHREGION"><div class="titlepage"><div><div><h3 class="title">12.22.32. Add graph background region <a href="#RLIBADDGRAPHREGION" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBADDGRAPHREGION"><div class="titlepage"><div><div><h3 class="title">12.24.32. Add graph background region <a href="#RLIBADDGRAPHREGION" class="id_link">#</a></h3></div></div></div><p>
 				This function silently does nothing.
 				GRAPHING IS NOT IMPLEMENTED YET.
 				</p><pre class="programlisting">function
@@ -383,14 +383,14 @@ rlib_graph_add_bg_region(
                      string $color,
                      double $start,
                      double $end): void;</pre><p>
-			</p></div><div class="sect2" id="RLIBCLEARREGION"><div class="titlepage"><div><div><h3 class="title">12.22.33. Clear graph background region <a href="#RLIBCLEARREGION" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBCLEARREGION"><div class="titlepage"><div><div><h3 class="title">12.24.33. Clear graph background region <a href="#RLIBCLEARREGION" class="id_link">#</a></h3></div></div></div><p>
 				This function silently does nothing.
 				GRAPHING IS NOT IMPLEMENTED YET.
 				</p><pre class="programlisting">function
 rlib_graph_clear_bg_region(
                      OpenCReport $r,
                      string $graph): void;</pre><p>
-			</p></div><div class="sect2" id="RLIBSETGRAPHMINORTICK"><div class="titlepage"><div><div><h3 class="title">12.22.34. Set graph minor tick <a href="#RLIBSETGRAPHMINORTICK" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBSETGRAPHMINORTICK"><div class="titlepage"><div><div><h3 class="title">12.24.34. Set graph minor tick <a href="#RLIBSETGRAPHMINORTICK" class="id_link">#</a></h3></div></div></div><p>
 				This function silently does nothing.
 				GRAPHING IS NOT IMPLEMENTED YET.
 				</p><pre class="programlisting">function
@@ -398,7 +398,7 @@ rlib_graph_set_x_minor_tick(
                      OpenCReport $r,
                      string $graph,
                      string $x): void;</pre><p>
-			</p></div><div class="sect2" id="RLIBSETGRAPHMINORTICKLOC"><div class="titlepage"><div><div><h3 class="title">12.22.35. Set graph minor tick by location <a href="#RLIBSETGRAPHMINORTICKLOC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RLIBSETGRAPHMINORTICKLOC"><div class="titlepage"><div><div><h3 class="title">12.24.35. Set graph minor tick by location <a href="#RLIBSETGRAPHMINORTICKLOC" class="id_link">#</a></h3></div></div></div><p>
 				This function silently does nothing.
 				GRAPHING IS NOT IMPLEMENTED YET.
 				</p><pre class="programlisting">function
@@ -406,4 +406,4 @@ rlib_graph_set_x_minor_tick_by_location(
                      OpenCReport $r,
                      string $graph,
                      double $location): void;</pre><p>
-			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phpbarcodeclass.html" title="12.21. The OpenCReport\Barcode class">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="examples.html" title="Chapter 13. Examples">Next</a></td></tr><tr><td width="40%" align="left" valign="top">12.21. The OpenCReport\Barcode class </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.8 Manual">Home</a></td><td width="40%" align="right" valign="top"> Chapter 13. Examples</td></tr></table></div></body></html>
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phplineelemclass.html" title="12.23. The OpenCReport\LineElement class">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="examples.html" title="Chapter 13. Examples">Next</a></td></tr><tr><td width="40%" align="left" valign="top">12.23. The OpenCReport\LineElement class </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.9 Manual">Home</a></td><td width="40%" align="right" valign="top"> Chapter 13. Examples</td></tr></table></div></body></html>
