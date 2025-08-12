@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>12.23. The OpenCReport\LineElement class</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="phpoutputelemclass.html" title="12.22. The OpenCReport\OutputElement class" /><link rel="next" href="phprlibcompat.html" title="12.24. RLIB compatibility API" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">12.23. The OpenCReport\LineElement class</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="phpoutputelemclass.html" title="12.22. The OpenCReport\OutputElement class">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><th width="60%" align="center">Chapter 12. PHP language API reference</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.10 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="phprlibcompat.html" title="12.24. RLIB compatibility API">Next</a></td></tr></table><hr /></div><div class="sect1" id="PHPLINEELEMCLASS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">12.23. The OpenCReport\LineElement class <a href="#PHPLINEELEMCLASS" class="id_link">#</a></h2></div></div></div><p>
+			</p><pre class="programlisting">class OpenCReport\LineElement {
+    public final get_next():
+                     ?OpenCReport\LineElement;
+
+    public final is_text(): bool;
+
+    public final is_image(): bool;
+
+    public final is_barcode(): bool;
+
+    public final get_text():
+                     ?OpenCReport\Line;
+
+    public final get_image():
+                     ?OpenCReport\Image;
+
+    public final get_barcode):
+                     ?OpenCReport\Barcode;
+}</pre><p>
+		</p><p>
+			This class iterates through line elements defined
+			for the line object used in
+			<code class="literal">OpenCReport\Line::get_first_element()</code>.
+			An <code class="literal">OpenCReport\LineElement</code> object
+			is an "abstract" object in the sense that it encapsulates
+			several explicit object types. These object types can be
+			determined using the <code class="literal">is_*()</code> methods
+			and the actual objects underlying the abstract object
+			can be acquired using the <code class="literal">get_*()</code> methods.
+		</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="phpoutputelemclass.html" title="12.22. The OpenCReport\OutputElement class">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="php-api-reference.html" title="Chapter 12. PHP language API reference">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="phprlibcompat.html" title="12.24. RLIB compatibility API">Next</a></td></tr><tr><td width="40%" align="left" valign="top">12.22. The OpenCReport\OutputElement class </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.10 Manual">Home</a></td><td width="40%" align="right" valign="top"> 12.24. RLIB compatibility API</td></tr></table></div></body></html>
