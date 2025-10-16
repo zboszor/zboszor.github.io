@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>OpenCReports 0.8.10 Manual</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /></head><body id="docContent" class="container-fluid col-10"><div class="book" id="id-1"><div class="titlepage"><div><div><h1 class="title">OpenCReports 0.8.10 Manual</h1></div><div><div class="author"><h3 class="author"><span class="firstname">Zoltán</span> <span class="surname">Böszörményi</span></h3></div></div><div><p class="copyright">Copyright © 2019-2025 Zoltán Böszörményi</p></div><div><div class="legalnotice" id="id-1.1.5"><div class="blockquote"><blockquote class="blockquote"><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>OpenCReports 0.8.11 Manual</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /></head><body id="docContent" class="container-fluid col-10"><div class="book" id="id-1"><div class="titlepage"><div><div><h1 class="title">OpenCReports 0.8.11 Manual</h1></div><div><div class="author"><h3 class="author"><span class="firstname">Zoltán</span> <span class="surname">Böszörményi</span></h3></div></div><div><p class="copyright">Copyright © 2019-2025 Zoltán Böszörményi</p></div><div><div class="legalnotice" id="id-1.1.5"><div class="blockquote"><blockquote class="blockquote"><p>
 					Permission is granted to copy, distribute and/or modify this document
 					under the terms of the GNU Free Documentation License, Version 1.2
 					or any later version published by the Free Software Foundation;
@@ -311,6 +311,8 @@
 						</p></li><li class="listitem" style="list-style-type: disc"><p>
 							<a class="ulink" href="https://en.wikipedia.org/wiki/JSON" target="_top">JavaScript Object Notation</a>
 							a.k.a. <code class="literal">JSON</code>
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							spreadsheet formats, like XLS, XLSX and ODS
 						</p></li></ul></div><p>
 			</p><p>
 				The <code class="literal">XML</code> and <code class="literal">JSON</code>
@@ -429,6 +431,17 @@
 					indicators may be added along with the XML input file,
 					so the explicit conversion functions may be omitted from
 					expressions using the data.
+				</p></div><div class="sect3" id="SSHEETDS"><div class="titlepage"><div><div><h4 class="title">2.1.2.4. Spreadsheet file types <a href="#SSHEETDS" class="id_link">#</a></h4></div></div></div><p>
+					OpenCReports also supports various spreadsheet formats
+					as datasources. For that, it relies on the Python
+					<code class="literal">pandas</code> module and the supporting
+					modules for the actual spreadsheet file format.
+					Such Python modules are <code class="literal">xlrd</code> for
+					the older Microsoft XLS format,
+					<code class="literal">pyopenxl</code> for the newer Microsoft
+					XLSX format, and <code class="literal">odfpy</code> for LibreOffice
+					ODS format. Other modules may also be used to support
+					other spreadsheet file formats.
 				</p></div></div><div class="sect2" id="DATADATASOURCE"><div class="titlepage"><div><div><h3 class="title">2.1.3. Application data based datasource <a href="#DATADATASOURCE" class="id_link">#</a></h3></div></div></div><p>
 				Applications may also have internal data that can be used
 				as input for OpenCReports.
@@ -856,7 +869,7 @@ lekérdezés.mező_név</pre><p>
 						data set.
 					</p><p>
 						It can be thought as an alias to the
-						<a class="xref" href="#ROWNUMFUNC" title="4.13.13. rownum()">Query row number function</a> function which does
+						<a class="xref" href="#ROWNUMFUNC" title="4.13.18. rownum()">Query row number function</a> function which does
 						the same by default. But functions may be overridden
 						by user defined functions, while this variable will
 						always work as described.
@@ -864,7 +877,7 @@ lekérdezés.mező_név</pre><p>
 						</p><pre class="programlisting">r.detailcnt</pre><p>
 						This variable works similarly to the
 						<a class="xref" href="#LINENO" title="3.4.4.2.3. Line number">Line number variable</a> and
-						<a class="xref" href="#ROWNUMFUNC" title="4.13.13. rownum()">Query row number function</a>,
+						<a class="xref" href="#ROWNUMFUNC" title="4.13.18. rownum()">Query row number function</a>,
 						except it restarts from 1 when
 						a field header is emitted on the report.
 						See <a class="xref" href="#DETAILNODE" title="8.9.2.7. Detail">Detail node</a>.
@@ -1276,7 +1289,7 @@ a+++++b</pre><p>
 				so the former is matched first as an operator token.
 				This is a syntax error and expression parsing throws
 				an error for it.
-			</p></div></div></div><div class="chapter" id="FUNCTIONS"><div class="titlepage"><div><div><h1 class="title">Chapter 4. Functions</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#FUNCSINTRO">4.1. Introduction</a></span></dt><dt><span class="sect1"><a href="#ARITHFUNCS">4.2. Arithmetic functions</a></span></dt><dd><dl><dt><span class="sect2"><a href="#ABSFUNC">4.2.1. abs()</a></span></dt><dt><span class="sect2"><a href="#DIVFUNC">4.2.2. div()</a></span></dt><dt><span class="sect2"><a href="#FACTORIALFUNC">4.2.3. factorial()</a></span></dt><dt><span class="sect2"><a href="#FMODFUNC">4.2.4. fmod()</a></span></dt><dt><span class="sect2"><a href="#MODFUNC">4.2.5. mod()</a></span></dt><dt><span class="sect2"><a href="#MULFUNC">4.2.6. mul()</a></span></dt><dt><span class="sect2"><a href="#REMAINDERFUNC">4.2.7. remainder()</a></span></dt><dt><span class="sect2"><a href="#UMINUSFUNC">4.2.8. uminus()</a></span></dt><dt><span class="sect2"><a href="#UPLUSFUNC">4.2.9. uplus()</a></span></dt></dl></dd><dt><span class="sect1"><a href="#BITWISEFUNCS">4.3. Bitwise functions</a></span></dt><dd><dl><dt><span class="sect2"><a href="#ANDFUNC">4.3.1. and()</a></span></dt><dt><span class="sect2"><a href="#NOTFUNC">4.3.2. not()</a></span></dt><dt><span class="sect2"><a href="#ORFUNC">4.3.3. or()</a></span></dt><dt><span class="sect2"><a href="#SHLFUNC">4.3.4. shl()</a></span></dt><dt><span class="sect2"><a href="#SHRFUNC">4.3.5. shr()</a></span></dt><dt><span class="sect2"><a href="#XORFUNC">4.3.6. xor()</a></span></dt></dl></dd><dt><span class="sect1"><a href="#BOOLFUNCS">4.4. Boolean logic functions</a></span></dt><dd><dl><dt><span class="sect2"><a href="#LANDFUNC">4.4.1. land()</a></span></dt><dt><span class="sect2"><a href="#LNOTFUNC">4.4.2. lnot()</a></span></dt><dt><span class="sect2"><a href="#LORFUNC">4.4.3. lor()</a></span></dt></dl></dd><dt><span class="sect1"><a href="#CMPFUNCS">4.5. Comparison functions</a></span></dt><dd><dl><dt><span class="sect2"><a href="#EQFUNC">4.5.1. eq()</a></span></dt><dt><span class="sect2"><a href="#GEFUNC">4.5.2. ge()</a></span></dt><dt><span class="sect2"><a href="#GTFUNC">4.5.3. gt()</a></span></dt><dt><span class="sect2"><a href="#LEFUNC">4.5.4. le()</a></span></dt><dt><span class="sect2"><a href="#LTFUNC">4.5.5. lt()</a></span></dt><dt><span class="sect2"><a href="#NEFUNC">4.5.6. ne()</a></span></dt></dl></dd><dt><span class="sect1"><a href="#ROUNDINGFUNCS">4.6. Rounding and related functions</a></span></dt><dd><dl><dt><span class="sect2"><a href="#CEILFUNC">4.6.1. ceil()</a></span></dt><dt><span class="sect2"><a href="#FLOORFUNC">4.6.2. floor()</a></span></dt><dt><span class="sect2"><a href="#RINTFUNC">4.6.3. rint()</a></span></dt><dt><span class="sect2"><a href="#ROUNDFUNC">4.6.4. round()</a></span></dt><dt><span class="sect2"><a href="#TRUNCFUNC">4.6.5. trunc()</a></span></dt></dl></dd><dt><span class="sect1"><a href="#EXPLOGFUNCS">4.7. Exponential, logarithmic and related functions</a></span></dt><dd><dl><dt><span class="sect2"><a href="#EXPFUNC">4.7.1. exp()</a></span></dt><dt><span class="sect2"><a href="#EXP10FUNC">4.7.2. exp10()</a></span></dt><dt><span class="sect2"><a href="#EXP2FUNC">4.7.3. exp2()</a></span></dt><dt><span class="sect2"><a href="#LNFUNC">4.7.4. ln()</a></span></dt><dt><span class="sect2"><a href="#LOGFUNC">4.7.5. log()</a></span></dt><dt><span class="sect2"><a href="#LOG10FUNC">4.7.6. log10()</a></span></dt><dt><span class="sect2"><a href="#LOG2FUNC">4.7.7. log2()</a></span></dt><dt><span class="sect2"><a href="#POWFUNC">4.7.8. pow()</a></span></dt><dt><span class="sect2"><a href="#SQRFUNC">4.7.9. sqr()</a></span></dt><dt><span class="sect2"><a href="#SQRTFUNC">4.7.10. sqrt()</a></span></dt></dl></dd><dt><span class="sect1"><a href="#TRIGFUNCS">4.8. Trigonometric functions</a></span></dt><dd><dl><dt><span class="sect2"><a href="#ACOSFUNC">4.8.1. acos()</a></span></dt><dt><span class="sect2"><a href="#ASINFUNC">4.8.2. asin()</a></span></dt><dt><span class="sect2"><a href="#ATANFUNC">4.8.3. atan()</a></span></dt><dt><span class="sect2"><a href="#COSFUNC">4.8.4. cos()</a></span></dt><dt><span class="sect2"><a href="#COTFUNC">4.8.5. cot()</a></span></dt><dt><span class="sect2"><a href="#CSCFUNC">4.8.6. csc()</a></span></dt><dt><span class="sect2"><a href="#SECFUNC">4.8.7. sec()</a></span></dt><dt><span class="sect2"><a href="#SINFUNC">4.8.8. sin()</a></span></dt><dt><span class="sect2"><a href="#TANFUNC">4.8.9. tan()</a></span></dt></dl></dd><dt><span class="sect1"><a href="#STRINGFUNCS">4.9. String functions</a></span></dt><dd><dl><dt><span class="sect2"><a href="#CONCATFUNC">4.9.1. concat()</a></span></dt><dt><span class="sect2"><a href="#LEFTFUNC">4.9.2. left()</a></span></dt><dt><span class="sect2"><a href="#LOWERFUNC">4.9.3. lower()</a></span></dt><dt><span class="sect2"><a href="#MIDFUNC">4.9.4. mid()</a></span></dt><dt><span class="sect2"><a href="#PROPERFUNC">4.9.5. proper()</a></span></dt><dt><span class="sect2"><a href="#RIGHTFUNC">4.9.6. right()</a></span></dt><dt><span class="sect2"><a href="#STRLENFUNC">4.9.7. strlen()</a></span></dt><dt><span class="sect2"><a href="#UPPERFUNC">4.9.8. upper()</a></span></dt></dl></dd><dt><span class="sect1"><a href="#DATETIMEFUNCS">4.10. Datetime functions</a></span></dt><dd><dl><dt><span class="sect2"><a href="#CHGDATEOFFUNC">4.10.1. chgdateof()</a></span></dt><dt><span class="sect2"><a href="#CHGTIMEOFFUNC">4.10.2. chgtimeof()</a></span></dt><dt><span class="sect2"><a href="#DATEFUNC">4.10.3. date()</a></span></dt><dt><span class="sect2"><a href="#DATEOFFUNC">4.10.4. dateof()</a></span></dt><dt><span class="sect2"><a href="#DAYFUNC">4.10.5. day()</a></span></dt><dt><span class="sect2"><a href="#DIMFUNC">4.10.6. dim()</a></span></dt><dt><span class="sect2"><a href="#DTOSFUNC">4.10.7. dtos()</a></span></dt><dt><span class="sect2"><a href="#DTOSFFUNC">4.10.8. dtosf()</a></span></dt><dt><span class="sect2"><a href="#GETTIMEINSECSFUNC">4.10.9. gettimeinsecs()</a></span></dt><dt><span class="sect2"><a href="#INTERVALFUNC">4.10.10. interval()</a></span></dt><dt><span class="sect2"><a href="#MONTHFUNC">4.10.11. month()</a></span></dt><dt><span class="sect2"><a href="#NOWFUNC">4.10.12. now()</a></span></dt><dt><span class="sect2"><a href="#SETTIMEINSECSFUNC">4.10.13. settimeinsecs()</a></span></dt><dt><span class="sect2"><a href="#STDWIYFUNC">4.10.14. stdwiy()</a></span></dt><dt><span class="sect2"><a href="#STODFUNC">4.10.15. stod()</a></span></dt><dt><span class="sect2"><a href="#STODTFUNC">4.10.16. stodt()</a></span></dt><dt><span class="sect2"><a href="#STODTSQLFUNC">4.10.17. stodtsql()</a></span></dt><dt><span class="sect2"><a href="#TIMEOFFUNC">4.10.18. timeof()</a></span></dt><dt><span class="sect2"><a href="#TSTODFUNC">4.10.19. tstod()</a></span></dt><dt><span class="sect2"><a href="#WIYFUNC">4.10.20. wiy()</a></span></dt><dt><span class="sect2"><a href="#WIY1FUNC">4.10.21. wiy1()</a></span></dt><dt><span class="sect2"><a href="#WIYOFUNC">4.10.22. wiyo()</a></span></dt><dt><span class="sect2"><a href="#YEARFUNC">4.10.23. year()</a></span></dt></dl></dd><dt><span class="sect1"><a href="#MULTITYPEFUNCS">4.11. Type agnostic functions</a></span></dt><dd><dl><dt><span class="sect2"><a href="#ADDFUNC">4.11.1. add()</a></span></dt><dt><span class="sect2"><a href="#DECFUNC">4.11.2. dec()</a></span></dt><dt><span class="sect2"><a href="#INCFUNC">4.11.3. inc()</a></span></dt><dt><span class="sect2"><a href="#SUBFUNC">4.11.4. sub()</a></span></dt></dl></dd><dt><span class="sect1"><a href="#FORMATFUNCS">4.12. Formatting and conversion functions</a></span></dt><dd><dl><dt><span class="sect2"><a href="#FORMATFUNC">4.12.1. format()</a></span></dt><dt><span class="sect2"><a href="#PRINTFFUNC">4.12.2. printf()</a></span></dt><dt><span class="sect2"><a href="#STRFUNC">4.12.3. str()</a></span></dt><dt><span class="sect2"><a href="#VALFUNC">4.12.4. val()</a></span></dt></dl></dd><dt><span class="sect1"><a href="#MISCFUNCS">4.13. Miscellaneous functions</a></span></dt><dd><dl><dt><span class="sect2"><a href="#BRROWNUMFUNC">4.13.1. brrownum()</a></span></dt><dt><span class="sect2"><a href="#ERRORFUNC">4.13.2. error()</a></span></dt><dt><span class="sect2"><a href="#EVALFUNC">4.13.3. eval()</a></span></dt><dt><span class="sect2"><a href="#FXPVALFUNC">4.13.4. fxpval()</a></span></dt><dt><span class="sect2"><a href="#IIFFUNC">4.13.5. iif()</a></span></dt><dt><span class="sect2"><a href="#ISNULLFUNC">4.13.6. isnull()</a></span></dt><dt><span class="sect2"><a href="#NULLFUNC">4.13.7. null()</a></span></dt><dt><span class="sect2"><a href="#NULLDTFUNC">4.13.8. nulldt()</a></span></dt><dt><span class="sect2"><a href="#NULLNFUNC">4.13.9. nulln()</a></span></dt><dt><span class="sect2"><a href="#NULLSFUNC">4.13.10. nulls()</a></span></dt><dt><span class="sect2"><a href="#PREVVALFUNC">4.13.11. prevval()</a></span></dt><dt><span class="sect2"><a href="#RANDOMFUNC">4.13.12. random()</a></span></dt><dt><span class="sect2"><a href="#ROWNUMFUNC">4.13.13. rownum()</a></span></dt><dt><span class="sect2"><a href="#TRANSLATEFUNC">4.13.14. translate()</a></span></dt><dt><span class="sect2"><a href="#TRANSLATE2FUNC">4.13.15. translate2()</a></span></dt></dl></dd></dl></div><div class="sect1" id="FUNCSINTRO"><div class="titlepage"><div><div><h2 class="title" style="clear: both">4.1. Introduction <a href="#FUNCSINTRO" class="id_link">#</a></h2></div></div></div><p>
+			</p></div></div></div><div class="chapter" id="FUNCTIONS"><div class="titlepage"><div><div><h1 class="title">Chapter 4. Functions</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#FUNCSINTRO">4.1. Introduction</a></span></dt><dt><span class="sect1"><a href="#ARITHFUNCS">4.2. Arithmetic functions</a></span></dt><dd><dl><dt><span class="sect2"><a href="#ABSFUNC">4.2.1. abs()</a></span></dt><dt><span class="sect2"><a href="#DIVFUNC">4.2.2. div()</a></span></dt><dt><span class="sect2"><a href="#FACTORIALFUNC">4.2.3. factorial()</a></span></dt><dt><span class="sect2"><a href="#FMODFUNC">4.2.4. fmod()</a></span></dt><dt><span class="sect2"><a href="#MODFUNC">4.2.5. mod()</a></span></dt><dt><span class="sect2"><a href="#MULFUNC">4.2.6. mul()</a></span></dt><dt><span class="sect2"><a href="#REMAINDERFUNC">4.2.7. remainder()</a></span></dt><dt><span class="sect2"><a href="#UMINUSFUNC">4.2.8. uminus()</a></span></dt><dt><span class="sect2"><a href="#UPLUSFUNC">4.2.9. uplus()</a></span></dt></dl></dd><dt><span class="sect1"><a href="#BITWISEFUNCS">4.3. Bitwise functions</a></span></dt><dd><dl><dt><span class="sect2"><a href="#ANDFUNC">4.3.1. and()</a></span></dt><dt><span class="sect2"><a href="#NOTFUNC">4.3.2. not()</a></span></dt><dt><span class="sect2"><a href="#ORFUNC">4.3.3. or()</a></span></dt><dt><span class="sect2"><a href="#SHLFUNC">4.3.4. shl()</a></span></dt><dt><span class="sect2"><a href="#SHRFUNC">4.3.5. shr()</a></span></dt><dt><span class="sect2"><a href="#XORFUNC">4.3.6. xor()</a></span></dt></dl></dd><dt><span class="sect1"><a href="#BOOLFUNCS">4.4. Boolean logic functions</a></span></dt><dd><dl><dt><span class="sect2"><a href="#LANDFUNC">4.4.1. land()</a></span></dt><dt><span class="sect2"><a href="#LNOTFUNC">4.4.2. lnot()</a></span></dt><dt><span class="sect2"><a href="#LORFUNC">4.4.3. lor()</a></span></dt></dl></dd><dt><span class="sect1"><a href="#CMPFUNCS">4.5. Comparison functions</a></span></dt><dd><dl><dt><span class="sect2"><a href="#EQFUNC">4.5.1. eq()</a></span></dt><dt><span class="sect2"><a href="#GEFUNC">4.5.2. ge()</a></span></dt><dt><span class="sect2"><a href="#GTFUNC">4.5.3. gt()</a></span></dt><dt><span class="sect2"><a href="#LEFUNC">4.5.4. le()</a></span></dt><dt><span class="sect2"><a href="#LTFUNC">4.5.5. lt()</a></span></dt><dt><span class="sect2"><a href="#NEFUNC">4.5.6. ne()</a></span></dt></dl></dd><dt><span class="sect1"><a href="#ROUNDINGFUNCS">4.6. Rounding and related functions</a></span></dt><dd><dl><dt><span class="sect2"><a href="#CEILFUNC">4.6.1. ceil()</a></span></dt><dt><span class="sect2"><a href="#FLOORFUNC">4.6.2. floor()</a></span></dt><dt><span class="sect2"><a href="#RINTFUNC">4.6.3. rint()</a></span></dt><dt><span class="sect2"><a href="#ROUNDFUNC">4.6.4. round()</a></span></dt><dt><span class="sect2"><a href="#TRUNCFUNC">4.6.5. trunc()</a></span></dt></dl></dd><dt><span class="sect1"><a href="#EXPLOGFUNCS">4.7. Exponential, logarithmic and related functions</a></span></dt><dd><dl><dt><span class="sect2"><a href="#EXPFUNC">4.7.1. exp()</a></span></dt><dt><span class="sect2"><a href="#EXP10FUNC">4.7.2. exp10()</a></span></dt><dt><span class="sect2"><a href="#EXP2FUNC">4.7.3. exp2()</a></span></dt><dt><span class="sect2"><a href="#LNFUNC">4.7.4. ln()</a></span></dt><dt><span class="sect2"><a href="#LOGFUNC">4.7.5. log()</a></span></dt><dt><span class="sect2"><a href="#LOG10FUNC">4.7.6. log10()</a></span></dt><dt><span class="sect2"><a href="#LOG2FUNC">4.7.7. log2()</a></span></dt><dt><span class="sect2"><a href="#POWFUNC">4.7.8. pow()</a></span></dt><dt><span class="sect2"><a href="#SQRFUNC">4.7.9. sqr()</a></span></dt><dt><span class="sect2"><a href="#SQRTFUNC">4.7.10. sqrt()</a></span></dt></dl></dd><dt><span class="sect1"><a href="#TRIGFUNCS">4.8. Trigonometric functions</a></span></dt><dd><dl><dt><span class="sect2"><a href="#ACOSFUNC">4.8.1. acos()</a></span></dt><dt><span class="sect2"><a href="#ASINFUNC">4.8.2. asin()</a></span></dt><dt><span class="sect2"><a href="#ATANFUNC">4.8.3. atan()</a></span></dt><dt><span class="sect2"><a href="#COSFUNC">4.8.4. cos()</a></span></dt><dt><span class="sect2"><a href="#COTFUNC">4.8.5. cot()</a></span></dt><dt><span class="sect2"><a href="#CSCFUNC">4.8.6. csc()</a></span></dt><dt><span class="sect2"><a href="#SECFUNC">4.8.7. sec()</a></span></dt><dt><span class="sect2"><a href="#SINFUNC">4.8.8. sin()</a></span></dt><dt><span class="sect2"><a href="#TANFUNC">4.8.9. tan()</a></span></dt></dl></dd><dt><span class="sect1"><a href="#STRINGFUNCS">4.9. String functions</a></span></dt><dd><dl><dt><span class="sect2"><a href="#CONCATFUNC">4.9.1. concat()</a></span></dt><dt><span class="sect2"><a href="#LEFTFUNC">4.9.2. left()</a></span></dt><dt><span class="sect2"><a href="#LOWERFUNC">4.9.3. lower()</a></span></dt><dt><span class="sect2"><a href="#MIDFUNC">4.9.4. mid()</a></span></dt><dt><span class="sect2"><a href="#PROPERFUNC">4.9.5. proper()</a></span></dt><dt><span class="sect2"><a href="#RIGHTFUNC">4.9.6. right()</a></span></dt><dt><span class="sect2"><a href="#STRLENFUNC">4.9.7. strlen()</a></span></dt><dt><span class="sect2"><a href="#UPPERFUNC">4.9.8. upper()</a></span></dt></dl></dd><dt><span class="sect1"><a href="#DATETIMEFUNCS">4.10. Datetime functions</a></span></dt><dd><dl><dt><span class="sect2"><a href="#CHGDATEOFFUNC">4.10.1. chgdateof()</a></span></dt><dt><span class="sect2"><a href="#CHGTIMEOFFUNC">4.10.2. chgtimeof()</a></span></dt><dt><span class="sect2"><a href="#DATEFUNC">4.10.3. date()</a></span></dt><dt><span class="sect2"><a href="#DATEOFFUNC">4.10.4. dateof()</a></span></dt><dt><span class="sect2"><a href="#DAYFUNC">4.10.5. day()</a></span></dt><dt><span class="sect2"><a href="#DIMFUNC">4.10.6. dim()</a></span></dt><dt><span class="sect2"><a href="#DTOSFUNC">4.10.7. dtos()</a></span></dt><dt><span class="sect2"><a href="#DTOSFFUNC">4.10.8. dtosf()</a></span></dt><dt><span class="sect2"><a href="#GETTIMEINSECSFUNC">4.10.9. gettimeinsecs()</a></span></dt><dt><span class="sect2"><a href="#INTERVALFUNC">4.10.10. interval()</a></span></dt><dt><span class="sect2"><a href="#MONTHFUNC">4.10.11. month()</a></span></dt><dt><span class="sect2"><a href="#NOWFUNC">4.10.12. now()</a></span></dt><dt><span class="sect2"><a href="#SETTIMEINSECSFUNC">4.10.13. settimeinsecs()</a></span></dt><dt><span class="sect2"><a href="#STDWIYFUNC">4.10.14. stdwiy()</a></span></dt><dt><span class="sect2"><a href="#STODFUNC">4.10.15. stod()</a></span></dt><dt><span class="sect2"><a href="#STODTFUNC">4.10.16. stodt()</a></span></dt><dt><span class="sect2"><a href="#STODTSQLFUNC">4.10.17. stodtsql()</a></span></dt><dt><span class="sect2"><a href="#TIMEOFFUNC">4.10.18. timeof()</a></span></dt><dt><span class="sect2"><a href="#TSTODFUNC">4.10.19. tstod()</a></span></dt><dt><span class="sect2"><a href="#WIYFUNC">4.10.20. wiy()</a></span></dt><dt><span class="sect2"><a href="#WIY1FUNC">4.10.21. wiy1()</a></span></dt><dt><span class="sect2"><a href="#WIYOFUNC">4.10.22. wiyo()</a></span></dt><dt><span class="sect2"><a href="#YEARFUNC">4.10.23. year()</a></span></dt></dl></dd><dt><span class="sect1"><a href="#MULTITYPEFUNCS">4.11. Type agnostic functions</a></span></dt><dd><dl><dt><span class="sect2"><a href="#ADDFUNC">4.11.1. add()</a></span></dt><dt><span class="sect2"><a href="#DECFUNC">4.11.2. dec()</a></span></dt><dt><span class="sect2"><a href="#INCFUNC">4.11.3. inc()</a></span></dt><dt><span class="sect2"><a href="#SUBFUNC">4.11.4. sub()</a></span></dt></dl></dd><dt><span class="sect1"><a href="#FORMATFUNCS">4.12. Formatting and conversion functions</a></span></dt><dd><dl><dt><span class="sect2"><a href="#FORMATFUNC">4.12.1. format()</a></span></dt><dt><span class="sect2"><a href="#PRINTFFUNC">4.12.2. printf()</a></span></dt><dt><span class="sect2"><a href="#STRFUNC">4.12.3. str()</a></span></dt><dt><span class="sect2"><a href="#VALFUNC">4.12.4. val()</a></span></dt></dl></dd><dt><span class="sect1"><a href="#MISCFUNCS">4.13. Miscellaneous functions</a></span></dt><dd><dl><dt><span class="sect2"><a href="#BRROWNUMFUNC">4.13.1. brrownum()</a></span></dt><dt><span class="sect2"><a href="#ERRORFUNC">4.13.2. error()</a></span></dt><dt><span class="sect2"><a href="#EVALFUNC">4.13.3. eval()</a></span></dt><dt><span class="sect2"><a href="#FXPVALFUNC">4.13.4. fxpval()</a></span></dt><dt><span class="sect2"><a href="#IIFFUNC">4.13.5. iif()</a></span></dt><dt><span class="sect2"><a href="#ISDATETIMEFUNC">4.13.6. isdatetime()</a></span></dt><dt><span class="sect2"><a href="#ISERRORFUNC">4.13.7. iserror()</a></span></dt><dt><span class="sect2"><a href="#ISNANFUNC">4.13.8. isnan()</a></span></dt><dt><span class="sect2"><a href="#ISNULLFUNC">4.13.9. isnull()</a></span></dt><dt><span class="sect2"><a href="#ISNUMERICFUNC">4.13.10. isnumeric()</a></span></dt><dt><span class="sect2"><a href="#ISSTRINGFUNC">4.13.11. isstring()</a></span></dt><dt><span class="sect2"><a href="#NULLFUNC">4.13.12. null()</a></span></dt><dt><span class="sect2"><a href="#NULLDTFUNC">4.13.13. nulldt()</a></span></dt><dt><span class="sect2"><a href="#NULLNFUNC">4.13.14. nulln()</a></span></dt><dt><span class="sect2"><a href="#NULLSFUNC">4.13.15. nulls()</a></span></dt><dt><span class="sect2"><a href="#PREVVALFUNC">4.13.16. prevval()</a></span></dt><dt><span class="sect2"><a href="#RANDOMFUNC">4.13.17. random()</a></span></dt><dt><span class="sect2"><a href="#ROWNUMFUNC">4.13.18. rownum()</a></span></dt><dt><span class="sect2"><a href="#TRANSLATEFUNC">4.13.19. translate()</a></span></dt><dt><span class="sect2"><a href="#TRANSLATE2FUNC">4.13.20. translate2()</a></span></dt></dl></dd></dl></div><div class="sect1" id="FUNCSINTRO"><div class="titlepage"><div><div><h2 class="title" style="clear: both">4.1. Introduction <a href="#FUNCSINTRO" class="id_link">#</a></h2></div></div></div><p>
 			This section lists the functions supported by OpenCReports
 			in topics, and alphabetically in their topic.
 		</p><p>
@@ -1725,7 +1738,7 @@ a+++++b</pre><p>
 				the converted numeric value.
 			</p><p>
 				The value of a numeric operand is passed through as is.
-			</p></div></div><div class="sect1" id="MISCFUNCS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">4.13. Miscellaneous functions <a href="#MISCFUNCS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="#BRROWNUMFUNC">4.13.1. brrownum()</a></span></dt><dt><span class="sect2"><a href="#ERRORFUNC">4.13.2. error()</a></span></dt><dt><span class="sect2"><a href="#EVALFUNC">4.13.3. eval()</a></span></dt><dt><span class="sect2"><a href="#FXPVALFUNC">4.13.4. fxpval()</a></span></dt><dt><span class="sect2"><a href="#IIFFUNC">4.13.5. iif()</a></span></dt><dt><span class="sect2"><a href="#ISNULLFUNC">4.13.6. isnull()</a></span></dt><dt><span class="sect2"><a href="#NULLFUNC">4.13.7. null()</a></span></dt><dt><span class="sect2"><a href="#NULLDTFUNC">4.13.8. nulldt()</a></span></dt><dt><span class="sect2"><a href="#NULLNFUNC">4.13.9. nulln()</a></span></dt><dt><span class="sect2"><a href="#NULLSFUNC">4.13.10. nulls()</a></span></dt><dt><span class="sect2"><a href="#PREVVALFUNC">4.13.11. prevval()</a></span></dt><dt><span class="sect2"><a href="#RANDOMFUNC">4.13.12. random()</a></span></dt><dt><span class="sect2"><a href="#ROWNUMFUNC">4.13.13. rownum()</a></span></dt><dt><span class="sect2"><a href="#TRANSLATEFUNC">4.13.14. translate()</a></span></dt><dt><span class="sect2"><a href="#TRANSLATE2FUNC">4.13.15. translate2()</a></span></dt></dl></div><div class="sect2" id="BRROWNUMFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.1. brrownum() <a href="#BRROWNUMFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div></div><div class="sect1" id="MISCFUNCS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">4.13. Miscellaneous functions <a href="#MISCFUNCS" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="#BRROWNUMFUNC">4.13.1. brrownum()</a></span></dt><dt><span class="sect2"><a href="#ERRORFUNC">4.13.2. error()</a></span></dt><dt><span class="sect2"><a href="#EVALFUNC">4.13.3. eval()</a></span></dt><dt><span class="sect2"><a href="#FXPVALFUNC">4.13.4. fxpval()</a></span></dt><dt><span class="sect2"><a href="#IIFFUNC">4.13.5. iif()</a></span></dt><dt><span class="sect2"><a href="#ISDATETIMEFUNC">4.13.6. isdatetime()</a></span></dt><dt><span class="sect2"><a href="#ISERRORFUNC">4.13.7. iserror()</a></span></dt><dt><span class="sect2"><a href="#ISNANFUNC">4.13.8. isnan()</a></span></dt><dt><span class="sect2"><a href="#ISNULLFUNC">4.13.9. isnull()</a></span></dt><dt><span class="sect2"><a href="#ISNUMERICFUNC">4.13.10. isnumeric()</a></span></dt><dt><span class="sect2"><a href="#ISSTRINGFUNC">4.13.11. isstring()</a></span></dt><dt><span class="sect2"><a href="#NULLFUNC">4.13.12. null()</a></span></dt><dt><span class="sect2"><a href="#NULLDTFUNC">4.13.13. nulldt()</a></span></dt><dt><span class="sect2"><a href="#NULLNFUNC">4.13.14. nulln()</a></span></dt><dt><span class="sect2"><a href="#NULLSFUNC">4.13.15. nulls()</a></span></dt><dt><span class="sect2"><a href="#PREVVALFUNC">4.13.16. prevval()</a></span></dt><dt><span class="sect2"><a href="#RANDOMFUNC">4.13.17. random()</a></span></dt><dt><span class="sect2"><a href="#ROWNUMFUNC">4.13.18. rownum()</a></span></dt><dt><span class="sect2"><a href="#TRANSLATEFUNC">4.13.19. translate()</a></span></dt><dt><span class="sect2"><a href="#TRANSLATE2FUNC">4.13.20. translate2()</a></span></dt></dl></div><div class="sect2" id="BRROWNUMFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.1. brrownum() <a href="#BRROWNUMFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Current row number of a break since its last break boundary.
 				The row number restarts from 1 at every break boundary.
 				It takes one string operand, the name of the break.
@@ -1772,19 +1785,38 @@ a+++++b</pre><p>
 				it returns the second operand, otherwise the third operand.
 				The ternary operator <code class="literal">exp1 ? exp2 : exp3</code>
 				is a shortcut for this function.
-			</p></div><div class="sect2" id="ISNULLFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.6. isnull() <a href="#ISNULLFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="ISDATETIMEFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.6. isdatetime() <a href="#ISDATETIMEFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Returns numeric 1 if the operand is datetime,
+				0 otherwise. It takes one operand of any
+				type.
+			</p></div><div class="sect2" id="ISERRORFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.7. iserror() <a href="#ISERRORFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Returns numeric 1 if the operand is an error,
+				0 otherwise. It takes one operand of any
+				type.
+			</p></div><div class="sect2" id="ISNANFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.8. isnan() <a href="#ISNANFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Returns numeric 1 if the operand is numeric
+				and it represents a NAN value (not-a-number),
+				0 otherwise. It takes one operand of any
+				type.
+			</p></div><div class="sect2" id="ISNULLFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.9. isnull() <a href="#ISNULLFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Returns numeric 1 if the operand is NULL, 0 otherwise.
 				It takes one operand of any type.
-			</p></div><div class="sect2" id="NULLFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.7. null() <a href="#NULLFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="ISNUMERICFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.10. isnumeric() <a href="#ISNUMERICFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Returns numeric 1 if the operand is a numeric value,
+				0 otherwise. It takes one operand of any type.
+			</p></div><div class="sect2" id="ISSTRINGFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.11. isstring() <a href="#ISSTRINGFUNC" class="id_link">#</a></h3></div></div></div><p>
+				Returns numeric 1 if the operand is a string value,
+				0 otherwise. It takes one operand of any type.
+			</p></div><div class="sect2" id="NULLFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.12. null() <a href="#NULLFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Generate NULL value using the type of its operand.
 				It takes one operand of any type.
-			</p></div><div class="sect2" id="NULLDTFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.8. nulldt() <a href="#NULLDTFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="NULLDTFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.13. nulldt() <a href="#NULLDTFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Generate NULL of the datetime type. It takes zero operands.
-			</p></div><div class="sect2" id="NULLNFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.9. nulln() <a href="#NULLNFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="NULLNFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.14. nulln() <a href="#NULLNFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Generate NULL of the numeric type. It takes zero operands.
-			</p></div><div class="sect2" id="NULLSFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.10. nulls() <a href="#NULLSFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="NULLSFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.15. nulls() <a href="#NULLSFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Generate NULL of the string type. It takes zero operands.
-			</p></div><div class="sect2" id="PREVVALFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.11. prevval() <a href="#PREVVALFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="PREVVALFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.16. prevval() <a href="#PREVVALFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Return the previous value. It takes one operand
 				of any type.
 			</p><p>
@@ -1795,24 +1827,24 @@ a+++++b</pre><p>
 				This function allows showing values carried over from
 				the previous page to be shown in a header section of the
 				current page.
-			</p></div><div class="sect2" id="RANDOMFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.12. random() <a href="#RANDOMFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="RANDOMFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.17. random() <a href="#RANDOMFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Generate a pseudo-random numeric value between 0 and 1.
 				It takes zero operands.
-			</p></div><div class="sect2" id="ROWNUMFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.13. rownum() <a href="#ROWNUMFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="ROWNUMFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.18. rownum() <a href="#ROWNUMFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Return the row number of a query in the report.
 				It takes either zero operands or one string operand.
 				If zero operands are passed, it returns the current
 				row number of the primary query. If a string operand
 				is passed, then it returns the current row number of
 				the query with that name. See <a class="xref" href="#QUERIES" title="2.2. Queries">Queries</a>.
-			</p></div><div class="sect2" id="TRANSLATEFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.14. translate() <a href="#TRANSLATEFUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="TRANSLATEFUNC"><div class="titlepage"><div><div><h3 class="title">4.13.19. translate() <a href="#TRANSLATEFUNC" class="id_link">#</a></h3></div></div></div><p>
 				Translate the operand.
 				It takes one string operand.
 			</p><p>
 				This function returns the translated version of the string
 				operand according to translation and locale settings using
 				<code class="literal">dgettext()</code> from Gettext.
-			</p></div><div class="sect2" id="TRANSLATE2FUNC"><div class="titlepage"><div><div><h3 class="title">4.13.15. translate2() <a href="#TRANSLATE2FUNC" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="TRANSLATE2FUNC"><div class="titlepage"><div><div><h3 class="title">4.13.20. translate2() <a href="#TRANSLATE2FUNC" class="id_link">#</a></h3></div></div></div><p>
 				Translate the operands using singular and plural variants
 				and the number of the object in the statement.
 				It takes three operands.
@@ -2227,7 +2259,7 @@ printf('Look, there is a %s there!', query1.field1)</pre><p>
       2, 'oranges', stodt('2022-05-02'))</pre><p>
 			The result is:
 			</p><pre class="programlisting">You had 6 apples on 2022-05-01 and 2 oranges on 2022-05-02 in your pocket.</pre><p>
-		</p></div></div><div class="chapter" id="XMLDESCRIPTOR"><div class="titlepage"><div><div><h1 class="title">Chapter 8. Report XML description</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#DESCSTRUCT">8.1. XML description structure</a></span></dt><dd><dl><dt><span class="sect2"><a href="#XMLNOTES">8.1.1. Notes about XML syntax and attributes</a></span></dt></dl></dd><dt><span class="sect1"><a href="#OCRPTTOPXML">8.2. OpenCReport element</a></span></dt><dd><dl><dt><span class="sect2"><a href="#SIZEUNIT">8.2.1. Size unit attribute</a></span></dt><dt><span class="sect2"><a href="#NOQUERYSHOWNODATA">8.2.2. No query show NoData</a></span></dt><dt><span class="sect2"><a href="#REPORTHEIGHTAFTERLAST">8.2.3. Report height after last</a></span></dt><dt><span class="sect2"><a href="#XMLFOLLOWERMATCHSINGLE">8.2.4. Follower match single</a></span></dt><dt><span class="sect2"><a href="#PRECBITS">8.2.5. Precision bits</a></span></dt><dt><span class="sect2"><a href="#ROUNDINGMODE">8.2.6. Rounding mode</a></span></dt><dt><span class="sect2"><a href="#LOCALE">8.2.7. Locale</a></span></dt><dt><span class="sect2"><a href="#XLATESETTINGS">8.2.8. Translation settings</a></span></dt></dl></dd><dt><span class="sect1"><a href="#SEARCHPATHS">8.3. Paths</a></span></dt><dt><span class="sect1"><a href="#DATASOURCESNODE">8.4. Datasources</a></span></dt><dd><dl><dt><span class="sect2"><a href="#MARIADBDS">8.4.1. MariaDB (MySQL) database connection</a></span></dt><dt><span class="sect2"><a href="#POSTGRESQLDS">8.4.2. PostgreSQL database connection</a></span></dt><dt><span class="sect2"><a href="#ODBCDS">8.4.3. ODBC database connection</a></span></dt><dt><span class="sect2"><a href="#XMLCSVDS">8.4.4. CSV file datasource</a></span></dt><dt><span class="sect2"><a href="#XMLJSONDS">8.4.5. JSON file datasource</a></span></dt><dt><span class="sect2"><a href="#XMLXMLDS">8.4.6. XML file datasource</a></span></dt><dt><span class="sect2"><a href="#ARRAYDS">8.4.7. Array datasource</a></span></dt><dt><span class="sect2"><a href="#COMMONDSPROPS">8.4.8. Common datasource properties</a></span></dt></dl></dd><dt><span class="sect1"><a href="#QUERIESNODE">8.5. Queries</a></span></dt><dd><dl><dt><span class="sect2"><a href="#XMLSQLQUERIES">8.5.1. SQL queries for SQL datasources</a></span></dt><dt><span class="sect2"><a href="#XMLFILEQUERIES">8.5.2. Queries for file based datasources</a></span></dt><dt><span class="sect2"><a href="#XMLARRAYQUERIES">8.5.3. Queries for array based datasources</a></span></dt><dt><span class="sect2"><a href="#XMLFOLLOWERQUERIES">8.5.4. Follower queries</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PARTS">8.6. Report parts</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PARTATTRIBS">8.6.1. Part attributes</a></span></dt><dt><span class="sect2"><a href="#PARTSUBSECS">8.6.2. Part subsections</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PARTROW">8.7. Part row</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PARTROWATTS">8.7.1. Part row attributes</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PARTCOL">8.8. Part column</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PARTCOLATTS">8.8.1. Part column attributes</a></span></dt></dl></dd><dt><span class="sect1"><a href="#REPORT">8.9. Report</a></span></dt><dd><dl><dt><span class="sect2"><a href="#REPORTATTRIBS">8.9.1. Report attributes</a></span></dt><dt><span class="sect2"><a href="#REPSUBSECS">8.9.2. Report subsections</a></span></dt></dl></dd><dt><span class="sect1"><a href="#LOADEDREPORT">8.10. Loaded report</a></span></dt><dd><dl><dt><span class="sect2"><a href="#LREPATTS">8.10.1. Loaded Report attributes</a></span></dt></dl></dd><dt><span class="sect1"><a href="#VARIABLESNODE">8.11. Variables</a></span></dt><dt><span class="sect1"><a href="#VARIABLENODE">8.12. Variable</a></span></dt><dd><dl><dt><span class="sect2"><a href="#VARATTS">8.12.1. Variable attributes</a></span></dt></dl></dd><dt><span class="sect1"><a href="#BREAKSNODE">8.13. Breaks</a></span></dt><dt><span class="sect1"><a href="#BREAKNODE">8.14. Break</a></span></dt><dd><dl><dt><span class="sect2"><a href="#BREAKATTS">8.14.1. Break attributes</a></span></dt><dt><span class="sect2"><a href="#BREAKSUBSECS">8.14.2. Break subsections</a></span></dt><dt><span class="sect2"><a href="#BREAKSEXAMPLE">8.14.3. A complete break example</a></span></dt></dl></dd><dt><span class="sect1"><a href="#OUTPUTNODE">8.15. Output</a></span></dt><dd><dl><dt><span class="sect2"><a href="#OUTPUTATTS">8.15.1. Output attributes</a></span></dt><dt><span class="sect2"><a href="#OUTPUTSUBSECS">8.15.2. Output subsections</a></span></dt></dl></dd><dt><span class="sect1"><a href="#LINENODE">8.16. Line</a></span></dt><dd><dl><dt><span class="sect2"><a href="#LINEATTS">8.16.1. Line attributes</a></span></dt><dt><span class="sect2"><a href="#LINESUBSECS">8.16.2. Line subsections</a></span></dt></dl></dd><dt><span class="sect1"><a href="#TEXTELEMNODE">8.17. Text element</a></span></dt><dd><dl><dt><span class="sect2"><a href="#TEXTELEMATTS">8.17.1. Text element attributes</a></span></dt></dl></dd><dt><span class="sect1"><a href="#HLINENODE">8.18. HorizontalLine</a></span></dt><dd><dl><dt><span class="sect2"><a href="#HLINEATTS">8.18.1. HorizontalLine attributes</a></span></dt></dl></dd><dt><span class="sect1"><a href="#IMAGENODE">8.19. Image</a></span></dt><dd><dl><dt><span class="sect2"><a href="#IMAGEATTS">8.19.1. Image attributes</a></span></dt></dl></dd><dt><span class="sect1"><a href="#IMAGEENDNODE">8.20. Image end</a></span></dt><dt><span class="sect1"><a href="#BARCODENODE">8.21. Barcode element</a></span></dt><dd><dl><dt><span class="sect2"><a href="#BARCODEATTS">8.21.1. Barcode element attributes</a></span></dt></dl></dd><dt><span class="sect1"><a href="#COLORSPEC">8.22. Color specification</a></span></dt></dl></div><div class="sect1" id="DESCSTRUCT"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.1. XML description structure <a href="#DESCSTRUCT" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="#XMLNOTES">8.1.1. Notes about XML syntax and attributes</a></span></dt></dl></div><p>
+		</p></div></div><div class="chapter" id="XMLDESCRIPTOR"><div class="titlepage"><div><div><h1 class="title">Chapter 8. Report XML description</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="sect1"><a href="#DESCSTRUCT">8.1. XML description structure</a></span></dt><dd><dl><dt><span class="sect2"><a href="#XMLNOTES">8.1.1. Notes about XML syntax and attributes</a></span></dt></dl></dd><dt><span class="sect1"><a href="#OCRPTTOPXML">8.2. OpenCReport element</a></span></dt><dd><dl><dt><span class="sect2"><a href="#SIZEUNIT">8.2.1. Size unit attribute</a></span></dt><dt><span class="sect2"><a href="#NOQUERYSHOWNODATA">8.2.2. No query show NoData</a></span></dt><dt><span class="sect2"><a href="#REPORTHEIGHTAFTERLAST">8.2.3. Report height after last</a></span></dt><dt><span class="sect2"><a href="#XMLFOLLOWERMATCHSINGLE">8.2.4. Follower match single</a></span></dt><dt><span class="sect2"><a href="#PRECBITS">8.2.5. Precision bits</a></span></dt><dt><span class="sect2"><a href="#ROUNDINGMODE">8.2.6. Rounding mode</a></span></dt><dt><span class="sect2"><a href="#LOCALE">8.2.7. Locale</a></span></dt><dt><span class="sect2"><a href="#XLATESETTINGS">8.2.8. Translation settings</a></span></dt></dl></dd><dt><span class="sect1"><a href="#SEARCHPATHS">8.3. Paths</a></span></dt><dt><span class="sect1"><a href="#DATASOURCESNODE">8.4. Datasources</a></span></dt><dd><dl><dt><span class="sect2"><a href="#MARIADBDS">8.4.1. MariaDB (MySQL) database connection</a></span></dt><dt><span class="sect2"><a href="#POSTGRESQLDS">8.4.2. PostgreSQL database connection</a></span></dt><dt><span class="sect2"><a href="#ODBCDS">8.4.3. ODBC database connection</a></span></dt><dt><span class="sect2"><a href="#XMLCSVDS">8.4.4. CSV file datasource</a></span></dt><dt><span class="sect2"><a href="#XMLJSONDS">8.4.5. JSON file datasource</a></span></dt><dt><span class="sect2"><a href="#XMLXMLDS">8.4.6. XML file datasource</a></span></dt><dt><span class="sect2"><a href="#XMLPANDASDS">8.4.7. Spreadsheet file datasource</a></span></dt><dt><span class="sect2"><a href="#ARRAYDS">8.4.8. Array datasource</a></span></dt><dt><span class="sect2"><a href="#COMMONDSPROPS">8.4.9. Common datasource properties</a></span></dt></dl></dd><dt><span class="sect1"><a href="#QUERIESNODE">8.5. Queries</a></span></dt><dd><dl><dt><span class="sect2"><a href="#XMLSQLQUERIES">8.5.1. SQL queries for SQL datasources</a></span></dt><dt><span class="sect2"><a href="#XMLFILEQUERIES">8.5.2. Queries for file based datasources</a></span></dt><dt><span class="sect2"><a href="#XMLARRAYQUERIES">8.5.3. Queries for array based datasources</a></span></dt><dt><span class="sect2"><a href="#XMLFOLLOWERQUERIES">8.5.4. Follower queries</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PARTS">8.6. Report parts</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PARTATTRIBS">8.6.1. Part attributes</a></span></dt><dt><span class="sect2"><a href="#PARTSUBSECS">8.6.2. Part subsections</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PARTROW">8.7. Part row</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PARTROWATTS">8.7.1. Part row attributes</a></span></dt></dl></dd><dt><span class="sect1"><a href="#PARTCOL">8.8. Part column</a></span></dt><dd><dl><dt><span class="sect2"><a href="#PARTCOLATTS">8.8.1. Part column attributes</a></span></dt></dl></dd><dt><span class="sect1"><a href="#REPORT">8.9. Report</a></span></dt><dd><dl><dt><span class="sect2"><a href="#REPORTATTRIBS">8.9.1. Report attributes</a></span></dt><dt><span class="sect2"><a href="#REPSUBSECS">8.9.2. Report subsections</a></span></dt></dl></dd><dt><span class="sect1"><a href="#LOADEDREPORT">8.10. Loaded report</a></span></dt><dd><dl><dt><span class="sect2"><a href="#LREPATTS">8.10.1. Loaded Report attributes</a></span></dt></dl></dd><dt><span class="sect1"><a href="#VARIABLESNODE">8.11. Variables</a></span></dt><dt><span class="sect1"><a href="#VARIABLENODE">8.12. Variable</a></span></dt><dd><dl><dt><span class="sect2"><a href="#VARATTS">8.12.1. Variable attributes</a></span></dt></dl></dd><dt><span class="sect1"><a href="#BREAKSNODE">8.13. Breaks</a></span></dt><dt><span class="sect1"><a href="#BREAKNODE">8.14. Break</a></span></dt><dd><dl><dt><span class="sect2"><a href="#BREAKATTS">8.14.1. Break attributes</a></span></dt><dt><span class="sect2"><a href="#BREAKSUBSECS">8.14.2. Break subsections</a></span></dt><dt><span class="sect2"><a href="#BREAKSEXAMPLE">8.14.3. A complete break example</a></span></dt></dl></dd><dt><span class="sect1"><a href="#OUTPUTNODE">8.15. Output</a></span></dt><dd><dl><dt><span class="sect2"><a href="#OUTPUTATTS">8.15.1. Output attributes</a></span></dt><dt><span class="sect2"><a href="#OUTPUTSUBSECS">8.15.2. Output subsections</a></span></dt></dl></dd><dt><span class="sect1"><a href="#LINENODE">8.16. Line</a></span></dt><dd><dl><dt><span class="sect2"><a href="#LINEATTS">8.16.1. Line attributes</a></span></dt><dt><span class="sect2"><a href="#LINESUBSECS">8.16.2. Line subsections</a></span></dt></dl></dd><dt><span class="sect1"><a href="#TEXTELEMNODE">8.17. Text element</a></span></dt><dd><dl><dt><span class="sect2"><a href="#TEXTELEMATTS">8.17.1. Text element attributes</a></span></dt></dl></dd><dt><span class="sect1"><a href="#HLINENODE">8.18. HorizontalLine</a></span></dt><dd><dl><dt><span class="sect2"><a href="#HLINEATTS">8.18.1. HorizontalLine attributes</a></span></dt></dl></dd><dt><span class="sect1"><a href="#IMAGENODE">8.19. Image</a></span></dt><dd><dl><dt><span class="sect2"><a href="#IMAGEATTS">8.19.1. Image attributes</a></span></dt></dl></dd><dt><span class="sect1"><a href="#IMAGEENDNODE">8.20. Image end</a></span></dt><dt><span class="sect1"><a href="#BARCODENODE">8.21. Barcode element</a></span></dt><dd><dl><dt><span class="sect2"><a href="#BARCODEATTS">8.21.1. Barcode element attributes</a></span></dt></dl></dd><dt><span class="sect1"><a href="#COLORSPEC">8.22. Color specification</a></span></dt></dl></div><div class="sect1" id="DESCSTRUCT"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.1. XML description structure <a href="#DESCSTRUCT" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="#XMLNOTES">8.1.1. Notes about XML syntax and attributes</a></span></dt></dl></div><p>
 			<a class="ulink" href="https://github.com/zboszor/OpenCReports" target="_top">OpenCReports</a>
 			uses an
 			<a class="ulink" href="https://sourceforge.net/projects/rlib/" target="_top">RLIB</a>-compatible
@@ -2546,7 +2578,7 @@ printf('Look, there is a %s there!', query1.field1)</pre><p>
     &lt;Path value="/absolute/path" /&gt;
     ...
 &lt;/Paths&gt;</pre><p>
-		</p></div><div class="sect1" id="DATASOURCESNODE"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.4. Datasources <a href="#DATASOURCESNODE" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="#MARIADBDS">8.4.1. MariaDB (MySQL) database connection</a></span></dt><dt><span class="sect2"><a href="#POSTGRESQLDS">8.4.2. PostgreSQL database connection</a></span></dt><dt><span class="sect2"><a href="#ODBCDS">8.4.3. ODBC database connection</a></span></dt><dt><span class="sect2"><a href="#XMLCSVDS">8.4.4. CSV file datasource</a></span></dt><dt><span class="sect2"><a href="#XMLJSONDS">8.4.5. JSON file datasource</a></span></dt><dt><span class="sect2"><a href="#XMLXMLDS">8.4.6. XML file datasource</a></span></dt><dt><span class="sect2"><a href="#ARRAYDS">8.4.7. Array datasource</a></span></dt><dt><span class="sect2"><a href="#COMMONDSPROPS">8.4.8. Common datasource properties</a></span></dt></dl></div><p>
+		</p></div><div class="sect1" id="DATASOURCESNODE"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.4. Datasources <a href="#DATASOURCESNODE" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="#MARIADBDS">8.4.1. MariaDB (MySQL) database connection</a></span></dt><dt><span class="sect2"><a href="#POSTGRESQLDS">8.4.2. PostgreSQL database connection</a></span></dt><dt><span class="sect2"><a href="#ODBCDS">8.4.3. ODBC database connection</a></span></dt><dt><span class="sect2"><a href="#XMLCSVDS">8.4.4. CSV file datasource</a></span></dt><dt><span class="sect2"><a href="#XMLJSONDS">8.4.5. JSON file datasource</a></span></dt><dt><span class="sect2"><a href="#XMLXMLDS">8.4.6. XML file datasource</a></span></dt><dt><span class="sect2"><a href="#XMLPANDASDS">8.4.7. Spreadsheet file datasource</a></span></dt><dt><span class="sect2"><a href="#ARRAYDS">8.4.8. Array datasource</a></span></dt><dt><span class="sect2"><a href="#COMMONDSPROPS">8.4.9. Common datasource properties</a></span></dt></dl></div><p>
 			Datasources in OpenCReports are either database
 			connections, or accessors (mini-drivers) for data
 			files in certain formats.
@@ -2646,6 +2678,56 @@ user=myuser
 				is specified but the port isn't, the remote host is
 				used on the default port (as known by the local PostgreSQL
 				database client library).
+			</p><p>
+				There are also two optional parameters that control
+				the behaviour of the PostgreSQL driver in OpenCReports,
+				rather than being actual connection parameters to a
+				PostgreSQL server. These parameters may be used with
+				any of the above connection methods.
+				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
+							The parameter
+							<code class="literal">usecursor</code>
+							may have a boolean value:
+							<code class="literal">true</code>,
+							<code class="literal">false</code>,
+							<code class="literal">yes</code>,
+							<code class="literal">no</code>, or
+							a numeric value interpreted
+							as a boolean value: non-zero
+							values mean <code class="literal">true</code>,
+							zero means <code class="literal">false</code>.
+						</p><p>
+							When <code class="literal">usecursor</code> is enabled,
+							the SQL query will be wrapped in
+							a cursor, and the result is retrieved
+							in parts. Otherwise, the SQL query is
+							executed as is and the result is
+							retrieved in whole.
+						</p><p>
+							The default value is usually <code class="literal">true</code>
+							but this can be controlled when OpenCReports is built.
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							When <code class="literal">usecursor</code> is enabled,
+							the parameter <code class="literal">fetchsize</code>
+							controls the number of rows retrieved
+							at once. Default value is 1024.
+							
+						</p></li></ul></div><p>
+			</p><p>
+				Examples (add the necessary connection
+				parameters from the above):
+				</p><pre class="programlisting">&lt;Datasource
+    name="mysource" type="postgresql" ...
+    usecursor="false"
+/&gt;</pre><p>
+				or </p><pre class="programlisting">&lt;Datasource
+    name="mysource" type="postgresql" ...
+    usecursor="true" fetchsize="4096" /&gt;</pre><p>
+			</p><p>
+				SQL queries added to the same PostgreSQL
+				datasource (connection) will behave the same
+				way. Either all of them are executed as is,
+				or all of them will use a cursor.
 			</p></div><div class="sect2" id="ODBCDS"><div class="titlepage"><div><div><h3 class="title">8.4.3. ODBC database connection <a href="#ODBCDS" class="id_link">#</a></h3></div></div></div><p>
 				The above described MariaDB and PostgreSQL database
 				connection types are using their respective client
@@ -2719,7 +2801,29 @@ user=myuser
 				In this case, the actual XML file is not declared,
 				only that a "query" using an XML file will be listed
 				later under <code class="literal">&lt;Queries&gt;</code>.
-			</p></div><div class="sect2" id="ARRAYDS"><div class="titlepage"><div><div><h3 class="title">8.4.7. Array datasource <a href="#ARRAYDS" class="id_link">#</a></h3></div></div></div><p>
+			</p></div><div class="sect2" id="XMLPANDASDS"><div class="titlepage"><div><div><h3 class="title">8.4.7. Spreadsheet file datasource <a href="#XMLPANDASDS" class="id_link">#</a></h3></div></div></div><p>
+				Declaring the spreadsheet based file datasource is
+				also very simple: </p><pre class="programlisting">&lt;Datasource
+  name="mysource"
+  type="'spreadsheet'"
+  filename="'myfile.xlsx'" /&gt;</pre><p>
+				or </p><pre class="programlisting">&lt;Datasource
+  name="mysource"
+  type="'pandas'"
+  filename="'myfile.xlsx'" /&gt;</pre><p>
+			</p><p>
+				Since the spreadsheet file may contain multiple
+				sheets, the datasource declaration must specify the
+				file name, and the query will need to specify the
+				sheet label. An example can be seen under
+				<code class="literal">&lt;Queries&gt;</code>.
+			</p><p>
+				If the sheets that the report uses are in different
+				files, multiple spreadsheet datasources must be declared,
+				one for each file. If the sheets are in the same file,
+				then the same datasource can be used for multiple queries,
+				one query for every sheet.
+			</p></div><div class="sect2" id="ARRAYDS"><div class="titlepage"><div><div><h3 class="title">8.4.8. Array datasource <a href="#ARRAYDS" class="id_link">#</a></h3></div></div></div><p>
 				Arrays are global in-memory structures in the
 				application that should be accessible to the
 				OpenCReports library. For example, when using
@@ -2763,7 +2867,7 @@ const enum ocrpt_result_type coltypes[COLUMNS] = {
 				<code class="literal">OCRPT_RESULT_STRING</code>,
 				<code class="literal">OCRPT_RESULT_NUMBER</code> and
 				<code class="literal">OCRPT_RESULT_DATETIME</code>. 
-			</p></div><div class="sect2" id="COMMONDSPROPS"><div class="titlepage"><div><div><h3 class="title">8.4.8. Common datasource properties <a href="#COMMONDSPROPS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="DSENCODING"><div class="titlepage"><div><div><h4 class="title">8.4.8.1. Encoding <a href="#DSENCODING" class="id_link">#</a></h4></div></div></div><p>
+			</p></div><div class="sect2" id="COMMONDSPROPS"><div class="titlepage"><div><div><h3 class="title">8.4.9. Common datasource properties <a href="#COMMONDSPROPS" class="id_link">#</a></h3></div></div></div><div class="sect3" id="DSENCODING"><div class="titlepage"><div><div><h4 class="title">8.4.9.1. Encoding <a href="#DSENCODING" class="id_link">#</a></h4></div></div></div><p>
 					OpenCReports expects strings in UTF-8 encoding.
 					However, some datasources may use a different
 					encoding. To use and display strings from the
@@ -2803,18 +2907,20 @@ SELECT * FROM some_table
 				The SQL query can be any <code class="literal">SELECT</code>
 				statement.
 			</p></div><div class="sect2" id="XMLFILEQUERIES"><div class="titlepage"><div><div><h3 class="title">8.5.2. Queries for file based datasources <a href="#XMLFILEQUERIES" class="id_link">#</a></h3></div></div></div><p>
-				Queries for CSV, XML and JSON datasources may
-				be declared two ways. Either as the XML value for
+				Queries for CSV, XML, JSON and spreadsheet datasources
+				may be declared two ways. Either as the XML value for
 				<code class="literal">&lt;Query&gt;</code>:
+				</p><pre class="programlisting">&lt;Query name="myquery" datasource="mysource" &gt;xmldata.xml&lt;/Query&gt;</pre><p>
+				or as the <code class="literal">value</code> attribute:
 				</p><pre class="programlisting">&lt;Query
     name="myquery"
     datasource="mysource"
-&gt;xmldata.xml&lt;/Query&gt;</pre><p>
-					or as the <code class="literal">value</code> attribute:
-					</p><pre class="programlisting">&lt;Query
-    name="myquery"
-    datasource="mysource"
     value="'xmldata.xml'" /&gt;</pre><p>
+			</p><p>
+				Example query for a spreadsheet: </p><pre class="programlisting">&lt;Query
+    name="mysheet"
+    datasource="mysource"
+    value="'Sheet1'" /&gt;</pre><p>
 			</p><p>
 				Notes:
 				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
@@ -2829,8 +2935,13 @@ SELECT * FROM some_table
 							OpenCReports library receives must be correct
 							in order to use it.
 						</p></li><li class="listitem" style="list-style-type: disc"><p>
-							The declaration must specify a file in the
-							correct format for the datasource type.
+							For CSV, XML and  JSON files, the <code class="literal">value</code>
+							in the query declaration is the file name.
+							This file must be in the correct format for the
+							datasource type.
+						</p></li><li class="listitem" style="list-style-type: disc"><p>
+							For spreadsheets, the <code class="literal">value</code>
+							in the query declaration is the sheet label.
 						</p></li><li class="listitem" style="list-style-type: disc"><p>
 							The optional type declaration for columns
 							in the XML and JSON file formats, or for CSV,
@@ -5085,8 +5196,8 @@ SELECT * FROM some_table
 				</p><p>
 					An alternative way is to use the translation
 					functions directly in the field expression.
-					See <a class="xref" href="#TRANSLATEFUNC" title="4.13.14. translate()">translate()</a>
-					and <a class="xref" href="#TRANSLATE2FUNC" title="4.13.15. translate2()">translate2()</a>.
+					See <a class="xref" href="#TRANSLATEFUNC" title="4.13.19. translate()">translate()</a>
+					and <a class="xref" href="#TRANSLATE2FUNC" title="4.13.20. translate2()">translate2()</a>.
 					When using them, the <code class="literal">translate="yes"</code>
 					attribute is not needed.
 				</p></div><div class="sect3" id="TEXTCOLID"><div class="titlepage"><div><div><h4 class="title">8.17.1.17. Column number <a href="#TEXTCOLID" class="id_link">#</a></h4></div></div></div><p>
@@ -5914,6 +6025,53 @@ ocrpt_datasource_add(opencreport *o,
     { .param_name = NULL }
 };</pre><p>
 					</p><p>
+						There are also two optional parameters that control
+						the behaviour of the PostgreSQL driver in OpenCReports,
+						rather than being actual connection parameters to a
+						PostgreSQL server. These parameters may be used with
+						any of the above connection methods.
+						</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem" style="list-style-type: disc"><p>
+									The parameter
+									<code class="literal">usecursor</code>
+									may have a boolean value:
+									<code class="literal">true</code>,
+									<code class="literal">false</code>,
+									<code class="literal">yes</code>,
+									<code class="literal">no</code>, or
+									a numeric value interpreted
+									as a boolean value: non-zero
+									values mean <code class="literal">true</code>,
+									zero means <code class="literal">false</code>.
+								</p><p>
+									When <code class="literal">usecursor</code> is enabled,
+									the SQL query will be wrapped in
+									a cursor, and the result is retrieved
+									in parts. Otherwise, the SQL query is
+									executed as is and the result is
+									retrieved in whole.
+								</p><p>
+									The default value is usually <code class="literal">true</code>
+									but this can be controlled when OpenCReports is built.
+								</p></li><li class="listitem" style="list-style-type: disc"><p>
+									When <code class="literal">usecursor</code> is enabled,
+									the parameter <code class="literal">fetchsize</code>
+									controls the number of rows retrieved
+									at once. Default value is 1024.
+									
+								</p></li></ul></div><p>
+					</p><p>
+						Using a cursor as a regular SQL query is a PostgreSQL
+						extension. Other SQL databases only allow it in stored
+						procedures. But this allows a trade-off: queries
+						that return a large number of rows may be processed
+						without the risk of running out of memory, with
+						marginally lower performance.
+					</p><p>
+						SQL queries added to the same PostgreSQL
+						datasource (connection) will behave the same
+						way. Either all of them are executed as is,
+						or all of them will use a cursor.
+					</p><p>
 						These connection parameters can be used as XML node
 						attributes, see <a class="xref" href="#POSTGRESQLDS" title="8.4.2. PostgreSQL database connection">PostgreSQL database connection</a>.
 					</p></div><div class="sect4" id="ODBCCONNPARAMS"><div class="titlepage"><div><div><h5 class="title">10.1.3.1.3. ODBC connection parameters <a href="#ODBCCONNPARAMS" class="id_link">#</a></h5></div></div></div><p>
@@ -5950,6 +6108,16 @@ ocrpt_datasource_add(opencreport *o,
 					</p><p>
 						These connection parameters can be used as XML node
 						attributes, see <a class="xref" href="#ODBCDS" title="8.4.3. ODBC database connection">ODBC database connection</a>.
+					</p></div><div class="sect4" id="SSHEETCONNPARAMS"><div class="titlepage"><div><div><h5 class="title">10.1.3.1.4. Spreadsheet connection parameters <a href="#SSHEETCONNPARAMS" class="id_link">#</a></h5></div></div></div><p>
+						There is only one connection parameter for
+						spreadsheet based datasources, the file name.
+						</p><pre class="programlisting">ocrpt_input_connect_parameter conn_params[] = {
+    { .param_name = "filename", .param_value = "..." },
+    { .param_name = NULL }
+};</pre><p>
+					</p><p>
+						This parameter can be used as an XML node attribute,
+						see <a class="xref" href="#SSHEETDS" title="2.1.2.4. Spreadsheet file types">Spreadsheet file type</a>.
 					</p></div></div><div class="sect3" id="FINDDS"><div class="titlepage"><div><div><h4 class="title">10.1.3.2. Find a datasource <a href="#FINDDS" class="id_link">#</a></h4></div></div></div><p>
 					Find the data source using its name.
 					It returns NULL if the named data source
