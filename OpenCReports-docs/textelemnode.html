@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>8.17. Text element</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="linenode.html" title="8.16. Line" /><link rel="next" href="hlinenode.html" title="8.18. HorizontalLine" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">8.17. Text element</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="linenode.html" title="8.16. Line">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="xmldescriptor.html" title="Chapter 8. Report XML description">Up</a></td><th width="60%" align="center">Chapter 8. Report XML description</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.12 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="hlinenode.html" title="8.18. HorizontalLine">Next</a></td></tr></table><hr /></div><div class="sect1" id="TEXTELEMNODE"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.17. Text element <a href="#TEXTELEMNODE" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="textelemnode.html#TEXTELEMATTS">8.17.1. Text element attributes</a></span></dt></dl></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>8.17. Text element</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="linenode.html" title="8.16. Line" /><link rel="next" href="hlinenode.html" title="8.18. HorizontalLine" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">8.17. Text element</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="linenode.html" title="8.16. Line">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="xmldescriptor.html" title="Chapter 8. Report XML description">Up</a></td><th width="60%" align="center">Chapter 8. Report XML description</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.13 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="hlinenode.html" title="8.18. HorizontalLine">Next</a></td></tr></table><hr /></div><div class="sect1" id="TEXTELEMNODE"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.17. Text element <a href="#TEXTELEMNODE" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="textelemnode.html#TEXTELEMATTS">8.17.1. Text element attributes</a></span></dt></dl></div><p>
 			Two variants are accepted.
 			</p><pre class="programlisting">&lt;Line&gt;
     &lt;field value="expression..." ... /&gt;
@@ -338,7 +338,21 @@
 					Every line of the text element (regardless if it's a memo
 					field or not) is aligned according to
 					<a class="xref" href="textelemnode.html#TEXTELEMALIGN" title="8.17.1.5. Alignment">Text element alignment</a>.
-				</p></div><div class="sect3" id="MEMOWRAP"><div class="titlepage"><div><div><h4 class="title">8.17.1.14. Multi-line field wrapping <a href="#MEMOWRAP" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="MEMOHYPHENATE"><div class="titlepage"><div><div><h4 class="title">8.17.1.14. Multi-line field hyphenation <a href="#MEMOHYPHENATE" class="id_link">#</a></h4></div></div></div><p>
+					This attribute allows wrapping multi-line text somewhere
+					in the middle of the words with hyphenation. The text
+					rendering library may need extra supporting libraries
+					so the hyphenation in the report locale is correct.
+					</p><pre class="programlisting">&lt;field value="'This is a long text...'"
+       width="12" memo="yes" memo_hyphenate="no" /&gt;</pre><p>
+				</p><p>
+					Default is <code class="literal">true</code>, i.e. the field
+					is hyphenated. When character wrapping is used,
+					this setting is not used.
+				</p><p>
+					In OpenCReports, character wrapping adds hyphenation.
+					This is an improvement over RLIB.
+				</p></div><div class="sect3" id="MEMOWRAP"><div class="titlepage"><div><div><h4 class="title">8.17.1.15. Multi-line field wrapping <a href="#MEMOWRAP" class="id_link">#</a></h4></div></div></div><p>
 					This attribute allows wrapping multi-line
 					text at characters as opposed to words.
 					</p><pre class="programlisting">&lt;field value="'This is a long text...'"
@@ -349,14 +363,14 @@
 				</p><p>
 					In OpenCReports, character wrapping adds hyphenation.
 					This is an improvement over RLIB.
-				</p></div><div class="sect3" id="MEMOROWLIMIT"><div class="titlepage"><div><div><h4 class="title">8.17.1.15. Multi-line field row limit <a href="#MEMOROWLIMIT" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="MEMOROWLIMIT"><div class="titlepage"><div><div><h4 class="title">8.17.1.16. Multi-line field row limit <a href="#MEMOROWLIMIT" class="id_link">#</a></h4></div></div></div><p>
 					This attribute allows limiting multi-line
 					text with a maximum row number.
 					</p><pre class="programlisting">&lt;field value="'This is a long text...'"
        width="12" memo="yes" memo_max_lines="20" /&gt;</pre><p>
 				</p><p>
 					Default is no limit.
-				</p></div><div class="sect3" id="TEXTXLATE"><div class="titlepage"><div><div><h4 class="title">8.17.1.16. Translation <a href="#TEXTXLATE" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="TEXTXLATE"><div class="titlepage"><div><div><h4 class="title">8.17.1.17. Translation <a href="#TEXTXLATE" class="id_link">#</a></h4></div></div></div><p>
 					This attribute allows the text element to
 					be translated to a specified language or locale.
 					See <a class="xref" href="ocrpttopxml.html#LOCALE" title="8.2.7. Locale">Locale</a>.
@@ -386,9 +400,9 @@
 					and <a class="xref" href="miscfuncs.html#TRANSLATE2FUNC" title="4.13.20. translate2()">translate2()</a>.
 					When using them, the <code class="literal">translate="yes"</code>
 					attribute is not needed.
-				</p></div><div class="sect3" id="TEXTCOLID"><div class="titlepage"><div><div><h4 class="title">8.17.1.17. Column number <a href="#TEXTCOLID" class="id_link">#</a></h4></div></div></div><p>
+				</p></div><div class="sect3" id="TEXTCOLID"><div class="titlepage"><div><div><h4 class="title">8.17.1.18. Column number <a href="#TEXTCOLID" class="id_link">#</a></h4></div></div></div><p>
 					This attribute is accepted for RLIB compatibility,
 					but it's unused.
 					</p><pre class="programlisting">&lt;field value="'This is a long text...'"
        col="3" /&gt;</pre><p>
-				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="linenode.html" title="8.16. Line">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="xmldescriptor.html" title="Chapter 8. Report XML description">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="hlinenode.html" title="8.18. HorizontalLine">Next</a></td></tr><tr><td width="40%" align="left" valign="top">8.16. Line </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.12 Manual">Home</a></td><td width="40%" align="right" valign="top"> 8.18. HorizontalLine</td></tr></table></div></body></html>
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="linenode.html" title="8.16. Line">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="xmldescriptor.html" title="Chapter 8. Report XML description">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="hlinenode.html" title="8.18. HorizontalLine">Next</a></td></tr><tr><td width="40%" align="left" valign="top">8.16. Line </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.13 Manual">Home</a></td><td width="40%" align="right" valign="top"> 8.18. HorizontalLine</td></tr></table></div></body></html>
