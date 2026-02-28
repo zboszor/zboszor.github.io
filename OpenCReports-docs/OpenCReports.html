@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>OpenCReports 0.8.14 Manual</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /></head><body id="docContent" class="container-fluid col-10"><div class="book" id="id-1"><div class="titlepage"><div><div><h1 class="title">OpenCReports 0.8.14 Manual</h1></div><div><div class="author"><h3 class="author"><span class="firstname">Zoltán</span> <span class="surname">Böszörményi</span></h3></div></div><div><p class="copyright">Copyright © 2019-2025 Zoltán Böszörményi</p></div><div><div class="legalnotice" id="id-1.1.5"><div class="blockquote"><blockquote class="blockquote"><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>OpenCReports 0.8.15 Manual</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /></head><body id="docContent" class="container-fluid col-10"><div class="book" id="id-1"><div class="titlepage"><div><div><h1 class="title">OpenCReports 0.8.15 Manual</h1></div><div><div class="author"><h3 class="author"><span class="firstname">Zoltán</span> <span class="surname">Böszörményi</span></h3></div></div><div><p class="copyright">Copyright © 2019-2025 Zoltán Böszörményi</p></div><div><div class="legalnotice" id="id-1.1.5"><div class="blockquote"><blockquote class="blockquote"><p>
 					Permission is granted to copy, distribute and/or modify this document
 					under the terms of the GNU Free Documentation License, Version 1.2
 					or any later version published by the Free Software Foundation;
@@ -3764,8 +3764,8 @@ SELECT * FROM some_table
 					<a class="xref" href="#REPORTPAGEFOOTER" title="8.9.2.2. Page footer">Report page footer</a>,
 					<a class="xref" href="#REPHEADER" title="8.9.2.3. Report header">Report header</a>,
 					<a class="xref" href="#REPFOOTER" title="8.9.2.4. Report footer">Report footer</a>,
-					<code class="literal">&lt;FieldHeaders&gt;</code> and
-					<code class="literal">&lt;FieldDetails&gt;</code> in
+					<code class="literal">&lt;FieldHeader&gt;</code> and
+					<code class="literal">&lt;FieldDetail&gt;</code> in
 					<a class="xref" href="#DETAILNODE" title="8.9.2.7. Detail">Detail node</a>,
 					and also in <a class="xref" href="#BREAKNODE" title="8.14. Break">Break node</a>s and
 					<a class="xref" href="#VARIABLENODE" title="8.12. Variable">Variable node</a>s.
@@ -3955,25 +3955,31 @@ SELECT * FROM some_table
 					an <a class="xref" href="#OUTPUTNODE" title="8.15. Output">Output node</a>.
 					</p><pre class="programlisting">&lt;Report&gt;
     &lt;Detail&gt;
-        &lt;FieldHeaders&gt;
+        &lt;FieldHeader&gt;
             &lt;Output&gt;
                 ...
             &lt;/Output&gt;
-        &lt;/FieldHeaders&gt;
-        &lt;FieldDetails&gt;
+        &lt;/FieldHeader&gt;
+        &lt;FieldDetail&gt;
             &lt;Output&gt;
                 ...
             &lt;/Output&gt;
-        &lt;/FieldDetails&gt;
+        &lt;/FieldDetail&gt;
     &lt;/Detail&gt;
 &lt;/Part&gt;</pre><p>
 				</p><p>
-					<code class="literal">&lt;FieldHeaders&gt;</code> is used
+					<code class="literal">&lt;FieldHeader&gt;</code> is used
 					to describe the header for data rows.
 				</p><p>
-					<code class="literal">&lt;FieldDetails&gt;</code> is used
+					<code class="literal">&lt;FieldDetail&gt;</code> is used
 					to show data that is derived from the current data row
 					produced by the report query.
+				</p><p>
+					Note that both <code class="literal">&lt;FieldHeader&gt;</code>
+					and <code class="literal">&lt;FieldDetail&gt;</code> are also
+					accepted with plural spelling for RLIB compatibiliy, i.e.
+					<code class="literal">&lt;FieldHeaders&gt;</code> and
+					<code class="literal">&lt;FieldDetails&gt;</code>, respectively.
 				</p></div><div class="sect3" id="NODATANODE"><div class="titlepage"><div><div><h4 class="title">8.9.2.8. Alternate output for no data <a href="#NODATANODE" class="id_link">#</a></h4></div></div></div><p>
 					This section describes the alternate output of the report
 					when the query has no data rows, or there is no such
@@ -4124,13 +4130,13 @@ SELECT * FROM some_table
     &lt;/Variables&gt;
 
     &lt;Detail&gt;
-        &lt;FieldHeaders&gt;
+        &lt;FieldHeader&gt;
             &lt;literal value="'My variable'" /&gt;
-        &lt;/FieldHeaders&gt;
+        &lt;/FieldHeader&gt;
 
-        &lt;FieldDetails&gt;
+        &lt;FieldDetail&gt;
             &lt;field value="v.var1" /&gt;
-        &lt;/FieldDetails&gt;
+        &lt;/FieldDetail&gt;
     &lt;/Detail&gt;
 &lt;/Report&gt;</pre><p>
 					</p><p>
@@ -4153,13 +4159,13 @@ SELECT * FROM some_table
     &lt;/Variables&gt;
 
     &lt;Detail&gt;
-        &lt;FieldHeaders&gt;
+        &lt;FieldHeader&gt;
             &lt;literal value="'My variable'" /&gt;
-        &lt;/FieldHeaders&gt;
+        &lt;/FieldHeader&gt;
 
-        &lt;FieldDetails&gt;
+        &lt;FieldDetail&gt;
             &lt;field value="v.var1" /&gt;
-        &lt;/FieldDetails&gt;
+        &lt;/FieldDetail&gt;
     &lt;/Detail&gt;
 &lt;/Report&gt;</pre><p>
 					</p><p>
@@ -4200,13 +4206,13 @@ SELECT * FROM some_table
     &lt;/Variables&gt;
 
     &lt;Detail&gt;
-        &lt;FieldHeaders&gt;
+        &lt;FieldHeader&gt;
             &lt;literal value="'My variable'" /&gt;
-        &lt;/FieldHeaders&gt;
+        &lt;/FieldHeader&gt;
 
-        &lt;FieldDetails&gt;
+        &lt;FieldDetail&gt;
             &lt;field value="v.var1" /&gt;
-        &lt;/FieldDetails&gt;
+        &lt;/FieldDetail&gt;
     &lt;/Detail&gt;
 &lt;/Report&gt;</pre><p>
 					</p><p>
@@ -4368,7 +4374,7 @@ SELECT * FROM some_table
 				</p><p>
 					Precalculated variables may be used to show totals in
 					e.g. <a class="xref" href="#REPHEADER" title="8.9.2.3. Report header">Report header</a>,
-					in <code class="literal">&lt;FieldHeaders&gt;</code> in
+					in <code class="literal">&lt;FieldHeader&gt;</code> in
 					<a class="xref" href="#DETAILNODE" title="8.9.2.7. Detail">Detail node</a>,
 					in <a class="xref" href="#BREAKHEADERNODE" title="8.14.2.1. BreakHeader">BreakHeader</a>
 					and in
@@ -4584,23 +4590,23 @@ SELECT * FROM some_table
 
     &lt;Detail&gt;
 
-        &lt;FieldHeaders&gt;
+        &lt;FieldHeader&gt;
             &lt;Output&gt;
                 &lt;Line&gt;
                     &lt;literal width="60" /&gt;
                     &lt;literal&gt;Employee name&lt;/literal&gt;
                 &lt;/Line&gt;
             &lt;/Output&gt;
-        &lt;/FieldHeaders&gt;
+        &lt;/FieldHeader&gt;
 
-        &lt;FieldDetails&gt;
+        &lt;FieldDetail&gt;
             &lt;Output&gt;
                 &lt;Line&gt;
                     &lt;literal width="60" /&gt;
                     &lt;field value="query1.employee" /&gt;
                 &lt;/Line&gt;
             &lt;/Output&gt;
-        &lt;/FieldDetails&gt;
+        &lt;/FieldDetail&gt;
 
     &lt;Detail&gt;
 
@@ -4613,7 +4619,7 @@ SELECT * FROM some_table
 				would look like this:
 				</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
 							Before the first row on every page, the contents
-							of <code class="literal">&lt;FieldHeaders&gt;</code> is
+							of <code class="literal">&lt;FieldHeader&gt;</code> is
 							printed.
 						</p></li><li class="listitem"><p>
 							Before the first row, the contents of
@@ -4623,7 +4629,7 @@ SELECT * FROM some_table
 							the order of their declaration.
 						</p></li><li class="listitem"><p>
 							The contents of
-							<code class="literal">&lt;FieldDetails&gt;</code>
+							<code class="literal">&lt;FieldDetail&gt;</code>
 							is printed for the current row. Repeat until
 							a value change is observed between
 							adjacent rows for a break's expression.
@@ -4769,7 +4775,7 @@ SELECT * FROM some_table
 				</p></div><div class="sect3" id="LINESUPPRESS"><div class="titlepage"><div><div><h4 class="title">8.16.1.5. Suppress <a href="#LINESUPPRESS" class="id_link">#</a></h4></div></div></div><p>
 					Text lines may be suppressed. If the parent
 					<code class="literal">&lt;Output&gt;</code> node is in
-					<code class="literal">&lt;FieldDetails&gt;</code>, the
+					<code class="literal">&lt;FieldDetail&gt;</code>, the
 					expression may be derived from a query field.
 					</p><pre class="programlisting">&lt;Line suppress="yes"&gt;</pre><p>
 				</p><p>
@@ -5295,7 +5301,7 @@ SELECT * FROM some_table
 				</p></div><div class="sect3" id="HLINESUPPRESS"><div class="titlepage"><div><div><h4 class="title">8.18.1.6. Suppress <a href="#HLINESUPPRESS" class="id_link">#</a></h4></div></div></div><p>
 					Horizontal lines may be suppressed. If the parent
 					<code class="literal">&lt;Output&gt;</code> node is in
-					<code class="literal">&lt;FieldDetails&gt;</code>, the
+					<code class="literal">&lt;FieldDetail&gt;</code>, the
 					expression may be derived from a query field.
 					</p><pre class="programlisting">&lt;HorizontalLine suppress="yes" /&gt;</pre><p>
 				</p><p>
@@ -5508,7 +5514,7 @@ SELECT * FROM some_table
 					<code class="literal">&lt;ReportHeader&gt;</code>,
 					<code class="literal">&lt;ReportFooter&gt;</code>,
 					<code class="literal">&lt;Fieldheaders&gt;</code>
-					<code class="literal">&lt;FieldDetails&gt;</code>,
+					<code class="literal">&lt;FieldDetail&gt;</code>,
 					since they are the ones under the
 					<code class="literal">&lt;Report&gt;</code> scope
 					with a query.
@@ -7354,8 +7360,8 @@ ocrpt_layout_part_page_footer_set_report(ocrpt_part *p,
 					<code class="literal">&lt;NoData&gt;</code>,
 					<code class="literal">&lt;ReportHeader&gt;</code>,
 					<code class="literal">&lt;ReportFooter&gt;</code>,
-					<code class="literal">&lt;FieldHeaders&gt;</code> or
-					<code class="literal">&lt;FieldDetails&gt;</code>.
+					<code class="literal">&lt;FieldHeader&gt;</code> or
+					<code class="literal">&lt;FieldDetail&gt;</code>.
 					</p><pre class="programlisting">ocrpt_output *
 ocrpt_layout_report_nodata(ocrpt_report *r);
 
@@ -12766,7 +12772,7 @@ rlib_spool($r);</pre><p>
         &lt;/PageFooter&gt;
 
         &lt;Detail&gt;
-            &lt;FieldHeaders&gt;
+            &lt;FieldHeader&gt;
                 &lt;Output&gt;
                     &lt;Line&gt;
                         &lt;literal width="4" align="'right'"&gt;ID&lt;/literal&gt;
@@ -12780,9 +12786,9 @@ rlib_spool($r);</pre><p>
                         &lt;literal width="5" align="'center'"&gt;Adult&lt;/literal&gt;
                     &lt;/Line&gt;
                 &lt;/Output&gt;
-            &lt;/FieldHeaders&gt;
+            &lt;/FieldHeader&gt;
 
-            &lt;FieldDetails&gt;
+            &lt;FieldDetail&gt;
                 &lt;Output&gt;
                     &lt;Line&gt;
                         &lt;field width="4" align="right" value="id" /&gt;
@@ -12796,7 +12802,7 @@ rlib_spool($r);</pre><p>
                         &lt;field value="adult ? 'yes' : 'no'" width="5" align="'center'"/&gt;
                     &lt;/Line&gt;
                 &lt;/Output&gt;
-            &lt;/FieldDetails&gt;
+            &lt;/FieldDetail&gt;
         &lt;/Detail&gt;
     &lt;/Report&gt;
 &lt;/OpenCReport&gt;</pre><p>
@@ -12915,7 +12921,7 @@ rlib_spool($r);</pre><p>
         &lt;/PageFooter&gt;
 
         &lt;Detail&gt;
-            &lt;FieldHeaders&gt;
+            &lt;FieldHeader&gt;
                 &lt;Output&gt;
                     &lt;Line&gt;
                         &lt;literal width="4" align="'right'"&gt;ID&lt;/literal&gt;
@@ -12929,9 +12935,9 @@ rlib_spool($r);</pre><p>
                         &lt;literal width="5" align="'center'"&gt;Adult&lt;/literal&gt;
                     &lt;/Line&gt;
                 &lt;/Output&gt;
-            &lt;/FieldHeaders&gt;
+            &lt;/FieldHeader&gt;
 
-            &lt;FieldDetails&gt;
+            &lt;FieldDetail&gt;
                 &lt;Output&gt;
                     &lt;Line&gt;
                         &lt;field width="4" align="right" value="id" /&gt;
@@ -12945,7 +12951,7 @@ rlib_spool($r);</pre><p>
                         &lt;field value="adult ? 'yes' : 'no'" width="5" align="'center'"/&gt;
                     &lt;/Line&gt;
                 &lt;/Output&gt;
-            &lt;/FieldDetails&gt;
+            &lt;/FieldDetail&gt;
         &lt;/Detail&gt;
     &lt;/Report&gt;
 &lt;/OpenCReport&gt;</pre><p>
@@ -13099,7 +13105,7 @@ rlib_spool($r);</pre><p>
         &lt;/PageFooter&gt;
 
         &lt;Detail&gt;
-            &lt;FieldHeaders&gt;
+            &lt;FieldHeader&gt;
                 &lt;Output&gt;
                     &lt;HorizontalLine size="2" color="'black'" /&gt;
                     &lt;HorizontalLine size="2" color="'green'" /&gt;
@@ -13112,9 +13118,9 @@ rlib_spool($r);</pre><p>
                     &lt;HorizontalLine size="2" color="'black'" /&gt;
                     &lt;HorizontalLine size="2" color="'white'" /&gt;
                 &lt;/Output&gt;
-            &lt;/FieldHeaders&gt;
+            &lt;/FieldHeader&gt;
 
-            &lt;FieldDetails&gt;
+            &lt;FieldDetail&gt;
                 &lt;Output&gt;
                     &lt;Line fontSize="18"&gt;
                         &lt;Image textWidth="7" bgcolor="'yellow'" align="'center'" value="filename" /&gt;
@@ -13122,7 +13128,7 @@ rlib_spool($r);</pre><p>
                         &lt;field color="'red'" bgcolor="'yellow'" value="name" /&gt;
                     &lt;/Line&gt;
                 &lt;/Output&gt;
-            &lt;/FieldDetails&gt;
+            &lt;/FieldDetail&gt;
         &lt;/Detail&gt;
     &lt;/Report&gt;
 &lt;/OpenCReport&gt;</pre><p>
@@ -13249,7 +13255,7 @@ rlib_spool($r);</pre><p>
         &lt;/Breaks&gt;
 
         &lt;Detail&gt;
-            &lt;FieldHeaders&gt;
+            &lt;FieldHeader&gt;
                 &lt;Output&gt;
                     &lt;HorizontalLine size="2" color="'black'" /&gt;
                     &lt;HorizontalLine size="2" color="'white'" /&gt;
@@ -13281,9 +13287,9 @@ rlib_spool($r);</pre><p>
                     &lt;HorizontalLine size="2" color="'black'" /&gt;
                     &lt;HorizontalLine size="2" color="'white'" /&gt;
                 &lt;/Output&gt;
-            &lt;/FieldHeaders&gt;
+            &lt;/FieldHeader&gt;
 
-            &lt;FieldDetails&gt;
+            &lt;FieldDetail&gt;
                 &lt;Output&gt;
                     &lt;Line&gt;
                         &lt;field width="2" align="'right'" value="id" /&gt;
@@ -13298,7 +13304,7 @@ rlib_spool($r);</pre><p>
                         &lt;field width="8" value="v.var5" format="'%.2d'" align="'right'" /&gt;
                     &lt;/Line&gt;
                 &lt;/Output&gt;
-            &lt;/FieldDetails&gt;
+            &lt;/FieldDetail&gt;
         &lt;/Detail&gt;
     &lt;/Report&gt;
 &lt;/OpenCReport&gt;</pre><p>
@@ -13450,7 +13456,7 @@ rlib_spool($r);</pre><p>
 &lt;OpenCReport&gt;
     &lt;Report query="q1"&gt;
         &lt;Detail&gt;
-            &lt;FieldHeaders&gt;
+            &lt;FieldHeader&gt;
                 &lt;Output&gt;
                     &lt;HorizontalLine size="2" color="'black'" /&gt;
                     &lt;HorizontalLine size="2" color="'white'" /&gt;
@@ -13462,16 +13468,16 @@ rlib_spool($r);</pre><p>
                     &lt;HorizontalLine size="2" color="'black'" /&gt;
                     &lt;HorizontalLine size="2" color="'white'" /&gt;
                 &lt;/Output&gt;
-            &lt;/FieldHeaders&gt;
+            &lt;/FieldHeader&gt;
 
-            &lt;FieldDetails&gt;
+            &lt;FieldDetail&gt;
                 &lt;Output&gt;
                     &lt;Line&gt;
                         &lt;field width="20" value="q1.firstname" /&gt;
                         &lt;field width="20" value="q2.lastname" /&gt;
                     &lt;/Line&gt;
                 &lt;/Output&gt;
-            &lt;/FieldDetails&gt;
+            &lt;/FieldDetail&gt;
         &lt;/Detail&gt;
     &lt;/Report&gt;
 &lt;/OpenCReport&gt;</pre><p>
@@ -13667,7 +13673,7 @@ rlib_spool($r);</pre><p>
 &lt;OpenCReport&gt;
 &lt;Report orientation="landscape"&gt;
     &lt;Detail&gt;
-        &lt;FieldHeaders&gt;
+        &lt;FieldHeader&gt;
             &lt;Output&gt;
                 &lt;Line&gt;
                     &lt;literal width="30"&gt;Boss name&lt;/literal&gt;
@@ -13677,8 +13683,8 @@ rlib_spool($r);</pre><p>
                     &lt;literal width="30"&gt;Sidekick's sidekick name&lt;/literal&gt;
                 &lt;/Line&gt;
             &lt;/Output&gt;
-        &lt;/FieldHeaders&gt;
-        &lt;FieldDetails&gt;
+        &lt;/FieldHeader&gt;
+        &lt;FieldDetail&gt;
             &lt;Output&gt;
                 &lt;Line&gt;
                     &lt;field value="q1.name" width="30" align="left" /&gt;
@@ -13688,7 +13694,7 @@ rlib_spool($r);</pre><p>
                     &lt;field value="q3.name" width="30" align="left" /&gt;
                 &lt;/Line&gt;
             &lt;/Output&gt;
-        &lt;/FieldDetails&gt;
+        &lt;/FieldDetail&gt;
     &lt;/Detail&gt;
 &lt;/Report&gt;
 &lt;/OpenCReport&gt;</pre><p>
@@ -13835,7 +13841,7 @@ rlib_spool($r);</pre><p>
 &lt;!DOCTYPE report &gt;
 &lt;Report orientation="landscape"&gt;
     &lt;Detail&gt;
-        &lt;FieldHeaders&gt;
+        &lt;FieldHeader&gt;
             &lt;Output&gt;
                 &lt;Line&gt;
                     &lt;literal width="30"&gt;Boss name&lt;/literal&gt;
@@ -13845,8 +13851,8 @@ rlib_spool($r);</pre><p>
                     &lt;literal width="30"&gt;Sidekick's sidekick name&lt;/literal&gt;
                 &lt;/Line&gt;
             &lt;/Output&gt;
-        &lt;/FieldHeaders&gt;
-        &lt;FieldDetails&gt;
+        &lt;/FieldHeader&gt;
+        &lt;FieldDetail&gt;
             &lt;Output&gt;
                 &lt;Line&gt;
                     &lt;field value="q1.name" width="30" align="left" /&gt;
@@ -13856,7 +13862,7 @@ rlib_spool($r);</pre><p>
                     &lt;field value="q3.name" width="30" align="left" /&gt;
                 &lt;/Line&gt;
             &lt;/Output&gt;
-        &lt;/FieldDetails&gt;
+        &lt;/FieldDetail&gt;
     &lt;/Detail&gt;
 &lt;/Report&gt;</pre><p>
 			</p></div><div class="sect2" id="EXAMPLE7PDF"><div class="titlepage"><div><div><h3 class="title">13.7.6. Report PDF result <a href="#EXAMPLE7PDF" class="id_link">#</a></h3></div></div></div><p>

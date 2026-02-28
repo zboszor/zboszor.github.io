@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>8.9. Report</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="partcol.html" title="8.8. Part column" /><link rel="next" href="loadedreport.html" title="8.10. Loaded report" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">8.9. Report</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="partcol.html" title="8.8. Part column">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="xmldescriptor.html" title="Chapter 8. Report XML description">Up</a></td><th width="60%" align="center">Chapter 8. Report XML description</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.14 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="loadedreport.html" title="8.10. Loaded report">Next</a></td></tr></table><hr /></div><div class="sect1" id="REPORT"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.9. Report <a href="#REPORT" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="report.html#REPORTATTRIBS">8.9.1. Report attributes</a></span></dt><dt><span class="sect2"><a href="report.html#REPSUBSECS">8.9.2. Report subsections</a></span></dt></dl></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>8.9. Report</title><link rel="stylesheet" type="text/css" href="https://www.postgresql.org/media/css/docs-complete.css" /><link rev="made" href="zboszor@gmail.com" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="partcol.html" title="8.8. Part column" /><link rel="next" href="loadedreport.html" title="8.10. Loaded report" /></head><body id="docContent" class="container-fluid col-10"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">8.9. Report</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="partcol.html" title="8.8. Part column">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="xmldescriptor.html" title="Chapter 8. Report XML description">Up</a></td><th width="60%" align="center">Chapter 8. Report XML description</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="OpenCReports 0.8.15 Manual">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="loadedreport.html" title="8.10. Loaded report">Next</a></td></tr></table><hr /></div><div class="sect1" id="REPORT"><div class="titlepage"><div><div><h2 class="title" style="clear: both">8.9. Report <a href="#REPORT" class="id_link">#</a></h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="report.html#REPORTATTRIBS">8.9.1. Report attributes</a></span></dt><dt><span class="sect2"><a href="report.html#REPSUBSECS">8.9.2. Report subsections</a></span></dt></dl></div><p>
 			This section may occur in a wider context or
 			standalone in an OpenCReports XML report
 			description file.
@@ -309,8 +309,8 @@
 					<a class="xref" href="report.html#REPORTPAGEFOOTER" title="8.9.2.2. Page footer">Report page footer</a>,
 					<a class="xref" href="report.html#REPHEADER" title="8.9.2.3. Report header">Report header</a>,
 					<a class="xref" href="report.html#REPFOOTER" title="8.9.2.4. Report footer">Report footer</a>,
-					<code class="literal">&lt;FieldHeaders&gt;</code> and
-					<code class="literal">&lt;FieldDetails&gt;</code> in
+					<code class="literal">&lt;FieldHeader&gt;</code> and
+					<code class="literal">&lt;FieldDetail&gt;</code> in
 					<a class="xref" href="report.html#DETAILNODE" title="8.9.2.7. Detail">Detail node</a>,
 					and also in <a class="xref" href="breaknode.html" title="8.14. Break">Break node</a>s and
 					<a class="xref" href="variablenode.html" title="8.12. Variable">Variable node</a>s.
@@ -500,25 +500,31 @@
 					an <a class="xref" href="outputnode.html" title="8.15. Output">Output node</a>.
 					</p><pre class="programlisting">&lt;Report&gt;
     &lt;Detail&gt;
-        &lt;FieldHeaders&gt;
+        &lt;FieldHeader&gt;
             &lt;Output&gt;
                 ...
             &lt;/Output&gt;
-        &lt;/FieldHeaders&gt;
-        &lt;FieldDetails&gt;
+        &lt;/FieldHeader&gt;
+        &lt;FieldDetail&gt;
             &lt;Output&gt;
                 ...
             &lt;/Output&gt;
-        &lt;/FieldDetails&gt;
+        &lt;/FieldDetail&gt;
     &lt;/Detail&gt;
 &lt;/Part&gt;</pre><p>
 				</p><p>
-					<code class="literal">&lt;FieldHeaders&gt;</code> is used
+					<code class="literal">&lt;FieldHeader&gt;</code> is used
 					to describe the header for data rows.
 				</p><p>
-					<code class="literal">&lt;FieldDetails&gt;</code> is used
+					<code class="literal">&lt;FieldDetail&gt;</code> is used
 					to show data that is derived from the current data row
 					produced by the report query.
+				</p><p>
+					Note that both <code class="literal">&lt;FieldHeader&gt;</code>
+					and <code class="literal">&lt;FieldDetail&gt;</code> are also
+					accepted with plural spelling for RLIB compatibiliy, i.e.
+					<code class="literal">&lt;FieldHeaders&gt;</code> and
+					<code class="literal">&lt;FieldDetails&gt;</code>, respectively.
 				</p></div><div class="sect3" id="NODATANODE"><div class="titlepage"><div><div><h4 class="title">8.9.2.8. Alternate output for no data <a href="#NODATANODE" class="id_link">#</a></h4></div></div></div><p>
 					This section describes the alternate output of the report
 					when the query has no data rows, or there is no such
@@ -554,4 +560,4 @@
 					<a class="xref" href="ocrpttopxml.html#NOQUERYSHOWNODATA" title="8.2.2. No query show NoData">No query show NoData attribute</a> is set, then
 					the <code class="literal">&lt;NoData&gt;</code> section
 					is not displayed.
-				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="partcol.html" title="8.8. Part column">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="xmldescriptor.html" title="Chapter 8. Report XML description">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="loadedreport.html" title="8.10. Loaded report">Next</a></td></tr><tr><td width="40%" align="left" valign="top">8.8. Part column </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.14 Manual">Home</a></td><td width="40%" align="right" valign="top"> 8.10. Loaded report</td></tr></table></div></body></html>
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="partcol.html" title="8.8. Part column">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="xmldescriptor.html" title="Chapter 8. Report XML description">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="loadedreport.html" title="8.10. Loaded report">Next</a></td></tr><tr><td width="40%" align="left" valign="top">8.8. Part column </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="OpenCReports 0.8.15 Manual">Home</a></td><td width="40%" align="right" valign="top"> 8.10. Loaded report</td></tr></table></div></body></html>
